@@ -1,0 +1,223 @@
+\ProvidesFile{ext-standard.bbx}[2017/05/10 v0.1 extended biblatex standard style (MW)]
+
+\RequireBibliographyStyle{authoryear}
+
+\newtoggle{bbx:inxref}
+
+\DeclareBibliographyOption[boolean]{inxref}[true]{%
+  \settoggle{bbx:inxref}{#1}}
+
+\ExecuteBibliographyOptions{inxref}
+
+\DeclareCiteCommand{\bbx@xref}
+  {}
+  {\usebibmacro{cite}}
+  {}
+  {}
+
+\newbibmacro{crosscite}[1]{%
+  \iftoggle{bbx:inxref}
+    {\iffieldundef{crossref}
+       {\iffieldundef{xref}
+          {\usebibmacro{#1}}
+          {\bbx@xref{\thefield{xref}}}}
+       {\bbx@xref{\thefield{crossref}}}}
+    {\usebibmacro{#1}}}
+
+
+\DeclareBibliographyDriver{inbook}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{crosscite}{inbook:parent}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \ifboolexpr{togl {bbx:isbn} and not test {\iffieldxref{isbn}}}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  % with default inheritance related is not inherited,
+  % so the test is not necessary
+  \ifboolexpr{togl {bbx:related} and not test {\iffieldxref{related}}}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+\newbibmacro{inbook:parent}{%
+  \usebibmacro{bybookauthor}%
+  \newunit\newblock
+  \usebibmacro{maintitle+booktitle}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \printfield{edition}%
+  \newunit
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+date}}
+
+
+\DeclareBibliographyDriver{incollection}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{crosscite}{incollection:parent}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \ifboolexpr{togl {bbx:isbn} and not test {\iffieldxref{isbn}}}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  % with default inheritance related is not inherited,
+  % so the test is not necessary
+  \ifboolexpr{togl {bbx:related} and not test {\iffieldxref{related}}}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+\newbibmacro{incollection:parent}{%
+  \usebibmacro{editor+others}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{maintitle+booktitle}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \printfield{edition}%
+  \newunit
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+date}}
+
+
+\DeclareBibliographyDriver{inproceedings}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{crosscite}{inproceedings:parent}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit\newblock
+  \ifboolexpr{togl {bbx:isbn} and not test {\iffieldxref{isbn}}}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  % with default inheritance related is not inherited,
+  % so the test is not necessary
+  \ifboolexpr{togl {bbx:related} and not test {\iffieldxref{related}}}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+\newbibmacro{inproceedings:parent}{%
+  \usebibmacro{editor+others}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{maintitle+booktitle}%
+  \newunit\newblock
+  \usebibmacro{event+venue+date}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \printlist{organization}%
+  \newunit
+  \usebibmacro{publisher+location+date}}
+
+
+\renewbibmacro*{doi+eprint+url}{%
+  \ifboolexpr{togl {bbx:doi} and not test {\iffieldxref{doi}}}
+    {\printfield{doi}}
+    {}%
+  \newunit\newblock
+  \ifboolexpr{togl {bbx:eprint} and not test {\iffieldxref{eprint}}}
+    {\usebibmacro{eprint}}
+    {}%
+  \newunit\newblock
+  \ifboolexpr{togl {bbx:url} and not test {\iffieldxref{url}}}
+    {\usebibmacro{url+urldate}}
+    {}}
+
+\newbibmacro*{addendum+pubstate}{%
+  \iffieldxref{addendum}
+    {}
+    {\printfield{addendum}}%
+  \newunit\newblock
+  \iffieldxref{pubstate}
+    {}
+    {\printfield{pubstate}}}
+
+\endinput
