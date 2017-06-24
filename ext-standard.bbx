@@ -7,6 +7,7 @@
 \newtoggle{bbx:inxref}
 \newtoggle{bbx:inname}
 \newtoggle{bbx:inidem}
+\newtoggle{bbx:articlein}
 
 \DeclareBibliographyOption[boolean]{inxref}[true]{%
   \settoggle{bbx:inxref}{#1}}
@@ -14,8 +15,16 @@
   \settoggle{bbx:inname}{#1}}
 \DeclareBibliographyOption[boolean]{inidem}[true]{%
   \settoggle{bbx:inidem}{#1}}
+  \DeclareBibliographyOption[boolean]{articlein}[true]{%
+  \settoggle{bbx:articlein}{#1}}
 
-\ExecuteBibliographyOptions{inxref=true, inname=true, inidem=true}
+\ExecuteBibliographyOptions{
+  inxref=true,
+  inname=true,
+  inidem=true,
+  articlein=false,
+  maxbibnames=999,
+}
 
 \providebibmacro{cite:xref:bib}{\usebibmacro{cite}}
 
@@ -35,6 +44,92 @@
           {\bbx@xref{\thefield{xref}}}}
        {\bbx@xref{\thefield{crossref}}}}
     {\usebibmacro{#1}}}
+
+\DeclareBibliographyDriver{article}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{bytranslator+others}%
+  \newunit\newblock
+  \printfield{version}%
+  \newunit\newblock
+  \iftoggle{bbx:articlein}{\usebibmacro{in:}}{}%
+  \usebibmacro{journal+issuetitle}%
+  \newunit
+  \usebibmacro{byeditor+others}%
+  \newunit
+  \usebibmacro{note+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{issn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{book}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/editor+others/translator+others}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{maintitle+title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \usebibmacro{edition}%
+  \newunit
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit
+  \printfield{pagetotal}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{inbook}{%
   \usebibmacro{bibindex}%
@@ -77,7 +172,7 @@
   \newunit\newblock
   \usebibmacro{byeditor+others}%
   \newunit\newblock
-  \printfield{edition}%
+  \usebibmacro{edition}%
   \newunit
   \iffieldundef{maintitle}
     {\printfield{volume}%
@@ -92,6 +187,52 @@
   \newunit\newblock
   \usebibmacro{publisher+location+date}}
 
+
+\DeclareBibliographyDriver{collection}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{editor+others}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{maintitle+title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \usebibmacro{edition}%
+  \newunit
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit
+  \printfield{pagetotal}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{incollection}{%
   \usebibmacro{bibindex}%
@@ -136,7 +277,7 @@
   \newunit\newblock
   \usebibmacro{byeditor+others}%
   \newunit\newblock
-  \printfield{edition}%
+  \usebibmacro{edition}%
   \newunit
   \iffieldundef{maintitle}
     {\printfield{volume}%
@@ -151,6 +292,56 @@
   \newunit\newblock
   \usebibmacro{publisher+location+date}}
 
+
+\DeclareBibliographyDriver{proceedings}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{editor+others}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{maintitle+title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{event+venue+date}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \usebibmacro{edition}%
+  \newunit
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \printlist{organization}%
+  \newunit
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit
+  \printfield{pagetotal}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{inproceedings}{%
   \usebibmacro{bibindex}%
@@ -197,6 +388,8 @@
   \newunit\newblock
   \usebibmacro{byeditor+others}%
   \newunit\newblock
+  \usebibmacro{edition}%
+  \newunit
   \iffieldundef{maintitle}
     {\printfield{volume}%
      \printfield{part}}
@@ -211,6 +404,63 @@
   \printlist{organization}%
   \newunit
   \usebibmacro{publisher+location+date}}
+
+\DeclareBibliographyDriver{manual}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/editor}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{byeditor}%
+  \newunit\newblock
+  \usebibmacro{edition}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{type}%
+  \newunit
+  \printfield{version}%
+  \newunit
+  \printfield{note}%
+  \newunit\newblock
+  \printlist{organization}%
+  \newunit
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit
+  \printfield{pagetotal}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{isbn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+
+\newcommand*{\volnumdelim}{\adddot}
+
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+  \setunit*{\volnumdelim}%
+  \printfield{number}%
+  \setunit{\addcomma\space}%
+  \printfield{eid}}
 
 
 \renewbibmacro*{bybookauthor}{%
@@ -252,6 +502,8 @@
   \usebibmacro{generic:in:editor}{editor+othersstrg}}
 
 
+\newbibmacro{edition}{\printfield{edition}}
+
 \renewbibmacro*{doi+eprint+url}{%
   \ifboolexpr{togl {bbx:doi} and not test {\iffieldxref{doi}}}
     {\printfield{doi}}
@@ -265,20 +517,19 @@
     {\usebibmacro{url+urldate}}
     {}}
 
-\renewbibmacro*{addendum+pubstate}{%
-  \iffieldxref{addendum}
-    {}
-    {\printfield{addendum}}%
-  \newunit\newblock
-  \iffieldxref{pubstate}
-    {}
-    {\printfield{pubstate}}}
-    
+\newcommand*{\sernumdelim}{\addcomma\space}
+
+\newbibmacro*{series+number}{%
+  \printfield{series}%
+  \setunit*{\sernumdelim}%
+  \printfield{number}%
+  \newunit}
+
 \newcommand*{\locdatedelim}{\addcomma\space}
 \newcommand*{\locpubdelim}{\addcolon\space}
 \newcommand*{\publocdelim}{\addcomma\space}
 \newcommand*{\pubdatedelim}{\addcomma\space}
-    
+
 \newbibmacro*{pubinstorg+location+date}[1]{%
   \printlist{location}%
   \iflistundef{#1}
@@ -288,20 +539,30 @@
   \setunit*{\pubdatedelim}%
   \usebibmacro{date}%
   \newunit}
-   
-\newbibmacro*{publisher+location+date}{%
+
+\renewbibmacro*{publisher+location+date}{%
   \usebibmacro{pubinstorg+location+date}{publisher}}
 
-\newbibmacro*{institution+location+date}{%
+\renewbibmacro*{institution+location+date}{%
   \usebibmacro{pubinstorg+location+date}{institution}}
 
-\newbibmacro*{organization+location+date}{%
+\renewbibmacro*{organization+location+date}{%
   \usebibmacro{pubinstorg+location+date}{organization}}
 
-\newbibmacro*{location+date}{%
+\renewbibmacro*{location+date}{%
   \printlist{location}%
   \setunit*{\locdatedelim}%
   \usebibmacro{date}%
   \newunit}
+
+
+\renewbibmacro*{addendum+pubstate}{%
+  \iffieldxref{addendum}
+    {}
+    {\printfield{addendum}}%
+  \newunit\newblock
+  \iffieldxref{pubstate}
+    {}
+    {\printfield{pubstate}}}
 
 \endinput
