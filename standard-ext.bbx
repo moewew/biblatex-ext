@@ -537,6 +537,21 @@
 
 \newbibmacro{edition}{\printfield{edition}}
 
+\renewbibmacro*{journal+issuetitle}{%
+  \usebibmacro{journal}%
+  \setunit*{\addspace}%
+  \iffieldundef{series}
+    {}
+    {\setunit*{\addcomma\space}%
+     \printfield{series}%
+     \setunit{\addspace}}%
+  \usebibmacro{volume+number+eid}%
+  \setunit{\addspace}%
+  \usebibmacro{issue+date}%
+  \setunit{\addcolon\space}%
+  \usebibmacro{issue}%
+  \newunit}
+
 \newcommand*{\volnumdelim}{\adddot}
 
 \renewbibmacro*{volume+number+eid}{%
