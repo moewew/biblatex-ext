@@ -4,4 +4,13 @@
 
 \RequireCitationStyle{authortitle-ticomp}
 
+\DeclareCiteCommand{\bbx@xref}
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \boolfalse{backtracker}%
+   \usebibmacro{cite:init}}
+  {\usebibmacro{cite:xref:bib}}
+  {}
+  {}
+
 \endinput
