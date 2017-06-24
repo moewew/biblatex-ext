@@ -1,4 +1,5 @@
-\ProvidesFile{ext-standard.bbx}[2017/05/10 v0.1 extended biblatex standard style (MW)]
+\ProvidesFile{ext-standard.bbx}
+  [2017/05/10 v0.1 extended biblatex standard style (MW)]
 
 \RequireBibliographyStyle{authoryear}
 
@@ -6,22 +7,22 @@
 
 \newtoggle{bbx:inxref}
 \newtoggle{bbx:innamebeforetitle}
-\newtoggle{bbx:inidem}
+\newtoggle{bbx:innameidem}
 \newtoggle{bbx:articlein}
 
 \DeclareBibliographyOption[boolean]{inxref}[true]{%
   \settoggle{bbx:inxref}{#1}}
 \DeclareBibliographyOption[boolean]{innamebeforetitle}[true]{%
   \settoggle{bbx:innamebeforetitle}{#1}}
-\DeclareBibliographyOption[boolean]{inidem}[true]{%
-  \settoggle{bbx:inidem}{#1}}
+\DeclareBibliographyOption[boolean]{innameidem}[true]{%
+  \settoggle{bbx:innameidem}{#1}}
   \DeclareBibliographyOption[boolean]{articlein}[true]{%
   \settoggle{bbx:articlein}{#1}}
 
 \ExecuteBibliographyOptions{
   inxref=true,
   innamebeforetitle=true,
-  inidem=true,
+  innameidem=true,
   articlein=false,
   maxbibnames=999,
 }
@@ -497,7 +498,7 @@
 
 \renewbibmacro*{bybookauthor}{%
   \ifnamesequal{author}{bookauthor}
-    {\iftoggle{bbx:inidem}
+    {\iftoggle{bbx:innameidem}
        {\bibstring[\mkibid]{idem\thefield{gender}}}
        {}}
     {\printnames{bookauthor}}}
@@ -520,7 +521,7 @@
     and
     not test {\ifnameundef{editor}}
   }
-    {\ifboolexpr{togl {bbx:inidem} and test {\ineditoridem}}
+    {\ifboolexpr{togl {bbx:innameidem} and test {\ineditoridem}}
        {\bibstring[\mkibid]{idem\thefield{gender}}}
        {\printnames[ineditor]{editor}}%
      \setunit{\printdelim{editortypedelim}}%
