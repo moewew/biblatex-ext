@@ -5,14 +5,14 @@
 \providecommand*{\mkibid}[1]{#1}
 
 \newtoggle{bbx:inxref}
-\newtoggle{bbx:inname}
+\newtoggle{bbx:innamebeforetitle}
 \newtoggle{bbx:inidem}
 \newtoggle{bbx:articlein}
 
 \DeclareBibliographyOption[boolean]{inxref}[true]{%
   \settoggle{bbx:inxref}{#1}}
-\DeclareBibliographyOption[boolean]{inname}[true]{%
-  \settoggle{bbx:inname}{#1}}
+\DeclareBibliographyOption[boolean]{innamebeforetitle}[true]{%
+  \settoggle{bbx:innamebeforetitle}{#1}}
 \DeclareBibliographyOption[boolean]{inidem}[true]{%
   \settoggle{bbx:inidem}{#1}}
   \DeclareBibliographyOption[boolean]{articlein}[true]{%
@@ -20,7 +20,7 @@
 
 \ExecuteBibliographyOptions{
   inxref=true,
-  inname=true,
+  innamebeforetitle=true,
   inidem=true,
   articlein=false,
   maxbibnames=999,
@@ -44,6 +44,7 @@
           {\bbx@xref{\thefield{xref}}}}
        {\bbx@xref{\thefield{crossref}}}}
     {\usebibmacro{#1}}}
+
 
 \DeclareBibliographyDriver{article}{%
   \usebibmacro{bibindex}%
@@ -82,6 +83,7 @@
      \usebibmacro{related}}
     {}%
   \usebibmacro{finentry}}
+
 
 \DeclareBibliographyDriver{book}{%
   \usebibmacro{bibindex}%
@@ -130,6 +132,7 @@
      \usebibmacro{related}}
     {}%
   \usebibmacro{finentry}}
+
 
 \DeclareBibliographyDriver{inbook}{%
   \usebibmacro{bibindex}%
@@ -234,6 +237,7 @@
     {}%
   \usebibmacro{finentry}}
 
+
 \DeclareBibliographyDriver{incollection}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
@@ -269,7 +273,7 @@
   \usebibmacro{finentry}}
 
 \newbibmacro{incollection:parent}{%
-  \iftoggle{bbx:inname}
+  \iftoggle{bbx:innamebeforetitle}
     {\usebibmacro{in:editor+others}%
      \setunit{\printdelim{nametitledelim}}\newblock}
     {}
@@ -343,6 +347,7 @@
     {}%
   \usebibmacro{finentry}}
 
+
 \DeclareBibliographyDriver{inproceedings}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
@@ -378,7 +383,7 @@
   \usebibmacro{finentry}}
 
 \newbibmacro{inproceedings:parent}{%
-  \iftoggle{bbx:inname}
+  \iftoggle{bbx:innamebeforetitle}
     {\usebibmacro{in:editor+others}%
      \setunit{\printdelim{nametitledelim}}\newblock}
     {}
@@ -404,6 +409,7 @@
   \printlist{organization}%
   \newunit
   \usebibmacro{publisher+location+date}}
+
 
 \DeclareBibliographyDriver{manual}{%
   \usebibmacro{bibindex}%
@@ -451,7 +457,8 @@
      \usebibmacro{related}}
     {}%
   \usebibmacro{finentry}}
-  
+
+
 \DeclareBibliographyDriver{online}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
@@ -486,16 +493,6 @@
      \usebibmacro{related}}
     {}%
   \usebibmacro{finentry}}
-
-
-\newcommand*{\volnumdelim}{\adddot}
-
-\renewbibmacro*{volume+number+eid}{%
-  \printfield{volume}%
-  \setunit*{\volnumdelim}%
-  \printfield{number}%
-  \setunit{\addcomma\space}%
-  \printfield{eid}}
 
 
 \renewbibmacro*{bybookauthor}{%
@@ -539,18 +536,14 @@
 
 \newbibmacro{edition}{\printfield{edition}}
 
-\renewbibmacro*{doi+eprint+url}{%
-  \ifboolexpr{togl {bbx:doi} and not test {\iffieldxref{doi}}}
-    {\printfield{doi}}
-    {}%
-  \newunit\newblock
-  \ifboolexpr{togl {bbx:eprint} and not test {\iffieldxref{eprint}}}
-    {\usebibmacro{eprint}}
-    {}%
-  \newunit\newblock
-  \ifboolexpr{togl {bbx:url} and not test {\iffieldxref{url}}}
-    {\usebibmacro{url+urldate}}
-    {}}
+\newcommand*{\volnumdelim}{\adddot}
+
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}%
+  \setunit*{\volnumdelim}%
+  \printfield{number}%
+  \setunit{\addcomma\space}%
+  \printfield{eid}}
 
 \newcommand*{\sernumdelim}{\addcomma\space}
 
@@ -590,6 +583,18 @@
   \usebibmacro{date}%
   \newunit}
 
+\renewbibmacro*{doi+eprint+url}{%
+  \ifboolexpr{togl {bbx:doi} and not test {\iffieldxref{doi}}}
+    {\printfield{doi}}
+    {}%
+  \newunit\newblock
+  \ifboolexpr{togl {bbx:eprint} and not test {\iffieldxref{eprint}}}
+    {\usebibmacro{eprint}}
+    {}%
+  \newunit\newblock
+  \ifboolexpr{togl {bbx:url} and not test {\iffieldxref{url}}}
+    {\usebibmacro{url+urldate}}
+    {}}
 
 \renewbibmacro*{addendum+pubstate}{%
   \iffieldxref{addendum}
