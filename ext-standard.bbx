@@ -2,16 +2,28 @@
 
 \RequireBibliographyStyle{authoryear}
 
+\providecommand*{\mkibid}[1]{#1}
+
 \newtoggle{bbx:inxref}
+\newtoggle{bbx:inname}
+\newtoggle{bbx:inidem}
 
 \DeclareBibliographyOption[boolean]{inxref}[true]{%
   \settoggle{bbx:inxref}{#1}}
+\DeclareBibliographyOption[boolean]{inname}[true]{%
+  \settoggle{bbx:inname}{#1}}
+\DeclareBibliographyOption[boolean]{inidem}[true]{%
+  \settoggle{bbx:inidem}{#1}}
 
-\ExecuteBibliographyOptions{inxref}
+\ExecuteBibliographyOptions{inxref=true, inname=true, inidem=true}
+
+\providebibmacro{cite:xref:bib}{\usebibmacro{cite}}
 
 \DeclareCiteCommand{\bbx@xref}
-  {}
-  {\usebibmacro{cite}}
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \boolfalse{backtracker}}
+  {\usebibmacro{cite:xref:bib}}
   {}
   {}
 
@@ -23,7 +35,6 @@
           {\bbx@xref{\thefield{xref}}}}
        {\bbx@xref{\thefield{crossref}}}}
     {\usebibmacro{#1}}}
-
 
 \DeclareBibliographyDriver{inbook}{%
   \usebibmacro{bibindex}%
@@ -61,7 +72,7 @@
 
 \newbibmacro{inbook:parent}{%
   \usebibmacro{bybookauthor}%
-  \newunit\newblock
+  \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{maintitle+booktitle}%
   \newunit\newblock
   \usebibmacro{byeditor+others}%
@@ -117,8 +128,10 @@
   \usebibmacro{finentry}}
 
 \newbibmacro{incollection:parent}{%
-  \usebibmacro{editor+others}%
-  \setunit{\printdelim{nametitledelim}}\newblock
+  \iftoggle{bbx:inname}
+    {\usebibmacro{in:editor+others}%
+     \setunit{\printdelim{nametitledelim}}\newblock}
+    {}
   \usebibmacro{maintitle+booktitle}%
   \newunit\newblock
   \usebibmacro{byeditor+others}%
@@ -174,8 +187,10 @@
   \usebibmacro{finentry}}
 
 \newbibmacro{inproceedings:parent}{%
-  \usebibmacro{editor+others}%
-  \setunit{\printdelim{nametitledelim}}\newblock
+  \iftoggle{bbx:inname}
+    {\usebibmacro{in:editor+others}%
+     \setunit{\printdelim{nametitledelim}}\newblock}
+    {}
   \usebibmacro{maintitle+booktitle}%
   \newunit\newblock
   \usebibmacro{event+venue+date}%
@@ -198,6 +213,45 @@
   \usebibmacro{publisher+location+date}}
 
 
+\renewbibmacro*{bybookauthor}{%
+  \ifnamesequal{author}{bookauthor}
+    {\iftoggle{bbx:inidem}
+       {\bibstring[\mkibid]{idem\thefield{gender}}}
+       {}}
+    {\printnames{bookauthor}}}
+
+\DeclareNameAlias{ineditor}{default}
+
+% we assume {author/translator+others}
+\newcommand*{\ineditoridem}{%
+  \ifboolexpr{
+    ((test \ifuseauthor and not test {\ifnameundef{author}})
+     and test {\ifnamesequal{editor}{author}})
+    or
+    ((test \ifusetranslator and not test {\ifnameundef{translator}})
+     and test {\ifnamesequal{editor}{translator}})
+  }}
+
+\newbibmacro*{generic:in:editor}[1]{%
+  \ifboolexpr{
+    test \ifuseeditor
+    and
+    not test {\ifnameundef{editor}}
+  }
+    {\ifboolexpr{togl {bbx:inidem} and test {\ineditoridem}}
+       {\bibstring[\mkibid]{idem\thefield{gender}}}
+       {\printnames[ineditor]{editor}}%
+     \setunit{\printdelim{editortypedelim}}%
+     \usebibmacro{#1}%
+     \clearname{editor}}
+    {}}
+
+\newbibmacro*{in:editor}{%
+  \usebibmacro{generic:in:editor}{editorstrg}}
+\newbibmacro*{in:editor+others}{%
+  \usebibmacro{generic:in:editor}{editor+othersstrg}}
+
+
 \renewbibmacro*{doi+eprint+url}{%
   \ifboolexpr{togl {bbx:doi} and not test {\iffieldxref{doi}}}
     {\printfield{doi}}
@@ -211,7 +265,7 @@
     {\usebibmacro{url+urldate}}
     {}}
 
-\newbibmacro*{addendum+pubstate}{%
+\renewbibmacro*{addendum+pubstate}{%
   \iffieldxref{addendum}
     {}
     {\printfield{addendum}}%
