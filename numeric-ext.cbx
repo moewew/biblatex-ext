@@ -3,4 +3,12 @@
 
 \RequireCitationStyle{numeric}
 
+\DeclareCiteCommand{\bbx@xref}[\mkbibbrackets]
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \boolfalse{backtracker}}
+  {\usebibmacro{cite:xref:bib}}
+  {}
+  {}
+
 \endinput
