@@ -16,15 +16,15 @@
   \settoggle{bbx:innamebeforetitle}{#1}}
 \DeclareBibliographyOption[boolean]{innameidem}[true]{%
   \settoggle{bbx:innameidem}{#1}}
-  \DeclareBibliographyOption[boolean]{articlein}[true]{%
+\DeclareBibliographyOption[boolean]{articlein}[true]{%
   \settoggle{bbx:articlein}{#1}}
 
-\ExecuteBibliographyOptions{
-  inxref=true,
-  innamebeforetitle=true,
-  innameidem=true,
-  articlein=false,
-  maxbibnames=999,
+\ExecuteBibliographyOptions{%
+  inxref            = true,
+  innamebeforetitle = true,
+  innameidem        = true,
+  articlein         = false,
+  maxbibnames       = 999,
 }
 
 \providebibmacro{cite:xref:bib}{\usebibmacro{cite}}
@@ -69,9 +69,7 @@
   \newunit
   \usebibmacro{note+pages}%
   \newunit\newblock
-  \iftoggle{bbx:isbn}
-    {\printfield{issn}}
-    {}%
+  \usebibmacro{issn}%
   \newunit\newblock
   \usebibmacro{doi+eprint+url}%
   \newunit\newblock
@@ -118,9 +116,7 @@
   \newunit
   \printfield{pagetotal}%
   \newunit\newblock
-  \iftoggle{bbx:isbn}
-    {\printfield{isbn}}
-    {}%
+  \usebibmacro{isbn}%
   \newunit\newblock
   \usebibmacro{doi+eprint+url}%
   \newunit\newblock
@@ -151,9 +147,7 @@
   \newunit\newblock
   \usebibmacro{chapter+pages}%
   \newunit\newblock
-  \ifboolexpr{togl {bbx:isbn} and not test {\iffieldxref{isbn}}}
-    {\printfield{isbn}}
-    {}%
+  \usebibmacro{isbn}%
   \newunit\newblock
   \usebibmacro{doi+eprint+url}%
   \newunit\newblock
@@ -222,9 +216,7 @@
   \newunit
   \printfield{pagetotal}%
   \newunit\newblock
-  \iftoggle{bbx:isbn}
-    {\printfield{isbn}}
-    {}%
+  \usebibmacro{isbn}%
   \newunit\newblock
   \usebibmacro{doi+eprint+url}%
   \newunit\newblock
@@ -255,9 +247,7 @@
   \newunit\newblock
   \usebibmacro{chapter+pages}%
   \newunit\newblock
-  \ifboolexpr{togl {bbx:isbn} and not test {\iffieldxref{isbn}}}
-    {\printfield{isbn}}
-    {}%
+  \usebibmacro{isbn}%
   \newunit\newblock
   \usebibmacro{doi+eprint+url}%
   \newunit\newblock
@@ -332,9 +322,7 @@
   \newunit
   \printfield{pagetotal}%
   \newunit\newblock
-  \iftoggle{bbx:isbn}
-    {\printfield{isbn}}
-    {}%
+  \usebibmacro{isbn}%
   \newunit\newblock
   \usebibmacro{doi+eprint+url}%
   \newunit\newblock
@@ -365,9 +353,7 @@
   \newunit\newblock
   \usebibmacro{chapter+pages}%
   \newunit\newblock
-  \ifboolexpr{togl {bbx:isbn} and not test {\iffieldxref{isbn}}}
-    {\printfield{isbn}}
-    {}%
+  \usebibmacro{isbn}%
   \newunit\newblock
   \usebibmacro{doi+eprint+url}%
   \newunit\newblock
@@ -443,9 +429,7 @@
   \newunit
   \printfield{pagetotal}%
   \newunit\newblock
-  \iftoggle{bbx:isbn}
-    {\printfield{isbn}}
-    {}%
+  \usebibmacro{isbn}%
   \newunit\newblock
   \usebibmacro{doi+eprint+url}%
   \newunit\newblock
@@ -484,6 +468,110 @@
     {}%
   \newunit\newblock
   \usebibmacro{url+urldate}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+
+\DeclareBibliographyDriver{report}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \printfield{type}%
+  \setunit*{\addspace}%
+  \printfield{number}%
+  \newunit\newblock
+  \printfield{version}%
+  \newunit
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{institution+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit
+  \printfield{pagetotal}%
+  \newunit\newblock
+  \usebibmacro{isrn}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+
+\DeclareBibliographyDriver{thesis}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \printfield{type}%
+  \newunit
+  \usebibmacro{institution+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit
+  \printfield{pagetotal}%
+  \newunit\newblock
+  \usebibmacro{isbn}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \iftoggle{bbx:related}
+    {\usebibmacro{related:init}%
+     \usebibmacro{related}}
+    {}%
+  \usebibmacro{finentry}}
+
+
+\DeclareBibliographyDriver{periodical}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{editor}%
+  \setunit{\printdelim{nametitledelim}}\newblock
+  \usebibmacro{title+issuetitle}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byeditor}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{issn}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
   \newunit\newblock
   \usebibmacro{addendum+pubstate}%
   \setunit{\bibpagerefpunct}\newblock
@@ -610,6 +698,21 @@
   \newunit\newblock
   \ifboolexpr{togl {bbx:url} and not test {\iffieldxref{url}}}
     {\usebibmacro{url+urldate}}
+    {}}
+
+\newbibmacro*{isbn}{%
+  \ifboolexpr{togl {bbx:isbn} and not test {\iffieldxref{isbn}}}
+    {\printfield{isbn}}
+    {}}
+
+\newbibmacro*{issn}{%
+  \ifboolexpr{togl {bbx:isbn} and not test {\iffieldxref{issn}}}
+    {\printfield{issn}}
+    {}}
+
+\newbibmacro*{isrn}{%
+  \iftoggle{bbx:isbn}
+    {\printfield{issn}}
     {}}
 
 \renewbibmacro*{addendum+pubstate}{%
