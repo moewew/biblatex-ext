@@ -1,0 +1,17 @@
+\ProvidesFile{ext-authortitle-comp.cbx}
+  [2017/06/24 v0.2 extended biblatex authortitle-comp
+   citation style (MW)]
+
+\RequireCitationStyle{authortitle-comp}
+
+\DeclareCiteCommand{\bbx@xref}
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \boolfalse{backtracker}%
+   \usebibmacro{cite:init}}
+  {\usebibmacro{cite:xref:bib}}
+  {}
+  {}
+
+
+\endinput

@@ -1,0 +1,14 @@
+\ProvidesFile{ext-numeric.cbx}
+  [2017/06/24 v0.2 extended biblatex numeric citation style (MW)]
+
+\RequireCitationStyle{numeric}
+
+\DeclareCiteCommand{\bbx@xref}[\mkbibbrackets]
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \boolfalse{backtracker}}
+  {\usebibmacro{cite:xref:bib}}
+  {}
+  {}
+
+\endinput

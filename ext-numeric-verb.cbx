@@ -1,0 +1,14 @@
+\ProvidesFile{ext-numeric-verb.cbx}
+  [2017/06/24 v0.2 extended biblatex numeric-verb citation style (MW)]
+
+\RequireCitationStyle{numeric-verb}
+
+\DeclareCiteCommand{\bbx@xref}[\mkbibbrackets]
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \boolfalse{backtracker}}
+  {\usebibmacro{cite:xref:bib}}
+  {}
+  {}
+
+\endinput

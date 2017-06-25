@@ -1,0 +1,14 @@
+\ProvidesFile{ext-alphabetic.cbx}
+  [2017/06/24 v0.2 extended biblatex alphabetic citation style (MW)]
+
+\RequireCitationStyle{alphabetic}
+
+\DeclareCiteCommand{\bbx@xref}[\mkbibbrackets]
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \boolfalse{backtracker}}
+  {\usebibmacro{cite:xref:bib}}
+  {}
+  {}
+
+\endinput

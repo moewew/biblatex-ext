@@ -1,0 +1,16 @@
+\ProvidesFile{ext-authortitle-tcomp.cbx}
+  [2017/06/24 v0.2 extended biblatex authortitle-tcomp
+   citation style (MW)]
+
+\RequireCitationStyle{authortitle-tcomp}
+
+\DeclareCiteCommand{\bbx@xref}
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \boolfalse{backtracker}%
+   \usebibmacro{cite:init}}
+  {\usebibmacro{cite:xref:bib}}
+  {}
+  {}
+
+\endinput
