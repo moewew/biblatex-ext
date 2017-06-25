@@ -748,7 +748,7 @@
      and test {\ifnamesequal{editor}{translator}})
   }}
 
-\newbibmacro*{generic:in:editor}[1]{%
+\newbibmacro*{bbx:in:editor}[1]{%
   \ifboolexpr{
     test \ifuseeditor
     and
@@ -763,9 +763,9 @@
     {}}
 
 \newbibmacro*{in:editor}{%
-  \usebibmacro{generic:in:editor}{editorstrg}}
+  \usebibmacro{bbx:in:editor}{editorstrg}}
 \newbibmacro*{in:editor+others}{%
-  \usebibmacro{generic:in:editor}{editor+othersstrg}}
+  \usebibmacro{bbx:in:editor}{editor+othersstrg}}
 
 
 \newbibmacro*{edition}{\printfield{edition}}
