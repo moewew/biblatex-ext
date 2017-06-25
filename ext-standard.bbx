@@ -37,7 +37,7 @@
   {}
   {}
 
-\newbibmacro{crosscite}[1]{%
+\newbibmacro*{crosscite}[1]{%
   \iftoggle{bbx:inxref}
     {\iffieldundef{crossref}
        {\iffieldundef{xref}
@@ -163,7 +163,7 @@
     {}%
   \usebibmacro{finentry}}
 
-\newbibmacro{inbook:parent}{%
+\newbibmacro*{inbook:parent}{%
   \usebibmacro{bybookauthor}%
   \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{maintitle+booktitle}%
@@ -263,7 +263,7 @@
     {}%
   \usebibmacro{finentry}}
 
-\newbibmacro{incollection:parent}{%
+\newbibmacro*{incollection:parent}{%
   \iftoggle{bbx:innamebeforetitle}
     {\usebibmacro{in:editor+others}%
      \setunit{\printdelim{nametitledelim}}\newblock}
@@ -369,7 +369,7 @@
     {}%
   \usebibmacro{finentry}}
 
-\newbibmacro{inproceedings:parent}{%
+\newbibmacro*{inproceedings:parent}{%
   \iftoggle{bbx:innamebeforetitle}
     {\usebibmacro{in:editor+others}%
      \setunit{\printdelim{nametitledelim}}\newblock}
@@ -768,7 +768,7 @@
   \usebibmacro{generic:in:editor}{editor+othersstrg}}
 
 
-\newbibmacro{edition}{\printfield{edition}}
+\newbibmacro*{edition}{\printfield{edition}}
 
 \renewbibmacro*{journal+issuetitle}{%
   \usebibmacro{journal}%
