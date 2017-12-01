@@ -50,6 +50,10 @@ tlmgr install babel \
   
 tlmgr install csquotes
 
+tlmgr install biblatex
+
+tlmgr install biber
+
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
 
