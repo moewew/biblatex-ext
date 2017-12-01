@@ -1,0 +1,27 @@
+\documentclass[british]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{csquotes}
+\usepackage[backend=biber, style=ext-authoryear, innameidem=true, inxref=false]{biblatex}
+\addbibresource{biblatex-examples.bib}
+
+\DeclareDelimFormat[bib]{nameyeardelim}{\addcomma\space}
+
+\DeclareFieldFormat{issuedate}{\mkbibparens{#1}}
+\DeclareFieldFormat{biblabeldate}{#1}
+
+\DeclareDelimFormat*{nametitledelim}{\newunitpunct}
+
+\DeclareDelimFormat{editortypedelim}{\addspace}
+\DeclareFieldFormat{editortype}{\mkbibparens{#1}}
+\DeclareDelimFormat{translatortypedelim}{\addspace}
+\DeclareFieldFormat{translatortype}{\mkbibparens{#1}}
+
+
+\begin{document}
+\cite{sigfridsson,westfahl:space,westfahl:frontier,vizedom:related,
+      worman,cicero,geer,companion,maron,nussbaum,wilde,pines}
+
+\printbibliography
+\end{document}
