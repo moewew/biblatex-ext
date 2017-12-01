@@ -8,3 +8,6 @@ cache:
 
 script:
 - texlua build.lua check -q -H
+
+notifications:
+  email: false
