@@ -1,0 +1,29 @@
+\ProvidesFile{ext-authortitle-common.bbx}
+  [2017/11/17 v0.3 common files for extended biblatex
+   authortitle bibliography styles (MW)]
+
+\csundef{KV@blx@opt@pre@dashed}
+
+\DeclareBibliographyOption[boolean]{dashed}[true]{%
+  \ifstrequal{#1}{true}
+    {\ExecuteBibliographyOptions{pagetracker}%
+     \renewbibmacro*{bbx:savehash}{\savefield{bibnamehash}{\bbx@lasthash}}}
+    {\renewbibmacro*{bbx:savehash}{}}}
+
+\renewbibmacro*{bbx:savehash}{%
+  \savefield{bibnamehash}{\bbx@lasthash}}
+
+\renewbibmacro*{bbx:dashcheck}[2]{%
+  \ifboolexpr{
+    test {\iffieldequals{bibnamehash}{\bbx@lasthash}}
+    and
+    not test \iffirstonpage
+    and
+    (
+       not bool {bbx@inset}
+       or
+       test {\iffieldequalstr{entrysetcount}{1}}
+    )
+  }
+    {#1}
+    {#2}}

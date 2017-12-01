@@ -1,5 +1,5 @@
 \ProvidesFile{ext-standard.bbx}
-  [2017/06/24 v0.2 extended biblatex standard style (MW)]
+  [2017/12/01 v0.2 extended biblatex standard style (MW)]
 
 \RequireBibliographyStyle{standard}
 
@@ -20,16 +20,16 @@
   \settoggle{bbx:articlein}{#1}}
 
 \ExecuteBibliographyOptions{%
-  inxref            = true,
+  inxref            = false,
   innamebeforetitle = true,
-  innameidem        = true,
+  innameidem        = false,
   articlein         = false,
   maxbibnames       = 999,
 }
 
 \providebibmacro{cite:xref:bib}{\usebibmacro{cite}}
 
-\DeclareCiteCommand{\bbx@xref}
+\DeclareCiteCommand{\bbx@cite@xref}
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \boolfalse{backtracker}}
@@ -42,8 +42,8 @@
     {\iffieldundef{crossref}
        {\iffieldundef{xref}
           {\usebibmacro{#1}}
-          {\bbx@xref{\thefield{xref}}}}
-       {\bbx@xref{\thefield{crossref}}}}
+          {\bbx@cite@xref{\thefield{xref}}}}
+       {\bbx@cite@xref{\thefield{crossref}}}}
     {\usebibmacro{#1}}}
 
 
@@ -155,7 +155,7 @@
   \setunit{\bibpagerefpunct}\newblock
   \usebibmacro{pageref}%
   \newunit\newblock
-  % with default inheritance related is not inherited,
+  % with default inheritance 'related' is not inherited,
   % so the test is not necessary
   \ifboolexpr{togl {bbx:related} and not test {\iffieldxref{related}}}
     {\usebibmacro{related:init}%
@@ -255,7 +255,7 @@
   \setunit{\bibpagerefpunct}\newblock
   \usebibmacro{pageref}%
   \newunit\newblock
-  % with default inheritance related is not inherited,
+  % with default inheritance 'related' is not inherited,
   % so the test is not necessary
   \ifboolexpr{togl {bbx:related} and not test {\iffieldxref{related}}}
     {\usebibmacro{related:init}%
@@ -267,7 +267,7 @@
   \iftoggle{bbx:innamebeforetitle}
     {\usebibmacro{in:editor+others}%
      \setunit{\printdelim{nametitledelim}}\newblock}
-    {}
+    {}%
   \usebibmacro{maintitle+booktitle}%
   \newunit\newblock
   \usebibmacro{byeditor+others}%
@@ -361,7 +361,7 @@
   \setunit{\bibpagerefpunct}\newblock
   \usebibmacro{pageref}%
   \newunit\newblock
-  % with default inheritance related is not inherited,
+  % with default inheritance 'related' is not inherited,
   % so the test is not necessary
   \ifboolexpr{togl {bbx:related} and not test {\iffieldxref{related}}}
     {\usebibmacro{related:init}%
@@ -373,7 +373,7 @@
   \iftoggle{bbx:innamebeforetitle}
     {\usebibmacro{in:editor+others}%
      \setunit{\printdelim{nametitledelim}}\newblock}
-    {}
+    {}%
   \usebibmacro{maintitle+booktitle}%
   \newunit\newblock
   \usebibmacro{event+venue+date}%
@@ -739,7 +739,7 @@
 \DeclareNameAlias{ineditor}{default}
 
 % we assume {author/translator+others}
-\newcommand*{\ineditoridem}{%
+\newcommand*{\bbx@ineditoridem}{%
   \ifboolexpr{
     ((test \ifuseauthor and not test {\ifnameundef{author}})
      and test {\ifnamesequal{editor}{author}})
@@ -754,7 +754,7 @@
     and
     not test {\ifnameundef{editor}}
   }
-    {\ifboolexpr{togl {bbx:innameidem} and test {\ineditoridem}}
+    {\ifboolexpr{togl {bbx:innameidem} and test {\bbx@ineditoridem}}
        {\bibstring[\mkibid]{idem\thefield{gender}}}
        {\printnames[ineditor]{editor}}%
      \setunit{\printdelim{editortypedelim}}%
@@ -770,6 +770,8 @@
 
 \newbibmacro*{edition}{\printfield{edition}}
 
+\newcommand*{\volnumdatedelim}{\addspace}
+
 \renewbibmacro*{journal+issuetitle}{%
   \usebibmacro{journal}%
   \setunit*{\addspace}%
@@ -779,7 +781,7 @@
      \printfield{series}%
      \setunit{\addspace}}%
   \usebibmacro{volume+number+eid}%
-  \setunit{\addspace}%
+  \setunit{\volnumdatedelim}%
   \usebibmacro{issue+date}%
   \setunit{\addcolon\space}%
   \usebibmacro{issue}%
@@ -860,6 +862,20 @@
     {\printfield{issn}}
     {}}
 
+\DeclareFieldFormat{issuedate}{\mkbibparens{#1}}
+\renewbibmacro*{issue+date}{%
+  \ifboolexpr{
+    test {\iffieldundef{issue}}
+    and
+    test {\iffieldundef{year}}
+  }
+    {\printtext[issuedate]{%
+       \printfield{issue}%
+       \setunit*{\addspace}%
+       \usebibmacro{date}}}
+    {}%
+  \newunit}
+
 \renewbibmacro*{addendum+pubstate}{%
   \iffieldxref{addendum}
     {}
@@ -868,5 +884,27 @@
   \iffieldxref{pubstate}
     {}
     {\printfield{pubstate}}}
+
+\renewbibmacro*{related:bytranslator}[1]{%
+  \entrydata{#1}{%
+    \renewbibmacro*{name:hook}[1]{%
+      \ifnumequal{\value{listcount}}{1}
+        {\begingroup
+         \mkrelatedstring%
+         \lbx@initnamehook{#1}%
+         \endgroup}
+        {}}%
+    \printnames[bytranslator]{translator}%
+    \setunit*{\addspace\bibstring[\mkrelatedstring]{astitle}\space}%
+    \usebibmacro{title}%
+    \setunit{\addspace}%
+    \printtext[parens]{%
+      \printlist{location}%
+      \iflistundef{publisher}
+        {\setunit*{\locdatedelim}}
+        {\setunit*{\locpubdelim}}%
+      \printlist{publisher}%
+      \setunit*{\pubdatedelim}%
+      \printdate}}}
 
 \endinput
