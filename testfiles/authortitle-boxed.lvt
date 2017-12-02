@@ -1,0 +1,60 @@
+\input{regression-test.tex}
+\documentclass[british]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{babel}
+\usepackage{csquotes}
+\usepackage[backend=biber, style=ext-authortitle, inxref=true]{biblatex}
+\addbibresource{biblatex-examples.bib}
+
+\renewcommand*{\volnumdatedelim}{\addcomma\space}
+\DeclareFieldFormat{issuedate}{#1}
+
+\DeclareDelimFormat*{nametitledelim}{\addcolon\space}
+\makeatletter
+\def\blx@bibitem#1{%
+  \blx@ifdata{#1}
+    {\begingroup
+     \blx@getdata{#1}%
+     \blx@bibcheck
+     \iftoggle{blx@skipentry}{}{%
+       \blx@setdefaultrefcontext{#1}%
+       \global\let\blx@noitem\@empty
+       \blx@setoptions@type\abx@field@entrytype
+       \blx@setoptions@entry
+       \blx@thelabelnumber
+       \addtocounter{instcount}\@ne
+       \csuse{blx@item@\blx@theenv}\relax
+       \blx@initsep
+       \blx@namesep
+       \csuse{blx@hook@bibitem}%
+       \blx@execute
+       \blx@initunit
+       \blx@anchor
+       \blx@beglangbib
+       \bibsentence
+       \blx@pagetracker
+       \setbox0=\hbox{\blx@driver\abx@field@entrytype}%
+       \TIMO
+       \typeout{#1 (@\abx@field@entrytype)}%
+       \showbox0
+       \OMIT
+       \blx@postpunct
+       \blx@endlangbib}%
+     \endgroup}
+    {}}
+\makeatother
+  
+\START\OMIT
+\begin{document}
+\setbox0=\hbox{%
+  \cite{sigfridsson,worman,cicero,geer,maron,wilde,pines,companion,
+        westfahl:space,westfahl:frontier,vizedom:related,ctan,wilde}}%
+\TIMO
+\showbox0
+\OMIT
+\nocite{*}
+\printbibliography
+\end{document}
+\END

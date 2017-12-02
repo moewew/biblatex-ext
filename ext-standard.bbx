@@ -869,11 +869,11 @@
     and
     test {\iffieldundef{year}}
   }
+    {}
     {\printtext[issuedate]{%
        \printfield{issue}%
        \setunit*{\addspace}%
-       \usebibmacro{date}}}
-    {}%
+       \usebibmacro{date}}}%
   \newunit}
 
 \renewbibmacro*{addendum+pubstate}{%
