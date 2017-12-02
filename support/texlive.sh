@@ -27,12 +27,10 @@ tlmgr install l3build
 
 # Required to build plain and LaTeX formats:
 # TeX90 plain for unpacking, pdfLaTeX, LuaLaTeX and XeTeX for tests
-tlmgr install cm etex knuth-lib latex-bin tex tex-ini-files unicode-data \
-  xetex
+tlmgr install cm etex knuth-lib latex-bin tex tex-ini-files \
+  unicode-data xetex
 
-tlmgr install metafont mfware
-
-tlmgr install ec
+tlmgr install metafont mfware ec
 
 tlmgr install graphics graphics-cfg graphics-def oberdiek
 
@@ -42,17 +40,13 @@ tlmgr install \
   etoolbox \
   logreq \
   url hyperref \
-  xstring
-  
-tlmgr install babel \
+  xstring \
+  babel \
   babel-english \
-  babel-german 
-  
-tlmgr install csquotes
-
-tlmgr install biblatex
-
-tlmgr install biber
+  babel-german \
+  csquotes \
+  biblatex \
+  biber
 
 # Keep no backups (not required, simply makes cache bigger)
 tlmgr option -- autobackup 0
