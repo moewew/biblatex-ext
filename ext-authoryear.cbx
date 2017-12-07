@@ -3,4 +3,65 @@
 
 \RequireCitationStyle{authoryear}
 
+\DeclareFieldFormat{citelabeldate}{#1}
+\DeclareFieldFormat{parencitelabeldate}{#1}
+% You probably don't want to change textcitelabeldate,
+% have a look at \textcitedelimopen and \textcitedelimclose instead.
+\DeclareFieldFormat{textcitelabeldate}{#1}
+\DeclareFieldFormat{footcitelabeldate}{#1}
+
+\renewbibmacro*{cite:labeldate+extradate}{%
+  \iffieldundef{labelyear}
+    {}
+    {\printtext[\blx@delimcontext labeldate]{%
+       \printtext[bibhyperref]{%
+         \printlabeldateextra}}}}
+
+\newcommand*{\textcitedelimopen}{\bibopenparen}
+\newcommand*{\textcitedelimclose}{\bibcloseparen}
+
+\renewbibmacro*{textcite}{%
+  \ifnameundef{labelname}
+    {\iffieldundef{shorthand}
+       {\usebibmacro{cite:label}%
+        \setunit{%
+          \global\booltrue{cbx:parens}%
+          \printdelim{nonameyeardelim}\textcitedelimopen}%
+        \ifnumequal{\value{citecount}}{1}
+          {\usebibmacro{prenote}}
+          {}%
+        \usebibmacro{cite:labeldate+extradate}}
+       {\usebibmacro{cite:shorthand}}}
+    {\printnames{labelname}%
+     \setunit{%
+       \global\booltrue{cbx:parens}%
+       \printdelim{nameyeardelim}\textcitedelimopen}%
+     \ifnumequal{\value{citecount}}{1}
+       {\usebibmacro{prenote}}
+       {}%
+     \usebibmacro{citeyear}}}
+
+\renewbibmacro*{textcite:postnote}{%
+  \iffieldundef{postnote}
+    {\ifbool{cbx:parens}
+       {\textcitedelimclose}
+       {}}
+    {\ifbool{cbx:parens}
+       {\setunit{\postnotedelim}}
+       {\setunit{\extpostnotedelim\textcitedelimopen}}%
+     \printfield{postnote}\textcitedelimclose}}
+
+\DeclareCiteCommand{\textcite}
+  {\boolfalse{cbx:parens}}
+  {\usebibmacro{citeindex}%
+   \iffirstcitekey
+     {\setcounter{textcitetotal}{1}}
+     {\stepcounter{textcitetotal}%
+      \textcitedelim}%
+   \usebibmacro{textcite}}
+  {\ifbool{cbx:parens}
+     {\textcitedelimclose\global\boolfalse{cbx:parens}}
+     {}}
+  {\usebibmacro{textcite:postnote}}
+
 \endinput

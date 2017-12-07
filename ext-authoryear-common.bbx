@@ -27,13 +27,14 @@
 
 \DeclareFieldFormat{issuedate}{\mkbibparens{#1}}
 \DeclareFieldFormat{biblabeldate}{\mkbibparens{#1}}
+\DeclareFieldFormat{biblistlabeldate}{\mkbibparens{#1}}
 
 % merge date/issue with date label
 \def\bbx@opt@mergedate@maximum{%
   \renewbibmacro*{date+extradate}{%
     \iffieldundef{labelyear}
       {}
-      {\printtext[biblabeldate]{%
+      {\printtext[\blx@delimcontext labeldate]{%
          \iflabeldateisdate
            {\printfield{issue}%
             \setunit*{\addspace}%
@@ -56,7 +57,7 @@
   \renewbibmacro*{date+extradate}{%
     \iffieldundef{labelyear}
       {}
-      {\printtext[biblabeldate]{%
+      {\printtext[\blx@delimcontext labeldate]{%
          \iflabeldateisdate
            {\printdateextra}
            {\printlabeldateextra}}}}%
@@ -81,7 +82,7 @@
   \renewbibmacro*{date+extradate}{%
     \iffieldundef{labelyear}
       {}
-      {\printtext[biblabeldate]{\printlabeldateextra}}}%
+      {\printtext[\blx@delimcontext labeldate]{\printlabeldateextra}}}%
   \renewbibmacro*{date}{%
     \ifboolexpr{
       test {\iflabeldateisdate}
@@ -110,7 +111,7 @@
   \renewbibmacro*{date+extradate}{%
     \iffieldundef{labelyear}
       {}
-      {\printtext[biblabeldate]{\printlabeldateextra}}}%
+      {\printtext[\blx@delimcontext labeldate]{\printlabeldateextra}}}%
   \renewbibmacro*{date}{%
     \ifboolexpr{
       test {\iflabeldateisdate}
@@ -143,7 +144,7 @@
   \renewbibmacro*{date+extradate}{%
     \iffieldundef{labelyear}
       {}
-      {\printtext[biblabeldate]{\printlabeldateextra}}}%
+      {\printtext[\blx@delimcontext labeldate]{\printlabeldateextra}}}%
   \renewbibmacro*{date}{\printdate}%
   \renewbibmacro*{issue+date}{%
     \printtext[issuedate]{%
