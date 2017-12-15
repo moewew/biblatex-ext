@@ -5,11 +5,11 @@
 
 \RequireCitationStyle{alphabetic}
 
-\DeclarePairedOuterCiteDelim{cite}{\bibopenbracket}{\bibclosebracket}
-\DeclarePairedOuterCiteDelimAlias*{parencite}{cite}
-\DeclarePairedOuterCiteDelim{textcite}{}{}
+\DeclarePairedCiteOuterDelim{cite}{\bibopenbracket}{\bibclosebracket}
+\DeclarePairedCiteOuterDelimAlias*{parencite}{cite}
+\DeclarePairedCiteOuterDelim{textcite}{}{}
 
-\DeclarePairedInnerCiteDelim{textcite}{\bibopenbracket}{\bibclosebracket}
+\DeclarePairedCiteInnerDelim{textcite}{\bibopenbracket}{\bibclosebracket}
 
 \renewbibmacro*{textcite}{%
   \iffieldequals{namehash}{\cbx@lasthash}
@@ -20,7 +20,7 @@
      \setunit{%
        \global\booltrue{cbx:parens}%
        \printdelim{namelabeldelim}%
-       \csuse{inner@textcite@delim@open}}%
+       \csuse{exblx@delim@textcite@inner@open}}%
      \stepcounter{textcitecount}%
      \savefield{namehash}{\cbx@lasthash}}%
   \ifnumequal{\value{citecount}}{1}
@@ -29,7 +29,7 @@
   \usebibmacro{cite}%
   \setunit{%
     \ifbool{cbx:parens}
-      {\csuse{inner@textcite@delim@close}%
+      {\csuse{exblx@delim@textcite@inner@close}%
        \global\boolfalse{cbx:parens}}
       {}%
     \textcitedelim}}
@@ -40,12 +40,12 @@
     {\setunit{}%
      \printtext{%
        \ifbool{cbx:parens}
-         {\csuse{inner@textcite@delim@close}%
+         {\csuse{exblx@delim@textcite@inner@close}%
           \global\boolfalse{cbx:parens}}
          {}}}
     {\setunit{%
        \ifbool{cbx:parens}
-         {\csuse{inner@textcite@delim@close}%
+         {\csuse{exblx@delim@textcite@inner@close}%
           \global\boolfalse{cbx:parens}}
          {}%
        \textcitedelim}}}
@@ -85,7 +85,7 @@
 \DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
   {\smartcite}{\multicitedelim}
 
-\DeclareCiteCommand{\bbx@cite@xref}[\mkbibbrackets]
+\DeclareCiteCommand{\bbx@cite@xref}[\mkpairedouterbibxrefcitedelim]
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \boolfalse{backtracker}}

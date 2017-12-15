@@ -5,11 +5,11 @@
 
 \RequireCitationStyle{numeric}
 
-\DeclarePairedOuterCiteDelim{cite}{\bibopenbracket}{\bibclosebracket}
-\DeclarePairedOuterCiteDelimAlias*{parencite}{cite}
-\DeclarePairedOuterCiteDelim{textcite}{}{}
+\DeclarePairedCiteOuterDelim{cite}{\bibopenbracket}{\bibclosebracket}
+\DeclarePairedCiteOuterDelimAlias*{parencite}{cite}
+\DeclarePairedCiteOuterDelim{textcite}{}{}
 
-\DeclarePairedInnerCiteDelim{textcite}{\bibopenbracket}{\bibclosebracket}
+\DeclarePairedCiteInnerDelim{textcite}{\bibopenbracket}{\bibclosebracket}
 
 \renewbibmacro*{textcite}{%
   \iffieldequals{namehash}{\cbx@lasthash}
@@ -18,7 +18,7 @@
        {\printfield[citetitle]{labeltitle}}
        {\printnames{labelname}}%
      \setunit*{\printdelim{namelabeldelim}}%
-     \printtext{\csuse{inner@textcite@delim@open}}%
+     \printtext{\csuse{exblx@delim@textcite@inner@open}}%
      \global\booltrue{cbx:parens}%
      \stepcounter{textcitecount}%
      \savefield{namehash}{\cbx@lasthash}}%
@@ -28,7 +28,7 @@
   \usebibmacro{cite}%
   \setunit{%
     \ifbool{cbx:parens}
-      {\csuse{inner@textcite@delim@close}%
+      {\csuse{exblx@delim@textcite@inner@close}%
        \global\boolfalse{cbx:parens}}
       {}%
     \textcitedelim}}
@@ -39,12 +39,12 @@
     {\setunit{}%
      \printtext{%
        \ifbool{cbx:parens}
-         {\csuse{inner@textcite@delim@close}%
+         {\csuse{exblx@delim@textcite@inner@close}%
           \global\boolfalse{cbx:parens}}
          {}}}
     {\setunit{%
        \ifbool{cbx:parens}
-         {\csuse{inner@textcite@delim@close}%
+         {\csuse{exblx@delim@textcite@inner@close}%
           \global\boolfalse{cbx:parens}}
          {}%
        \textcitedelim}}}
@@ -70,24 +70,21 @@
   {\multicitedelim}
   {\usebibmacro{postnote}}
 
-\DeclareCiteCommand{\supercite}[\mkbibsuperscript]
-  {\iffieldundef{prenote}
-     {}
-     {\BibliographyWarning{Ignoring prenote argument}}%
-   \iffieldundef{postnote}
-     {}
-     {\BibliographyWarning{Ignoring postnote argument}}}
+\DeclareCiteCommand{\cbx@textcite}[\mkpairedoutertextcitedelim]
+  {\usebibmacro{textcite:init}}
   {\usebibmacro{citeindex}%
-   \usebibmacro{cite}}
-  {\supercitedelim}
+   \usebibmacro{textcite}}
   {}
+  {\usebibmacro{textcite:postnote}}
+
+\DeclareMultiCiteCommand{\cbx@textcites}[\mkpairedoutertextcitedelim]{\cbx@textcite}{}
 
 \DeclareMultiCiteCommand{\cites}[\mkpairedoutercitedelim]{\cite}{\multicitedelim}
 \DeclareMultiCiteCommand{\parencites}[\mkpairedouterparencitedelim]{\parencite}{\multicitedelim}
 \DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
   {\smartcite}{\multicitedelim}
 
-\DeclareCiteCommand{\bbx@cite@xref}[\mkpairedoutercitedelim]
+\DeclareCiteCommand{\bbx@cite@xref}[\mkpairedouterbibxrefcitedelim]
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \boolfalse{backtracker}}

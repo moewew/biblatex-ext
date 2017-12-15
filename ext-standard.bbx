@@ -40,7 +40,7 @@
 
 \providebibmacro{cite:xref:bib}{\usebibmacro{cite}}
 
-\DeclareCiteCommand{\bbx@cite@xref}
+\DeclareCiteCommand{\bbx@cite@xref}[\mkpairedouterbibxrefcitedelim]
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \boolfalse{backtracker}}
@@ -49,6 +49,7 @@
   {}
 
 \DeclareDelimcontextAlias{bbx@cite@xref}{cite}
+\DeclarePairedCiteOuterDelimAlias{bibxrefcite}{cite}
 
 \newbibmacro*{crosscite}[1]{%
   \iftoggle{bbx:inxref}

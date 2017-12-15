@@ -6,14 +6,14 @@
 
 \RequireCitationStyle{authoryear-comp}
 
-\DeclarePairedOuterCiteDelim{parencite}{\bibopenparen}{\bibcloseparen}
+\DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
 
 \DeclareFieldFormat{citelabeldate}{#1}
 \DeclareFieldFormat{parencitelabeldate}{#1}
 \DeclareFieldFormat{textcitelabeldate}{#1}
 \DeclareFieldFormat{footcitelabeldate}{#1}
 
-\DeclarePairedInnerCiteDelim{textcite}{\bibopenparen}{\bibcloseparen}
+\DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
 
 \newcommand*{\extradateonlydelim}{\addcomma}
 
@@ -24,7 +24,7 @@
         \setunit{%
           \global\booltrue{cbx:parens}%
           \printdelim{nonameyeardelim}%
-          \csuse{inner@\blx@delimcontext @delim@open}}%
+          \csuse{exblx@delim@\blx@delimcontext @inner@open}}%
         \usebibmacro{cite:labeldate+extradate}%
         \usebibmacro{cite:reinit}}
        {\iffieldequals{namehash}{\cbx@lasthash}
@@ -40,7 +40,7 @@
            \setunit{%
              \global\booltrue{cbx:parens}%
              \printdelim{nameyeardelim}%
-             \csuse{inner@\blx@delimcontext @delim@open}}%
+             \csuse{exblx@delim@\blx@delimcontext @inner@open}}%
            \usebibmacro{cite:labeldate+extradate}%
            \savefield{namehash}{\cbx@lasthash}%
            \savefield{labelyear}{\cbx@lastyear}}}}
@@ -48,7 +48,7 @@
      \usebibmacro{cite:reinit}}%
   \setunit{%
     \ifbool{cbx:parens}
-      {\csuse{inner@\blx@delimcontext @delim@close}%
+      {\csuse{exblx@delim@\blx@delimcontext @inner@close}%
        \global\boolfalse{cbx:parens}}
       {}%
     \multicitedelim}}
@@ -73,7 +73,7 @@
            \setunit{%
              \global\booltrue{cbx:parens}%
              \printdelim{nonameyeardelim}%
-             \csuse{inner@textcite@delim@open}}%
+             \csuse{exblx@delim@textcite@inner@open}}%
            \ifnumequal{\value{citecount}}{1}
              {\usebibmacro{prenote}}
              {}%
@@ -83,7 +83,7 @@
         \setunit{%
           \global\booltrue{cbx:parens}%
           \printdelim{nameyeardelim}%
-          \csuse{inner@textcite@delim@open}}%
+          \csuse{exblx@delim@textcite@inner@open}}%
         \ifnumequal{\value{citecount}}{1}
           {\usebibmacro{prenote}}
           {}%
@@ -98,7 +98,7 @@
      \savefield{namehash}{\cbx@lasthash}}%
   \setunit{%
     \ifbool{cbx:parens}
-      {\csuse{inner@textcite@delim@close}%
+      {\csuse{exblx@delim@textcite@inner@close}%
        \global\boolfalse{cbx:parens}}
       {}%
     \textcitedelim}}
@@ -119,7 +119,7 @@
 
 \renewbibmacro*{cite:postnote}{%
   \ifbool{cbx:parens}
-    {\csuse{inner@\blx@delimcontext @delim@close}%
+    {\csuse{exblx@delim@\blx@delimcontext @inner@close}%
      \global\boolfalse{cbx:parens}}
     {}%
   \usebibmacro{postnote}}
@@ -130,12 +130,12 @@
     {\setunit{}%
      \printtext{%
        \ifbool{cbx:parens}
-         {\csuse{inner@textcite@delim@close}%
+         {\csuse{exblx@delim@textcite@inner@close}%
           \global\boolfalse{cbx:parens}}
          {}}}
     {\setunit{%
        \ifbool{cbx:parens}
-         {\csuse{inner@textcite@delim@close}%
+         {\csuse{exblx@delim@textcite@inner@close}%
           \global\boolfalse{cbx:parens}}
          {}%
        \textcitedelim}}}
@@ -211,7 +211,7 @@
 \DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
   {\smartcite}{\setunit{\multicitedelim}}
 
-\DeclareCiteCommand{\bbx@cite@xref}
+\DeclareCiteCommand{\bbx@cite@xref}[\mkpairedouterbibxrefcitedelim]
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \boolfalse{backtracker}%

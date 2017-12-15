@@ -6,9 +6,9 @@
 
 \RequireCitationStyle{authortitle-icomp}
 
-\DeclarePairedOuterCiteDelim{parencite}{\bibopenparen}{\bibcloseparen}
+\DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
 
-\DeclarePairedInnerCiteDelim{textcite}{\bibopenparen}{\bibcloseparen}
+\DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
 
 \renewbibmacro*{textcite}{%
   \iffieldequals{namehash}{\cbx@lasthash}
@@ -17,7 +17,7 @@
       \setunit*{%
         \global\booltrue{cbx:parens}%
         \printdelim{nametitledelim}%
-        \csuse{inner@textcite@delim@open}}%
+        \csuse{exblx@delim@textcite@inner@open}}%
      \stepcounter{textcitecount}%
      \savefield{namehash}{\cbx@lasthash}}%
   \ifnumequal{\value{citecount}}{1}
@@ -30,7 +30,7 @@
     {\usebibmacro{cite:shorthand}}%
   \setunit{%
     \ifbool{cbx:parens}
-      {\csuse{inner@textcite@delim@close}%
+      {\csuse{exblx@delim@textcite@inner@close}%
        \global\boolfalse{cbx:parens}}
       {}%
     \textcitedelim}}
@@ -42,19 +42,19 @@
        {\setunit{%
           \global\booltrue{cbx:parens}%
           \extpostnotedelim
-          \csuse{inner@textcite@delim@open}}}
+          \csuse{exblx@delim@textcite@inner@open}}}
        {\setunit{\postnotedelim}}%
      \printfield{postnote}}%
   \ifnumequal{\value{multicitecount}}{\value{multicitetotal}}
     {\setunit{}%
      \printtext{%
        \ifbool{cbx:parens}
-         {\csuse{inner@textcite@delim@close}%
+         {\csuse{exblx@delim@textcite@inner@close}%
           \global\boolfalse{cbx:parens}}
          {}}}
     {\setunit{%
        \ifbool{cbx:parens}
-         {\csuse{inner@textcite@delim@close}%
+         {\csuse{exblx@delim@textcite@inner@close}%
           \global\boolfalse{cbx:parens}}
          {}%
        \textcitedelim}}}
@@ -114,7 +114,7 @@
 \DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
   {\smartcite}{\setunit{\multicitedelim}}
 
-\DeclareCiteCommand{\bbx@cite@xref}
+\DeclareCiteCommand{\bbx@cite@xref}[\mkpairedouterbibxrefcitedelim]
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \boolfalse{backtracker}%

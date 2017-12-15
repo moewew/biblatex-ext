@@ -6,18 +6,18 @@
 
 \RequireCitationStyle{alphabetic-verb}
 
-\DeclarePairedOuterCiteDelim{cite}{\bibopenbracket}{\bibclosebracket}
-\DeclarePairedOuterCiteDelimAlias*{parencite}{cite}
-\DeclarePairedOuterCiteDelim{textcite}{}{}
+\DeclarePairedCiteOuterDelim{cite}{\bibopenbracket}{\bibclosebracket}
+\DeclarePairedCiteOuterDelimAlias*{parencite}{cite}
+\DeclarePairedCiteOuterDelim{textcite}{}{}
 
-\DeclarePairedInnerCiteDelim{textcite}{\bibopenbracket}{\bibclosebracket}
+\DeclarePairedCiteInnerDelim{textcite}{\bibopenbracket}{\bibclosebracket}
 
 \renewbibmacro*{textcite}{%
   \ifnameundef{labelname}
     {\printfield[citetitle]{labeltitle}}
     {\printnames{labelname}}%
   \printdelim{namelabeldelim}%
-  \csuse{inner@textcite@delim@open}%
+  \csuse{exblx@delim@textcite@inner@open}%
   \ifnumequal{\value{citecount}}{1}
     {\usebibmacro{prenote}}
     {}%
@@ -25,17 +25,17 @@
 
 
 \DeclareCiteCommand{\cite}
-  {\csuse{outer@cite@delim@open}%
+  {\csuse{exblx@delim@cite@outer@open}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \ifnumgreater{\value{citecount}}{1}
-     {\csuse{outer@cite@delim@open}}
+     {\csuse{exblx@delim@cite@outer@open}}
      {}%
    \usebibmacro{cite}}
-  {\csuse{outer@cite@delim@close}%
+  {\csuse{exblx@delim@cite@outer@close}%
    \multicitedelim}
   {\usebibmacro{postnote}%
-   \csuse{outer@cite@delim@close}}
+   \csuse{exblx@delim@cite@outer@close}}
 
 \DeclareCiteCommand{\parencite}[\mkpairedouterparencitedelim]
   {\usebibmacro{prenote}}
@@ -59,16 +59,16 @@
      {\stepcounter{textcitetotal}%
       \textcitedelim}%
    \usebibmacro{textcite}}
-  {\csuse{inner@textcite@delim@close}}
+  {\csuse{exblx@delim@textcite@inner@close}}
   {\usebibmacro{postnote}%
-   \csuse{inner@textcite@delim@close}}
+   \csuse{exblx@delim@textcite@inner@close}}
 
 \DeclareMultiCiteCommand{\parencites}[\mkpairedouterparencitedelim]{\parencite}{\multicitedelim}
 \DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
   {\smartcite}{\multicitedelim}
 \DeclareMultiCiteCommand{\textcites}[\mkpairedoutertextcitedelim]{\textcite}{}
 
-\DeclareCiteCommand{\bbx@cite@xref}[\mkbibbrackets]
+\DeclareCiteCommand{\bbx@cite@xref}[\mkpairedouterbibxrefcitedelim]
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \boolfalse{backtracker}}

@@ -5,33 +5,33 @@
 
 \RequireCitationStyle{numeric-verb}
 
-\DeclarePairedOuterCiteDelim{cite}{\bibopenbracket}{\bibclosebracket}
-\DeclarePairedOuterCiteDelimAlias*{parencite}{cite}
-\DeclarePairedOuterCiteDelim{textcite}{}{}
+\DeclarePairedCiteOuterDelim{cite}{\bibopenbracket}{\bibclosebracket}
+\DeclarePairedCiteOuterDelimAlias*{parencite}{cite}
+\DeclarePairedCiteOuterDelim{textcite}{}{}
 
-\DeclarePairedInnerCiteDelim{textcite}{\bibopenbracket}{\bibclosebracket}
+\DeclarePairedCiteInnerDelim{textcite}{\bibopenbracket}{\bibclosebracket}
 
 \renewbibmacro*{textcite}{%
   \ifnameundef{labelname}
     {\printfield[citetitle]{labeltitle}}
     {\printnames{labelname}}%
-  \printdelim{namelabeldelim}\csuse{inner@\blx@delimcontext @delim@open}%
+  \printdelim{namelabeldelim}\csuse{exblx@delim@\blx@delimcontext @inner@open}%
   \ifnumequal{\value{citecount}}{1}
     {\usebibmacro{prenote}}
     {}%
   \usebibmacro{cite}}
 
 \DeclareCiteCommand{\cite}
-  {\csuse{outer@\blx@delimcontext @delim@open}%
+  {\csuse{exblx@delim@\blx@delimcontext @outer@open}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \ifnumgreater{\value{citecount}}{1}
-     {\csuse{outer@\blx@delimcontext @delim@open}}
+     {\csuse{exblx@delim@\blx@delimcontext @outer@open}}
      {}%
    \usebibmacro{cite}}
-  {\csuse{outer@\blx@delimcontext @delim@close}\multicitedelim}
+  {\csuse{exblx@delim@\blx@delimcontext @outer@close}\multicitedelim}
   {\usebibmacro{postnote}%
-   \csuse{outer@\blx@delimcontext @delim@close}}
+   \csuse{exblx@delim@\blx@delimcontext @outer@close}}
 
 \DeclareCiteCommand{\parencite}[\mkpairedouterparencitedelim]
   {\usebibmacro{prenote}}
@@ -47,7 +47,7 @@
   {\multicitedelim}
   {\usebibmacro{postnote}}
 
-\DeclareCiteCommand{\textcite}
+\DeclareCiteCommand{\textcite}[\mkpairedoutertextcitedelim]
   {}
   {\usebibmacro{citeindex}%
    \iffirstcitekey
@@ -55,29 +55,17 @@
      {\stepcounter{textcitetotal}%
       \textcitedelim}%
    \usebibmacro{textcite}}
-  {\csuse{inner@\blx@delimcontext @delim@close}}
+  {\csuse{exblx@delim@\blx@delimcontext @inner@close}}
   {\usebibmacro{postnote}%
-   \csuse{inner@\blx@delimcontext @delim@close}}
-
-\DeclareCiteCommand{\supercite}[\mkbibsuperscript]
-  {\iffieldundef{prenote}
-     {}
-     {\BibliographyWarning{Ignoring prenote argument}}%
-   \iffieldundef{postnote}
-     {}
-     {\BibliographyWarning{Ignoring postnote argument}}}
-  {\usebibmacro{citeindex}%
-   \usebibmacro{cite}}
-  {\supercitedelim}
-  {}
+   \csuse{exblx@delim@\blx@delimcontext @inner@close}}
 
 \DeclareMultiCiteCommand{\parencites}[\mkpairedouterparencitedelim]{\parencite}{\multicitedelim}
 \DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
   {\smartcite}{\multicitedelim}
-\DeclareMultiCiteCommand{\textcites}{\textcite}{}
+\DeclareMultiCiteCommand{\textcites}[\mkpairedoutertextcitedelim]{\textcite}{}
 
 
-\DeclareCiteCommand{\bbx@cite@xref}[\mkpairedouterparencitedelim]
+\DeclareCiteCommand{\bbx@cite@xref}[\mkpairedouterbibxrefcitedelim]
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \boolfalse{backtracker}}

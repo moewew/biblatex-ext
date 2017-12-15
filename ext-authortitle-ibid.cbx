@@ -6,9 +6,9 @@
 
 \RequireCitationStyle{authortitle-ibid}
 
-\DeclarePairedOuterCiteDelim{parencite}{\bibopenparen}{\bibcloseparen}
+\DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
 
-\DeclarePairedInnerCiteDelim{textcite}{\bibopenparen}{\bibcloseparen}
+\DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
 
 \newbibmacro*{textcite}{%
   \global\boolfalse{cbx:loccit}%
@@ -16,7 +16,7 @@
     \setunit*{%
       \global\booltrue{cbx:parens}%
       \printdelim{nametitledelim}%
-      \csuse{inner@textcite@delim@open}}%
+      \csuse{exblx@delim@textcite@inner@open}}%
   \ifnumequal{\value{citecount}}{1}
     {\usebibmacro{prenote}}
     {}%
@@ -29,14 +29,14 @@
 \newbibmacro*{textcite:postnote}{%
   \ifthenelse{\iffieldundef{postnote}\OR\boolean{cbx:loccit}}
     {\ifbool{cbx:parens}
-       {\csuse{inner@textcite@delim@close}}
+       {\csuse{exblx@delim@textcite@inner@close}}
        {}}
     {\ifbool{cbx:parens}
        {\postnotedelim}
        {\extpostnotedelim
-        \csuse{inner@textcite@delim@open}}%
+        \csuse{exblx@delim@textcite@inner@open}}%
      \printfield{postnote}%
-     \csuse{inner@textcite@delim@close}}}
+     \csuse{exblx@delim@textcite@inner@close}}}
 
 \DeclareCiteCommand{\cite}[\mkpairedoutercitedelim]
   {\usebibmacro{prenote}}
@@ -82,7 +82,7 @@
       \textcitedelim}%
    \usebibmacro{textcite}}
   {\ifbool{cbx:parens}
-     {\csuse{inner@textcite@delim@close}%
+     {\csuse{exblx@delim@textcite@inner@close}%
       \boolfalse{cbx:parens}}
      {}}
   {\usebibmacro{textcite:postnote}}
