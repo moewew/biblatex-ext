@@ -2,14 +2,20 @@
   [2017/12/01 v0.2 extended biblatex authoryear-ibid
    citation style (MW)]
 
+\blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
+
 \RequireCitationStyle{authoryear-ibid}
+
+\DeclarePairedOuterCiteDelim{parencite}{\bibopenparen}{\bibcloseparen}
 
 \DeclareFieldFormat{citelabeldate}{#1}
 \DeclareFieldFormat{parencitelabeldate}{#1}
 % You probably don't want to change textcitelabeldate,
-% have a look at \textcitedelimopen and \textcitedelimclose instead.
+% have a look at \DeclarePairedInnerCiteDelim{textcite} instead.
 \DeclareFieldFormat{textcitelabeldate}{#1}
 \DeclareFieldFormat{footcitelabeldate}{#1}
+
+\DeclarePairedInnerCiteDelim{textcite}{\bibopenparen}{\bibcloseparen}
 
 \renewbibmacro*{cite:labeldate+extradate}{%
   \iffieldundef{labelyear}
@@ -18,9 +24,6 @@
        \printtext[bibhyperref]{%
          \printlabeldateextra}}}}
 
-\newcommand*{\textcitedelimopen}{\bibopenparen}
-\newcommand*{\textcitedelimclose}{\bibcloseparen}
-
 \renewbibmacro*{textcite}{%
   \global\boolfalse{cbx:loccit}%
   \ifnameundef{labelname}
@@ -28,7 +31,8 @@
        {\usebibmacro{cite:label}%
         \setunit{%
           \global\booltrue{cbx:parens}%
-          \printdelim{nonameyeardelim}\textcitedelimopen}%
+          \printdelim{nonameyeardelim}%
+          \csuse{inner@textcite@delim@open}}%
         \ifnumequal{\value{citecount}}{1}
           {\usebibmacro{prenote}}
           {}%
@@ -37,7 +41,8 @@
     {\printnames{labelname}%
      \setunit{%
        \global\booltrue{cbx:parens}%
-       \printdelim{nameyeardelim}\textcitedelimopen}%
+       \printdelim{nameyeardelim}%
+       \csuse{inner@textcite@delim@open}}%
      \ifnumequal{\value{citecount}}{1}
        {\usebibmacro{prenote}}
        {}%
@@ -52,14 +57,51 @@
 \renewbibmacro*{textcite:postnote}{%
   \ifthenelse{\iffieldundef{postnote}\OR\boolean{cbx:loccit}}
     {\ifbool{cbx:parens}
-       {\textcitedelimclose}
+       {\csuse{inner@textcite@delim@close}}
        {}}
     {\ifbool{cbx:parens}
        {\postnotedelim}
-       {\extpostnotedelim\textcitedelimopen}%
-     \printfield{postnote}\textcitedelimclose}}
+       {\extpostnotedelim
+        \csuse{inner@textcite@delim@open}}%
+     \printfield{postnote}%
+     \csuse{inner@textcite@delim@close}}}
 
-\DeclareCiteCommand{\textcite}
+\DeclareCiteCommand{\cite}[\mkpairedoutercitedelim]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {\multicitedelim}
+  {\usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand*{\cite}[\mkpairedoutercitedelim]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{citeyear}}
+  {\multicitedelim}
+  {\usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand{\parencite}[\mkpairedouterparencitedelim]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {\multicitedelim}
+  {\usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand*{\parencite}[\mkpairedouterparencitedelim]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{citeyear}}
+  {\multicitedelim}
+  {\usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand{\smartcite}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {\multicitedelim}
+  {\usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand{\textcite}[\mkpairedoutertextcitedelim]
   {\boolfalse{cbx:parens}}
   {\usebibmacro{citeindex}%
    \iffirstcitekey
@@ -68,8 +110,15 @@
       \textcitedelim}%
    \usebibmacro{textcite}}
   {\ifbool{cbx:parens}
-     {\textcitedelimclose\global\boolfalse{cbx:parens}}
+     {\csuse{inner@textcite@delim@close}%
+             \global\boolfalse{cbx:parens}}
      {}}
   {\usebibmacro{textcite:postnote}}
+
+\DeclareMultiCiteCommand{\cites}[\mkpairedoutercitedelim]{\cite}{\multicitedelim}
+\DeclareMultiCiteCommand{\parencites}[\mkpairedouterparencitedelim]{\parencite}{\multicitedelim}
+\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+  {\smartcite}{\multicitedelim}
+\DeclareMultiCiteCommand{\textcites}[\mkpairedoutertextcitedelim]{\textcite}{}
 
 \endinput

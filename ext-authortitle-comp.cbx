@@ -2,7 +2,113 @@
   [2017/12/01 v0.2 extended biblatex authortitle-comp
    citation style (MW)]
 
+\blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
+
 \RequireCitationStyle{authortitle-comp}
+
+\DeclarePairedOuterCiteDelim{parencite}{\bibopenparen}{\bibcloseparen}
+
+\DeclarePairedInnerCiteDelim{textcite}{\bibopenparen}{\bibcloseparen}
+
+\renewbibmacro*{textcite}{%
+  \iffieldequals{namehash}{\cbx@lasthash}
+    {\setunit{\compcitedelim}}
+    {\printnames{labelname}%
+     \setunit*{%
+       \global\booltrue{cbx:parens}%
+       \printdelim{nametitledelim}%
+       \csuse{inner@textcite@delim@open}}%
+     \stepcounter{textcitecount}%
+     \savefield{namehash}{\cbx@lasthash}}%
+  \ifnumequal{\value{citecount}}{1}
+    {\usebibmacro{prenote}}
+    {}%
+  \iffieldundef{shorthand}
+    {\usebibmacro{cite:title}}%
+    {\usebibmacro{cite:shorthand}}%
+  \setunit{%
+    \ifbool{cbx:parens}
+      {\csuse{inner@textcite@delim@close}%
+       \global\boolfalse{cbx:parens}}
+      {}%
+    \textcitedelim}}
+
+\renewbibmacro*{textcite:postnote}{%
+  \ifnameundef{labelname}
+    {\setunit{%
+       \global\booltrue{cbx:parens}%
+       \extpostnotedelim
+       \csuse{inner@textcite@delim@open}}}
+    {\setunit{\postnotedelim}}%
+  \printfield{postnote}%
+  \ifnumequal{\value{multicitecount}}{\value{multicitetotal}}
+    {\setunit{}%
+     \printtext{%
+       \ifbool{cbx:parens}
+         {\csuse{inner@textcite@delim@close}%
+          \global\boolfalse{cbx:parens}}
+         {}}}
+    {\setunit{%
+       \ifbool{cbx:parens}
+         {\csuse{inner@textcite@delim@close}%
+          \global\boolfalse{cbx:parens}}
+         {}%
+       \textcitedelim}}}
+
+\DeclareCiteCommand{\cite}[\mkpairedoutercitedelim]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand*{\cite}[\mkpairedoutercitedelim]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{citetitle}}
+  {}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\parencite}[\mkpairedouterparencitedelim]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand*{\parencite}[\mkpairedouterparencitedelim]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{citetitle}}
+  {}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\smartcite}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\cbx@textcite}[\mkpairedoutertextcitedelim]
+  {\usebibmacro{cite:init}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{textcite}}
+  {}
+  {\usebibmacro{textcite:postnote}}
+
+\DeclareMultiCiteCommand{\cbx@textcites}[\mkpairedoutertextcitedelim]{\cbx@textcite}{}
+
+\DeclareMultiCiteCommand{\cites}[\mkpairedoutercitedelim]{\cite}{\setunit{\multicitedelim}}
+\DeclareMultiCiteCommand{\parencites}[\mkpairedouterparencitedelim]
+  {\parencite}{\setunit{\multicitedelim}}
+\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+  {\smartcite}{\setunit{\multicitedelim}}
 
 \DeclareCiteCommand{\bbx@cite@xref}
   {\boolfalse{citetracker}%
@@ -12,6 +118,5 @@
   {\usebibmacro{cite:xref:bib}}
   {}
   {}
-
 
 \endinput

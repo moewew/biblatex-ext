@@ -1,6 +1,6 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x2722.57819
 .\write1{\abx@aux@page{1}{\the \c@page }}
 .\T1/lmr/m/n/10 S
@@ -666,8 +666,508 @@ Don't change this file in any respect.
 .\kern 0.35776
 ! OK.
 l. ...\showbox0
+> \box...=
+\hbox(6.88875+1.94443)x224.59982
+.\write1{\abx@aux@page{14}{\the \c@page }}
+.\T1/lmr/m/n/10 N
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 :
+.\glue 4.44444 plus 3.33331 minus 0.55556
+.\T1/lmr/m/it/10 A
+.\kern-0.51112
+.\T1/lmr/m/it/10 r
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 s
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 l
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 '
+.\T1/lmr/m/it/10 s
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 `
+.\penalty 10000
+.\glue -0.0002
+.\glue 0.0002
+.\T1/lmr/m/it/10 D
+.\T1/lmr/m/it/10 e
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 M
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 u
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 A
+.\kern-0.51112
+.\T1/lmr/m/it/10 n
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 m
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 l
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 u
+.\T1/lmr/m/it/10 m
+.\T1/lmr/m/it/10 '
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+! OK.
+l. ...\showbox0
+> \box...=
+\hbox(6.88875+1.94443)x136.98293
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\write1{\abx@aux@page{15}{\the \c@page }}
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 W
+.\kern-0.83334
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 :
+.\glue 4.44444 plus 3.33331 minus 0.55556
+.\T1/lmr/m/it/10 C
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 s
+.\T1/lmr/m/it/10 t
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 f
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 C
+.\T1/lmr/m/it/10 h
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 r
+.\kern-0.51112
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 c
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 r
+.\kern 0.95609
+! OK.
+l. ...\showbox0
+> \box...=
+\hbox(6.88875+1.94443)x174.9213
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\write1{\abx@aux@page{16}{\the \c@page }}
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 :
+.\glue 4.44444 plus 3.33331 minus 0.55556
+.\T1/lmr/m/it/10 D
+.\T1/lmr/m/it/10 e
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 n
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 u
+.\T1/lmr/m/it/10 r
+.\kern-0.51112
+.\T1/lmr/m/it/10 a
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 d
+.\T1/lmr/m/it/10 e
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 r
+.\T1/lmr/m/it/10 u
+.\T1/lmr/m/it/10 m
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 3
+.\T1/lmr/m/n/10 -
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 9
+! OK.
+l. ...\showbox0
+> \box...=
+\hbox(6.88875+2.15274)x173.35371
+.\write1{\abx@aux@page{17}{\the \c@page }}
+.\T1/lmr/m/n/10 K
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 :
+.\glue 4.44444 plus 3.33331 minus 0.55556
+.\T1/lmr/m/it/10 T
+.\kern -1.70404
+.\hbox(6.88875+0.0)x6.7835, shifted 2.15274
+..\T1/lmr/m/it/10 E
+.\kern -1.27776
+.\T1/lmr/m/it/10 X
+.\kern 1.09418
+.\T1/lmr/m/n/10 ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\write1{\abx@aux@page{18}{\the \c@page }}
+.\T1/lmr/m/n/10 K
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 :
+.\glue 4.44444 plus 3.33331 minus 0.55556
+.\T1/lmr/m/it/10 M
+.\T1/lmr/m/it/10 E
+.\T1/lmr/m/it/10 T
+.\kern-0.76666
+.\T1/lmr/m/it/10 A
+.\T1/lmr/m/it/10 F
+.\kern-0.25557
+.\T1/lmr/m/it/10 O
+.\T1/lmr/m/it/10 N
+.\T1/lmr/m/it/10 T
+.\T1/lmr/m/it/10 b
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 k
+.\kern 0.70103
+! OK.
+l. ...\showbox0
+> \box...=
+\hbox(6.88875+2.15274)x173.4429
+.\write1{\abx@aux@page{19}{\the \c@page }}
+.\T1/lmr/m/n/10 K
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 :
+.\glue 4.44444 plus 3.33331 minus 0.55556
+.\T1/lmr/m/it/10 T
+.\kern -1.70404
+.\hbox(6.88875+0.0)x6.7835, shifted 2.15274
+..\T1/lmr/m/it/10 E
+.\kern -1.27776
+.\T1/lmr/m/it/10 X
+.\T1/lmr/m/it/10 b
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 k
+.\kern 0.70103
+.\T1/lmr/m/n/10 ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\write1{\abx@aux@page{20}{\the \c@page }}
+.\T1/lmr/m/n/10 K
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 :
+.\glue 4.44444 plus 3.33331 minus 0.55556
+.\T1/lmr/m/it/10 M
+.\T1/lmr/m/it/10 E
+.\T1/lmr/m/it/10 T
+.\kern-0.76666
+.\T1/lmr/m/it/10 A
+.\T1/lmr/m/it/10 F
+.\kern-0.25557
+.\T1/lmr/m/it/10 O
+.\T1/lmr/m/it/10 N
+.\T1/lmr/m/it/10 T
+.\kern 1.18336
+! OK.
+l. ...\showbox0
+> \box...=
+\hbox(6.88875+1.94443)x1068.10805
+.\write1{\abx@aux@page{21}{\the \c@page }}
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 R
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 :
+.\glue 4.44444 plus 3.33331 minus 0.55556
+.\T1/lmr/m/n/10 `
+.\penalty 10000
+.\glue -0.0002
+.\glue 0.0002
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 f
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 o
+.\kern0.27779
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 r
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 v
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 g
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 c
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 c
+.\kern-0.27779
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 s
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 m
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 e
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 c
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 p
+.\kern0.27779
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 l
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 '
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\write1{\abx@aux@page{22}{\the \c@page }}
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 R
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 :
+.\glue 4.44444 plus 3.33331 minus 0.55556
+.\T1/lmr/m/n/10 `
+.\penalty 10000
+.\glue -0.0002
+.\glue 0.0002
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 f
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 o
+.\kern0.27779
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 r
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 v
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 g
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 c
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 c
+.\kern-0.27779
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 s
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 m
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 e
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 c
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 p
+.\kern0.27779
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 l
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 '
+! OK.
+l. ...\showbox0
 almendro (@patent)
-> \box0=
+> \box...=
 \hbox(7.5+2.5)x638.04149
 .\T1/lmr/m/n/10 A
 .\T1/lmr/m/n/10 l
@@ -825,7 +1325,7 @@ almendro (@patent)
 l. ...\end
          {document}
 angenendt (@article)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x674.69553
 .\T1/lmr/m/n/10 A
 .\T1/lmr/m/n/10 n
@@ -997,7 +1497,7 @@ angenendt (@article)
 l. ...\end
          {document}
 aristotle:anima (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x422.0441
 .\T1/lmr/m/n/10 A
 .\T1/lmr/m/n/10 r
@@ -1107,7 +1607,7 @@ aristotle:anima (@book)
 l. ...\end
          {document}
 aristotle:physics (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x404.55246
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -1212,7 +1712,7 @@ aristotle:physics (@book)
 l. ...\end
          {document}
 aristotle:poetics (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x375.58913
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -1308,7 +1808,7 @@ aristotle:poetics (@book)
 l. ...\end
          {document}
 aristotle:rhetoric (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x744.82504
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -1495,7 +1995,7 @@ aristotle:rhetoric (@book)
 l. ...\end
          {document}
 augustine (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x460.1501
 .\T1/lmr/m/n/10 A
 .\kern-0.27779
@@ -1616,7 +2116,7 @@ augustine (@book)
 l. ...\end
          {document}
 averroes/hercz (@book)
-> \box0=
+> \box...=
 \hbox(7.5+2.5)x1040.89424
 .\T1/lmr/m/n/10 A
 .\kern-1.11113
@@ -1876,7 +2376,7 @@ averroes/hercz (@book)
 l. ...\end
          {document}
 averroes/bland (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x1267.01215
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -2176,7 +2676,7 @@ averroes/bland (@book)
 l. ...\end
          {document}
 averroes/hannes (@book)
-> \box0=
+> \box...=
 \hbox(8.435+1.94443)x853.29565
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -2393,7 +2893,7 @@ averroes/hannes (@book)
 l. ...\end
          {document}
 baez/online (@online)
-> \box0=
+> \box...=
 \hbox(6.9445+1.94443)x502.13428
 .\T1/lmr/m/n/10 B
 .\T1/lmr/m/n/10 a
@@ -2521,7 +3021,7 @@ baez/online (@online)
 l. ...\end
          {document}
 baez/article (@article)
-> \box0=
+> \box...=
 \hbox(6.9445+1.94443)x633.04033
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -2684,7 +3184,7 @@ baez/article (@article)
 l. ...\end
          {document}
 bertram (@article)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x662.42778
 .\T1/lmr/m/n/10 B
 .\T1/lmr/m/n/10 e
@@ -2855,7 +3355,7 @@ bertram (@article)
 l. ...\end
          {document}
 brandt (@incollection)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x1144.9624
 .\T1/lmr/m/n/10 B
 .\T1/lmr/m/n/10 r
@@ -3141,7 +3641,7 @@ brandt (@incollection)
 l. ...\end
          {document}
 cms (@manual)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x729.97218
 .\T1/lmr/m/it/10 T
 .\T1/lmr/m/it/10 h
@@ -3322,7 +3822,7 @@ cms (@manual)
 l. ...\end
          {document}
 chiu (@report)
-> \box0=
+> \box...=
 \hbox(7.5+2.5)x688.78743
 .\T1/lmr/m/n/10 C
 .\T1/lmr/m/n/10 h
@@ -3493,7 +3993,7 @@ chiu (@report)
 l. ...\end
          {document}
 cicero (@book)
-> \box0=
+> \box...=
 \hbox(8.435+1.94443)x870.4087
 .\T1/lmr/m/n/10 C
 .\T1/lmr/m/n/10 i
@@ -3702,7 +4202,7 @@ cicero (@book)
 l. ...\end
          {document}
 coleridge (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x1261.43176
 .\T1/lmr/m/n/10 C
 .\T1/lmr/m/n/10 o
@@ -4020,7 +4520,7 @@ coleridge (@book)
 l. ...\end
          {document}
 jcg (@periodical)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x380.29623
 .\T1/lmr/m/it/10 C
 .\T1/lmr/m/it/10 o
@@ -4114,7 +4614,7 @@ jcg (@periodical)
 l. ...\end
          {document}
 cotton (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x661.89598
 .\T1/lmr/m/n/10 C
 .\T1/lmr/m/n/10 o
@@ -4282,7 +4782,7 @@ cotton (@book)
 l. ...\end
          {document}
 ctan (@online)
-> \box0=
+> \box...=
 \hbox(7.5+2.5)x457.77711
 .\T1/lmr/m/it/10 C
 .\T1/lmr/m/it/10 T
@@ -4401,7 +4901,7 @@ ctan (@online)
 l. ...\end
          {document}
 doody (@article)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x994.94751
 .\T1/lmr/m/n/10 D
 .\T1/lmr/m/n/10 o
@@ -4657,7 +5157,7 @@ doody (@article)
 l. ...\end
          {document}
 britannica (@collection)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x546.18686
 .\T1/lmr/m/it/10 T
 .\T1/lmr/m/it/10 h
@@ -4796,7 +5296,7 @@ britannica (@collection)
 l. ...\end
          {document}
 gaonkar (@collection)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x576.5071
 .\T1/lmr/m/n/10 G
 .\T1/lmr/m/n/10 a
@@ -4942,7 +5442,7 @@ gaonkar (@collection)
 l. ...\end
          {document}
 gaonkar:in (@incollection)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x779.95216
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -5141,7 +5641,7 @@ gaonkar:in (@incollection)
 l. ...\end
          {document}
 geer (@thesis)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x773.34676
 .\T1/lmr/m/n/10 G
 .\T1/lmr/m/n/10 e
@@ -5334,7 +5834,7 @@ geer (@thesis)
 l. ...\end
          {document}
 gerhardt (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x662.08995
 .\T1/lmr/m/n/10 G
 .\T1/lmr/m/n/10 e
@@ -5503,7 +6003,7 @@ gerhardt (@book)
 l. ...\end
          {document}
 gillies (@article)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x692.67859
 .\T1/lmr/m/n/10 G
 .\T1/lmr/m/n/10 i
@@ -5681,7 +6181,7 @@ gillies (@article)
 l. ...\end
          {document}
 stdmodel (@set)
-> \box0=
+> \box...=
 \hbox(7.5+2.5)x2065.46611
 .\T1/lmr/m/n/10 G
 .\T1/lmr/m/n/10 l
@@ -6201,7 +6701,7 @@ stdmodel (@set)
 l. ...\end
          {document}
 gonzalez (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x570.26982
 .\T1/lmr/m/n/10 G
 .\T1/lmr/m/n/10 o
@@ -6342,7 +6842,7 @@ gonzalez (@book)
 l. ...\end
          {document}
 companion (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x617.65804
 .\T1/lmr/m/n/10 G
 .\T1/lmr/m/n/10 o
@@ -6496,7 +6996,7 @@ companion (@book)
 l. ...\end
          {document}
 hammond (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x673.6694
 .\T1/lmr/m/n/10 H
 .\T1/lmr/m/n/10 a
@@ -6663,7 +7163,7 @@ hammond (@book)
 l. ...\end
          {document}
 set (@set)
-> \box0=
+> \box...=
 \hbox(8.29999+1.94443)x3279.95811
 .\T1/lmr/m/n/10 H
 .\T1/lmr/m/n/10 e
@@ -7467,7 +7967,7 @@ set (@set)
 l. ...\end
          {document}
 iliad (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x633.33269
 .\T1/lmr/m/n/10 H
 .\T1/lmr/m/n/10 o
@@ -7626,7 +8126,7 @@ iliad (@book)
 l. ...\end
          {document}
 murray (@article)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x1891.76804
 .\T1/lmr/m/n/10 H
 .\T1/lmr/m/n/10 o
@@ -8106,7 +8606,7 @@ murray (@article)
 l. ...\end
          {document}
 hyman (@incollection)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x1203.58913
 .\T1/lmr/m/n/10 H
 .\T1/lmr/m/n/10 y
@@ -8408,7 +8908,7 @@ hyman (@incollection)
 l. ...\end
          {document}
 itzhaki (@online)
-> \box0=
+> \box...=
 \hbox(6.9445+2.22223)x459.22672
 .\T1/lmr/m/n/10 I
 .\T1/lmr/m/n/10 t
@@ -8532,7 +9032,7 @@ itzhaki (@online)
 l. ...\end
          {document}
 jaffe (@collection)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x971.82423
 .\T1/lmr/m/n/10 J
 .\T1/lmr/m/n/10 a
@@ -8778,7 +9278,7 @@ jaffe (@collection)
 l. ...\end
          {document}
 kant:kpv (@inbook)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x883.61769
 .\T1/lmr/m/n/10 K
 .\T1/lmr/m/n/10 a
@@ -9010,7 +9510,7 @@ kant:kpv (@inbook)
 l. ...\end
          {document}
 kant:ku (@inbook)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x795.28523
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -9218,7 +9718,7 @@ kant:ku (@inbook)
 l. ...\end
          {document}
 kastenholz (@article)
-> \box0=
+> \box...=
 \hbox(6.9445+1.94443)x1148.66489
 .\T1/lmr/m/n/10 K
 .\T1/lmr/m/n/10 a
@@ -9514,7 +10014,7 @@ kastenholz (@article)
 l. ...\end
          {document}
 knuth:ct (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x428.95615
 .\T1/lmr/m/n/10 K
 .\T1/lmr/m/n/10 n
@@ -9625,7 +10125,7 @@ knuth:ct (@book)
 l. ...\end
          {document}
 knuth:ct:related (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+2.15274)x1156.45451
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -9923,7 +10423,7 @@ knuth:ct:related (@book)
 l. ...\end
          {document}
 knuth:ct:a (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+2.15274)x404.1572
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -10029,7 +10529,7 @@ knuth:ct:a (@book)
 l. ...\end
          {document}
 knuth:ct:b (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+2.15274)x494.81271
 .\T1/lmr/m/n/10 K
 .\T1/lmr/m/n/10 n
@@ -10158,7 +10658,7 @@ knuth:ct:b (@book)
 l. ...\end
          {document}
 knuth:ct:c (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x440.01196
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -10267,7 +10767,7 @@ knuth:ct:c (@book)
 l. ...\end
          {document}
 knuth:ct:d (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x465.35707
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -10382,7 +10882,7 @@ knuth:ct:d (@book)
 l. ...\end
          {document}
 knuth:ct:e (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x467.38301
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -10500,7 +11000,7 @@ knuth:ct:e (@book)
 l. ...\end
          {document}
 kowalik (@patent)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x785.91643
 .\T1/lmr/m/n/10 K
 .\kern-0.27779
@@ -10699,7 +11199,7 @@ kowalik (@patent)
 l. ...\end
          {document}
 kullback (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x406.45401
 .\T1/lmr/m/n/10 K
 .\T1/lmr/m/n/10 u
@@ -10799,7 +11299,7 @@ kullback (@book)
 l. ...\end
          {document}
 kullback:reprint (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x331.62065
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -10884,7 +11384,7 @@ kullback:reprint (@book)
 l. ...\end
          {document}
 kullback:related (@book)
-> \box0=
+> \box...=
 \hbox(7.5+2.5)x527.39919
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -11015,7 +11515,7 @@ kullback:related (@book)
 l. ...\end
          {document}
 laufenberg (@patent)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x1723.17891
 .\T1/lmr/m/n/10 L
 .\T1/lmr/m/n/10 a
@@ -11432,7 +11932,7 @@ laufenberg (@patent)
 l. ...\end
          {document}
 loh (@thesis)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x675.19461
 .\T1/lmr/m/n/10 L
 .\T1/lmr/m/n/10 o
@@ -11603,7 +12103,7 @@ loh (@thesis)
 l. ...\end
          {document}
 malinowski (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x896.85825
 .\T1/lmr/m/n/10 M
 .\T1/lmr/m/n/10 a
@@ -11824,7 +12324,7 @@ malinowski (@book)
 l. ...\end
          {document}
 markey (@online)
-> \box0=
+> \box...=
 \hbox(7.5+2.5)x753.0493
 .\T1/lmr/m/n/10 M
 .\T1/lmr/m/n/10 a
@@ -12020,7 +12520,7 @@ markey (@online)
 l. ...\end
          {document}
 maron (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x543.49438
 .\T1/lmr/m/n/10 M
 .\T1/lmr/m/n/10 a
@@ -12156,7 +12656,7 @@ maron (@book)
 l. ...\end
          {document}
 massa (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x345.02689
 .\T1/lmr/m/n/10 M
 .\T1/lmr/m/n/10 a
@@ -12246,7 +12746,7 @@ massa (@book)
 l. ...\end
          {document}
 matuz:doody (@collection)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x417.27979
 .\T1/lmr/m/n/10 M
 .\T1/lmr/m/n/10 a
@@ -12356,7 +12856,7 @@ matuz:doody (@collection)
 l. ...\end
          {document}
 moore (@article)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x485.07498
 .\T1/lmr/m/n/10 M
 .\T1/lmr/m/n/10 o
@@ -12486,7 +12986,7 @@ moore (@article)
 l. ...\end
          {document}
 moore:related (@article)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x626.26352
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -12653,7 +13153,7 @@ moore:related (@article)
 l. ...\end
          {document}
 moraux (@inproceedings)
-> \box0=
+> \box...=
 \hbox(7.5+2.5)x1474.21909
 .\T1/lmr/m/n/10 M
 .\T1/lmr/m/n/10 o
@@ -13016,7 +13516,7 @@ moraux (@inproceedings)
 l. ...\end
          {document}
 nietzsche:ksa (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x969.91046
 .\T1/lmr/m/n/10 N
 .\T1/lmr/m/n/10 i
@@ -13261,7 +13761,7 @@ nietzsche:ksa (@book)
 l. ...\end
          {document}
 nietzsche:ksa1 (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x1320.15347
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -13578,7 +14078,7 @@ nietzsche:ksa1 (@book)
 l. ...\end
          {document}
 nietzsche:historie (@inbook)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x1811.09724
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -14015,7 +14515,7 @@ nietzsche:historie (@inbook)
 l. ...\end
          {document}
 nussbaum (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x434.76755
 .\T1/lmr/m/n/10 N
 .\T1/lmr/m/n/10 u
@@ -14126,7 +14626,7 @@ nussbaum (@book)
 l. ...\end
          {document}
 padhye (@report)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x831.64801
 .\T1/lmr/m/n/10 P
 .\kern-0.27779
@@ -14337,7 +14837,7 @@ padhye (@report)
 l. ...\end
          {document}
 piccato (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x523.72629
 .\T1/lmr/m/n/10 P
 .\T1/lmr/m/n/10 i
@@ -14467,7 +14967,7 @@ piccato (@book)
 l. ...\end
          {document}
 pines (@incollection)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x1090.70175
 .\T1/lmr/m/n/10 P
 .\T1/lmr/m/n/10 i
@@ -14736,7 +15236,7 @@ pines (@incollection)
 l. ...\end
          {document}
 reese (@article)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x569.66254
 .\T1/lmr/m/n/10 R
 .\T1/lmr/m/n/10 e
@@ -14882,7 +15382,7 @@ reese (@article)
 l. ...\end
          {document}
 sarfraz (@article)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x787.06442
 .\T1/lmr/m/n/10 S
 .\T1/lmr/m/n/10 a
@@ -15083,7 +15583,7 @@ sarfraz (@article)
 l. ...\end
          {document}
 shore (@article)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x677.4252
 .\T1/lmr/m/n/10 S
 .\T1/lmr/m/n/10 h
@@ -15254,7 +15754,7 @@ shore (@article)
 l. ...\end
          {document}
 sigfridsson (@article)
-> \box0=
+> \box...=
 \hbox(6.9445+1.94443)x1203.77263
 .\T1/lmr/m/n/10 S
 .\T1/lmr/m/n/10 i
@@ -15572,7 +16072,7 @@ sigfridsson (@article)
 l. ...\end
          {document}
 sorace (@patent)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x725.80493
 .\T1/lmr/m/n/10 S
 .\T1/lmr/m/n/10 o
@@ -15756,7 +16256,7 @@ sorace (@patent)
 l. ...\end
          {document}
 spiegelberg (@article)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x633.87218
 .\T1/lmr/m/n/10 S
 .\T1/lmr/m/n/10 p
@@ -15935,7 +16435,7 @@ spiegelberg (@article)
 l. ...\end
          {document}
 springer (@article)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x488.09503
 .\T1/lmr/m/n/10 S
 .\T1/lmr/m/n/10 p
@@ -16061,7 +16561,7 @@ springer (@article)
 l. ...\end
          {document}
 vangennep (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x275.3743
 .\T1/lmr/m/n/10 v
 .\kern-0.55556
@@ -16137,7 +16637,7 @@ vangennep (@book)
 l. ...\end
          {document}
 vangennep:related (@book)
-> \box0=
+> \box...=
 \hbox(7.5+2.5)x705.45381
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -16315,7 +16815,7 @@ vangennep:related (@book)
 l. ...\end
          {document}
 vangennep:trans (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x579.95712
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -16461,7 +16961,7 @@ vangennep:trans (@book)
 l. ...\end
          {document}
 vazques-de-parga (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x807.50838
 .\T1/lmr/m/n/10 V
 .\T1/lmr/m/n/10 á
@@ -16665,7 +17165,7 @@ vazques-de-parga (@book)
 l. ...\end
          {document}
 vizedom:related (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x798.83138
 .\T1/lmr/m/n/10 V
 .\T1/lmr/m/n/10 i
@@ -16867,7 +17367,7 @@ vizedom:related (@book)
 l. ...\end
          {document}
 wassenberg (@online)
-> \box0=
+> \box...=
 \hbox(6.9445+1.94443)x611.92119
 .\T1/lmr/m/n/10 W
 .\kern-0.83334
@@ -17023,7 +17523,7 @@ wassenberg (@online)
 l. ...\end
          {document}
 westfahl:frontier (@collection)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x567.6523
 .\T1/lmr/m/n/10 W
 .\kern-0.83334
@@ -17166,7 +17666,7 @@ westfahl:frontier (@collection)
 l. ...\end
          {document}
 westfahl:space (@incollection)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x666.60875
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
@@ -17337,7 +17837,7 @@ westfahl:space (@incollection)
 l. ...\end
          {document}
 wilde (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x943.51561
 .\T1/lmr/m/n/10 W
 .\T1/lmr/m/n/10 i
@@ -17559,7 +18059,7 @@ wilde (@book)
 l. ...\end
          {document}
 worman (@book)
-> \box0=
+> \box...=
 \hbox(6.88875+1.94443)x471.49014
 .\T1/lmr/m/n/10 W
 .\kern-0.83334

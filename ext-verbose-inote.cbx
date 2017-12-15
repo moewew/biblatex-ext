@@ -1,6 +1,59 @@
 \ProvidesFile{ext-verbose-inote.cbx}
   [2017/12/01 v0.2 extended biblatex verbose-inote citation style (MW)]
 
+\blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
+
 \RequireCitationStyle{verbose-inote}
+
+\DeclarePairedOuterCiteDelim{parencite}{\bibopenparen}{\bibcloseparen}
+
+\DeclarePairedInnerCiteDelim{textcite}{\bibopenparen}{\bibcloseparen}
+
+\DeclareCiteCommand{\cite}[\mkpairedoutercitedelim]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \iffootnote
+     {\usebibmacro{footcite}}
+     {\usebibmacro{cite}}}
+  {\multicitedelim}
+  {\usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand{\parencite}[\mkpairedouterparencitedelim]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \iffootnote
+     {\usebibmacro{footcite}}
+     {\usebibmacro{cite}}}
+  {\multicitedelim}
+  {\usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand{\smartcite}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \iffootnote
+     {\usebibmacro{footcite}}
+     {\usebibmacro{cite}}}
+  {\multicitedelim}
+  {\usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand{\cbx@textcite}[\mkpairedoutertextcitedelim]
+  {\usebibmacro{textcite:init}}
+  {\iffieldequals{namehash}{\cbx@lasthash}
+     {}
+     {\iffirstcitekey
+        {}
+        {\textcitedelim}%
+      \stepcounter{textcitecount}%
+      \usebibmacro{textcite}%
+      \savefield{namehash}{\cbx@lasthash}}}
+  {}
+  {}
+
+\DeclareMultiCiteCommand{\cbx@textcites}[\mkpairedoutertextcitedelim]{\cbx@textcite}{}
+
+\DeclareMultiCiteCommand{\cites}[\mkpairedoutercitedelim]{\cite}{\multicitedelim}
+\DeclareMultiCiteCommand{\parencites}[\mkpairedouterparencitedelim]{\parencite}{\multicitedelim}
+\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+  {\smartcite}{\multicitedelim}
 
 \endinput

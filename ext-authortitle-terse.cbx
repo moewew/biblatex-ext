@@ -2,6 +2,42 @@
   [2017/12/01 v0.2 extended biblatex authortitle-terse
    citation style (MW)]
 
-\RequireCitationStyle{authortitle-terse}
+\RequireCitationStyle{ext-authortitle}
+\ExecuteBibliographyOptions{singletitle,uniquename,uniquelist,autocite=inline}
+
+\renewbibmacro*{cite}{%
+  \iffieldundef{shorthand}
+    {\ifnameundef{labelname}
+       {\usebibmacro{cite:title}}
+       {\ifsingletitle
+          {\printtext[bibhyperref]{\printnames{labelname}}}
+          {\printnames{labelname}%
+           \setunit{\printdelim{nametitledelim}}%
+           \usebibmacro{cite:title}}}}%
+    {\usebibmacro{cite:shorthand}}}
+
+\renewbibmacro*{textcite}{%
+  \ifnameundef{labelname}
+    {\ifnumequal{\value{citecount}}{1}
+       {\usebibmacro{prenote}}
+       {}%
+     \iffieldundef{shorthand}
+       {\usebibmacro{cite:title}}%
+       {\usebibmacro{cite:shorthand}}}
+    {\ifthenelse{\ifsingletitle\AND
+                 \(\iffieldundef{prenote}\OR\value{citecount}>1\)}
+       {\printtext[bibhyperref]{\printnames{labelname}}}
+       {\printnames{labelname}%
+        \setunit{%
+          \global\booltrue{cbx:parens}%
+          \printdelim{nametitledelim}%
+          \csuse{inner@textcite@delim@open}}%
+        \ifnumequal{\value{citecount}}{1}
+          {\usebibmacro{prenote}}
+          {}%
+        \iffieldundef{shorthand}
+          {\usebibmacro{cite:title}}%
+          {\usebibmacro{cite:shorthand}}}}}
 
 \endinput
+

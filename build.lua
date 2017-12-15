@@ -8,7 +8,7 @@ module = "biblatex-ext"
 unpackfiles = { }
 
 -- Install biblatex style files and use these as the sources
-installfiles = {"*.cbx", "*.bbx"}
+installfiles = {"*.cbx", "*.bbx", "*.def"}
 sourcefiles  = installfiles
 
 checkengines = {"pdftex"}
@@ -22,7 +22,7 @@ end
 packtdszip  = true
 
 
-versionfiles = {"*.bbx", "*.cbx"}
+versionfiles = {"*.bbx", "*.cbx", "*.def"}
 
 function setversion_update_line (line, date, version)
   local date = string.gsub(date, "%-", "/")

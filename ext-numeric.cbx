@@ -1,14 +1,100 @@
 \ProvidesFile{ext-numeric.cbx}
   [2017/12/01 v0.2 extended biblatex numeric citation style (MW)]
 
+\blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
+
 \RequireCitationStyle{numeric}
 
-\DeclareCiteCommand{\bbx@cite@xref}[\mkbibbrackets]
+\DeclarePairedOuterCiteDelim{cite}{\bibopenbracket}{\bibclosebracket}
+\DeclarePairedOuterCiteDelimAlias*{parencite}{cite}
+\DeclarePairedOuterCiteDelim{textcite}{}{}
+
+\DeclarePairedInnerCiteDelim{textcite}{\bibopenbracket}{\bibclosebracket}
+
+\renewbibmacro*{textcite}{%
+  \iffieldequals{namehash}{\cbx@lasthash}
+    {\setunit{\multicitedelim}}
+    {\ifnameundef{labelname}
+       {\printfield[citetitle]{labeltitle}}
+       {\printnames{labelname}}%
+     \setunit*{\printdelim{namelabeldelim}}%
+     \printtext{\csuse{inner@textcite@delim@open}}%
+     \global\booltrue{cbx:parens}%
+     \stepcounter{textcitecount}%
+     \savefield{namehash}{\cbx@lasthash}}%
+  \ifnumequal{\value{citecount}}{1}
+    {\usebibmacro{prenote}}
+    {}%
+  \usebibmacro{cite}%
+  \setunit{%
+    \ifbool{cbx:parens}
+      {\csuse{inner@textcite@delim@close}%
+       \global\boolfalse{cbx:parens}}
+      {}%
+    \textcitedelim}}
+
+\renewbibmacro*{textcite:postnote}{%
+  \usebibmacro{postnote}%
+  \ifnumequal{\value{multicitecount}}{\value{multicitetotal}}
+    {\setunit{}%
+     \printtext{%
+       \ifbool{cbx:parens}
+         {\csuse{inner@textcite@delim@close}%
+          \global\boolfalse{cbx:parens}}
+         {}}}
+    {\setunit{%
+       \ifbool{cbx:parens}
+         {\csuse{inner@textcite@delim@close}%
+          \global\boolfalse{cbx:parens}}
+         {}%
+       \textcitedelim}}}
+
+\DeclareCiteCommand{\cite}[\mkpairedoutercitedelim]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\parencite}[\mkpairedouterparencitedelim]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\smartcite}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\supercite}[\mkbibsuperscript]
+  {\iffieldundef{prenote}
+     {}
+     {\BibliographyWarning{Ignoring prenote argument}}%
+   \iffieldundef{postnote}
+     {}
+     {\BibliographyWarning{Ignoring postnote argument}}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {\supercitedelim}
+  {}
+
+\DeclareMultiCiteCommand{\cites}[\mkpairedoutercitedelim]{\cite}{\multicitedelim}
+\DeclareMultiCiteCommand{\parencites}[\mkpairedouterparencitedelim]{\parencite}{\multicitedelim}
+\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+  {\smartcite}{\multicitedelim}
+
+\DeclareCiteCommand{\bbx@cite@xref}[\mkpairedoutercitedelim]
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \boolfalse{backtracker}}
   {\usebibmacro{cite:xref:bib}}
   {}
   {}
+
+\DeclareDelimcontextAlias{bbx@cite@xref}{cite}
 
 \endinput

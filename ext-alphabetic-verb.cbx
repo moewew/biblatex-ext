@@ -2,7 +2,71 @@
   [2017/12/01 v0.2 extended biblatex alphabetic-verb
    citation style (MW)]
 
+\blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
+
 \RequireCitationStyle{alphabetic-verb}
+
+\DeclarePairedOuterCiteDelim{cite}{\bibopenbracket}{\bibclosebracket}
+\DeclarePairedOuterCiteDelimAlias*{parencite}{cite}
+\DeclarePairedOuterCiteDelim{textcite}{}{}
+
+\DeclarePairedInnerCiteDelim{textcite}{\bibopenbracket}{\bibclosebracket}
+
+\renewbibmacro*{textcite}{%
+  \ifnameundef{labelname}
+    {\printfield[citetitle]{labeltitle}}
+    {\printnames{labelname}}%
+  \printdelim{namelabeldelim}%
+  \csuse{inner@textcite@delim@open}%
+  \ifnumequal{\value{citecount}}{1}
+    {\usebibmacro{prenote}}
+    {}%
+  \usebibmacro{cite}}
+
+
+\DeclareCiteCommand{\cite}
+  {\csuse{outer@cite@delim@open}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \ifnumgreater{\value{citecount}}{1}
+     {\csuse{outer@cite@delim@open}}
+     {}%
+   \usebibmacro{cite}}
+  {\csuse{outer@cite@delim@close}%
+   \multicitedelim}
+  {\usebibmacro{postnote}%
+   \csuse{outer@cite@delim@close}}
+
+\DeclareCiteCommand{\parencite}[\mkpairedouterparencitedelim]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\smartcite}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\textcite}[\mkpairedoutertextcitedelim]
+  {}
+  {\usebibmacro{citeindex}%
+   \iffirstcitekey
+     {\setcounter{textcitetotal}{1}}
+     {\stepcounter{textcitetotal}%
+      \textcitedelim}%
+   \usebibmacro{textcite}}
+  {\csuse{inner@textcite@delim@close}}
+  {\usebibmacro{postnote}%
+   \csuse{inner@textcite@delim@close}}
+
+\DeclareMultiCiteCommand{\parencites}[\mkpairedouterparencitedelim]{\parencite}{\multicitedelim}
+\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+  {\smartcite}{\multicitedelim}
+\DeclareMultiCiteCommand{\textcites}[\mkpairedoutertextcitedelim]{\textcite}{}
 
 \DeclareCiteCommand{\bbx@cite@xref}[\mkbibbrackets]
   {\boolfalse{citetracker}%

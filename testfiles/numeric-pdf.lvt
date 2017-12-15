@@ -15,5 +15,18 @@
 \cite{sigfridsson,westfahl:space,westfahl:frontier,vizedom:related,
       worman,cicero,geer,companion,maron,nussbaum,wilde,pines}
 
+\cite[19]{nussbaum}
+
+\cite[cf.][]{worman}
+
+\cite[cf.][13-89]{cicero}
+
+\cite{knuth:ct:b,knuth:ct:c}
+
+\cite{knuth:ct:a,knuth:ct:d}
+
+\cite{sigfridsson} \cite{sigfridsson}
+
 \printbibliography
 \end{document}
+

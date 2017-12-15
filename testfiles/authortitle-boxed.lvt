@@ -12,6 +12,8 @@
 \DeclareFieldFormat{issuedate}{#1}
 
 \DeclareDelimFormat*{nametitledelim}{\addcolon\space}
+
+% Test infrastructure
 \makeatletter
 \def\blx@bibitem#1{%
   \blx@ifdata{#1}
@@ -45,12 +47,42 @@
      \endgroup}
     {}}
 \makeatother
-  
+
 \START\OMIT
 \begin{document}
 \setbox0=\hbox{%
   \cite{sigfridsson,worman,cicero,geer,maron,wilde,pines,companion,
         westfahl:space,westfahl:frontier,vizedom:related,ctan,wilde}}%
+\TIMO
+\showbox0
+\OMIT
+\setbox0=\hbox{%
+  \cite[19]{nussbaum}}%
+\TIMO
+\showbox0
+\OMIT
+\setbox0=\hbox{%
+  \cite[cf.][]{worman}}%
+\TIMO
+\showbox0
+\OMIT
+\setbox0=\hbox{%
+  \cite[cf.][13-89]{cicero}}%
+\TIMO
+\showbox0
+\OMIT
+\setbox0=\hbox{%
+  \cite{knuth:ct:b,knuth:ct:c}}%
+\TIMO
+\showbox0
+\OMIT
+\setbox0=\hbox{%
+  \cite{knuth:ct:a,knuth:ct:d}}%
+\TIMO
+\showbox0
+\OMIT
+\setbox0=\hbox{%
+  \cite{sigfridsson} \cite{sigfridsson}}%
 \TIMO
 \showbox0
 \OMIT

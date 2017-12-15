@@ -1,0 +1,60 @@
+\ProvidesFile{ext-biblatex-aux.def}
+  [2017/12/01 v0.2 auxiliaries for extended biblatex citation style (MW)]
+
+% outer cite delimiters
+\newcommand*{\DeclarePairedOuterCiteDelim}[3]{%
+  \csdef{outer@#1@delim@open}{#2}%
+  \csdef{outer@#1@delim@close}{#3}}
+
+\newcommand*{\DeclarePairedOuterCiteDelimAlias}{%
+  \@ifstar
+    {\exblx@declarepairedoutercitedelimalias@i}
+    {\exblx@declarepairedoutercitedelimalias}}
+\def\exblx@declarepairedoutercitedelimalias#1#2{%
+  \csdef{outer@#1@delim@open}{\csuse{outer@#2@delim@open}}%
+  \csdef{outer@#1@delim@close}{\csuse{outer@#2@delim@close}}}
+\def\exblx@declarepairedoutercitedelimalias@i#1#2{%
+  \csletcs{outer@#1@delim@open}{outer@#2@delim@open}%
+  \csletcs{outer@#1@delim@close}{outer@#2@delim@close}}
+
+\newcommand*{\blx@createmkpairedouterdelim}[1]{%
+  \protected\csdef{mkpairedouter#1delim}##1{%
+    \begingroup
+      \blx@blxinit
+      \blx@setsfcodes
+      \csuse{outer@#1@delim@open}##1\csuse{outer@#1@delim@close}%
+    \endgroup}}
+
+\blx@createmkpairedouterdelim{cite}
+\blx@createmkpairedouterdelim{parencite}
+\blx@createmkpairedouterdelim{textcite}
+
+% inner cite delimiters to set off year in authoryear
+\newcommand*{\DeclarePairedInnerCiteDelim}[3]{%
+  \csdef{inner@#1@delim@open}{#2}%
+  \csdef{inner@#1@delim@close}{#3}}
+
+\newcommand*{\DeclarePairedInnerCiteDelimAlias}{%
+  \@ifstar
+    {\exblx@declarepairedinnercitedelimalias@i}
+    {\exblx@declarepairedinnercitedelimalias}}
+\def\exblx@declarepairedinnercitedelimalias#1#2{%
+  \csdef{inner@#1@delim@open}{\csuse{inner@#2@delim@open}}%
+  \csdef{inner@#1@delim@close}{\csuse{inner@#2@delim@close}}}
+\def\exblx@declarepairedinnercitedelimalias@i#1#2{%
+  \csletcs{inner@#1@delim@open}{inner@#2@delim@open}%
+  \csletcs{inner@#1@delim@close}{inner@#2@delim@close}}
+
+\newcommand*{\blx@createmkpairedinnerdelim}[1]{%
+  \protected\csdef{mkpairedinner#1delim}##1{%
+    \begingroup
+      \blx@blxinit
+      \blx@setsfcodes
+      \csuse{inner@#1@delim@open}##1\csuse{inner@#1@delim@close}%
+    \endgroup}}
+
+\blx@createmkpairedinnerdelim{cite}
+\blx@createmkpairedinnerdelim{parencite}
+\blx@createmkpairedinnerdelim{textcite}
+
+\endinput
