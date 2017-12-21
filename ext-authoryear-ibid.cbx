@@ -8,12 +8,12 @@
 
 \DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
 
-\DeclareFieldFormat{citelabeldate}{#1}
-\DeclareFieldFormat{parencitelabeldate}{#1}
+\DeclareFieldFormat{citelabeldate}{\csuse{mkpairedinner\blx@delimcontext delim}{#1}}
+\DeclareFieldFormat{parencitelabeldate}{\csuse{mkpairedinner\blx@delimcontext delim}{#1}}
 % You probably don't want to change textcitelabeldate,
 % have a look at \DeclarePairedCiteInnerDelim{textcite} instead.
 \DeclareFieldFormat{textcitelabeldate}{#1}
-\DeclareFieldFormat{footcitelabeldate}{#1}
+\DeclareFieldFormat{footcitelabeldate}{\csuse{mkpairedinner\blx@delimcontext delim}{#1}}
 
 \DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
 

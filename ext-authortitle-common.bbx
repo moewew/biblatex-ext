@@ -2,6 +2,9 @@
   [2017/11/17 v0.3 common files for extended biblatex
    authortitle bibliography styles (MW)]
 
+% \DeclareBibliographyOption checks if an option is already defined
+% if we want to overwrite the definition we need to trick it into
+% thinking the option has not been defined yet.
 \csundef{KV@blx@opt@pre@dashed}
 
 \DeclareBibliographyOption[boolean]{dashed}[true]{%
@@ -27,5 +30,10 @@
   }
     {#1}
     {#2}}
+
+% We need to execute some options that were already executed
+% by the standard styles again, because we changed the
+% underlying definitions.
+\ExecuteBibliographyOptions{dashed=true}%
 
 \endinput

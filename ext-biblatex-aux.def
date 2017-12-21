@@ -6,7 +6,7 @@
   \csdef{exblx@delim@#1@outer@open}{#2}%
   \csdef{exblx@delim@#1@outer@close}{#3}}
 
-\newcommand*{\DeclarePairedCiteOuterDelimAlias}{%
+\newrobustcmd*{\DeclarePairedCiteOuterDelimAlias}{%
   \@ifstar
     {\exblx@declare@paired@cite@outer@delim@alias@i}
     {\exblx@declare@paired@cite@outer@delim@alias}}
@@ -17,7 +17,7 @@
   \csletcs{exblx@delim@#1@outer@open}{exblx@delim@#2@outer@open}%
   \csletcs{exblx@delim@#1@outer@close}{exblx@delim@#2@outer@close}}
 
-\newcommand*{\exblx@create@mkpairedouterdelim}[1]{%
+\newrobustcmd*{\exblx@create@mkpairedouterdelim}[1]{%
   \protected\csdef{mkpairedouter#1delim}##1{%
     \begingroup
       \blx@blxinit
@@ -33,11 +33,11 @@
 \exblx@create@mkpairedouterdelim{bibxrefcite}
 
 % inner cite delimiters to set off year in authoryear
-\newcommand*{\DeclarePairedCiteInnerDelim}[3]{%
+\newrobustcmd*{\DeclarePairedCiteInnerDelim}[3]{%
   \csdef{exblx@delim@#1@inner@open}{#2}%
   \csdef{exblx@delim@#1@inner@close}{#3}}
 
-\newcommand*{\DeclarePairedCiteInnerDelimAlias}{%
+\newrobustcmd*{\DeclarePairedCiteInnerDelimAlias}{%
   \@ifstar
     {\exblx@declare@paired@cite@inner@delim@alias@i}
     {\exblx@declare@paired@cite@inner@delim@alias}}
