@@ -441,6 +441,72 @@ l. ...\showbox0
 .\T1/lmr/m/n/10 8
 ! OK.
 l. ...\showbox0
+> \box...=
+\hbox(6.88875+0.0)x43.98601
+.\write1{\abx@aux@page{23}{\the \c@page }}
+.\T1/lmr/m/n/10 G
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 5
+! OK.
+l. ...\showbox0
+> \box...=
+\hbox(7.5+2.5)x123.33333
+.\write1{\abx@aux@page{24}{\the \c@page }}
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 R
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 (
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 )
+! OK.
+l. ...\showbox0
+> \box...=
+\hbox(7.5+2.5)x68.36115
+.\T1/lmr/m/n/10 (
+.\write1{\abx@aux@page{25}{\the \c@page }}
+.\T1/lmr/m/n/10 W
+.\kern-0.83334
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 2
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 2
+.\T1/lmr/m/n/10 )
+! OK.
+l. ...\showbox0
 almendro (@patent)
 > \box...=
 \hbox(7.5+2.5)x638.04149
@@ -598,7 +664,7 @@ almendro (@patent)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 angenendt (@article)
 > \box...=
 \hbox(6.88875+1.94443)x674.69553
@@ -770,7 +836,7 @@ angenendt (@article)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 aristotle:rhetoric (@book)
 > \box...=
 \hbox(6.88875+1.94443)x774.07532
@@ -965,7 +1031,7 @@ aristotle:rhetoric (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 aristotle:anima (@book)
 > \box...=
 \hbox(6.88875+1.94443)x392.79382
@@ -1067,7 +1133,7 @@ aristotle:anima (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 aristotle:physics (@book)
 > \box...=
 \hbox(6.88875+1.94443)x404.55246
@@ -1172,7 +1238,7 @@ aristotle:physics (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 aristotle:poetics (@book)
 > \box...=
 \hbox(6.88875+1.94443)x375.58913
@@ -1268,7 +1334,7 @@ aristotle:poetics (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 augustine (@book)
 > \box...=
 \hbox(6.88875+1.94443)x460.1501
@@ -1389,7 +1455,7 @@ augustine (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 averroes/hercz (@book)
 > \box...=
 \hbox(7.5+2.5)x1040.89424
@@ -1649,7 +1715,7 @@ averroes/hercz (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 averroes/hannes (@book)
 > \box...=
 \hbox(8.435+1.94443)x853.29565
@@ -1866,7 +1932,7 @@ averroes/hannes (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 averroes/bland (@book)
 > \box...=
 \hbox(6.88875+1.94443)x1267.01215
@@ -2166,7 +2232,7 @@ averroes/bland (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 baez/online (@online)
 > \box...=
 \hbox(6.9445+1.94443)x578.24577
@@ -2312,7 +2378,7 @@ baez/online (@online)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 baez/article (@article)
 > \box...=
 \hbox(6.9445+1.94443)x638.59583
@@ -2476,7 +2542,7 @@ baez/article (@article)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 bertram (@article)
 > \box...=
 \hbox(6.88875+1.94443)x662.42778
@@ -2647,7 +2713,7 @@ bertram (@article)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 brandt (@incollection)
 > \box...=
 \hbox(7.5+2.5)x1149.96266
@@ -2934,7 +3000,7 @@ brandt (@incollection)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 cms (@manual)
 > \box...=
 \hbox(6.88875+1.94443)x755.25
@@ -3119,7 +3185,7 @@ cms (@manual)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 chiu (@report)
 > \box...=
 \hbox(7.5+2.5)x688.78743
@@ -3290,7 +3356,7 @@ chiu (@report)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 cicero (@book)
 > \box...=
 \hbox(8.435+1.94443)x870.4087
@@ -3499,7 +3565,7 @@ cicero (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 coleridge (@book)
 > \box...=
 \hbox(6.88875+1.94443)x1261.43176
@@ -3817,7 +3883,7 @@ coleridge (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 jcg (@periodical)
 > \box...=
 \hbox(6.88875+1.94443)x380.29623
@@ -3911,7 +3977,7 @@ jcg (@periodical)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 cotton (@book)
 > \box...=
 \hbox(6.88875+1.94443)x661.89598
@@ -4079,7 +4145,7 @@ cotton (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 ctan (@online)
 > \box...=
 \hbox(7.5+2.5)x515.83218
@@ -4210,7 +4276,7 @@ ctan (@online)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 doody (@article)
 > \box...=
 \hbox(7.5+2.5)x999.94777
@@ -4467,7 +4533,7 @@ doody (@article)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 britannica (@collection)
 > \box...=
 \hbox(6.88875+1.94443)x563.40868
@@ -4609,7 +4675,7 @@ britannica (@collection)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 gaonkar (@collection)
 > \box...=
 \hbox(7.5+2.5)x586.50735
@@ -4757,7 +4823,7 @@ gaonkar (@collection)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 gaonkar:in (@incollection)
 > \box...=
 \hbox(7.5+2.5)x687.52213
@@ -4932,7 +4998,7 @@ gaonkar:in (@incollection)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 geer (@thesis)
 > \box...=
 \hbox(6.88875+1.94443)x773.34676
@@ -5125,7 +5191,7 @@ geer (@thesis)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 gerhardt (@book)
 > \box...=
 \hbox(6.88875+1.94443)x662.08995
@@ -5294,7 +5360,7 @@ gerhardt (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 gillies (@article)
 > \box...=
 \hbox(6.88875+1.94443)x692.67859
@@ -5472,7 +5538,7 @@ gillies (@article)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 stdmodel (@set)
 > \box...=
 \hbox(7.5+2.5)x2070.46637
@@ -5993,7 +6059,7 @@ stdmodel (@set)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 gonzalez (@book)
 > \box...=
 \hbox(6.88875+1.94443)x570.26982
@@ -6134,7 +6200,7 @@ gonzalez (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 companion (@book)
 > \box...=
 \hbox(6.88875+1.94443)x617.65804
@@ -6288,7 +6354,7 @@ companion (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 hammond (@book)
 > \box...=
 \hbox(6.88875+1.94443)x673.6694
@@ -6455,7 +6521,7 @@ hammond (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 set (@set)
 > \box...=
 \hbox(8.29999+1.94443)x3279.95811
@@ -7259,7 +7325,7 @@ set (@set)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 iliad (@book)
 > \box...=
 \hbox(6.88875+1.94443)x633.33269
@@ -7418,7 +7484,7 @@ iliad (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 murray (@article)
 > \box...=
 \hbox(6.88875+1.94443)x1891.76804
@@ -7898,7 +7964,7 @@ murray (@article)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 hyman (@incollection)
 > \box...=
 \hbox(7.5+2.5)x1208.58939
@@ -8201,7 +8267,7 @@ hyman (@incollection)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 itzhaki (@online)
 > \box...=
 \hbox(6.9445+2.22223)x532.31038
@@ -8342,7 +8408,7 @@ itzhaki (@online)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 jaffe (@collection)
 > \box...=
 \hbox(7.5+2.5)x976.8245
@@ -8589,7 +8655,7 @@ jaffe (@collection)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 kant:kpv (@inbook)
 > \box...=
 \hbox(6.88875+1.94443)x915.83952
@@ -8828,7 +8894,7 @@ kant:kpv (@inbook)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 kant:ku (@inbook)
 > \box...=
 \hbox(6.88875+1.94443)x828.06256
@@ -9043,7 +9109,7 @@ kant:ku (@inbook)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 kastenholz (@article)
 > \box...=
 \hbox(6.9445+1.94443)x1148.66489
@@ -9339,7 +9405,7 @@ kastenholz (@article)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 knuth:ct (@book)
 > \box...=
 \hbox(6.88875+1.94443)x433.95615
@@ -9451,7 +9517,7 @@ knuth:ct (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 knuth:ct:related (@book)
 > \box...=
 \hbox(6.88875+2.15274)x1162.01001
@@ -9750,7 +9816,7 @@ knuth:ct:related (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 knuth:ct:a (@book)
 > \box...=
 \hbox(6.88875+2.15274)x404.1572
@@ -9856,7 +9922,7 @@ knuth:ct:a (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 knuth:ct:b (@book)
 > \box...=
 \hbox(6.88875+2.15274)x499.81271
@@ -9986,7 +10052,7 @@ knuth:ct:b (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 knuth:ct:c (@book)
 > \box...=
 \hbox(6.88875+1.94443)x445.56746
@@ -10096,7 +10162,7 @@ knuth:ct:c (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 knuth:ct:d (@book)
 > \box...=
 \hbox(6.88875+1.94443)x469.80157
@@ -10212,7 +10278,7 @@ knuth:ct:d (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 knuth:ct:e (@book)
 > \box...=
 \hbox(6.88875+1.94443)x472.9385
@@ -10331,7 +10397,7 @@ knuth:ct:e (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 kowalik (@patent)
 > \box...=
 \hbox(6.88875+1.94443)x785.91643
@@ -10530,7 +10596,7 @@ kowalik (@patent)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 kullback (@book)
 > \box...=
 \hbox(6.88875+1.94443)x406.45401
@@ -10630,7 +10696,7 @@ kullback (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 kullback:reprint (@book)
 > \box...=
 \hbox(6.88875+1.94443)x336.62065
@@ -10716,7 +10782,7 @@ kullback:reprint (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 kullback:related (@book)
 > \box...=
 \hbox(7.5+2.5)x532.95468
@@ -10848,7 +10914,7 @@ kullback:related (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 laufenberg (@patent)
 > \box...=
 \hbox(6.88875+1.94443)x1723.17891
@@ -11265,7 +11331,7 @@ laufenberg (@patent)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 loh (@thesis)
 > \box...=
 \hbox(6.88875+1.94443)x675.19461
@@ -11436,7 +11502,7 @@ loh (@thesis)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 malinowski (@book)
 > \box...=
 \hbox(6.88875+1.94443)x896.85825
@@ -11657,7 +11723,7 @@ malinowski (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 markey (@online)
 > \box...=
 \hbox(7.5+2.5)x824.1608
@@ -11870,7 +11936,7 @@ markey (@online)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 maron (@book)
 > \box...=
 \hbox(6.88875+1.94443)x543.49438
@@ -12006,7 +12072,7 @@ maron (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 massa (@book)
 > \box...=
 \hbox(6.88875+1.94443)x345.02689
@@ -12096,7 +12162,7 @@ massa (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 matuz:doody (@collection)
 > \box...=
 \hbox(7.5+2.5)x422.28004
@@ -12207,7 +12273,7 @@ matuz:doody (@collection)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 moore (@article)
 > \box...=
 \hbox(6.88875+1.94443)x485.07498
@@ -12337,7 +12403,7 @@ moore (@article)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 moore:related (@article)
 > \box...=
 \hbox(6.88875+1.94443)x626.26352
@@ -12504,7 +12570,7 @@ moore:related (@article)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 moraux (@inproceedings)
 > \box...=
 \hbox(7.5+2.5)x1479.21935
@@ -12868,7 +12934,7 @@ moraux (@inproceedings)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 nietzsche:ksa (@book)
 > \box...=
 \hbox(6.88875+1.94443)x974.91046
@@ -13114,7 +13180,7 @@ nietzsche:ksa (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 nietzsche:ksa1 (@book)
 > \box...=
 \hbox(6.88875+1.94443)x1325.70897
@@ -13432,7 +13498,7 @@ nietzsche:ksa1 (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 nietzsche:historie (@inbook)
 > \box...=
 \hbox(6.88875+1.94443)x1842.76358
@@ -13876,7 +13942,7 @@ nietzsche:historie (@inbook)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 nussbaum (@book)
 > \box...=
 \hbox(6.88875+1.94443)x434.76755
@@ -13987,7 +14053,7 @@ nussbaum (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 padhye (@report)
 > \box...=
 \hbox(6.88875+1.94443)x831.64801
@@ -14198,7 +14264,7 @@ padhye (@report)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 piccato (@book)
 > \box...=
 \hbox(6.88875+1.94443)x523.72629
@@ -14328,7 +14394,7 @@ piccato (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 pines (@incollection)
 > \box...=
 \hbox(7.5+2.5)x1095.70201
@@ -14598,7 +14664,7 @@ pines (@incollection)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 reese (@article)
 > \box...=
 \hbox(6.88875+1.94443)x569.66254
@@ -14744,7 +14810,7 @@ reese (@article)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 sarfraz (@article)
 > \box...=
 \hbox(6.88875+1.94443)x787.06442
@@ -14945,7 +15011,7 @@ sarfraz (@article)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 shore (@article)
 > \box...=
 \hbox(6.88875+1.94443)x677.4252
@@ -15116,7 +15182,7 @@ shore (@article)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 sigfridsson (@article)
 > \box...=
 \hbox(6.9445+1.94443)x1203.77263
@@ -15434,7 +15500,7 @@ sigfridsson (@article)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 sorace (@patent)
 > \box...=
 \hbox(6.88875+1.94443)x725.80493
@@ -15618,7 +15684,7 @@ sorace (@patent)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 spiegelberg (@article)
 > \box...=
 \hbox(6.88875+1.94443)x633.87218
@@ -15797,7 +15863,7 @@ spiegelberg (@article)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 springer (@article)
 > \box...=
 \hbox(6.88875+1.94443)x488.09503
@@ -15923,7 +15989,7 @@ springer (@article)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 vangennep (@book)
 > \box...=
 \hbox(6.88875+1.94443)x280.3743
@@ -16000,7 +16066,7 @@ vangennep (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 vangennep:related (@book)
 > \box...=
 \hbox(7.5+2.5)x711.00931
@@ -16179,7 +16245,7 @@ vangennep:related (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 vangennep:trans (@book)
 > \box...=
 \hbox(6.88875+1.94443)x579.95712
@@ -16325,7 +16391,7 @@ vangennep:trans (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 vazques-de-parga (@book)
 > \box...=
 \hbox(6.88875+1.94443)x807.50838
@@ -16529,7 +16595,7 @@ vazques-de-parga (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 vizedom:related (@book)
 > \box...=
 \hbox(7.5+2.5)x803.83163
@@ -16732,7 +16798,7 @@ vizedom:related (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 wassenberg (@online)
 > \box...=
 \hbox(6.9445+1.94443)x684.6989
@@ -16906,7 +16972,7 @@ wassenberg (@online)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 westfahl:frontier (@collection)
 > \box...=
 \hbox(7.5+2.5)x577.65256
@@ -17051,7 +17117,7 @@ westfahl:frontier (@collection)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 westfahl:space (@incollection)
 > \box...=
 \hbox(7.5+2.5)x1073.30353
@@ -17317,7 +17383,7 @@ westfahl:space (@incollection)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 wilde (@book)
 > \box...=
 \hbox(6.88875+1.94443)x943.51561
@@ -17539,7 +17605,7 @@ wilde (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}
 worman (@book)
 > \box...=
 \hbox(6.88875+1.94443)x471.49014
@@ -17663,4 +17729,4 @@ worman (@book)
 <argument> ...(@\abx@field@entrytype )}\showbox 0 
                                                   \OMIT \blx@postpunct \blx@...
 l. ...\end
-         {document}
+          {document}

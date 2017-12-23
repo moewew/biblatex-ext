@@ -86,6 +86,21 @@
 \TIMO
 \showbox0
 \OMIT
+\setbox0=\hbox{%
+  \cite{geer}}%
+\TIMO
+\showbox0
+\OMIT
+\setbox0=\hbox{%
+  \textcite{sigfridsson}}%
+\TIMO
+\showbox0
+\OMIT
+\setbox0=\hbox{%
+  \parencite{worman}}%
+\TIMO
+\showbox0
+\OMIT
 \nocite{*}
 \printbibliography
 \end{document}
