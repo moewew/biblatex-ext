@@ -11,5 +11,6 @@ shsiwnnss.*
 *.fls
 *.log
 *.out
+*.toc
 *.run.xml
 *.synctex.gz

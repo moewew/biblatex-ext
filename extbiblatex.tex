@@ -1,0 +1,332 @@
+\documentclass{ltxdockit}
+\usepackage{btxdockit}
+\usepackage[utf8]{inputenc}
+\usepackage[british]{babel}
+\usepackage[strict]{csquotes}
+\usepackage{libertine}
+\usepackage[scaled=0.8]{beramono}
+\usepackage{microtype}
+\usepackage{biblatex}
+
+\makeatletter
+\blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
+\newcommand*{\biblatexversion}{\extblx@requiredbiblatexversion}
+\makeatother
+
+\newcommand*{\gitbaseurl}{https://github.com/moewew/extbiblatex}
+\newcommand*{\extbiblatexversion}{0.1.0}
+\newcommand*{\biber}{\sty{biber}}
+  
+\newrobustcmd*{\Deprecated}{%
+  \textcolor{spot}{\margnotefont Deprecated}}
+\newrobustcmd*{\DeprecatedMark}{%
+  \leavevmode\marginpar{\Deprecated}}
+\newcommand*{\gitissuelink}[1]{%
+  \href{\gitbaseurl/issues/#1}{issue \##1 on github}}
+
+\titlepage{%
+  title={The \sty{extbiblatex} Package},
+  subtitle={Traditional bibliography styles for \sty{biblatex}},
+  url={\gitbaseurl},
+  author={Moritz Wemheuer},
+  email={\null},%
+  revision={\extbiblatexversion},
+  date={\today}}
+
+\hypersetup{%
+  pdftitle={The extbiblatex Package},
+  pdfsubject={Traditional bibliography styles for biblatex},
+  pdfauthor={Moritz Wemheuer},
+  pdfkeywords={tex, latex, biblatex, bibtex, bibliography, references, citation}}
+
+\hyphenation{%
+  star-red
+  bib-lio-gra-phy
+  white-space
+}
+
+\begin{document}
+
+\printtitlepage
+\tableofcontents
+
+
+\section{Introduction}\label{sec:int}
+The \sty{extbiblatex} package provides an extended version of the standard
+styles that come with \sty{biblatex}.
+For each standard style this package provides a style with the same name
+prefixed with \texttt{ext-} which can be used as a drop-in replacement for the
+standard style -- for example, the replacement for \texttt{authoryear-icomp}
+is called \texttt{ext-authoryear-icomp}.
+
+The aim of this package is to offer a simple interface to change some of the
+stylistic decisions made for the standard styles.
+Additionally, some customisation features that were not deemed appropriate
+for inclusion in the \sty{biblatex} kernel are provided.
+
+\subsection{Requirements}
+The use of the styles requires a current version of the \sty{biblatex} package.
+At the time of writing the latest version of \sty{biblatex} is \biblatexversion,
+that version is required for the styles to work properly.
+A warning will be issued if you use an older version; you may choose to ignore
+that warning, but the style can not be guaranteed to work properly in that case:
+you might get other warnings, errors, or the style might fail silently.
+
+Use of the \biber{} backend is strongly encouraged.
+No features of this package require \biber{} explicitly in their implementation,
+but many \sty{biblatex} standard features require \biber{} to function properly.
+
+\subsection{License}
+Permission is granted to copy, distribute and\slash or modify this software
+under the terms of the \lppl, version 1.3c.%
+\fnurl{http://www.latex-project.org/lppl.txt}
+The current maintainer of this work is Moritz Wemheuer (\textcopyright 2017--2018).
+
+
+\subsection{Feedback}\label{subsec:int:feb}
+
+Please use the \sty{extbiblatex} project page on GitHub to report bugs and
+submit feature requests.\footnote{\url{\gitbaseurl}}
+
+If you do not want to report a bug or request a feature, but are simply in need
+of assistance, you might want to consider posting your question on the
+\texttt{comp.text.tex} newsgroup or \tex{} -- \latex Stack Exchange.%
+\fnurl{http://tex.stackexchange.com/questions/tagged/biblatex}
+
+\section{Usage}
+
+\sty{extbiblatex} is not a standalone package, instead it is a collection of
+\sty{biblatex} style files.
+
+You can load the styles exactly as you would load the standard styles:
+\begin{lstlisting}[style=latex,escapeinside={(*@}{@*)}]{}
+\usepackage[style=(*@$\langle$\normalfont\emph{style}$\rangle$@*)]{biblatex}
+\end{lstlisting}
+
+The naming of the styles follows the scheme
+\mbox{\texttt{ext-}$\langle$\emph{standard style}$\rangle$}, e.g.,
+the style corresponding to \texttt{authoryear-icomp} is called
+\texttt{ext-authoryear-icomp}.
+
+\subsection{Styles}
+Please refer to the \sty{biblatex} documentation%
+\fnurl{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf}
+and the style examples%
+\fnurl{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/examples/}
+for a more detailed description of each standard style.
+The relations between the styles are exactly as in their standard counterparts.
+The \texttt{ext-} styles only build on top of the standard files.
+\begin{marglist}
+\item[ext-numeric]
+An extended version of the standard \texttt{numeric} style for citations with
+numeric labels: \enquote{[1, 2, 3, 5, 7]}.
+
+\item[ext-numeric-comp]
+An extended version of the standard \texttt{numeric-comp} style.
+The style is similar to \texttt{ext-numeric}, but citation labels are
+compressed to give \enquote{[1--3, 5--7]} instead of
+\enquote{[1, 2, 3, 5, 6, 7]}.
+
+\item[ext-numeric-verb]
+An extended version of the standard \texttt{numeric-verb} style.
+This style is similar to the \texttt{numeric} style, but each citation label
+is in its own set of brackets: \enquote{[1], [2], [3]}.
+
+\item[ext-alphabetic]
+An extended version of the standard \texttt{alphabetic} style for citations with
+alphabetic labels derived from author name and year: \enquote{[SR98, Knu84c]}.
+
+\item[ext-alphabetic-verb]
+An extended version of the standard \texttt{alphabetic-verb} style.
+This style is based on \texttt{ext-alphabetic}, but like
+\texttt{ext-numeric-verb} places each citation label in its own pair of
+brackets: \enquote{[SR98], [Knu84c]}.
+
+\item[ext-authoryear]
+An extended version of the standard \texttt{authoryear} style for citations
+using author name and year: \enquote{Sigfridsson and Ryde 1998}.
+
+\item[ext-authoryear-comp]
+An extended version of the standard \texttt{authoryear-comp} style.
+The style is based on the author-year citations of \texttt{ext-authoryear},
+but several works by the same author are compressed by not displaying the
+author multiple times: \enquote{Knuth 1984, 1986} instead of
+\enquote{Knuth 1984; Knuth 1986}.
+
+\item[ext-authoryear-ibid]
+An extended version of the standard \texttt{authoryear-ibid} style.
+This style is similar to \texttt{ext-authoryear}, but repeated citations are
+replaced with \enquote{ibidem}.
+
+\item[ext-authoryear-icomp]
+An extended version of the standard \texttt{authoryear-icomp} style.
+This style combines the two styles \texttt{ext-authoryear-comp} and
+\texttt{ext-authoryear-ibid}.
+
+\item[ext-authortitle]
+An extended version of the standard \texttt{authortitle} style for citations
+by author and title: \enquote{Maron, Animal Triste}.
+
+\item[ext-authortitle-comp]
+An extended version of the standard \texttt{authortitle-comp} style.
+Based on \texttt{ext-authortitle} this style compresses several citations
+by the same author just like \texttt{ext-authoryear-comp}:
+\enquote{Aristotle, \emph{Physics}, \emph{Poetics}} instead of
+\enquote{Aristotle, \emph{Physics}; Aristotle, \emph{Poetics}}.
+
+\item[ext-authortitle-ibid]
+An extended version of the standard \texttt{authortitle-ibid} style.
+This style is similar to \texttt{ext-authortitle}, but replaces repeated
+citations of the same work with \enquote{ibidem}.
+
+\item[ext-authortitle-icomp]
+An extended version of the standard \texttt{authortitle-icomp} style.
+This style combines \texttt{ext-authortitle-comp} and
+\texttt{ext-authortitle-ibid}.
+
+\item[ext-authortitle-terse]
+An extended version of the standard \texttt{authortitle-terse} style.
+This style is similar to \texttt{ext-authortitle}, but the title is omitted in
+citations if there is only one work by the relevant author.
+
+\item[ext-authortitle-tcomp]
+An extended version of the standard \texttt{authortitle-tcomp} style.
+This style combines \texttt{ext-authortitle-terse} and
+\texttt{ext-authortitle-comp}.
+
+\item[ext-authortitle-ticomp]
+An extended version of the standard \texttt{authortitle-ticomp} style.
+This style combines \texttt{ext-authortitle-terse},
+\texttt{ext-authortitle-comp} and \texttt{ext-authortitle-ibid}.
+
+
+\item[ext-verbose]
+An extended version of the standard \texttt{verbose} style.
+This style shows the full bibliographic reference the first time a work is
+cited.
+
+\item[ext-verbose-ibid]
+An extended version of the standard \texttt{verbose-ibid} style.
+Based on \texttt{ext-verbose}, repeated citations to the same work are replaced
+with \enquote{ibidem}.
+
+\item[ext-verbose-note]
+An extended version of the standard \texttt{verbose-note} style.
+Based on \texttt{ext-verbose} and intended for use in footnotes, subsequent
+citations link back to the footnote the entry was cited at first and in full.
+
+\item[ext-verbose-inote]
+An extended version of the standard \texttt{verbose-inote} style.
+Similar to \texttt{verbose-note}, but repeated citations to the same work are
+replaced with \enquote{ibidem}.
+
+\item[ext-verbose-trad1]
+An extended version of the standard \texttt{verbose-trad1} style.
+This style makes extensive use of scholarly abbreviations and is otherwise
+similar to \texttt{ext-verbose}.
+
+\item[ext-verbose-trad2]
+An extended version of the standard \texttt{verbose-trad2} style.
+The style is similar to \texttt{ext-\hspace{0pt}verbose-\hspace{0pt}inote} and
+uses scholarly abbreviations to shorten citations.
+
+\item[ext-verbose-trad3]
+An extended version of the standard \texttt{verbose-trad3} style.
+This style is similar to \texttt{ext-\hspace{0pt}verbose-\hspace{0pt}trad2}.
+\end{marglist}
+
+
+\subsection{Options}
+All options of the \sty{biblatex} package are supported and each style supports
+the options of its standard counterpart.
+
+Additionally all style support the following options in global, per-type and
+per-entry scope.
+
+\begin{optionlist}
+\boolitem[true]{articlein}
+Whether or not to display \enquote{in:} before the journal information in
+\bibtype{article} entries.
+
+\boolitem[false]{innamebeforetitle}
+Whether or not the \bibfield{editor} should be moved before the
+\bibfield{booktitle} field for \bibtype{inbook}, \bibtype{incollection} and
+\bibtype{inproceedings} entries.
+
+\boolitem[false]{innameidem}
+Whether or not the \bibfield{editor} of the \bibfield{booktitle}
+for the entry types \bibtype{inbook}, \bibtype{incollection} and
+\bibtype{inproceedings} is replaced by \enquote{idem} in case the
+\bibfield{editor} and \bibfield{author} name lists coincide.
+
+\boolitem[false]{inxref}
+This option controls if \bibtype{inbook}, \bibtype{incollection} and
+\bibtype{inproceedings} entries that are tied to a parent entry with
+\bibfield{xref} or \bibfield{crossref} should cite their parent in the
+bibliography if the parent is listed in the bibliography as an entry.
+With the default setting \kvopt{inxref}{false} the parent is not cited, the
+information is shown as in the standard styles. If the option is set to 
+\texttt{true} the block following the \enquote{in:} is replaced by a citation
+to the parent entry.
+\end{optionlist}
+
+\subsection{Field Formats}
+
+
+
+\DeclareFieldFormat{issuedate}{\mkbibparens{#1}}
+
+\subsection{Punctuation and Delimiters}
+The package provides the following commands to modify the delimiters and
+punctuation between fields.
+\begin{ltxsyntax}
+\csitem{volnumdatedelim}
+The delimiter between the \bibfield{volume}, \bibfield{number} block and the
+date information for \bibtype{article}.
+The default is a space.
+
+\csitem{volnumdelim}
+The delimiter between \bibfield{volume} and \bibfield{number} for
+\bibtype{article}.
+The default is a dot.
+
+\csitem{sernumdelim}
+The delimiter between \bibfield{series} and \bibfield{number}.
+The default is a space.
+
+\csitem{locdatedelim}
+The delimiter between \bibfield{location} and \bibfield{date}.
+The default is a comma followed by a space.
+
+\csitem{locpubdelim}
+The delimiter between \bibfield{location} and \bibfield{publisher}/%
+\bibfield{organization}/\bibfield{institution}.
+The default is a colon followed by a space.
+
+\csitem{publocdelim}
+The delimiter between \bibfield{publisher}/\bibfield{organization}/%
+\bibfield{institution} and \bibfield{location}.
+The default is a comma followed by a space.
+
+\csitem{pubdatedelim}
+The delimiter between \bibfield{publisher}/\bibfield{organization}/%
+\bibfield{institution} and \bibfield{date}.
+The default is a comma followed by a space.
+
+\csitem{extradateonlycompcitedelim}
+Similar to \cmd{compcitedelim}, but indended for use between compressed
+citations where the second is an \bibfield{extradate} only.
+The default is a comma (\emph{not} followed by a space).
+\end{ltxsyntax}
+
+
+
+\section{Revision History}\label{apx:log}
+\begin{changelog}
+\begin{release}{0.1.0}{2018-02-02}
+\item First release.
+\end{release}
+\end{changelog}
+\end{document}
+
+\endinput
