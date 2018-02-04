@@ -8,7 +8,10 @@
 
 \DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
 
+\DeclarePairedCiteInnerDelim{cite}{}{}
+\DeclarePairedCiteInnerDelim{parencite}{}{}
 \DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
+\DeclarePairedCiteInnerDelim{footcite}{}{}
 
 \renewbibmacro*{cite}{%
   \iffieldundef{shorthand}
