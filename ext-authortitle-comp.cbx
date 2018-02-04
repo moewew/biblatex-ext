@@ -8,7 +8,30 @@
 
 \DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
 
+\DeclarePairedCiteInnerDelim{cite}{}{}
+\DeclarePairedCiteInnerDelim{parencite}{}{}
 \DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
+\DeclarePairedCiteInnerDelim{footcite}{}{}
+
+\renewbibmacro*{cite}{%
+  \iffieldundef{shorthand}
+    {\iffieldequals{namehash}{\cbx@lasthash}
+       {\setunit{\compcitedelim}}
+       {\printnames{labelname}%
+        \setunit*{%
+          \global\booltrue{cbx:parens}%
+          \printdelim{nametitledelim}%
+          \csuse{extblx@delim@\blx@delimcontext @inner@open}}%
+        \savefield{namehash}{\cbx@lasthash}}%
+     \usebibmacro{cite:title}}
+    {\usebibmacro{cite:shorthand}%
+     \usebibmacro{cite:reinit}}%
+  \setunit{%
+    \ifbool{cbx:parens}
+      {\csuse{extblx@delim@\blx@delimcontext @inner@close}%
+       \global\boolfalse{cbx:parens}}
+      {}%
+    \multicitedelim}}
 
 \renewbibmacro*{textcite}{%
   \iffieldequals{namehash}{\cbx@lasthash}
@@ -32,6 +55,17 @@
        \global\boolfalse{cbx:parens}}
       {}%
     \textcitedelim}}
+
+\renewbibmacro*{cite:postnote}{%
+  \setunit{}%
+  \printtext{%
+    \ifbool{cbx:parens}
+      {\csuse{extblx@delim@\blx@delimcontext @inner@close}%
+       \global\boolfalse{cbx:parens}}
+      {}}%
+  \ifbool{cbx:loccit}
+    {}
+    {\usebibmacro{postnote}}}
 
 \renewbibmacro*{textcite:postnote}{%
   \ifnameundef{labelname}
@@ -61,7 +95,7 @@
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
   {}
-  {\usebibmacro{postnote}}
+  {\usebibmacro{cite:postnote}}
 
 \DeclareCiteCommand*{\cite}[\mkpairedoutercitedelim]
   {\usebibmacro{cite:init}%
@@ -69,7 +103,7 @@
   {\usebibmacro{citeindex}%
    \usebibmacro{citetitle}}
   {}
-  {\usebibmacro{postnote}}
+  {\usebibmacro{cite:postnote}}
 
 \DeclareCiteCommand{\parencite}[\mkpairedouterparencitedelim]
   {\usebibmacro{cite:init}%
@@ -77,7 +111,7 @@
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
   {}
-  {\usebibmacro{postnote}}
+  {\usebibmacro{cite:postnote}}
 
 \DeclareCiteCommand*{\parencite}[\mkpairedouterparencitedelim]
   {\usebibmacro{cite:init}%
@@ -85,7 +119,7 @@
   {\usebibmacro{citeindex}%
    \usebibmacro{citetitle}}
   {}
-  {\usebibmacro{postnote}}
+  {\usebibmacro{cite:postnote}}
 
 \DeclareCiteCommand{\smartcite}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
   {\usebibmacro{cite:init}%
@@ -93,7 +127,7 @@
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
   {}
-  {\usebibmacro{postnote}}
+  {\usebibmacro{cite:postnote}}
 
 \DeclareCiteCommand{\cbx@textcite}[\mkpairedoutertextcitedelim]
   {\usebibmacro{cite:init}}

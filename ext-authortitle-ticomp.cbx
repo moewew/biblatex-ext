@@ -20,12 +20,20 @@
              {\ifsingletitle
                 {\printtext[bibhyperref]{\printnames{labelname}}}
                 {\printnames{labelname}%
-                 \setunit{\printdelim{nametitledelim}}%
+                 \setunit{%
+                   \global\booltrue{cbx:parens}%
+                   \printdelim{nametitledelim}%
+                   \csuse{extblx@delim@\blx@delimcontext @inner@open}}%
                  \usebibmacro{cite:title}}}%
            \savefield{namehash}{\cbx@lasthash}}}}
     {\usebibmacro{cite:shorthand}%
      \usebibmacro{cite:reinit}}%
-  \setunit{\multicitedelim}}
+  \setunit{%
+    \ifbool{cbx:parens}
+      {\csuse{extblx@delim@\blx@delimcontext @inner@close}%
+       \global\boolfalse{cbx:parens}}
+      {}%
+    \multicitedelim}}
 
 \renewbibmacro*{citetitle}{%
   \iffieldundef{shorthand}

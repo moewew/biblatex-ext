@@ -10,6 +10,28 @@
 
 \DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
 
+\renewbibmacro*{cite}{%
+  \iffieldundef{shorthand}
+    {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+       {\usebibmacro{cite:ibid}}
+       {\iffieldequals{namehash}{\cbx@lasthash}
+          {\setunit{\compcitedelim}}
+          {\printnames{labelname}%
+           \setunit*{%
+             \global\booltrue{cbx:parens}%
+             \printdelim{nametitledelim}%
+             \csuse{extblx@delim@\blx@delimcontext @inner@open}}%
+           \savefield{namehash}{\cbx@lasthash}}%
+        \usebibmacro{cite:title}}}%
+    {\usebibmacro{cite:shorthand}%
+     \usebibmacro{cite:reinit}}%
+  \setunit{%
+    \ifbool{cbx:parens}
+      {\csuse{extblx@delim@\blx@delimcontext @inner@close}%
+       \global\boolfalse{cbx:parens}}
+      {}%
+    \textcitedelim}}
+
 \renewbibmacro*{textcite}{%
   \iffieldequals{namehash}{\cbx@lasthash}
     {\setunit{\compcitedelim}}
@@ -34,6 +56,17 @@
        \global\boolfalse{cbx:parens}}
       {}%
     \textcitedelim}}
+
+\renewbibmacro*{cite:postnote}{%
+  \setunit{}%
+  \printtext{%
+    \ifbool{cbx:parens}
+      {\csuse{extblx@delim@\blx@delimcontext @inner@close}%
+       \global\boolfalse{cbx:parens}}
+      {}}%
+  \ifbool{cbx:loccit}
+    {}
+    {\usebibmacro{postnote}}}
 
 \renewbibmacro*{textcite:postnote}{%
   \ifbool{cbx:loccit}

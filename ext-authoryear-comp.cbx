@@ -126,10 +126,12 @@
          \printfield{extradate}}}}}
 
 \renewbibmacro*{cite:postnote}{%
-  \ifbool{cbx:parens}
-    {\csuse{extblx@delim@\blx@delimcontext @inner@close}%
-     \global\boolfalse{cbx:parens}}
-    {}%
+  \setunit{}%
+  \printtext{%
+    \ifbool{cbx:parens}
+      {\csuse{extblx@delim@\blx@delimcontext @inner@close}%
+       \global\boolfalse{cbx:parens}}
+      {}}%
   \usebibmacro{postnote}}
 
 \renewbibmacro*{textcite:postnote}{%

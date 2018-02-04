@@ -8,7 +8,18 @@
 
 \DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
 
+\DeclareFieldFormat{extblx@innercitedelim}{%
+  \csuse{mkpairedinner\blx@delimcontext delim}{#1}}
+\DeclareFieldFormat{extblx@innerparencitedelim}{%
+  \csuse{mkpairedinner\blx@delimcontext delim}{#1}}
+\DeclareFieldFormat{extblx@innertextcitedelim}{#1}
+\DeclareFieldFormat{extblx@innerfootcitedelim}{%
+  \csuse{mkpairedinner\blx@delimcontext delim}{#1}}
+
+\DeclarePairedCiteInnerDelim{cite}{}{}
+\DeclarePairedCiteInnerDelim{parencite}{}{}
 \DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
+\DeclarePairedCiteInnerDelim{footcite}{}{}
 
 \newbibmacro*{textcite}{%
   \global\boolfalse{cbx:loccit}%
@@ -25,6 +36,11 @@
        {\usebibmacro{cite:ibid}}
        {\usebibmacro{cite:title}}}
     {\usebibmacro{cite:shorthand}}}
+    
+\renewbibmacro*{cite:title}{%
+  \printtext[extblx@inner\blx@delimcontext delim]{%
+    \printtext[bibhyperref]{%
+      \printfield[citetitle]{labeltitle}}}}
 
 \newbibmacro*{textcite:postnote}{%
   \ifthenelse{\iffieldundef{postnote}\OR\boolean{cbx:loccit}}
