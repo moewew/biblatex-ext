@@ -6,7 +6,8 @@
 \usepackage{libertine}
 \usepackage[scaled=0.8]{beramono}
 \usepackage{microtype}
-\usepackage{biblatex}
+\usepackage[style=ext-authoryear-icomp, backend=biber]{biblatex}
+\addbibresource{biblatex-examples.bib}
 
 \makeatletter
 \blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
@@ -165,7 +166,7 @@ This style combines the two styles \texttt{ext-authoryear-comp} and
 
 \item[ext-authortitle]
 An extended version of the standard \texttt{authortitle} style for citations
-by author and title: \enquote{Maron, Animal Triste}.
+by author and title: \enquote{Maron, \emph{Animal Triste}}.
 
 \item[ext-authortitle-comp]
 An extended version of the standard \texttt{authortitle-comp} style.
