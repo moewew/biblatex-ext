@@ -63,7 +63,7 @@
            \setunit{%
              \global\booltrue{cbx:parens}%
              \printdelim{nametitledelim}%
-             \csuse{exblx@delim@textcite@inner@open}}%
+             \csuse{extblx@delim@textcite@inner@open}}%
            \ifnumequal{\value{citecount}}{1}
              {\usebibmacro{prenote}}
              {}%
@@ -76,7 +76,7 @@
      \savefield{namehash}{\cbx@lasthash}}%
   \setunit{%
     \ifbool{cbx:parens}
-      {\csuse{exblx@delim@textcite@inner@close}%
+      {\csuse{extblx@delim@textcite@inner@close}%
        \global\boolfalse{cbx:parens}}
       {}%
     \textcitedelim}}
@@ -87,18 +87,18 @@
     {\setunit{%
        \global\booltrue{cbx:parens}%
        \extpostnotedelim
-       \csuse{exblx@delim@textcite@inner@open}}}%
+       \csuse{extblx@delim@textcite@inner@open}}}%
   \printfield{postnote}%
   \ifnumequal{\value{multicitecount}}{\value{multicitetotal}}
     {\setunit{}%
      \printtext{%
        \ifbool{cbx:parens}
-        {\csuse{exblx@delim@textcite@inner@close}%
+        {\csuse{extblx@delim@textcite@inner@close}%
          \global\boolfalse{cbx:parens}}
         {}}}
     {\setunit{%
        \ifbool{cbx:parens}
-         {\csuse{exblx@delim@textcite@inner@close}%
+         {\csuse{extblx@delim@textcite@inner@close}%
           \global\boolfalse{cbx:parens}}
          {}%
        \textcitedelim}}}

@@ -23,11 +23,20 @@
 
 \ExecuteBibliographyOptions{%
   inxref            = false,
-  innamebeforetitle = true,
+  innamebeforetitle = false,
   innameidem        = false,
-  articlein         = false,
-  maxbibnames       = 999,
+  articlein         = true,
+%  maxbibnames       = 999,
 }
+
+\DeclareTypeOption[boolean]{inxref}[true]{%
+  \settoggle{bbx:inxref}{#1}}
+\DeclareTypeOption[boolean]{innamebeforetitle}[true]{%
+  \settoggle{bbx:innamebeforetitle}{#1}}
+\DeclareTypeOption[boolean]{innameidem}[true]{%
+  \settoggle{bbx:innameidem}{#1}}
+\DeclareTypeOption[boolean]{articlein}[true]{%
+  \settoggle{bbx:articlein}{#1}}
 
 \DeclareEntryOption[boolean]{inxref}[true]{%
   \settoggle{bbx:inxref}{#1}}
@@ -56,8 +65,8 @@
     {\iffieldundef{crossref}
        {\iffieldundef{xref}
           {\usebibmacro{#1}}
-          {\bbx@cite@xref{\thefield{xref}}}}
-       {\bbx@cite@xref{\thefield{crossref}}}}
+          {\printtext{\bbx@cite@xref{\thefield{xref}}}}}
+       {\printtext{\bbx@cite@xref{\thefield{crossref}}}}}
     {\usebibmacro{#1}}}
 
 

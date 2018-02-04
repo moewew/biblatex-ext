@@ -7,7 +7,7 @@
 \RequireCitationStyle{alphabetic-verb}
 
 \DeclarePairedCiteOuterDelim{cite}{\bibopenbracket}{\bibclosebracket}
-\DeclarePairedCiteOuterDelimAlias*{parencite}{cite}
+\DeclarePairedCiteOuterDelimAlias{parencite}{cite}
 \DeclarePairedCiteOuterDelim{textcite}{}{}
 
 \DeclarePairedCiteInnerDelim{textcite}{\bibopenbracket}{\bibclosebracket}
@@ -17,7 +17,7 @@
     {\printfield[citetitle]{labeltitle}}
     {\printnames{labelname}}%
   \printdelim{namelabeldelim}%
-  \csuse{exblx@delim@textcite@inner@open}%
+  \csuse{extblx@delim@textcite@inner@open}%
   \ifnumequal{\value{citecount}}{1}
     {\usebibmacro{prenote}}
     {}%
@@ -25,17 +25,17 @@
 
 
 \DeclareCiteCommand{\cite}
-  {\csuse{exblx@delim@cite@outer@open}%
+  {\csuse{extblx@delim@cite@outer@open}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \ifnumgreater{\value{citecount}}{1}
-     {\csuse{exblx@delim@cite@outer@open}}
+     {\csuse{extblx@delim@cite@outer@open}}
      {}%
    \usebibmacro{cite}}
-  {\csuse{exblx@delim@cite@outer@close}%
+  {\csuse{extblx@delim@cite@outer@close}%
    \multicitedelim}
   {\usebibmacro{postnote}%
-   \csuse{exblx@delim@cite@outer@close}}
+   \csuse{extblx@delim@cite@outer@close}}
 
 \DeclareCiteCommand{\parencite}[\mkpairedouterparencitedelim]
   {\usebibmacro{prenote}}
@@ -59,9 +59,9 @@
      {\stepcounter{textcitetotal}%
       \textcitedelim}%
    \usebibmacro{textcite}}
-  {\csuse{exblx@delim@textcite@inner@close}}
+  {\csuse{extblx@delim@textcite@inner@close}}
   {\usebibmacro{postnote}%
-   \csuse{exblx@delim@textcite@inner@close}}
+   \csuse{extblx@delim@textcite@inner@close}}
 
 \DeclareMultiCiteCommand{\parencites}[\mkpairedouterparencitedelim]{\parencite}{\multicitedelim}
 \DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]

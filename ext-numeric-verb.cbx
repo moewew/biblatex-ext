@@ -6,7 +6,7 @@
 \RequireCitationStyle{numeric-verb}
 
 \DeclarePairedCiteOuterDelim{cite}{\bibopenbracket}{\bibclosebracket}
-\DeclarePairedCiteOuterDelimAlias*{parencite}{cite}
+\DeclarePairedCiteOuterDelimAlias{parencite}{cite}
 \DeclarePairedCiteOuterDelim{textcite}{}{}
 
 \DeclarePairedCiteInnerDelim{textcite}{\bibopenbracket}{\bibclosebracket}
@@ -15,23 +15,23 @@
   \ifnameundef{labelname}
     {\printfield[citetitle]{labeltitle}}
     {\printnames{labelname}}%
-  \printdelim{namelabeldelim}\csuse{exblx@delim@\blx@delimcontext @inner@open}%
+  \printdelim{namelabeldelim}\csuse{extblx@delim@\blx@delimcontext @inner@open}%
   \ifnumequal{\value{citecount}}{1}
     {\usebibmacro{prenote}}
     {}%
   \usebibmacro{cite}}
 
 \DeclareCiteCommand{\cite}
-  {\csuse{exblx@delim@\blx@delimcontext @outer@open}%
+  {\csuse{extblx@delim@\blx@delimcontext @outer@open}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \ifnumgreater{\value{citecount}}{1}
-     {\csuse{exblx@delim@\blx@delimcontext @outer@open}}
+     {\csuse{extblx@delim@\blx@delimcontext @outer@open}}
      {}%
    \usebibmacro{cite}}
-  {\csuse{exblx@delim@\blx@delimcontext @outer@close}\multicitedelim}
+  {\csuse{extblx@delim@\blx@delimcontext @outer@close}\multicitedelim}
   {\usebibmacro{postnote}%
-   \csuse{exblx@delim@\blx@delimcontext @outer@close}}
+   \csuse{extblx@delim@\blx@delimcontext @outer@close}}
 
 \DeclareCiteCommand{\parencite}[\mkpairedouterparencitedelim]
   {\usebibmacro{prenote}}
@@ -55,9 +55,9 @@
      {\stepcounter{textcitetotal}%
       \textcitedelim}%
    \usebibmacro{textcite}}
-  {\csuse{exblx@delim@\blx@delimcontext @inner@close}}
+  {\csuse{extblx@delim@\blx@delimcontext @inner@close}}
   {\usebibmacro{postnote}%
-   \csuse{exblx@delim@\blx@delimcontext @inner@close}}
+   \csuse{extblx@delim@\blx@delimcontext @inner@close}}
 
 \DeclareMultiCiteCommand{\parencites}[\mkpairedouterparencitedelim]{\parencite}{\multicitedelim}
 \DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]

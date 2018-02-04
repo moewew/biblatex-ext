@@ -8,6 +8,14 @@
 
 \DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
 
+\DeclareFieldFormat{extblx@innercitedelim}
+                   {\csuse{mkpairedinner\blx@delimcontext delim}{#1}}
+\DeclareFieldFormat{extblx@innerparencitedelim}
+                   {\csuse{mkpairedinner\blx@delimcontext delim}{#1}}
+\DeclareFieldFormat{extblx@innertextcitedelim}{#1}
+\DeclareFieldFormat{extblx@innerfootcitedelim}
+                   {\csuse{mkpairedinner\blx@delimcontext delim}{#1}}
+
 \DeclareFieldFormat{citelabeldate}{#1}
 \DeclareFieldFormat{parencitelabeldate}{#1}
 \DeclareFieldFormat{textcitelabeldate}{#1}
@@ -15,7 +23,7 @@
 
 \DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
 
-\newcommand*{\extradateonlydelim}{\addcomma}
+\newcommand*{\extradateonlycompcitedelim}{\addcomma}
 
 \renewbibmacro*{cite}{%
   \iffieldundef{shorthand}
@@ -24,14 +32,14 @@
         \setunit{%
           \global\booltrue{cbx:parens}%
           \printdelim{nonameyeardelim}%
-          \csuse{exblx@delim@\blx@delimcontext @inner@open}}%
+          \csuse{extblx@delim@\blx@delimcontext @inner@open}}%
         \usebibmacro{cite:labeldate+extradate}%
         \usebibmacro{cite:reinit}}
        {\iffieldequals{namehash}{\cbx@lasthash}
           {\ifboolexpr{test {\iffieldequals{labelyear}{\cbx@lastyear}}
                        and (test {\ifnumequal{\value{multicitecount}}{0}}
                             or test {\iffieldundef{postnote}})}
-             {\setunit{\extradateonlydelim}%
+             {\setunit{\extradateonlycompcitedelim}%
               \usebibmacro{cite:extradate}}
              {\setunit{\compcitedelim}%
               \usebibmacro{cite:labeldate+extradate}%
@@ -40,7 +48,7 @@
            \setunit{%
              \global\booltrue{cbx:parens}%
              \printdelim{nameyeardelim}%
-             \csuse{exblx@delim@\blx@delimcontext @inner@open}}%
+             \csuse{extblx@delim@\blx@delimcontext @inner@open}}%
            \usebibmacro{cite:labeldate+extradate}%
            \savefield{namehash}{\cbx@lasthash}%
            \savefield{labelyear}{\cbx@lastyear}}}}
@@ -48,7 +56,7 @@
      \usebibmacro{cite:reinit}}%
   \setunit{%
     \ifbool{cbx:parens}
-      {\csuse{exblx@delim@\blx@delimcontext @inner@close}%
+      {\csuse{extblx@delim@\blx@delimcontext @inner@close}%
        \global\boolfalse{cbx:parens}}
       {}%
     \multicitedelim}}
@@ -59,7 +67,7 @@
        {\ifboolexpr{test {\iffieldequals{labelyear}{\cbx@lastyear}}
                     and (test {\ifnumequal{\value{multicitecount}}{0}}
                          or test {\iffieldundef{postnote}})}
-          {\setunit{\extradateonlydelim}%
+          {\setunit{\extradateonlycompcitedelim}%
            \usebibmacro{cite:extradate}}
           {\setunit{\compcitedelim}%
            \usebibmacro{cite:labeldate+extradate}%
@@ -73,7 +81,7 @@
            \setunit{%
              \global\booltrue{cbx:parens}%
              \printdelim{nonameyeardelim}%
-             \csuse{exblx@delim@textcite@inner@open}}%
+             \csuse{extblx@delim@textcite@inner@open}}%
            \ifnumequal{\value{citecount}}{1}
              {\usebibmacro{prenote}}
              {}%
@@ -83,7 +91,7 @@
         \setunit{%
           \global\booltrue{cbx:parens}%
           \printdelim{nameyeardelim}%
-          \csuse{exblx@delim@textcite@inner@open}}%
+          \csuse{extblx@delim@textcite@inner@open}}%
         \ifnumequal{\value{citecount}}{1}
           {\usebibmacro{prenote}}
           {}%
@@ -98,7 +106,7 @@
      \savefield{namehash}{\cbx@lasthash}}%
   \setunit{%
     \ifbool{cbx:parens}
-      {\csuse{exblx@delim@textcite@inner@close}%
+      {\csuse{extblx@delim@textcite@inner@close}%
        \global\boolfalse{cbx:parens}}
       {}%
     \textcitedelim}}
@@ -106,20 +114,20 @@
 \renewbibmacro*{cite:labeldate+extradate}{%
   \iffieldundef{labelyear}
     {}
-    {\printtext[\blx@delimcontext labeldate]{%
-       \printtext[bibhyperref]{%
+    {\printtext[bibhyperref]{%
+       \printtext[extblx@\blx@delimcontext labeldate]{%
          \printlabeldateextra}}}}
 
 \renewbibmacro*{cite:extradate}{%
   \iffieldundef{extradate}
     {}
-    {\printtext[\blx@delimcontext labeldate]{%
-       \printtext[bibhyperref]{%
+    {\printtext[bibhyperref]{%
+       \printtext[extblx@\blx@delimcontext labeldate]{%
          \printfield{extradate}}}}}
 
 \renewbibmacro*{cite:postnote}{%
   \ifbool{cbx:parens}
-    {\csuse{exblx@delim@\blx@delimcontext @inner@close}%
+    {\csuse{extblx@delim@\blx@delimcontext @inner@close}%
      \global\boolfalse{cbx:parens}}
     {}%
   \usebibmacro{postnote}}
@@ -130,12 +138,12 @@
     {\setunit{}%
      \printtext{%
        \ifbool{cbx:parens}
-         {\csuse{exblx@delim@textcite@inner@close}%
+         {\csuse{extblx@delim@textcite@inner@close}%
           \global\boolfalse{cbx:parens}}
          {}}}
     {\setunit{%
        \ifbool{cbx:parens}
-         {\csuse{exblx@delim@textcite@inner@close}%
+         {\csuse{extblx@delim@textcite@inner@close}%
           \global\boolfalse{cbx:parens}}
          {}%
        \textcitedelim}}}

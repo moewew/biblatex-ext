@@ -44,7 +44,7 @@ standard styles that ship with `biblatex`.
 Copyright 2017 Moritz Wemheuer.
 
 This work consists of the `.bbx` and `.cbx` files mentioned above.
-  
+
 The text files contained in this work may be distributed and/or modified
 under the conditions of the LaTeX Project Public License (LPPL),
 either version 1.3c of this license or (at your option) any later

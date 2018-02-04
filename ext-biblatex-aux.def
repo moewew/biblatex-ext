@@ -1,65 +1,76 @@
 \ProvidesFile{ext-biblatex-aux.def}
   [2017/12/01 v0.2 auxiliaries for extended biblatex citation style (MW)]
 
+\def\extblx@requiredbiblatexversion{3.11}
+\def\extblx@requiredbiblatexdate{2018/02/04}
+
+\@ifpackagelater{biblatex}{\extblx@requiredbiblatexdate}
+  {}
+  {\PackageWarningNoLine{extbiblatex}
+     {Outdated version of biblatex detected.\MessageBreak
+      Upgrade to biblatex \extblx@requiredbiblatexversion\space
+      (\extblx@requiredbiblatexdate) or later.\MessageBreak
+      I found '\csuse{abx@version} (\csuse{abx@date})'}}
+
 % outer cite delimiters
 \newcommand*{\DeclarePairedCiteOuterDelim}[3]{%
-  \csdef{exblx@delim@#1@outer@open}{#2}%
-  \csdef{exblx@delim@#1@outer@close}{#3}}
+  \csdef{extblx@delim@#1@outer@open}{#2}%
+  \csdef{extblx@delim@#1@outer@close}{#3}}
 
 \newrobustcmd*{\DeclarePairedCiteOuterDelimAlias}{%
   \@ifstar
-    {\exblx@declare@paired@cite@outer@delim@alias@i}
-    {\exblx@declare@paired@cite@outer@delim@alias}}
-\def\exblx@declare@paired@cite@outer@delim@alias#1#2{%
-  \csdef{exblx@delim@#1@outer@open}{\csuse{exblx@delim@#2@outer@open}}%
-  \csdef{exblx@delim@#1@outer@close}{\csuse{exblx@delim@#2@outer@close}}}
-\def\exblx@declare@paired@cite@outer@delim@alias@i#1#2{%
-  \csletcs{exblx@delim@#1@outer@open}{exblx@delim@#2@outer@open}%
-  \csletcs{exblx@delim@#1@outer@close}{exblx@delim@#2@outer@close}}
+    {\extblx@declare@paired@cite@outer@delim@alias@i}
+    {\extblx@declare@paired@cite@outer@delim@alias}}
+\def\extblx@declare@paired@cite@outer@delim@alias#1#2{%
+  \csdef{extblx@delim@#1@outer@open}{\csuse{extblx@delim@#2@outer@open}}%
+  \csdef{extblx@delim@#1@outer@close}{\csuse{extblx@delim@#2@outer@close}}}
+\def\extblx@declare@paired@cite@outer@delim@alias@i#1#2{%
+  \csletcs{extblx@delim@#1@outer@open}{extblx@delim@#2@outer@open}%
+  \csletcs{extblx@delim@#1@outer@close}{extblx@delim@#2@outer@close}}
 
-\newrobustcmd*{\exblx@create@mkpairedouterdelim}[1]{%
+\newrobustcmd*{\extblx@create@mkpairedouterdelim}[1]{%
   \protected\csdef{mkpairedouter#1delim}##1{%
     \begingroup
       \blx@blxinit
       \blx@setsfcodes
-      \csuse{exblx@delim@#1@outer@open}%
+      \csuse{extblx@delim@#1@outer@open}%
       ##1%
-      \csuse{exblx@delim@#1@outer@close}%
+      \csuse{extblx@delim@#1@outer@close}%
     \endgroup}}
 
-\exblx@create@mkpairedouterdelim{cite}
-\exblx@create@mkpairedouterdelim{parencite}
-\exblx@create@mkpairedouterdelim{textcite}
-\exblx@create@mkpairedouterdelim{bibxrefcite}
+\extblx@create@mkpairedouterdelim{cite}
+\extblx@create@mkpairedouterdelim{parencite}
+\extblx@create@mkpairedouterdelim{textcite}
+\extblx@create@mkpairedouterdelim{bibxrefcite}
 
 % inner cite delimiters to set off year in authoryear
 \newrobustcmd*{\DeclarePairedCiteInnerDelim}[3]{%
-  \csdef{exblx@delim@#1@inner@open}{#2}%
-  \csdef{exblx@delim@#1@inner@close}{#3}}
+  \csdef{extblx@delim@#1@inner@open}{#2}%
+  \csdef{extblx@delim@#1@inner@close}{#3}}
 
 \newrobustcmd*{\DeclarePairedCiteInnerDelimAlias}{%
   \@ifstar
-    {\exblx@declare@paired@cite@inner@delim@alias@i}
-    {\exblx@declare@paired@cite@inner@delim@alias}}
-\def\exblx@declare@paired@cite@inner@delim@alias#1#2{%
-  \csdef{exblx@delim@#1@inner@open}{\csuse{exblx@delim@#2@inner@open}}%
-  \csdef{exblx@delim@#1@inner@close}{\csuse{exblx@delim@#2@inner@close}}}
-\def\exblx@declare@paired@cite@inner@delim@alias@i#1#2{%
-  \csletcs{exblx@delim@#1@inner@open}{exblx@delim@#2@inner@open}%
-  \csletcs{exblx@delim@#1@inner@close}{exblx@delim@#2@inner@close}}
+    {\extblx@declare@paired@cite@inner@delim@alias@i}
+    {\extblx@declare@paired@cite@inner@delim@alias}}
+\def\extblx@declare@paired@cite@inner@delim@alias#1#2{%
+  \csdef{extblx@delim@#1@inner@open}{\csuse{extblx@delim@#2@inner@open}}%
+  \csdef{extblx@delim@#1@inner@close}{\csuse{extblx@delim@#2@inner@close}}}
+\def\extblx@declare@paired@cite@inner@delim@alias@i#1#2{%
+  \csletcs{extblx@delim@#1@inner@open}{extblx@delim@#2@inner@open}%
+  \csletcs{extblx@delim@#1@inner@close}{extblx@delim@#2@inner@close}}
 
-\newcommand*{\exblx@create@mkpairedinnerdelim}[1]{%
+\newcommand*{\extblx@create@mkpairedinnerdelim}[1]{%
   \protected\csdef{mkpairedinner#1delim}##1{%
     \begingroup
       \blx@blxinit
       \blx@setsfcodes
-      \csuse{exblx@delim@#1@inner@open}%
+      \csuse{extblx@delim@#1@inner@open}%
       ##1%
-      \csuse{exblx@delim@#1@inner@close}%
+      \csuse{extblx@delim@#1@inner@close}%
     \endgroup}}
 
-\exblx@create@mkpairedinnerdelim{cite}
-\exblx@create@mkpairedinnerdelim{parencite}
-\exblx@create@mkpairedinnerdelim{textcite}
+\extblx@create@mkpairedinnerdelim{cite}
+\extblx@create@mkpairedinnerdelim{parencite}
+\extblx@create@mkpairedinnerdelim{textcite}
 
 \endinput

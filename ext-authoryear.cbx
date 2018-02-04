@@ -7,21 +7,28 @@
 
 \DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
 
-\DeclareFieldFormat{citelabeldate}{\csuse{mkpairedinner\blx@delimcontext delim}{#1}}
-\DeclareFieldFormat{parencitelabeldate}{\csuse{mkpairedinner\blx@delimcontext delim}{#1}}
-% You probably don't want to change textcitelabeldate,
-% have a look at \DeclarePairedCiteInnerDelim{textcite} instead.
+\DeclareFieldFormat{extblx@innercitedelim}
+                   {\csuse{mkpairedinner\blx@delimcontext delim}{#1}}
+\DeclareFieldFormat{extblx@innerparencitedelim}
+                   {\csuse{mkpairedinner\blx@delimcontext delim}{#1}}
+\DeclareFieldFormat{extblx@innertextcitedelim}{#1}
+\DeclareFieldFormat{extblx@innerfootcitedelim}
+                   {\csuse{mkpairedinner\blx@delimcontext delim}{#1}}
+
+\DeclareFieldFormat{citelabeldate}{#1}
+\DeclareFieldFormat{parencitelabeldate}{#1}
 \DeclareFieldFormat{textcitelabeldate}{#1}
-\DeclareFieldFormat{footcitelabeldate}{\csuse{mkpairedinner\blx@delimcontext delim}{#1}}
+\DeclareFieldFormat{footcitelabeldate}{#1}
 
 \DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
 
 \renewbibmacro*{cite:labeldate+extradate}{%
   \iffieldundef{labelyear}
     {}
-    {\printtext[\blx@delimcontext labeldate]{%
+    {\printtext[extblx@inner\blx@delimcontext delim]{%
        \printtext[bibhyperref]{%
-         \printlabeldateextra}}}}
+         \printtext[\blx@delimcontext labeldate]{%
+           \printlabeldateextra}}}}}
 
 \renewbibmacro*{textcite}{%
   \ifnameundef{labelname}
@@ -30,7 +37,7 @@
         \setunit{%
           \global\booltrue{cbx:parens}%
           \printdelim{nonameyeardelim}%
-          \csuse{exblx@delim@textcite@inner@open}}%
+          \csuse{extblx@delim@textcite@inner@open}}%
         \ifnumequal{\value{citecount}}{1}
           {\usebibmacro{prenote}}
           {}%
@@ -40,7 +47,7 @@
      \setunit{%
        \global\booltrue{cbx:parens}%
        \printdelim{nameyeardelim}%
-       \csuse{exblx@delim@textcite@inner@open}}%
+       \csuse{extblx@delim@textcite@inner@open}}%
      \ifnumequal{\value{citecount}}{1}
        {\usebibmacro{prenote}}
        {}%
@@ -49,13 +56,13 @@
 \renewbibmacro*{textcite:postnote}{%
   \iffieldundef{postnote}
     {\ifbool{cbx:parens}
-       {\csuse{exblx@delim@textcite@inner@close}}
+       {\csuse{extblx@delim@textcite@inner@close}}
        {}}
     {\ifbool{cbx:parens}
        {\setunit{\postnotedelim}}
        {\setunit{\extpostnotedelim
-                 \csuse{exblx@delim@textcite@inner@open}}}%
-     \printfield{postnote}\csuse{exblx@delim@textcite@inner@close}}}
+                 \csuse{extblx@delim@textcite@inner@open}}}%
+     \printfield{postnote}\csuse{extblx@delim@textcite@inner@close}}}
 
 \DeclareCiteCommand{\cite}[\mkpairedoutercitedelim]
   {\usebibmacro{prenote}}%
@@ -102,7 +109,7 @@
       \textcitedelim}%
    \usebibmacro{textcite}}
   {\ifbool{cbx:parens}
-     {\csuse{exblx@delim@textcite@inner@close}%
+     {\csuse{extblx@delim@textcite@inner@close}%
       \global\boolfalse{cbx:parens}}
      {}}
   {\usebibmacro{textcite:postnote}}

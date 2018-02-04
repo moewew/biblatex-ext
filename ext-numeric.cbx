@@ -6,7 +6,7 @@
 \RequireCitationStyle{numeric}
 
 \DeclarePairedCiteOuterDelim{cite}{\bibopenbracket}{\bibclosebracket}
-\DeclarePairedCiteOuterDelimAlias*{parencite}{cite}
+\DeclarePairedCiteOuterDelimAlias{parencite}{cite}
 \DeclarePairedCiteOuterDelim{textcite}{}{}
 
 \DeclarePairedCiteInnerDelim{textcite}{\bibopenbracket}{\bibclosebracket}
@@ -18,7 +18,7 @@
        {\printfield[citetitle]{labeltitle}}
        {\printnames{labelname}}%
      \setunit*{\printdelim{namelabeldelim}}%
-     \printtext{\csuse{exblx@delim@textcite@inner@open}}%
+     \printtext{\csuse{extblx@delim@textcite@inner@open}}%
      \global\booltrue{cbx:parens}%
      \stepcounter{textcitecount}%
      \savefield{namehash}{\cbx@lasthash}}%
@@ -28,7 +28,7 @@
   \usebibmacro{cite}%
   \setunit{%
     \ifbool{cbx:parens}
-      {\csuse{exblx@delim@textcite@inner@close}%
+      {\csuse{extblx@delim@textcite@inner@close}%
        \global\boolfalse{cbx:parens}}
       {}%
     \textcitedelim}}
@@ -39,12 +39,12 @@
     {\setunit{}%
      \printtext{%
        \ifbool{cbx:parens}
-         {\csuse{exblx@delim@textcite@inner@close}%
+         {\csuse{extblx@delim@textcite@inner@close}%
           \global\boolfalse{cbx:parens}}
          {}}}
     {\setunit{%
        \ifbool{cbx:parens}
-         {\csuse{exblx@delim@textcite@inner@close}%
+         {\csuse{extblx@delim@textcite@inner@close}%
           \global\boolfalse{cbx:parens}}
          {}%
        \textcitedelim}}}
