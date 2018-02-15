@@ -80,7 +80,7 @@ but many \sty{biblatex} standard features require \biber{} to function properly.
 \subsection{License}
 Permission is granted to copy, distribute and\slash or modify this software
 under the terms of the \lppl, version 1.3c.%
-\fnurl{http://www.latex-project.org/lppl.txt}
+\fnurl{https://www.latex-project.org/lppl.txt}
 The current maintainer of this work is Moritz Wemheuer (\textcopyright 2017--2018).
 
 
@@ -92,7 +92,7 @@ submit feature requests.\footnote{\url{\gitbaseurl}}
 If you do not want to report a bug or request a feature, but are simply in need
 of assistance, you might want to consider posting your question on the
 \texttt{comp.text.tex} newsgroup or \tex{} -- \latex Stack Exchange.%
-\fnurl{http://tex.stackexchange.com/questions/tagged/biblatex}
+\fnurl{https://tex.stackexchange.com/questions/tagged/biblatex}
 
 \section{Usage}
 
@@ -241,8 +241,10 @@ This style is similar to \texttt{ext-\hspace{0pt}verbose-\hspace{0pt}trad2}.
 All options of the \sty{biblatex} package are supported and each style supports
 the options of its standard counterpart.
 
-Additionally all style support the following options in global, per-type and
+Additionally all styles support the following options in global, per-type and
 per-entry scope.
+The default values are such that the styles can be used as drop-in replacement
+for the standard files without significant changes in output.
 
 \begin{optionlist}
 \boolitem[true]{articlein}
@@ -320,7 +322,65 @@ citations where the second is an \bibfield{extradate} only.
 The default is a comma (\emph{not} followed by a space).
 \end{ltxsyntax}
 
+\subsection{Delimiters for Citation Commands}
+The citation commands \cmd{cite}, \cmd{parencite} and \cmd{textcite} come with
+two sets of delimiters: A pair of \emph{outer delimiters} wrapped around the
+resulting citation in its entirety and a pair of \emph{inner delimiters} that
+sets off certains bits of the citation label from other information.
+\cmd{footcite} only supports the inner delimiters.
 
+An example for outer delimiters would be the round brackets of \cmd{parencite}
+for \sty{authoryear}-like styles or the square brackets of \cmd{cite} for 
+\sty{numeric}- or \sty{alphabetic}-like styles.
+Inner delimiters would be the round brackets in \cmd{textcite} around
+the year for \sty{authoryear} or around the title for \sty{authortitle}.
+
+\begin{ltxsyntax}
+\cmditem{DeclarePairedCiteOuterDelim}{cite command}{opening delimiter}
+        {closing delimiter}
+
+Sets up the outer delimiters for the citation command
+\cmd{$\langle$\emph{cite command}$\rangle$}.
+
+For most styles \cmd{parencite} would be set up with
+\begin{ltxexample}
+\DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
+\end{ltxexample}
+
+\cmditem{DeclarePairedCiteOuterDelimAlias}{cite alias}{cite command}
+\cmditem*{DeclarePairedCiteOuterDelimAlias*}{cite alias}{cite command}
+
+Use the outer delimiters of \cmd{$\langle$\emph{cite command}$\rangle$} for
+\cmd{$\langle$\emph{cite alias}$\rangle$} as well.
+The unstarred version uses \cmd{def} assignment while the starred version uses
+\cmd{let}. This means that the starred version copies the values of the
+definitions at the time of executing the aliasing command,
+whereas the alias created by the unstarred version will only evaluate the
+delimiters whenever the citation command is called.
+
+
+\cmditem{DeclarePairedCiteInnerDelim}{cite command}{opening delimiter}
+        {closing delimiter}
+
+Sets up the inner delimiters for the citation command
+\cmd{$\langle$\emph{cite command}$\rangle$}.
+
+For most styles \cmd{textcite} would be set up with
+\begin{ltxexample}
+\DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
+\end{ltxexample}
+
+\cmditem{DeclarePairedCiteInnerDelimAlias}{cite alias}{cite command}
+\cmditem*{DeclarePairedCiteInnerDelimAlias*}{cite alias}{cite command}
+
+Use the inner delimiters of \cmd{$\langle$\emph{cite command}$\rangle$} for
+\cmd{$\langle$\emph{cite alias}$\rangle$} as well.
+The unstarred version uses \cmd{def} assignment while the starred version uses
+\cmd{let}. This means that the starred version copies the values of the
+definitions at the time of executing the aliasing command,
+whereas the alias created by the unstarred version will only evaluate the
+delimiters whenever the citation command is called.
+\end{ltxsyntax}
 
 \section{Revision History}\label{apx:log}
 \begin{changelog}

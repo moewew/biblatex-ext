@@ -2,7 +2,7 @@
   [2017/12/01 v0.2 auxiliaries for extended biblatex citation style (MW)]
 
 \def\extblx@requiredbiblatexversion{3.11}
-\def\extblx@requiredbiblatexdate{2018/02/04}
+\def\extblx@requiredbiblatexdate{2018/02/10}
 
 \@ifpackagelater{biblatex}{\extblx@requiredbiblatexdate}
   {}
@@ -12,65 +12,54 @@
       (\extblx@requiredbiblatexdate) or later.\MessageBreak
       I found '\csuse{abx@version} (\csuse{abx@date})'}}
 
-% outer cite delimiters
-\newcommand*{\DeclarePairedCiteOuterDelim}[3]{%
-  \csdef{extblx@delim@#1@outer@open}{#2}%
-  \csdef{extblx@delim@#1@outer@close}{#3}}
+%{<context>}{<opening delim>}{<closing delim>}
+\newcommand*{\DeclarePairedCiteOuterDelim}{%
+  \extblx@declarepaireddelim{outer}}
+\newrobustcmd*{\DeclarePairedCiteInnerDelim}{%
+  \extblx@declarepaireddelim{inner}}
 
+%{<inner/outer>}{<cite context>}{<opening delim>}{<closing delim>}
+\def\extblx@declarepaireddelim#1#2#3#4{%
+  \csdef{extblx@delim@#2@#1@open}{#3}%
+  \csdef{extblx@delim@#2@#1@close}{#4}}
+
+%{<alias>}{<cite context>}
 \newrobustcmd*{\DeclarePairedCiteOuterDelimAlias}{%
   \@ifstar
-    {\extblx@declare@paired@cite@outer@delim@alias@i}
-    {\extblx@declare@paired@cite@outer@delim@alias}}
-\def\extblx@declare@paired@cite@outer@delim@alias#1#2{%
-  \csdef{extblx@delim@#1@outer@open}{\csuse{extblx@delim@#2@outer@open}}%
-  \csdef{extblx@delim@#1@outer@close}{\csuse{extblx@delim@#2@outer@close}}}
-\def\extblx@declare@paired@cite@outer@delim@alias@i#1#2{%
-  \csletcs{extblx@delim@#1@outer@open}{extblx@delim@#2@outer@open}%
-  \csletcs{extblx@delim@#1@outer@close}{extblx@delim@#2@outer@close}}
-
-\newrobustcmd*{\extblx@create@mkpairedouterdelim}[1]{%
-  \protected\csdef{mkpairedouter#1delim}##1{%
-    \begingroup
-      \blx@blxinit
-      \blx@setsfcodes
-      \csuse{extblx@delim@#1@outer@open}%
-      ##1%
-      \csuse{extblx@delim@#1@outer@close}%
-    \endgroup}}
-
-\extblx@create@mkpairedouterdelim{cite}
-\extblx@create@mkpairedouterdelim{parencite}
-\extblx@create@mkpairedouterdelim{textcite}
-\extblx@create@mkpairedouterdelim{bibxrefcite}
-
-% inner cite delimiters to set off year in authoryear
-\newrobustcmd*{\DeclarePairedCiteInnerDelim}[3]{%
-  \csdef{extblx@delim@#1@inner@open}{#2}%
-  \csdef{extblx@delim@#1@inner@close}{#3}}
-
+    {\extblx@declare@paired@cite@delim@alias@i{outer}}
+    {\extblx@declare@paired@cite@delim@alias{outer}}}
 \newrobustcmd*{\DeclarePairedCiteInnerDelimAlias}{%
   \@ifstar
-    {\extblx@declare@paired@cite@inner@delim@alias@i}
-    {\extblx@declare@paired@cite@inner@delim@alias}}
-\def\extblx@declare@paired@cite@inner@delim@alias#1#2{%
-  \csdef{extblx@delim@#1@inner@open}{\csuse{extblx@delim@#2@inner@open}}%
-  \csdef{extblx@delim@#1@inner@close}{\csuse{extblx@delim@#2@inner@close}}}
-\def\extblx@declare@paired@cite@inner@delim@alias@i#1#2{%
-  \csletcs{extblx@delim@#1@inner@open}{extblx@delim@#2@inner@open}%
-  \csletcs{extblx@delim@#1@inner@close}{extblx@delim@#2@inner@close}}
+    {\extblx@declare@paired@cite@delim@alias@i{inner}}
+    {\extblx@declare@paired@cite@delim@alias{inner}}}
 
-\newcommand*{\extblx@create@mkpairedinnerdelim}[1]{%
-  \protected\csdef{mkpairedinner#1delim}##1{%
+%{<inner/outer>}{<alias>}{<cite context>}
+\def\extblx@declare@paired@cite@delim@alias#1#2#3{%
+  \csdef{extblx@delim@#2@#1@open}{\csuse{extblx@delim@#3@#1@open}}%
+  \csdef{extblx@delim@#2@#1@close}{\csuse{extblx@delim@#3@#1@close}}}
+\def\extblx@declare@paired@cite@delim@alias@i#1#2#3{%
+  \csletcs{extblx@delim@#2@#1@open}{extblx@delim@#3@#1@open}%
+  \csletcs{extblx@delim@#2@#1@close}{extblx@delim@#3@#1@close}}
+
+% declare \mkpaired...delim commands
+\newrobustcmd*{\extblx@create@mkpaireddelim}[2]{%
+  \protected\csdef{mkpaired#1#2delim}##1{%
     \begingroup
       \blx@blxinit
       \blx@setsfcodes
-      \csuse{extblx@delim@#1@inner@open}%
+      \csuse{extblx@delim@#2@#1@open}%
       ##1%
-      \csuse{extblx@delim@#1@inner@close}%
+      \csuse{extblx@delim@#2@#1@close}%
     \endgroup}}
 
-\extblx@create@mkpairedinnerdelim{cite}
-\extblx@create@mkpairedinnerdelim{parencite}
-\extblx@create@mkpairedinnerdelim{textcite}
+\extblx@create@mkpaireddelim{outer}{cite}
+\extblx@create@mkpaireddelim{outer}{parencite}
+\extblx@create@mkpaireddelim{outer}{textcite}
+\extblx@create@mkpaireddelim{outer}{bibxrefcite}
+
+\extblx@create@mkpaireddelim{inner}{cite}
+\extblx@create@mkpaireddelim{inner}{parencite}
+\extblx@create@mkpaireddelim{inner}{textcite}
+\extblx@create@mkpaireddelim{inner}{footcite}
 
 \endinput
