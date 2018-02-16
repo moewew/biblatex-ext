@@ -3,14 +3,16 @@
 \usepackage[utf8]{inputenc}
 \usepackage[british]{babel}
 \usepackage[strict]{csquotes}
+\usepackage[useregional]{datetime2}
 \usepackage{libertine}
 \usepackage[scaled=0.8]{beramono}
 \usepackage{microtype}
 \usepackage{hyphenat}
+\usepackage{bm}
 \usepackage[most]{tcolorbox}
 \definecolor{highlight1}{RGB}{255,0,0}
 \definecolor{highlight2}{RGB}{0,140,0}
-\lstset{escapeinside={(*@}{@*)}}
+\lstset{escapeinside={(*@}{@*)}, language=[LaTeX]TeX}
 
 \usepackage[style=ext-authoryear-icomp, backend=biber]{biblatex}
 \addbibresource{biblatex-examples.bib}
@@ -35,16 +37,16 @@
 
 \titlepage{%
   title={The \sty{biblatex-ext} Package},
-  subtitle={Traditional bibliography styles for \sty{biblatex}},
+  subtitle={Extensions for the \sty{biblatex} standard styles},
   url={\gitbaseurl},
   author={Moritz Wemheuer},
   email={\null},%
   revision={\extblxversion},
-  date={\today}}
+  date={\DTMDate{2018-02-16}}}
 
 \hypersetup{%
   pdftitle={The biblatex-ext Package},
-  pdfsubject={Traditional bibliography styles for biblatex},
+  pdfsubject={Extensions for the \sty{biblatex} standard styles},
   pdfauthor={Moritz Wemheuer},
   pdfkeywords={latex, biblatex, bibtex, bibliography, references, citation}}
 
@@ -109,9 +111,9 @@ of assistance, you might want to consider posting your question on the
 \sty{biblatex} style files.
 
 You can load the styles exactly as you would load the standard styles:
-\begin{lstlisting}[style=latex,escapeinside={(*@}{@*)}]{}
+\begin{tcblisting}{listing only}
 \usepackage[style=(*@$\langle$\normalfont\emph{style}$\rangle$@*)]{biblatex}
-\end{lstlisting}
+\end{tcblisting}
 
 The naming of the styles follows the scheme
 \mbox{\texttt{ext-}$\langle$\emph{standard style}$\rangle$}, e.g.,
@@ -309,13 +311,34 @@ Whether or not to display \enquote{in:} before the journal information in
 All other entry types are not affected by this option.
 
 \begin{tcolorbox}[title={\kvopt{articlein}{true}}]
+\makeatletter
+\togglefalse{bbx:doi}
+\renewbibmacro*{in:}{%
+  \blx@begunit\blx@endunit
+  \textcolor{highlight1}{%
+    \printtext{%
+      \bibstring{in}\intitlepunct}}}
 \toggletrue{bbx:articlein}\fullcite{sigfridsson}
+\renewbibmacro*{in:}{%
+  \blx@begunit\blx@endunit
+  \textcolor{highlight2}{%
+    \printtext{%
+      \bibstring{in}\intitlepunct}}}
 \smallskip\par\fullcite{brandt}
+\makeatother
 \end{tcolorbox}
 
 \begin{tcolorbox}[title={\kvopt{articlein}{false}}]
+\togglefalse{bbx:doi}
 \togglefalse{bbx:articlein}\fullcite{sigfridsson}
+\makeatletter
+\renewbibmacro*{in:}{%
+  \blx@begunit\blx@endunit
+  \textcolor{highlight2}{%
+    \printtext{%
+      \bibstring{in}\intitlepunct}}}
 \smallskip\par\fullcite{brandt}
+\makeatother
 \end{tcolorbox}
 
 \boolitem[false]{innamebeforetitle}
@@ -336,8 +359,8 @@ Whether or not the \bibfield{editor} should be moved before the
          {\bibstring[\mkibid]{idem\thefield{gender}}}
          {\printnames[ineditor]{editor}}%
        \setunit{\printdelim{editortypedelim}}%
-       \usebibmacro{#1}%
-       \clearname{editor}}}
+       \usebibmacro{#1}}%
+     \clearname{editor}}
     {}}
 \makeatother
 \toggletrue{bbx:innamebeforetitle}\fullcite{pines}
@@ -351,8 +374,8 @@ Whether or not the \bibfield{editor} should be moved before the
        \usebibmacro{byeditor+othersstrg}%
        \setunit{\addspace}%
        \printnames[byeditor]{editor}%
-       \clearname{editor}%
-       \newunit}}%
+       \newunit}
+     \clearname{editor}}%
   \usebibmacro{byeditorx}%
   \usebibmacro{bytranslator+others}}
 \togglefalse{bbx:innamebeforetitle}\fullcite{pines}
@@ -448,8 +471,29 @@ to the parent entry.
 \end{tcolorbox}
 
 \subsection{Field Formats}
+At a few points where the standard styles employ hard-coded formatting directive
+the styles of this bundle offer customisable formats instead.
 
+\begin{keymarglist}
+\item[bib(list)labeldate] The format for the labeldate in the bibliography or
+  a bibliography list for author-year-like styles. The default is to wrap the
+  date in round brackets.
+  \begin{tcolorbox}
+  \togglefalse{bbx:doi}
+  \DeclareFieldFormat{biblabeldate}{\textcolor{highlight1}{\textbf{\bibopenparen}}#1\textcolor{highlight1}{\textbf{\bibcloseparen}}}
+  \fullcite{sigfridsson}
+  \end{tcolorbox}
 
+\item[issuedate] The format of the \bibfield{issue} and \bibfield{date}
+  information for \bibtype{article}s. By default this block is wrapped in
+  round brackets.
+  \begin{tcolorbox}
+  \makeatletter\bbx@opt@mergedate@false\makeatother
+  \togglefalse{bbx:doi}
+  \DeclareFieldFormat{issuedate}{\textcolor{highlight1}{\textbf{\bibopenparen}}#1\textcolor{highlight1}{\textbf{\bibcloseparen}}}
+  \fullcite{sigfridsson}
+  \end{tcolorbox}
+\end{keymarglist}
 
 \DeclareFieldFormat{issuedate}{\mkbibparens{#1}}
 
@@ -462,6 +506,7 @@ The delimiter between the \bibfield{volume}, \bibfield{number} block and the
 date information for \bibtype{article}.
 The default is a space.
 \begin{tcolorbox}
+\togglefalse{bbx:doi}
 \renewcommand*{\volnumdatedelim}{\textcolor{highlight1}{\textvisiblespace}}
 \makeatletter\bbx@opt@mergedate@false\makeatother
 \fullcite{sigfridsson}
@@ -473,6 +518,7 @@ The delimiter between \bibfield{volume} and \bibfield{number} for
 \bibtype{article}.
 The default is a dot.
 \begin{tcolorbox}
+\togglefalse{bbx:doi}
 \renewcommand*{\volnumdelim}{\textcolor{highlight1}{\textbf{\adddot}}}
 \fullcite{sigfridsson}
 \end{tcolorbox}
@@ -588,9 +634,9 @@ as opening delimiter and \cmd{bibclosebracket} as closing delimiter, though:
 The closing delimiter will automatically match the opening one.}.
 
 For most styles \cmd{parencite} would be set up with
-\begin{ltxexample}
+\begin{tcblisting}{listing only}
 \DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
-\end{ltxexample}
+\end{tcblisting}
 
 \cmditem{DeclarePairedCiteOuterDelimAlias}{cite alias}{cite command}
 \cmditem*{DeclarePairedCiteOuterDelimAlias*}{cite alias}{cite command}
@@ -611,9 +657,9 @@ Sets up the inner delimiters for the citation command
 \cmd{$\langle$\emph{cite command}$\rangle$}.
 
 For most styles \cmd{textcite} would be set up with
-\begin{ltxexample}
+\begin{tcblisting}{listing only}
 \DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
-\end{ltxexample}
+\end{tcblisting}
 
 \cmditem{DeclarePairedCiteInnerDelimAlias}{cite alias}{cite command}
 \cmditem*{DeclarePairedCiteInnerDelimAlias*}{cite alias}{cite command}
@@ -628,10 +674,16 @@ delimiters whenever the citation command is called.
 
 If you wanted \cmd{parencite} of \sty{authoryear} to look like
 \enquote{[Sigfridsson and Worman $\langle$1998$\rangle$]} you would use
-\begin{ltxexample}
-\DeclarePairedCiteOuterDelim{parencite}{\bibopenbracket}{\bibclosebracket}
-\DeclarePairedCiteInnerDelim{parencite}{$\langle$}{$\rangle$}
-\end{ltxexample}
+\begin{tcblisting}{listing only}
+\DeclarePairedCiteOuterDelim{parencite}{(*@\textcolor{highlight1}{\string\bibopenbracket}@*)}{(*@\textcolor{highlight1}{\string\bibclosebracket}@*)}
+\DeclarePairedCiteInnerDelim{parencite}{(*@\textcolor{highlight2}{\$\string\langle\$}@*)}{(*@\textcolor{highlight2}{\$\string\rangle\$}@*)}
+\end{tcblisting}
+\begin{tcolorbox}
+\DeclarePairedCiteOuterDelim{parencite}{\textcolor{highlight1}{\bfseries\bibopenbracket}}{\textcolor{highlight1}{\bfseries\bibclosebracket}}
+\DeclarePairedCiteInnerDelim{parencite}{\textcolor{highlight2}{$\bm{\langle}$}}{\textcolor{highlight2}{$\bm{\rangle}$}}
+\parencite{sigfridsson}\quad\parencite{worman,geer}\quad
+\parencite{knuth:ct:a,knuth:ct:b,knuth:ct:c}
+\end{tcolorbox}
 \end{ltxsyntax}
 
 \section{Revision History}\label{apx:log}

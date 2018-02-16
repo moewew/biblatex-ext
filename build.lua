@@ -34,10 +34,12 @@ function setversion_update_line (line, date, version)
   then
     line = string.gsub(line, "%d+%.%d+%.?%d?%w?", version)
   end
-  if string.match(line, "^\\begin%{release%}%{<version>%}%{<date>%}$")
-  then
+  if string.match(line, "^\\begin%{release%}%{<version>%}%{<date>%}$") then
     line = string.gsub(line, "<version>", version)
     line = string.gsub(line, "<date>", date)
+  end
+  if string.match(line, "date=%{\\DTMDate%{%d%d%d%d%-%d%d%-%d%d%}%}") then
+    line = string.gsub(line, "%d%d%d%d%-%d%d%-%d%d", date)
   end
   return line
 end
