@@ -1,5 +1,5 @@
 \ProvidesFile{ext-authoryear-icomp.cbx}
-  [2017/12/01 v0.2 extended biblatex authoryear-icomp
+  [2018/02/15 v0.1 extended biblatex authoryear-icomp
    citation style (MW)]
 
 \blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
@@ -15,7 +15,7 @@
 
 \DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
 
-\newcommand*{\extradateonlydelim}{\addcomma}
+\newcommand*{\extradateonlycompcitedelim}{\addcomma}
 
 \renewbibmacro*{cite}{%
   \iffieldundef{shorthand}
@@ -33,7 +33,7 @@
              {\ifboolexpr{test {\iffieldequals{labelyear}{\cbx@lastyear}}
                           and (test {\ifnumequal{\value{multicitecount}}{0}}
                                or test {\iffieldundef{postnote}})}
-                {\setunit{\extradateonlydelim}%
+                {\setunit{\extradateonlycompcitedelim}%
                  \usebibmacro{cite:extradate}}
                 {\setunit{\compcitedelim}%
                  \usebibmacro{cite:labeldate+extradate}%
@@ -61,7 +61,7 @@
        {\ifboolexpr{test {\iffieldequals{labelyear}{\cbx@lastyear}}
                     and (test {\ifnumequal{\value{multicitecount}}{0}}
                          or test {\iffieldundef{postnote}})}
-          {\setunit{\extradateonlydelim}%
+          {\setunit{\extradateonlycompcitedelim}%
            \usebibmacro{cite:extradate}}
           {\setunit{\compcitedelim}%
            \usebibmacro{cite:labeldate+extradate}%

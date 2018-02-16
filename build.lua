@@ -22,13 +22,22 @@ end
 packtdszip  = true
 
 
-versionfiles = {"*.bbx", "*.cbx", "*.def"}
+versionfiles = {"*.bbx", "*.cbx", "*.def", "*.tex"}
 
 function setversion_update_line (line, date, version)
-  local date = string.gsub(date, "%-", "/")
-  if string.match(line, "%d%d%d%d/%d%d/%d%d v%d%.%d%w? extended") then
-    line = string.gsub(line, "%d%d%d%d/%d%d/%d%d", date)
-    line = string.gsub(line, "v%d%.%d%w?", "v" .. version)
+  local latexdate = string.gsub(date, "%-", "/")
+  if string.match(line, "%d%d%d%d/%d%d/%d%d v%d+%.%d+%.?%d?%w?") then
+    line = string.gsub(line, "%d%d%d%d/%d%d/%d%d", latexdate)
+    line = string.gsub(line, "v%d+%.%d+%.?%d?%w?", "v" .. version)
+  end
+  if string.match(line, "^\\newcommand%*%{\\extblxversion%}%{%d+%.%d+%.?%d?%w?%}$")
+  then
+    line = string.gsub(line, "%d+%.%d+%.?%d?%w?", version)
+  end
+  if string.match(line, "^\\begin%{release%}%{<version>%}%{<date>%}$")
+  then
+    line = string.gsub(line, "<version>", version)
+    line = string.gsub(line, "<date>", date)
   end
   return line
 end
