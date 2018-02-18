@@ -1,42 +1,198 @@
-\documentclass{ltxdockit}
-\usepackage{btxdockit}
+\documentclass[DIV=9]{scrartcl}
+\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[british]{babel}
-\usepackage[strict]{csquotes}
+\usepackage{csquotes}
 \usepackage[useregional]{datetime2}
-\usepackage{libertine}
+\usepackage[mono=false]{libertine}
+\usepackage{zi4}
+%\setmonofont[Scale=MatchLowercase,StylisticSet=1,AutoFakeSlant]{Inconsolatazi4}
+\usepackage[libertine]{newtxmath}
 \usepackage[scaled=0.8]{beramono}
 \usepackage{microtype}
 \usepackage{hyphenat}
 \usepackage{bm}
-\usepackage[most]{tcolorbox}
-\definecolor{highlight1}{RGB}{255,0,0}
-\definecolor{highlight2}{RGB}{0,140,0}
-\lstset{escapeinside={(*@}{@*)}, language=[LaTeX]TeX}
-
+\usepackage{multicol}
+\usepackage[svgnames]{xcolor}
+\usepackage[listings, breakable]{tcolorbox}%
 \usepackage[style=ext-authoryear-icomp, backend=biber]{biblatex}
 \addbibresource{biblatex-examples.bib}
 
 \makeatletter
-\blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
-\newcommand*{\biblatexversion}{\extblx@requiredbiblatexversion}
+\def\newtextvisiblespace{%
+  \raisebox{-1.2pt}{%
+    \mbox{\kern.06em\vrule \@height.3ex \@width.14ex}%
+    \vbox{\hrule \@width.3em \@height.14ex}%
+    \hbox{\vrule \@height.3ex \@width.14ex}%
+    \kern.06em}}
 \makeatother
 
+
+\usepackage{ltxdockit}
+\usepackage{btxdockit}
+\hypersetup{%
+  colorlinks=true,
+  allcolors=spot,
+  bookmarksopen=false,
+  bookmarksnumbered=false,
+  plainpages=false}
+
+\definecolor{highlight1}{RGB}{240,0,0}
+\definecolor{highlight2}{RGB}{34,139,34}
+\definecolor{spot}{rgb}{0,0.2,0.6}
+%{named}{DarkRed}%{rgb}{0,0.2,0.6}%{named}{MediumBlue}
+
+\lstdefinestyle{extblxstyle}{%
+  language     = {[LaTeX]TeX},
+  basicstyle=\ttfamily\small,
+  aboveskip    = {0\p@ \@plus 6\p@},
+  belowskip    = {0\p@ \@plus 6\p@},
+  tabsize      = 2,
+  breaklines   = true,
+  breakatwhitespace = true,
+  escapeinside = {(*@}{@*)},
+  moredelim    = {[is][\ttfamily\bfseries\color{highlight1}]{|}{|}},
+  moredelim    = {[is][\ttfamily\bfseries\color{highlight1}]{|1}{1|}},
+  moredelim    = {[is][\ttfamily\bfseries\color{highlight2}]{|2}{2|}},
+}
+
+\newcommand*{\highlight}[2][1]{\textcolor{highlight#1}{#2}}
+
+\newtcolorbox{bibexample}[1][]{colframe=spot!75!black, colback=spot!5!white, #1}
+\newtcblisting{bibcode}{colframe=black!75!white, colback=black!5!white,
+                        listing only, listing options={style=extblxstyle}}
+
+
+\makeatletter
+% this is taken from ltxdockit.cls, which is not loaded
+\newrobustcmd*{\fnurl}[1][]{\hyper@normalise\ltd@fnurl{#1}}
+\def\ltd@fnurl#1#2{\footnote{#1\hyper@linkurl{\Hurl{#2}}{#2}}}
+
+\newrobustcmd*{\email}{\hyper@normalise\ltd@email}
+\def\ltd@email#1{\href{mailto:#1}{#1}}
+
+% title
+\providecommand*{\titlepage}{}
+\providecommand*{\titlefont}{}
+\renewrobustcmd*{\titlepage}[1]{\setkeys{ltd@ttp}{#1}}
+\renewcommand*{\titlefont}{\bfseries}
+\define@key{ltd@ttp}{title}{\def\ltd@title@title{#1}}
+\define@key{ltd@ttp}{subtitle}{\def\ltd@title@subtitle{#1}}
+\define@key{ltd@ttp}{url}{\def\ltd@title@url{#1}}
+\define@key{ltd@ttp}{author}{\def\ltd@title@author{#1}}
+\define@key{ltd@ttp}{email}{\def\ltd@title@email{#1}}
+\define@key{ltd@ttp}{revision}{\def\ltd@title@revision{#1}}
+\define@key{ltd@ttp}{date}{\def\ltd@title@date{#1}}
+
+\providecommand*{\printtitlepage}{}
+\renewrobustcmd*{\printtitlepage}{%
+  \begingroup
+  \centering\titlefont
+  \begingroup\LARGE
+    \ifundef\ltd@title@url
+      {\ltd@title@title}
+      {\href{\ltd@title@url}{\ltd@title@title}}%
+    \par
+  \endgroup
+  \vspace{0.25\baselineskip}
+  \begingroup\large
+    \ltd@title@subtitle\par
+  \endgroup
+  \vspace{0.25\baselineskip}
+  \begin{multicols}{2}
+  \raggedleft
+    \ltd@title@author\par
+    \expandafter\email\expandafter{\ltd@title@email}\par
+  \raggedright
+    Version \ltd@title@revision\par\ltd@title@date
+  \end{multicols}
+  \endgroup}
+
+\BeforeStartingTOC[toc]{\begin{multicols}{2}}
+\AfterStartingTOC[toc]{\end{multicols}}
+
+\newrobustcmd*{\tex}{TeX}
+\newrobustcmd*{\etex}{\mbox{e-TeX}}
+\newrobustcmd*{\pdftex}{pdf\-\tex}
+\newrobustcmd*{\xetex}{Xe\-\tex}
+\newrobustcmd*{\luatex}{Lua\-\tex}
+\newrobustcmd*{\latex}{La\kern-0.07em TeX}
+\newrobustcmd*{\pdflatex}{pdf\-\latex}
+\newrobustcmd*{\xelatex}{Xe\-\latex}
+\newrobustcmd*{\lualatex}{Lua\-\latex}
+\newrobustcmd*{\bibtex}{Bib\kern-0.07em TeX}
+\newrobustcmd*{\lppl}{\latex{} Project Public License}
+\newrobustcmd*{\pdf}{\acr{PDF}}
+\newrobustcmd*{\utf}{\mbox{\acr{UTF}-8}}
+
+\pdfstringdefDisableCommands{%
+  \def\tex{TeX}%
+  \def\etex{e-TeX}%
+  \def\xetex{XeTeX}%
+  \def\latex{LaTeX}%
+  \def\xelatex{XeLaTeX}%
+  \def\bibtex{BibTeX}%
+  \def\lppl{LaTeX Project Public License}%
+  \def\pdf{PDF}%
+  \def\utf{UTF-8}%
+}
+
+\let\accentcolour\spotcolor
+
+\addtokomafont{section}{\accentcolour}
+\addtokomafont{subsection}{\accentcolour}
+\addtokomafont{subsubsection}{\accentcolour}
+
+\renewcommand*{\verbatimfont}{\ttfamily}
+\renewcommand*{\displayverbfont}{\ttfamily}
+\renewcommand*{\marglistfont}{\accentcolour\sffamily\small}
+\renewcommand*{\margnotefont}{\sffamily\small}
+\renewcommand*{\optionlistfont}{\accentcolour\sffamily\displayverbfont}
+\renewcommand*{\ltxsyntaxfont}{\ttfamily}
+\renewcommand*{\ltxsyntaxlabelfont}{\accentcolour\displayverbfont}
+\renewcommand*{\changelogfont}{\normalfont}
+\renewcommand*{\changeloglabelfont}{\accentcolour\sffamily\bfseries}
+\newcommand*{\stylelistfont}{\accentcolour\sffamily\small}
+
+\newenvironment*{stylelist}
+  {\list{}{%
+     \setlength{\labelwidth}{\marglistwidth}%
+     \setlength{\labelsep}{\marglistsep}%
+     \setlength{\leftmargin}{0pt}%
+     \renewcommand*{\makelabel}[1]{\hss\stylelistfont##1}}%
+   \def\styleitem##1{%
+     \item[{##1}]%
+     \ltd@pdfbookmark{##1}{##1}}}
+  {\endlist}
+
+\newenvironment*{keymarglistbook}
+  {\marglist
+   \setlength{\itemsep}{0pt}%
+   \raggedright
+   \let\@@item\item
+   \def\item[##1]{%
+     \@@item[{##1}]%
+     \ltd@pdfbookmark{##1}{##1}}}
+  {\endmarglist}
+
+\blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
+\newcommand*{\biblatexversion}{\extblx@requiredbiblatexversion}
+
+\AtEndPreamble{%
+  \deflength{\marglistwidth}{(\oddsidemargin+2cm)*85/100}}
+\makeatother
+
+% no \mbox here, we may have to break things
 \def\sty{\texttt}
 
 \newcommand*{\gitbaseurl}{https://github.com/moewew/biblatex-ext}
 \newcommand*{\extblxversion}{0.1}
-\newcommand*{\biber}{\sty{biber}}
-  
-\newrobustcmd*{\Deprecated}{%
-  \textcolor{spot}{\margnotefont Deprecated}}
-\newrobustcmd*{\DeprecatedMark}{%
-  \leavevmode\marginpar{\Deprecated}}
+\newcommand*{\biber}{Biber}
 \newcommand*{\gitissuelink}[1]{%
   \href{\gitbaseurl/issues/#1}{issue \##1 on github}}
 
 \titlepage{%
-  title={The \sty{biblatex-ext} Package},
+  title={The \sty{biblatex-ext} Bundle},
   subtitle={Extensions for the \sty{biblatex} standard styles},
   url={\gitbaseurl},
   author={Moritz Wemheuer},
@@ -45,7 +201,7 @@
   date={\DTMDate{2018-02-16}}}
 
 \hypersetup{%
-  pdftitle={The biblatex-ext Package},
+  pdftitle={The biblatex-ext Bundle},
   pdfsubject={Extensions for the \sty{biblatex} standard styles},
   pdfauthor={Moritz Wemheuer},
   pdfkeywords={latex, biblatex, bibtex, bibliography, references, citation}}
@@ -64,24 +220,47 @@
 
 
 \section{Introduction}\label{sec:int}
-The \sty{biblatex-ext} package provides an extended version of the standard
+The \sty{biblatex-ext} bundle provides an extended version of the standard
 styles that come with \sty{biblatex}.
-For each standard style this package provides a style with the same name
+For each standard style this bundle provides a style with the same name
 prefixed with \texttt{ext-} which can be used as a drop-in replacement for the
 standard style -- for example, the replacement for \texttt{authoryear-icomp}
 is called \texttt{ext-authoryear-icomp}.
 
-The aim of this package is to offer a simple interface to change some of the
-stylistic decisions made for the standard styles.
+The aim of the styles of this bundle is to offer a simple interface to change
+some of the stylistic decisions made for the standard styles that would
+otherwise need cumbersome and tedious redefinitions.
 Additionally, some customisation features that were not deemed appropriate
 for inclusion in the \sty{biblatex} kernel are provided.
+Other than that the styles are as close to the standard styles as possible.
+The styles do not attempt to offer options or commands for customisations that
+are already fairly simple to achieve with the tools provided by the standard
+styles.
+
+A few words of warning:
+The styles of this bundle are only really useful if you want to use one of their
+features to avoid having to go through the lengthy and tedious redefinitions the
+standard styles would require.
+Most methods to modify the standard styles are also applicable to the styles of
+this bundle, but you may break some of their features if you happen to redefine
+something that the \sty{ext-} styles redefine themselves.
+While many contributed \sty{biblatex} styles are examples of good \sty{biblatex}
+style coding, this can not be said of all of the files included in this bundle.
+Especially the citation styles have to go through great lengths to implement the
+citation delimiter feature properly.
+So if you want to get inspired for your \sty{biblatex} coding, be warned that
+terrible things lurk in the \sty{.cbx} files.
+The standard \sty{.cbx} files will give you a much better impression of how
+things should be done.
+
 
 \subsection{Requirements}
 The use of the styles requires a current version of the \sty{biblatex} package.
 At the time of writing the latest version of \sty{biblatex} is \biblatexversion,
 that version is required for the styles to work properly.
-A warning will be issued if you use an older version; you may choose to ignore
-that warning, but the style can not be guaranteed to work properly in that case:
+A warning will be issued if you use an older version.
+You may choose to ignore that warning, but the style can not be guaranteed to
+work properly in that case:
 you might get other warnings, errors, or the style might fail silently.
 
 Use of the \biber{} backend is strongly encouraged.
@@ -90,9 +269,13 @@ but many \sty{biblatex} standard features require \biber{} to function properly.
 
 \subsection{License}
 Permission is granted to copy, distribute and\slash or modify this software
-under the terms of the \lppl, version 1.3c.%
-\fnurl{https://www.latex-project.org/lppl.txt}
-The current maintainer of this work is Moritz Wemheuer (\textcopyright 2017--2018).
+under the terms of the \lppl, version 1.3c%
+\fnurl{https://www.latex-project.org/lppl/lppl-1-3c.txt}
+or (at your option) any later version%
+\fnurl{https://www.latex-project.org/lppl.txt}.
+This bundle has the maintenance status \enquote{maintained}.
+The current maintainer of this work is Moritz Wemheuer
+(\textcopyright 2017--2018).
 
 
 \subsection{Feedback}\label{subsec:int:feb}
@@ -107,14 +290,11 @@ of assistance, you might want to consider posting your question on the
 
 \section{Usage}
 
-\sty{biblatex-ext} is not a standalone package, instead it is a collection of
-\sty{biblatex} style files.
-
+The \sty{biblatex-ext} bundle is a collection of \sty{biblatex} style files.
 You can load the styles exactly as you would load the standard styles:
-\begin{tcblisting}{listing only}
+\begin{bibcode}
 \usepackage[style=(*@$\langle$\normalfont\emph{style}$\rangle$@*)]{biblatex}
-\end{tcblisting}
-
+\end{bibcode}
 The naming of the styles follows the scheme
 \mbox{\texttt{ext-}$\langle$\emph{standard style}$\rangle$}, e.g.,
 the style corresponding to \texttt{authoryear-icomp} is called
@@ -128,171 +308,171 @@ and the style examples%
 for a more detailed description of each standard style.
 The relations between the styles are exactly as in their standard counterparts.
 The \texttt{ext-} styles only build on top of the standard files.
-\begin{marglist}
-\item[ext-numeric]
+\begin{stylelist}
+\styleitem{ext-numeric}
 An extended version of the standard \sty{numeric} style for citations with
 numeric labels.
-\begin{tcolorbox}[]
-[1, 2, 3, 5, 7]
-\end{tcolorbox}
+\begin{bibexample}[]
+[1, 2, 3, 5, 6, 7]
+\end{bibexample}
 
-\item[ext-numeric-comp]
+\styleitem{ext-numeric-comp}
 An extended version of the standard \sty{numeric-comp} style.
 Similar to \sty{ext-numeric}, but citation labels are
 compressed to give \enquote{[1--3, 5--7]} instead of
 \enquote{[1, 2, 3, 5, 6, 7]}.
-\begin{tcolorbox}[]
+\begin{bibexample}[]
 [1--3, 5--7]
-\end{tcolorbox}
+\end{bibexample}
 
-\item[ext-numeric-verb]
+\styleitem{ext-numeric-verb}
 An extended version of the standard \sty{numeric-verb} style.
 This style is similar to the \sty{numeric} style, but each citation label
 is in its own set of brackets: \enquote{[1], [2], [3]}.
-\begin{tcolorbox}[]
+\begin{bibexample}[]
 [1], [2], [3], [5], [6], [7]
-\end{tcolorbox}
+\end{bibexample}
 
-\item[ext-alphabetic]
+\styleitem{ext-alphabetic}
 An extended version of the standard \sty{alphabetic} style for citations with
 alphabetic labels derived from author name and year.
-\begin{tcolorbox}[]
+\begin{bibexample}[]
 [SR98, Knu84c]
-\end{tcolorbox}
+\end{bibexample}
 
-\item[ext-alphabetic-verb]
+\styleitem{ext-alphabetic-verb}
 An extended version of the standard \sty{alphabetic-verb} style.
 This style is based on \sty{ext-alphabetic}, but like
 \sty{ext-numeric-verb} places each citation label in its own pair of
 brackets: \enquote{[SR98], [Knu84c]}.
-\begin{tcolorbox}[]
+\begin{bibexample}[]
 [SR98], [Knu84c]
-\end{tcolorbox}
+\end{bibexample}
 
-\item[ext-authoryear]
+\styleitem{ext-authoryear}
 An extended version of the standard \sty{authoryear} style for citations
 using author name and year.
-\begin{tcolorbox}
+\begin{bibexample}
 Sigfridsson and Ryde 1998
-\end{tcolorbox}
+\end{bibexample}
 
-\item[ext-authoryear-comp]
+\styleitem{ext-authoryear-comp}
 An extended version of the standard \sty{authoryear-comp} style.
 The style is based on the author-year citations of \sty{ext-authoryear},
 but several works by the same author are compressed by not displaying the
 author multiple times: \enquote{Knuth 1984, 1986} instead of
 \enquote{Knuth 1984; Knuth 1986}.
-\begin{tcolorbox}
+\begin{bibexample}
 Knuth 1984, 1986
-\end{tcolorbox}
+\end{bibexample}
 
-\item[ext-authoryear-ibid]
+\styleitem{ext-authoryear-ibid}
 An extended version of the standard \sty{authoryear-ibid} style.
 This style is similar to \sty{ext-authoryear}, but repeated citations are
 replaced with \enquote{ibidem}.
-\begin{tcolorbox}
+\begin{bibexample}
 Knuth 1984\quad ibid.
-\end{tcolorbox}
+\end{bibexample}
 
-\item[ext-authoryear-icomp]
+\styleitem{ext-authoryear-icomp}
 An extended version of the standard \sty{authoryear-icomp} style.
 This style combines the two styles \sty{ext-authoryear-comp} and
 \sty{ext-authoryear-ibid}.
-\begin{tcolorbox}
+\begin{bibexample}
 Knuth 1984, 1986 \quad Sigfridsson and Ryde 1998 \quad ibid.
-\end{tcolorbox}
+\end{bibexample}
 
-\item[ext-authortitle]
+\styleitem{ext-authortitle}
 An extended version of the standard \sty{authortitle} style for citations
 by author and title.
-\begin{tcolorbox}
+\begin{bibexample}
 Maron, \emph{Animal Triste}
-\end{tcolorbox}
+\end{bibexample}
 
-\item[ext-authortitle-comp]
+\styleitem{ext-authortitle-comp}
 An extended version of the standard \sty{authortitle-comp} style.
-Based on \sty{ext-authortitle} this style compresses several citations
-by the same author just like \sty{ext-authoryear-comp}:
+This style is based on \sty{ext-authortitle} and compresses several citations
+by the same author just like \sty{ext-author\-year-comp}:
 \enquote{Aristotle, \emph{Physics}, \emph{Poetics}} instead of
 \enquote{Aristotle, \emph{Physics}; Aristotle, \emph{Poetics}}.
-\begin{tcolorbox}
+\begin{bibexample}
 Aristotle, \emph{Physics}, \emph{Poetics}
-\end{tcolorbox}
+\end{bibexample}
 
-\item[ext-authortitle-ibid]
+\styleitem{ext-authortitle-ibid}
 An extended version of the standard \sty{authortitle-ibid} style.
 This style is similar to \sty{ext-authortitle}, but replaces repeated
 citations of the same work with \enquote{ibidem}.
-\begin{tcolorbox}
+\begin{bibexample}
 Maron, \emph{Animal Triste}\quad ibid.
-\end{tcolorbox}
+\end{bibexample}
 
-\item[ext-authortitle-icomp]
+\styleitem{ext-authortitle-icomp}
 An extended version of the standard \sty{authortitle-icomp} style.
 This style combines \sty{ext-authortitle-comp} and
 \sty{ext-authortitle-ibid}.
-\begin{tcolorbox}
+\begin{bibexample}
 Aristotle, \emph{Physics}, \emph{Poetics}\quad Maron, \emph{Animal Triste}\quad ibid.
-\end{tcolorbox}
+\end{bibexample}
 
-\item[ext-authortitle-terse]
+\styleitem{ext-authortitle-terse}
 An extended version of the standard \sty{authortitle-terse} style.
 This style is similar to \sty{ext-authortitle}, but the title is omitted in
 citations if there is only one work by the relevant author.
-\begin{tcolorbox}
+\begin{bibexample}
 Sigfridsson and Ryde \quad Aristotle, \emph{Physics}; Aristotle, \emph{Poetics}
-\end{tcolorbox}
+\end{bibexample}
 
-\item[ext-authortitle-tcomp]
+\styleitem{ext-authortitle-tcomp}
 An extended version of the standard \sty{authortitle-tcomp} style.
 This style combines \sty{ext-authortitle-terse} and
 \sty{ext-authortitle-comp}.
-\begin{tcolorbox}
+\begin{bibexample}
 Sigfridsson and Ryde \quad Aristotle, \emph{Physics}, \emph{Poetics}
-\end{tcolorbox}
+\end{bibexample}
 
-\item[ext-authortitle-ticomp]
+\styleitem{ext-authortitle-ticomp}
 An extended version of the standard \sty{authortitle-ticomp} style.
 This style combines \sty{ext-authortitle-terse},
 \sty{ext-authortitle-comp} and \sty{ext-authortitle-ibid}.
-\begin{tcolorbox}
+\begin{bibexample}
 Aristotle, \emph{Physics}, \emph{Poetics} \quad Sigfridsson and Ryde \quad ibid.
-\end{tcolorbox}
+\end{bibexample}
 
-\item[ext-verbose]
+\styleitem{ext-verbose}
 An extended version of the standard \sty{verbose} style.
 This style shows the full bibliographic reference the first time a work is
 cited.
 
-\item[ext-verbose-ibid]
+\styleitem{ext-verbose-ibid}
 An extended version of the standard \sty{verbose-ibid} style.
 Based on \sty{ext-verbose}, repeated citations to the same work are replaced
 with \enquote{ibidem}.
 
-\item[ext-verbose-note]
+\styleitem{ext-verbose-note}
 An extended version of the standard \sty{verbose-note} style.
 Based on \sty{ext-verbose} and intended for use in footnotes, subsequent
 citations link back to the footnote the entry was cited at first and in full.
 
-\item[ext-verbose-inote]
+\styleitem{ext-verbose-inote}
 An extended version of the standard \sty{verbose-inote} style.
 Similar to \sty{verbose-note}, but repeated citations to the same work are
 replaced with \enquote{ibidem}.
 
-\item[ext-verbose-trad1]
+\styleitem{ext-verbose-trad1}
 An extended version of the standard \sty{verbose-trad1} style.
 This style makes extensive use of scholarly abbreviations and is otherwise
 similar to \sty{ext-verbose}.
 
-\item[ext-verbose-trad2]
+\styleitem{ext-verbose-trad2}
 An extended version of the standard \sty{verbose-trad2} style.
 The style is similar to \sty{ext\hyp{}verbose\hyp{}inote} and
 uses scholarly abbreviations to shorten citations.
 
-\item[ext-verbose-trad3]
+\styleitem{ext-verbose-trad3}
 An extended version of the standard \sty{verbose-trad3} style.
 This style is similar to \sty{ext\hyp{}verbose\hyp{}trad2}.
-\end{marglist}
+\end{stylelist}
 
 
 \subsection{Options}
@@ -310,7 +490,7 @@ Whether or not to display \enquote{in:} before the journal information in
 \bibtype{article} entries.
 All other entry types are not affected by this option.
 
-\begin{tcolorbox}[title={\kvopt{articlein}{true}}]
+\begin{bibexample}[title={\kvopt{articlein}{true}}]
 \makeatletter
 \togglefalse{bbx:doi}
 \renewbibmacro*{in:}{%
@@ -326,9 +506,9 @@ All other entry types are not affected by this option.
       \bibstring{in}\intitlepunct}}}
 \smallskip\par\fullcite{brandt}
 \makeatother
-\end{tcolorbox}
+\end{bibexample}
 
-\begin{tcolorbox}[title={\kvopt{articlein}{false}}]
+\begin{bibexample}[title={\kvopt{articlein}{false}}]
 \togglefalse{bbx:doi}
 \togglefalse{bbx:articlein}\fullcite{sigfridsson}
 \makeatletter
@@ -339,14 +519,14 @@ All other entry types are not affected by this option.
       \bibstring{in}\intitlepunct}}}
 \smallskip\par\fullcite{brandt}
 \makeatother
-\end{tcolorbox}
+\end{bibexample}
 
 \boolitem[false]{innamebeforetitle}
 Whether or not the \bibfield{editor} should be moved before the
 \bibfield{booktitle} field for \bibtype{inbook}, \bibtype{incollection} and
 \bibtype{inproceedings} entries.
 
-\begin{tcolorbox}[title={\kvopt{innamebeforetitle}{true}}]
+\begin{bibexample}[title={\kvopt{innamebeforetitle}{true}}]
 \makeatletter
 \renewbibmacro*{bbx:in:editor}[1]{%
   \ifboolexpr{
@@ -364,9 +544,9 @@ Whether or not the \bibfield{editor} should be moved before the
     {}}
 \makeatother
 \toggletrue{bbx:innamebeforetitle}\fullcite{pines}
-\end{tcolorbox}
+\end{bibexample}
 
-\begin{tcolorbox}[title={\kvopt{innamebeforetitle}{false}}]
+\begin{bibexample}[title={\kvopt{innamebeforetitle}{false}}]
 \renewbibmacro*{byeditor+others}{%
   \ifnameundef{editor}
     {}
@@ -379,7 +559,7 @@ Whether or not the \bibfield{editor} should be moved before the
   \usebibmacro{byeditorx}%
   \usebibmacro{bytranslator+others}}
 \togglefalse{bbx:innamebeforetitle}\fullcite{pines}
-\end{tcolorbox}
+\end{bibexample}
 
 \boolitem[false]{innameidem}
 Whether or not the \bibfield{editor} of the \bibfield{booktitle}
@@ -388,7 +568,8 @@ for the entry types \bibtype{inbook}, \bibtype{incollection} and
 \bibfield{editor} and \bibfield{author} name lists coincide.
 This option only has an effect if \opt{innamebeforetitle} is set to \opt{true}.
 
-\begin{tcolorbox}[title={\kvopt{innameidem}{true}}]
+\begin{bibexample}[title={\kvopt{innameidem}{true}}]
+\togglefalse{bbx:isbn}
 \makeatletter
 \renewbibmacro*{bbx:in:editor}[1]{%
   \ifboolexpr{
@@ -405,10 +586,12 @@ This option only has an effect if \opt{innamebeforetitle} is set to \opt{true}.
        \clearname{editor}}}
     {}}
 \makeatother
-\toggletrue{bbx:innamebeforetitle}\toggletrue{bbx:innameidem}\fullcite{gaonkar:in}
-\end{tcolorbox}
+\toggletrue{bbx:innamebeforetitle}\toggletrue{bbx:innameidem}
+\fullcite{gaonkar:in}
+\end{bibexample}
 
-\begin{tcolorbox}[title={\kvopt{innameidem}{false}}]
+\begin{bibexample}[title={\kvopt{innameidem}{false}}]
+\togglefalse{bbx:isbn}
 \makeatletter
 \renewbibmacro*{bbx:in:editor}[1]{%
   \ifboolexpr{
@@ -425,22 +608,26 @@ This option only has an effect if \opt{innamebeforetitle} is set to \opt{true}.
        \clearname{editor}}}
     {}}
 \makeatother
-\toggletrue{bbx:innamebeforetitle}\togglefalse{bbx:innameidem}\fullcite{gaonkar:in}
-\end{tcolorbox}
+\toggletrue{bbx:innamebeforetitle}\togglefalse{bbx:innameidem}
+\fullcite{gaonkar:in}
+\end{bibexample}
 
 \boolitem[false]{inxref}
 This option controls if \bibtype{inbook}, \bibtype{incollection} and
 \bibtype{inproceedings} entries that are tied to a parent entry with
 \bibfield{xref} or \bibfield{crossref} should cite their parent in the
-bibliography if the parent is listed in the bibliography as an entry.
+bibliography if the parent is listed in the bibliography as a separate entry.
 With the default setting \kvopt{inxref}{false} the parent is not cited, the
 entry is shown as in the standard styles. If the option is set to 
 \texttt{true}, the block following the \enquote{in:} is replaced by a citation
 to the parent entry.
-\end{optionlist}
+The option itself does \emph{not} cause the parent entry to be added to the
+bibliography, this needs to happen either explicitly by citing the parent
+(this includes \cmd{nocite}), or implicitly via the \opt{mincrossrefs} or
+\opt{minxrefs} functionality.
 
 \nocite{westfahl:frontier}
-\begin{tcolorbox}[title={\kvopt{inxref}{true}}]
+\begin{bibexample}[title={\kvopt{inxref}{true}}]
 \makeatletter
 \renewbibmacro*{crosscite}[1]{%
   \textcolor{highlight1}{%
@@ -453,9 +640,9 @@ to the parent entry.
       {\usebibmacro{#1}}}}
 \makeatother
 \toggletrue{bbx:inxref}\fullcite{westfahl:space}
-\end{tcolorbox}
+\end{bibexample}
 
-\begin{tcolorbox}[title={\kvopt{inxref}{false}}]
+\begin{bibexample}[title={\kvopt{inxref}{false}}]
 \makeatletter
 \renewbibmacro*{crosscite}[1]{%
   \textcolor{highlight1}{%
@@ -468,32 +655,34 @@ to the parent entry.
       {\usebibmacro{#1}}}}
 \makeatother
 \togglefalse{bbx:inxref}\fullcite{westfahl:space}
-\end{tcolorbox}
+\end{bibexample}
+
+\end{optionlist}
 
 \subsection{Field Formats}
 At a few points where the standard styles employ hard-coded formatting directive
 the styles of this bundle offer customisable formats instead.
 
-\begin{keymarglist}
+\begin{keymarglistbook}
 \item[bib(list)labeldate] The format for the labeldate in the bibliography or
   a bibliography list for author-year-like styles. The default is to wrap the
   date in round brackets.
-  \begin{tcolorbox}
+  \begin{bibexample}
   \togglefalse{bbx:doi}
-  \DeclareFieldFormat{biblabeldate}{\textcolor{highlight1}{\textbf{\bibopenparen}}#1\textcolor{highlight1}{\textbf{\bibcloseparen}}}
+  \DeclareFieldFormat{biblabeldate}{\highlight{\bibopenparen}#1\highlight{\bibcloseparen}}
   \fullcite{sigfridsson}
-  \end{tcolorbox}
+  \end{bibexample}
 
 \item[issuedate] The format of the \bibfield{issue} and \bibfield{date}
   information for \bibtype{article}s. By default this block is wrapped in
   round brackets.
-  \begin{tcolorbox}
+  \begin{bibexample}
   \makeatletter\bbx@opt@mergedate@false\makeatother
   \togglefalse{bbx:doi}
-  \DeclareFieldFormat{issuedate}{\textcolor{highlight1}{\textbf{\bibopenparen}}#1\textcolor{highlight1}{\textbf{\bibcloseparen}}}
+  \DeclareFieldFormat{issuedate}{\highlight{\bibopenparen}#1\highlight{\bibcloseparen}}
   \fullcite{sigfridsson}
-  \end{tcolorbox}
-\end{keymarglist}
+  \end{bibexample}
+\end{keymarglistbook}
 
 \DeclareFieldFormat{issuedate}{\mkbibparens{#1}}
 
@@ -505,49 +694,50 @@ punctuation between fields.
 The delimiter between the \bibfield{volume}, \bibfield{number} block and the
 date information for \bibtype{article}.
 The default is a space.
-\begin{tcolorbox}
+\begin{bibexample}
 \togglefalse{bbx:doi}
-\renewcommand*{\volnumdatedelim}{\textcolor{highlight1}{\textvisiblespace}}
+\renewcommand*{\volnumdatedelim}{\highlight{\textvisiblespace}}
 \makeatletter\bbx@opt@mergedate@false\makeatother
 \fullcite{sigfridsson}
-\end{tcolorbox}
+\end{bibexample}
 
 
 \csitem{volnumdelim}
 The delimiter between \bibfield{volume} and \bibfield{number} for
 \bibtype{article}.
 The default is a dot.
-\begin{tcolorbox}
+\begin{bibexample}
 \togglefalse{bbx:doi}
-\renewcommand*{\volnumdelim}{\textcolor{highlight1}{\textbf{\adddot}}}
+\renewcommand*{\volnumdelim}{\highlight{\textbf{\adddot}}}
 \fullcite{sigfridsson}
-\end{tcolorbox}
+\end{bibexample}
 
 \csitem{sernumdelim}
 The delimiter between \bibfield{series} and \bibfield{number}.
 The default is a space.
-\begin{tcolorbox}
-\renewcommand*{\sernumdelim}{\textcolor{highlight1}{\textvisiblespace}}
+\begin{bibexample}
+\renewcommand*{\sernumdelim}{\highlight{\textvisiblespace}}
 \fullcite{coleridge}
-\end{tcolorbox}
+\end{bibexample}
 
 \csitem{locdatedelim}
 The delimiter between \bibfield{location} and \bibfield{date}.
 The default is a comma followed by a space.
-\begin{tcolorbox}
-\renewcommand*{\locdatedelim}{\textcolor{highlight1}{\textbf{\addcomma\textvisiblespace}}}
+\begin{bibexample}
+\renewcommand*{\locdatedelim}{\highlight{\bfseries\addcomma\textvisiblespace}}
 \makeatletter\bbx@opt@mergedate@false\makeatother
 \fullcite{jaffe}
-\end{tcolorbox}
+\end{bibexample}
 
 \csitem{locpubdelim}
 The delimiter between \bibfield{location} and \bibfield{publisher}/%
 \bibfield{organization}/\bibfield{institution}.
 The default is a colon followed by a space.
-\begin{tcolorbox}
-\renewcommand*{\locpubdelim}{\textcolor{highlight1}{\textbf{\addcolon\textvisiblespace}}}
-\fullcite{maron}
-\end{tcolorbox}
+\begin{bibexample}
+\makeatletter\bbx@opt@mergedate@false\makeatother
+\renewcommand*{\locpubdelim}{\highlight{\bfseries\addcolon\textvisiblespace}}
+\fullcite{knuth:ct:a}
+\end{bibexample}
 
 
 \csitem{publocdelim}
@@ -558,18 +748,18 @@ This delimiter is not used by the default style, since the standard order of
 fields is \bibfield{location}, \bibfield{publisher}/\bibfield{organization}/%
 \bibfield{institution}, \bibfield{date}.
 You could use \cs{publocdelim} if you changed the order of these fields.
-\begin{tcblisting}{listing only}
+\begin{bibcode}
 \renewbibmacro*{pubinstorg+location+date}[1]{%
   \printlist{#1}%
-  \setunit*{(*@\textcolor{highlight1}{\textbf{\string\publocdelim}}@*)}%
+  \setunit*{|1\publocdelim1|}%
   \printlist{location}%
-  \setunit*{(*@\textcolor{highlight2}{\textbf{\string\locdatedelim}}@*)}%
+  \setunit*{|2\locdatedelim2|}%
   \usebibmacro{date}%
   \newunit}
-\end{tcblisting}
-\begin{tcolorbox}
-\renewcommand*{\publocdelim}{\textcolor{highlight1}{\textbf{\addcomma\textvisiblespace}}}
-\renewcommand*{\locdatedelim}{\textcolor{highlight2}{\textbf{\addcomma\textvisiblespace}}}
+\end{bibcode}
+\begin{bibexample}
+\renewcommand*{\publocdelim}{\highlight[1]{\bfseries\addcomma\textvisiblespace}}
+\renewcommand*{\locdatedelim}{\highlight[2]{\bfseries\addcomma\textvisiblespace}}
 \renewbibmacro*{pubinstorg+location+date}[1]{%
   \printlist{#1}%
   \setunit*{\publocdelim}%
@@ -579,28 +769,28 @@ You could use \cs{publocdelim} if you changed the order of these fields.
   \newunit}
 \makeatletter\bbx@opt@mergedate@false\makeatother
 \fullcite{knuth:ct:a}
-\end{tcolorbox}
+\end{bibexample}
 
 
 \csitem{pubdatedelim}
 The delimiter between \bibfield{publisher}/\bibfield{organization}/%
 \bibfield{institution} and \bibfield{date}.
 The default is a comma followed by a space.
-\begin{tcolorbox}
-\renewcommand*{\pubdatedelim}{\textcolor{highlight1}{\textbf{\addcomma\textvisiblespace}}}
+\begin{bibexample}
+\renewcommand*{\pubdatedelim}{\highlight{\bfseries\addcomma\textvisiblespace}}
 \makeatletter\bbx@opt@mergedate@false\makeatother
-\fullcite{maron}
-\end{tcolorbox}
+\fullcite{knuth:ct:a}
+\end{bibexample}
 
 \csitem{extradateonlycompcitedelim}
 Similar to \cmd{compcitedelim}, but indended for use between compressed
 citations where the second is an \bibfield{extradate} only.
 The default is a comma (\emph{not} followed by a space).
 \end{ltxsyntax}
-\begin{tcolorbox}
-\renewcommand*{\extradateonlycompcitedelim}{\textcolor{highlight1}{\textbf{\addcomma}}}
+\begin{bibexample}
+\renewcommand*{\extradateonlycompcitedelim}{\highlight{\bfseries\addcomma}}
 \cite{knuth:ct:b,knuth:ct:c}
-\end{tcolorbox}
+\end{bibexample}
 
 
 \subsection{Delimiters for Citation Commands}
@@ -629,14 +819,14 @@ Instead of hard-coded \texttt{(}, \texttt{)}, \texttt{[} and \texttt{]} their
 \sty{biblatex} counterparts \cmd{bibopenparen}, \cmd{bibcloseparen},
 \cmd{bibopenbracket} and \cmd{bibclosebracket} are preferable, since these
 commands can change the style when nesting and check if opening brackets
-are always closed\footnote{That means that you can not have \cmd{bibopenparen}
+are always closed.\footnote{That means that you can not have \cmd{bibopenparen}
 as opening delimiter and \cmd{bibclosebracket} as closing delimiter, though:
-The closing delimiter will automatically match the opening one.}.
+The closing delimiter will automatically match the opening one.}
 
 For most styles \cmd{parencite} would be set up with
-\begin{tcblisting}{listing only}
+\begin{bibcode}
 \DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
-\end{tcblisting}
+\end{bibcode}
 
 \cmditem{DeclarePairedCiteOuterDelimAlias}{cite alias}{cite command}
 \cmditem*{DeclarePairedCiteOuterDelimAlias*}{cite alias}{cite command}
@@ -657,9 +847,9 @@ Sets up the inner delimiters for the citation command
 \cmd{$\langle$\emph{cite command}$\rangle$}.
 
 For most styles \cmd{textcite} would be set up with
-\begin{tcblisting}{listing only}
+\begin{bibcode}
 \DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
-\end{tcblisting}
+\end{bibcode}
 
 \cmditem{DeclarePairedCiteInnerDelimAlias}{cite alias}{cite command}
 \cmditem*{DeclarePairedCiteInnerDelimAlias*}{cite alias}{cite command}
@@ -674,17 +864,57 @@ delimiters whenever the citation command is called.
 
 If you wanted \cmd{parencite} of \sty{authoryear} to look like
 \enquote{[Sigfridsson and Worman $\langle$1998$\rangle$]} you would use
-\begin{tcblisting}{listing only}
-\DeclarePairedCiteOuterDelim{parencite}{(*@\textcolor{highlight1}{\string\bibopenbracket}@*)}{(*@\textcolor{highlight1}{\string\bibclosebracket}@*)}
-\DeclarePairedCiteInnerDelim{parencite}{(*@\textcolor{highlight2}{\$\string\langle\$}@*)}{(*@\textcolor{highlight2}{\$\string\rangle\$}@*)}
-\end{tcblisting}
-\begin{tcolorbox}
-\DeclarePairedCiteOuterDelim{parencite}{\textcolor{highlight1}{\bfseries\bibopenbracket}}{\textcolor{highlight1}{\bfseries\bibclosebracket}}
-\DeclarePairedCiteInnerDelim{parencite}{\textcolor{highlight2}{$\bm{\langle}$}}{\textcolor{highlight2}{$\bm{\rangle}$}}
+\begin{bibcode}
+\DeclarePairedCiteOuterDelim{parencite}{|1\bibopenbracket1|}{|1\bibclosebracket1|}
+\DeclarePairedCiteInnerDelim{parencite}{|2$\langle$2|}{|2$\rangle$2|}
+\end{bibcode}
+\begin{bibexample}
+\DeclarePairedCiteOuterDelim{parencite}{\highlight[1]{\bibopenbracket}}{\highlight[1]{\bibclosebracket}}
+\DeclarePairedCiteInnerDelim{parencite}{\highlight[2]{${\langle}$}}{\highlight[2]{${\rangle}$}}
 \parencite{sigfridsson}\quad\parencite{worman,geer}\quad
 \parencite{knuth:ct:a,knuth:ct:b,knuth:ct:c}
-\end{tcolorbox}
+\end{bibexample}
 \end{ltxsyntax}
+
+\subsection{Selected Bibliography Macros}
+\begin{keymarglistbook}
+\item[edition]
+A bibliography macro to print the \bibfield{edition} field, this avoids a direct
+\lstinline|\printfield{edition}| in the bibliography drivers.
+
+\item[in:editor(+others)]
+The bibliography macro to print the \bibfield{editor} before the
+\bibfield{booktitle} for \bibtype{inbook}, \bibtype{incollection} and
+\bibtype{inproceedings} when \opt{innamebeforetitle} is set to \opt{true}.
+The \cmd{printname} uses the name format \texttt{ineditor}.
+
+\item[pubinstorg+location+date]
+A general-purpose macro to catch \texttt{publisher+location+date},
+\texttt{institution+location+date} and \texttt{organization+location+date}.
+As parameter it takes the name of a list field, useful values are
+\bibfield{publisher}, \bibfield{institution} and \bibfield{organization}.
+
+\begin{bibcode}
+\newbibmacro*{pubinstorg+location+date}[1]{%
+  \printlist{location}%
+  \iflistundef{|#1|}
+    {\setunit*{\locdatedelim}}
+    {\setunit*{\locpubdelim}}%
+  \printlist{|#1|}%
+  \setunit*{\pubdatedelim}%
+  \usebibmacro{date}%
+  \newunit}
+
+\renewbibmacro*{|publisher|+location+date}{%
+  \usebibmacro{pubinstorg+location+date}{|publisher|}}
+
+\renewbibmacro*{|institution|+location+date}{%
+  \usebibmacro{pubinstorg+location+date}{|institution|}}
+
+\renewbibmacro*{|organization|+location+date}{%
+  \usebibmacro{pubinstorg+location+date}{|organization|}}
+\end{bibcode}
+\end{keymarglistbook}
 
 \section{Revision History}\label{apx:log}
 \begin{changelog}
@@ -693,9 +923,9 @@ If you wanted \cmd{parencite} of \sty{authoryear} to look like
 \end{release}
 \end{changelog}
 
-\begin{tcolorbox}[breakable]
+\begin{bibexample}[breakable]
 \printbibliography
-\end{tcolorbox}
+\end{bibexample}
 
 \end{document}
 \endinput

@@ -7,6 +7,7 @@ standard styles that ship with `biblatex`.
 `biblatex`'s standard styles.
 
 - The base file `standard.bbx`
+- The auxiliary file `ext-biblatex-aux.def`
 - The `alphabetic` style family
   - `ext-alphabetic.bbx` and `ext-alphabetic.cbx`
   - `ext-alphabetic-verb.bbx` and `ext-alphabetic-verb.cbx`
@@ -41,15 +42,15 @@ standard styles that ship with `biblatex`.
 
 ## Licence
 
-Copyright 2017 Moritz Wemheuer.
+Copyright 2017-2018 Moritz Wemheuer.
 
-This work consists of the `.bbx` and `.cbx` files mentioned above.
+This work consists of the `.bbx`, `.cbx` and `.def` files mentioned above.
 
 The text files contained in this work may be distributed and/or modified
 under the conditions of the LaTeX Project Public License (LPPL),
 either version 1.3c of this license or (at your option) any later
-version.
+version. (http://www.latex-project.org/lppl.txt)
 
-http://www.latex-project.org/lppl.txt
+This work has the LPPL maintenance status 'maintained'.
 
-This work is 'maintained' by Moritz Wemheuer.
+This Current Maintainer of the work is Moritz Wemheuer.
