@@ -2,10 +2,17 @@
   [2018/02/15 v0.1 common files for extended biblatex
    dashed bibliography styles (MW)]
 
-% \DeclareBibliographyOption checks if an option is already defined
+% \DeclareBibliographyOption checks if an option is already defined.
 % if we want to overwrite the definition we need to trick it into
 % thinking the option has not been defined yet.
 \csundef{KV@blx@opt@pre@dashed}
+% We want to define 'dashed' with a new type, so we need to make biblatex
+% forget about the old type when it passes the options over to Biber.
+\ifundef\listcsremove
+  {\PackageWarningNoLine{biblatex-ext}{%
+     'etoolbox' does not provide '\string\listcsremove'.\MessageBreak
+     Please update 'etoolbox' to v2.4 (2017-01-02)\MessageBreak or later}}
+  {\listcsremove{blx@globalopts@boolean}{dashed}}
 
 \DeclareBibliographyOption[string]{dashed}[true]{%
   \ifcsdef{extblx@opt@dashed@#1}
