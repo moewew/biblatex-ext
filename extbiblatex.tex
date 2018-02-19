@@ -1,14 +1,39 @@
 \documentclass[DIV=9]{scrartcl}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
+\usepackage{ifxetex,ifluatex}
+\newif\iffontspec
+\ifxetex
+  \fontspectrue
+\else\ifluatex
+  \fontspectrue
+\else
+  \fontspecfalse
+\fi\fi
+\iffontspec
+  \usepackage{fontspec}
+\else
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\fi
 \usepackage[british]{babel}
 \usepackage{csquotes}
 \usepackage[useregional]{datetime2}
+\usepackage{lmodern}
 \usepackage[mono=false]{libertine}
-\usepackage{zi4}
-%\setmonofont[Scale=MatchLowercase,StylisticSet=1,AutoFakeSlant]{Inconsolatazi4}
 \usepackage[libertine]{newtxmath}
-\usepackage[scaled=0.8]{beramono}
+\iffontspec
+  \setmonofont[Scale=0.78]{Bitstream Vera Sans Mono}
+\else
+  \usepackage[scaled=0.78]{beramono}
+\fi
+\iffalse
+\iffontspec
+  \setmonofont[Scale=0.9387,StylisticSet=1,AutoFakeSlant]{Inconsolatazi4}
+\else
+  \usepackage[scale=0.9387]{zi4}
+\fi
+\usepackage[scaled=0.809]{GoMono}
+\usepackage[scaled=0.814]{FiraMono}
+\fi
 \usepackage{microtype}
 \usepackage{hyphenat}
 \usepackage{bm}
@@ -17,6 +42,7 @@
 \usepackage[listings, breakable]{tcolorbox}%
 \usepackage[style=ext-authoryear-icomp, backend=biber]{biblatex}
 \addbibresource{biblatex-examples.bib}
+\addbibresource{biblatex-ext-examples.bib}
 
 \makeatletter
 \def\newtextvisiblespace{%
@@ -37,9 +63,9 @@
   bookmarksnumbered=false,
   plainpages=false}
 
-\definecolor{highlight1}{RGB}{240,0,0}
-\definecolor{highlight2}{RGB}{34,139,34}
-\definecolor{spot}{rgb}{0,0.2,0.6}
+\definecolor{highlight1}{RGB}{240, 0, 0}%{240,0,0}%{213,94,0}%{217,95,2}%{240,0,0}
+\definecolor{highlight2}{RGB}{0,153, 153}%{50, 205, 50}%{50, 205, 50}%{45, 185, 45}%{0,158,115}%{27,158,119}%{34,139,34}
+\definecolor{spot}{rgb}{0,0.2,0.6}%{RGB}{0,114,178}%{rgb}{0,0.2,0.6}
 %{named}{DarkRed}%{rgb}{0,0.2,0.6}%{named}{MediumBlue}
 
 \lstdefinestyle{extblxstyle}{%
@@ -50,18 +76,39 @@
   tabsize      = 2,
   breaklines   = true,
   breakatwhitespace = true,
+  keepspaces   = true,
   escapeinside = {(*@}{@*)},
   moredelim    = {[is][\ttfamily\bfseries\color{highlight1}]{|}{|}},
   moredelim    = {[is][\ttfamily\bfseries\color{highlight1}]{|1}{1|}},
   moredelim    = {[is][\ttfamily\bfseries\color{highlight2}]{|2}{2|}},
 }
 
+
+\lstdefinelanguage{extBibTeX}{%
+  keywords={%
+    @article,@artwork,@audio,@bibnote,@book,@bookinbook,@booklet,%
+    @collection,@commentary,@customa,@customb,@customc,@customd,%
+    @custome,@customf,@inbook,@incollection,@inproceedings,%
+    @inreference,@image,@jurisdiction,@legal,@legislation,@letter,%
+    @manual,@misc,@movie,@music,@mvcollection,@mvreference,%
+    @mvproceedings,@mvbook,@online,@patent,@performance,@periodical,%
+    @proceedings,@reference,@report,@review,@set,@software,@standard,%
+    @suppbook,@suppcollection,@suppperiodical,@thesis,@unpublished,@video%
+   },
+   morekeywords={author,title,date},
+   sensitive=false,
+}
+
 \newcommand*{\highlight}[2][1]{\textcolor{highlight#1}{#2}}
 
 \newtcolorbox{bibexample}[1][]{colframe=spot!75!black, colback=spot!5!white, #1}
-\newtcblisting{bibcode}{colframe=black!75!white, colback=black!5!white,
-                        listing only, listing options={style=extblxstyle}}
-
+\newtcblisting{biblatexcode}{colframe=black!75!white, colback=black!5!white,
+                             listing only,
+                             listing options={style=extblxstyle}}
+\newtcblisting{bibbibtexcode}{colframe=black!75!white, colback=black!5!white,
+                             breakable, listing only,
+                             listing options={style=extblxstyle,
+                                              language=extBibTeX}}
 
 \makeatletter
 % this is taken from ltxdockit.cls, which is not loaded
@@ -175,6 +222,34 @@
      \ltd@pdfbookmark{##1}{##1}}}
   {\endmarglist}
 
+% modified for correct measurements
+\def\ltd@option@i#1#2#3#4[#5]{%
+  \item[#2]%
+  \ltd@pdfbookmark{#1}{#1}%
+  \begingroup\raggedright
+  \ltd@textverb{=}%
+  \settowidth\@tempdimb{\ltd@textverb{=}}%
+  \settowidth\@tempdimc{\optionlistfont#2}%
+  \ifdim\@tempdimc>\marglistwidth
+    \@tempdimc=\dimexpr\@tempdimc-\marglistwidth\relax
+  \else
+    \@tempdimc=0pt
+  \fi
+  \@tempdima=\dimexpr\linewidth-\@tempdimb-\@tempdimc\relax
+  \ifblank{#4}
+    {}
+    {\settowidth\@tempdimb{default: #4}%
+     \@tempdima=\dimexpr\@tempdima-\@tempdimb-2em\relax}%
+  \parbox[t]{\@tempdima}{\raggedright #3}%
+  \ifblank{#4}
+    {}
+    {\hfill default:~#4}%
+  \ifblank{#5}
+    {}
+    {\marginpar{\margnotefont #5}}%
+  \par\endgroup
+  \nobreak\vspace{\itemsep}}
+
 \blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
 \newcommand*{\biblatexversion}{\extblx@requiredbiblatexversion}
 
@@ -235,7 +310,9 @@ for inclusion in the \sty{biblatex} kernel are provided.
 Other than that the styles are as close to the standard styles as possible.
 The styles do not attempt to offer options or commands for customisations that
 are already fairly simple to achieve with the tools provided by the standard
-styles.
+styles.\footnote{Of course the author reserves the right to decide what
+exactly \enquote{simple} means and also the right to deviate from this principle
+from time to time.}
 
 A few words of warning:
 The styles of this bundle are only really useful if you want to use one of their
@@ -285,16 +362,16 @@ submit feature requests.\footnote{\url{\gitbaseurl}}
 
 If you do not want to report a bug or request a feature, but are simply in need
 of assistance, you might want to consider posting your question on the
-\texttt{comp.text.tex} newsgroup or \tex{} -- \latex Stack Exchange.%
+\texttt{comp.text.tex} newsgroup or \tex{} -- \latex{} Stack Exchange.%
 \fnurl{https://tex.stackexchange.com/questions/tagged/biblatex}
 
 \section{Usage}
 
 The \sty{biblatex-ext} bundle is a collection of \sty{biblatex} style files.
 You can load the styles exactly as you would load the standard styles:
-\begin{bibcode}
+\begin{biblatexcode}
 \usepackage[style=(*@$\langle$\normalfont\emph{style}$\rangle$@*)]{biblatex}
-\end{bibcode}
+\end{biblatexcode}
 The naming of the styles follows the scheme
 \mbox{\texttt{ext-}$\langle$\emph{standard style}$\rangle$}, e.g.,
 the style corresponding to \texttt{authoryear-icomp} is called
@@ -618,7 +695,7 @@ This option controls if \bibtype{inbook}, \bibtype{incollection} and
 \bibfield{xref} or \bibfield{crossref} should cite their parent in the
 bibliography if the parent is listed in the bibliography as a separate entry.
 With the default setting \kvopt{inxref}{false} the parent is not cited, the
-entry is shown as in the standard styles. If the option is set to 
+entry is shown as in the standard styles. If the option is set to
 \texttt{true}, the block following the \enquote{in:} is replaced by a citation
 to the parent entry.
 The option itself does \emph{not} cause the parent entry to be added to the
@@ -657,6 +734,80 @@ bibliography, this needs to happen either explicitly by citing the parent
 \togglefalse{bbx:inxref}\fullcite{westfahl:space}
 \end{bibexample}
 
+The \opt{dashed} option of the \sty{authoryear}- and \sty{authortitle}-like
+bibliography styles allows for finer control over the dashes now.
+\optitem[false]{dashed}{\opt{true}, \opt{false}, \opt{fullhash},
+                        \opt{bibnamehash}}
+
+This option controls whether or not recurring lists of authors/editors in the
+bibliography are replaced with a dash.
+The standard values \opt{true} and \opt{false} are still valid and give the
+exact same output as in the standard styles.
+The new values \opt{fullhash} and \opt{bibnamehash} differ in how exactly they
+determine if a list of authors/editors is the same.
+\begin{valuelist}
+\item[true] An alias for \opt{fullhash}.
+\item[false] Disable this feature.
+\item[bibnamehash] Compare name lists using \bibfield{bibnamehash}, taking
+                   into account only names that are actually listed in the
+                   bibliography account.
+\item[fullhash] Compare name lists using \bibfield{fullhash}, taking into
+                account all names in the list, even those that are truncated
+                and do not appear in the bibliography.
+\end{valuelist}
+
+
+\begin{refsection}
+\makeatletter
+Assuming \kvopt{maxnames}{1} and no name list disambiguation
+(\kvopt{uniquelist}{false}), the four entries
+\begin{bibbibtexcode}
+@book{applebyone,
+  author  = {Humphrey Appleby},
+  title   = {On the Ablative in Greek},
+  date    = {1982},
+}
+
+@book{applebytwo,
+  author  = {Humphrey Appleby},
+  title   = {On the Importance of the Civil Service},
+  date    = {1980},
+}
+
+@book{elkone,
+  author  = {Elk, Anne and Hacker, James and Rumpo, Syd},
+  title   = {On the Theory of Brontosauruses},
+  date    = {1972},
+}
+
+@book{elktwo,
+  author  = {Elk, Anne and Hacker, James and Pode, Eric},
+  title   = {On the Theory of Stegosauruses},
+  date    = {1972},
+}
+\end{bibbibtexcode}
+give
+\let\ExecuteBibliographyOptions\@gobble
+\nocite{elkone,elktwo,applebyone,applebytwo}
+\begin{bibexample}[title={\kvopt{dashed}{false}}]
+\csuse{extblx@opt@dashed@false}
+\printbibliography[heading=none]
+\end{bibexample}
+
+\begin{bibexample}[title={\kvopt{dashed}{bibnamehash}}]
+\csuse{extblx@opt@dashed@bibnamehash}
+\printbibliography[heading=none]
+\end{bibexample}
+
+\begin{bibexample}[title={\kvopt{dashed}{fullhash}}]
+\csuse{extblx@opt@dashed@fullhash}
+\printbibliography[heading=none]
+\end{bibexample}
+\makeatother
+\end{refsection}
+With \kvopt{dashed}{bibnamehash} the dash replaces the name list if they are
+indistinguishable in the bibliography, with \kvopt{dashed}{fullhash} the lists
+are only replaced if they are exactly the same in the data source.
 \end{optionlist}
 
 \subsection{Field Formats}
@@ -730,8 +881,8 @@ The default is a comma followed by a space.
 \end{bibexample}
 
 \csitem{locpubdelim}
-The delimiter between \bibfield{location} and \bibfield{publisher}/%
-\bibfield{organization}/\bibfield{institution}.
+The delimiter between \bibfield{location} and \bibfield{publisher}\slash%
+\bibfield{organization}\slash\bibfield{institution}.
 The default is a colon followed by a space.
 \begin{bibexample}
 \makeatletter\bbx@opt@mergedate@false\makeatother
@@ -741,14 +892,16 @@ The default is a colon followed by a space.
 
 
 \csitem{publocdelim}
-The delimiter between \bibfield{publisher}/\bibfield{organization}/%
+The delimiter between \bibfield{publisher}\slash\bibfield{organization}\slash
 \bibfield{institution} and \bibfield{location}.
 The default is a comma followed by a space.
 This delimiter is not used by the default style, since the standard order of
-fields is \bibfield{location}, \bibfield{publisher}/\bibfield{organization}/%
-\bibfield{institution}, \bibfield{date}.
-You could use \cs{publocdelim} if you changed the order of these fields.
-\begin{bibcode}
+fields is \bibfield{location}, \bibfield{publisher}\slash
+\bibfield{organization}\slash\bibfield{institution}, \bibfield{date}.
+You could use \cs{publocdelim} if you changed the order of these fields to
+\bibfield{publisher}\slash\bibfield{organization}\slash\bibfield{institution},
+\bibfield{location} \bibfield{date} with
+\begin{biblatexcode}
 \renewbibmacro*{pubinstorg+location+date}[1]{%
   \printlist{#1}%
   \setunit*{|1\publocdelim1|}%
@@ -756,7 +909,7 @@ You could use \cs{publocdelim} if you changed the order of these fields.
   \setunit*{|2\locdatedelim2|}%
   \usebibmacro{date}%
   \newunit}
-\end{bibcode}
+\end{biblatexcode}
 \begin{bibexample}
 \renewcommand*{\publocdelim}{\highlight[1]{\bfseries\addcomma\textvisiblespace}}
 \renewcommand*{\locdatedelim}{\highlight[2]{\bfseries\addcomma\textvisiblespace}}
@@ -773,7 +926,7 @@ You could use \cs{publocdelim} if you changed the order of these fields.
 
 
 \csitem{pubdatedelim}
-The delimiter between \bibfield{publisher}/\bibfield{organization}/%
+The delimiter between \bibfield{publisher}\slash\bibfield{organization}\slash
 \bibfield{institution} and \bibfield{date}.
 The default is a comma followed by a space.
 \begin{bibexample}
@@ -799,7 +952,7 @@ two sets of delimiters: A pair of \emph{outer delimiters} wrapped around the
 resulting citation in its entirety and a pair of \emph{inner delimiters} that
 sets off certains bits of the citation label from other information.
 An example for outer delimiters would be the round brackets of \cmd{parencite}
-for \texttt{author\-year}-like styles or the square brackets of \cmd{cite} for 
+for \texttt{author\-year}-like styles or the square brackets of \cmd{cite} for
 \sty{numeric}- or \sty{alphabetic}-like styles.
 Inner delimiters would be the round brackets in \cmd{textcite} around
 the year for \sty{authoryear} or around the title for \sty{authortitle}.
@@ -824,9 +977,9 @@ as opening delimiter and \cmd{bibclosebracket} as closing delimiter, though:
 The closing delimiter will automatically match the opening one.}
 
 For most styles \cmd{parencite} would be set up with
-\begin{bibcode}
+\begin{biblatexcode}
 \DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
-\end{bibcode}
+\end{biblatexcode}
 
 \cmditem{DeclarePairedCiteOuterDelimAlias}{cite alias}{cite command}
 \cmditem*{DeclarePairedCiteOuterDelimAlias*}{cite alias}{cite command}
@@ -847,9 +1000,9 @@ Sets up the inner delimiters for the citation command
 \cmd{$\langle$\emph{cite command}$\rangle$}.
 
 For most styles \cmd{textcite} would be set up with
-\begin{bibcode}
+\begin{biblatexcode}
 \DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
-\end{bibcode}
+\end{biblatexcode}
 
 \cmditem{DeclarePairedCiteInnerDelimAlias}{cite alias}{cite command}
 \cmditem*{DeclarePairedCiteInnerDelimAlias*}{cite alias}{cite command}
@@ -864,10 +1017,10 @@ delimiters whenever the citation command is called.
 
 If you wanted \cmd{parencite} of \sty{authoryear} to look like
 \enquote{[Sigfridsson and Worman $\langle$1998$\rangle$]} you would use
-\begin{bibcode}
+\begin{biblatexcode}
 \DeclarePairedCiteOuterDelim{parencite}{|1\bibopenbracket1|}{|1\bibclosebracket1|}
 \DeclarePairedCiteInnerDelim{parencite}{|2$\langle$2|}{|2$\rangle$2|}
-\end{bibcode}
+\end{biblatexcode}
 \begin{bibexample}
 \DeclarePairedCiteOuterDelim{parencite}{\highlight[1]{\bibopenbracket}}{\highlight[1]{\bibclosebracket}}
 \DeclarePairedCiteInnerDelim{parencite}{\highlight[2]{${\langle}$}}{\highlight[2]{${\rangle}$}}
@@ -889,12 +1042,12 @@ The bibliography macro to print the \bibfield{editor} before the
 The \cmd{printname} uses the name format \texttt{ineditor}.
 
 \item[pubinstorg+location+date]
-A general-purpose macro to catch \texttt{publisher+location+date},
+A general-purpose bibliography macro to catch \texttt{publisher+location+date},
 \texttt{institution+location+date} and \texttt{organization+location+date}.
-As parameter it takes the name of a list field, useful values are
+As parameter it takes the name of a list field, sensible values are
 \bibfield{publisher}, \bibfield{institution} and \bibfield{organization}.
 
-\begin{bibcode}
+\begin{biblatexcode}
 \newbibmacro*{pubinstorg+location+date}[1]{%
   \printlist{location}%
   \iflistundef{|#1|}
@@ -913,7 +1066,7 @@ As parameter it takes the name of a list field, useful values are
 
 \renewbibmacro*{|organization|+location+date}{%
   \usebibmacro{pubinstorg+location+date}{|organization|}}
-\end{bibcode}
+\end{biblatexcode}
 \end{keymarglistbook}
 
 \section{Revision History}\label{apx:log}

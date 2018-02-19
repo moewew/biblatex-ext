@@ -1,39 +1,7 @@
 \ProvidesFile{ext-authortitle-common.bbx}
-  [2018/02/15 v-1 common files for extended biblatex
+  [2018/02/15 v0.1 common files for extended biblatex
    authortitle bibliography styles (MW)]
 
-% \DeclareBibliographyOption checks if an option is already defined
-% if we want to overwrite the definition we need to trick it into
-% thinking the option has not been defined yet.
-\csundef{KV@blx@opt@pre@dashed}
-
-\DeclareBibliographyOption[boolean]{dashed}[true]{%
-  \ifstrequal{#1}{true}
-    {\ExecuteBibliographyOptions{pagetracker}%
-     \renewbibmacro*{bbx:savehash}{\savefield{bibnamehash}{\bbx@lasthash}}}
-    {\renewbibmacro*{bbx:savehash}{}}}
-
-\renewbibmacro*{bbx:savehash}{%
-  \savefield{bibnamehash}{\bbx@lasthash}}
-
-\renewbibmacro*{bbx:dashcheck}[2]{%
-  \ifboolexpr{
-    test {\iffieldequals{bibnamehash}{\bbx@lasthash}}
-    and
-    not test \iffirstonpage
-    and
-    (
-       not bool {bbx@inset}
-       or
-       test {\iffieldequalstr{entrysetcount}{1}}
-    )
-  }
-    {#1}
-    {#2}}
-
-% We need to execute some options that were already executed
-% by the standard styles again, because we changed the
-% underlying definitions.
-\ExecuteBibliographyOptions{dashed=true}%
+\RequireBibliographyStyle{ext-dashed-common}
 
 \endinput

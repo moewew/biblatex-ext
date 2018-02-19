@@ -1,0 +1,64 @@
+\ProvidesFile{ext-dashed-common.bbx}
+  [2018/02/15 v0.1 common files for extended biblatex
+   dashed bibliography styles (MW)]
+
+% \DeclareBibliographyOption checks if an option is already defined
+% if we want to overwrite the definition we need to trick it into
+% thinking the option has not been defined yet.
+\csundef{KV@blx@opt@pre@dashed}
+
+\DeclareBibliographyOption[string]{dashed}[true]{%
+  \ifcsdef{extblx@opt@dashed@#1}
+    {\csuse{extblx@opt@dashed@#1}}
+    {\PackageWarningNoLine{biblatex-ext}{%
+       Invalid value '#1' for option 'dashed'.\MessageBreak
+       Falling back to 'dashed=false'}
+     \csuse{extblx@opt@dashed@false}}}
+
+\csdef{extblx@opt@dashed@fullhash}{%
+  \ExecuteBibliographyOptions{pagetracker}%
+  \renewbibmacro*{bbx:savehash}{\savefield{fullhash}{\bbx@lasthash}}%
+  \renewbibmacro*{bbx:dashcheck}[2]{%
+    \ifboolexpr{
+      test {\iffieldequals{fullhash}{\bbx@lasthash}}
+      and
+      not test \iffirstonpage
+      and
+      (
+         not bool {bbx@inset}
+         or
+         test {\iffieldequalstr{entrysetcount}{1}}
+      )
+    }
+      {##1}
+      {##2}}}
+\csletcs{extblx@opt@dashed@true}{extblx@opt@dashed@fullhash}
+
+\csdef{extblx@opt@dashed@bibnamehash}{%
+  \ExecuteBibliographyOptions{pagetracker}%
+  \renewbibmacro*{bbx:savehash}{\savefield{bibnamehash}{\bbx@lasthash}}%
+  \renewbibmacro*{bbx:dashcheck}[2]{%
+    \ifboolexpr{
+      test {\iffieldequals{bibnamehash}{\bbx@lasthash}}
+      and
+      not test \iffirstonpage
+      and
+      (
+         not bool {bbx@inset}
+         or
+         test {\iffieldequalstr{entrysetcount}{1}}
+      )
+    }
+      {##1}
+      {##2}}}
+
+\csdef{extblx@opt@dashed@false}{%
+  \renewbibmacro*{bbx:savehash}{}%
+  \renewbibmacro*{bbx:dashcheck}[2]{##2}}
+
+% We need to execute the option that were already executed
+% by the standard styles again, because we changed the
+% underlying definitions.
+\ExecuteBibliographyOptions{dashed=true}%
+
+\endinput
