@@ -85,7 +85,7 @@
 
 
 \lstdefinelanguage{extBibTeX}{%
-  keywords={%
+  morekeywords=[1]{%
     @article,@artwork,@audio,@bibnote,@book,@bookinbook,@booklet,%
     @collection,@commentary,@customa,@customb,@customc,@customd,%
     @custome,@customf,@inbook,@incollection,@inproceedings,%
@@ -95,7 +95,9 @@
     @proceedings,@reference,@report,@review,@set,@software,@standard,%
     @suppbook,@suppcollection,@suppperiodical,@thesis,@unpublished,@video%
    },
-   morekeywords={author,title,date},
+   morekeywords=[2]{author,title,date},
+   keywordstyle=[1]{\bfseries\spotcolor},
+   keywordstyle=[2]{\spotcolor},
    sensitive=false,
 }
 
@@ -806,8 +808,8 @@ give
 \makeatother
 \end{refsection}
 With \kvopt{dashed}{bibnamehash} the dash replaces the name list if they are
-indistinguishable in the bibliography, with \kvopt{dashed}{fullhash} the lists
-are only replaced if they are exactly the same in the data source.
+indistinguishable in the bibliography, while with \kvopt{dashed}{fullhash} the
+lists are only replaced if they are indistinguishable in the data source.
 \end{optionlist}
 
 \subsection{Field Formats}
