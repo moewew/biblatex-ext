@@ -39,7 +39,8 @@
 \usepackage{bm}
 \usepackage{multicol}
 \usepackage[svgnames]{xcolor}
-\usepackage[listings, breakable]{tcolorbox}%
+\usepackage[listings, breakable, skins]{tcolorbox}%
+\usepackage{tikzducks}
 \usepackage[style=ext-authoryear-icomp, backend=biber]{biblatex}
 \addbibresource{biblatex-examples.bib}
 \addbibresource{biblatex-ext-examples.bib}
@@ -68,9 +69,7 @@
 \definecolor{spot}{rgb}{0,0.2,0.6}%{RGB}{0,114,178}%{rgb}{0,0.2,0.6}
 %{named}{DarkRed}%{rgb}{0,0.2,0.6}%{named}{MediumBlue}
 
-\lstdefinestyle{extblxstyle}{%
-  language     = {[LaTeX]TeX},
-  basicstyle=\ttfamily\small,
+\lstdefinestyle{extblxstylegeneral}{%
   aboveskip    = {0\p@ \@plus 6\p@},
   belowskip    = {0\p@ \@plus 6\p@},
   tabsize      = 2,
@@ -82,7 +81,6 @@
   moredelim    = {[is][\ttfamily\bfseries\color{highlight1}]{|1}{1|}},
   moredelim    = {[is][\ttfamily\bfseries\color{highlight2}]{|2}{2|}},
 }
-
 
 \lstdefinelanguage{extBibTeX}{%
   morekeywords=[1]{%
@@ -101,24 +99,51 @@
    sensitive=false,
 }
 
+\lstdefinestyle{extblxstylelatex}{%
+  language  = {[LaTeX]TeX},
+  style     = {extblxstylegeneral},
+}
+
+\lstdefinestyle{extblxstylebibtex}{%
+  language  = {extBibTeX},
+  style     = {extblxstylegeneral},
+}
+
+
 \newcommand*{\highlight}[2][1]{\textcolor{highlight#1}{#2}}
 
-\newtcolorbox{bibexample}[1][]{colframe=spot!75!black, colback=spot!5!white, #1}
-\newtcblisting{biblatexcode}{colframe=black!75!white, colback=black!5!white,
+\newtcolorbox{bibexample}[1][]{enhanced,
+                               colframe=spot!75!black, colback=spot!5!white,
+                               #1}
+\newtcblisting{biblatexcode}{enhanced,
+                             colframe=black!75!white, colback=black!5!white,
+                             frame hidden,
                              listing only,
-                             listing options={style=extblxstyle}}
-\newtcblisting{bibbibtexcode}{colframe=black!75!white, colback=black!5!white,
-                             breakable, listing only,
-                             listing options={style=extblxstyle,
-                                              language=extBibTeX}}
+                             listing style=extblxstylelatex}
+\newtcblisting{bibtexfile}{enhanced,
+                           colframe=black!75!white, colback=black!5!white,
+                           listing only,
+                           frame hidden,
+                           breakable,
+                           listing style = extblxstylebibtex}
+
+\newtcbinputlisting{\inputexamplebibfile}[2][]{%
+  listing file={#2},
+  enhanced,
+  colframe=black!75!white, colback=black!5!white,
+  listing only,
+  frame hidden,
+  breakable,
+  listing style = extblxstylebibtex,
+  #1}
 
 \makeatletter
 % this is taken from ltxdockit.cls, which is not loaded
 \newrobustcmd*{\fnurl}[1][]{\hyper@normalise\ltd@fnurl{#1}}
 \def\ltd@fnurl#1#2{\footnote{#1\hyper@linkurl{\Hurl{#2}}{#2}}}
 
-\newrobustcmd*{\email}{\hyper@normalise\ltd@email}
-\def\ltd@email#1{\href{mailto:#1}{#1}}
+\newrobustcmd*{\titlelink}{\hyper@normalise\ltd@titlelink}
+\def\ltd@titlelink#1{\url{#1}}
 
 % title
 \providecommand*{\titlepage}{}
@@ -129,7 +154,7 @@
 \define@key{ltd@ttp}{subtitle}{\def\ltd@title@subtitle{#1}}
 \define@key{ltd@ttp}{url}{\def\ltd@title@url{#1}}
 \define@key{ltd@ttp}{author}{\def\ltd@title@author{#1}}
-\define@key{ltd@ttp}{email}{\def\ltd@title@email{#1}}
+\define@key{ltd@ttp}{link}{\def\ltd@title@link{#1}}
 \define@key{ltd@ttp}{revision}{\def\ltd@title@revision{#1}}
 \define@key{ltd@ttp}{date}{\def\ltd@title@date{#1}}
 
@@ -151,7 +176,7 @@
   \begin{multicols}{2}
   \raggedleft
     \ltd@title@author\par
-    \expandafter\email\expandafter{\ltd@title@email}\par
+    \expandafter\titlelink\expandafter{\ltd@title@link}\par
   \raggedright
     Version \ltd@title@revision\par\ltd@title@date
   \end{multicols}
@@ -273,7 +298,7 @@
   subtitle={Extensions for the \sty{biblatex} standard styles},
   url={\gitbaseurl},
   author={Moritz Wemheuer},
-  email={\null},%
+  link={},%
   revision={\extblxversion},
   date={\DTMDate{2018-02-16}}}
 
@@ -416,16 +441,16 @@ is in its own set of brackets: \enquote{[1], [2], [3]}.
 An extended version of the standard \sty{alphabetic} style for citations with
 alphabetic labels derived from author name and year.
 \begin{bibexample}[]
-[SR98, Knu84c]
+[SR98, Knu86c]
 \end{bibexample}
 
 \styleitem{ext-alphabetic-verb}
 An extended version of the standard \sty{alphabetic-verb} style.
 This style is based on \sty{ext-alphabetic}, but like
 \sty{ext-numeric-verb} places each citation label in its own pair of
-brackets: \enquote{[SR98], [Knu84c]}.
+brackets: \enquote{[SR98], [Knu86c]}.
 \begin{bibexample}[]
-[SR98], [Knu84c]
+[SR98], [Knu86c]
 \end{bibexample}
 
 \styleitem{ext-authoryear}
@@ -554,11 +579,12 @@ This style is similar to \sty{ext\hyp{}verbose\hyp{}trad2}.
 \end{stylelist}
 
 
-\subsection{Options}
+\section{Options}
 All options of the \sty{biblatex} package are supported and each style supports
 the options of its standard counterpart.
 
-Additionally all styles support the following options in global, per-type and
+\subsection{General Options}
+Additionally, all styles support the following options in global, per-type and
 per-entry scope.
 The default values are such that the styles can be used as drop-in replacement
 for the standard files without significant changes in output.
@@ -735,9 +761,12 @@ bibliography, this needs to happen either explicitly by citing the parent
 \makeatother
 \togglefalse{bbx:inxref}\fullcite{westfahl:space}
 \end{bibexample}
+\end{optionlist}
 
+\subsection{Style-Specific Options}
 The \opt{dashed} option of the \sty{authoryear}- and \sty{authortitle}-like
 bibliography styles allows for finer control over the dashes now.
+\begin{optionlist}
 \optitem[false]{dashed}{\opt{true}, \opt{false}, \opt{fullhash},
                         \opt{bibnamehash}}
 
@@ -746,14 +775,16 @@ bibliography are replaced with a dash.
 The standard values \opt{true} and \opt{false} are still valid and give the
 exact same output as in the standard styles.
 The new values \opt{fullhash} and \opt{bibnamehash} differ in how exactly they
-determine if a list of authors/editors is the same.
+determine if a list of authors/editors is the same as the previous.
 \begin{valuelist}
 \item[true] An alias for \opt{fullhash}.
 \item[false] Disable this feature.
-\item[bibnamehash] Compare name lists using \bibfield{bibnamehash}, taking
+\item[bibnamehash] Replace recurring name lists with a dash.
+                   Compare name lists using \bibfield{bibnamehash}, taking
                    into account only names that are actually listed in the
                    bibliography account.
-\item[fullhash] Compare name lists using \bibfield{fullhash}, taking into
+\item[fullhash] Replace recurring name lists with a dash.
+                Compare name lists using \bibfield{fullhash}, taking into
                 account all names in the list, even those that are truncated
                 and do not appear in the bibliography.
 \end{valuelist}
@@ -763,31 +794,9 @@ determine if a list of authors/editors is the same.
 \makeatletter
 Assuming \kvopt{maxnames}{1} and no name list disambiguation
 (\kvopt{uniquelist}{false}), the four entries
-\begin{bibbibtexcode}
-@book{applebyone,
-  author  = {Humphrey Appleby},
-  title   = {On the Ablative in Greek},
-  date    = {1982},
-}
-
-@book{applebytwo,
-  author  = {Humphrey Appleby},
-  title   = {On the Importance of the Civil Service},
-  date    = {1980},
-}
-
-@book{elkone,
-  author  = {Elk, Anne and Hacker, James and Rumpo, Syd},
-  title   = {On the Theory of Brontosauruses},
-  date    = {1972},
-}
-
-@book{elktwo,
-  author  = {Elk, Anne and Hacker, James and Pode, Eric},
-  title   = {On the Theory of Stegosauruses},
-  date    = {1972},
-}
-\end{bibbibtexcode}
+\inputexamplebibfile[listing options={linerange={1-16,18-23,25},
+                                      style = extblxstylebibtex}]
+                    {biblatex-ext-examples.bib}
 give
 \let\ExecuteBibliographyOptions\@gobble
 \nocite{elkone,elktwo,applebyone,applebytwo}
@@ -812,7 +821,7 @@ indistinguishable in the bibliography, while with \kvopt{dashed}{fullhash} the
 lists are only replaced if they are indistinguishable in the data source.
 \end{optionlist}
 
-\subsection{Field Formats}
+\section{Field Formats}
 At a few points where the standard styles employ hard-coded formatting directive
 the styles of this bundle offer customisable formats instead.
 
@@ -839,7 +848,7 @@ the styles of this bundle offer customisable formats instead.
 
 \DeclareFieldFormat{issuedate}{\mkbibparens{#1}}
 
-\subsection{Punctuation and Delimiters}
+\section{Punctuation}
 The package provides the following commands to modify the delimiters and
 punctuation between fields.
 \begin{ltxsyntax}
@@ -948,7 +957,7 @@ The default is a comma (\emph{not} followed by a space).
 \end{bibexample}
 
 
-\subsection{Delimiters for Citation Commands}
+\section{Delimiters for Citation Commands}
 The citation commands \cmd{cite}, \cmd{parencite} and \cmd{textcite} come with
 two sets of delimiters: A pair of \emph{outer delimiters} wrapped around the
 resulting citation in its entirety and a pair of \emph{inner delimiters} that
@@ -1031,7 +1040,7 @@ If you wanted \cmd{parencite} of \sty{authoryear} to look like
 \end{bibexample}
 \end{ltxsyntax}
 
-\subsection{Selected Bibliography Macros}
+\section{Selected Bibliography Macros}
 \begin{keymarglistbook}
 \item[edition]
 A bibliography macro to print the \bibfield{edition} field, this avoids a direct
@@ -1081,6 +1090,17 @@ As parameter it takes the name of a list field, sensible values are
 \begin{bibexample}[breakable]
 \printbibliography
 \end{bibexample}
+
+\begin{center}
+\begin{tikzpicture}[scale=2]
+\duck[body=pink,
+unicorn=magenta!60!violet,
+crazyhair=magenta!60!violet,
+cape,
+book=\scalebox{.5}{Bib\LaTeX},
+bookcolour=spot]
+\end{tikzpicture}
+\end{center}
 
 \end{document}
 \endinput
