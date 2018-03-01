@@ -7,45 +7,53 @@
 
 \providecommand*{\mkibid}[1]{#1}
 
-\newtoggle{bbx:inxref}
+\newtoggle{bbx:citeinxref}
 \newtoggle{bbx:innamebeforetitle}
 \newtoggle{bbx:innameidem}
 \newtoggle{bbx:articlein}
+\newtoggle{bbx:maintitleaftertitle}
 
-\DeclareBibliographyOption[boolean]{inxref}[true]{%
-  \settoggle{bbx:inxref}{#1}}
+\DeclareBibliographyOption[boolean]{citeinxref}[true]{%
+  \settoggle{bbx:citeinxref}{#1}}
 \DeclareBibliographyOption[boolean]{innamebeforetitle}[true]{%
   \settoggle{bbx:innamebeforetitle}{#1}}
 \DeclareBibliographyOption[boolean]{innameidem}[true]{%
   \settoggle{bbx:innameidem}{#1}}
 \DeclareBibliographyOption[boolean]{articlein}[true]{%
   \settoggle{bbx:articlein}{#1}}
+\DeclareBibliographyOption[boolean]{maintitleaftertitle}[true]{%
+  \settoggle{bbx:maintitleaftertitle}{#1}}
 
 \ExecuteBibliographyOptions{%
-  inxref            = false,
-  innamebeforetitle = false,
-  innameidem        = false,
-  articlein         = true,
-% maxbibnames       = 999,
+  citeinxref          = false,
+  innamebeforetitle   = false,
+  innameidem          = false,
+  articlein           = true,
+  maintitleaftertitle = false,
+% maxbibnames         = 999,
 }
 
-\DeclareTypeOption[boolean]{inxref}[true]{%
-  \settoggle{bbx:inxref}{#1}}
+\DeclareTypeOption[boolean]{citeinxref}[true]{%
+  \settoggle{bbx:citeinxref}{#1}}
 \DeclareTypeOption[boolean]{innamebeforetitle}[true]{%
   \settoggle{bbx:innamebeforetitle}{#1}}
 \DeclareTypeOption[boolean]{innameidem}[true]{%
   \settoggle{bbx:innameidem}{#1}}
 \DeclareTypeOption[boolean]{articlein}[true]{%
   \settoggle{bbx:articlein}{#1}}
+\DeclareTypeOption[boolean]{maintitleaftertitle}[true]{%
+  \settoggle{bbx:maintitleaftertitle}{#1}}
 
-\DeclareEntryOption[boolean]{inxref}[true]{%
-  \settoggle{bbx:inxref}{#1}}
+\DeclareEntryOption[boolean]{citeinxref}[true]{%
+  \settoggle{bbx:citeinxref}{#1}}
 \DeclareEntryOption[boolean]{innamebeforetitle}[true]{%
   \settoggle{bbx:innamebeforetitle}{#1}}
 \DeclareEntryOption[boolean]{innameidem}[true]{%
   \settoggle{bbx:innameidem}{#1}}
 \DeclareEntryOption[boolean]{articlein}[true]{%
   \settoggle{bbx:articlein}{#1}}
+\DeclareEntryOption[boolean]{maintitleaftertitle}[true]{%
+  \settoggle{bbx:maintitleaftertitle}{#1}}
 
 \providebibmacro{cite:xref:bib}{\usebibmacro{cite}}
 
@@ -61,7 +69,7 @@
 \DeclarePairedCiteOuterDelimAlias{bibxrefcite}{cite}
 
 \newbibmacro*{crosscite}[1]{%
-  \iftoggle{bbx:inxref}
+  \iftoggle{bbx:citeinxref}
     {\iffieldundef{crossref}
        {\iffieldundef{xref}
           {\usebibmacro{#1}}
@@ -69,6 +77,8 @@
        {\printtext{\bbx@cite@xref{\thefield{crossref}}}}}
     {\usebibmacro{#1}}}
 
+\DeclareDelimAlias{innametitledelim}{nametitledelim}
+\DeclareDelimAlias*[bib,biblist]{innametitledelim}{nametitledelim}
 
 \DeclareBibliographyDriver{article}{%
   \usebibmacro{bibindex}%
@@ -188,7 +198,7 @@
 
 \newbibmacro*{inbook:parent}{%
   \usebibmacro{bybookauthor}%
-  \setunit{\printdelim{nametitledelim}}\newblock
+  \setunit{\printdelim{innametitledelim}}\newblock
   \usebibmacro{maintitle+booktitle}%
   \newunit\newblock
   \usebibmacro{byeditor+others}%
@@ -289,7 +299,7 @@
 \newbibmacro*{incollection:parent}{%
   \iftoggle{bbx:innamebeforetitle}
     {\usebibmacro{in:editor+others}%
-     \setunit{\printdelim{nametitledelim}}\newblock}
+     \setunit{\printdelim{innametitledelim}}\newblock}
     {}%
   \usebibmacro{maintitle+booktitle}%
   \newunit\newblock
@@ -395,7 +405,7 @@
 \newbibmacro*{inproceedings:parent}{%
   \iftoggle{bbx:innamebeforetitle}
     {\usebibmacro{in:editor+others}%
-     \setunit{\printdelim{nametitledelim}}\newblock}
+     \setunit{\printdelim{innametitledelim}}\newblock}
     {}%
   \usebibmacro{maintitle+booktitle}%
   \newunit\newblock
@@ -751,6 +761,72 @@
     {}%
   \usebibmacro{finentry}}
 
+\DeclareFieldFormat{volumeof}{\bibstring{volume}~#1}
+\newcommand*{\titlemaintitledelim}{\newunitpunct}
+\newcommand*{\maintitletitledelim}{\addcolon\space}
+\renewbibmacro*{maintitle+title}{%
+  \iftoggle{bbx:maintitleaftertitle}
+    {}
+    {\iffieldsequal{maintitle}{title}
+       {\clearfield{maintitle}%
+        \clearfield{mainsubtitle}%
+        \clearfield{maintitleaddon}}
+       {\iffieldundef{maintitle}
+          {}
+          {\usebibmacro{maintitle}%
+           \newunit\newblock
+           \iffieldundef{volume}
+             {}
+             {\printfield{volume}%
+              \printfield{part}%
+              \setunit{\maintitletitledelim}}}}}%
+  \usebibmacro{title}%
+  \iftoggle{bbx:maintitleaftertitle}
+    {\iffieldsequal{maintitle}{title}
+       {\clearfield{maintitle}%
+        \clearfield{mainsubtitle}%
+        \clearfield{maintitleaddon}}
+       {\iffieldundef{maintitle}
+          {}
+          {\setunit{\titlemaintitledelim}%
+           \iffieldundef{volume}
+             {}
+             {\printfield[volumeof]{volume}%
+              \printfield{part}%
+              \setunit{\addspace}%
+              \bibstring{ofseries}%
+              \setunit{\addspace}}%
+           \usebibmacro{maintitle}}}}
+    {}%
+  \newunit}
+
+\renewbibmacro*{maintitle+booktitle}{%
+  \iftoggle{bbx:maintitleaftertitle}
+    {}
+    {\iffieldundef{maintitle}
+       {}
+       {\usebibmacro{maintitle}%
+        \newunit\newblock
+        \iffieldundef{volume}
+          {}
+          {\printfield{volume}%
+           \printfield{part}%
+           \setunit{\maintitletitledelim}}}}%
+  \usebibmacro{booktitle}%
+  \iftoggle{bbx:maintitleaftertitle}
+    {\iffieldundef{maintitle}
+       {}
+       {\setunit{\titlemaintitledelim}%
+        \iffieldundef{volume}
+          {}
+          {\printfield[volumeof]{volume}%
+           \printfield{part}%
+           \setunit{\addspace}%
+           \bibstring{ofseries}%
+           \setunit{\addspace}}%
+        \usebibmacro{maintitle}}}
+    {}%
+  \newunit}
 
 \renewbibmacro*{bybookauthor}{%
   \ifnamesequal{author}{bookauthor}

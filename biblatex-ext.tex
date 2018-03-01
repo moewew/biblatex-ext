@@ -46,12 +46,14 @@
 \addbibresource{biblatex-ext-examples.bib}
 
 \makeatletter
-\def\newtextvisiblespace{%
-  \raisebox{-1.2pt}{%
-    \mbox{\kern.06em\vrule \@height.3ex \@width.14ex}%
-    \vbox{\hrule \@width.3em \@height.14ex}%
-    \hbox{\vrule \@height.3ex \@width.14ex}%
-    \kern.06em}}
+\iffontspec
+\def\textvisiblespace{%
+  \raisebox{-2.2pt}{%
+    \mbox{\kern.04em\vrule \@height.5ex \@width.12ex}%
+    \vbox{\hrule \@width.2em \@height.12ex}%
+    \hbox{\vrule \@height.5ex \@width.12ex}%
+    \kern.04em}}
+\fi
 \makeatother
 
 
@@ -142,8 +144,8 @@
 \newrobustcmd*{\fnurl}[1][]{\hyper@normalise\ltd@fnurl{#1}}
 \def\ltd@fnurl#1#2{\footnote{#1\hyper@linkurl{\Hurl{#2}}{#2}}}
 
-\newrobustcmd*{\titlelink}{\hyper@normalise\ltd@titlelink}
-\def\ltd@titlelink#1{\url{#1}}
+\newrobustcmd*{\email}{\hyper@normalise\ltd@email}
+\def\ltd@email#1{\href{mailto:#1}{#1}}
 
 % title
 \providecommand*{\titlepage}{}
@@ -176,7 +178,7 @@
   \begin{multicols}{2}
   \raggedleft
     \ltd@title@author\par
-    \expandafter\titlelink\expandafter{\ltd@title@link}\par
+    \expandafter\email\expandafter{\ltd@title@link}\par
   \raggedright
     Version \ltd@title@revision\par\ltd@title@date
   \end{multicols}
@@ -286,6 +288,7 @@
 
 % no \mbox here, we may have to break things
 \def\sty{\texttt}
+\def\bibfield{\texttt}
 
 \newcommand*{\gitbaseurl}{https://github.com/moewew/biblatex-ext}
 \newcommand*{\extblxversion}{0.1}
@@ -298,7 +301,7 @@
   subtitle={Extensions for the \sty{biblatex} standard styles},
   url={\gitbaseurl},
   author={Moritz Wemheuer},
-  link={},%
+  link={mwemheu@gmail.com},%
   revision={\extblxversion},
   date={\DTMDate{2018-02-16}}}
 
@@ -377,15 +380,14 @@ under the terms of the \lppl, version 1.3c%
 \fnurl{https://www.latex-project.org/lppl/lppl-1-3c.txt}
 or (at your option) any later version%
 \fnurl{https://www.latex-project.org/lppl.txt}.
-This bundle has the maintenance status \enquote{maintained}.
-The current maintainer of this work is Moritz Wemheuer
-(\textcopyright 2017--2018).
+This bundle is maintained by Moritz Wemheuer (\textcopyright 2017--2018).
 
 
 \subsection{Feedback}\label{subsec:int:feb}
 
-Please use the \sty{biblatex-ext} project page on GitHub to report bugs and
-submit feature requests.\footnote{\url{\gitbaseurl}}
+You can use the \sty{biblatex-ext} project page on GitHub%
+\footnote{\url{\gitbaseurl}} to report bugs and
+submit suggestions and feature requests, or you can do so via email.
 
 If you do not want to report a bug or request a feature, but are simply in need
 of assistance, you might want to consider posting your question on the
@@ -626,6 +628,51 @@ All other entry types are not affected by this option.
 \makeatother
 \end{bibexample}
 
+\boolitem[false]{citeinxref}
+This option controls if \bibtype{inbook}, \bibtype{incollection} and
+\bibtype{inproceedings} entries that are tied to a parent entry with
+\bibfield{xref} or \bibfield{crossref} should cite their parent in the
+bibliography if the parent is listed in the bibliography as a separate entry.
+With the default setting \kvopt{citeinxref}{false} the parent is not cited, the
+entry is shown as in the standard styles. If the option is set to
+\texttt{true}, the block following the \enquote{in:} is replaced by a citation
+to the parent entry.
+The option itself does \emph{not} cause the parent entry to be added to the
+bibliography, this needs to happen either explicitly by citing the parent
+(this includes \cmd{nocite}), or implicitly via the \opt{mincrossrefs} or
+\opt{minxrefs} functionality.
+
+\nocite{westfahl:frontier}
+\begin{bibexample}[title={\kvopt{citeinxref}{true}}]
+\makeatletter
+\renewbibmacro*{crosscite}[1]{%
+  \textcolor{highlight1}{%
+    \iftoggle{bbx:citeinxref}
+      {\iffieldundef{crossref}
+         {\iffieldundef{xref}
+            {\usebibmacro{#1}}
+            {\printtext{\bbx@cite@xref{\thefield{xref}}}}}
+         {\printtext{\bbx@cite@xref{\thefield{crossref}}}}}
+      {\usebibmacro{#1}}}}
+\makeatother
+\toggletrue{bbx:citeinxref}\fullcite{westfahl:space}
+\end{bibexample}
+
+\begin{bibexample}[title={\kvopt{citeinxref}{false}}]
+\makeatletter
+\renewbibmacro*{crosscite}[1]{%
+  \textcolor{highlight1}{%
+    \iftoggle{bbx:citeinxref}
+      {\iffieldundef{crossref}
+         {\iffieldundef{xref}
+            {\usebibmacro{#1}}
+            {\printtext{\bbx@cite@xref{\thefield{xref}}}}}
+         {\printtext{\bbx@cite@xref{\thefield{crossref}}}}}
+      {\usebibmacro{#1}}}}
+\makeatother
+\togglefalse{bbx:citeinxref}\fullcite{westfahl:space}
+\end{bibexample}
+
 \boolitem[false]{innamebeforetitle}
 Whether or not the \bibfield{editor} should be moved before the
 \bibfield{booktitle} field for \bibtype{inbook}, \bibtype{incollection} and
@@ -717,50 +764,69 @@ This option only has an effect if \opt{innamebeforetitle} is set to \opt{true}.
 \fullcite{gaonkar:in}
 \end{bibexample}
 
-\boolitem[false]{inxref}
-This option controls if \bibtype{inbook}, \bibtype{incollection} and
-\bibtype{inproceedings} entries that are tied to a parent entry with
-\bibfield{xref} or \bibfield{crossref} should cite their parent in the
-bibliography if the parent is listed in the bibliography as a separate entry.
-With the default setting \kvopt{inxref}{false} the parent is not cited, the
-entry is shown as in the standard styles. If the option is set to
-\texttt{true}, the block following the \enquote{in:} is replaced by a citation
-to the parent entry.
-The option itself does \emph{not} cause the parent entry to be added to the
-bibliography, this needs to happen either explicitly by citing the parent
-(this includes \cmd{nocite}), or implicitly via the \opt{mincrossrefs} or
-\opt{minxrefs} functionality.
 
-\nocite{westfahl:frontier}
-\begin{bibexample}[title={\kvopt{inxref}{true}}]
+\boolitem[false]{maintitleaftertitle}
+Whether or not the \bibfield{maintitle} is be printed after the
+\bibfield{title} or \bibfield{booktitle} of the work.
+If \opt{maintitleaftertitle} is \opt{true}, the \bibfield{volume} field will be
+printed with the \bibfield{volumeof} format.
+
+\begingroup
 \makeatletter
-\renewbibmacro*{crosscite}[1]{%
+\renewbibmacro*{maintitle+title}{%
+  \blx@begunit\blx@endunit
   \textcolor{highlight1}{%
-    \iftoggle{bbx:inxref}
-      {\iffieldundef{crossref}
-         {\iffieldundef{xref}
-            {\usebibmacro{#1}}
-            {\printtext{\bbx@cite@xref{\thefield{xref}}}}}
-         {\printtext{\bbx@cite@xref{\thefield{crossref}}}}}
-      {\usebibmacro{#1}}}}
+     \iftoggle{bbx:maintitleaftertitle}
+       {}
+       {\iffieldsequal{maintitle}{title}
+          {\clearfield{maintitle}%
+           \clearfield{mainsubtitle}%
+           \clearfield{maintitleaddon}}
+          {\iffieldundef{maintitle}
+             {}
+             {\usebibmacro{maintitle}%
+              \newunit\newblock
+              \iffieldundef{volume}
+                {}
+                {\printfield{volume}%
+                 \printfield{part}%
+                 \setunit{\maintitletitledelim}}}}}}%
+  \usebibmacro{title}%
+  \blx@begunit\blx@endunit
+  \textcolor{highlight1}{%
+     \iftoggle{bbx:maintitleaftertitle}
+       {\iffieldsequal{maintitle}{title}
+          {\clearfield{maintitle}%
+           \clearfield{mainsubtitle}%
+           \clearfield{maintitleaddon}}
+          {\iffieldundef{maintitle}
+             {}
+             {\setunit{\titlemaintitledelim}%
+              \iffieldundef{volume}
+                {}
+                {\printfield[volumeof]{volume}%
+                 \printfield{part}%
+                 \setunit{\addspace}%
+                 \bibstring{ofseries}%
+                 \setunit{\addspace}}%
+              \usebibmacro{maintitle}}}}
+       {}}%
+  \newunit}
+\renewcommand*{\maintitletitledelim}{\highlight{\addcolon\space}}
 \makeatother
-\toggletrue{bbx:inxref}\fullcite{westfahl:space}
+\begin{bibexample}[title={\kvopt{maintitleaftertitle}{true}}]
+\togglefalse{bbx:isbn}
+\toggletrue{bbx:maintitleaftertitle}
+\fullcite{knuth:ct:a}
 \end{bibexample}
 
-\begin{bibexample}[title={\kvopt{inxref}{false}}]
-\makeatletter
-\renewbibmacro*{crosscite}[1]{%
-  \textcolor{highlight1}{%
-    \iftoggle{bbx:inxref}
-      {\iffieldundef{crossref}
-         {\iffieldundef{xref}
-            {\usebibmacro{#1}}
-            {\printtext{\bbx@cite@xref{\thefield{xref}}}}}
-         {\printtext{\bbx@cite@xref{\thefield{crossref}}}}}
-      {\usebibmacro{#1}}}}
-\makeatother
-\togglefalse{bbx:inxref}\fullcite{westfahl:space}
+\begin{bibexample}[title={\kvopt{maintitleaftertitle}{false}}]
+\togglefalse{bbx:isbn}
+\togglefalse{bbx:maintitleaftertitle}
+\fullcite{knuth:ct:a}
 \end{bibexample}
+\endgroup
+
 \end{optionlist}
 
 \subsection{Style-Specific Options}
@@ -780,7 +846,7 @@ determine if a list of authors/editors is the same as the previous.
 \item[true] An alias for \opt{fullhash}.
 \item[false] Disable this feature.
 \item[bibnamehash] Replace recurring name lists with a dash.
-                   Compare name lists using \bibfield{bibnamehash}, taking
+                   Compare name lists using \bibfield{bib\-name\-hash}, taking
                    into account only names that are actually listed in the
                    bibliography account.
 \item[fullhash] Replace recurring name lists with a dash.
@@ -831,7 +897,7 @@ the styles of this bundle offer customisable formats instead.
   date in round brackets.
   \begin{bibexample}
   \togglefalse{bbx:doi}
-  \DeclareFieldFormat{biblabeldate}{\highlight{\bibopenparen}#1\highlight{\bibcloseparen}}
+  \DeclareFieldFormat{biblabeldate}{\highlight{\bibopenparen}\highlight[2]{#1}\highlight{\bibcloseparen}}
   \fullcite{sigfridsson}
   \end{bibexample}
 
@@ -841,8 +907,16 @@ the styles of this bundle offer customisable formats instead.
   \begin{bibexample}
   \makeatletter\bbx@opt@mergedate@false\makeatother
   \togglefalse{bbx:doi}
-  \DeclareFieldFormat{issuedate}{\highlight{\bibopenparen}#1\highlight{\bibcloseparen}}
+  \DeclareFieldFormat{issuedate}{\highlight{\bibopenparen}\highlight[2]{#1}\highlight{\bibcloseparen}}
   \fullcite{sigfridsson}
+  \end{bibexample}
+  
+\item[volumeof] The format for the \bibfield{volume} of a \bibfield{maintitle}
+  used when \kvopt{maintitleaftertitle}{true}.
+  \begin{bibexample}
+  \togglefalse{bbx:isbn}\toggletrue{bbx:maintitleaftertitle}
+  \DeclareFieldFormat{volumeof}{\highlight{\bibstring{volume}}~\highlight[2]{#1}}
+  \fullcite{knuth:ct:a}
   \end{bibexample}
 \end{keymarglistbook}
 
@@ -852,6 +926,27 @@ the styles of this bundle offer customisable formats instead.
 The package provides the following commands to modify the delimiters and
 punctuation between fields.
 \begin{ltxsyntax}
+\csitem{maintitletitledelim}
+The punctuation between the \bibfield{maintitle} and \bibfield{title} or
+\bibfield{booktitle} of a work if \opt{maintitleaftertitle} is \opt{false}.
+The default is a colon followed by a space.
+\begin{bibexample}
+\togglefalse{bbx:isbn}
+\renewcommand*{\maintitletitledelim}{\highlight{\textbf{\addcolon}\textvisiblespace}}
+\fullcite{knuth:ct:a}
+\end{bibexample}
+
+\csitem{titlemaintitledelim}
+The punctuation between the \bibfield{title} or \bibfield{booktitle} and
+\bibfield{maintitle} of a work if \opt{maintitleaftertitle} is \opt{true}.
+The default is \cmd{newunitpunct}.
+\begin{bibexample}
+\togglefalse{bbx:isbn}
+\toggletrue{bbx:maintitleaftertitle}
+\renewcommand*{\titlemaintitledelim}{\highlight{\textbf{\addperiod}\textvisiblespace}\bibsentence}
+\fullcite{knuth:ct:a}
+\end{bibexample}
+
 \csitem{volnumdatedelim}
 The delimiter between the \bibfield{volume}, \bibfield{number} block and the
 date information for \bibtype{article}.
@@ -886,7 +981,7 @@ The default is a space.
 The delimiter between \bibfield{location} and \bibfield{date}.
 The default is a comma followed by a space.
 \begin{bibexample}
-\renewcommand*{\locdatedelim}{\highlight{\bfseries\addcomma\textvisiblespace}}
+\renewcommand*{\locdatedelim}{\highlight{\textbf{\addcomma}\textvisiblespace}}
 \makeatletter\bbx@opt@mergedate@false\makeatother
 \fullcite{jaffe}
 \end{bibexample}
@@ -897,7 +992,7 @@ The delimiter between \bibfield{location} and \bibfield{publisher}\slash%
 The default is a colon followed by a space.
 \begin{bibexample}
 \makeatletter\bbx@opt@mergedate@false\makeatother
-\renewcommand*{\locpubdelim}{\highlight{\bfseries\addcolon\textvisiblespace}}
+\renewcommand*{\locpubdelim}{\highlight{\textbf{\addcolon}\textvisiblespace}}
 \fullcite{knuth:ct:a}
 \end{bibexample}
 
@@ -922,8 +1017,8 @@ You could use \cs{publocdelim} if you changed the order of these fields to
   \newunit}
 \end{biblatexcode}
 \begin{bibexample}
-\renewcommand*{\publocdelim}{\highlight[1]{\bfseries\addcomma\textvisiblespace}}
-\renewcommand*{\locdatedelim}{\highlight[2]{\bfseries\addcomma\textvisiblespace}}
+\renewcommand*{\publocdelim}{\highlight[1]{\textbf{\addcomma}\textvisiblespace}}
+\renewcommand*{\locdatedelim}{\highlight[2]{\textbf{\addcomma}\textvisiblespace}}
 \renewbibmacro*{pubinstorg+location+date}[1]{%
   \printlist{#1}%
   \setunit*{\publocdelim}%
@@ -941,7 +1036,7 @@ The delimiter between \bibfield{publisher}\slash\bibfield{organization}\slash
 \bibfield{institution} and \bibfield{date}.
 The default is a comma followed by a space.
 \begin{bibexample}
-\renewcommand*{\pubdatedelim}{\highlight{\bfseries\addcomma\textvisiblespace}}
+\renewcommand*{\pubdatedelim}{\highlight{\textbf{\addcomma}\textvisiblespace}}
 \makeatletter\bbx@opt@mergedate@false\makeatother
 \fullcite{knuth:ct:a}
 \end{bibexample}
@@ -952,7 +1047,7 @@ citations where the second is an \bibfield{extradate} only.
 The default is a comma (\emph{not} followed by a space).
 \end{ltxsyntax}
 \begin{bibexample}
-\renewcommand*{\extradateonlycompcitedelim}{\highlight{\bfseries\addcomma}}
+\renewcommand*{\extradateonlycompcitedelim}{\highlight{\textbf{\addcomma}}}
 \cite{knuth:ct:b,knuth:ct:c}
 \end{bibexample}
 
