@@ -113,6 +113,8 @@
 
 
 \newcommand*{\highlight}[2][1]{\textcolor{highlight#1}{#2}}
+\DeclareFieldFormat{highlight1}{\textcolor{highlight1}{#1}}
+\DeclareFieldFormat{highlight2}{\textcolor{highlight2}{#1}}
 
 \newtcolorbox{bibexample}[1][]{enhanced,
                                colframe=spot!75!black, colback=spot!5!white,
@@ -140,6 +142,12 @@
   #1}
 
 \makeatletter
+\AtUsedriver*{%
+  \let\newblock\relax
+  \let\abx@macro@bibindex\@empty
+  \let\abx@macro@pageref\@empty}
+
+
 % this is taken from ltxdockit.cls, which is not loaded
 \newrobustcmd*{\fnurl}[1][]{\hyper@normalise\ltd@fnurl{#1}}
 \def\ltd@fnurl#1#2{\footnote{#1\hyper@linkurl{\Hurl{#2}}{#2}}}
@@ -602,13 +610,13 @@ All other entry types are not affected by this option.
 \togglefalse{bbx:doi}
 \renewbibmacro*{in:}{%
   \blx@begunit\blx@endunit
-  \textcolor{highlight1}{%
+  \printtext[highlight1]{%
     \printtext{%
       \bibstring{in}\intitlepunct}}}
 \toggletrue{bbx:articlein}\fullcite{sigfridsson}
 \renewbibmacro*{in:}{%
   \blx@begunit\blx@endunit
-  \textcolor{highlight2}{%
+  \printtext[highlight2]{%
     \printtext{%
       \bibstring{in}\intitlepunct}}}
 \smallskip\par\fullcite{brandt}
@@ -639,14 +647,14 @@ entry is shown as in the standard styles. If the option is set to
 to the parent entry.
 The option itself does \emph{not} cause the parent entry to be added to the
 bibliography, this needs to happen either explicitly by citing the parent
-(this includes \cmd{nocite}), or implicitly via the \opt{mincrossrefs} or
-\opt{minxrefs} functionality.
+(this includes \cmd{nocite}) or implicitly via the \opt{minxrefs} or
+\opt{mincrossrefs} option.
 
 \nocite{westfahl:frontier}
 \begin{bibexample}[title={\kvopt{citeinxref}{true}}]
 \makeatletter
 \renewbibmacro*{crosscite}[1]{%
-  \textcolor{highlight1}{%
+  \printtext[highlight1]{%
     \iftoggle{bbx:citeinxref}
       {\iffieldundef{crossref}
          {\iffieldundef{xref}
@@ -661,7 +669,7 @@ bibliography, this needs to happen either explicitly by citing the parent
 \begin{bibexample}[title={\kvopt{citeinxref}{false}}]
 \makeatletter
 \renewbibmacro*{crosscite}[1]{%
-  \textcolor{highlight1}{%
+  \printtext[highlight1]{%
     \iftoggle{bbx:citeinxref}
       {\iffieldundef{crossref}
          {\iffieldundef{xref}
@@ -686,7 +694,7 @@ Whether or not the \bibfield{editor} should be moved before the
     and
     not test {\ifnameundef{editor}}
   }
-    {\textcolor{highlight1}{%
+    {\printtext[highlight1]{%
        \ifboolexpr{togl {bbx:innameidem} and test {\bbx@ineditoridem}}
          {\bibstring[\mkibid]{idem\thefield{gender}}}
          {\printnames[ineditor]{editor}}%
@@ -702,7 +710,7 @@ Whether or not the \bibfield{editor} should be moved before the
 \renewbibmacro*{byeditor+others}{%
   \ifnameundef{editor}
     {}
-    {\textcolor{highlight1}{%
+    {\printtext[highlight1]{%
        \usebibmacro{byeditor+othersstrg}%
        \setunit{\addspace}%
        \printnames[byeditor]{editor}%
@@ -729,7 +737,7 @@ This option only has an effect if \opt{innamebeforetitle} is set to \opt{true}.
     and
     not test {\ifnameundef{editor}}
   }
-    {\textcolor{highlight1}{%
+    {\printtext[highlight1]{%
        \ifboolexpr{togl {bbx:innameidem} and test {\bbx@ineditoridem}}
          {\bibstring[\mkibid]{idem\thefield{gender}}}
          {\printnames[ineditor]{editor}}%
@@ -751,7 +759,7 @@ This option only has an effect if \opt{innamebeforetitle} is set to \opt{true}.
     and
     not test {\ifnameundef{editor}}
   }
-    {\textcolor{highlight1}{%
+    {\printtext[highlight1]{%
        \ifboolexpr{togl {bbx:innameidem} and test {\bbx@ineditoridem}}
          {\bibstring[\mkibid]{idem\thefield{gender}}}
          {\printnames[ineditor]{editor}}%
@@ -766,7 +774,7 @@ This option only has an effect if \opt{innamebeforetitle} is set to \opt{true}.
 
 
 \boolitem[false]{maintitleaftertitle}
-Whether or not the \bibfield{maintitle} is be printed after the
+Whether or not the \bibfield{maintitle} is printed after the
 \bibfield{title} or \bibfield{booktitle} of the work.
 If \opt{maintitleaftertitle} is \opt{true}, the \bibfield{volume} field will be
 printed with the \bibfield{volumeof} format.
@@ -775,14 +783,14 @@ printed with the \bibfield{volumeof} format.
 \makeatletter
 \renewbibmacro*{maintitle+title}{%
   \blx@begunit\blx@endunit
-  \textcolor{highlight1}{%
-     \iftoggle{bbx:maintitleaftertitle}
-       {}
-       {\iffieldsequal{maintitle}{title}
-          {\clearfield{maintitle}%
-           \clearfield{mainsubtitle}%
-           \clearfield{maintitleaddon}}
-          {\iffieldundef{maintitle}
+   \iftoggle{bbx:maintitleaftertitle}
+     {}
+     {\iffieldsequal{maintitle}{title}
+        {\clearfield{maintitle}%
+         \clearfield{mainsubtitle}%
+         \clearfield{maintitleaddon}}
+        {\printtext[highlight1]{%
+           \iffieldundef{maintitle}
              {}
              {\usebibmacro{maintitle}%
               \newunit\newblock
@@ -791,17 +799,17 @@ printed with the \bibfield{volumeof} format.
                 {\printfield{volume}%
                  \printfield{part}%
                  \setunit{\maintitletitledelim}}}}}}%
-  \usebibmacro{title}%
-  \blx@begunit\blx@endunit
-  \textcolor{highlight1}{%
-     \iftoggle{bbx:maintitleaftertitle}
-       {\iffieldsequal{maintitle}{title}
-          {\clearfield{maintitle}%
-           \clearfield{mainsubtitle}%
-           \clearfield{maintitleaddon}}
-          {\iffieldundef{maintitle}
-             {}
-             {\setunit{\titlemaintitledelim}%
+  \printtext[highlight2]{\usebibmacro{title}\blx@begunit\blx@endunit}%
+  \printunit{}%
+   \iftoggle{bbx:maintitleaftertitle}
+     {\iffieldsequal{maintitle}{title}
+        {\clearfield{maintitle}%
+         \clearfield{mainsubtitle}%
+         \clearfield{maintitleaddon}}
+        {\iffieldundef{maintitle}
+           {}
+           {\setunit{\titlemaintitledelim}%
+            \printtext[highlight1]{%
               \iffieldundef{volume}
                 {}
                 {\printfield[volumeof]{volume}%
@@ -811,7 +819,7 @@ printed with the \bibfield{volumeof} format.
                  \setunit{\addspace}}%
               \usebibmacro{maintitle}}}}
        {}}%
-  \newunit}
+  \newunit}%
 \renewcommand*{\maintitletitledelim}{\highlight{\addcolon\space}}
 \makeatother
 \begin{bibexample}[title={\kvopt{maintitleaftertitle}{true}}]
@@ -910,7 +918,7 @@ the styles of this bundle offer customisable formats instead.
   \DeclareFieldFormat{issuedate}{\highlight{\bibopenparen}\highlight[2]{#1}\highlight{\bibcloseparen}}
   \fullcite{sigfridsson}
   \end{bibexample}
-  
+
 \item[volumeof] The format for the \bibfield{volume} of a \bibfield{maintitle}
   used when \kvopt{maintitleaftertitle}{true}.
   \begin{bibexample}
@@ -1147,6 +1155,14 @@ The bibliography macro to print the \bibfield{editor} before the
 \bibtype{inproceedings} when \opt{innamebeforetitle} is set to \opt{true}.
 The \cmd{printname} uses the name format \texttt{ineditor}.
 
+\item[language]
+A bibliography macro to print the \bibfield{language} field, this avoids a
+direct \lstinline|\printlist{language}| in the bibliography drivers.
+
+\item[note]
+A bibliography macro to print the \bibfield{note} field, this avoids a direct
+\lstinline|\printfield{note}| in the bibliography drivers.
+
 \item[pubinstorg+location+date]
 A general-purpose bibliography macro to catch \texttt{publisher+location+date},
 \texttt{institution+location+date} and \texttt{organization+location+date}.
@@ -1173,6 +1189,14 @@ As parameter it takes the name of a list field, sensible values are
 \renewbibmacro*{|organization|+location+date}{%
   \usebibmacro{pubinstorg+location+date}{|organization|}}
 \end{biblatexcode}
+
+\item[type+number]
+A bibliography macro to print the \bibfield{type} and \bibfield{number} fields.
+
+\item[volume+volumes]
+A bibliography macro to print the \bibfield{volume}, \bibfield{part} and
+\bibfield{volumes} fields for \bibtype{book}- and \bibtype{inbook}-like
+entry types.
 \end{keymarglistbook}
 
 \section{Revision History}\label{apx:log}

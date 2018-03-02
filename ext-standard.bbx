@@ -87,7 +87,7 @@
   \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{title}%
   \newunit
-  \printlist{language}%
+  \usebibmacro{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
   \newunit\newblock
@@ -124,7 +124,7 @@
   \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{maintitle+title}%
   \newunit
-  \printlist{language}%
+  \usebibmacro{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
   \newunit\newblock
@@ -132,16 +132,11 @@
   \newunit\newblock
   \usebibmacro{edition}%
   \newunit
-  \iffieldundef{maintitle}
-    {\printfield{volume}%
-     \printfield{part}}
-    {}%
-  \newunit
-  \printfield{volumes}%
+  \usebibmacro{volume+volumes}%
   \newunit\newblock
   \usebibmacro{series+number}%
   \newunit\newblock
-  \printfield{note}%
+  \usebibmacro{note}%
   \newunit\newblock
   \usebibmacro{publisher+location+date}%
   \newunit\newblock
@@ -171,7 +166,7 @@
   \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{title}%
   \newunit
-  \printlist{language}%
+  \usebibmacro{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
   \newunit\newblock
@@ -205,16 +200,11 @@
   \newunit\newblock
   \usebibmacro{edition}%
   \newunit
-  \iffieldundef{maintitle}
-    {\printfield{volume}%
-     \printfield{part}}
-    {}%
-  \newunit
-  \printfield{volumes}%
+  \usebibmacro{volume+volumes}%
   \newunit\newblock
   \usebibmacro{series+number}%
   \newunit\newblock
-  \printfield{note}%
+  \usebibmacro{note}%
   \newunit\newblock
   \usebibmacro{publisher+location+date}}
 
@@ -226,22 +216,17 @@
   \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{maintitle+title}%
   \newunit
-  \printlist{language}%
+  \usebibmacro{language}%
   \newunit\newblock
   \usebibmacro{byeditor+others}%
   \newunit\newblock
   \usebibmacro{edition}%
   \newunit
-  \iffieldundef{maintitle}
-    {\printfield{volume}%
-     \printfield{part}}
-    {}%
-  \newunit
-  \printfield{volumes}%
+  \usebibmacro{volume+volumes}%
   \newunit\newblock
   \usebibmacro{series+number}%
   \newunit\newblock
-  \printfield{note}%
+  \usebibmacro{note}%
   \newunit\newblock
   \usebibmacro{publisher+location+date}%
   \newunit\newblock
@@ -271,7 +256,7 @@
   \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{title}%
   \newunit
-  \printlist{language}%
+  \usebibmacro{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
   \newunit\newblock
@@ -307,16 +292,11 @@
   \newunit\newblock
   \usebibmacro{edition}%
   \newunit
-  \iffieldundef{maintitle}
-    {\printfield{volume}%
-     \printfield{part}}
-    {}%
-  \newunit
-  \printfield{volumes}%
+  \usebibmacro{volume+volumes}%
   \newunit\newblock
   \usebibmacro{series+number}%
   \newunit\newblock
-  \printfield{note}%
+  \usebibmacro{note}%
   \newunit\newblock
   \usebibmacro{publisher+location+date}}
 
@@ -328,7 +308,7 @@
   \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{maintitle+title}%
   \newunit
-  \printlist{language}%
+  \usebibmacro{language}%
   \newunit\newblock
   \usebibmacro{event+venue+date}%
   \newunit\newblock
@@ -336,16 +316,11 @@
   \newunit\newblock
   \usebibmacro{edition}%
   \newunit
-  \iffieldundef{maintitle}
-    {\printfield{volume}%
-     \printfield{part}}
-    {}%
-  \newunit
-  \printfield{volumes}%
+  \usebibmacro{volume+volumes}%
   \newunit\newblock
   \usebibmacro{series+number}%
   \newunit\newblock
-  \printfield{note}%
+  \usebibmacro{note}%
   \newunit\newblock
   \printlist{organization}%
   \newunit
@@ -377,7 +352,7 @@
   \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{title}%
   \newunit
-  \printlist{language}%
+  \usebibmacro{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
   \newunit\newblock
@@ -415,16 +390,11 @@
   \newunit\newblock
   \usebibmacro{edition}%
   \newunit
-  \iffieldundef{maintitle}
-    {\printfield{volume}%
-     \printfield{part}}
-    {}%
-  \newunit
-  \printfield{volumes}%
+  \usebibmacro{volume+volumes}%
   \newunit\newblock
   \usebibmacro{series+number}%
   \newunit\newblock
-  \printfield{note}%
+  \usebibmacro{note}%
   \newunit\newblock
   \printlist{organization}%
   \newunit
@@ -438,7 +408,7 @@
   \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{title}%
   \newunit
-  \printlist{language}%
+  \usebibmacro{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
   \newunit\newblock
@@ -448,7 +418,7 @@
   \newunit\newblock
   \printfield{type}%
   \newunit\newblock
-  \printfield{note}%
+  \usebibmacro{note}%
   \newunit\newblock
   \usebibmacro{location+date}%
   \newunit\newblock
@@ -476,7 +446,7 @@
   \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{title}%
   \newunit
-  \printlist{language}%
+  \usebibmacro{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
   \newunit\newblock
@@ -490,7 +460,7 @@
   \newunit
   \printfield{version}%
   \newunit
-  \printfield{note}%
+  \usebibmacro{note}%
   \newunit\newblock
   \printlist{organization}%
   \newunit
@@ -522,7 +492,7 @@
   \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{title}%
   \newunit
-  \printlist{language}%
+  \usebibmacro{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
   \newunit\newblock
@@ -530,7 +500,7 @@
   \newunit\newblock
   \printfield{version}%
   \newunit
-  \printfield{note}%
+  \usebibmacro{note}%
   \newunit\newblock
   \printlist{organization+location+date}%
   \newunit\newblock
@@ -558,7 +528,7 @@
   \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{title}%
   \newunit
-  \printlist{language}%
+  \usebibmacro{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
   \newunit\newblock
@@ -570,7 +540,7 @@
   \newunit
   \printfield{version}%
   \newunit
-  \printfield{note}%
+  \usebibmacro{note}%
   \newunit\newblock
   \usebibmacro{organization+location+date}%
   \newunit\newblock
@@ -594,13 +564,11 @@
   \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{title}%
   \newunit
-  \printlist{language}%
+  \usebibmacro{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
   \newunit\newblock
-  \printfield{type}%
-  \setunit*{\addspace}%
-  \printfield{number}%
+  \usebibmacro{type+number}%
   \iflistundef{location}
     {}
     {\setunit*{\addspace}%
@@ -609,7 +577,7 @@
   \newunit\newblock
   \usebibmacro{byholder}%
   \newunit\newblock
-  \printfield{note}%
+  \usebibmacro{note}%
   \newunit\newblock
   \usebibmacro{date}%
   \newunit\newblock
@@ -633,11 +601,11 @@
   \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{title+issuetitle}%
   \newunit
-  \printlist{language}%
+  \usebibmacro{language}%
   \newunit\newblock
   \usebibmacro{byeditor}%
   \newunit\newblock
-  \printfield{note}%
+  \usebibmacro{note}%
   \newunit\newblock
   \usebibmacro{issn}%
   \newunit\newblock
@@ -661,17 +629,15 @@
   \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{title}%
   \newunit
-  \printlist{language}%
+  \usebibmacro{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
   \newunit\newblock
-  \printfield{type}%
-  \setunit*{\addspace}%
-  \printfield{number}%
+  \usebibmacro{type+number}%
   \newunit\newblock
   \printfield{version}%
   \newunit
-  \printfield{note}%
+  \usebibmacro{note}%
   \newunit\newblock
   \usebibmacro{institution+location+date}%
   \newunit\newblock
@@ -701,11 +667,11 @@
   \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{title}%
   \newunit
-  \printlist{language}%
+  \usebibmacro{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
   \newunit\newblock
-  \printfield{note}%
+  \usebibmacro{note}%
   \newunit\newblock
   \printfield{type}%
   \newunit
@@ -737,13 +703,13 @@
   \setunit{\printdelim{nametitledelim}}\newblock
   \usebibmacro{title}%
   \newunit
-  \printlist{language}%
+  \usebibmacro{language}%
   \newunit\newblock
   \usebibmacro{byauthor}%
   \newunit\newblock
   \printfield{howpublished}%
   \newunit\newblock
-  \printfield{note}%
+  \usebibmacro{note}%
   \newunit\newblock
   \usebibmacro{location+date}%
   \newunit\newblock
@@ -895,6 +861,14 @@
   \setunit{\addcomma\space}%
   \printfield{eid}}
 
+\newbibmacro*{volume+volumes}{%
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
+  \printfield{volumes}}
+
 \newcommand*{\sernumdelim}{\addspace}
 
 \renewbibmacro*{series+number}{%
@@ -974,6 +948,17 @@
        \setunit*{\addspace}%
        \usebibmacro{date}}}%
   \newunit}
+
+\newbibmacro*{language}{%
+  \printlist{language}}
+
+\newbibmacro*{type+number}{%
+  \printfield{type}%
+  \setunit*{\addspace}%
+  \printfield{number}}
+
+\newbibmacro*{note}{%
+  \printfield{note}}
 
 \renewbibmacro*{addendum+pubstate}{%
   \iffieldxref{addendum}
