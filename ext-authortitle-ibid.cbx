@@ -8,6 +8,11 @@
 
 \DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
 
+\DeclarePairedCiteInnerDelim{cite}{}{}
+\DeclarePairedCiteInnerDelim{parencite}{}{}
+\DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
+\DeclarePairedCiteInnerDelim{footcite}{}{}
+
 \DeclareFieldFormat{extblx@innercitedelim}{%
   \csuse{mkpairedinner\blx@delimcontext delim}{#1}}
 \DeclareFieldFormat{extblx@innerparencitedelim}{%
@@ -15,11 +20,6 @@
 \DeclareFieldFormat{extblx@innertextcitedelim}{#1}
 \DeclareFieldFormat{extblx@innerfootcitedelim}{%
   \csuse{mkpairedinner\blx@delimcontext delim}{#1}}
-
-\DeclarePairedCiteInnerDelim{cite}{}{}
-\DeclarePairedCiteInnerDelim{parencite}{}{}
-\DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
-\DeclarePairedCiteInnerDelim{footcite}{}{}
 
 \newbibmacro*{textcite}{%
   \global\boolfalse{cbx:loccit}%

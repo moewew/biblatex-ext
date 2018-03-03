@@ -42,7 +42,7 @@ standard styles that ship with `biblatex`.
 
 ## Licence
 
-Copyright 2017-2018 Moritz Wemheuer <mwemheu@gmail.com>.
+Copyright 2017-2018 Moritz Wemheuer
 
 This work consists of the `.bbx`, `.cbx` and `.def` files mentioned above.
 
@@ -53,7 +53,7 @@ version. (http://www.latex-project.org/lppl.txt)
 
 This work has the LPPL maintenance status 'maintained'.
 
-This Current Maintainer of the work is Moritz Wemheuer.
+The Current Maintainer of the work is Moritz Wemheuer <mwemheu@gmail.com>.
 
 Please report bugs at https://github.com/moewew/biblatex-ext or via email.
 Suggestions for improvements and feature request are also very welcome.

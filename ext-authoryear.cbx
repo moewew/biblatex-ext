@@ -7,6 +7,8 @@
 
 \DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
 
+\DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
+
 \DeclareFieldFormat{extblx@innercitedelim}{%
   \csuse{mkpairedinner\blx@delimcontext delim}{#1}}
 \DeclareFieldFormat{extblx@innerparencitedelim}{%
@@ -19,8 +21,6 @@
 \DeclareFieldFormat{parencitelabeldate}{#1}
 \DeclareFieldFormat{textcitelabeldate}{#1}
 \DeclareFieldFormat{footcitelabeldate}{#1}
-
-\DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
 
 \renewbibmacro*{cite:labeldate+extradate}{%
   \iffieldundef{labelyear}

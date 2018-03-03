@@ -295,8 +295,19 @@
 \makeatother
 
 % no \mbox here, we may have to break things
-\def\sty{\texttt}
-\def\bibfield{\texttt}
+\renewrobustcmd*{\sty}[1]{{\verbatimfont\justify #1}}
+\renewrobustcmd*{\bibfield}[1]{\sty{#1}}
+\newrobustcmd*{\bibmacro}[1]{\sty{#1}}
+\renewrobustcmd*{\bibtype}[1]{{\verbatimfont\justify @#1}}
+
+
+\newcommand*\justify{%
+  \fontdimen2\font=0.4em% interword space
+  \fontdimen3\font=0.2em% interword stretch
+  \fontdimen4\font=0.1em% interword shrink
+  \fontdimen7\font=0.1em% extra space
+  \hyphenchar\font=`\-% allowing hyphenation
+}
 
 \newcommand*{\gitbaseurl}{https://github.com/moewew/biblatex-ext}
 \newcommand*{\extblxversion}{0.1}
@@ -337,8 +348,8 @@ The \sty{biblatex-ext} bundle provides an extended version of the standard
 styles that come with \sty{biblatex}.
 For each standard style this bundle provides a style with the same name
 prefixed with \texttt{ext-} which can be used as a drop-in replacement for the
-standard style -- for example, the replacement for \texttt{authoryear-icomp}
-is called \texttt{ext-authoryear-icomp}.
+standard style -- for example, the replacement for \sty{authoryear-icomp}
+is called \sty{ext-authoryear-icomp}.
 
 The aim of the styles of this bundle is to offer a simple interface to change
 some of the stylistic decisions made for the standard styles that would
@@ -411,8 +422,8 @@ You can load the styles exactly as you would load the standard styles:
 \end{biblatexcode}
 The naming of the styles follows the scheme
 \mbox{\texttt{ext-}$\langle$\emph{standard style}$\rangle$}, e.g.,
-the style corresponding to \texttt{authoryear-icomp} is called
-\texttt{ext-authoryear-icomp}.
+the style corresponding to \sty{authoryear-icomp} is called
+\sty{ext-authoryear-icomp}.
 
 \subsection{Styles}
 Please refer to the \sty{biblatex} documentation%
@@ -526,7 +537,8 @@ An extended version of the standard \sty{authortitle-icomp} style.
 This style combines \sty{ext-authortitle-comp} and
 \sty{ext-authortitle-ibid}.
 \begin{bibexample}
-Aristotle, \emph{Physics}, \emph{Poetics}\quad Maron, \emph{Animal Triste}\quad ibid.
+Aristotle, \emph{Physics}, \emph{Poetics}\quad Maron, \emph{Animal Triste}\quad
+ibid.
 \end{bibexample}
 
 \styleitem{ext-authortitle-terse}
@@ -580,12 +592,12 @@ similar to \sty{ext-verbose}.
 
 \styleitem{ext-verbose-trad2}
 An extended version of the standard \sty{verbose-trad2} style.
-The style is similar to \sty{ext\hyp{}verbose\hyp{}inote} and
+The style is similar to \sty{ext-verbose-inote} and
 uses scholarly abbreviations to shorten citations.
 
 \styleitem{ext-verbose-trad3}
 An extended version of the standard \sty{verbose-trad3} style.
-This style is similar to \sty{ext\hyp{}verbose\hyp{}trad2}.
+This style is similar to \sty{ext-verbose-trad2}.
 \end{stylelist}
 
 
@@ -643,7 +655,7 @@ This option controls if \bibtype{inbook}, \bibtype{incollection} and
 bibliography if the parent is listed in the bibliography as a separate entry.
 With the default setting \kvopt{citeinxref}{false} the parent is not cited, the
 entry is shown as in the standard styles. If the option is set to
-\texttt{true}, the block following the \enquote{in:} is replaced by a citation
+\opt{true}, the block following the \enquote{in:} is replaced by a citation
 to the parent entry.
 The option itself does \emph{not} cause the parent entry to be added to the
 bibliography, this needs to happen either explicitly by citing the parent
@@ -1066,7 +1078,7 @@ two sets of delimiters: A pair of \emph{outer delimiters} wrapped around the
 resulting citation in its entirety and a pair of \emph{inner delimiters} that
 sets off certains bits of the citation label from other information.
 An example for outer delimiters would be the round brackets of \cmd{parencite}
-for \texttt{author\-year}-like styles or the square brackets of \cmd{cite} for
+for \sty{authoryear}-like styles or the square brackets of \cmd{cite} for
 \sty{numeric}- or \sty{alphabetic}-like styles.
 Inner delimiters would be the round brackets in \cmd{textcite} around
 the year for \sty{authoryear} or around the title for \sty{authortitle}.
@@ -1144,7 +1156,35 @@ If you wanted \cmd{parencite} of \sty{authoryear} to look like
 \end{ltxsyntax}
 
 \section{Selected Bibliography Macros}
+The following macros are defined in \texttt{ext-standard.bbx} and may make
+certain things easier to customise.
+Many of these macros are replacements for bare \cmd{printfield} or
+\cmd{printlist} in the bibliography drivers, or pack a frequently-used
+sequence of commands into one central place.
+
 \begin{keymarglistbook}
+\item[barevolume+volumes]
+A bibliography macro to print the \bibfield{volume}, \bibfield{part} and
+\bibfield{volumes} fields for \bibtype{mvbook}-, \bibtype{book}- and
+\bibtype{inbook}-like entry types.
+If \bibfield{maintitle} is defined, the \bibfield{volume} and \bibfield{part}
+fields will be printed by \bibmacro{maintitle+title} or
+\bibmacro{maintitle+booktitle} instead.
+
+\begin{bibexample}
+\renewbibmacro*{barevolume+volumes}{%
+  \printtext[highlight1]{%
+    \iffieldundef{maintitle}
+      {\printfield{volume}%
+       \printfield{part}}
+      {}%
+    \newunit
+    \printfield{volumes}}}
+\fullcite{knuth:ct}
+\smallskip\par
+\fullcite{matuz:doody}
+\end{bibexample}
+
 \item[edition]
 A bibliography macro to print the \bibfield{edition} field, this avoids a direct
 \lstinline|\printfield{edition}| in the bibliography drivers.
@@ -1153,7 +1193,7 @@ A bibliography macro to print the \bibfield{edition} field, this avoids a direct
 The bibliography macro to print the \bibfield{editor} before the
 \bibfield{booktitle} for \bibtype{inbook}, \bibtype{incollection} and
 \bibtype{inproceedings} when \opt{innamebeforetitle} is set to \opt{true}.
-The \cmd{printname} uses the name format \texttt{ineditor}.
+The \cmd{printname} uses the name format \bibfield{ineditor}.
 
 \item[language]
 A bibliography macro to print the \bibfield{language} field, this avoids a
@@ -1164,10 +1204,12 @@ A bibliography macro to print the \bibfield{note} field, this avoids a direct
 \lstinline|\printfield{note}| in the bibliography drivers.
 
 \item[pubinstorg+location+date]
-A general-purpose bibliography macro to catch \texttt{publisher+location+date},
-\texttt{institution+location+date} and \texttt{organization+location+date}.
-As parameter it takes the name of a list field, sensible values are
-\bibfield{publisher}, \bibfield{institution} and \bibfield{organization}.
+A general-purpose bibliography macro to catch
+\bibmacro{publisher+location+date},
+\bibmacro{institution+location+date} and \bibmacro{organization+location+date}.
+This bibliography macro has one mandatory argument: the name of a list field,
+sensible values are \bibfield{publisher}, \bibfield{institution} and
+\bibfield{organization}.
 
 \begin{biblatexcode}
 \newbibmacro*{pubinstorg+location+date}[1]{%
@@ -1192,11 +1234,6 @@ As parameter it takes the name of a list field, sensible values are
 
 \item[type+number]
 A bibliography macro to print the \bibfield{type} and \bibfield{number} fields.
-
-\item[volume+volumes]
-A bibliography macro to print the \bibfield{volume}, \bibfield{part} and
-\bibfield{volumes} fields for \bibtype{book}- and \bibtype{inbook}-like
-entry types.
 \end{keymarglistbook}
 
 \section{Revision History}\label{apx:log}
