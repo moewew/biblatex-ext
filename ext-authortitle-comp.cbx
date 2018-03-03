@@ -63,9 +63,7 @@
       {\csuse{extblx@delim@\blx@delimcontext @inner@close}%
        \global\boolfalse{cbx:parens}}
       {}}%
-  \ifbool{cbx:loccit}
-    {}
-    {\usebibmacro{postnote}}}
+  \usebibmacro{postnote}}
 
 \renewbibmacro*{textcite:postnote}{%
   \ifnameundef{labelname}
