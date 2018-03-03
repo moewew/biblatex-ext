@@ -10,14 +10,6 @@
 
 \DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
 
-\DeclareFieldFormat{extblx@innercitedelim}
-                   {\csuse{mkpairedinner\blx@delimcontext delim}{#1}}
-\DeclareFieldFormat{extblx@innerparencitedelim}
-                   {\csuse{mkpairedinner\blx@delimcontext delim}{#1}}
-\DeclareFieldFormat{extblx@innertextcitedelim}{#1}
-\DeclareFieldFormat{extblx@innerfootcitedelim}
-                   {\csuse{mkpairedinner\blx@delimcontext delim}{#1}}
-
 \DeclareFieldFormat{citelabeldate}{#1}
 \DeclareFieldFormat{parencitelabeldate}{#1}
 \DeclareFieldFormat{textcitelabeldate}{#1}
@@ -60,6 +52,29 @@
        \global\boolfalse{cbx:parens}}
       {}%
     \multicitedelim}}
+
+\renewbibmacro*{cite:labeldate+extradate}{%
+  \iffieldundef{labelyear}
+    {}
+    {\printtext[bibhyperref]{%
+       \printtext[\blx@delimcontext labeldate]{%
+         \printlabeldateextra}}}}
+
+\renewbibmacro*{cite:extradate}{%
+  \iffieldundef{extradate}
+    {}
+    {\printtext[bibhyperref]{%
+       \printtext[\blx@delimcontext labeldate]{%
+         \printfield{extradate}}}}}
+
+\renewbibmacro*{cite:postnote}{%
+  \setunit{}%
+  \printtext{%
+    \ifbool{cbx:parens}
+      {\csuse{extblx@delim@\blx@delimcontext @inner@close}%
+       \global\boolfalse{cbx:parens}}
+      {}}%
+  \usebibmacro{postnote}}
 
 \renewbibmacro*{textcite}{%
   \iffieldequals{namehash}{\cbx@lasthash}
@@ -110,29 +125,6 @@
        \global\boolfalse{cbx:parens}}
       {}%
     \textcitedelim}}
-
-\renewbibmacro*{cite:labeldate+extradate}{%
-  \iffieldundef{labelyear}
-    {}
-    {\printtext[bibhyperref]{%
-       \printtext[extblx@\blx@delimcontext labeldate]{%
-         \printlabeldateextra}}}}
-
-\renewbibmacro*{cite:extradate}{%
-  \iffieldundef{extradate}
-    {}
-    {\printtext[bibhyperref]{%
-       \printtext[extblx@\blx@delimcontext labeldate]{%
-         \printfield{extradate}}}}}
-
-\renewbibmacro*{cite:postnote}{%
-  \setunit{}%
-  \printtext{%
-    \ifbool{cbx:parens}
-      {\csuse{extblx@delim@\blx@delimcontext @inner@close}%
-       \global\boolfalse{cbx:parens}}
-      {}}%
-  \usebibmacro{postnote}}
 
 \renewbibmacro*{textcite:postnote}{%
   \usebibmacro{postnote}%

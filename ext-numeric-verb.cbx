@@ -22,16 +22,17 @@
   \usebibmacro{cite}}
 
 \DeclareCiteCommand{\cite}
-  {\csuse{extblx@delim@\blx@delimcontext @outer@open}%
+  {\csuse{extblx@delim@cite@outer@open}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \ifnumgreater{\value{citecount}}{1}
-     {\csuse{extblx@delim@\blx@delimcontext @outer@open}}
+     {\csuse{extblx@delim@cite@outer@open}}
      {}%
    \usebibmacro{cite}}
-  {\csuse{extblx@delim@\blx@delimcontext @outer@close}\multicitedelim}
+  {\csuse{extblx@delim@cite@outer@close}%
+   \multicitedelim}
   {\usebibmacro{postnote}%
-   \csuse{extblx@delim@\blx@delimcontext @outer@close}}
+   \csuse{extblx@delim@cite@outer@close}}
 
 \DeclareCiteCommand{\parencite}[\mkpairedouterparencitedelim]
   {\usebibmacro{prenote}}
@@ -55,22 +56,13 @@
      {\stepcounter{textcitetotal}%
       \textcitedelim}%
    \usebibmacro{textcite}}
-  {\csuse{extblx@delim@\blx@delimcontext @inner@close}}
+  {\csuse{extblx@delim@textcite@inner@close}}
   {\usebibmacro{postnote}%
-   \csuse{extblx@delim@\blx@delimcontext @inner@close}}
+   \csuse{extblx@delim@textcite@inner@close}}
 
 \DeclareMultiCiteCommand{\parencites}[\mkpairedouterparencitedelim]{\parencite}{\multicitedelim}
 \DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
   {\smartcite}{\multicitedelim}
 \DeclareMultiCiteCommand{\textcites}[\mkpairedoutertextcitedelim]{\textcite}{}
-
-
-\DeclareCiteCommand{\bbx@cite@xref}[\mkpairedouterbibxrefcitedelim]
-  {\boolfalse{citetracker}%
-   \boolfalse{pagetracker}%
-   \boolfalse{backtracker}}
-  {\usebibmacro{cite:xref:bib}}
-  {}
-  {}
 
 \endinput

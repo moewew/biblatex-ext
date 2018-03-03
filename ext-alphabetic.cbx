@@ -85,12 +85,4 @@
 \DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
   {\smartcite}{\multicitedelim}
 
-\DeclareCiteCommand{\bbx@cite@xref}[\mkpairedouterbibxrefcitedelim]
-  {\boolfalse{citetracker}%
-   \boolfalse{pagetracker}%
-   \boolfalse{backtracker}}
-  {\usebibmacro{cite:xref:bib}}
-  {}
-  {}
-
 \endinput
