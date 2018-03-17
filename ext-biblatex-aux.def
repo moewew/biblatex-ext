@@ -23,6 +23,17 @@
   \csdef{extblx@delim@#2@#1@open}{#3}%
   \csdef{extblx@delim@#2@#1@close}{#4}}
 
+%{<context>}
+\newcommand*{\UndeclarePairedCiteOuterDelim}{%
+  \extblx@undeclarepaireddelim{outer}}
+\newrobustcmd*{\UndeclarePairedCiteInnerDelim}{%
+  \extblx@undeclarepaireddelim{inner}}
+
+%{<inner/outer>}{<cite context>}
+\def\extblx@undeclarepaireddelim#1#2{%
+  \csundef{extblx@delim@#2@#1@open}%
+  \csundef{extblx@delim@#2@#1@close}}
+
 %{<alias>}{<cite context>}
 \newcommand*{\DeclarePairedCiteOuterDelimAlias}{%
   \@ifstar
@@ -55,7 +66,7 @@
 \extblx@create@mkpaireddelim{outer}{cite}
 \extblx@create@mkpaireddelim{outer}{parencite}
 \extblx@create@mkpaireddelim{outer}{textcite}
-\extblx@create@mkpaireddelim{outer}{bibxrefcite}
+\extblx@create@mkpaireddelim{outer}{bibinxrefcite}
 
 \extblx@create@mkpaireddelim{inner}{cite}
 \extblx@create@mkpaireddelim{inner}{parencite}

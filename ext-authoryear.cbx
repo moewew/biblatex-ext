@@ -120,4 +120,8 @@
   {\smartcite}{\multicitedelim}
 \DeclareMultiCiteCommand{\textcites}[\mkpairedoutertextcitedelim]{\textcite}{}
 
+\DeclareFieldFormat{bbx:introcitelabeldate}{#1}
+\DeclareFieldFormat{extblx@innerbbx:introcitedelim}{%
+  \csuse{mkpairedinner\blx@delimcontext delim}{#1}}
+
 \endinput

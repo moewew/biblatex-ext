@@ -4,4 +4,67 @@
 
 \RequireBibliographyStyle{ext-dashed-common}
 
+\renewbibmacro*{author}{%
+  \ifboolexpr{
+    test \ifuseauthor
+    and
+    not test {\ifnameundef{author}}
+  }
+    {\usebibmacro{bbx:dashcheck}
+       {\printtext{\bibnamedash}}
+       {\printnames{author}%
+        \setunit{\printdelim{authortypedelim}}%
+        \usebibmacro{bbx:savehash}}%
+     \usebibmacro{authorstrg}}
+    {\global\undef\bbx@lasthash}}
+
+\renewbibmacro*{bbx:editor}[1]{%
+  \ifboolexpr{
+    test \ifuseeditor
+    and
+    not test {\ifnameundef{editor}}
+  }
+    {\usebibmacro{bbx:dashcheck}
+       {\printtext{\bibnamedash}}
+       {\printnames{editor}%
+        \setunit{\printdelim{editortypedelim}}%
+        \usebibmacro{bbx:savehash}}%
+     \usebibmacro{#1}%
+     \clearname{editor}}
+    {\global\undef\bbx@lasthash}}
+
+\renewbibmacro*{bbx:translator}[1]{%
+  \ifboolexpr{
+    test \ifusetranslator
+    and
+    not test {\ifnameundef{translator}}
+  }
+    {\usebibmacro{bbx:dashcheck}
+       {\printtext{\bibnamedash}}
+       {\printnames{translator}%
+        \setunit{\printdelim{translatortypedelim}}%
+        \usebibmacro{bbx:savehash}}%
+     \usebibmacro{#1}%
+     \clearname{translator}}
+    {\global\undef\bbx@lasthash}}
+
+\defbibenvironment{bibliography}
+  {\list
+     {\ifcsequal{extblx@introcite}{extblx@opt@introcite@label}
+        {\usebibmacro{introcite:typeset}}
+        {}}
+     {\ifcsequal{extblx@introcite}{extblx@opt@introcite@label}
+        {\setlength{\labelwidth}{\introcitewidth}%
+         \setlength{\leftmargin}{\labelwidth}
+         \renewcommand*{\makelabel}[1]{##1\hss}}
+        {\setlength{\leftmargin}{\bibhang}%
+         \setlength{\itemindent}{-\leftmargin}}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}}
+  {\endlist}
+  {\item
+   \ifcsequal{extblx@introcite}{extblx@opt@introcite@label}
+     {\usebibmacro{introcite:break}}
+     {}}
+
 \endinput

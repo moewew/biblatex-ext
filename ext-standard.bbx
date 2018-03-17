@@ -23,6 +23,17 @@
   \settoggle{bbx:articlein}{#1}}
 \DeclareBibliographyOption[boolean]{maintitleaftertitle}[true]{%
   \settoggle{bbx:maintitleaftertitle}{#1}}
+\DeclareBibliographyOption[string]{introcite}[label]{%
+  \ifcsdef{extblx@opt@introcite@#1}
+    {\letcs\extblx@introcite{extblx@opt@introcite@#1}}
+    {\PackageWarningNoLine{biblatex-ext}{%
+       Invalid value '#1' for option 'introcite'.\MessageBreak
+       Possible values are 'false', 'label', 'plain'.\MessageBreak
+       Falling back to 'introcite=false'}%
+     \letcs\extblx@introcite{extblx@opt@introcite@false}}}
+\def\extblx@opt@introcite@false{0}
+\def\extblx@opt@introcite@label{1}
+\def\extblx@opt@introcite@plain{2}
 
 \ExecuteBibliographyOptions{%
   citeinxref          = false,
@@ -30,6 +41,7 @@
   innameidem          = false,
   articlein           = true,
   maintitleaftertitle = false,
+  introcite           = false,
 % maxbibnames         = 999,
 }
 
@@ -55,32 +67,76 @@
 \DeclareEntryOption[boolean]{maintitleaftertitle}[true]{%
   \settoggle{bbx:maintitleaftertitle}{#1}}
 
-\providebibmacro{cite:xref:bib}{\usebibmacro{cite}}
 
-\DeclareCiteCommand{\bbx@cite@xref}[\mkpairedouterbibxrefcitedelim]
+\newbibmacro*{bbx:cite:intro}{\usebibmacro{cite}}
+
+\extblx@create@mkpaireddelim{inner}{bbx:introcite}
+\DeclarePairedCiteInnerDelimAlias{bbx:introcite}{cite}
+\DeclareFieldFormat{bbx:introcite}{#1}
+\newcommand*{\introcitepunct}{\addcolon\space}
+\newcommand*{\introcitebreak}{\newline}
+
+\newlength{\extbl@introcitewidth}
+\newlength{\introcitewidth}
+\setlength{\introcitewidth}{8\biblabelsep}
+\newlength{\introcitesep}
+\setlength{\introcitesep}{.5\biblabelsep}
+
+\newbibmacro{introcite:typeset}{%
+  \begingroup
+    \delimcontext{bbx:introcite}%
+    \DeclareFieldFormat{bibhyperref}{##1}%
+    \csuse{blx@hook@cite}%
+    \csuse{blx@hook@citekey}%
+    \undef\cbx@lasthash
+    \undef\cbx@lastyear
+    \citetrackerfalse\pagetrackerfalse\backtrackerfalse
+    \defcounter{maxnames}{\blx@maxcitenames}%
+    \printtext[bbx:introcite]{\usebibmacro{bbx:cite:intro}}%
+  \endgroup
+}
+
+\newbibmacro{introcite:plain}{%
+  \ifcsequal{extblx@introcite}{extblx@opt@introcite@plain}
+    {\usebibmacro{introcite:typeset}%
+     \printunit*{\introcitepunct}}
+    {}}
+
+% This macro is used in \defbibenvironment
+\newbibmacro*{introcite:break}{%
+  \settowidth{\extbl@introcitewidth}{\usebibmacro{introcite:typeset}}%
+  \ifdimgreater{\extbl@introcitewidth+\introcitesep}{\introcitewidth}
+    {\leavevmode\introcitebreak}
+    {}}
+
+
+\newbibmacro*{bbx:cite:inxref}{\usebibmacro{cite}}
+
+\DeclareCiteCommand{\bbx@cite@inxref}[\mkpairedouterbibinxrefcitedelim]
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \boolfalse{backtracker}}
-  {\usebibmacro{cite:xref:bib}}
+  {\usebibmacro{bbx:cite:inxref}}
   {}
   {}
 
-\DeclareDelimcontextAlias{bbx@cite@xref}{cite}
-\DeclarePairedCiteOuterDelimAlias{bibxrefcite}{cite}
+\DeclareDelimcontextAlias{bbx@cite@inxref}{cite}
+\DeclarePairedCiteOuterDelimAlias{bibinxrefcite}{cite}
 
 \newbibmacro*{crosscite}[1]{%
   \iftoggle{bbx:citeinxref}
     {\iffieldundef{crossref}
        {\iffieldundef{xref}
           {\usebibmacro{#1}}
-          {\printtext{\bbx@cite@xref{\thefield{xref}}}}}
-       {\printtext{\bbx@cite@xref{\thefield{crossref}}}}}
+          {\printtext{\bbx@cite@inxref{\thefield{xref}}}}}
+       {\printtext{\bbx@cite@inxref{\thefield{crossref}}}}}
     {\usebibmacro{#1}}}
 
 \DeclareDelimAlias{innametitledelim}{nametitledelim}
 \DeclareDelimAlias*[bib,biblist]{innametitledelim}{nametitledelim}
 
 \DeclareBibliographyDriver{article}{%
+  \usebibmacro{introcite:plain}%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/translator+others}%
@@ -118,6 +174,7 @@
 
 
 \DeclareBibliographyDriver{book}{%
+  \usebibmacro{introcite:plain}%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/editor+others/translator+others}%
@@ -160,6 +217,7 @@
 
 
 \DeclareBibliographyDriver{inbook}{%
+  \usebibmacro{introcite:plain}%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/translator+others}%
@@ -210,6 +268,7 @@
 
 
 \DeclareBibliographyDriver{collection}{%
+  \usebibmacro{introcite:plain}%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{editor+others}%
@@ -250,6 +309,7 @@
 
 
 \DeclareBibliographyDriver{incollection}{%
+  \usebibmacro{introcite:plain}%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/translator+others}%
@@ -302,6 +362,7 @@
 
 
 \DeclareBibliographyDriver{proceedings}{%
+  \usebibmacro{introcite:plain}%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{editor+others}%
@@ -346,6 +407,7 @@
 
 
 \DeclareBibliographyDriver{inproceedings}{%
+  \usebibmacro{introcite:plain}%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/translator+others}%
@@ -402,6 +464,7 @@
 
 
 \DeclareBibliographyDriver{booklet}{%
+  \usebibmacro{introcite:plain}%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/editor+others/translator+others}%
@@ -440,6 +503,7 @@
 
 
 \DeclareBibliographyDriver{manual}{%
+  \usebibmacro{introcite:plain}%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/editor}%
@@ -486,6 +550,7 @@
 
 
 \DeclareBibliographyDriver{online}{%
+  \usebibmacro{introcite:plain}%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/editor+others/translator+others}%
@@ -522,6 +587,7 @@
 
 
 \DeclareBibliographyDriver{misc}{%
+  \usebibmacro{introcite:plain}%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/editor+others/translator+others}%
@@ -558,6 +624,7 @@
 
 
 \DeclareBibliographyDriver{patent}{%
+  \usebibmacro{introcite:plain}%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author}%
@@ -595,6 +662,7 @@
 
 
 \DeclareBibliographyDriver{periodical}{%
+  \usebibmacro{introcite:plain}%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{editor}%
@@ -623,6 +691,7 @@
 
 
 \DeclareBibliographyDriver{report}{%
+  \usebibmacro{introcite:plain}%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author}%
@@ -661,6 +730,7 @@
 
 
 \DeclareBibliographyDriver{thesis}{%
+  \usebibmacro{introcite:plain}%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author}%
@@ -697,6 +767,7 @@
 
 
 \DeclareBibliographyDriver{unpublished}{%
+  \usebibmacro{introcite:plain}%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author}%

@@ -25,25 +25,24 @@
 \else
   \usepackage[scaled=0.78]{beramono}
 \fi
-\iffalse
-\iffontspec
-  \setmonofont[Scale=0.9387,StylisticSet=1,AutoFakeSlant]{Inconsolatazi4}
-\else
-  \usepackage[scale=0.9387]{zi4}
-\fi
-\usepackage[scaled=0.809]{GoMono}
-\usepackage[scaled=0.814]{FiraMono}
-\fi
 \usepackage{microtype}
 \usepackage{hyphenat}
 \usepackage{bm}
+\usepackage{booktabs}
 \usepackage{multicol}
 \usepackage[svgnames]{xcolor}
 \usepackage[listings, breakable, skins]{tcolorbox}%
-\usepackage{tikzducks}
+\usetikzlibrary{arrows.meta}
 \usepackage[style=ext-authoryear-icomp, backend=biber]{biblatex}
 \addbibresource{biblatex-examples.bib}
 \addbibresource{biblatex-ext-examples.bib}
+
+\DeclareBibliographyCategory{sigfridsson}
+\DeclareBibliographyCategory{introcite:opts}
+\DeclareBibliographyCategory{introcite:lengths}
+\addtocategory{sigfridsson}{sigfridsson}
+\addtocategory{introcite:opts}{sigfridsson,knuth:ct:a,knuth:ct:b}
+\addtocategory{introcite:lengths}{sigfridsson,coleridge,geer}
 
 \makeatletter
 \iffontspec
@@ -59,6 +58,7 @@
 
 \usepackage{ltxdockit}
 \usepackage{btxdockit}
+\usepackage{cleveref}
 \hypersetup{%
   colorlinks=true,
   allcolors=spot,
@@ -113,6 +113,7 @@
 
 
 \newcommand*{\highlight}[2][1]{\textcolor{highlight#1}{#2}}
+\newcommand*{\highlightbf}[2][1]{\textcolor{highlight#1}{\textbf{#2}}}
 \DeclareFieldFormat{highlight1}{\textcolor{highlight1}{#1}}
 \DeclareFieldFormat{highlight2}{\textcolor{highlight2}{#1}}
 
@@ -121,8 +122,9 @@
                                #1}
 \newtcblisting{biblatexcode}{enhanced,
                              colframe=black!75!white, colback=black!5!white,
-                             frame hidden,
                              listing only,
+                             frame hidden,
+                             breakable,
                              listing style=extblxstylelatex}
 \newtcblisting{bibtexfile}{enhanced,
                            colframe=black!75!white, colback=black!5!white,
@@ -289,18 +291,13 @@
 
 \blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
 \newcommand*{\biblatexversion}{\extblx@requiredbiblatexversion}
+\newcommand*{\biblatexdate}{\extblx@requiredbiblatexdate}
 
 \AtEndPreamble{%
   \deflength{\marglistwidth}{(\oddsidemargin+2cm)*85/100}}
 \makeatother
 
-% no \mbox here, we may have to break things
-\renewrobustcmd*{\sty}[1]{{\verbatimfont\justify #1}}
-\renewrobustcmd*{\bibfield}[1]{\sty{#1}}
-\newrobustcmd*{\bibmacro}[1]{\sty{#1}}
-\renewrobustcmd*{\bibtype}[1]{{\verbatimfont\justify @#1}}
-
-
+% By Stefan Kottwitz, see https://tex.stackexchange.com/a/799/35864
 \newcommand*\justify{%
   \fontdimen2\font=0.4em% interword space
   \fontdimen3\font=0.2em% interword stretch
@@ -309,6 +306,15 @@
   \hyphenchar\font=`\-% allowing hyphenation
 }
 
+% no \mbox here, we may have to break things
+\renewrobustcmd*{\sty}[1]{{\verbatimfont\justify #1}}
+\renewrobustcmd*{\bibfield}[1]{\sty{#1}}
+\renewrobustcmd*{\opt}[1]{\sty{#1}}
+\newrobustcmd*{\bibmacro}[1]{\sty{#1}}
+\renewrobustcmd*{\bibtype}[1]{\sty{@#1}}
+\renewrobustcmd*{\cmd}[1]{\sty{\textbackslash #1}}
+
+
 \newcommand*{\gitbaseurl}{https://github.com/moewew/biblatex-ext}
 \newcommand*{\extblxversion}{0.1}
 \newcommand*{\biber}{Biber}
@@ -316,25 +322,31 @@
   \href{\gitbaseurl/issues/#1}{issue \##1 on github}}
 
 \titlepage{%
-  title={The \sty{biblatex-ext} Bundle},
-  subtitle={Extensions for the \sty{biblatex} standard styles},
-  url={\gitbaseurl},
-  author={Moritz Wemheuer},
-  link={mwemheu@gmail.com},%
-  revision={\extblxversion},
-  date={\DTMDate{2018-02-16}}}
+  title    = {The \sty{biblatex-ext} Bundle},
+  subtitle = {Extensions for the \sty{biblatex} standard styles},
+  url      = {\gitbaseurl},
+  author   = {Moritz Wemheuer},
+  link     = {mwemheu@gmail.com},%
+  revision = {\extblxversion},
+  date     = {\DTMDate{2018-02-16}},
+}
 
 \hypersetup{%
-  pdftitle={The biblatex-ext Bundle},
-  pdfsubject={Extensions for the \sty{biblatex} standard styles},
-  pdfauthor={Moritz Wemheuer},
-  pdfkeywords={latex, biblatex, bibtex, bibliography, references, citation}}
+  pdftitle    = {The biblatex-ext Bundle},
+  pdfsubject  = {Extensions for the \sty{biblatex} standard styles},
+  pdfauthor   = {Moritz Wemheuer},
+  pdfkeywords = {latex, biblatex, bibtex, bibliography, references, citation},
+}
 
 \hyphenation{%
   star-red
   un-star-red
   bib-lio-gra-phy
   white-space
+  bib-open-paren
+  bib-close-paren
+  bib-open-bracket
+  bib-close-bracket
 }
 
 \begin{document}
@@ -342,8 +354,8 @@
 \printtitlepage
 \tableofcontents
 
-
 \section{Introduction}\label{sec:int}
+\subsection{About}
 The \sty{biblatex-ext} bundle provides an extended version of the standard
 styles that come with \sty{biblatex}.
 For each standard style this bundle provides a style with the same name
@@ -357,23 +369,51 @@ otherwise need cumbersome and tedious redefinitions.
 Additionally, some customisation features that were not deemed appropriate
 for inclusion in the \sty{biblatex} kernel are provided.
 Other than that the styles are as close to the standard styles as possible.
-The styles do not attempt to offer options or commands for customisations that
+They do not attempt to offer options or commands for customisations that
 are already fairly simple to achieve with the tools provided by the standard
-styles.\footnote{Of course the author reserves the right to decide what
-exactly \enquote{simple} means and also the right to deviate from this principle
-from time to time.}
+styles.\footnote{Please be gentle and allow for a lot of wiggle room for what
+exactly \enquote{simple} means. And don't get mad if the principle is not
+followed at all times and the occasional solution for things that already are
+\enquote{simple enough} pop up here and there.}
+
+The initial motivation for this bundle was what has now become the option
+\opt{in\-name\-before\-title}.
+It is fairly straighforward to print the name of the editor of an
+\bibtype{incollection} before the \bibfield{booktitle}.
+But if one does not want to resort to clever tricks,%
+\footnote{See \url{https://tex.stackexchange.com/q/122218/} and
+\url{https://tex.stackexchange.com/q/173638/} for example.}
+the modifications needed to do this in a stable, safe and clean manner by
+redefining the bibliography drivers can easily amass hundred lines of code --
+code you may not want to see in your preamble.
+Some contributed \sty{biblatex} styles already place the editor in the
+desired position, but you may not want to commit to the other changes implied
+by switching to one of those styles.
+Especially styles written for the sole purpose of implementing the requirements
+of a particular style guide may have to go to great lengths to do so and are
+therefore not as easily modified as the standard styles.
+The styles of this bundle, on the other hand, try to stay as close to the
+standard styles as possible both in output and implementation to allow you
+to customise the styles with minimum additional effort over the standard styles.
+
 
 A few words of warning:
 The styles of this bundle are only really useful if you want to use one of their
 features to avoid having to go through the lengthy and tedious redefinitions the
 standard styles would require.
-Most methods to modify the standard styles are also applicable to the styles of
-this bundle, but you may break some of their features if you happen to redefine
-something that the \sty{ext-} styles redefine themselves.
+Before you get involved in modifying the standard styles or one of the styles
+of this bundle, you may want to have a look at the host of other styles
+available for \sty{biblatex},\fnurl{https://www.ctan.org/topic/biblatex}
+maybe you are lucky and the style you are looking for has already been
+implemented by someone else.
+As was the intention, most methods to modify the standard styles are also
+applicable to the styles of this bundle, but you may break some of their
+features if you happen to modify something that the \sty{ext-} styles redefine
+themselves.
 While many contributed \sty{biblatex} styles are examples of good \sty{biblatex}
 style coding, this can not be said of all of the files included in this bundle.
-Especially the citation styles have to go through great lengths to implement the
-citation delimiter feature properly.
+Especially the citation styles for compact citations have to work harder
+to implement the citation delimiter feature properly.
 So if you want to get inspired for your \sty{biblatex} coding, be warned that
 terrible things lurk in the \sty{.cbx} files.
 The standard \sty{.cbx} files will give you a much better impression of how
@@ -382,16 +422,19 @@ things should be done.
 
 \subsection{Requirements}
 The use of the styles requires a current version of the \sty{biblatex} package.
-At the time of writing the latest version of \sty{biblatex} is \biblatexversion,
+At the time of writing the latest version of \sty{biblatex} is
+\biblatexversion{} (dated \biblatexdate),
 that version is required for the styles to work properly.
 A warning will be issued if you use an older version.
-You may choose to ignore that warning, but the style can not be guaranteed to
+You may choose to ignore that warning, but the styles can not be guaranteed to
 work properly in that case:
-you might get other warnings, errors, or the style might fail silently.
+you might get other warnings, errors or some features of the style might just
+fail silently.
 
 Use of the \biber{} backend is strongly encouraged.
-No features of this package require \biber{} explicitly in their implementation,
-but many \sty{biblatex} standard features require \biber{} to function properly.
+Most of the new features of this bundle do not require \biber{} explicitly in
+their implementation, but many \sty{biblatex} standard features only work
+properly with \biber{}.
 
 \subsection{License}
 Permission is granted to copy, distribute and\slash or modify this software
@@ -413,7 +456,7 @@ of assistance, you might want to consider posting your question on the
 \texttt{comp.text.tex} newsgroup or \tex{} -- \latex{} Stack Exchange.%
 \fnurl{https://tex.stackexchange.com/questions/tagged/biblatex}
 
-\section{Usage}
+\section{Use}
 
 The \sty{biblatex-ext} bundle is a collection of \sty{biblatex} style files.
 You can load the styles exactly as you would load the standard styles:
@@ -425,7 +468,7 @@ The naming of the styles follows the scheme
 the style corresponding to \sty{authoryear-icomp} is called
 \sty{ext-authoryear-icomp}.
 
-\subsection{Styles}
+\section{Styles}
 Please refer to the \sty{biblatex} documentation%
 \fnurl{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf}
 and the style examples%
@@ -605,7 +648,7 @@ This style is similar to \sty{ext-verbose-trad2}.
 All options of the \sty{biblatex} package are supported and each style supports
 the options of its standard counterpart.
 
-\subsection{General Options}
+\subsection{General options}
 Additionally, all styles support the following options in global, per-type and
 per-entry scope.
 The default values are such that the styles can be used as drop-in replacement
@@ -671,8 +714,8 @@ bibliography, this needs to happen either explicitly by citing the parent
       {\iffieldundef{crossref}
          {\iffieldundef{xref}
             {\usebibmacro{#1}}
-            {\printtext{\bbx@cite@xref{\thefield{xref}}}}}
-         {\printtext{\bbx@cite@xref{\thefield{crossref}}}}}
+            {\printtext{\bbx@cite@inxref{\thefield{xref}}}}}
+         {\printtext{\bbx@cite@inxref{\thefield{crossref}}}}}
       {\usebibmacro{#1}}}}
 \makeatother
 \toggletrue{bbx:citeinxref}\fullcite{westfahl:space}
@@ -686,8 +729,8 @@ bibliography, this needs to happen either explicitly by citing the parent
       {\iffieldundef{crossref}
          {\iffieldundef{xref}
             {\usebibmacro{#1}}
-            {\printtext{\bbx@cite@xref{\thefield{xref}}}}}
-         {\printtext{\bbx@cite@xref{\thefield{crossref}}}}}
+            {\printtext{\bbx@cite@inxref{\thefield{xref}}}}}
+         {\printtext{\bbx@cite@inxref{\thefield{crossref}}}}}
       {\usebibmacro{#1}}}}
 \makeatother
 \togglefalse{bbx:citeinxref}\fullcite{westfahl:space}
@@ -849,7 +892,7 @@ printed with the \bibfield{volumeof} format.
 
 \end{optionlist}
 
-\subsection{Style-Specific Options}
+\subsection{Style-specific options}
 The \opt{dashed} option of the \sty{authoryear}- and \sty{authortitle}-like
 bibliography styles allows for finer control over the dashes now.
 \begin{optionlist}
@@ -860,6 +903,7 @@ This option controls whether or not recurring lists of authors/editors in the
 bibliography are replaced with a dash.
 The standard values \opt{true} and \opt{false} are still valid and give the
 exact same output as in the standard styles.
+This means that the output is fully compatible with the standard styles.
 The new values \opt{fullhash} and \opt{bibnamehash} differ in how exactly they
 determine if a list of authors/editors is the same as the previous.
 \begin{valuelist}
@@ -905,15 +949,140 @@ give
 With \kvopt{dashed}{bibnamehash} the dash replaces the name list if they are
 indistinguishable in the bibliography, while with \kvopt{dashed}{fullhash} the
 lists are only replaced if they are indistinguishable in the data source.
+
+
+The \opt{introcite} option is available for the bibliography styles of the
+\sty{authoryear} and \sty{authortitle} family.
+It can not be used with citation styles of the \sty{verbose} family.
+\optitem[false]{introcite}{\opt{false}, \opt{plain}, \opt{label}}
+
+This option controls whether or not the citation label is repeated in the
+bibliography.
+There are two possible output formats.
+\begin{valuelist}
+\item[false] Do not show the citation label in the bibliography.
+\item[plain] Show the citation label at the beginning of an entry.
+\item[label] Show the citation label as the label of a list similar to the
+             \sty{numeric} or \sty{alphabetic} styles.
+\end{valuelist}
+
+The difference between \opt{plain} and \opt{label} is that the former simply
+prints the citation label at the beginning of the entry, while the latter
+prints the citation label similar to the item labels in a list or the numeric
+labels in a \sty{numeric} bibliography.
+
+\begingroup
+\togglefalse{bbx:doi}
+\setlength{\introcitewidth}{5.2\biblabelsep}
+\DeclareFieldFormat{bbx:introcite}{\highlight{#1}}
+\renewcommand*{\introcitepunct}{\highlight{\addcolon}\space}
+\makeatletter
+\begin{bibexample}[title={\kvopt{introcite}{false}}]
+\csuse{extblx@opt@dashed@false}
+\csletcs{extblx@introcite}{extblx@opt@introcite@false}
+\printbibliography[heading=none, category=introcite:opts]
+\end{bibexample}
+
+\begin{bibexample}[title={\kvopt{introcite}{plain}}]
+\csuse{extblx@opt@dashed@false}
+\csletcs{extblx@introcite}{extblx@opt@introcite@plain}
+\printbibliography[heading=none, category=introcite:opts]
+\end{bibexample}
+
+\begin{bibexample}[title={\kvopt{introcite}{label}}]
+\csuse{extblx@opt@dashed@false}
+\csletcs{extblx@introcite}{extblx@opt@introcite@label}
+\printbibliography[heading=none, category=introcite:opts]
+\end{bibexample}
+\makeatother
+\endgroup
+
+\begin{ltxsyntax}
+\csitem{introcitepunct} The \opt{plain} option inserts the punctuation
+given in \cmd{introcitepunct} between the label and the rest of the entry.
+The default value is a colon followed by a space.
+
+
+\begin{bibexample}
+\togglefalse{bbx:doi}
+\renewcommand*{\introcitepunct}{\highlight{\addcolon\textvisiblespace}}
+\csuse{extblx@opt@dashed@false}
+\csletcs{extblx@introcite}{extblx@opt@introcite@plain}
+\printbibliography[heading=none, category=sigfridsson]
+\end{bibexample}
+
+The \opt{label} option can be configured to not allow the label to run into
+the remaining bibliography entry thus creating the appearance of a tabular-like
+bibliography.
+The citation label is not broken across lines, instead it moves the entry text
+into the next line with \cmd{introcitebreak} if the width of the citation label
+plus the buffer length \len{introcitesep} is greater than \len{introcitewidth}.
+
+
+\lenitem{introcitewidth} This length controls the margin of the bibliography.
+  The initial value is 8 times \len{biblabelsep}.
+\lenitem{introcitesep} This length sets the minimal space between the end of the
+  citation label and the beginning of the rest of the entry.
+  If the citation label does not leave at least \len{introcitesep} to the
+  beginning of the entry, the entry is broken to the next line by inserting
+  \cmd{introcitebreak}.
+  The initial value is half of \len{biblabelsep}.
+\end{ltxsyntax}
+
+\makeatletter
+\togglefalse{bbx:doi}
+\begingroup
+\setlength{\introcitewidth}{8\biblabelsep}
+\setlength{\introcitesep}{3.8\biblabelsep}
+\begin{bibexample}[enhanced, title={Lengths for \kvopt{introcite}{label}},
+overlay={%
+  \draw[highlight1, line width=.24mm,|-|] (frame.west)++(16pt,-2.47cm) -- node [midway,below=2pt] {\len{introcitewidth}} ++ (\introcitewidth-1pt,0);
+  \draw[highlight2, line width=.24mm,|-|] (frame.west)++(16pt,-.8mm)++ (\introcitewidth-1pt,0) -- node [above=4pt,at end] {\len{introcitesep}} ++ (-\introcitesep,0);
+  \draw[highlight2, line width=.24mm,|-|] (frame.west)++(16pt,2.32cm)++ (\introcitewidth-1pt,0) -- ++ (-\introcitesep,0);
+}
+]
+\csuse{extblx@opt@dashed@false}
+\csletcs{extblx@introcite}{extblx@opt@introcite@label}
+\printbibliography[heading=none, category=introcite:lengths]
+\end{bibexample}
+\endgroup
+
+\begin{bibexample}[enhanced, title={\kvopt{introcite}{label} with $\len{introcitesep}=-\len{introcitewidth}$}]
+\setlength{\introcitewidth}{3.2cm}
+\setlength{\introcitesep}{-\introcitewidth}
+\csuse{extblx@opt@dashed@false}
+\csletcs{extblx@introcite}{extblx@opt@introcite@label}
+\printbibliography[heading=none, category=introcite:lengths, nottype=article]
+\end{bibexample}
+
+\begin{bibexample}[enhanced, title={\kvopt{introcite}{label} with $\len{introcitesep}=\len{introcitewidth}=\len{bibhang}$}]
+\setlength{\introcitewidth}{\bibhang}
+\setlength{\introcitesep}{\bibhang}
+\csuse{extblx@opt@dashed@false}
+\csletcs{extblx@introcite}{extblx@opt@introcite@label}
+\printbibliography[heading=none, category=introcite:lengths, nottype=book]
+\end{bibexample}
+\makeatother
+
+The appearance of the citation label can be customised mostly as if it were
+produced by a true citation command called \cmd{bbx:introcite}.
+The delimiter context is \sty{bbx:introcite}, the inner citation delimiters
+can be accessed as \sty{bbx:introcite} as well.
+The label does not have outer citation delimiters, you can use the field format
+\sty{bbx:introcite} instead. In fact that is more versatile than the outer
+citation delimiter feature (see the dicsussion in \cref{citedelims}).
+
+
 \end{optionlist}
 
-\section{Field Formats}
-At a few points where the standard styles employ hard-coded formatting directive
-the styles of this bundle offer customisable formats instead.
+\section{Further Customisations}
+\subsection{Field formats}
+In a few places where the standard styles employ hard-coded formatting
+directives the styles of this bundle offer customisable formats instead.
 
 \begin{keymarglistbook}
 \item[bib(list)labeldate] The format for the labeldate in the bibliography or
-  a bibliography list for author-year-like styles. The default is to wrap the
+  a bibliography list for \sty{authoryear}-like styles. The default is to wrap the
   date in round brackets.
   \begin{bibexample}
   \togglefalse{bbx:doi}
@@ -942,7 +1111,7 @@ the styles of this bundle offer customisable formats instead.
 
 \DeclareFieldFormat{issuedate}{\mkbibparens{#1}}
 
-\section{Punctuation}
+\subsection{Punctuation}
 The package provides the following commands to modify the delimiters and
 punctuation between fields.
 \begin{ltxsyntax}
@@ -985,7 +1154,7 @@ The delimiter between \bibfield{volume} and \bibfield{number} for
 The default is a dot.
 \begin{bibexample}
 \togglefalse{bbx:doi}
-\renewcommand*{\volnumdelim}{\highlight{\textbf{\adddot}}}
+\renewcommand*{\volnumdelim}{\highlightbf{\adddot}}
 \fullcite{sigfridsson}
 \end{bibexample}
 
@@ -1067,12 +1236,15 @@ citations where the second is an \bibfield{extradate} only.
 The default is a comma (\emph{not} followed by a space).
 \end{ltxsyntax}
 \begin{bibexample}
-\renewcommand*{\extradateonlycompcitedelim}{\highlight{\textbf{\addcomma}}}
+\renewcommand*{\extradateonlycompcitedelim}{\highlightbf{\addcomma}}
 \cite{knuth:ct:b,knuth:ct:c}
 \end{bibexample}
 
 
-\section{Delimiters for Citation Commands}
+\subsection{Delimiters for citation commands}\label{citedelims}
+The delimiters for citation commands provided by the styles of this bundle
+offer a simple way to customise the bracketing of citation commands.
+
 The citation commands \cmd{cite}, \cmd{parencite} and \cmd{textcite} come with
 two sets of delimiters: A pair of \emph{outer delimiters} wrapped around the
 resulting citation in its entirety and a pair of \emph{inner delimiters} that
@@ -1082,30 +1254,69 @@ for \sty{authoryear}-like styles or the square brackets of \cmd{cite} for
 \sty{numeric}- or \sty{alphabetic}-like styles.
 Inner delimiters would be the round brackets in \cmd{textcite} around
 the year for \sty{authoryear} or around the title for \sty{authortitle}.
+See \cref{tab:citationdelims} for more details.
+
+The delimiters are set up to work as paired delimiters, but you are free to
+use non-matching pairs or to leave the opening or closing delimiter empty.
+If you want to add punctuation, the context-sensitive delimiters
+\sty{nameyeardelim}, \sty{nametitledelim} and friends as well as
+the context-insensitive \cmd{postnotedelim} and friends are more approriate.
+Although the outer delimiters can be set up using \cmd{DeclareCiteCommand}'s
+optional \prm{wrapper} argument for some styles, this is not possible for all
+styles. Inner delimiters can be set up with \cmd{DeclareFieldFormat} in some
+styles, but other styles need more intricate implementations.
+This means that the commands discussed here can be used to place the citations
+between delimiters, but not natively to pass the result of a citation to a
+wrapper command as an argument.%
+%\footnote{The opening and closing delimiters may appear in different levels of
+%grouping, this further complicates the issue.}
+
+\begin{table}
+\centering
+\caption[Outer and inner citation delimiters by style]{\highlight[1]{Outer} and \highlight[2]{inner} citation delimiters by style. If the style does not use the delimiters by default, $\langle$ and $\rangle$ are substituted in the appropriate place.}
+\label{tab:citationdelims}
+\begin{tabular}{@{}llll@{}}
+\toprule
+             & \multicolumn{3}{c}{Citation command}\\
+             \cmidrule(lr){2-4}
+Style family & \cmd{cite} & \cmd{parencite} & \cmd{textcite}\\
+\midrule
+\sty{alphabetic} & \highlightbf[1]{[}Knu84\highlightbf[1]{]} & \highlightbf[1]{[}Knu84\highlightbf[1]{]} & \highlight[1]{$\bm{\langle}$}Knuth \highlightbf[2]{[}2\highlightbf[2]{]}\highlight[1]{$\bm{\rangle}$}\\
+\sty{numeric} & \highlightbf[1]{[}2\highlightbf[1]{]} & \highlightbf[1]{[}2\highlightbf[1]{]} & \highlight[1]{$\bm{\langle}$}Knuth \highlightbf[2]{[}2\highlightbf[2]{]}\highlight[1]{$\bm{\rangle}$}\\
+\sty{authortitle} & \highlight[1]{$\bm{\langle}$}Knuth, \highlight[2]{$\bm{\langle}$}\emph{\TeX book}\highlight[2]{$\bm{\rangle}$}\highlight[1]{$\bm{\rangle}$} & \highlightbf[1]{(}Knuth, \highlight[2]{$\bm{\langle}$}\emph{\TeX book}\highlight[2]{$\bm{\rangle}$}\highlightbf[1]{)} & \highlight[1]{$\bm{\langle}$}Knuth \highlightbf[2]{(}\emph{\TeX book}\highlightbf[2]{)}\highlight[1]{$\bm{\rangle}$}\\
+\sty{authoryear} & \highlight[1]{$\bm{\langle}$}Knuth \highlight[2]{$\bm{\langle}$}1984\highlight[2]{$\bm{\rangle}$}\highlight[1]{$\bm{\rangle}$} & \highlightbf[1]{(}Knuth \highlight[2]{$\bm{\langle}$}1984\highlight[2]{$\bm{\rangle}$}\highlightbf[1]{)} & \highlight[1]{$\bm{\langle}$}Knuth \highlightbf[2]{(}1984\highlightbf[2]{)}\highlight[1]{$\bm{\rangle}$}\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{ltxsyntax}
 \cmditem{DeclarePairedCiteOuterDelim}{cite command}{opening delimiter}
         {closing delimiter}
 
 Sets up the outer delimiters for the citation command
-\cmd{$\langle$\emph{cite command}$\rangle$}.
+\cmd{$\langle$\emph{cite command}$\rangle$}. The name of the \prm{cite command}
+is given without leading backslash in the argument, it normally corresponds to
+the delimiter context.
 
-You may use almost arbitrary input for \prm{opening delimiter} and
+You may use almost any input for \prm{opening delimiter} and
 \prm{closing delimiter} as long as typesetting of
 \enquote{\prm{opening delimiter}text\prm{closing delimiter}} does not lead to
-errors.
+errors when arbitrary grouping such as
+\enquote{\{\prm{opening delimiter}\allowbreak text\}\allowbreak
+\prm{closing delimiter}}
+or \enquote{\prm{opening delimiter}\allowbreak text\allowbreak
+\{\prm{closing delimiter}\}}
+is introduced.
+It can not be guaranteed that the opening and closing delimiters are executed
+at the same level of grouping, let alone in the same group.
+As mentioned above, this approach is not suitable to wrap the citation up in a
+wrapper command, i.e.\ to pass the entire output of the citation command as
+argument to a macro.
+
 Instead of hard-coded \texttt{(}, \texttt{)}, \texttt{[} and \texttt{]} their
 \sty{biblatex} counterparts \cmd{bibopenparen}, \cmd{bibcloseparen},
 \cmd{bibopenbracket} and \cmd{bibclosebracket} are preferable, since these
-commands can change the style when nesting and check if opening brackets
-are always closed.\footnote{That means that you can not have \cmd{bibopenparen}
-as opening delimiter and \cmd{bibclosebracket} as closing delimiter, though:
-The closing delimiter will automatically match the opening one.}
-
-For most styles \cmd{parencite} would be set up with
-\begin{biblatexcode}
-\DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
-\end{biblatexcode}
+commands respond to nesting and check if opening brackets are always closed.
 
 \cmditem{DeclarePairedCiteOuterDelimAlias}{cite alias}{cite command}
 \cmditem*{DeclarePairedCiteOuterDelimAlias*}{cite alias}{cite command}
@@ -1118,6 +1329,10 @@ definitions at the time of executing the aliasing command,
 whereas the alias created by the unstarred version will only evaluate the
 delimiters whenever the citation command is called.
 
+\cmditem{UndeclarePairedCiteOuterDelim}{cite command}
+
+Completely remove the definitions of the outer delimiters for
+\cmd{$\langle$\emph{cite command}$\rangle$}.
 
 \cmditem{DeclarePairedCiteInnerDelim}{cite command}{opening delimiter}
         {closing delimiter}
@@ -1125,10 +1340,8 @@ delimiters whenever the citation command is called.
 Sets up the inner delimiters for the citation command
 \cmd{$\langle$\emph{cite command}$\rangle$}.
 
-For most styles \cmd{textcite} would be set up with
-\begin{biblatexcode}
-\DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
-\end{biblatexcode}
+This command is similar to \cmd{DeclarePairedCiteOuterDelim} and the same
+restrictions to \prm{opening delimiter} and \prm{closing delimiter} apply.
 
 \cmditem{DeclarePairedCiteInnerDelimAlias}{cite alias}{cite command}
 \cmditem*{DeclarePairedCiteInnerDelimAlias*}{cite alias}{cite command}
@@ -1141,21 +1354,38 @@ definitions at the time of executing the aliasing command,
 whereas the alias created by the unstarred version will only evaluate the
 delimiters whenever the citation command is called.
 
+\cmditem{UndeclarePairedCiteInnerDelim}{cite command}
+
+Completely remove the definitions of the inner delimiters for
+\cmd{$\langle$\emph{cite command}$\rangle$}.
+
+The \sty{authoryear} and \sty{authortitle} styles have \cmd{parencite},
+e.g.\ \parencite{knuth:ct:a}, \parencite{sigfridsson}, set up with
+\begin{biblatexcode}
+\DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
+\DeclarePairedCiteInnerDelim{parencite}{}{}
+\end{biblatexcode}
+and \cmd{textcite}, e.g.\ \textcite{knuth:ct:a}, \textcite{sigfridsson}, with
+\begin{biblatexcode}
+\DeclarePairedCiteOuterDelim{textcite}{}{}
+\DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
+\end{biblatexcode}
 If you wanted \cmd{parencite} of \sty{authoryear} to look like
-\enquote{[Sigfridsson and Worman $\langle$1998$\rangle$]} you would use
+\enquote{[Sigfridsson and Worman (1998)]} you would use
 \begin{biblatexcode}
 \DeclarePairedCiteOuterDelim{parencite}{|1\bibopenbracket1|}{|1\bibclosebracket1|}
-\DeclarePairedCiteInnerDelim{parencite}{|2$\langle$2|}{|2$\rangle$2|}
+\DeclarePairedCiteInnerDelim{parencite}{|2\bibopenparen2|}{|2\bibcloseparen2|}
 \end{biblatexcode}
+\citereset
 \begin{bibexample}
-\DeclarePairedCiteOuterDelim{parencite}{\highlight[1]{\bibopenbracket}}{\highlight[1]{\bibclosebracket}}
-\DeclarePairedCiteInnerDelim{parencite}{\highlight[2]{${\langle}$}}{\highlight[2]{${\rangle}$}}
+\DeclarePairedCiteOuterDelim{parencite}{\highlightbf[1]{\bibopenbracket}}{\highlightbf[1]{\bibclosebracket}}
+\DeclarePairedCiteInnerDelim{parencite}{\highlightbf[2]{\bibopenparen}}{\highlightbf[2]{\bibcloseparen}}
 \parencite{sigfridsson}\quad\parencite{worman,geer}\quad
 \parencite{knuth:ct:a,knuth:ct:b,knuth:ct:c}
 \end{bibexample}
 \end{ltxsyntax}
 
-\section{Selected Bibliography Macros}
+\subsection{Selected bibliography macros}
 The following macros are defined in \texttt{ext-standard.bbx} and may make
 certain things easier to customise.
 Many of these macros are replacements for bare \cmd{printfield} or
@@ -1246,17 +1476,6 @@ A bibliography macro to print the \bibfield{type} and \bibfield{number} fields.
 \begin{bibexample}[breakable]
 \printbibliography
 \end{bibexample}
-
-\begin{center}
-\begin{tikzpicture}[scale=2]
-\duck[body=pink,
-unicorn=magenta!60!violet,
-crazyhair=magenta!60!violet,
-cape,
-book=\scalebox{.5}{Bib\LaTeX},
-bookcolour=spot]
-\end{tikzpicture}
-\end{center}
 
 \end{document}
 \endinput

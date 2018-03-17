@@ -96,13 +96,20 @@
 \DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
   {\smartcite}{\multicitedelim}
 
-\DeclareCiteCommand{\bbx@cite@xref}[\mkpairedouterbibxrefcitedelim]
+\DeclareCiteCommand{\bbx@cite@inxref}[\mkpairedouterbibinxrefcitedelim]
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \boolfalse{backtracker}%
    \usebibmacro{cite:init}}
   {\usebibmacro{cite:comp}}
+  {\usebibmacro{cite:dump}}
   {}
-  {}
+
+\renewbibmacro*{bbx:cite:intro}{%
+  \printfield{labelprefix}%
+  \printfield{labelnumber}%
+  \ifbool{bbx:subentry}
+    {\printfield{entrysetcount}}
+    {}}
 
 \endinput

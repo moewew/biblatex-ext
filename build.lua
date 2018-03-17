@@ -22,28 +22,27 @@ end
 packtdszip  = true
 
 
-versionfiles = {"*.bbx", "*.cbx", "*.def", "*.tex"}
+tagfiles = {"*.bbx", "*.cbx", "*.def", "*.tex"}
 
-function setversion_update_line (line, date, version)
-  local latexdate = string.gsub(date, "%-", "/")
-  if string.match(line, "%d%d%d%d/%d%d/%d%d v%d+%.%d+%.?%d?%w?") then
-    line = string.gsub(line, "%d%d%d%d/%d%d/%d%d", latexdate)
-    line = string.gsub(line, "v%d+%.%d+%.?%d?%w?", "v" .. version)
+function update_tag(file, content, tagname, tagdate)
+  local isodatescheme = "%d%d%d%d%-%d%d%-%d%d"
+  local ltxdatescheme = "%d%d%d%d%/%d%d%/%d%d"
+  local versionscheme = "%d+%.%d+%.?%d?%w?"
+  local latexdate = string.gsub(tagdate, "%-", "/")
+  if string.match(file, "%.bbx$")  or string.match(file, "%.cbx$") 
+    or string.match(file, "%.def$") then
+    return string.gsub(content , ltxdatescheme .. " v" .. versionscheme,
+                                 latexdate .. " v" .. tagname)
+  elseif string.match(file, "%.tex$") then
+    content = string.gsub(content ,"\n\\newcommand%*{\\extblxversion}{"
+                                     .. versionscheme .."}\n",
+                                   "\n\\newcommand*{\\extblxversion}{"
+                                     .. tagname .. "}\n")
+    content = string.gsub(content ,"\n\\begin{release}{<version>}{<date>}\n",
+                                   "\n\\begin{release}{" .. tagname .. "}{"
+                                     .. tagdate .."}\n")
+    return string.gsub(content, "date={\\DTMDate{" .. isodatescheme .. "}}}",
+                                "date={\\DTMDate{" .. tagdate .."}}}")
   end
-  if string.match(line, "^\\newcommand%*%{\\extblxversion%}%{%d+%.%d+%.?%d?%w?%}$")
-  then
-    line = string.gsub(line, "%d+%.%d+%.?%d?%w?", version)
-  end
-  if string.match(line, "^\\begin%{release%}%{<version>%}%{<date>%}$") then
-    line = string.gsub(line, "<version>", version)
-    line = string.gsub(line, "<date>", date)
-  end
-  if string.match(line, "date=%{\\DTMDate%{%d%d%d%d%-%d%d%-%d%d%}%}") then
-    line = string.gsub(line, "%d%d%d%d%-%d%d%-%d%d", date)
-  end
-  return line
+  return content
 end
-
--- Find and run the build system
-kpse.set_program_name ("kpsewhich")
-dofile (kpse.lookup ("l3build.lua"))

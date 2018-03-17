@@ -142,13 +142,18 @@
 \DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
   {\smartcite}{\setunit{\multicitedelim}}
 
-\DeclareCiteCommand{\bbx@cite@xref}[\mkpairedouterbibxrefcitedelim]
+\DeclareCiteCommand{\bbx@cite@inxref}[\mkpairedouterbibinxrefcitedelim]
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \boolfalse{backtracker}%
    \usebibmacro{cite:init}}
-  {\usebibmacro{cite:xref:bib}}
+  {\usebibmacro{bbx:cite:inxref}}
   {}
-  {}
+  {\usebibmacro{cite:postnote}}
+
+\renewbibmacro*{bbx:cite:intro}{%
+  \usebibmacro{cite}%
+  \clearfield{postnote}%
+  \usebibmacro{cite:postnote}}
 
 \endinput

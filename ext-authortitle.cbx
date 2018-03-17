@@ -106,4 +106,7 @@
   {\smartcite}{\multicitedelim}
 \DeclareMultiCiteCommand{\textcites}[\mkpairedoutertextcitedelim]{\textcite}{}
 
+\DeclareFieldFormat{extblx@innerbbx:introcitedelim}{%
+  \csuse{mkpairedinner\blx@delimcontext delim}{#1}}
+
 \endinput
