@@ -928,8 +928,37 @@ Assuming \kvopt{maxnames}{1} and no name list disambiguation
                                       style = extblxstylebibtex}]
                     {biblatex-ext-examples.bib}
 give
+\renewcommand*{\bibnamedash}{\textbf{\textemdash\addspace}}
+\DeclareFieldFormat{dasheshighlight}{%
+  \iffieldequalstr{entrykey}{elk:einio}
+    {\highlight[1]{#1}}
+    {\iffieldequalstr{entrykey}{appleby:abl}
+       {\highlight[2]{#1}}
+       {#1}}}
+\renewbibmacro*{author}{%
+  \printtext[dasheshighlight]{%
+  \ifboolexpr{
+    test \ifuseauthor
+    and
+    not test {\ifnameundef{author}}
+  }
+    {\usebibmacro{bbx:dashcheck}
+       {\printtext{\bibnamedash}}
+       {\usebibmacro{bbx:savehash}%
+        \printnames{author}}%
+        \iffieldundef{authortype}
+          {\setunit{\printdelim{nameyeardelim}}}
+          {\setunit{\printdelim{authortypedelim}}}%
+     \iffieldundef{authortype}
+       {}
+       {\usebibmacro{authorstrg}%
+        \setunit{\printdelim{nameyeardelim}}}}%
+    {\global\undef\bbx@lasthash
+     \usebibmacro{labeltitle}%
+     \setunit*{\printdelim{nonameyeardelim}}}}%
+  \usebibmacro{date+extradate}}
 \let\ExecuteBibliographyOptions\@gobble
-\nocite{elkone,elktwo,applebyone,applebytwo}
+\nocite{elk:bronto,elk:einio,appleby:abl,appleby:civ}
 \begin{bibexample}[title={\kvopt{dashed}{false}}]
 \csuse{extblx@opt@dashed@false}
 \printbibliography[heading=none]
@@ -973,7 +1002,7 @@ labels in a \sty{numeric} bibliography.
 
 \begingroup
 \togglefalse{bbx:doi}
-\setlength{\introcitewidth}{5.2\biblabelsep}
+\setlength{\introcitewidth}{5.8\biblabelsep}
 \DeclareFieldFormat{bbx:introcite}{\highlight{#1}}
 \renewcommand*{\introcitepunct}{\highlight{\addcolon}\space}
 \makeatletter
@@ -1005,7 +1034,7 @@ The default value is a colon followed by a space.
 
 \begin{bibexample}
 \togglefalse{bbx:doi}
-\renewcommand*{\introcitepunct}{\highlight{\addcolon\textvisiblespace}}
+\renewcommand*{\introcitepunct}{\highlight{\textbf{\addcolon}\textvisiblespace}}
 \csuse{extblx@opt@dashed@false}
 \csletcs{extblx@introcite}{extblx@opt@introcite@plain}
 \printbibliography[heading=none, category=sigfridsson]
@@ -1036,9 +1065,13 @@ plus the buffer length \len{introcitesep} is greater than \len{introcitewidth}.
 \setlength{\introcitesep}{3.8\biblabelsep}
 \begin{bibexample}[enhanced, title={Lengths for \kvopt{introcite}{label}},
 overlay={%
-  \draw[highlight1, line width=.24mm,|-|] (frame.west)++(16pt,-2.47cm) -- node [midway,below=2pt] {\len{introcitewidth}} ++ (\introcitewidth-1pt,0);
-  \draw[highlight2, line width=.24mm,|-|] (frame.west)++(16pt,-.8mm)++ (\introcitewidth-1pt,0) -- node [above=4pt,at end] {\len{introcitesep}} ++ (-\introcitesep,0);
-  \draw[highlight2, line width=.24mm,|-|] (frame.west)++(16pt,2.32cm)++ (\introcitewidth-1pt,0) -- ++ (-\introcitesep,0);
+  \draw[highlight1, line width=.24mm,|-|] (frame.west)++(16pt,-2.47cm) --
+    node [midway,below=2pt] {\len{introcitewidth}} ++ (\introcitewidth-1pt,0);
+  \draw[highlight2, line width=.24mm,|-|] (frame.west)++(16pt,-.8mm)++
+    (\introcitewidth-1pt,0) -- node [above=4pt,at end] {\len{introcitesep}} ++
+    (-\introcitesep,0);
+  \draw[highlight2, line width=.24mm,|-|] (frame.west)++(16pt,2.32cm)++
+    (\introcitewidth-1pt,0) -- ++ (-\introcitesep,0);
 }
 ]
 \csuse{extblx@opt@dashed@false}
@@ -1047,15 +1080,17 @@ overlay={%
 \end{bibexample}
 \endgroup
 
-\begin{bibexample}[enhanced, title={\kvopt{introcite}{label} with $\len{introcitesep}=-\len{introcitewidth}$}]
-\setlength{\introcitewidth}{3.2cm}
+\begin{bibexample}[enhanced, title={\kvopt{introcite}{label} with
+  $\len{introcitesep}=-\len{introcitewidth}$}]
+\setlength{\introcitewidth}{27mm}
 \setlength{\introcitesep}{-\introcitewidth}
 \csuse{extblx@opt@dashed@false}
 \csletcs{extblx@introcite}{extblx@opt@introcite@label}
 \printbibliography[heading=none, category=introcite:lengths, nottype=article]
 \end{bibexample}
 
-\begin{bibexample}[enhanced, title={\kvopt{introcite}{label} with $\len{introcitesep}=\len{introcitewidth}=\len{bibhang}$}]
+\begin{bibexample}[enhanced, title={\kvopt{introcite}{label} with
+  $\len{introcitesep}=\len{introcitewidth}=\len{bibhang}$}]
 \setlength{\introcitewidth}{\bibhang}
 \setlength{\introcitesep}{\bibhang}
 \csuse{extblx@opt@dashed@false}
@@ -1068,9 +1103,10 @@ The appearance of the citation label can be customised mostly as if it were
 produced by a true citation command called \cmd{bbx:introcite}.
 The delimiter context is \sty{bbx:introcite}, the inner citation delimiters
 can be accessed as \sty{bbx:introcite} as well.
-The label does not have outer citation delimiters, you can use the field format
-\sty{bbx:introcite} instead. In fact that is more versatile than the outer
-citation delimiter feature (see the dicsussion in \cref{citedelims}).
+The label does not have outer citation delimiters, you can use the wrapper
+field format \sty{bbx:introcite} instead. In fact this approach is more
+versatile than the outer citation delimiter feature (see the dicsussion in
+\cref{citedelims}).
 
 
 \end{optionlist}
@@ -1079,14 +1115,16 @@ citation delimiter feature (see the dicsussion in \cref{citedelims}).
 \subsection{Field formats}
 In a few places where the standard styles employ hard-coded formatting
 directives the styles of this bundle offer customisable formats instead.
+Field formats can be modified with \cmd{DeclareFieldFormat}.
 
 \begin{keymarglistbook}
 \item[bib(list)labeldate] The format for the labeldate in the bibliography or
-  a bibliography list for \sty{authoryear}-like styles. The default is to wrap the
-  date in round brackets.
+  a bibliography list for \sty{authoryear}-like styles. The default is to wrap
+  the date in round brackets.
   \begin{bibexample}
   \togglefalse{bbx:doi}
-  \DeclareFieldFormat{biblabeldate}{\highlight{\bibopenparen}\highlight[2]{#1}\highlight{\bibcloseparen}}
+  \DeclareFieldFormat{biblabeldate}{\highlight{\bibopenparen}\highlight[2]{#1}%
+    \highlight{\bibcloseparen}}
   \fullcite{sigfridsson}
   \end{bibexample}
 
@@ -1096,7 +1134,8 @@ directives the styles of this bundle offer customisable formats instead.
   \begin{bibexample}
   \makeatletter\bbx@opt@mergedate@false\makeatother
   \togglefalse{bbx:doi}
-  \DeclareFieldFormat{issuedate}{\highlight{\bibopenparen}\highlight[2]{#1}\highlight{\bibcloseparen}}
+  \DeclareFieldFormat{issuedate}{\highlight{\bibopenparen}\highlight[2]{#1}%
+    \highlight{\bibcloseparen}}
   \fullcite{sigfridsson}
   \end{bibexample}
 
@@ -1104,7 +1143,8 @@ directives the styles of this bundle offer customisable formats instead.
   used when \kvopt{maintitleaftertitle}{true}.
   \begin{bibexample}
   \togglefalse{bbx:isbn}\toggletrue{bbx:maintitleaftertitle}
-  \DeclareFieldFormat{volumeof}{\highlight{\bibstring{volume}}~\highlight[2]{#1}}
+  \DeclareFieldFormat{volumeof}{\highlight{\bibstring{volume}}~%
+    \highlight[2]{#1}}
   \fullcite{knuth:ct:a}
   \end{bibexample}
 \end{keymarglistbook}
@@ -1114,6 +1154,7 @@ directives the styles of this bundle offer customisable formats instead.
 \subsection{Punctuation}
 The package provides the following commands to modify the delimiters and
 punctuation between fields.
+The punctuation commands should be redefined with \cmd{renewcommand}.
 \begin{ltxsyntax}
 \csitem{maintitletitledelim}
 The punctuation between the \bibfield{maintitle} and \bibfield{title} or
@@ -1121,7 +1162,8 @@ The punctuation between the \bibfield{maintitle} and \bibfield{title} or
 The default is a colon followed by a space.
 \begin{bibexample}
 \togglefalse{bbx:isbn}
-\renewcommand*{\maintitletitledelim}{\highlight{\textbf{\addcolon}\textvisiblespace}}
+\renewcommand*{\maintitletitledelim}{\highlight{\textbf{\addcolon}%
+  \textvisiblespace}}
 \fullcite{knuth:ct:a}
 \end{bibexample}
 
@@ -1132,7 +1174,8 @@ The default is \cmd{newunitpunct}.
 \begin{bibexample}
 \togglefalse{bbx:isbn}
 \toggletrue{bbx:maintitleaftertitle}
-\renewcommand*{\titlemaintitledelim}{\highlight{\textbf{\addperiod}\textvisiblespace}\bibsentence}
+\renewcommand*{\titlemaintitledelim}{\highlight{\textbf{\addperiod}%
+  \textvisiblespace}\bibsentence}
 \fullcite{knuth:ct:a}
 \end{bibexample}
 
@@ -1207,7 +1250,8 @@ You could use \cs{publocdelim} if you changed the order of these fields to
 \end{biblatexcode}
 \begin{bibexample}
 \renewcommand*{\publocdelim}{\highlight[1]{\textbf{\addcomma}\textvisiblespace}}
-\renewcommand*{\locdatedelim}{\highlight[2]{\textbf{\addcomma}\textvisiblespace}}
+\renewcommand*{\locdatedelim}{\highlight[2]{%
+  \textbf{\addcomma}\textvisiblespace}}
 \renewbibmacro*{pubinstorg+location+date}[1]{%
   \printlist{#1}%
   \setunit*{\publocdelim}%
@@ -1262,7 +1306,7 @@ If you want to add punctuation, the context-sensitive delimiters
 \sty{nameyeardelim}, \sty{nametitledelim} and friends as well as
 the context-insensitive \cmd{postnotedelim} and friends are more approriate.
 Although the outer delimiters can be set up using \cmd{DeclareCiteCommand}'s
-optional \prm{wrapper} argument for some styles, this is not possible for all
+optional \prm{wrapper} argument for most styles, this is not possible for all
 styles. Inner delimiters can be set up with \cmd{DeclareFieldFormat} in some
 styles, but other styles need more intricate implementations.
 This means that the commands discussed here can be used to place the citations
@@ -1273,7 +1317,10 @@ wrapper command as an argument.%
 
 \begin{table}
 \centering
-\caption[Outer and inner citation delimiters by style]{\highlight[1]{Outer} and \highlight[2]{inner} citation delimiters by style. If the style does not use the delimiters by default, $\langle$ and $\rangle$ are substituted in the appropriate place.}
+\caption[Outer and inner citation delimiters by style]{\highlight[1]{Outer} and
+\highlight[2]{inner} citation delimiters by style. If the style does not use
+the delimiters by default, $\langle$ and $\rangle$ are substituted in the
+appropriate place.}
 \label{tab:citationdelims}
 \begin{tabular}{@{}llll@{}}
 \toprule
@@ -1378,8 +1425,10 @@ If you wanted \cmd{parencite} of \sty{authoryear} to look like
 \end{biblatexcode}
 \citereset
 \begin{bibexample}
-\DeclarePairedCiteOuterDelim{parencite}{\highlightbf[1]{\bibopenbracket}}{\highlightbf[1]{\bibclosebracket}}
-\DeclarePairedCiteInnerDelim{parencite}{\highlightbf[2]{\bibopenparen}}{\highlightbf[2]{\bibcloseparen}}
+\DeclarePairedCiteOuterDelim{parencite}{\highlightbf[1]{\bibopenbracket}}{%
+  \highlightbf[1]{\bibclosebracket}}
+\DeclarePairedCiteInnerDelim{parencite}{\highlightbf[2]{\bibopenparen}}{%
+  \highlightbf[2]{\bibcloseparen}}
 \parencite{sigfridsson}\quad\parencite{worman,geer}\quad
 \parencite{knuth:ct:a,knuth:ct:b,knuth:ct:c}
 \end{bibexample}
