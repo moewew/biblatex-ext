@@ -16,7 +16,7 @@
     {\printfield[citetitle]{labeltitle}}
     {\printnames{labelname}}%
   \printdelim{namelabeldelim}%
-  \csuse{extblx@delim@textcite@inner@open}%
+  \csuse{extblx@citedelim@textcite@inner@open}%
   \ifnumequal{\value{citecount}}{1}
     {\usebibmacro{prenote}}
     {}%
@@ -24,33 +24,33 @@
 
 
 \DeclareCiteCommand{\cite}
-  {\csuse{extblx@delim@cite@outer@open}%
+  {\csuse{extblx@citedelim@cite@outer@open}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \ifnumgreater{\value{citecount}}{1}
-     {\csuse{extblx@delim@cite@outer@open}}
+     {\csuse{extblx@citedelim@cite@outer@open}}
      {}%
    \usebibmacro{cite}}
-  {\csuse{extblx@delim@cite@outer@close}%
+  {\csuse{extblx@citedelim@cite@outer@close}%
    \multicitedelim}
   {\usebibmacro{postnote}%
-   \csuse{extblx@delim@cite@outer@close}}
+   \csuse{extblx@citedelim@cite@outer@close}}
 
-\DeclareCiteCommand{\parencite}[\mkpairedouterparencitedelim]
+\DeclareCiteCommand{\parencite}[\mkouterparencitedelim]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
 
-\DeclareCiteCommand{\smartcite}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+\DeclareCiteCommand{\smartcite}[\iffootnote\mkouterparencitedelim\mkbibfootnote]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
 
-\DeclareCiteCommand{\textcite}[\mkpairedoutertextcitedelim]
+\DeclareCiteCommand{\textcite}[\mkoutertextcitedelim]
   {}
   {\usebibmacro{citeindex}%
    \iffirstcitekey
@@ -58,13 +58,13 @@
      {\stepcounter{textcitetotal}%
       \textcitedelim}%
    \usebibmacro{textcite}}
-  {\csuse{extblx@delim@textcite@inner@close}}
+  {\csuse{extblx@citedelim@textcite@inner@close}}
   {\usebibmacro{postnote}%
-   \csuse{extblx@delim@textcite@inner@close}}
+   \csuse{extblx@citedelim@textcite@inner@close}}
 
-\DeclareMultiCiteCommand{\parencites}[\mkpairedouterparencitedelim]{\parencite}{\multicitedelim}
-\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]{\parencite}{\multicitedelim}
+\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkouterparencitedelim\mkbibfootnote]
   {\smartcite}{\multicitedelim}
-\DeclareMultiCiteCommand{\textcites}[\mkpairedoutertextcitedelim]{\textcite}{}
+\DeclareMultiCiteCommand{\textcites}[\mkoutertextcitedelim]{\textcite}{}
 
 \endinput

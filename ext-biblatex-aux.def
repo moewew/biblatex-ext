@@ -14,53 +14,53 @@
 
 %{<context>}{<opening delim>}{<closing delim>}
 \newcommand*{\DeclareOuterCiteDelim}{%
-  \extblx@declarepaireddelim{outer}}
+  \extblx@declareciteddelim{outer}}
 \newrobustcmd*{\DeclareInnerCiteDelim}{%
-  \extblx@declarepaireddelim{inner}}
+  \extblx@declareciteddelim{inner}}
 
 %{<inner/outer>}{<cite context>}{<opening delim>}{<closing delim>}
-\def\extblx@declarepaireddelim#1#2#3#4{%
-  \csdef{extblx@delim@#2@#1@open}{#3}%
-  \csdef{extblx@delim@#2@#1@close}{#4}}
+\def\extblx@declareciteddelim#1#2#3#4{%
+  \csdef{extblx@citedelim@#2@#1@open}{#3}%
+  \csdef{extblx@citedelim@#2@#1@close}{#4}}
 
 %{<context>}
 \newcommand*{\UndeclareOuterCiteDelim}{%
-  \extblx@undeclarepaireddelim{outer}}
+  \extblx@undeclareciteddelim{outer}}
 \newrobustcmd*{\UndeclareInnerCiteDelim}{%
-  \extblx@undeclarepaireddelim{inner}}
+  \extblx@undeclareciteddelim{inner}}
 
 %{<inner/outer>}{<cite context>}
-\def\extblx@undeclarepaireddelim#1#2{%
-  \csundef{extblx@delim@#2@#1@open}%
-  \csundef{extblx@delim@#2@#1@close}}
+\def\extblx@undeclareciteddelim#1#2{%
+  \csundef{extblx@citedelim@#2@#1@open}%
+  \csundef{extblx@citedelim@#2@#1@close}}
 
 %{<alias>}{<cite context>}
 \newcommand*{\DeclareOuterCiteDelimAlias}{%
   \@ifstar
-    {\extblx@declarepaireddelim@alias@i{outer}}
-    {\extblx@declarepaireddelim@alias{outer}}}
+    {\extblx@declareciteddelim@alias@i{outer}}
+    {\extblx@declareciteddelim@alias{outer}}}
 \newcommand*{\DeclareInnerCiteDelimAlias}{%
   \@ifstar
-    {\extblx@declarepaireddelim@alias@i{inner}}
-    {\extblx@declarepaireddelim@alias{inner}}}
+    {\extblx@declareciteddelim@alias@i{inner}}
+    {\extblx@declareciteddelim@alias{inner}}}
 
 %{<inner/outer>}{<alias>}{<cite context>}
-\def\extblx@declarepaireddelim@alias#1#2#3{%
-  \csdef{extblx@delim@#2@#1@open}{\csuse{extblx@delim@#3@#1@open}}%
-  \csdef{extblx@delim@#2@#1@close}{\csuse{extblx@delim@#3@#1@close}}}
-\def\extblx@declarepaireddelim@alias@i#1#2#3{%
-  \csletcs{extblx@delim@#2@#1@open}{extblx@delim@#3@#1@open}%
-  \csletcs{extblx@delim@#2@#1@close}{extblx@delim@#3@#1@close}}
+\def\extblx@declareciteddelim@alias#1#2#3{%
+  \csdef{extblx@citedelim@#2@#1@open}{\csuse{extblx@citedelim@#3@#1@open}}%
+  \csdef{extblx@citedelim@#2@#1@close}{\csuse{extblx@citedelim@#3@#1@close}}}
+\def\extblx@declareciteddelim@alias@i#1#2#3{%
+  \csletcs{extblx@citedelim@#2@#1@open}{extblx@citedelim@#3@#1@open}%
+  \csletcs{extblx@citedelim@#2@#1@close}{extblx@citedelim@#3@#1@close}}
 
 % declare \mkpaired...delim commands
 \newrobustcmd*{\extblx@create@mkcitedelim}[2]{%
-  \protected\csdef{mkpaired#1#2delim}##1{%
+  \protected\csdef{mk#1#2delim}##1{%
     \begingroup
       \blx@blxinit
       \blx@setsfcodes
-      \csuse{extblx@delim@#2@#1@open}%
+      \csuse{extblx@citedelim@#2@#1@open}%
       ##1%
-      \csuse{extblx@delim@#2@#1@close}%
+      \csuse{extblx@citedelim@#2@#1@close}%
     \endgroup}}
 
 \extblx@create@mkcitedelim{outer}{cite}

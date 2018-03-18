@@ -20,7 +20,7 @@
      \setunit{%
        \global\booltrue{cbx:parens}%
        \printdelim{namelabeldelim}%
-       \csuse{extblx@delim@textcite@inner@open}}%
+       \csuse{extblx@citedelim@textcite@inner@open}}%
      \stepcounter{textcitecount}%
      \savefield{namehash}{\cbx@lasthash}}%
   \ifnumequal{\value{citecount}}{1}
@@ -29,7 +29,7 @@
   \usebibmacro{cite}%
   \setunit{%
     \ifbool{cbx:parens}
-      {\csuse{extblx@delim@textcite@inner@close}%
+      {\csuse{extblx@citedelim@textcite@inner@close}%
        \global\boolfalse{cbx:parens}}
       {}%
     \textcitedelim}}
@@ -40,49 +40,49 @@
     {\setunit{}%
      \printtext{%
        \ifbool{cbx:parens}
-         {\csuse{extblx@delim@textcite@inner@close}%
+         {\csuse{extblx@citedelim@textcite@inner@close}%
           \global\boolfalse{cbx:parens}}
          {}}}
     {\setunit{%
        \ifbool{cbx:parens}
-         {\csuse{extblx@delim@textcite@inner@close}%
+         {\csuse{extblx@citedelim@textcite@inner@close}%
           \global\boolfalse{cbx:parens}}
          {}%
        \textcitedelim}}}
 
-\DeclareCiteCommand{\cite}[\mkpairedoutercitedelim]
+\DeclareCiteCommand{\cite}[\mkoutercitedelim]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
 
-\DeclareCiteCommand{\parencite}[\mkpairedouterparencitedelim]
+\DeclareCiteCommand{\parencite}[\mkouterparencitedelim]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
 
-\DeclareCiteCommand{\smartcite}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+\DeclareCiteCommand{\smartcite}[\iffootnote\mkouterparencitedelim\mkbibfootnote]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
 
-\DeclareCiteCommand{\cbx@textcite}[\mkpairedoutertextcitedelim]
+\DeclareCiteCommand{\cbx@textcite}[\mkoutertextcitedelim]
   {\usebibmacro{textcite:init}}
   {\usebibmacro{citeindex}%
    \usebibmacro{textcite}}
   {}
   {\usebibmacro{textcite:postnote}}
 
-\DeclareMultiCiteCommand{\cbx@textcites}[\mkpairedoutertextcitedelim]{\cbx@textcite}{}
+\DeclareMultiCiteCommand{\cbx@textcites}[\mkoutertextcitedelim]{\cbx@textcite}{}
 
-\DeclareMultiCiteCommand{\cites}[\mkpairedoutercitedelim]{\cite}{\multicitedelim}
-\DeclareMultiCiteCommand{\parencites}[\mkpairedouterparencitedelim]{\parencite}{\multicitedelim}
-\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+\DeclareMultiCiteCommand{\cites}[\mkoutercitedelim]{\cite}{\multicitedelim}
+\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]{\parencite}{\multicitedelim}
+\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkouterparencitedelim\mkbibfootnote]
   {\smartcite}{\multicitedelim}
 
 \endinput

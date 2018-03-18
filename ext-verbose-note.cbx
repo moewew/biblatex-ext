@@ -9,7 +9,7 @@
 
 \DeclareInnerCiteDelim{textcite}{\bibopenparen}{\bibcloseparen}
 
-\DeclareCiteCommand{\cite}[\mkpairedoutercitedelim]
+\DeclareCiteCommand{\cite}[\mkoutercitedelim]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \iffootnote
@@ -18,7 +18,7 @@
   {\multicitedelim}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\parencite}[\mkpairedouterparencitedelim]
+\DeclareCiteCommand{\parencite}[\mkouterparencitedelim]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \iffootnote
@@ -27,7 +27,7 @@
   {\multicitedelim}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\smartcite}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+\DeclareCiteCommand{\smartcite}[\iffootnote\mkouterparencitedelim\mkbibfootnote]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \iffootnote
@@ -37,7 +37,7 @@
   {\usebibmacro{cite:postnote}}
 
 
-\DeclareCiteCommand{\cbx@textcite}[\mkpairedoutertextcitedelim]
+\DeclareCiteCommand{\cbx@textcite}[\mkoutertextcitedelim]
   {\usebibmacro{textcite:init}}
   {\iffieldequals{namehash}{\cbx@lasthash}
      {}
@@ -51,11 +51,11 @@
   {}
 
 
-\DeclareMultiCiteCommand{\cbx@textcites}[\mkpairedoutertextcitedelim]{\cbx@textcite}{}
+\DeclareMultiCiteCommand{\cbx@textcites}[\mkoutertextcitedelim]{\cbx@textcite}{}
 
-\DeclareMultiCiteCommand{\cites}[\mkpairedoutercitedelim]{\cite}{\multicitedelim}
-\DeclareMultiCiteCommand{\parencites}[\mkpairedouterparencitedelim]{\parencite}{\multicitedelim}
-\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+\DeclareMultiCiteCommand{\cites}[\mkoutercitedelim]{\cite}{\multicitedelim}
+\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]{\parencite}{\multicitedelim}
+\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkouterparencitedelim\mkbibfootnote]
   {\smartcite}{\multicitedelim}
 
 \endinput

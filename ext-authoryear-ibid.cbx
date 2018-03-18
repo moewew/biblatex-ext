@@ -39,7 +39,7 @@
         \setunit{%
           \global\booltrue{cbx:parens}%
           \printdelim{nonameyeardelim}%
-          \csuse{extblx@delim@textcite@inner@open}}%
+          \csuse{extblx@citedelim@textcite@inner@open}}%
         \ifnumequal{\value{citecount}}{1}
           {\usebibmacro{prenote}}
           {}%
@@ -49,7 +49,7 @@
      \setunit{%
        \global\booltrue{cbx:parens}%
        \printdelim{nameyeardelim}%
-       \csuse{extblx@delim@textcite@inner@open}}%
+       \csuse{extblx@citedelim@textcite@inner@open}}%
      \ifnumequal{\value{citecount}}{1}
        {\usebibmacro{prenote}}
        {}%
@@ -64,51 +64,51 @@
 \renewbibmacro*{textcite:postnote}{%
   \ifthenelse{\iffieldundef{postnote}\OR\boolean{cbx:loccit}}
     {\ifbool{cbx:parens}
-       {\csuse{extblx@delim@textcite@inner@close}}
+       {\csuse{extblx@citedelim@textcite@inner@close}}
        {}}
     {\ifbool{cbx:parens}
        {\postnotedelim}
        {\extpostnotedelim
-        \csuse{extblx@delim@textcite@inner@open}}%
+        \csuse{extblx@citedelim@textcite@inner@open}}%
      \printfield{postnote}%
-     \csuse{extblx@delim@textcite@inner@close}}}
+     \csuse{extblx@citedelim@textcite@inner@close}}}
 
-\DeclareCiteCommand{\cite}[\mkpairedoutercitedelim]
+\DeclareCiteCommand{\cite}[\mkoutercitedelim]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
   {\multicitedelim}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand*{\cite}[\mkpairedoutercitedelim]
+\DeclareCiteCommand*{\cite}[\mkoutercitedelim]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{citeyear}}
   {\multicitedelim}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\parencite}[\mkpairedouterparencitedelim]
+\DeclareCiteCommand{\parencite}[\mkouterparencitedelim]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
   {\multicitedelim}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand*{\parencite}[\mkpairedouterparencitedelim]
+\DeclareCiteCommand*{\parencite}[\mkouterparencitedelim]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{citeyear}}
   {\multicitedelim}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\smartcite}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+\DeclareCiteCommand{\smartcite}[\iffootnote\mkouterparencitedelim\mkbibfootnote]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
   {\multicitedelim}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\textcite}[\mkpairedoutertextcitedelim]
+\DeclareCiteCommand{\textcite}[\mkoutertextcitedelim]
   {\boolfalse{cbx:parens}}
   {\usebibmacro{citeindex}%
    \iffirstcitekey
@@ -117,16 +117,16 @@
       \textcitedelim}%
    \usebibmacro{textcite}}
   {\ifbool{cbx:parens}
-     {\csuse{extblx@delim@textcite@inner@close}%
+     {\csuse{extblx@citedelim@textcite@inner@close}%
       \global\boolfalse{cbx:parens}}
      {}}
   {\usebibmacro{textcite:postnote}}
 
-\DeclareMultiCiteCommand{\cites}[\mkpairedoutercitedelim]{\cite}{\multicitedelim}
-\DeclareMultiCiteCommand{\parencites}[\mkpairedouterparencitedelim]{\parencite}{\multicitedelim}
-\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+\DeclareMultiCiteCommand{\cites}[\mkoutercitedelim]{\cite}{\multicitedelim}
+\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]{\parencite}{\multicitedelim}
+\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkouterparencitedelim\mkbibfootnote]
   {\smartcite}{\multicitedelim}
-\DeclareMultiCiteCommand{\textcites}[\mkpairedoutertextcitedelim]{\textcite}{}
+\DeclareMultiCiteCommand{\textcites}[\mkoutertextcitedelim]{\textcite}{}
 
 \DeclareFieldFormat{bbx:introcitelabeldate}{#1}
 \DeclareFieldFormat{extblx@innerbbx:introcitedelim}{%

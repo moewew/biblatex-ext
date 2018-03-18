@@ -26,7 +26,7 @@
            \setunit{%
              \global\booltrue{cbx:parens}%
              \printdelim{nonameyeardelim}%
-             \csuse{extblx@delim@\blx@delimcontext @inner@open}}%
+             \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
            \usebibmacro{cite:labeldate+extradate}%
            \usebibmacro{cite:reinit}}
           {\iffieldequals{namehash}{\cbx@lasthash}
@@ -42,7 +42,7 @@
               \setunit{%
                 \global\booltrue{cbx:parens}%
                 \printdelim{nameyeardelim}%
-                \csuse{extblx@delim@\blx@delimcontext @inner@open}}%
+                \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
               \usebibmacro{cite:labeldate+extradate}%
               \savefield{namehash}{\cbx@lasthash}%
               \savefield{labelyear}{\cbx@lastyear}}}}}
@@ -50,7 +50,7 @@
      \usebibmacro{cite:reinit}}%
   \setunit{%
     \ifbool{cbx:parens}
-      {\csuse{extblx@delim@\blx@delimcontext @inner@close}%
+      {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
        \global\boolfalse{cbx:parens}}
       {}%
     \multicitedelim}}
@@ -73,7 +73,7 @@
   \setunit{}%
   \printtext{%
     \ifbool{cbx:parens}
-      {\csuse{extblx@delim@\blx@delimcontext @inner@close}%
+      {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
        \global\boolfalse{cbx:parens}}
       {}}%
   \ifbool{cbx:loccit}
@@ -100,7 +100,7 @@
            \setunit{%
              \global\booltrue{cbx:parens}%
              \printdelim{nonameyeardelim}%
-             \csuse{extblx@delim@textcite@inner@open}}%
+             \csuse{extblx@citedelim@textcite@inner@open}}%
            \ifnumequal{\value{citecount}}{1}
              {\usebibmacro{prenote}}
              {}%
@@ -112,7 +112,7 @@
         \setunit{%
           \global\booltrue{cbx:parens}%
           \printdelim{nameyeardelim}%
-          \csuse{extblx@delim@textcite@inner@open}}%
+          \csuse{extblx@citedelim@textcite@inner@open}}%
         \ifnumequal{\value{citecount}}{1}
           {\usebibmacro{prenote}}
           {}%
@@ -129,7 +129,7 @@
      \savefield{namehash}{\cbx@lasthash}}%
   \setunit{%
     \ifbool{cbx:parens}
-      {\csuse{extblx@delim@textcite@inner@close}%
+      {\csuse{extblx@citedelim@textcite@inner@close}%
        \global\boolfalse{cbx:parens}}
       {}%
     \textcitedelim}}
@@ -142,17 +142,17 @@
     {\setunit{}%
      \printtext{%
        \ifbool{cbx:parens}
-         {\csuse{extblx@delim@textcite@inner@close}%
+         {\csuse{extblx@citedelim@textcite@inner@close}%
           \global\boolfalse{cbx:parens}}
          {}}}
     {\setunit{%
        \ifbool{cbx:parens}
-         {\csuse{extblx@delim@textcite@inner@close}%
+         {\csuse{extblx@citedelim@textcite@inner@close}%
           \global\boolfalse{cbx:parens}}
          {}%
        \textcitedelim}}}
 
-\DeclareCiteCommand{\cite}[\mkpairedoutercitedelim]
+\DeclareCiteCommand{\cite}[\mkoutercitedelim]
   {\usebibmacro{cite:init}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
@@ -160,7 +160,7 @@
   {}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand*{\cite}[\mkpairedoutercitedelim]
+\DeclareCiteCommand*{\cite}[\mkoutercitedelim]
   {\usebibmacro{cite:init}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
@@ -168,7 +168,7 @@
   {}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\parencite}[\mkpairedouterparencitedelim]
+\DeclareCiteCommand{\parencite}[\mkouterparencitedelim]
   {\usebibmacro{cite:init}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
@@ -176,7 +176,7 @@
   {}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand*{\parencite}[\mkpairedouterparencitedelim]
+\DeclareCiteCommand*{\parencite}[\mkouterparencitedelim]
   {\usebibmacro{cite:init}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
@@ -184,7 +184,7 @@
   {}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\smartcite}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+\DeclareCiteCommand{\smartcite}[\iffootnote\mkouterparencitedelim\mkbibfootnote]
   {\usebibmacro{cite:init}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
@@ -192,7 +192,7 @@
   {}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\cbx@textcite}[\mkpairedoutertextcitedelim]
+\DeclareCiteCommand{\cbx@textcite}[\mkoutertextcitedelim]
   {\usebibmacro{cite:init}}
   {\usebibmacro{citeindex}%
    \usebibmacro{textcite}}
@@ -200,15 +200,15 @@
   {\usebibmacro{textcite:postnote}}
 
 
-\DeclareMultiCiteCommand{\cbx@textcites}[\mkpairedoutertextcitedelim]{\cbx@textcite}{}
+\DeclareMultiCiteCommand{\cbx@textcites}[\mkoutertextcitedelim]{\cbx@textcite}{}
 
-\DeclareMultiCiteCommand{\cites}[\mkpairedoutercitedelim]{\cite}{\setunit{\multicitedelim}}
-\DeclareMultiCiteCommand{\parencites}[\mkpairedouterparencitedelim]
+\DeclareMultiCiteCommand{\cites}[\mkoutercitedelim]{\cite}{\setunit{\multicitedelim}}
+\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]
   {\parencite}{\setunit{\multicitedelim}}
-\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkpairedouterparencitedelim\mkbibfootnote]
+\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkouterparencitedelim\mkbibfootnote]
   {\smartcite}{\setunit{\multicitedelim}}
 
-\DeclareCiteCommand{\bbx@cite@inxref}[\mkpairedouterbibinxrefcitedelim]
+\DeclareCiteCommand{\bbx@cite@inxref}[\mkouterbibinxrefcitedelim]
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \boolfalse{backtracker}%
