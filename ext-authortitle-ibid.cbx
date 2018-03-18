@@ -6,12 +6,12 @@
 
 \RequireCitationStyle{authortitle-ibid}
 
-\DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
+\DeclareOuterCiteDelim{parencite}{\bibopenparen}{\bibcloseparen}
 
-\DeclarePairedCiteInnerDelim{cite}{}{}
-\DeclarePairedCiteInnerDelim{parencite}{}{}
-\DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
-\DeclarePairedCiteInnerDelim{footcite}{}{}
+\DeclareInnerCiteDelim{cite}{}{}
+\DeclareInnerCiteDelim{parencite}{}{}
+\DeclareInnerCiteDelim{textcite}{\bibopenparen}{\bibcloseparen}
+\DeclareInnerCiteDelim{footcite}{}{}
 
 \DeclareFieldFormat{extblx@innercitedelim}{%
   \csuse{mkpairedinner\blx@delimcontext delim}{#1}}

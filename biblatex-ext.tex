@@ -66,8 +66,10 @@
   bookmarksnumbered=false,
   plainpages=false}
 
-\definecolor{highlight1}{RGB}{240, 0, 0}%{240,0,0}%{213,94,0}%{217,95,2}%{240,0,0}
-\definecolor{highlight2}{RGB}{0,153, 153}%{50, 205, 50}%{50, 205, 50}%{45, 185, 45}%{0,158,115}%{27,158,119}%{34,139,34}
+\definecolor{highlight1}{RGB}{240, 0, 0}
+%{240,0,0}%{213,94,0}%{217,95,2}%{240,0,0}
+\definecolor{highlight2}{RGB}{0,153, 153}
+%{50, 205, 50}%{50, 205, 50}%{45, 185, 45}%{0,158,115}%{27,158,119}%{34,139,34}
 \definecolor{spot}{rgb}{0,0.2,0.6}%{RGB}{0,114,178}%{rgb}{0,0.2,0.6}
 %{named}{DarkRed}%{rgb}{0,0.2,0.6}%{named}{MediumBlue}
 
@@ -469,6 +471,9 @@ the style corresponding to \sty{authoryear-icomp} is called
 \sty{ext-authoryear-icomp}.
 
 \section{Styles}
+This bundle provides an extended version of each standard style as well as a
+few new styles.
+\subsection{Standard styles}
 Please refer to the \sty{biblatex} documentation%
 \fnurl{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf}
 and the style examples%
@@ -641,6 +646,38 @@ uses scholarly abbreviations to shorten citations.
 \styleitem{ext-verbose-trad3}
 An extended version of the standard \sty{verbose-trad3} style.
 This style is similar to \sty{ext-verbose-trad2}.
+\end{stylelist}
+
+\subsection{New styles}
+
+\begin{stylelist}
+\styleitem{ext-authoryear-terse}
+An author-year citation style that suppresses years for author lists with only
+one work in the bibliography.
+This style is like \sty{ext-authortitle-terse}, but it is based on
+\sty{ext-authoryear} and not on \sty{ext-authortitle}.
+\begin{bibexample}
+Sigfridsson and Ryde \quad Knuth 1984 \quad Knuth 1986
+\end{bibexample}
+
+\styleitem{ext-authoryear-tcomp}
+A compact author-year citation style that suppresses years for author lists
+with only one work in the bibliography.
+This style is like \sty{ext-authortitle-tcomp}, but it is based on
+\sty{ext-authoryear} and not on \sty{ext-authortitle}.
+\begin{bibexample}
+Sigfridsson and Ryde \quad Knuth 1984, 1986
+\end{bibexample}
+
+\styleitem{ext-authoryear-ticomp}
+A compact author-year citation style with \enquote{ibidem} function that
+suppresses years for author lists with only one work in the bibliography.
+This style is like \sty{ext-authortitle-ticomp}, but it is based on
+\sty{ext-authoryear} and not on \sty{ext-authortitle}.
+\begin{bibexample}
+Sigfridsson and Ryde \quad ibid. \quad Knuth 1984, 1986
+\end{bibexample}
+
 \end{stylelist}
 
 
@@ -1328,16 +1365,30 @@ appropriate place.}
              \cmidrule(lr){2-4}
 Style family & \cmd{cite} & \cmd{parencite} & \cmd{textcite}\\
 \midrule
-\sty{alphabetic} & \highlightbf[1]{[}Knu84\highlightbf[1]{]} & \highlightbf[1]{[}Knu84\highlightbf[1]{]} & \highlight[1]{$\bm{\langle}$}Knuth \highlightbf[2]{[}2\highlightbf[2]{]}\highlight[1]{$\bm{\rangle}$}\\
-\sty{numeric} & \highlightbf[1]{[}2\highlightbf[1]{]} & \highlightbf[1]{[}2\highlightbf[1]{]} & \highlight[1]{$\bm{\langle}$}Knuth \highlightbf[2]{[}2\highlightbf[2]{]}\highlight[1]{$\bm{\rangle}$}\\
-\sty{authortitle} & \highlight[1]{$\bm{\langle}$}Knuth, \highlight[2]{$\bm{\langle}$}\emph{\TeX book}\highlight[2]{$\bm{\rangle}$}\highlight[1]{$\bm{\rangle}$} & \highlightbf[1]{(}Knuth, \highlight[2]{$\bm{\langle}$}\emph{\TeX book}\highlight[2]{$\bm{\rangle}$}\highlightbf[1]{)} & \highlight[1]{$\bm{\langle}$}Knuth \highlightbf[2]{(}\emph{\TeX book}\highlightbf[2]{)}\highlight[1]{$\bm{\rangle}$}\\
-\sty{authoryear} & \highlight[1]{$\bm{\langle}$}Knuth \highlight[2]{$\bm{\langle}$}1984\highlight[2]{$\bm{\rangle}$}\highlight[1]{$\bm{\rangle}$} & \highlightbf[1]{(}Knuth \highlight[2]{$\bm{\langle}$}1984\highlight[2]{$\bm{\rangle}$}\highlightbf[1]{)} & \highlight[1]{$\bm{\langle}$}Knuth \highlightbf[2]{(}1984\highlightbf[2]{)}\highlight[1]{$\bm{\rangle}$}\\
+\sty{alphabetic} & \highlightbf[1]{[}Knu84\highlightbf[1]{]} &
+  \highlightbf[1]{[}Knu84\highlightbf[1]{]} & \highlight[1]{$\bm{\langle}$}Knuth
+  \highlightbf[2]{[}2\highlightbf[2]{]}\highlight[1]{$\bm{\rangle}$}\\
+\sty{numeric} & \highlightbf[1]{[}2\highlightbf[1]{]} &
+  \highlightbf[1]{[}2\highlightbf[1]{]} & \highlight[1]{$\bm{\langle}$}Knuth
+  \highlightbf[2]{[}2\highlightbf[2]{]}\highlight[1]{$\bm{\rangle}$}\\
+\sty{authortitle} & \highlight[1]{$\bm{\langle}$}Knuth,
+  \highlight[2]{$\bm{\langle}$}\emph{\TeX book}\highlight[2]{$\bm{\rangle}$}%
+  \highlight[1]{$\bm{\rangle}$} & \highlightbf[1]{(}Knuth,
+  \highlight[2]{$\bm{\langle}$}\emph{\TeX book}\highlight[2]{$\bm{\rangle}$}%
+  \highlightbf[1]{)} & \highlight[1]{$\bm{\langle}$}Knuth \highlightbf[2]{(}%
+  \emph{\TeX book}\highlightbf[2]{)}\highlight[1]{$\bm{\rangle}$}\\
+\sty{authoryear} & \highlight[1]{$\bm{\langle}$}Knuth
+  \highlight[2]{$\bm{\langle}$}1984\highlight[2]{$\bm{\rangle}$}%
+  \highlight[1]{$\bm{\rangle}$} & \highlightbf[1]{(}Knuth
+  \highlight[2]{$\bm{\langle}$}1984\highlight[2]{$\bm{\rangle}$}%
+  \highlightbf[1]{)} & \highlight[1]{$\bm{\langle}$}Knuth
+  \highlightbf[2]{(}1984\highlightbf[2]{)}\highlight[1]{$\bm{\rangle}$}\\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{ltxsyntax}
-\cmditem{DeclarePairedCiteOuterDelim}{cite command}{opening delimiter}
+\cmditem{DeclareOuterCiteDelim}{cite command}{opening delimiter}
         {closing delimiter}
 
 Sets up the outer delimiters for the citation command
@@ -1365,8 +1416,8 @@ Instead of hard-coded \texttt{(}, \texttt{)}, \texttt{[} and \texttt{]} their
 \cmd{bibopenbracket} and \cmd{bibclosebracket} are preferable, since these
 commands respond to nesting and check if opening brackets are always closed.
 
-\cmditem{DeclarePairedCiteOuterDelimAlias}{cite alias}{cite command}
-\cmditem*{DeclarePairedCiteOuterDelimAlias*}{cite alias}{cite command}
+\cmditem{DeclareOuterCiteDelimAlias}{cite alias}{cite command}
+\cmditem*{DeclareOuterCiteDelimAlias*}{cite alias}{cite command}
 
 Use the outer delimiters of \cmd{$\langle$\emph{cite command}$\rangle$} for
 \cmd{$\langle$\emph{cite alias}$\rangle$} as well.
@@ -1376,22 +1427,22 @@ definitions at the time of executing the aliasing command,
 whereas the alias created by the unstarred version will only evaluate the
 delimiters whenever the citation command is called.
 
-\cmditem{UndeclarePairedCiteOuterDelim}{cite command}
+\cmditem{UndeclareOuterCiteDelim}{cite command}
 
 Completely remove the definitions of the outer delimiters for
 \cmd{$\langle$\emph{cite command}$\rangle$}.
 
-\cmditem{DeclarePairedCiteInnerDelim}{cite command}{opening delimiter}
+\cmditem{DeclareInnerCiteDelim}{cite command}{opening delimiter}
         {closing delimiter}
 
 Sets up the inner delimiters for the citation command
 \cmd{$\langle$\emph{cite command}$\rangle$}.
 
-This command is similar to \cmd{DeclarePairedCiteOuterDelim} and the same
+This command is similar to \cmd{DeclareOuterCiteDelim} and the same
 restrictions to \prm{opening delimiter} and \prm{closing delimiter} apply.
 
-\cmditem{DeclarePairedCiteInnerDelimAlias}{cite alias}{cite command}
-\cmditem*{DeclarePairedCiteInnerDelimAlias*}{cite alias}{cite command}
+\cmditem{DeclareInnerCiteDelimAlias}{cite alias}{cite command}
+\cmditem*{DeclareInnerCiteDelimAlias*}{cite alias}{cite command}
 
 Use the inner delimiters of \cmd{$\langle$\emph{cite command}$\rangle$} for
 \cmd{$\langle$\emph{cite alias}$\rangle$} as well.
@@ -1401,7 +1452,7 @@ definitions at the time of executing the aliasing command,
 whereas the alias created by the unstarred version will only evaluate the
 delimiters whenever the citation command is called.
 
-\cmditem{UndeclarePairedCiteInnerDelim}{cite command}
+\cmditem{UndeclareInnerCiteDelim}{cite command}
 
 Completely remove the definitions of the inner delimiters for
 \cmd{$\langle$\emph{cite command}$\rangle$}.
@@ -1409,25 +1460,25 @@ Completely remove the definitions of the inner delimiters for
 The \sty{authoryear} and \sty{authortitle} styles have \cmd{parencite},
 e.g.\ \parencite{knuth:ct:a}, \parencite{sigfridsson}, set up with
 \begin{biblatexcode}
-\DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
-\DeclarePairedCiteInnerDelim{parencite}{}{}
+\DeclareOuterCiteDelim{parencite}{\bibopenparen}{\bibcloseparen}
+\DeclareInnerCiteDelim{parencite}{}{}
 \end{biblatexcode}
 and \cmd{textcite}, e.g.\ \textcite{knuth:ct:a}, \textcite{sigfridsson}, with
 \begin{biblatexcode}
-\DeclarePairedCiteOuterDelim{textcite}{}{}
-\DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
+\DeclareOuterCiteDelim{textcite}{}{}
+\DeclareInnerCiteDelim{textcite}{\bibopenparen}{\bibcloseparen}
 \end{biblatexcode}
 If you wanted \cmd{parencite} of \sty{authoryear} to look like
 \enquote{[Sigfridsson and Worman (1998)]} you would use
 \begin{biblatexcode}
-\DeclarePairedCiteOuterDelim{parencite}{|1\bibopenbracket1|}{|1\bibclosebracket1|}
-\DeclarePairedCiteInnerDelim{parencite}{|2\bibopenparen2|}{|2\bibcloseparen2|}
+\DeclareOuterCiteDelim{parencite}{|1\bibopenbracket1|}{|1\bibclosebracket1|}
+\DeclareInnerCiteDelim{parencite}{|2\bibopenparen2|}{|2\bibcloseparen2|}
 \end{biblatexcode}
 \citereset
 \begin{bibexample}
-\DeclarePairedCiteOuterDelim{parencite}{\highlightbf[1]{\bibopenbracket}}{%
+\DeclareOuterCiteDelim{parencite}{\highlightbf[1]{\bibopenbracket}}{%
   \highlightbf[1]{\bibclosebracket}}
-\DeclarePairedCiteInnerDelim{parencite}{\highlightbf[2]{\bibopenparen}}{%
+\DeclareInnerCiteDelim{parencite}{\highlightbf[2]{\bibopenparen}}{%
   \highlightbf[2]{\bibcloseparen}}
 \parencite{sigfridsson}\quad\parencite{worman,geer}\quad
 \parencite{knuth:ct:a,knuth:ct:b,knuth:ct:c}

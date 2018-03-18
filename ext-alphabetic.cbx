@@ -5,11 +5,11 @@
 
 \RequireCitationStyle{alphabetic}
 
-\DeclarePairedCiteOuterDelim{cite}{\bibopenbracket}{\bibclosebracket}
-\DeclarePairedCiteOuterDelimAlias{parencite}{cite}
-\DeclarePairedCiteOuterDelim{textcite}{}{}
+\DeclareOuterCiteDelim{cite}{\bibopenbracket}{\bibclosebracket}
+\DeclareOuterCiteDelimAlias{parencite}{cite}
+\DeclareOuterCiteDelim{textcite}{}{}
 
-\DeclarePairedCiteInnerDelim{textcite}{\bibopenbracket}{\bibclosebracket}
+\DeclareInnerCiteDelim{textcite}{\bibopenbracket}{\bibclosebracket}
 
 \renewbibmacro*{textcite}{%
   \iffieldequals{namehash}{\cbx@lasthash}

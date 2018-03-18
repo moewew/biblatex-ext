@@ -13,9 +13,9 @@
       I found '\csuse{abx@version} (\csuse{abx@date})'}}
 
 %{<context>}{<opening delim>}{<closing delim>}
-\newcommand*{\DeclarePairedCiteOuterDelim}{%
+\newcommand*{\DeclareOuterCiteDelim}{%
   \extblx@declarepaireddelim{outer}}
-\newrobustcmd*{\DeclarePairedCiteInnerDelim}{%
+\newrobustcmd*{\DeclareInnerCiteDelim}{%
   \extblx@declarepaireddelim{inner}}
 
 %{<inner/outer>}{<cite context>}{<opening delim>}{<closing delim>}
@@ -24,9 +24,9 @@
   \csdef{extblx@delim@#2@#1@close}{#4}}
 
 %{<context>}
-\newcommand*{\UndeclarePairedCiteOuterDelim}{%
+\newcommand*{\UndeclareOuterCiteDelim}{%
   \extblx@undeclarepaireddelim{outer}}
-\newrobustcmd*{\UndeclarePairedCiteInnerDelim}{%
+\newrobustcmd*{\UndeclareInnerCiteDelim}{%
   \extblx@undeclarepaireddelim{inner}}
 
 %{<inner/outer>}{<cite context>}
@@ -35,11 +35,11 @@
   \csundef{extblx@delim@#2@#1@close}}
 
 %{<alias>}{<cite context>}
-\newcommand*{\DeclarePairedCiteOuterDelimAlias}{%
+\newcommand*{\DeclareOuterCiteDelimAlias}{%
   \@ifstar
     {\extblx@declarepaireddelim@alias@i{outer}}
     {\extblx@declarepaireddelim@alias{outer}}}
-\newcommand*{\DeclarePairedCiteInnerDelimAlias}{%
+\newcommand*{\DeclareInnerCiteDelimAlias}{%
   \@ifstar
     {\extblx@declarepaireddelim@alias@i{inner}}
     {\extblx@declarepaireddelim@alias{inner}}}
@@ -53,7 +53,7 @@
   \csletcs{extblx@delim@#2@#1@close}{extblx@delim@#3@#1@close}}
 
 % declare \mkpaired...delim commands
-\newrobustcmd*{\extblx@create@mkpaireddelim}[2]{%
+\newrobustcmd*{\extblx@create@mkcitedelim}[2]{%
   \protected\csdef{mkpaired#1#2delim}##1{%
     \begingroup
       \blx@blxinit
@@ -63,14 +63,14 @@
       \csuse{extblx@delim@#2@#1@close}%
     \endgroup}}
 
-\extblx@create@mkpaireddelim{outer}{cite}
-\extblx@create@mkpaireddelim{outer}{parencite}
-\extblx@create@mkpaireddelim{outer}{textcite}
-\extblx@create@mkpaireddelim{outer}{bibinxrefcite}
+\extblx@create@mkcitedelim{outer}{cite}
+\extblx@create@mkcitedelim{outer}{parencite}
+\extblx@create@mkcitedelim{outer}{textcite}
+\extblx@create@mkcitedelim{outer}{bibinxrefcite}
 
-\extblx@create@mkpaireddelim{inner}{cite}
-\extblx@create@mkpaireddelim{inner}{parencite}
-\extblx@create@mkpaireddelim{inner}{textcite}
-\extblx@create@mkpaireddelim{inner}{footcite}
+\extblx@create@mkcitedelim{inner}{cite}
+\extblx@create@mkcitedelim{inner}{parencite}
+\extblx@create@mkcitedelim{inner}{textcite}
+\extblx@create@mkcitedelim{inner}{footcite}
 
 \endinput

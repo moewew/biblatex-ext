@@ -95,7 +95,9 @@
        \global\booltrue{cbx:parens}%
        \extpostnotedelim
        \csuse{extblx@delim@textcite@inner@open}}}%
-  \printfield{postnote}%
+  \ifbool{cbx:loccit}
+    {}
+    {\printfield{postnote}}%
   \ifnumequal{\value{multicitecount}}{\value{multicitetotal}}
     {\setunit{}%
      \printtext{%

@@ -1,0 +1,131 @@
+\ProvidesFile{ext-authoryear-ticomp.cbx}
+  [2018/02/16 v0.1 extended biblatex authoryear-ticomp citation style (MW)]
+
+\RequireCitationStyle{ext-authoryear-icomp}
+\ExecuteBibliographyOptions{singletitle,uniquename,uniquelist,autocite=inline}
+
+\renewcommand*{\iffinalcitedelim}{%
+  \ifnumequal{\value{textcitecount}}{\value{textcitetotal}-1}}
+
+\renewbibmacro*{cite}{%
+  \iffieldundef{shorthand}
+    {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+       {\usebibmacro{cite:ibid}}
+       {\ifboolexpr{test {\ifnameundef{labelname}} or test {\iffieldundef{labelyear}}}
+          {\usebibmacro{cite:label}%
+           \setunit{%
+             \global\booltrue{cbx:parens}%
+             \printdelim{nonameyeardelim}%
+             \csuse{extblx@delim@\blx@delimcontext @inner@open}}%
+           \usebibmacro{cite:labeldate+extradate}%
+           \usebibmacro{cite:reinit}}
+          {\iffieldequals{namehash}{\cbx@lasthash}
+             {\ifboolexpr{test {\iffieldequals{labelyear}{\cbx@lastyear}}
+                          and (test {\ifnumequal{\value{multicitecount}}{0}}
+                               or test {\iffieldundef{postnote}})}
+                {\setunit{\extradateonlycompcitedelim}%
+                 \usebibmacro{cite:extradate}}
+                {\setunit{\compcitedelim}%
+                 \usebibmacro{cite:labeldate+extradate}%
+                 \savefield{labelyear}{\cbx@lastyear}}}
+             {\ifsingletitle
+                {\printtext[bibhyperref]{\printnames{labelname}}}
+                {\printnames{labelname}%
+                 \setunit{%
+                   \global\booltrue{cbx:parens}%
+                   \printdelim{nameyeardelim}%
+                   \csuse{extblx@delim@\blx@delimcontext @inner@open}}%
+                 \usebibmacro{cite:labeldate+extradate}%
+                 \savefield{namehash}{\cbx@lasthash}%
+                 \savefield{labelyear}{\cbx@lastyear}}}}}}
+    {\usebibmacro{cite:shorthand}%
+     \usebibmacro{cite:reinit}}%
+  \setunit{%
+    \ifbool{cbx:parens}
+      {\csuse{extblx@delim@\blx@delimcontext @inner@close}%
+       \global\boolfalse{cbx:parens}}
+      {}%
+    \multicitedelim}}
+
+\renewbibmacro*{textcite}{%
+  \iffieldequals{namehash}{\cbx@lasthash}
+    {\iffieldundef{shorthand}
+       {\ifboolexpr{test {\iffieldequals{labelyear}{\cbx@lastyear}}
+                    and (test {\ifnumequal{\value{multicitecount}}{0}}
+                         or test {\iffieldundef{postnote}})}
+          {\setunit{\extradateonlycompcitedelim}%
+           \usebibmacro{cite:extradate}}
+          {\setunit{\compcitedelim}%
+           \usebibmacro{cite:labeldate+extradate}%
+           \savefield{labelyear}{\cbx@lastyear}}}
+       {\setunit{\compcitedelim}%
+        \usebibmacro{cite:shorthand}%
+        \global\undef\cbx@lastyear}}
+    {\ifnameundef{labelname}
+       {\iffieldundef{shorthand}
+          {\usebibmacro{cite:label}%
+           \setunit{%
+             \global\booltrue{cbx:parens}%
+             \printdelim{nonameyeardelim}%
+             \csuse{extblx@delim@textcite@inner@open}}%
+           \ifnumequal{\value{citecount}}{1}
+             {\usebibmacro{prenote}}
+             {}%
+           \ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+             {\usebibmacro{cite:ibid}}
+             {\usebibmacro{cite:labeldate+extradate}}}
+          {\usebibmacro{cite:shorthand}}}
+       {\ifthenelse{\ifsingletitle\AND
+                    \(\iffieldundef{prenote}\OR\value{citecount}>1\)}
+          {\printtext[bibhyperref]{\printnames{labelname}}}
+          {\printnames{labelname}%
+           \setunit{%
+             \global\booltrue{cbx:parens}%
+             \printdelim{nameyeardelim}%
+             \csuse{extblx@delim@textcite@inner@open}}%
+           \ifnumequal{\value{citecount}}{1}
+             {\usebibmacro{prenote}}
+             {}%
+           \iffieldundef{shorthand}
+             {\iffieldundef{labelyear}
+                {\usebibmacro{cite:label}}
+                {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+                   {\usebibmacro{cite:ibid}}
+                   {\usebibmacro{cite:labeldate+extradate}}}%
+              \savefield{labelyear}{\cbx@lastyear}}
+             {\usebibmacro{cite:shorthand}%
+              \global\undef\cbx@lastyear}}%
+     \stepcounter{textcitecount}}%
+     \savefield{namehash}{\cbx@lasthash}}%
+  \setunit{%
+    \ifbool{cbx:parens}
+      {\csuse{extblx@delim@textcite@inner@close}%
+       \global\boolfalse{cbx:parens}}
+      {}%
+    \textcitedelim}}
+
+\renewbibmacro*{textcite:postnote}{%
+  \ifbool{cbx:parens}
+    {\setunit{\postnotedelim}}
+    {\setunit{%
+       \global\booltrue{cbx:parens}%
+       \extpostnotedelim
+       \csuse{extblx@delim@textcite@inner@open}}}%
+  \ifbool{cbx:loccit}
+    {}
+    {\printfield{postnote}}%
+  \ifnumequal{\value{multicitecount}}{\value{multicitetotal}}
+    {\setunit{}%
+     \printtext{%
+       \ifbool{cbx:parens}
+         {\csuse{extblx@delim@textcite@inner@close}%
+          \global\boolfalse{cbx:parens}}
+         {}}}
+    {\setunit{%
+       \ifbool{cbx:parens}
+         {\csuse{extblx@delim@textcite@inner@close}%
+          \global\boolfalse{cbx:parens}}
+         {}%
+       \textcitedelim}}}
+
+\endinput

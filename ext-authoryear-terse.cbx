@@ -1,0 +1,47 @@
+\ProvidesFile{ext-authoryear-terse.cbx}
+  [2018/02/16 v0.1 extended biblatex authoryear-terse
+   citation style (MW)]
+
+\RequireCitationStyle{ext-authoryear}
+\ExecuteBibliographyOptions{singletitle,uniquename,uniquelist,autocite=inline}
+
+\renewbibmacro*{cite}{%
+  \iffieldundef{shorthand}
+    {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+       {\usebibmacro{cite:label}%
+        \setunit{\printdelim{nonameyeardelim}}}
+       {\ifsingletitle
+          {\printtext[bibhyperref]{\printnames{labelname}}}
+          {\printnames{labelname}%
+           \setunit{\printdelim{nameyeardelim}}%
+           \usebibmacro{cite:labeldate+extradate}}}}%
+    {\usebibmacro{cite:shorthand}}}
+
+\renewbibmacro*{textcite}{%
+  \ifnameundef{labelname}
+    {\iffieldundef{shorthand}
+       {\usebibmacro{cite:label}%
+        \setunit{%
+          \global\booltrue{cbx:parens}%
+          \printdelim{nonameyeardelim}%
+          \csuse{extblx@delim@textcite@inner@open}}%
+        \ifnumequal{\value{citecount}}{1}
+          {\usebibmacro{prenote}}
+          {}%
+        \usebibmacro{cite:labeldate+extradate}}
+       {\usebibmacro{cite:shorthand}}}
+    {\ifthenelse{\ifsingletitle\AND
+                 \(\iffieldundef{prenote}\OR\value{citecount}>1\)}
+       {\printtext[bibhyperref]{\printnames{labelname}}}
+       {\printnames{labelname}%
+        \setunit{%
+          \global\booltrue{cbx:parens}%
+          \printdelim{nameyeardelim}%
+          \csuse{extblx@delim@textcite@inner@open}}%
+        \ifnumequal{\value{citecount}}{1}
+          {\usebibmacro{prenote}}
+          {}%
+        \usebibmacro{citeyear}}}}
+
+\endinput
+

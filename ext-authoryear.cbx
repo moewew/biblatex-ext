@@ -5,9 +5,9 @@
 
 \RequireCitationStyle{authoryear}
 
-\DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
+\DeclareOuterCiteDelim{parencite}{\bibopenparen}{\bibcloseparen}
 
-\DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
+\DeclareInnerCiteDelim{textcite}{\bibopenparen}{\bibcloseparen}
 
 \DeclareFieldFormat{extblx@innercitedelim}{%
   \csuse{mkpairedinner\blx@delimcontext delim}{#1}}

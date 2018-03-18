@@ -70,8 +70,8 @@
 
 \newbibmacro*{bbx:cite:intro}{\usebibmacro{cite}}
 
-\extblx@create@mkpaireddelim{inner}{bbx:introcite}
-\DeclarePairedCiteInnerDelimAlias{bbx:introcite}{cite}
+\extblx@create@mkcitedelim{inner}{bbx:introcite}
+\DeclareInnerCiteDelimAlias{bbx:introcite}{cite}
 \DeclareFieldFormat{bbx:introcite}{#1}
 \newcommand*{\introcitepunct}{\addcolon\space}
 \newcommand*{\introcitebreak}{\newline}
@@ -121,7 +121,7 @@
   {}
 
 \DeclareDelimcontextAlias{bbx@cite@inxref}{cite}
-\DeclarePairedCiteOuterDelimAlias{bibinxrefcite}{cite}
+\DeclareOuterCiteDelimAlias{bibinxrefcite}{cite}
 
 \newbibmacro*{crosscite}[1]{%
   \iftoggle{bbx:citeinxref}

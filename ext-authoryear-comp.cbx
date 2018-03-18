@@ -6,9 +6,9 @@
 
 \RequireCitationStyle{authoryear-comp}
 
-\DeclarePairedCiteOuterDelim{parencite}{\bibopenparen}{\bibcloseparen}
+\DeclareOuterCiteDelim{parencite}{\bibopenparen}{\bibcloseparen}
 
-\DeclarePairedCiteInnerDelim{textcite}{\bibopenparen}{\bibcloseparen}
+\DeclareInnerCiteDelim{textcite}{\bibopenparen}{\bibcloseparen}
 
 \DeclareFieldFormat{citelabeldate}{#1}
 \DeclareFieldFormat{parencitelabeldate}{#1}
@@ -67,7 +67,7 @@
        \printtext[\blx@delimcontext labeldate]{%
          \printfield{extradate}}}}}
 
-\renewbibmacro*{cite:postnote}{%
+\newbibmacro*{cite:postnote}{%
   \setunit{}%
   \printtext{%
     \ifbool{cbx:parens}
