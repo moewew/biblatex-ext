@@ -67,11 +67,8 @@
   plainpages=false}
 
 \definecolor{highlight1}{RGB}{240, 0, 0}
-%{240,0,0}%{213,94,0}%{217,95,2}%{240,0,0}
 \definecolor{highlight2}{RGB}{0,153, 153}
-%{50, 205, 50}%{50, 205, 50}%{45, 185, 45}%{0,158,115}%{27,158,119}%{34,139,34}
-\definecolor{spot}{rgb}{0,0.2,0.6}%{RGB}{0,114,178}%{rgb}{0,0.2,0.6}
-%{named}{DarkRed}%{rgb}{0,0.2,0.6}%{named}{MediumBlue}
+\definecolor{spot}{rgb}{0,0.2,0.6}
 
 \lstdefinestyle{extblxstylegeneral}{%
   aboveskip    = {0\p@ \@plus 6\p@},
@@ -422,7 +419,7 @@ The standard \sty{.cbx} files will give you a much better impression of how
 things should be done.
 
 
-\subsection{Requirements}
+\subsection{Requirements}\label{sec:req}
 The use of the styles requires a current version of the \sty{biblatex} package.
 At the time of writing the latest version of \sty{biblatex} is
 \biblatexversion{} (dated \biblatexdate),
@@ -438,7 +435,7 @@ Most of the new features of this bundle do not require \biber{} explicitly in
 their implementation, but many \sty{biblatex} standard features only work
 properly with \biber{}.
 
-\subsection{License}
+\subsection{License}\label{sec:license}
 Permission is granted to copy, distribute and\slash or modify this software
 under the terms of the \lppl, version 1.3c%
 \fnurl{https://www.latex-project.org/lppl/lppl-1-3c.txt}
@@ -447,7 +444,7 @@ or (at your option) any later version%
 This bundle is maintained by Moritz Wemheuer (\textcopyright 2017--2018).
 
 
-\subsection{Feedback}\label{subsec:int:feb}
+\subsection{Feedback}\label{sec:feedback}
 
 You can use the \sty{biblatex-ext} project page on GitHub%
 \footnote{\url{\gitbaseurl}} to report bugs and
@@ -458,7 +455,7 @@ of assistance, you might want to consider posting your question on the
 \texttt{comp.text.tex} newsgroup or \tex{} -- \latex{} Stack Exchange.%
 \fnurl{https://tex.stackexchange.com/questions/tagged/biblatex}
 
-\section{Use}
+\section{Use}\label{sec:use}
 
 The \sty{biblatex-ext} bundle is a collection of \sty{biblatex} style files.
 You can load the styles exactly as you would load the standard styles:
@@ -470,10 +467,10 @@ The naming of the styles follows the scheme
 the style corresponding to \sty{authoryear-icomp} is called
 \sty{ext-authoryear-icomp}.
 
-\section{Styles}
+\section{Styles}\label{sec:styles}
 This bundle provides an extended version of each standard style as well as a
 few new styles.
-\subsection{Standard styles}
+\subsection{Standard styles}\label{sec:styles:standard}
 Please refer to the \sty{biblatex} documentation%
 \fnurl{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf}
 and the style examples%
@@ -648,8 +645,10 @@ An extended version of the standard \sty{verbose-trad3} style.
 This style is similar to \sty{ext-verbose-trad2}.
 \end{stylelist}
 
-\subsection{New styles}
-
+\subsection{New styles}\label{sec:styles:new}
+The following styles are not mere extensions of a particular standard style,
+instead they implement new combinations of the concepts available in the
+standard styles.
 \begin{stylelist}
 \styleitem{ext-authoryear-terse}
 An author-year citation style that suppresses years for author lists with only
@@ -681,11 +680,11 @@ Sigfridsson and Ryde \quad ibid. \quad Knuth 1984, 1986
 \end{stylelist}
 
 
-\section{Options}
+\section{Options}\label{sec:opt}
 All options of the \sty{biblatex} package are supported and each style supports
 the options of its standard counterpart.
 
-\subsection{General options}
+\subsection{General options}\label{sec:opt:gen}
 Additionally, all styles support the following options in global, per-type and
 per-entry scope.
 The default values are such that the styles can be used as drop-in replacement
@@ -929,7 +928,7 @@ printed with the \bibfield{volumeof} format.
 
 \end{optionlist}
 
-\subsection{Style-specific options}
+\subsection{Style-specific options}\label{sec:opt:style}
 The \opt{dashed} option of the \sty{authoryear}- and \sty{authortitle}-like
 bibliography styles allows for finer control over the dashes now.
 \begin{optionlist}
@@ -1143,13 +1142,13 @@ can be accessed as \sty{bbx:introcite} as well.
 The label does not have outer citation delimiters, you can use the wrapper
 field format \sty{bbx:introcite} instead. In fact this approach is more
 versatile than the outer citation delimiter feature (see the dicsussion in
-\cref{citedelims}).
+\cref{sec:opt:citedelims}).
 
 
 \end{optionlist}
 
-\section{Further Customisations}
-\subsection{Field formats}
+\section{Further Customisations}\label{sec:opt:cust}
+\subsection{Field formats}\label{sec:opt:field}
 In a few places where the standard styles employ hard-coded formatting
 directives the styles of this bundle offer customisable formats instead.
 Field formats can be modified with \cmd{DeclareFieldFormat}.
@@ -1188,7 +1187,7 @@ Field formats can be modified with \cmd{DeclareFieldFormat}.
 
 \DeclareFieldFormat{issuedate}{\mkbibparens{#1}}
 
-\subsection{Punctuation}
+\subsection{Punctuation}\label{sec:opt:punct}
 The package provides the following commands to modify the delimiters and
 punctuation between fields.
 The punctuation commands should be redefined with \cmd{renewcommand}.
@@ -1322,7 +1321,7 @@ The default is a comma (\emph{not} followed by a space).
 \end{bibexample}
 
 
-\subsection{Delimiters for citation commands}\label{citedelims}
+\subsection{Delimiters for citation commands}\label{sec:opt:citedelims}
 The delimiters for citation commands provided by the styles of this bundle
 offer a simple way to customise the bracketing of citation commands.
 
@@ -1439,7 +1438,7 @@ Sets up the inner delimiters for the citation command
 \cmd{$\langle$\emph{cite command}$\rangle$}.
 
 This command is similar to \cmd{DeclareOuterCiteDelim} and the same
-restrictions to \prm{opening delimiter} and \prm{closing delimiter} apply.
+restrictions for the arguments apply.
 
 \cmditem{DeclareInnerCiteDelimAlias}{cite alias}{cite command}
 \cmditem*{DeclareInnerCiteDelimAlias*}{cite alias}{cite command}
@@ -1485,7 +1484,7 @@ If you wanted \cmd{parencite} of \sty{authoryear} to look like
 \end{bibexample}
 \end{ltxsyntax}
 
-\subsection{Selected bibliography macros}
+\subsection{Selected bibliography macros}\label{sec:opt:bibmacros}
 The following macros are defined in \texttt{ext-standard.bbx} and may make
 certain things easier to customise.
 Many of these macros are replacements for bare \cmd{printfield} or
@@ -1566,7 +1565,10 @@ sensible values are \bibfield{publisher}, \bibfield{institution} and
 A bibliography macro to print the \bibfield{type} and \bibfield{number} fields.
 \end{keymarglistbook}
 
-\section{Revision History}\label{apx:log}
+\section{Revision History}\label{sec:log}
+The GitHub repository of this project uses release tags, so you can compare
+the changes in source code there.\footnote{\url{\gitbaseurl/compare/}}
+See also \sty{CHANGES.md}.
 \begin{changelog}
 \begin{release}{<version>}{<date>}
 \item First release.
