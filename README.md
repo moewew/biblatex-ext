@@ -22,14 +22,15 @@ to implement the requirements of the style guide.
 The styles of this bundle are intended to be a solid base for further
 customisations.
 
-`biblatex-ext` has an extended version `ext-<style>` for each of
-`biblatex`'s standard styles.
+`biblatex-ext` has an extended version `ext-<style>` for each of `biblatex`'s
+standard styles.
 
 - The base file `standard.bbx`
 - The auxiliary file `ext-biblatex-aux.def`
 - The `alphabetic` style family
   - `ext-alphabetic.bbx` and `ext-alphabetic.cbx`
   - `ext-alphabetic-verb.bbx` and `ext-alphabetic-verb.cbx`
+- The `authoryear`/`authortitle` helper file `ext-dashed-common.bbx`
 - The `authortitle` style family
   - `ext-authortitle-common.bbx`
   - `ext-authortitle.bbx` and `ext-authortitle.cbx`
@@ -45,6 +46,9 @@ customisations.
   - `ext-authoryear-comp.bbx` and `ext-authoryear-comp.cbx`
   - `ext-authoryear-ibid.bbx` and `ext-authoryear-ibid.cbx`
   - `ext-authoryear-icomp.bbx` and `ext-authoryear-icomp.cbx`
+  - `ext-authoryear-terse.bbx` and `ext-authoryear-terse.cbx`
+  - `ext-authoryear-tcomp.bbx` and `ext-authoryear-tcomp.cbx`
+  - `ext-authoryear-ticomp.bbx` and `ext-authoryear-ticomp.cbx`
 - The `numeric` style family
   - `ext-numeric.bbx` and `ext-numeric.cbx`
   - `ext-numeric-comp.bbx` and `ext-numeric-comp.cbx`
