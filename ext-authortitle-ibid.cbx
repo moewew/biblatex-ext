@@ -14,12 +14,12 @@
 \DeclareInnerCiteDelim{footcite}{}{}
 
 \DeclareFieldFormat{extblx@innercitedelim}{%
-  \csuse{mkpairedinner\blx@delimcontext delim}{#1}}
+  \csuse{mkinner\blx@delimcontext delim}{#1}}
 \DeclareFieldFormat{extblx@innerparencitedelim}{%
-  \csuse{mkpairedinner\blx@delimcontext delim}{#1}}
+  \csuse{mkinner\blx@delimcontext delim}{#1}}
 \DeclareFieldFormat{extblx@innertextcitedelim}{#1}
 \DeclareFieldFormat{extblx@innerfootcitedelim}{%
-  \csuse{mkpairedinner\blx@delimcontext delim}{#1}}
+  \csuse{mkinner\blx@delimcontext delim}{#1}}
 
 \newbibmacro*{textcite}{%
   \global\boolfalse{cbx:loccit}%
@@ -110,6 +110,6 @@
 \DeclareMultiCiteCommand{\textcites}[\mkoutertextcitedelim]{\textcite}{}
 
 \DeclareFieldFormat{extblx@innerbbx:introcitedelim}{%
-  \csuse{mkpairedinner\blx@delimcontext delim}{#1}}
+  \csuse{mkinner\blx@delimcontext delim}{#1}}
 
 \endinput

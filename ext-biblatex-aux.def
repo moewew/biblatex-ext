@@ -52,7 +52,7 @@
   \csletcs{extblx@citedelim@#2@#1@open}{extblx@citedelim@#3@#1@open}%
   \csletcs{extblx@citedelim@#2@#1@close}{extblx@citedelim@#3@#1@close}}
 
-% declare \mkpaired...delim commands
+% declare \mk...delim commands
 \newrobustcmd*{\extblx@create@mkcitedelim}[2]{%
   \protected\csdef{mk#1#2delim}##1{%
     \begingroup
