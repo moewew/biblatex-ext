@@ -5,7 +5,7 @@
 \usepackage{lmodern}
 \usepackage{babel}
 \usepackage{csquotes}
-\usepackage[backend=biber, style=ext-authortitle, inxref=true]{biblatex}
+\usepackage[backend=biber, style=ext-authortitle, citeinxref=true]{biblatex}
 \addbibresource{biblatex-examples.bib}
 
 \renewcommand*{\volnumdatedelim}{\addcomma\space}
@@ -98,6 +98,21 @@
 \OMIT
 \setbox0=\hbox{%
   \parencite{worman}}%
+\TIMO
+\showbox0
+\OMIT
+\setbox0=\hbox{%
+  \textcite[19]{nussbaum}}%
+\TIMO
+\showbox0
+\OMIT
+\setbox0=\hbox{%
+  \textcite[cf.][]{worman}}%
+\TIMO
+\showbox0
+\OMIT
+\setbox0=\hbox{%
+  \textcite[cf.][13-89]{cicero}}%
 \TIMO
 \showbox0
 \OMIT

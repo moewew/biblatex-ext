@@ -5,7 +5,7 @@
 \usepackage{lmodern}
 \usepackage{babel}
 \usepackage{csquotes}
-\usepackage[backend=biber, style=ext-numeric, innamebeforetitle=false, inxref=true]{biblatex}
+\usepackage[backend=biber, style=ext-numeric, innamebeforetitle=false, citeinxref=true]{biblatex}
 \addbibresource{biblatex-examples.bib}
 
 \renewcommand*{\locpubdelim}{\addcomma\space}

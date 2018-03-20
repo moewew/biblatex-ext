@@ -5,7 +5,7 @@
 \usepackage{lmodern}
 \usepackage{babel}
 \usepackage{csquotes}
-\usepackage[backend=biber, style=ext-authoryear-icomp, inxref=true]{biblatex}
+\usepackage[backend=biber, style=ext-authoryear-icomp, citeinxref=true]{biblatex}
 \addbibresource{biblatex-examples.bib}
 
 \START\OMIT
@@ -61,5 +61,22 @@
 \TIMO
 \showbox0
 \OMIT
+\setbox0=\hbox{%
+  \textcite[19]{nussbaum}}%
+\TIMO
+\showbox0
+\OMIT
+\setbox0=\hbox{%
+  \textcite[cf.][]{worman}}%
+\TIMO
+\showbox0
+\OMIT
+\setbox0=\hbox{%
+  \textcite[cf.][13-89]{cicero}}%
+\TIMO
+\showbox0
+\OMIT
+\nocite{*}
+\printbibliography
 \end{document}
 \END

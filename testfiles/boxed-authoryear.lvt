@@ -107,6 +107,21 @@
 \TIMO
 \showbox0
 \OMIT
+\setbox0=\hbox{%
+  \textcite[19]{nussbaum}}%
+\TIMO
+\showbox0
+\OMIT
+\setbox0=\hbox{%
+  \textcite[cf.][]{worman}}%
+\TIMO
+\showbox0
+\OMIT
+\setbox0=\hbox{%
+  \textcite[cf.][13-89]{cicero}}%
+\TIMO
+\showbox0
+\OMIT
 \nocite{*}
 \printbibliography
 \end{document}

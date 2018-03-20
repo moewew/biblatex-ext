@@ -9,13 +9,13 @@
 \usepackage[backend=biber, style=ext-authoryear-icomp]{biblatex}
 \addbibresource{biblatex-examples.bib}
 
-\DeclarePairedCiteInnerDelim{textcite}{\(\langle\)}{\(\rangle\)}
-\DeclarePairedCiteInnerDelim{cite}{[}{]}
-\DeclarePairedCiteInnerDelim{parencite}{$A$}{$\Omega$}
+\DeclareInnerCiteDelim{textcite}{\(\langle\)}{\(\rangle\)}
+\DeclareInnerCiteDelim{cite}{[}{]}
+\DeclareInnerCiteDelim{parencite}{$A$}{$\Omega$}
 
-\DeclarePairedCiteOuterDelim{textcite}{\bibopenparen}{\bibcloseparen}
-\DeclarePairedCiteOuterDelim{cite}{<}{>}
-\DeclarePairedCiteOuterDelim{parencite}{\(\lvert\)}{\(\rvert\)}
+\DeclareOuterCiteDelim{textcite}{\bibopenparen}{\bibcloseparen}
+\DeclareOuterCiteDelim{cite}{<}{>}
+\DeclareOuterCiteDelim{parencite}{\(\lvert\)}{\(\rvert\)}
 
 \START\OMIT
 \begin{document}
@@ -56,21 +56,6 @@
 \showbox0
 \OMIT
 \setbox0=\hbox{%
-  \textcites[cf.][14]{nussbaum}[cf.][]{sigfridsson}[56]{worman}}%
-\TIMO
-\showbox0
-\OMIT
-\setbox0=\hbox{%
-  \parencite{cicero}}%
-\TIMO
-\showbox0
-\OMIT
-\setbox0=\hbox{%
-  \parencites[cf.][14]{nussbaum}[cf.][]{sigfridsson}[56]{worman}}%
-\TIMO
-\showbox0
-\OMIT
-\setbox0=\hbox{%
   \cite{geer}}%
 \TIMO
 \showbox0
@@ -85,5 +70,22 @@
 \TIMO
 \showbox0
 \OMIT
+\setbox0=\hbox{%
+  \textcite[19]{nussbaum}}%
+\TIMO
+\showbox0
+\OMIT
+\setbox0=\hbox{%
+  \textcite[cf.][]{worman}}%
+\TIMO
+\showbox0
+\OMIT
+\setbox0=\hbox{%
+  \textcite[cf.][13-89]{cicero}}%
+\TIMO
+\showbox0
+\OMIT
+\nocite{*}
+\printbibliography
 \end{document}
 \END
