@@ -1,0 +1,4 @@
+- Look into author-year verbose styles?
+- Author name in full on first cite (name tracking)?
+- Less intrusive versioning
+- Test suite
