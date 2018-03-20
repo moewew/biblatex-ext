@@ -11,7 +11,8 @@
   \iffieldundef{shorthand}
     {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
        {\usebibmacro{cite:ibid}}
-       {\ifboolexpr{test {\ifnameundef{labelname}} or test {\iffieldundef{labelyear}}}
+       {\ifboolexpr{test {\ifnameundef{labelname}}
+                    or test {\iffieldundef{labelyear}}}
           {\usebibmacro{cite:label}%
            \setunit{%
              \global\booltrue{cbx:parens}%

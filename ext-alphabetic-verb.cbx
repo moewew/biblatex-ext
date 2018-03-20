@@ -22,7 +22,6 @@
     {}%
   \usebibmacro{cite}}
 
-
 \DeclareCiteCommand{\cite}
   {\csuse{extblx@citedelim@cite@outer@open}%
    \usebibmacro{prenote}}
@@ -43,8 +42,10 @@
   {\multicitedelim}
   {\usebibmacro{postnote}}
 
-\DeclareCiteCommand{\smartcite}[\iffootnote\mkouterparencitedelim\mkbibfootnote]
-  {\usebibmacro{prenote}}
+% smartcite's delimcontext needs special attention (see ext-biblatex-aux.def)
+\DeclareCiteCommand{\smartcite}[\mksmartcite]
+  {\delimcontext{\extblx@thisdelimcontext}%
+   \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
   {\multicitedelim}
@@ -62,8 +63,9 @@
   {\usebibmacro{postnote}%
    \csuse{extblx@citedelim@textcite@inner@close}}
 
-\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]{\parencite}{\multicitedelim}
-\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkouterparencitedelim\mkbibfootnote]
+\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]
+  {\parencite}{\multicitedelim}
+\DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
   {\smartcite}{\multicitedelim}
 \DeclareMultiCiteCommand{\textcites}[\mkoutertextcitedelim]{\textcite}{}
 

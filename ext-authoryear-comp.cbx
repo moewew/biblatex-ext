@@ -19,7 +19,8 @@
 
 \renewbibmacro*{cite}{%
   \iffieldundef{shorthand}
-    {\ifboolexpr{test {\ifnameundef{labelname}} or test {\iffieldundef{labelyear}}}
+    {\ifboolexpr{test {\ifnameundef{labelname}}
+                 or test {\iffieldundef{labelyear}}}
        {\usebibmacro{cite:label}%
         \setunit{%
           \global\booltrue{cbx:parens}%
@@ -190,8 +191,10 @@
   {}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\smartcite}[\iffootnote\mkouterparencitedelim\mkbibfootnote]
-  {\usebibmacro{cite:init}%
+% smartcite's delimcontext needs special attention (see ext-biblatex-aux.def)
+\DeclareCiteCommand{\smartcite}[\mksmartcite]
+  {\delimcontext{\extblx@thisdelimcontext}%
+   \usebibmacro{cite:init}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
@@ -205,12 +208,14 @@
   {}
   {\usebibmacro{textcite:postnote}}
 
-\DeclareMultiCiteCommand{\cbx@textcites}[\mkoutertextcitedelim]{\cbx@textcite}{}
+\DeclareMultiCiteCommand{\cbx@textcites}[\mkoutertextcitedelim]
+  {\cbx@textcite}{}
 
-\DeclareMultiCiteCommand{\cites}[\mkoutercitedelim]{\cite}{\setunit{\multicitedelim}}
-\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]{\parencite}
-  {\setunit{\multicitedelim}}
-\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkouterparencitedelim\mkbibfootnote]
+\DeclareMultiCiteCommand{\cites}[\mkoutercitedelim]
+  {\cite}{\setunit{\multicitedelim}}
+\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]
+  {\parencite}{\setunit{\multicitedelim}}
+\DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
   {\smartcite}{\setunit{\multicitedelim}}
 
 \DeclareCiteCommand{\bbx@cite@inxref}[\mkouterbibinxrefcitedelim]

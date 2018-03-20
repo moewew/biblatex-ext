@@ -73,4 +73,20 @@
 \extblx@create@mkcitedelim{inner}{textcite}
 \extblx@create@mkcitedelim{inner}{footcite}
 
+% smartcite is special
+% According to the docs it is like \parencite in a footnote and \footcite in
+% the body.
+% To mirror that as closely as possible, we need to change the delimiter
+% context. The delimcontext is set in the pre-code, it is too late to detect
+% a footnote at that point (since we will have started the footnote ourselves
+% with \mkbibfootnote from the body), so we need to do it earlier.
+\newrobustcmd*{\mksmartcite}[1]{%
+  \iffootnote
+    {\mkouterparencitedelim{%
+       \def\extblx@thisdelimcontext{parencite}%
+       #1}}
+    {\mkbibfootnote{%
+       \def\extblx@thisdelimcontext{footcite}%
+       #1}}}
+
 \endinput

@@ -27,15 +27,16 @@
   {\multicitedelim}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\smartcite}[\iffootnote\mkouterparencitedelim\mkbibfootnote]
-  {\usebibmacro{prenote}}
+% smartcite's delimcontext needs special attention (see ext-biblatex-aux.def)
+\DeclareCiteCommand{\smartcite}[\mksmartcite]
+  {\delimcontext{\extblx@thisdelimcontext}%
+   \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \iffootnote
      {\usebibmacro{footcite}}
      {\usebibmacro{cite}}}
   {\multicitedelim}
   {\usebibmacro{cite:postnote}}
-
 
 \DeclareCiteCommand{\cbx@textcite}[\mkoutertextcitedelim]
   {\usebibmacro{textcite:init}}
@@ -50,12 +51,14 @@
   {}
   {}
 
+\DeclareMultiCiteCommand{\cbx@textcites}[\mkoutertextcitedelim]
+  {\cbx@textcite}{}
 
-\DeclareMultiCiteCommand{\cbx@textcites}[\mkoutertextcitedelim]{\cbx@textcite}{}
-
-\DeclareMultiCiteCommand{\cites}[\mkoutercitedelim]{\cite}{\multicitedelim}
-\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]{\parencite}{\multicitedelim}
-\DeclareMultiCiteCommand{\smartcites}[\iffootnote\mkouterparencitedelim\mkbibfootnote]
+\DeclareMultiCiteCommand{\cites}[\mkoutercitedelim]
+  {\cite}{\multicitedelim}
+\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]
+  {\parencite}{\multicitedelim}
+\DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
   {\smartcite}{\multicitedelim}
 
 \endinput

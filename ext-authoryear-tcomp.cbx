@@ -10,7 +10,8 @@
 
 \renewbibmacro*{cite}{%
   \iffieldundef{shorthand}
-    {\ifboolexpr{test {\ifnameundef{labelname}} or test {\iffieldundef{labelyear}}}
+    {\ifboolexpr{test {\ifnameundef{labelname}}
+                 or test {\iffieldundef{labelyear}}}
        {\usebibmacro{cite:label}%
         \setunit{%
           \global\booltrue{cbx:parens}%
