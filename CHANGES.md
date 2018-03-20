@@ -1,4 +1,4 @@
-# Version <version> (<date>)
+# Version 0.1a (2018-03-20)
 - Fixed inner cite delims for authoryear/authortitle and their ibid versions.
 - Fixed delimiters for `\smartcite`.
   `\smartcite` really behaves like `\parencite` and `\footcite` now.
