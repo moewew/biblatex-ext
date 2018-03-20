@@ -1,9 +1,9 @@
 fontsetups.tex
 build
-intype.*
-nlm.*
-textnlm.*
-shsiwnnss.*
+dtxs
+biblatex-ext
+biblatex-ext.pdf
+intype*
 *.aux
 *.bbl
 *.bcf
@@ -15,3 +15,5 @@ shsiwnnss.*
 *.toc
 *.run.xml
 *.synctex.gz
+*.listing
+*.zip
