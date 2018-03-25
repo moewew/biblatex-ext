@@ -1035,7 +1035,7 @@ labels in a \sty{numeric} bibliography.
 
 \begingroup
 \togglefalse{bbx:doi}
-\setlength{\introcitewidth}{5.8\biblabelsep}
+\setlength{\introcitewidth}{5.5\biblabelsep}
 \DeclareFieldFormat{bbx:introcite}{\highlight{#1}}
 \renewcommand*{\introcitepunct}{\highlight{\addcolon}\space}
 \makeatletter
@@ -1077,34 +1077,34 @@ The \opt{label} option can be configured to not allow the label to run into
 the remaining bibliography entry thus creating the appearance of a tabular-like
 bibliography.
 The citation label is not broken across lines, instead it moves the entry text
-into the next line with \cmd{introcitebreak} if the width of the citation label
-plus the buffer length \len{introcitesep} is greater than \len{introcitewidth}.
+into the next line with \cmd{introcitebreak} if the width of the citation is
+greater than \len{introcitewidth}.
 
 
-\lenitem{introcitewidth} This length controls the margin of the bibliography.
+\lenitem{introcitewidth} The maximum width of the citation label.
   The initial value is 8 times \len{biblabelsep}.
 \lenitem{introcitesep} This length sets the minimal space between the end of the
   citation label and the beginning of the rest of the entry.
-  If the citation label does not leave at least \len{introcitesep} to the
-  beginning of the entry, the entry is broken to the next line by inserting
-  \cmd{introcitebreak}.
-  The initial value is half of \len{biblabelsep}.
+  The initial value is \len{biblabelsep}.
+\csitem{introcitebreak} The command to execute if a citation label exceeds
+  \len{introcitewidth}. The default is \cs{leavevmode}\cs{newline}.
 \end{ltxsyntax}
 
 \makeatletter
 \togglefalse{bbx:doi}
 \begingroup
-\setlength{\introcitewidth}{8\biblabelsep}
+\setlength{\introcitewidth}{4.2\biblabelsep}
 \setlength{\introcitesep}{3.8\biblabelsep}
 \begin{bibexample}[enhanced, title={Lengths for \kvopt{introcite}{label}},
 overlay={%
-  \draw[highlight1, line width=.24mm,|-|] (frame.west)++(16pt,-2.47cm) --
-    node [midway,below=2pt] {\len{introcitewidth}} ++ (\introcitewidth-1pt,0);
-  \draw[highlight2, line width=.24mm,|-|] (frame.west)++(16pt,-.8mm)++
-    (\introcitewidth-1pt,0) -- node [above=4pt,at end] {\len{introcitesep}} ++
-    (-\introcitesep,0);
-  \draw[highlight2, line width=.24mm,|-|] (frame.west)++(16pt,2.32cm)++
-    (\introcitewidth-1pt,0) -- ++ (-\introcitesep,0);
+  \draw[highlight1, line width=.24mm,|-|] (frame.west)++(5.5mm,-.38cm) --
+    node [at end, below=1pt] {\len{introcitewidth}} ++
+    (\introcitewidth,0);
+  \draw[highlight2, line width=.24mm,|-|] (frame.west)++
+    (5.5mm+\introcitewidth,-.98mm) -- node [at start, above=2pt]
+    {\len{introcitesep}} ++ (\introcitesep,0);
+  \draw[highlight2, line width=.24mm,|-|] (frame.west)++
+    (5.5mm+\introcitewidth,2.32cm) -- ++ (\introcitesep,0);
 }
 ]
 \csuse{extblx@opt@dashed@false}
@@ -1113,18 +1113,18 @@ overlay={%
 \end{bibexample}
 \endgroup
 
-\begin{bibexample}[enhanced, title={\kvopt{introcite}{label} with
-  $\len{introcitesep}=-\len{introcitewidth}$}]
-\setlength{\introcitewidth}{27mm}
-\setlength{\introcitesep}{-\introcitewidth}
+\begin{bibexample}[enhanced, title={\kvopt{introcite}{label} with empty
+  \cs{introcitebreak}}]
+\renewcommand*{\introcitebreak}{}
+\setlength{\introcitewidth}{1.8cm}
 \csuse{extblx@opt@dashed@false}
 \csletcs{extblx@introcite}{extblx@opt@introcite@label}
 \printbibliography[heading=none, category=introcite:lengths, nottype=article]
 \end{bibexample}
 
 \begin{bibexample}[enhanced, title={\kvopt{introcite}{label} with
-  $\len{introcitesep}=\len{introcitewidth}=\len{bibhang}$}]
-\setlength{\introcitewidth}{\bibhang}
+  $\len{introcitewidth}=0$ and $\len{introcitesep}=\len{bibhang}$}]
+\setlength{\introcitewidth}{0pt}
 \setlength{\introcitesep}{\bibhang}
 \csuse{extblx@opt@dashed@false}
 \csletcs{extblx@introcite}{extblx@opt@introcite@label}
@@ -1564,7 +1564,7 @@ the changes in source code there.\footnote{\url{\gitbaseurl/compare/}}
 See also \sty{CHANGES.md}.
 \begin{changelog}
 \begin{release}{<version>}{<date>}
-\item Fixed indentation for \kvopt{introcite}{label}.
+\item Rework lengths for for \kvopt{introcite}{label}.
 \end{release}
 \begin{release}{0.1a}{2018-03-20}
 \item Fixed inner citation delimiters for \sty{ext-authoryear},
