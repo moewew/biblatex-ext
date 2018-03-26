@@ -7,6 +7,9 @@
   the beginning of the reference.
   The total indentation is now `\introcitewidth`+`\introcitesep` and not
   only `\introcitewidth` as before.
+- **Incompatible change** `\maintitletitledelim` is now truly the punctuation
+  between the `maintitle` and `(book)title` field.
+  What was formerly `\maintitledelim` is now `\voltitledelim`.
 
 # Version 0.1a (2018-03-20)
 - Fixed inner cite delims for authoryear/authortitle and their ibid versions.

@@ -196,15 +196,17 @@
 \BeforeStartingTOC[toc]{\begin{multicols}{2}}
 \AfterStartingTOC[toc]{\end{multicols}}
 
-\newrobustcmd*{\tex}{TeX}
+\newrobustcmd*{\tex}{\TeX}
 \newrobustcmd*{\etex}{\mbox{e-TeX}}
 \newrobustcmd*{\pdftex}{pdf\-\tex}
 \newrobustcmd*{\xetex}{Xe\-\tex}
 \newrobustcmd*{\luatex}{Lua\-\tex}
-\newrobustcmd*{\latex}{La\kern-0.07em TeX}
+\newrobustcmd*{\latex}{\LaTeX}%{La\kern-0.07em TeX}
 \newrobustcmd*{\pdflatex}{pdf\-\latex}
 \newrobustcmd*{\xelatex}{Xe\-\latex}
 \newrobustcmd*{\lualatex}{Lua\-\latex}
+\newrobustcmd*{\miktex}{Mik\-\tex}
+\newrobustcmd*{\texlive}{\tex~live}
 \newrobustcmd*{\bibtex}{Bib\kern-0.07em TeX}
 \newrobustcmd*{\lppl}{\latex{} Project Public License}
 \newrobustcmd*{\pdf}{\acr{PDF}}
@@ -434,6 +436,22 @@ Use of the \biber{} backend is strongly encouraged.
 Most of the new features of this bundle do not require \biber{} explicitly in
 their implementation, but many \sty{biblatex} standard features only work
 properly with \biber{}.
+
+\subsection{Installation}\label{sec:install}
+This style bundle is available on \mkbibacro{CTAN}.%
+\fnurl{https://ctan.org/pkg/biblatex-ext}
+The current release is also available in \miktex{} and \texlive{} 2018 or
+newer.
+If at all possible you should install this bundle via your \tex{} distribution
+(using \miktex{} Console\fnurl{https://miktex.org/howto/miktex-console} or
+\sty{tlmgr} for \texlive\fnurl{https://www.tug.org/texlive/pkginstall.html}).
+If you must install this package manually, get the files from \mkbibacro{CTAN}
+and install the \sty{.bbx}, \sty{.cbx} and \sty{.def} files preferably to
+\path{tex/latex/biblatex-ext} of your local or home \TeX{} tree, the other
+files (\path{CHANGES.md}, \path{README.md}, \path{biblatex-ext.tex},
+\path{biblatex-ext.pdf} and \path{biblatex-ext-examples.bib}) go to
+\path{doc/latex/biblatex-ext}, you may have to refresh your file name database
+afterwards, so \tex{} can find the files.
 
 \subsection{License}\label{sec:license}
 Permission is granted to copy, distribute and\slash or modify this software
@@ -1059,12 +1077,11 @@ labels in a \sty{numeric} bibliography.
 \makeatother
 \endgroup
 
+The label produced by the \opt{plain} option can be customised as follows.
 \begin{ltxsyntax}
-\csitem{introcitepunct} The \opt{plain} option inserts the punctuation
-given in \cmd{introcitepunct} between the label and the rest of the entry.
-The default value is a colon followed by a space.
-
-
+\csitem{introcitepunct} The punctuation insterted between the label and the
+  rest of the entry with \kvopt{introcite}{plain}.
+ The default value is a colon followed by a space.
 \begin{bibexample}
 \togglefalse{bbx:doi}
 \renewcommand*{\introcitepunct}{\highlight{\textbf{\addcolon}\textvisiblespace}}
@@ -1072,6 +1089,7 @@ The default value is a colon followed by a space.
 \csletcs{extblx@introcite}{extblx@opt@introcite@plain}
 \printbibliography[heading=none, category=sigfridsson]
 \end{bibexample}
+\end{ltxsyntax}
 
 The \opt{label} option can be configured to not allow the label to run into
 the remaining bibliography entry thus creating the appearance of a tabular-like
@@ -1080,7 +1098,7 @@ The citation label is not broken across lines, instead it moves the entry text
 into the next line with \cmd{introcitebreak} if the width of the citation is
 greater than \len{introcitewidth}.
 
-
+\begin{ltxsyntax}
 \lenitem{introcitewidth} The maximum width of the citation label.
   The initial value is 8 times \len{biblabelsep}.
 \lenitem{introcitesep} This length sets the minimal space between the end of the
@@ -1190,11 +1208,22 @@ The punctuation commands should be redefined with \cmd{renewcommand}.
 \csitem{maintitletitledelim}
 The punctuation between the \bibfield{maintitle} and \bibfield{title} or
 \bibfield{booktitle} of a work if \opt{maintitleaftertitle} is \opt{false}.
+The default is \cs{newunitpunct}.
+\begin{bibexample}
+\togglefalse{bbx:isbn}
+\renewcommand*{\maintitletitledelim}{\highlight{\textbf{\addperiod}%
+  \textvisiblespace}\bibsentence}
+\fullcite{knuth:ct:a}
+\end{bibexample}
+
+\csitem{voltitledelim}
+The punctuation between the \bibfield{volume} and \bibfield{title} or
+\bibfield{booktitle} of a work if \opt{maintitleaftertitle} is \opt{false}.
 The default is a colon followed by a space.
 \begin{bibexample}
 \togglefalse{bbx:isbn}
-\renewcommand*{\maintitletitledelim}{\highlight{\textbf{\addcolon}%
-  \textvisiblespace}}
+\renewcommand*{\voltitledelim}{\highlight{\textbf{\addcolon}%
+  \textvisiblespace}\bibsentence}
 \fullcite{knuth:ct:a}
 \end{bibexample}
 
@@ -1564,15 +1593,17 @@ the changes in source code there.\footnote{\url{\gitbaseurl/compare/}}
 See also \sty{CHANGES.md}.
 \begin{changelog}
 \begin{release}{<version>}{<date>}
-\item Rework lengths for \kvopt{introcite}{label}.
+\item Rework lengths for \kvopt{introcite}{label}\see{sec:opt:style}
+\item Fixed meaning of \cs{maintitletitledelim}\see{sec:opt:punct}
+\item Added \cs{voltitledelim}\see{sec:opt:punct}
 \end{release}
 \begin{release}{0.1a}{2018-03-20}
 \item Fixed inner citation delimiters for \sty{ext-authoryear},
-  \sty{ext-authortitle} and their \sty{-ibid} versions.
-\item Fixed \cmd{smartcite} delimiters.
+  \sty{ext-authortitle} and their \sty{-ibid} versions\see{sec:opt:citedelims}
+\item Fixed \cmd{smartcite} delimiters\see{sec:opt:citedelims}
 \end{release}
 \begin{release}{0.1}{2018-03-18}
-\item First public release.
+\item First public release
 \end{release}
 \end{changelog}
 

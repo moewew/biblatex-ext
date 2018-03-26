@@ -801,7 +801,8 @@
 
 \DeclareFieldFormat{volumeof}{\bibstring{volume}~#1}
 \newcommand*{\titlemaintitledelim}{\newunitpunct}
-\newcommand*{\maintitletitledelim}{\addcolon\space}
+\newcommand*{\maintitletitledelim}{\newunitpunct}
+\newcommand*{\voltitledelim}{\addcolon\space}
 \renewbibmacro*{maintitle+title}{%
   \iftoggle{bbx:maintitleaftertitle}
     {}
@@ -812,12 +813,12 @@
        {\iffieldundef{maintitle}
           {}
           {\usebibmacro{maintitle}%
-           \newunit\newblock
+           \setunit{\maintitletitledelim}\newblock
            \iffieldundef{volume}
              {}
              {\printfield{volume}%
               \printfield{part}%
-              \setunit{\maintitletitledelim}}}}}%
+              \setunit{\voltitledelim}}}}}%
   \usebibmacro{title}%
   \iftoggle{bbx:maintitleaftertitle}
     {\iffieldsequal{maintitle}{title}
