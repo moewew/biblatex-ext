@@ -1,4 +1,5 @@
 # Version <version> (<date>)
+See https://github.com/moewew/biblatex-ext/compare/v0.1a...v<version>
 - Fixed indentation with `introcite=label`.
 - **Incompatible change** The lengths for `introcite=label` now work like
   `\labelwidth` and `\labelsep` in all other lists.
@@ -12,6 +13,7 @@
   What was formerly `\maintitledelim` is now `\voltitledelim`.
 
 # Version 0.1a (2018-03-20)
+See https://github.com/moewew/biblatex-ext/compare/v0.1...v0.1a
 - Fixed inner cite delims for authoryear/authortitle and their ibid versions.
 - Fixed delimiters for `\smartcite`.
   `\smartcite` really behaves like `\parencite` and `\footcite` now.

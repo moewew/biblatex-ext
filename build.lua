@@ -15,7 +15,7 @@ checkengines = {"pdftex"}
 checkruns    = 3
 
 function runtest_tasks(name)
-  return "biber -q " .. name 
+  return "biber -q " .. name
 end
 
 -- Release a TDS-style zip
@@ -30,7 +30,7 @@ function update_tag(file, content, tagname, tagdate)
   local versionscheme = "%d+%.%d+%.?%d?%w?"
   local latexdate = string.gsub(tagdate, "%-", "/")
   local tagyear = string.match(tagdate, "%d%d%d%d")
-  if string.match(file, "%.bbx$")  or string.match(file, "%.cbx$") 
+  if string.match(file, "%.bbx$")  or string.match(file, "%.cbx$")
     or string.match(file, "%.def$") then
     return string.gsub(content , ltxdatescheme .. " v" .. versionscheme,
                                  latexdate .. " v" .. tagname)
@@ -51,9 +51,15 @@ function update_tag(file, content, tagname, tagdate)
     return string.gsub(content, "Copyright 2017%-%d%d%d%d",
                                 "Copyright 2017-" .. tagyear)
   elseif string.match(file, "CHANGES.md$") then
-    return string.gsub(content, "# Version <version> %(<date>%)\n",
-                                "# Version " .. tagname .. " (" .. tagdate ..
-                                ")\n")
+    content = string.gsub(content, "# Version <version> %(<date>%)\n",
+                                   "# Version " .. tagname .. " (" .. tagdate ..
+                                   ")\n")
+    if string.match(content, "https://github.com/moewew/biblatex%-ext" ..
+                             "/compare/v0.1a" ..
+                             "...v<version>") then
+      return string.gsub(content, "...v<version>",
+                                  "...v" .. tagname)
+    end
   end
   return content
 end

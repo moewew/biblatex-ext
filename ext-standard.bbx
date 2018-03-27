@@ -136,6 +136,7 @@
 \DeclareDelimAlias{innametitledelim}{nametitledelim}
 \DeclareDelimAlias*[bib,biblist]{innametitledelim}{nametitledelim}
 
+
 \DeclareBibliographyDriver{article}{%
   \usebibmacro{introcite:plain}%
   \usebibmacro{bibindex}%
@@ -845,12 +846,12 @@
     {\iffieldundef{maintitle}
        {}
        {\usebibmacro{maintitle}%
-        \newunit\newblock
+        \setunit{\maintitletitledelim}\newblock
         \iffieldundef{volume}
           {}
           {\printfield{volume}%
            \printfield{part}%
-           \setunit{\maintitletitledelim}}}}%
+           \setunit{\voltitledelim}}}}%
   \usebibmacro{booktitle}%
   \iftoggle{bbx:maintitleaftertitle}
     {\iffieldundef{maintitle}
@@ -866,6 +867,7 @@
         \usebibmacro{maintitle}}}
     {}%
   \newunit}
+
 
 \renewbibmacro*{bybookauthor}{%
   \ifnamesequal{author}{bookauthor}
