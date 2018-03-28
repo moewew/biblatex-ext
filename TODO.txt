@@ -1,4 +1,10 @@
 - Look into author-year verbose styles?
 - Author name in full on first cite (name tracking)?
 - Less intrusive versioning
+- series+number position
+- more modular bib drivers (would be quite a shift away from the standard
+  styles, so offer as option?)
+- compressed @set citations (would need option to back out of ...
+  https://tex.stackexchange.com/a/416448/35864)
+- subunit punctuation?
 - Test suite
