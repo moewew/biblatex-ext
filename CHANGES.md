@@ -1,5 +1,5 @@
-# Version <version> (<date>)
-See https://github.com/moewew/biblatex-ext/compare/v0.1a...v<version>
+# Version 0.2 (2018-03-28)
+See https://github.com/moewew/biblatex-ext/compare/v0.1a...v0.2
 - Fixed indentation with `introcite=label`.
 - **Incompatible change** The lengths for `introcite=label` now work like
   `\labelwidth` and `\labelsep` in all other lists.
