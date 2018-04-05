@@ -1185,8 +1185,8 @@ versatile than the outer citation delimiter feature (see the discussion in
 \end{lstlisting}
 \tcblower
 \DeclareFieldFormat{bbx:introcite}{\mkbibbrackets{#1}}
-\DeclareDelimcontextAlias{bbx:introcite}{parencite}
 \DeclareDelimFormat[bbx:introcite]{nameyeardelim}{\addcomma\space}
+\UndeclareInnerCiteDelim{bbx:introcite}
 \renewcommand*{\introcitepunct}{\quad}
 \csuse{extblx@opt@dashed@false}
 \csletcs{extblx@introcite}{extblx@opt@introcite@plain}
