@@ -1176,7 +1176,6 @@ field format \sty{bbx:introcite} instead. In fact this approach is more
 versatile than the outer citation delimiter feature (see the discussion in
 \cref{sec:opt:citedelims}).
 
-\makeatletter
 \begin{bibexample}[title={Example customisations for \kvopt{introcite}{plain}}]
 \begin{lstlisting}[style=extblxstylelatex]
 \DeclareFieldFormat{bbx:introcite}{\mkbibbrackets{#1}}
@@ -1210,7 +1209,6 @@ versatile than the outer citation delimiter feature (see the discussion in
 \csletcs{extblx@introcite}{extblx@opt@introcite@label}
 \exampleprintbib{coleridge,geer}
 \end{bibexample}
-
 \end{optionlist}
 
 \section{Further Customisations}\label{sec:opt:cust}
