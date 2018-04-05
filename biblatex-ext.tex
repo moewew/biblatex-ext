@@ -1209,6 +1209,38 @@ versatile than the outer citation delimiter feature (see the discussion in
 \csletcs{extblx@introcite}{extblx@opt@introcite@label}
 \exampleprintbib{coleridge,geer}
 \end{bibexample}
+\csgundef{blx@delimcontextalias@bbx:introcite}
+% because \DeclareDelimcontextAlias is global ... at the moment, this can go
+% with biblatex >= 3.12
+
+If you are using an author-year citation style together with
+\kvopt{introcite}{label} or \kvopt{introcite}{label}, you may be interested in
+combining this with \kvopt{bibstyle}{ext-authortitle} instead to move the year
+back to the end of the entry.
+\makeatletter
+\begin{bibexample}[enhanced, title={\kvopt{introcite}{label} with
+  \kvopt{style}{ext-authoryear} and \kvopt{bibstyle}{ext-authortitle}}]
+\setlength{\introcitewidth}{0pt}
+\setlength{\introcitesep}{\bibhang}
+\bbx@opt@mergedate@false
+\renewbibmacro*{author}{%
+  \ifboolexpr{
+    test \ifuseauthor
+    and
+    not test {\ifnameundef{author}}
+  }
+    {\usebibmacro{bbx:dashcheck}
+       {\bibnamedash}
+       {\printnames{author}%
+        \setunit{\printdelim{authortypedelim}}%
+        \usebibmacro{bbx:savehash}}%
+     \usebibmacro{authorstrg}}
+    {\global\undef\bbx@lasthash}}
+\csuse{extblx@opt@dashed@false}
+\csletcs{extblx@introcite}{extblx@opt@introcite@label}
+\exampleprintbib{sigfridsson,geer}
+\end{bibexample}
+\makeatother
 \end{optionlist}
 
 \section{Further Customisations}\label{sec:opt:cust}
