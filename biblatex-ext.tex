@@ -37,14 +37,19 @@
 \addbibresource{biblatex-examples.bib}
 \addbibresource{biblatex-ext-examples.bib}
 
-\DeclareBibliographyCategory{sigfridsson}
-\DeclareBibliographyCategory{introcite:opts}
-\DeclareBibliographyCategory{introcite:lengths}
-\addtocategory{sigfridsson}{sigfridsson}
-\addtocategory{introcite:opts}{sigfridsson,knuth:ct:a,knuth:ct:b}
-\addtocategory{introcite:lengths}{sigfridsson,coleridge,geer}
-
 \makeatletter
+\defbibcheck{examplebib}{%
+  \xifinlist{\thefield{entrykey}}{\extblxdoc@examplebib@list}
+    {}
+    {\skipentry}}
+
+\newcommand*{\exampleprintbib}[1]{%
+  \nocite{#1}%
+  \let\extblxdoc@examplebib@list\empty
+  \def\do##1{\listeadd\extblxdoc@examplebib@list{\detokenize{##1}}}%
+  \docsvlist{#1}%
+  \printbibliography[check=examplebib, heading=none]}
+
 \iffontspec
 \def\textvisiblespace{%
   \raisebox{-2.2pt}{%
@@ -103,6 +108,17 @@
 \lstdefinestyle{extblxstylelatex}{%
   language  = {[LaTeX]TeX},
   style     = {extblxstylegeneral},
+  moretexcs = {addcomma,adddot,addperiod,addcolon,addspace,addnbspace,
+    mkbibbold,mkbibemph,mkbibbrackets,mkbibparens,
+    usebibmacro,newbibmacro,renewbibmacro,setunit,newunit,printfield,printlist,
+    bibopenparen,bibcloseparen,bibopenbracket,bibclosebracket,
+    iflistundef,iffieldundef,ifnameundef,
+    DeclareFieldFormat,DeclareDelimFormat,DeclareDelimcontextAlias,
+    DeclareInnerCiteDelim,UndeclareInnerCiteDelim,DeclareInnerCiteDelimAlias,
+    DeclareOuterCiteDelim,UndeclareOuterCiteDelim,DeclareOuterCiteDelimAlias,
+    introcitepunct,volnumdelim,maintitletitledelim,voltitledelim,sernumdelim,
+    volnumdatedelim,locdatedelim,locpubdelim,publocdelim,pubdatedelim,
+    extradateonlycompcitedelim,introcitesep,introcitewidth,introcitesep},
 }
 
 \lstdefinestyle{extblxstylebibtex}{%
@@ -257,7 +273,7 @@
    \setlength{\itemsep}{0pt}%
    \raggedright
    \let\@@item\item
-   \def\item[##1]{%
+   \def\keyitem[##1]{%
      \@@item[{##1}]%
      \ltd@pdfbookmark{##1}{##1}}}
   {\endmarglist}
@@ -712,36 +728,32 @@ Whether or not to display \enquote{in:} before the journal information in
 \bibtype{article} entries.
 All other entry types are not affected by this option.
 
-\begin{bibexample}[title={\kvopt{articlein}{true}}]
+\begingroup
 \makeatletter
 \togglefalse{bbx:doi}
+\DeclareFieldFormat{highlighthere}{%
+  \iffieldequalstr{entrykey}{sigfridsson}
+    {\textcolor{highlight1}{#1}}
+    {\iffieldequalstr{entrykey}{westfahl:space}
+       {\textcolor{highlight2}{#1}}
+       {#1}}}
 \renewbibmacro*{in:}{%
   \blx@begunit\blx@endunit
-  \printtext[highlight1]{%
+  \printtext[highlighthere]{%
     \printtext{%
       \bibstring{in}\intitlepunct}}}
-\toggletrue{bbx:articlein}\fullcite{sigfridsson}
-\renewbibmacro*{in:}{%
-  \blx@begunit\blx@endunit
-  \printtext[highlight2]{%
-    \printtext{%
-      \bibstring{in}\intitlepunct}}}
-\smallskip\par\fullcite{brandt}
-\makeatother
+
+\begin{bibexample}[title={\kvopt{articlein}{true}}]
+\toggletrue{bbx:articlein}
+\exampleprintbib{sigfridsson,westfahl:space}
 \end{bibexample}
 
 \begin{bibexample}[title={\kvopt{articlein}{false}}]
-\togglefalse{bbx:doi}
-\togglefalse{bbx:articlein}\fullcite{sigfridsson}
-\makeatletter
-\renewbibmacro*{in:}{%
-  \blx@begunit\blx@endunit
-  \textcolor{highlight2}{%
-    \printtext{%
-      \bibstring{in}\intitlepunct}}}
-\smallskip\par\fullcite{brandt}
-\makeatother
+\togglefalse{bbx:articlein}
+\exampleprintbib{sigfridsson,westfahl:space}
 \end{bibexample}
+\makeatother
+\endgroup
 
 \boolitem[false]{citeinxref}
 This option controls if \bibtype{inbook}, \bibtype{incollection} and
@@ -770,7 +782,8 @@ bibliography, this needs to happen either explicitly by citing the parent
          {\printtext{\bbx@cite@inxref{\thefield{crossref}}}}}
       {\usebibmacro{#1}}}}
 \makeatother
-\toggletrue{bbx:citeinxref}\fullcite{westfahl:space}
+\toggletrue{bbx:citeinxref}
+\exampleprintbib{westfahl:space}
 \end{bibexample}
 
 \begin{bibexample}[title={\kvopt{citeinxref}{false}}]
@@ -785,7 +798,8 @@ bibliography, this needs to happen either explicitly by citing the parent
          {\printtext{\bbx@cite@inxref{\thefield{crossref}}}}}
       {\usebibmacro{#1}}}}
 \makeatother
-\togglefalse{bbx:citeinxref}\fullcite{westfahl:space}
+\togglefalse{bbx:citeinxref}
+\exampleprintbib{westfahl:space}
 \end{bibexample}
 
 \boolitem[false]{innamebeforetitle}
@@ -810,7 +824,8 @@ Whether or not the \bibfield{editor} should be moved before the
      \clearname{editor}}
     {}}
 \makeatother
-\toggletrue{bbx:innamebeforetitle}\fullcite{pines}
+\toggletrue{bbx:innamebeforetitle}
+\exampleprintbib{pines}
 \end{bibexample}
 
 \begin{bibexample}[title={\kvopt{innamebeforetitle}{false}}]
@@ -825,7 +840,8 @@ Whether or not the \bibfield{editor} should be moved before the
      \clearname{editor}}%
   \usebibmacro{byeditorx}%
   \usebibmacro{bytranslator+others}}
-\togglefalse{bbx:innamebeforetitle}\fullcite{pines}
+\togglefalse{bbx:innamebeforetitle}
+\exampleprintbib{pines}
 \end{bibexample}
 
 \boolitem[false]{innameidem}
@@ -854,7 +870,7 @@ This option only has an effect if \opt{innamebeforetitle} is set to \opt{true}.
     {}}
 \makeatother
 \toggletrue{bbx:innamebeforetitle}\toggletrue{bbx:innameidem}
-\fullcite{gaonkar:in}
+\exampleprintbib{gaonkar:in}
 \end{bibexample}
 
 \begin{bibexample}[title={\kvopt{innameidem}{false}}]
@@ -876,7 +892,7 @@ This option only has an effect if \opt{innamebeforetitle} is set to \opt{true}.
     {}}
 \makeatother
 \toggletrue{bbx:innamebeforetitle}\togglefalse{bbx:innameidem}
-\fullcite{gaonkar:in}
+\exampleprintbib{gaonkar:in}
 \end{bibexample}
 
 
@@ -932,13 +948,13 @@ printed with the \bibfield{volumeof} format.
 \begin{bibexample}[title={\kvopt{maintitleaftertitle}{true}}]
 \togglefalse{bbx:isbn}
 \toggletrue{bbx:maintitleaftertitle}
-\fullcite{knuth:ct:a}
+\exampleprintbib{knuth:ct:a}
 \end{bibexample}
 
 \begin{bibexample}[title={\kvopt{maintitleaftertitle}{false}}]
 \togglefalse{bbx:isbn}
 \togglefalse{bbx:maintitleaftertitle}
-\fullcite{knuth:ct:a}
+\exampleprintbib{knuth:ct:a}
 \end{bibexample}
 \endgroup
 \end{optionlist}
@@ -980,14 +996,14 @@ Assuming \kvopt{maxnames}{1} and no name list disambiguation
                     {biblatex-ext-examples.bib}
 give
 \renewcommand*{\bibnamedash}{\textbf{\textemdash\addspace}}
-\DeclareFieldFormat{dasheshighlight}{%
+\DeclareFieldFormat{highlighthere}{%
   \iffieldequalstr{entrykey}{elk:einio}
     {\highlight[1]{#1}}
     {\iffieldequalstr{entrykey}{appleby:abl}
        {\highlight[2]{#1}}
        {#1}}}
 \renewbibmacro*{author}{%
-  \printtext[dasheshighlight]{%
+  \printtext[highlighthere]{%
   \ifboolexpr{
     test \ifuseauthor
     and
@@ -1060,19 +1076,19 @@ labels in a \sty{numeric} bibliography.
 \begin{bibexample}[title={\kvopt{introcite}{false}}]
 \csuse{extblx@opt@dashed@false}
 \csletcs{extblx@introcite}{extblx@opt@introcite@false}
-\printbibliography[heading=none, category=introcite:opts]
+\exampleprintbib{sigfridsson,knuth:ct:a,knuth:ct:b}
 \end{bibexample}
 
 \begin{bibexample}[title={\kvopt{introcite}{plain}}]
 \csuse{extblx@opt@dashed@false}
 \csletcs{extblx@introcite}{extblx@opt@introcite@plain}
-\printbibliography[heading=none, category=introcite:opts]
+\exampleprintbib{sigfridsson,knuth:ct:a,knuth:ct:b}
 \end{bibexample}
 
 \begin{bibexample}[title={\kvopt{introcite}{label}}]
 \csuse{extblx@opt@dashed@false}
 \csletcs{extblx@introcite}{extblx@opt@introcite@label}
-\printbibliography[heading=none, category=introcite:opts]
+\exampleprintbib{sigfridsson,knuth:ct:a,knuth:ct:b}
 \end{bibexample}
 \makeatother
 \endgroup
@@ -1087,7 +1103,7 @@ The label produced by the \opt{plain} option can be customised as follows.
 \renewcommand*{\introcitepunct}{\highlight{\textbf{\addcolon}\textvisiblespace}}
 \csuse{extblx@opt@dashed@false}
 \csletcs{extblx@introcite}{extblx@opt@introcite@plain}
-\printbibliography[heading=none, category=sigfridsson]
+\exampleprintbib{sigfridsson}
 \end{bibexample}
 \end{ltxsyntax}
 
@@ -1127,7 +1143,7 @@ overlay={%
 ]
 \csuse{extblx@opt@dashed@false}
 \csletcs{extblx@introcite}{extblx@opt@introcite@label}
-\printbibliography[heading=none, category=introcite:lengths]
+\exampleprintbib{sigfridsson,coleridge,geer}
 \end{bibexample}
 \endgroup
 
@@ -1137,16 +1153,17 @@ overlay={%
 \setlength{\introcitewidth}{1.8cm}
 \csuse{extblx@opt@dashed@false}
 \csletcs{extblx@introcite}{extblx@opt@introcite@label}
-\printbibliography[heading=none, category=introcite:lengths, nottype=article]
+\exampleprintbib{coleridge,geer}
 \end{bibexample}
 
 \begin{bibexample}[enhanced, title={\kvopt{introcite}{label} with
-  $\len{introcitewidth}=0$ and $\len{introcitesep}=\len{bibhang}$}]
+  \len{introcitewidth} set to zero and \len{introcitesep} equal to
+  \len{bibhang}}]
 \setlength{\introcitewidth}{0pt}
 \setlength{\introcitesep}{\bibhang}
 \csuse{extblx@opt@dashed@false}
 \csletcs{extblx@introcite}{extblx@opt@introcite@label}
-\printbibliography[heading=none, category=introcite:lengths, nottype=book]
+\exampleprintbib{sigfridsson,geer}
 \end{bibexample}
 \makeatother
 
@@ -1156,8 +1173,44 @@ The delimiter context is \sty{bbx:introcite}, the inner citation delimiters
 can be accessed as \sty{bbx:introcite} as well.
 The label does not have outer citation delimiters, you can use the wrapper
 field format \sty{bbx:introcite} instead. In fact this approach is more
-versatile than the outer citation delimiter feature (see the dicsussion in
+versatile than the outer citation delimiter feature (see the discussion in
 \cref{sec:opt:citedelims}).
+
+\makeatletter
+\begin{bibexample}[title={Example customisations for \kvopt{introcite}{plain}}]
+\begin{lstlisting}[style=extblxstylelatex]
+\DeclareFieldFormat{bbx:introcite}{\mkbibbrackets{#1}}
+\DeclareDelimFormat[bbx:introcite]{nameyeardelim}{\addcomma\space}
+\UndeclareInnerCiteDelim{bbx:introcite}
+\renewcommand*{\introcitepunct}{\quad}
+\end{lstlisting}
+\tcblower
+\DeclareFieldFormat{bbx:introcite}{\mkbibbrackets{#1}}
+\DeclareDelimcontextAlias{bbx:introcite}{parencite}
+\DeclareDelimFormat[bbx:introcite]{nameyeardelim}{\addcomma\space}
+\renewcommand*{\introcitepunct}{\quad}
+\csuse{extblx@opt@dashed@false}
+\csletcs{extblx@introcite}{extblx@opt@introcite@plain}
+\exampleprintbib{sigfridsson}
+\end{bibexample}
+
+\begin{bibexample}[title={Example customisations for \kvopt{introcite}{label}}]
+\begin{lstlisting}[style=extblxstylelatex]
+\DeclareFieldFormat{bbx:introcite}{\mkbibbold{#1}}
+\DeclareDelimcontextAlias{bbx:introcite}{textcite}
+\DeclareInnerCiteDelim{bbx:introcite}{\bibopenparen}{\bibcloseparen}
+\end{lstlisting}
+\tcblower
+\DeclareFieldFormat{bbx:introcite}{\mkbibbold{#1}}
+\DeclareDelimcontextAlias{bbx:introcite}{textcite}
+\DeclareInnerCiteDelim{bbx:introcite}{\bibopenparen}{\bibcloseparen}
+\setlength{\introcitewidth}{0pt}
+\setlength{\introcitesep}{\bibhang}
+\csuse{extblx@opt@dashed@false}
+\csletcs{extblx@introcite}{extblx@opt@introcite@label}
+\exampleprintbib{coleridge,geer}
+\end{bibexample}
+
 \end{optionlist}
 
 \section{Further Customisations}\label{sec:opt:cust}
@@ -1167,17 +1220,17 @@ directives the styles of this bundle offer customisable formats instead.
 Field formats can be modified with \cmd{DeclareFieldFormat}.
 
 \begin{keymarglistbook}
-\item[bib(list)labeldate] The format for the labeldate in the bibliography or
+\keyitem[bib(list)labeldate] The format for the labeldate in the bibliography or
   a bibliography list for \sty{authoryear}-like styles. The default is to wrap
   the date in round brackets.
   \begin{bibexample}
   \togglefalse{bbx:doi}
   \DeclareFieldFormat{biblabeldate}{\highlight{\bibopenparen}\highlight[2]{#1}%
     \highlight{\bibcloseparen}}
-  \fullcite{sigfridsson}
+  \exampleprintbib{sigfridsson}
   \end{bibexample}
 
-\item[issuedate] The format of the \bibfield{issue} and \bibfield{date}
+\keyitem[issuedate] The format of the \bibfield{issue} and \bibfield{date}
   information for \bibtype{article}s. By default this block is wrapped in
   round brackets.
   \begin{bibexample}
@@ -1185,20 +1238,18 @@ Field formats can be modified with \cmd{DeclareFieldFormat}.
   \togglefalse{bbx:doi}
   \DeclareFieldFormat{issuedate}{\highlight{\bibopenparen}\highlight[2]{#1}%
     \highlight{\bibcloseparen}}
-  \fullcite{sigfridsson}
+  \exampleprintbib{sigfridsson}
   \end{bibexample}
 
-\item[volumeof] The format for the \bibfield{volume} of a \bibfield{maintitle}
+\keyitem[volumeof] The format for the \bibfield{volume} of a \bibfield{maintitle}
   used when \kvopt{maintitleaftertitle}{true}.
   \begin{bibexample}
   \togglefalse{bbx:isbn}\toggletrue{bbx:maintitleaftertitle}
   \DeclareFieldFormat{volumeof}{\highlight{\bibstring{volume}}~%
     \highlight[2]{#1}}
-  \fullcite{knuth:ct:a}
+  \exampleprintbib{knuth:ct:a}
   \end{bibexample}
 \end{keymarglistbook}
-
-\DeclareFieldFormat{issuedate}{\mkbibparens{#1}}
 
 \subsection{Punctuation}\label{sec:opt:punct}
 The package provides the following commands to modify the delimiters and
@@ -1213,7 +1264,7 @@ The default is \cs{newunitpunct}.
 \togglefalse{bbx:isbn}
 \renewcommand*{\maintitletitledelim}{\highlight{\textbf{\addperiod}%
   \textvisiblespace}\bibsentence}
-\fullcite{knuth:ct:a}
+\exampleprintbib{knuth:ct:a}
 \end{bibexample}
 
 \csitem{voltitledelim}
@@ -1224,7 +1275,7 @@ The default is a colon followed by a space.
 \togglefalse{bbx:isbn}
 \renewcommand*{\voltitledelim}{\highlight{\textbf{\addcolon}%
   \textvisiblespace}\bibsentence}
-\fullcite{knuth:ct:a}
+\exampleprintbib{knuth:ct:a}
 \end{bibexample}
 
 \csitem{titlemaintitledelim}
@@ -1236,7 +1287,7 @@ The default is \cmd{newunitpunct}.
 \toggletrue{bbx:maintitleaftertitle}
 \renewcommand*{\titlemaintitledelim}{\highlight{\textbf{\addperiod}%
   \textvisiblespace}\bibsentence}
-\fullcite{knuth:ct:a}
+\exampleprintbib{knuth:ct:a}
 \end{bibexample}
 
 \csitem{volnumdatedelim}
@@ -1247,7 +1298,7 @@ The default is a space.
 \togglefalse{bbx:doi}
 \renewcommand*{\volnumdatedelim}{\highlight{\textvisiblespace}}
 \makeatletter\bbx@opt@mergedate@false\makeatother
-\fullcite{sigfridsson}
+\exampleprintbib{sigfridsson}
 \end{bibexample}
 
 
@@ -1258,7 +1309,7 @@ The default is a dot.
 \begin{bibexample}
 \togglefalse{bbx:doi}
 \renewcommand*{\volnumdelim}{\highlightbf{\adddot}}
-\fullcite{sigfridsson}
+\exampleprintbib{sigfridsson}
 \end{bibexample}
 
 \csitem{sernumdelim}
@@ -1266,7 +1317,7 @@ The delimiter between \bibfield{series} and \bibfield{number}.
 The default is a space.
 \begin{bibexample}
 \renewcommand*{\sernumdelim}{\highlight{\textvisiblespace}}
-\fullcite{coleridge}
+\exampleprintbib{coleridge}
 \end{bibexample}
 
 \csitem{locdatedelim}
@@ -1275,7 +1326,7 @@ The default is a comma followed by a space.
 \begin{bibexample}
 \renewcommand*{\locdatedelim}{\highlight{\textbf{\addcomma}\textvisiblespace}}
 \makeatletter\bbx@opt@mergedate@false\makeatother
-\fullcite{jaffe}
+\exampleprintbib{jaffe}
 \end{bibexample}
 
 \csitem{locpubdelim}
@@ -1285,7 +1336,7 @@ The default is a colon followed by a space.
 \begin{bibexample}
 \makeatletter\bbx@opt@mergedate@false\makeatother
 \renewcommand*{\locpubdelim}{\highlight{\textbf{\addcolon}\textvisiblespace}}
-\fullcite{knuth:ct:a}
+\exampleprintbib{knuth:ct:a}
 \end{bibexample}
 
 
@@ -1320,7 +1371,7 @@ You could use \cs{publocdelim} if you changed the order of these fields to
   \usebibmacro{date}%
   \newunit}
 \makeatletter\bbx@opt@mergedate@false\makeatother
-\fullcite{knuth:ct:a}
+\exampleprintbib{knuth:ct:a}
 \end{bibexample}
 
 
@@ -1331,7 +1382,7 @@ The default is a comma followed by a space.
 \begin{bibexample}
 \renewcommand*{\pubdatedelim}{\highlight{\textbf{\addcomma}\textvisiblespace}}
 \makeatletter\bbx@opt@mergedate@false\makeatother
-\fullcite{knuth:ct:a}
+\exampleprintbib{knuth:ct:a}
 \end{bibexample}
 
 \csitem{extradateonlycompcitedelim}
@@ -1514,7 +1565,7 @@ Many of these macros are replacements for bare \cmd{printfield} or
 sequence of commands into one central place.
 
 \begin{keymarglistbook}
-\item[barevolume+volumes]
+\keyitem[barevolume+volumes]
 A bibliography macro to print the \bibfield{volume}, \bibfield{part} and
 \bibfield{volumes} fields for \bibtype{mvbook}-, \bibtype{book}- and
 \bibtype{inbook}-like entry types.
@@ -1531,30 +1582,28 @@ fields will be printed by \bibmacro{maintitle+title} or
       {}%
     \newunit
     \printfield{volumes}}}
-\fullcite{knuth:ct}
-\smallskip\par
-\fullcite{matuz:doody}
+\exampleprintbib{knuth:ct,matuz:doody}
 \end{bibexample}
 
-\item[edition]
+\keyitem[edition]
 A bibliography macro to print the \bibfield{edition} field, this avoids a direct
 \lstinline|\printfield{edition}| in the bibliography drivers.
 
-\item[in:editor(+others)]
+\keyitem[in:editor(+others)]
 The bibliography macro to print the \bibfield{editor} before the
 \bibfield{booktitle} for \bibtype{inbook}, \bibtype{incollection} and
 \bibtype{inproceedings} when \opt{innamebeforetitle} is set to \opt{true}.
 The \cmd{printname} uses the name format \bibfield{ineditor}.
 
-\item[language]
+\keyitem[language]
 A bibliography macro to print the \bibfield{language} field, this avoids a
 direct \lstinline|\printlist{language}| in the bibliography drivers.
 
-\item[note]
+\keyitem[note]
 A bibliography macro to print the \bibfield{note} field, this avoids a direct
 \lstinline|\printfield{note}| in the bibliography drivers.
 
-\item[pubinstorg+location+date]
+\keyitem[pubinstorg+location+date]
 A general-purpose bibliography macro to catch
 \bibmacro{publisher+location+date},
 \bibmacro{institution+location+date} and \bibmacro{organization+location+date}.
@@ -1583,7 +1632,7 @@ sensible values are \bibfield{publisher}, \bibfield{institution} and
   \usebibmacro{pubinstorg+location+date}{|organization|}}
 \end{biblatexcode}
 
-\item[type+number]
+\keyitem[type+number]
 A bibliography macro to print the \bibfield{type} and \bibfield{number} fields.
 \end{keymarglistbook}
 
