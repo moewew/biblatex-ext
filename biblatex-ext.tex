@@ -108,7 +108,8 @@
 \lstdefinestyle{extblxstylelatex}{%
   language  = {[LaTeX]TeX},
   style     = {extblxstylegeneral},
-  moretexcs = {addcomma,adddot,addperiod,addcolon,addspace,addnbspace,
+  moretexcs = {setlength,bibhang,addcomma,adddot,addperiod,addcolon,addspace,
+    addnbspace,
     mkbibbold,mkbibemph,mkbibbrackets,mkbibparens,
     usebibmacro,newbibmacro,renewbibmacro,setunit,newunit,printfield,printlist,
     bibopenparen,bibcloseparen,bibopenbracket,bibclosebracket,
@@ -963,8 +964,8 @@ printed with the \bibfield{volumeof} format.
 The \opt{dashed} option of the \sty{authoryear}- and \sty{authortitle}-like
 bibliography styles allows for finer control over the dashes now.
 \begin{optionlist}
-\optitem[false]{dashed}{\opt{true}, \opt{false}, \opt{fullhash},
-                        \opt{bibnamehash}}
+\optitem[true]{dashed}{\opt{true}, \opt{false}, \opt{fullhash},
+                       \opt{bibnamehash}}
 
 This option controls whether or not recurring lists of authors/editors in the
 bibliography are replaced with a dash.
@@ -1198,6 +1199,8 @@ versatile than the outer citation delimiter feature (see the discussion in
 \DeclareFieldFormat{bbx:introcite}{\mkbibbold{#1}}
 \DeclareDelimcontextAlias{bbx:introcite}{textcite}
 \DeclareInnerCiteDelim{bbx:introcite}{\bibopenparen}{\bibcloseparen}
+\setlength{\introcitewidth}{0pt}
+\setlength{\introcitesep}{\bibhang}
 \end{lstlisting}
 \tcblower
 \DeclareFieldFormat{bbx:introcite}{\mkbibbold{#1}}
@@ -1687,7 +1690,7 @@ See also \sty{CHANGES.md}.
 \end{changelog}
 
 \begin{bibexample}[breakable]
-\printbibliography
+\printbibliography[title={Example References}]
 \end{bibexample}
 
 \end{document}
