@@ -331,6 +331,7 @@
 \newrobustcmd*{\bibmacro}[1]{\sty{#1}}
 \renewrobustcmd*{\bibtype}[1]{\sty{@#1}}
 \renewrobustcmd*{\cmd}[1]{\sty{\textbackslash #1}}
+\newrobustcmd*{\bibfieldformat}[1]{\textsf{#1}}
 
 
 \newcommand*{\gitbaseurl}{https://github.com/moewew/biblatex-ext}
@@ -1282,6 +1283,53 @@ Field formats can be modified with \cmd{DeclareFieldFormat}.
     \highlight[2]{#1}}
   \exampleprintbib{knuth:ct:a}
   \end{bibexample}
+
+\keyitem[titlecase:title] The standard styles follow an all-or-nothing approach
+  when it comes to title casing. The field format \bibfieldformat{titlecase}
+  intended to enable sentence case with \cmd{MakeSentenceCase*} is applied to
+  all title-like fields alike. Finer control over the title casing of each field
+  could require involved code.\fnurl{https://tex.stackexchange.com/a/22981/}
+  The field format \bibfieldformat{titlecase:title} is applied to the fields
+  \bibfield{title} and \bibfield{subtitle}.
+  By default this field format is an alias for \bibfieldformat{titlecase}.
+
+\keyitem[titlecase:booktitle] Like \bibfieldformat{titlecase:title}, but
+  controls the title casing of the \bibfield{booktitle} and
+  \bibfield{booksubtitle} fields.
+
+\keyitem[titlecase:maintitle] Like \bibfieldformat{titlecase:title}, but
+  controls the title casing of the \bibfield{maintitle} and
+  \bibfield{mainsubtitle} fields.
+
+\keyitem[titlecase:journaltitle] Like \bibfieldformat{titlecase:title}, but
+  controls the title casing of the \bibfield{journaltitle} and
+  \bibfield{journalsubtitle} fields.
+
+\keyitem[titlecase:issuetitle] Like \bibfieldformat{titlecase:title}, but
+  controls the title casing of the \bibfield{issuetitle} and
+  \bibfield{issuesubtitle} fields.
+
+
+\begin{bibexample}[title={Default output for \bibfieldformat{titlecase}
+  field formats}]%
+\DeclareFieldFormat{titlecase:title}{\highlight[1]{#1}}
+\DeclareFieldFormat{titlecase:journaltitle}{\highlight[2]{#1}}
+\togglefalse{bbx:doi}
+\exampleprintbib{shore}
+\end{bibexample}
+
+\begin{bibexample}[title={Example changes to \bibfieldformat{titlecase} field
+  formats}]%
+\begin{lstlisting}[style=extblxstylelatex]
+\DeclareFieldFormat{titlecase:title}{|1\MakeSentenceCase*{#1}1|}
+\DeclareFieldFormat{titlecase:journaltitle}{|2#12|}
+\end{lstlisting}
+\tcblower
+\DeclareFieldFormat{titlecase:title}{\highlight[1]{\MakeSentenceCase*{#1}}}
+\DeclareFieldFormat{titlecase:journaltitle}{\highlight[2]{#1}}
+\togglefalse{bbx:doi}
+\exampleprintbib{shore}
+\end{bibexample}
 \end{keymarglistbook}
 
 \subsection{Punctuation}\label{sec:opt:punct}
@@ -1674,6 +1722,10 @@ The GitHub repository of this project uses release tags, so you can compare
 the changes in source code there.\footnote{\url{\gitbaseurl/compare/}}
 See also \sty{CHANGES.md}.
 \begin{changelog}
+\begin{release}{<version>}{<date>}
+\item Add \bibfield{titlecase:...title} field formats\see{sec:opt:field}
+\item Improve documentation.
+\end{release}
 \begin{release}{0.2}{2018-03-28}
 \item Rework lengths for \kvopt{introcite}{label}\see{sec:opt:style}
 \item Fixed meaning of \cs{maintitletitledelim}\see{sec:opt:punct}

@@ -1,3 +1,11 @@
+# Version <version> (<date>)
+See https://github.com/moewew/biblatex-ext/compare/v0.1a...v<version>
+- Add `titlecase:<titletype>` field formats for finer control over the title
+  casing. The standard styles have the catch-all format `titlecase`. This
+  bundle now has `titlecase:title`, `titlecase:booktitle`,
+  `titlecase:maintitle`, `titlecase:issuetitle` and `titlecase:journaltitle`.
+- Various documentation improvements.
+
 # Version 0.2 (2018-03-28)
 See https://github.com/moewew/biblatex-ext/compare/v0.1a...v0.2
 - Fixed indentation with `introcite=label`.

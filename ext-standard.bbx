@@ -804,6 +804,89 @@
     {}%
   \usebibmacro{finentry}}
 
+\DeclareFieldAlias{titlecase:title}{titlecase}
+\renewbibmacro*{title}{%
+  \ifboolexpr{
+    test {\iffieldundef{title}}
+    and
+    test {\iffieldundef{subtitle}}
+  }
+    {}
+    {\printtext[title]{%
+       \printfield[titlecase:title]{title}%
+       \setunit{\subtitlepunct}%
+       \printfield[titlecase:title]{subtitle}}%
+     \newunit}%
+  \printfield{titleaddon}}
+
+\DeclareFieldAlias{titlecase:booktitle}{titlecase}
+\renewbibmacro*{booktitle}{%
+  \ifboolexpr{
+    test {\iffieldundef{booktitle}}
+    and
+    test {\iffieldundef{booksubtitle}}
+  }
+    {}
+    {\printtext[booktitle]{%
+       \printfield[titlecase:booktitle]{booktitle}%
+       \setunit{\subtitlepunct}%
+       \printfield[titlecase:booktitle]{booksubtitle}}%
+     \newunit}%
+  \printfield{booktitleaddon}}
+
+\DeclareFieldAlias{titlecase:maintitle}{titlecase}
+\renewbibmacro*{maintitle}{%
+  \ifboolexpr{
+    test {\iffieldundef{maintitle}}
+    and
+    test {\iffieldundef{mainsubtitle}}
+  }
+    {}
+    {\printtext[maintitle]{%
+       \printfield[titlecase:maintitle]{maintitle}%
+       \setunit{\subtitlepunct}%
+       \printfield[titlecase:maintitle]{mainsubtitle}}%
+     \newunit}%
+  \printfield{maintitleaddon}}
+
+\DeclareFieldAlias{titlecase:journaltitle}{titlecase}
+\renewbibmacro*{journal}{%
+  \ifboolexpr{
+    test {\iffieldundef{journaltitle}}
+    and
+    test {\iffieldundef{journalsubtitle}}
+  }
+    {}
+    {\printtext[journaltitle]{%
+       \printfield[titlecase:journaltitle]{journaltitle}%
+       \setunit{\subtitlepunct}%
+       \printfield[titlecase:journaltitle]{journalsubtitle}}}}
+
+\renewbibmacro*{periodical}{%
+  \ifboolexpr{
+    test {\iffieldundef{title}}
+    and
+    test {\iffieldundef{subtitle}}
+  }
+    {}
+    {\printtext[title]{%
+       \printfield[titlecase:title]{title}%
+       \setunit{\subtitlepunct}%
+       \printfield[titlecase:title]{subtitle}}}}
+
+\DeclareFieldAlias{titlecase:issuetitle}{titlecase}
+\renewbibmacro*{issue}{%
+  \ifboolexpr{
+    test {\iffieldundef{issuetitle}}
+    and
+    test {\iffieldundef{issuesubtitle}}
+  }
+    {}
+    {\printtext[issuetitle]{%
+       \printfield[titlecase:issuetitle]{issuetitle}%
+       \setunit{\subtitlepunct}%
+       \printfield[titlecase:issuetitle]{issuesubtitle}}}}
+
 \DeclareFieldFormat{volumeof}{\bibstring{volume}~#1}
 \newcommand*{\titlemaintitledelim}{\newunitpunct}
 \newcommand*{\maintitletitledelim}{\newunitpunct}
