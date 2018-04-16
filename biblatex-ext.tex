@@ -256,15 +256,28 @@
 \renewcommand*{\ltxsyntaxlabelfont}{\accentcolour\displayverbfont}
 \renewcommand*{\changelogfont}{\normalfont}
 \renewcommand*{\changeloglabelfont}{\accentcolour\sffamily\bfseries}
-\newcommand*{\stylelistfont}{\accentcolour\sffamily\small}
+\newcommand*{\stylelistlabelfont}{\accentcolour\sffamily\small}
+\newcommand*{\bibfieldformatfont}{\sffamily}
+\newcommand*{\bibfieldformatlabelfont}{\accentcolour\bibfieldformatfont\small}
 
 \newenvironment*{stylelist}
   {\list{}{%
      \setlength{\labelwidth}{\marglistwidth}%
      \setlength{\labelsep}{\marglistsep}%
      \setlength{\leftmargin}{0pt}%
-     \renewcommand*{\makelabel}[1]{\hss\stylelistfont##1}}%
+     \renewcommand*{\makelabel}[1]{\hss\stylelistlabelfont##1}}%
    \def\styleitem##1{%
+     \item[{##1}]%
+     \ltd@pdfbookmark{##1}{##1}}}
+  {\endlist}
+
+\newenvironment*{bibfieldformatlist}
+  {\list{}{%
+     \setlength{\labelwidth}{\marglistwidth}%
+     \setlength{\labelsep}{\marglistsep}%
+     \setlength{\leftmargin}{0pt}%
+     \renewcommand*{\makelabel}[1]{\hss\bibfieldformatlabelfont##1}}%
+   \def\bibfieldformatitem##1{%
      \item[{##1}]%
      \ltd@pdfbookmark{##1}{##1}}}
   {\endlist}
@@ -331,9 +344,9 @@
 \newrobustcmd*{\bibmacro}[1]{\sty{#1}}
 \renewrobustcmd*{\bibtype}[1]{\sty{@#1}}
 \renewrobustcmd*{\cmd}[1]{\sty{\textbackslash #1}}
-\newrobustcmd*{\bibfieldformat}[1]{\textsf{#1}}
+\newrobustcmd*{\bibfieldformat}[1]{{\bibfieldformatfont #1}}
 
-
+\newcommand*{\ctan}{\mkbibacro{CTAN}}
 \newcommand*{\gitbaseurl}{https://github.com/moewew/biblatex-ext}
 \newcommand*{\extblxversion}{0.2}
 \newcommand*{\biber}{Biber}
@@ -457,14 +470,14 @@ their implementation, but many \sty{biblatex} standard features only work
 properly with \biber{}.
 
 \subsection{Installation}\label{sec:install}
-This style bundle is available on \mkbibacro{CTAN}.%
+This style bundle is available on \ctan.%
 \fnurl{https://ctan.org/pkg/biblatex-ext}
 The current release is also available in \miktex{} and \texlive{} 2018 or
 newer.
 If at all possible you should install this bundle via your \tex{} distribution
 (using \miktex{} Console\fnurl{https://miktex.org/howto/miktex-console} or
 \sty{tlmgr} for \texlive\fnurl{https://www.tug.org/texlive/pkginstall.html}).
-If you must install this package manually, get the files from \mkbibacro{CTAN}
+If you must install this package manually, get the files from \ctan{}
 and install the \sty{.bbx}, \sty{.cbx} and \sty{.def} files preferably to
 \path{tex/latex/biblatex-ext} of your local or home \TeX{} tree, the other
 files (\path{CHANGES.md}, \path{README.md}, \path{biblatex-ext.tex},
@@ -1253,8 +1266,9 @@ In a few places where the standard styles employ hard-coded formatting
 directives the styles of this bundle offer customisable formats instead.
 Field formats can be modified with \cmd{DeclareFieldFormat}.
 
-\begin{keymarglistbook}
-\keyitem[bib(list)labeldate] The format for the labeldate in the bibliography or
+\begin{bibfieldformatlist}
+\bibfieldformatitem{bib(list)labeldate} The format for the labeldate in the
+  bibliography or
   a bibliography list for \sty{authoryear}-like styles. The default is to wrap
   the date in round brackets.
   \begin{bibexample}
@@ -1264,9 +1278,9 @@ Field formats can be modified with \cmd{DeclareFieldFormat}.
   \exampleprintbib{sigfridsson}
   \end{bibexample}
 
-\keyitem[issuedate] The format of the \bibfield{issue} and \bibfield{date}
-  information for \bibtype{article}s. By default this block is wrapped in
-  round brackets.
+\bibfieldformatitem{issuedate} The format of the \bibfield{issue} and
+  \bibfield{date} information for \bibtype{article}s. By default this block is
+  wrapped in round brackets.
   \begin{bibexample}
   \makeatletter\bbx@opt@mergedate@false\makeatother
   \togglefalse{bbx:doi}
@@ -1275,8 +1289,8 @@ Field formats can be modified with \cmd{DeclareFieldFormat}.
   \exampleprintbib{sigfridsson}
   \end{bibexample}
 
-\keyitem[volumeof] The format for the \bibfield{volume} of a \bibfield{maintitle}
-  used when \kvopt{maintitleaftertitle}{true}.
+\bibfieldformatitem{volumeof} The format for the \bibfield{volume} of a
+  \bibfield{maintitle} used when \kvopt{maintitleaftertitle}{true}.
   \begin{bibexample}
   \togglefalse{bbx:isbn}\toggletrue{bbx:maintitleaftertitle}
   \DeclareFieldFormat{volumeof}{\highlight{\bibstring{volume}}~%
@@ -1284,31 +1298,35 @@ Field formats can be modified with \cmd{DeclareFieldFormat}.
   \exampleprintbib{knuth:ct:a}
   \end{bibexample}
 
-\keyitem[titlecase:title] The standard styles follow an all-or-nothing approach
-  when it comes to title casing. The field format \bibfieldformat{titlecase}
-  intended to enable sentence case with \cmd{MakeSentenceCase*} is applied to
-  all title-like fields alike. Finer control over the title casing of each field
-  could require involved code.\fnurl{https://tex.stackexchange.com/a/22981/}
+\bibfieldformatitem{titlecase:title} The standard styles follow an
+  all-or-nothing approach when it comes to title casing. The field format
+  \bibfieldformat{titlecase} intended to enable sentence case with
+  \cmd{MakeSentenceCase*} is applied to all title-like fields alike. Finer
+  control over the title casing of each field could require involved code.%
+  \fnurl{https://tex.stackexchange.com/a/22981/}
   The field format \bibfieldformat{titlecase:title} is applied to the fields
   \bibfield{title} and \bibfield{subtitle}.
   By default this field format is an alias for \bibfieldformat{titlecase}.
 
-\keyitem[titlecase:booktitle] Like \bibfieldformat{titlecase:title}, but
-  controls the title casing of the \bibfield{booktitle} and
+\bibfieldformatitem{titlecase:booktitle} Like \bibfieldformat{titlecase:title},
+  but controls the title casing of the \bibfield{booktitle} and
   \bibfield{booksubtitle} fields.
 
-\keyitem[titlecase:maintitle] Like \bibfieldformat{titlecase:title}, but
-  controls the title casing of the \bibfield{maintitle} and
+\bibfieldformatitem{titlecase:maintitle} Like \bibfieldformat{titlecase:title},
+  but controls the title casing of the \bibfield{maintitle} and
   \bibfield{mainsubtitle} fields.
 
-\keyitem[titlecase:journaltitle] Like \bibfieldformat{titlecase:title}, but
-  controls the title casing of the \bibfield{journaltitle} and
-  \bibfield{journalsubtitle} fields.
+\bibfieldformatitem{titlecase:journaltitle} Like
+  \bibfieldformat{titlecase:title}, but controls the title casing of the
+  \bibfield{journaltitle} and \bibfield{journalsubtitle} fields.
 
-\keyitem[titlecase:issuetitle] Like \bibfieldformat{titlecase:title}, but
-  controls the title casing of the \bibfield{issuetitle} and
+\bibfieldformatitem{titlecase:issuetitle} Like \bibfieldformat{titlecase:title},
+  but controls the title casing of the \bibfield{issuetitle} and
   \bibfield{issuesubtitle} fields.
 
+The \bibfieldformat{citetitle} field format can be used to change the title
+case in author-title citations, so there is no
+\bibfieldformat{citetitle:labeltitle}.
 
 \begin{bibexample}[title={Default output for \bibfieldformat{titlecase}
   field formats}]%
@@ -1330,7 +1348,7 @@ Field formats can be modified with \cmd{DeclareFieldFormat}.
 \togglefalse{bbx:doi}
 \exampleprintbib{shore}
 \end{bibexample}
-\end{keymarglistbook}
+\end{bibfieldformatlist}
 
 \subsection{Punctuation}\label{sec:opt:punct}
 The package provides the following commands to modify the delimiters and
@@ -1723,7 +1741,7 @@ the changes in source code there.\footnote{\url{\gitbaseurl/compare/}}
 See also \sty{CHANGES.md}.
 \begin{changelog}
 \begin{release}{<version>}{<date>}
-\item Add \bibfield{titlecase:...title} field formats\see{sec:opt:field}
+\item Add \bibfieldformat{titlecase:\dots title} field formats\see{sec:opt:field}
 \item Improve documentation.
 \end{release}
 \begin{release}{0.2}{2018-03-28}
