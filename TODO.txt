@@ -7,4 +7,7 @@
 - compressed @set citations (would need option to back out of ...
   https://tex.stackexchange.com/a/416448/35864)
 - subunit punctuation?
+- \mkbibname... only for the 'primary' name of a source?
+- introcite with related entries!
+- Better differentiation between citation and bibliography in introcite
 - Test suite

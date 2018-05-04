@@ -380,6 +380,7 @@
   bib-open-bracket
   bib-close-bracket
   main-title-after-title
+  jour-vol-delim
 }
 
 \begin{document}
@@ -1389,6 +1390,42 @@ The default is \cmd{newunitpunct}.
 \exampleprintbib{knuth:ct:a}
 \end{bibexample}
 
+\csitem{jourvoldelim}
+The delimiter between the \bibfield{journaltitle} and \bibfield{volume} fields
+for \bibtype{article} if no \bibfield{series} is present.
+The default is a space.
+\begin{bibexample}
+\togglefalse{bbx:doi}
+\renewcommand*{\jourvoldelim}{\highlight{\textvisiblespace}}
+\makeatletter\bbx@opt@mergedate@false\makeatother
+\exampleprintbib{sigfridsson}
+\end{bibexample}
+
+\csitem{jourserdelim}
+The delimiter between the \bibfield{journaltitle} and \bibfield{series} fields
+for \bibtype{article}.
+The default is \cmd{newunitpunct}.
+\begin{bibexample}
+\togglefalse{bbx:doi}
+\renewcommand*{\jourserdelim}{\highlightbf{\addperiod}%
+                              \highlight{\textvisiblespace}%
+                              \bibsentence% <- hacky ...
+                              }% <- hard-coded!
+\makeatletter\bbx@opt@mergedate@false\makeatother
+\exampleprintbib{reese,shore}
+\end{bibexample}
+
+\csitem{servoldelim}
+The delimiter between the \bibfield{series} and \bibfield{volume} fields
+for \bibtype{article}.
+The default is \cmd{jourvoldelim}.
+\begin{bibexample}
+\togglefalse{bbx:doi}
+\renewcommand*{\servoldelim}{\highlight{\textvisiblespace}}% <- hard-coded!
+\makeatletter\bbx@opt@mergedate@false\makeatother
+\exampleprintbib{reese,shore}
+\end{bibexample}
+
 \csitem{volnumdatedelim}
 The delimiter between the \bibfield{volume}, \bibfield{number} block and the
 date information for \bibtype{article}.
@@ -1412,7 +1449,8 @@ The default is a dot.
 \end{bibexample}
 
 \csitem{sernumdelim}
-The delimiter between \bibfield{series} and \bibfield{number}.
+The delimiter between \bibfield{series} and \bibfield{number} for
+\bibtype{book}- and \bibtype{inbook}-like entries.
 The default is a space.
 \begin{bibexample}
 \renewcommand*{\sernumdelim}{\highlight{\textvisiblespace}}

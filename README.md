@@ -23,9 +23,9 @@ The styles of this bundle are intended to be a solid base for further
 customisations.
 
 `biblatex-ext` has an extended version `ext-<style>` for each of `biblatex`'s
-standard styles.
+standard styles. The bundle consist of the following files
 
-- The base file `standard.bbx`
+- The base file `ext-standard.bbx`
 - The auxiliary file `ext-biblatex-aux.def`
 - The `alphabetic` style family
   - `ext-alphabetic.bbx` and `ext-alphabetic.cbx`
@@ -62,7 +62,6 @@ standard styles.
   - `ext-verbose-trad2.bbx` and `ext-verbose-trad2.cbx`
   - `ext-verbose-trad3.bbx` and `ext-verbose-trad3.cbx`
 
-
 ## Licence
 
 Copyright 2017-2018 Moritz Wemheuer
@@ -72,7 +71,7 @@ This work consists of the `.bbx`, `.cbx` and `.def` files mentioned above.
 This work may be distributed and/or modified under the
 conditions of the LaTeX Project Public License (LPPL), either
 version 1.3c of this license or (at your option) any later
-version. The latest version of this license is in
+version. The latest version of this license is at
 http://www.latex-project.org/lppl.txt
 and version 1.3 or later is part of all distributions of LaTeX
 version 2005/12/01 or later.
@@ -81,5 +80,17 @@ This work has the LPPL maintenance status 'maintained'.
 
 The Current Maintainer of the work is Moritz Wemheuer <mwemheu@gmail.com>.
 
+The files `README.md`, `CHANGES.md`, `biblatex-ext.pdf` `biblatex-ext.tex`
+and `biblatex-ext-examples.bib` are not considered part of the work for the
+purposes of the LPPL, so you may distribute the bundle without documentation
+(or the documentation without the rest of the bundle).
+It is, however, strongly advised that at least `README.md` and the PDF version
+of the documentation, `biblatex-ext.pdf`, are supplied alongside the work.
+
 Please report bugs at https://github.com/moewew/biblatex-ext or via email.
 Suggestions for improvements and feature request are also very welcome.
+
+The bundle is available on CTAN https://www.ctan.org/pkg/biblatex-ext
+and is included in MikTeX and TeX live 2018 or later.
+The development version can be found on GitHub
+https://github.com/moewew/biblatex-ext

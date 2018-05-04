@@ -1,3 +1,14 @@
+% biblatex-ext
+% Maintained by Moritz Wemheuer
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3c
+% of this license or (at your option) any later version.
+% The latest version of this license is at
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
 \ProvidesFile{ext-standard.bbx}
   [2018/03/28 v0.2 extended biblatex standard style (MW)]
 
@@ -997,16 +1008,19 @@
 
 \newbibmacro*{edition}{\printfield{edition}}
 
+\newcommand*{\jourvoldelim}{\addspace}
+\newcommand*{\jourserdelim}{\newunitpunct}
+\newcommand*{\servoldelim}{\addspace}
 \newcommand*{\volnumdatedelim}{\addspace}
 
 \renewbibmacro*{journal+issuetitle}{%
   \usebibmacro{journal}%
-  \setunit*{\addspace}%
+  \setunit*{\jourvoldelim}%
   \iffieldundef{series}
     {}
-    {\setunit*{\addcomma\space}%
+    {\setunit*{\jourserdelim}%
      \printfield{series}%
-     \setunit{\addspace}}%
+     \setunit{\servoldelim}}%
   \usebibmacro{volume+number+eid}%
   \setunit{\volnumdatedelim}%
   \usebibmacro{issue+date}%
@@ -1154,3 +1168,60 @@
       \printdate}}}
 
 \endinput
+
+% Copyright 2017-2018 Moritz Wemheuer
+
+% This work consists of the `.bbx`, `.cbx` and `.def` files
+% ext-standard.bbx
+% ext-biblatex-aux.def
+% ext-dashed-common.bbx
+% ext-authortitle-common.bbx
+% ext-authoryear-common.bbx
+% ext-alphabetic.bbx           ext-alphabetic.cbx
+% ext-alphabetic-verb.bbx      ext-alphabetic-verb.cbx
+% ext-authortitle.bbx          ext-authortitle.cbx
+% ext-authortitle-comp.bbx     ext-authortitle-comp.cbx
+% ext-authortitle-ibid.bbx     ext-authortitle-ibid.cbx
+% ext-authortitle-icomp.bbx    ext-authortitle-icomp.cbx
+% ext-authortitle-terse.bbx    ext-authortitle-terse.cbx
+% ext-authortitle-tcomp.bbx    ext-authortitle-tcomp.cbx
+% ext-authortitle-ticomp.bbx   ext-authortitle-ticomp.cbx
+% ext-authoryear.bbx           ext-authoryear.cbx
+% ext-authoryear-comp.bbx      ext-authoryear-comp.cbx
+% ext-authoryear-ibid.bbx      ext-authoryear-ibid.cbx
+% ext-authoryear-icomp.bbx     ext-authoryear-icomp.cbx
+% ext-authoryear-terse.bbx     ext-authoryear-terse.cbx
+% ext-authoryear-tcomp.bbx     ext-authoryear-tcomp.cbx
+% ext-authoryear-ticomp.bbx    ext-authoryear-ticomp.cbx
+% ext-numeric.bbx              ext-numeric.cbx
+% ext-numeric-comp.bbx         ext-numeric-comp.cbx
+% ext-numeric-verb.bbx         ext-numeric-verb.cbx
+% ext-verbose.bbx              ext-verbose.cbx
+% ext-verbose-ibid.bbx         ext-verbose-ibid.cbx
+% ext-verbose-note.bbx         ext-verbose-note.cbx
+% ext-verbose-inote.bbx        ext-verbose-inote.cbx
+% ext-verbose-trad1.bbx        ext-verbose-trad1.cbx
+% ext-verbose-trad2.bbx        ext-verbose-trad2.cbx
+% ext-verbose-trad3.bbx        ext-verbose-trad3.cbx
+%
+% Refer also to README.md.
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License (LPPL), either
+% version 1.3c of this license or (at your option) any later
+% version. The latest version of this license is at
+% http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status 'maintained'.
+%
+% The Current Maintainer of the work is Moritz Wemheuer <mwemheu@gmail.com>.
+%
+% Please report bugs at https://github.com/moewew/biblatex-ext or via email.
+% Suggestions for improvements and feature request are also very welcome.
+%
+% The bundle is available on CTAN https://www.ctan.org/pkg/biblatex-ext
+% and is included in MikTeX and TeX live 2018 or later.
+% The development version can be found on GitHub
+% https://github.com/moewew/biblatex-ext
