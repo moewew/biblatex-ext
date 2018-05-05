@@ -30,7 +30,7 @@ function update_tag(file, content, tagname, tagdate)
   local versionscheme = "%d+%.%d+%.?%d?%w?"
   local latexdate = string.gsub(tagdate, "%-", "/")
   local tagyear = string.match(tagdate, "%d%d%d%d")
-  if string.match(file, "^ext%-standard.bbx$") then
+  if string.match(file, "^ext%-standard%.bbx$") then
     content = string.gsub(content , "v" .. versionscheme .. " %(" ..
                                     isodatescheme .. "%)",
                                     "v" .. tagname .. " (" ..
@@ -56,10 +56,10 @@ function update_tag(file, content, tagname, tagdate)
                                    "date     = {\\DTMDate{" .. tagdate .."}}")
     return string.gsub(content, "\\textcopyright 2017%-%-%d%d%d%d",
                                 "\\textcopyright 2017--" .. tagyear)
-  elseif string.match(file, "^README.md$") then
+  elseif string.match(file, "^README%.md$") then
     return string.gsub(content, "Copyright 2017%-%d%d%d%d",
                                 "Copyright 2017-" .. tagyear)
-  elseif string.match(file, "^CHANGES.md$") then
+  elseif string.match(file, "^CHANGES%.md$") then
     content = string.gsub(content, "# Version <version> %(<date>%)\n",
                                    "# Version " .. tagname .. " (" .. tagdate ..
                                    ")\n")
