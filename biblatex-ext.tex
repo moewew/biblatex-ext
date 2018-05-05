@@ -1363,7 +1363,7 @@ The default is \cs{newunitpunct}.
 \begin{bibexample}
 \togglefalse{bbx:isbn}
 \renewcommand*{\maintitletitledelim}{\highlight{\textbf{\addperiod}%
-  \textvisiblespace}\bibsentence}
+  \textvisiblespace}\bibsentence}% <- hacky & hard-coded!
 \exampleprintbib{knuth:ct:a}
 \end{bibexample}
 
@@ -1386,7 +1386,7 @@ The default is \cmd{newunitpunct}.
 \togglefalse{bbx:isbn}
 \toggletrue{bbx:maintitleaftertitle}
 \renewcommand*{\titlemaintitledelim}{\highlight{\textbf{\addperiod}%
-  \textvisiblespace}\bibsentence}
+  \textvisiblespace}\bibsentence}%<- hacky & hard-coded!
 \exampleprintbib{knuth:ct:a}
 \end{bibexample}
 
@@ -1407,8 +1407,7 @@ for \bibtype{article}.
 The default is \cmd{newunitpunct}.
 \begin{bibexample}
 \togglefalse{bbx:doi}
-\renewcommand*{\jourserdelim}{\highlightbf{\addperiod}%
-                              \highlight{\textvisiblespace}%
+\renewcommand*{\jourserdelim}{\highlight{\textbf{\addperiod}\textvisiblespace}%
                               \bibsentence% <- hacky ...
                               }% <- hard-coded!
 \makeatletter\bbx@opt@mergedate@false\makeatother
