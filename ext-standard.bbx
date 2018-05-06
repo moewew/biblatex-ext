@@ -89,10 +89,14 @@
 
 \newbibmacro{introcite:typeset}{%
   \begingroup
+    \iftoggle{blx@citation}
+      {}
+      {\togglefalse{blx@bibliography}%
+       \toggletrue{blx@citation}}%
     \delimcontext{bbx:introcite}%
-    \DeclareFieldFormat{bibhyperref}{##1}%
     \csuse{blx@hook@cite}%
     \csuse{blx@hook@citekey}%
+    \DeclareFieldFormat{bibhyperref}{##1}%
     \undef\cbx@lasthash
     \undef\cbx@lastyear
     \citetrackerfalse\pagetrackerfalse\backtrackerfalse
