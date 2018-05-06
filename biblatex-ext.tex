@@ -1122,6 +1122,30 @@ The label produced by the \opt{plain} option can be customised as follows.
 \exampleprintbib{sigfridsson}
 \end{bibexample}
 \end{ltxsyntax}
+\begin{keymarglistbook}
+  \keyitem[bbx:introcite:plain:keeprelated] This toggle controls whether or
+  not the citation label is also repeated for default related entries.
+  The default value \opt{false} suppresses the label for related entries.
+\begin{bibexample}[title={\texttt{\string\togglefalse\{%
+  bbx:introcite:plain:keeprelated\}} (default)}]
+\togglefalse{bbx:doi}
+\csletcs{extblx@introcite}{extblx@opt@introcite@plain}
+\exampleprintbib{vizedom:related}
+\end{bibexample}
+\begin{bibexample}[title={\texttt{\string\toggletrue\{%
+  bbx:introcite:plain:keeprelated\}}}]
+\toggletrue{bbx:introcite:plain:keeprelated}
+\renewbibmacro*{related:init}{%
+  \csundef{bbx:relatedloop}%
+  \iftoggle{bbx:introcite:plain:keeprelated}{%
+    \DeclareFieldFormat{bbx:introcite}{\highlight{##1}}%
+    \renewcommand*{\introcitepunct}{\highlight{\addcolon}\space}%
+  }{\renewbibmacro{introcite:plain}{}}}
+\csuse{extblx@opt@dashed@false}
+\csletcs{extblx@introcite}{extblx@opt@introcite@plain}
+\exampleprintbib{vizedom:related}
+\end{bibexample}
+\end{keymarglistbook}
 
 The \opt{label} option can be configured to not allow the label to run into
 the remaining bibliography entry thus creating the appearance of a tabular-like
@@ -1778,8 +1802,13 @@ the changes in source code there.\footnote{\url{\gitbaseurl/compare/}}
 See also \sty{CHANGES.md}.
 \begin{changelog}
 \begin{release}{<version>}{<date>}
-\item Add \bibfieldformat{titlecase:\dots title} field formats\see{sec:opt:field}
-\item Improve documentation.
+\item Added \bibfieldformat{titlecase:\dots title} field formats%
+  \see{sec:opt:field}
+\item Added \sty{bbx:introcite:plain:keeprelated} toggle%
+  \see{sec:opt:style}
+\item Added \cs{jourvoldelim}, \cs{jourserdelim} and \cs{servoldelim}%
+  \see{sec:opt:punct}
+\item Improve documentation
 \end{release}
 \begin{release}{0.2}{2018-03-28}
 \item Rework lengths for \kvopt{introcite}{label}\see{sec:opt:style}

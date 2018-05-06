@@ -16,6 +16,7 @@
 \newtoggle{bbx:innameidem}
 \newtoggle{bbx:articlein}
 \newtoggle{bbx:maintitleaftertitle}
+\newtoggle{bbx:introcite:plain:keeprelated}
 
 \DeclareBibliographyOption[boolean]{citeinxref}[true]{%
   \settoggle{bbx:citeinxref}{#1}}
@@ -1137,6 +1138,12 @@
   \iffieldxref{pubstate}
     {}
     {\printfield{pubstate}}}
+
+\renewbibmacro*{related:init}{%
+  \csundef{bbx:relatedloop}%
+  \iftoggle{bbx:introcite:plain:keeprelated}
+    {}
+    {\renewbibmacro{introcite:plain}{}}}
 
 \renewbibmacro*{related:bytranslator}[1]{%
   \entrydata{#1}{%

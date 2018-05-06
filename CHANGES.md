@@ -1,10 +1,15 @@
 # Version <version> (<date>)
 See https://github.com/moewew/biblatex-ext/compare/v0.1a...v<version>
-- Add `titlecase:<titletype>` field formats for finer control over the title
+- Added `titlecase:<titletype>` field formats for finer control over the title
   casing. The standard styles have the catch-all format `titlecase`. This
   bundle now has `titlecase:title`, `titlecase:booktitle`,
   `titlecase:maintitle`, `titlecase:issuetitle` and `titlecase:journaltitle`.
 - Various documentation improvements.
+- Added toggle `bbx:introcite:plain:keeprelated` to choose not to suppress the
+  `introcite=plain` cite label for default related entries (other
+  `relatedtype`s may already suppress the cite label without chance of getting
+  it back).
+- Added `\jourvoldelim`, `\jourserdelim` and `\servoldelim`.
 
 # Version 0.2 (2018-03-28)
 See https://github.com/moewew/biblatex-ext/compare/v0.1a...v0.2
