@@ -80,12 +80,18 @@ This work has the LPPL maintenance status 'maintained'.
 
 The Current Maintainer of the work is Moritz Wemheuer <mwemheu@gmail.com>.
 
-The files `README.md`, `CHANGES.md`, `biblatex-ext.pdf` `biblatex-ext.tex`
-and `biblatex-ext-examples.bib` are not considered part of the work for the
-purposes of the LPPL, so you may distribute the bundle without documentation
+The files `README.md`, `CHANGES.md`, `biblatex-ext.pdf`, `biblatex-ext.tex`
+and `biblatex-ext-examples.bib` in their entirety need not be considered
+part of the work for the purpose of the complete distribution clause of
+the LPPL (v1.3c, Clause 2). All conditions of the LPPL still apply to these
+files as well, in particular the files are provided 'as is' with no warranty.
+So each of the files can be considered as a separate work licensed
+under the LPPL, if you will.
+This means that you may distribute the bundle without documentation
 (or the documentation without the rest of the bundle).
 It is, however, strongly advised that at least `README.md` and the PDF version
 of the documentation, `biblatex-ext.pdf`, are supplied alongside the work.
+
 
 Please report bugs at https://github.com/moewew/biblatex-ext or via email.
 Suggestions for improvements and feature request are also very welcome.
