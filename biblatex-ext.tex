@@ -1292,9 +1292,8 @@ directives the styles of this bundle offer customisable formats instead.
 Field formats can be modified with \cmd{DeclareFieldFormat}.
 
 \begin{bibfieldformatlist}
-\bibfieldformatitem{bib(list)labeldate} The format for the labeldate in the
-  bibliography or
-  a bibliography list for \sty{authoryear}-like styles. The default is to wrap
+\bibfieldformatitem{biblabeldate} The format for the labeldate in the
+  bibliography for \sty{authoryear}-like styles. The default is to wrap
   the date in round brackets.
   \begin{bibexample}
   \togglefalse{bbx:doi}
@@ -1302,6 +1301,10 @@ Field formats can be modified with \cmd{DeclareFieldFormat}.
     \highlight{\bibcloseparen}}
   \exampleprintbib{sigfridsson}
   \end{bibexample}
+
+\bibfieldformatitem{biblistlabeldate} Like \bibfieldformat{biblabeldate},
+  but for bibliography lists created by \cmd{printbiblist}.
+  The default is to use the same format as \bibfieldformat{biblabeldate}.
 
 \bibfieldformatitem{issuedate} The format of the \bibfield{issue} and
   \bibfield{date} information for \bibtype{article}s. By default this block is
