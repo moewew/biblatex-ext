@@ -355,7 +355,7 @@
   \href{\gitbaseurl/issues/#1}{issue \##1 on github}}
 
 \newrobustcmd*{\CSdelim}{%
-  \textcolor{spot}{\margnotefont Context Sensitive}}
+  \textcolor{spot}{\margnotefont context sensitive}}
 \newrobustcmd*{\CSdelimMark}{%
   \leavevmode\marginpar{\CSdelim}}
 
@@ -1397,7 +1397,10 @@ Similar to \cmd{nametitledelim}, but for names after the \enquote{in:} if
 The default value is that of \cmd{nametitledelim} for all contexts.
 Since the definition of \cmd{nametitledelim} is different for the delimiter
 contexts \opt{bib} and \opt{biblist}, you may have to use the optional argument
-to redefine the delimiter.
+to redefine the delimiter.\footnote{The author admits that it is somewhat
+pointless to make \cmd{innametitledelim} context sensitive.
+But the obvious parallels with \cmd{nametitledelim} were too tempting.
+It is probably too late now.}
 \begin{bibexample}
 \toggletrue{bbx:innamebeforetitle}
 \togglefalse{bbx:isbn}
@@ -1591,13 +1594,13 @@ The default is a comma followed by a space.
 \exampleprintbib{knuth:ct:a}
 \end{bibexample}
 
-\csitem{extradateonlycompcitedelim}
+\csitem{extradateonlycompcitedelim}\CSdelimMark
 Similar to \cmd{compcitedelim}, but indended for use between compressed
 citations where the second is an \bibfield{extradate} only.
 The default is a comma (\emph{not} followed by a space).
 \end{ltxsyntax}
 \begin{bibexample}
-\renewcommand*{\extradateonlycompcitedelim}{\highlightbf{\addcomma}}
+\DeclareDelimFormat{extradateonlycompcitedelim}{\highlightbf{\addcomma}}
 \cite{knuth:ct:b,knuth:ct:c}
 \end{bibexample}
 

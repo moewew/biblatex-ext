@@ -24,7 +24,7 @@
              {\ifboolexpr{test {\iffieldequals{labelyear}{\cbx@lastyear}}
                           and (test {\ifnumequal{\value{multicitecount}}{0}}
                                or test {\iffieldundef{postnote}})}
-                {\setunit{\extradateonlycompcitedelim}%
+                {\setunit{\printdelim{extradateonlycompcitedelim}}%
                  \usebibmacro{cite:extradate}}
                 {\setunit{\compcitedelim}%
                  \usebibmacro{cite:labeldate+extradate}%
@@ -54,7 +54,7 @@
        {\ifboolexpr{test {\iffieldequals{labelyear}{\cbx@lastyear}}
                     and (test {\ifnumequal{\value{multicitecount}}{0}}
                          or test {\iffieldundef{postnote}})}
-          {\setunit{\extradateonlycompcitedelim}%
+          {\setunit{\printdelim{extradateonlycompcitedelim}}%
            \usebibmacro{cite:extradate}}
           {\setunit{\compcitedelim}%
            \usebibmacro{cite:labeldate+extradate}%
