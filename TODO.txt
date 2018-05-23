@@ -9,4 +9,8 @@
 - subunit punctuation?
 - \mkbibname... only for the 'primary' name of a source?
 - in... names, see https://tex.stackexchange.com/q/216369/35864
+  - This needs to be done carefully to not clash with in:editor
+  - Rethink the names...
+- Make the in:editor thingy more customisable by abstracting from standard
+  editor. Is that even a good idea?
 - Test suite

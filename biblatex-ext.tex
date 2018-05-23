@@ -114,6 +114,7 @@
     usebibmacro,newbibmacro,renewbibmacro,setunit,newunit,printfield,printlist,
     bibopenparen,bibcloseparen,bibopenbracket,bibclosebracket,
     iflistundef,iffieldundef,ifnameundef,
+    ExecuteBibliographyOptions,
     DeclareFieldFormat,DeclareDelimFormat,DeclareDelimcontextAlias,
     DeclareInnerCiteDelim,UndeclareInnerCiteDelim,DeclareInnerCiteDelimAlias,
     DeclareOuterCiteDelim,UndeclareOuterCiteDelim,DeclareOuterCiteDelimAlias,
@@ -352,6 +353,11 @@
 \newcommand*{\biber}{Biber}
 \newcommand*{\gitissuelink}[1]{%
   \href{\gitbaseurl/issues/#1}{issue \##1 on github}}
+
+\newrobustcmd*{\CSdelim}{%
+  \textcolor{spot}{\margnotefont Context Sensitive}}
+\newrobustcmd*{\CSdelimMark}{%
+  \leavevmode\marginpar{\CSdelim}}
 
 \titlepage{%
   title    = {The \sty{biblatex-ext} Bundle},
@@ -1381,8 +1387,45 @@ case in author-title citations, so there is no
 \subsection{Punctuation}\label{sec:opt:punct}
 The package provides the following commands to modify the delimiters and
 punctuation between fields.
-The punctuation commands should be redefined with \cmd{renewcommand}.
+Normal punctuation commands should be redefined with \cmd{renewcommand},
+while context-sensitive commands marked with \CSdelim{} should be redefined
+with \cmd{DeclareDelimFormat}.
 \begin{ltxsyntax}
+\csitem{innametitledelim}\CSdelimMark
+Similar to \cmd{nametitledelim}, but for names after the \enquote{in:} if
+\opt{innamebeforetitle} is \opt{true}.
+The default value is that of \cmd{nametitledelim} for all contexts.
+Since the definition of \cmd{nametitledelim} is different for the delimiter
+contexts \opt{bib} and \opt{biblist}, you may have to use the optional argument
+to redefine the delimiter.
+\begin{bibexample}
+\toggletrue{bbx:innamebeforetitle}
+\togglefalse{bbx:isbn}
+\DeclareDelimFormat[bib,biblist]{innametitledelim}{\highlight{\textbf{%
+  \addperiod}\textvisiblespace}\bibsentence}% <- hacky & hard-coded!
+\exampleprintbib{pines}
+\end{bibexample}
+Since \cmd{nametitledelim} and \cmd{innametitledelim} are independent,
+the following output is easily achieved.
+Note that the optional argument to \cmd{DeclareDelimFormat} is used
+to make sure the definitions apply to the bibliography and bibliography lists
+contexts, this is necessary because these contexts have special pre-defined
+values that would otherwise not be redefined.
+\begin{bibexample}[title={Example customisations for \cs{innametitledelim}}]
+\begin{lstlisting}[style=extblxstylelatex]
+\ExecuteBibliographyOptions{innamebeforetitle=true}
+\DeclareDelimFormat[bib,biblist]{nametitledelim}{|1\addcolon\space1|}
+\DeclareDelimFormat[bib,biblist]{innametitledelim}{|2\addcomma\space2|}
+\end{lstlisting}
+\tcblower
+\toggletrue{bbx:innamebeforetitle}
+\DeclareDelimFormat[bib,biblist]{nametitledelim}{\highlightbf[1]{\addcolon}%
+  \space}
+\DeclareDelimFormat[bib,biblist]{innametitledelim}{\highlightbf[2]{\addcomma}%
+  \space}
+\exampleprintbib{gaonkar,gaonkar:in}
+\end{bibexample}
+
 \csitem{maintitletitledelim}
 The punctuation between the \bibfield{maintitle} and \bibfield{title} or
 \bibfield{booktitle} of a work if \opt{maintitleaftertitle} is \opt{false}.

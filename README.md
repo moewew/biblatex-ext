@@ -23,7 +23,7 @@ The styles of this bundle are intended to be a solid base for further
 customisations.
 
 `biblatex-ext` has an extended version `ext-<style>` for each of `biblatex`'s
-standard styles. The bundle consist of the following files
+standard styles. The bundle consists of the following files
 
 - The base file `ext-standard.bbx`
 - The auxiliary file `ext-biblatex-aux.def`
