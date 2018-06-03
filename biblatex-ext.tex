@@ -14,7 +14,7 @@
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
 \fi
-\usepackage[british]{babel}
+\usepackage[french,ngerman,british]{babel}
 \usepackage{csquotes}
 \usepackage[useregional]{datetime2}
 \usepackage{lmodern}
@@ -561,12 +561,40 @@ of assistance, you might want to consider posting your question on the
 The \sty{biblatex-ext} bundle is a collection of \sty{biblatex} style files.
 You can load the styles exactly as you would load the standard styles:
 \begin{biblatexcode}
-\usepackage[style=(*@$\langle$\normalfont\emph{style}$\rangle$@*)]{biblatex}
+\usepackage[style=(*@\prm{style}@*)]{biblatex}
 \end{biblatexcode}
 The naming of the styles follows the scheme
-\mbox{\texttt{ext-}$\langle$\emph{standard style}$\rangle$}, e.g.,
+\mbox{\texttt{ext-}\prm{standard style}}, e.g.,
 the style corresponding to \sty{authoryear-icomp} is called
 \sty{ext-authoryear-icomp}.
+
+This manual assumes familiarity with the concepts of \sty{biblatex} and does
+not attempt to explain any of the standard \sty{biblatex} features, so you may
+want to have the \sty{biblatex} documentation%
+\fnurl{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf}
+at hand to fully appreciate what is going on.
+If you are new to \sty{biblatex} the three hundred odd pages of the manual
+can be hard to stomach at first, so you may want to have a look at a more
+gentle introduction.
+Of the many introductory texts and tutorials available on the internet%
+\fnurl{https://tex.stackexchange.com/q/13509/35864}
+the author particularly likes
+Knut Hegna and Dag Langmyhr's \emph{Local Guide to \sty{biblatex}}%
+\fnurl{http://dag.at.ifi.uio.no/public/doc/biblatex-guide.pdf}
+and Paul Stanley's \emph{\sty{biblatex} -- An Easier Read}%
+\fnurl{https://github.com/PaulStanley/biblatex-tutorial/releases}.
+French speakers may want to consider Maïeul Rouquette's
+\foreignlanguage{french}{\emph{(Xe)\LaTeX{} Appliqué aux sciences humaines}}%
+available on \ctan\fnurl{https://ctan.org/pkg/latex-sciences-humaines}.
+If you read German you may be interested in Dominik Waßenhoven's two-part
+series \foreignlanguage{ngerman}{\emph{Bibliographien erstellen mit
+\sty{biblatex}}}\fnurl{http://biblatex.dominik-wassenhoven.de/dtk.shtml}
+in \foreignlanguage{ngerman}{\emph{Die \TeX nische Komödie}}
+2/2008\fnurl{http://www.dante.de/DTK/Ausgaben/2008-2.pdf} (pp.~53--75)
+and 4/2008\fnurl{http://www.dante.de/DTK/Ausgaben/2008-4.pdf} (pp.~31--51).
+Please keep in mind that some of these texts were written a while ago and
+that \sty{biblatex} is actively developed, technical details may have changed
+and new features make some things easier.
 
 \section{Styles}\label{sec:styles}
 This bundle provides an extended version of each standard style as well as a
