@@ -1,5 +1,6 @@
 - Look into author-year verbose styles?
 - Author name in full on first cite (name tracking)?
+- Name wrapper for entire names?
 - Less intrusive versioning
 - series+number position
 - more modular bib drivers (would be quite a shift away from the standard

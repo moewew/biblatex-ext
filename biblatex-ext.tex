@@ -321,12 +321,58 @@
   \par\endgroup
   \nobreak\vspace{\itemsep}}
 
+\def\ltd@item@ii#1#2{%
+  \ltd@itemsave
+  \ifhmode
+    \itemsep\z@
+  \else
+    \ltd@itembreak
+  \fi
+  \item[#1]%
+  \ifblank{#2}
+    {}
+    {\phantomsection\label{exltd@itm@#2}}%
+  \ltd@itemrest
+  \ifblank{#2}{}{\ltd@pdfbookmark{#2}{#1}}}
+
 \blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
 \newcommand*{\biblatexversion}{\extblx@requiredbiblatexversion}
 \newcommand*{\biblatexdate}{\extblx@requiredbiblatexdate}
 
 \AtEndPreamble{%
   \deflength{\marglistwidth}{(\oddsidemargin+2cm)*85/100}}
+
+\newcommand*{\tikztextmark}[2]{%
+  \tikz[remember picture,baseline,inner sep=0pt]\node [anchor=base] (#1) {#2};}
+
+% *{<cmd>}{<x-shift>}{<y-shift>}
+% unstarred version for commands defined by biblatex-ext
+% starred version for standard biblatex commands
+\def\punctarrow{%
+  \@ifstar\punctarrow@ii\punctarrow@i}
+
+\def\punctarrow@i{%
+  \def\punctarrow@cmdfont{\bfseries}%
+  \def\punctarrow@hyperref##1##2{%
+    \hyperref[exltd@itm@##1]{##2}%
+  }%
+  \punctarrow@iii
+}
+
+\def\punctarrow@ii{
+  \def\punctarrow@cmdfont{\itshape}%
+  \let\punctarrow@hyperref\@secondoftwo
+  \punctarrow@iii
+}
+
+\def\punctarrow@iii#1#2#3{%
+  \ifdimcomp{#2}{<}{0pt}
+    {\def\punctarrow@nodeanchor{east}}
+    {\def\punctarrow@nodeanchor{west}}%
+  \draw[spot,thick,latex-,rounded corners] (#1) |- ++ (#2,#3)
+    node[anchor=\punctarrow@nodeanchor,text = black]
+    {\punctarrow@hyperref{#1}{\punctarrow@cmdfont\cmd{#1}}};%
+}
 \makeatother
 
 % By Stefan Kottwitz, see https://tex.stackexchange.com/a/799/35864
@@ -1390,6 +1436,8 @@ punctuation between fields.
 Normal punctuation commands should be redefined with \cmd{renewcommand},
 while context-sensitive commands marked with \CSdelim{} should be redefined
 with \cmd{DeclareDelimFormat}.
+A short overview over common punctuation commands in an example bibliography
+can be found in \secref{sec:punctinuse}.
 \begin{ltxsyntax}
 \csitem{innametitledelim}\CSdelimMark
 Similar to \cmd{nametitledelim}, but for names after the \enquote{in:} if
@@ -1603,7 +1651,6 @@ The default is a comma (\emph{not} followed by a space).
 \DeclareDelimFormat{extradateonlycompcitedelim}{\highlightbf{\addcomma}}
 \cite{knuth:ct:b,knuth:ct:c}
 \end{bibexample}
-
 
 \subsection{Delimiters for citation commands}\label{sec:opt:citedelims}
 The delimiters for citation commands provided by the styles of this bundle
@@ -1876,6 +1923,106 @@ See also \sty{CHANGES.md}.
 
 \begin{bibexample}[breakable]
 \printbibliography[title={Example References}]
+\end{bibexample}
+
+\clearpage
+\appendix
+\section{Punctuation Commands in Use}\label{sec:punctinuse}
+The following example bibliography shows some common punctuation commands
+in use.
+Commands provided by standard \sty{biblatex} are marked in
+\textit{\cmd{italics}}, new commands defined by \sty{biblatex-ext} are in
+\textbf{\cmd{bold}}.
+\begin{bibexample}[title={Punctuation and delimiters
+  (defined by \textit{standard \sty{biblatex}} and
+  \textbf{\sty{biblatex-ext}})},
+  top=6mm,bottom=4mm,remember,
+  overlay={
+    % geer
+    \punctarrow*{nameyeardelim}{-.8mm}{6mm}
+    \punctarrow*{nametitledelim}{2.5mm}{6mm}
+    % companion
+    \punctarrow*{multinamedelim}{-2.5mm}{6mm}
+    \punctarrow*{finalnamdelim}{2.5mm}{4mm}
+    \punctarrow{locpubdelim}{-2.5mm}{-5mm}
+    \punctarrow{pubdatedelim}{2.5mm}{-4mm}
+    % knuth:ct:a
+    \punctarrow{maintitletitledelim}{-2.5mm}{-.8cm}
+    \punctarrow{voltitledelim}{2.5mm}{-4mm}
+    % moore
+    \punctarrow*{intitlepunct}{-4mm}{-4mm}
+    \punctarrow*{bibpagespunct}{-2.5mm}{-4mm}
+    \punctarrow*{bibrangedash}{.2cm}{-4mm}
+    % sigfridsson
+    \punctarrow{jourvoldelim}{-.2cm}{-4mm}
+    \punctarrow{volnumdelim}{.2cm}{-4mm}
+    % vizedom:related
+    \punctarrow*{translatortypedelim}{2.5mm}{6mm}
+    \punctarrow*{begrelateddelim}{.8cm}{-4mm}
+    % westfahl:frontier
+    \punctarrow*{editortypedelim}{2.5mm}{6mm}
+    \punctarrow*{newunitpunct}{-.2cm}{-4mm}
+    % westfahl:space
+    \punctarrow*{bibnamedash}{2.5mm}{5mm}
+    \punctarrow*{subtitlepunct}{2.5mm}{5mm}
+  }
+]
+\frenchspacing
+\list{}
+  {\setlength{\leftmargin}{\bibhang}%
+   \setlength{\itemindent}{-\leftmargin}%
+   \setlength{\itemsep}{8mm}%
+   \setlength{\parsep}{\bibparsep}}
+\item\nocite{geer}
+  Geer, Ingrid de\tikztextmark{nameyeardelim}{\textvisiblespace}(1985)%
+  \tikztextmark{nametitledelim}{.} \enquote{Earl, Saint, Bishop, Skald --
+  and Music. The Orkney Earldom of the Twelfth Century. A Musicological Study}.
+  PhD thesis. Uppsala: Uppsala Universitet.
+
+\item\nocite{companion}
+  Goossens, Michel\tikztextmark{multinamedelim}{,} Frank Mittelbach
+  \tikztextmark{finalnamdelim}{and} Alexander Samarin (1994).
+  \emph{The LaTeX Companion}. 1st ed. Reading, Mass.%
+  \tikztextmark{locpubdelim}{:} Addison-Wesley\tikztextmark{pubdatedelim}{,}
+  1994. 528 pp.
+
+\item\nocite{knuth:ct:a}
+  Knuth, Donald E. (1984). \emph{Computers \& Typesetting}%
+  \tikztextmark{maintitletitledelim}{.} Vol. A\tikztextmark{voltitledelim}{:}
+  \emph{The \TeX{} book}. Reading, Mass.: Addison-Wesley, 1984.
+
+\item\nocite{moore}
+  Moore, Gordon E. (1965). \enquote{Cramming more components onto integrated
+  circuits}. In\tikztextmark{intitlepunct}{:} \emph{Electronics} 38.8%
+  \tikztextmark{bibpagespunct}{,} pp. 114\tikztextmark{bibrangedash}{--}117.
+
+\item\nocite{sigfridsson}
+  Sigfridsson, Emma and Ulf Ryde (1998). \enquote{Comparison of methods for
+  deriving atomic charges from the electrostatic potential and moments}.
+  In: \emph{Journal of Computational
+  Chemistry}\tikztextmark{jourvoldelim}{\textvisiblespace}19%
+  \tikztextmark{volnumdelim}{.}4 (1998), pp. 377--395.
+
+\item\nocite{vizedom:related}
+  Vizedom, Monika B. and Gabrielle L. Cafee%
+  \tikztextmark{translatortypedelim}{,} trans. (1960).
+  \emph{The Rites of Passage.} University of Chicago Press%
+  \tikztextmark{begrelateddelim}{.} Trans. of Arnold van Gennep.
+  \emph{Les rites de passage.}
+  Paris: Nourry, 1909.
+
+\item\nocite{westfahl:frontier}
+  Westfahl, Gary\tikztextmark{editortypedelim}{,} ed. (2000a).
+  \emph{Space and Beyond. The Frontier Theme in Science Fiction}%
+  \tikztextmark{newunitpunct}{.} Westport, Conn. and London: Greenwood, 2000.
+
+\item\nocite{westfahl:space}
+  \tikztextmark{bibnamedash}{--} (2000b). \enquote{The True Frontier%
+  \tikztextmark{subtitlepunct}{.} Confronting and Avoiding the Realities of
+  Space in American Science Fiction Films}. In: \emph{Space and Beyond.
+  The Frontier Theme in Science Fiction}. Ed. by Gary Westfahl. Westport, Conn.
+  and London: Greenwood, 2000, pp. 55--65.
+\endlist
 \end{bibexample}
 
 \end{document}
