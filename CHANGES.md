@@ -1,5 +1,5 @@
-# Version <version> (<date>)
-See https://github.com/moewew/biblatex-ext/compare/v0.2...v<version>
+# Version 0.3 (2018-06-04)
+See https://github.com/moewew/biblatex-ext/compare/v0.2...v0.3
 - Added `titlecase:<titletype>` field formats for finer control over the title
   casing. The standard styles have the catch-all format `titlecase`. This
   bundle now has `titlecase:title`, `titlecase:booktitle`,
