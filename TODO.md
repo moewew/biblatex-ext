@@ -1,17 +1,17 @@
 - Look into author-year verbose styles?
 - Author name in full on first cite (name tracking)?
 - Name wrapper for entire names?
+  - One for the core? https://github.com/plk/biblatex/issues/754
 - Less intrusive versioning
 - series+number position
-- more modular bib drivers (would be quite a shift away from the standard
-  styles, so offer as option?)
-- compressed @set citations (would need option to back out of ...
-  https://tex.stackexchange.com/a/416448/35864)
+- more modular bib drivers
+  - would be quite a shift away from the standard styles, so offer as option?
+- compressed @set citations
+  - would need option to back out of ...
+  https://tex.stackexchange.com/a/416448/35864
 - subunit punctuation?
 - \mkbibname... only for the 'primary' name of a source?
 - in... names, see https://tex.stackexchange.com/q/216369/35864
   - This needs to be done carefully to not clash with in:editor
   - Rethink the names...
-- Make the in:editor thingy more customisable by abstracting from standard
-  editor. Is that even a good idea?
 - Test suite

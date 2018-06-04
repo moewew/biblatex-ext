@@ -593,7 +593,7 @@ in \foreignlanguage{ngerman}{\emph{Die \TeX nische Komödie}}
 2/2008\fnurl{http://www.dante.de/DTK/Ausgaben/2008-2.pdf} (pp.~53--75)
 and 4/2008\fnurl{http://www.dante.de/DTK/Ausgaben/2008-4.pdf} (pp.~31--51).
 Please keep in mind that some of these texts were written a while ago and
-that \sty{biblatex} is actively developed, technical details may have changed
+that \sty{biblatex} is actively developed: technical details may have changed
 and new features make some things easier.
 
 \section{Styles}\label{sec:styles}
@@ -1366,6 +1366,17 @@ back to the end of the entry.
 \end{optionlist}
 
 \section{Further Customisations}\label{sec:opt:cust}
+Aside from the new options mentioned in the last section the styles of this
+bundle also offer additional field formats, punctuation and delimiter commands,
+a new citation delimiter interface and a few new bibliography macros.
+
+The citation delimiter interface is a novel feature of \sty{biblatex-ext},
+but for the other subsections familiarity with the underlying \sty{biblatex}
+concepts is assumed.
+Some of this is easier understood by looking at the source code directly,
+so it might not be a bad idea to have \sty{ext-standard.bbx} open when perusing
+this section of the manual.
+
 \subsection{Field formats}\label{sec:opt:field}
 In a few places where the standard styles employ hard-coded formatting
 directives the styles of this bundle offer customisable formats instead.
@@ -1464,8 +1475,9 @@ punctuation between fields.
 Normal punctuation commands should be redefined with \cmd{renewcommand},
 while context-sensitive commands marked with \CSdelim{} should be redefined
 with \cmd{DeclareDelimFormat}.
-A short overview over common punctuation commands in an example bibliography
-can be found in \secref{sec:punctinuse}.
+A short overview over common punctuation commands defined by \sty{biblatex-ext}
+as well as standard \sty{biblatex} in an example bibliography
+can be found in \cref{sec:punctinuse}.
 \begin{ltxsyntax}
 \csitem{innametitledelim}\CSdelimMark
 Similar to \cmd{nametitledelim}, but for names after the \enquote{in:} if
