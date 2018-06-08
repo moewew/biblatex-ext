@@ -6,17 +6,17 @@
 
 \RequireCitationStyle{authoryear-ibid}
 
-\DeclareOuterCiteDelim{parencite}{\bibopenparen}{\bibcloseparen}
+\DeclareOuterCiteDelims{parencite}{\bibopenparen}{\bibcloseparen}
 
-\DeclareInnerCiteDelim{textcite}{\bibopenparen}{\bibcloseparen}
+\DeclareInnerCiteDelims{textcite}{\bibopenparen}{\bibcloseparen}
 
-\DeclareFieldFormat{extblx@innercitedelim}{%
-  \csuse{mkinner\blx@delimcontext delim}{#1}}
-\DeclareFieldFormat{extblx@innerparencitedelim}{%
-  \csuse{mkinner\blx@delimcontext delim}{#1}}
-\DeclareFieldFormat{extblx@innertextcitedelim}{#1}
-\DeclareFieldFormat{extblx@innerfootcitedelim}{%
-  \csuse{mkinner\blx@delimcontext delim}{#1}}
+\DeclareFieldFormat{extblx@innercitedelims}{%
+  \csuse{mkinner\blx@delimcontext delims}{#1}}
+\DeclareFieldFormat{extblx@innerparencitedelims}{%
+  \csuse{mkinner\blx@delimcontext delims}{#1}}
+\DeclareFieldFormat{extblx@innertextcitedelims}{#1}
+\DeclareFieldFormat{extblx@innerfootcitedelims}{%
+  \csuse{mkinner\blx@delimcontext delims}{#1}}
 
 \DeclareFieldFormat{citelabeldate}{#1}
 \DeclareFieldFormat{parencitelabeldate}{#1}
@@ -26,7 +26,7 @@
 \renewbibmacro*{cite:labeldate+extradate}{%
   \iffieldundef{labelyear}
     {}
-    {\printtext[extblx@inner\blx@delimcontext delim]{%
+    {\printtext[extblx@inner\blx@delimcontext delims]{%
        \printtext[bibhyperref]{%
          \printtext[\blx@delimcontext labeldate]{%
            \printlabeldateextra}}}}}
@@ -73,28 +73,28 @@
      \printfield{postnote}%
      \csuse{extblx@citedelim@\blx@delimcontext @inner@close}}}
 
-\DeclareCiteCommand{\cite}[\mkoutercitedelim]
+\DeclareCiteCommand{\cite}[\mkoutercitedelims]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
   {\multicitedelim}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand*{\cite}[\mkoutercitedelim]
+\DeclareCiteCommand*{\cite}[\mkoutercitedelims]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{citeyear}}
   {\multicitedelim}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\parencite}[\mkouterparencitedelim]
+\DeclareCiteCommand{\parencite}[\mkouterparencitedelims]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
   {\multicitedelim}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand*{\parencite}[\mkouterparencitedelim]
+\DeclareCiteCommand*{\parencite}[\mkouterparencitedelims]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{citeyear}}
@@ -110,7 +110,7 @@
   {\multicitedelim}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\textcite}[\mkoutertextcitedelim]
+\DeclareCiteCommand{\textcite}[\mkoutertextcitedelims]
   {\boolfalse{cbx:parens}}
   {\usebibmacro{citeindex}%
    \iffirstcitekey
@@ -124,17 +124,17 @@
      {}}
   {\usebibmacro{textcite:postnote}}
 
-\DeclareMultiCiteCommand{\cites}[\mkoutercitedelim]
+\DeclareMultiCiteCommand{\cites}[\mkoutercitedelims]
   {\cite}{\multicitedelim}
-\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]
+\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelims]
   {\parencite}{\multicitedelim}
 \DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
   {\smartcite}{\multicitedelim}
-\DeclareMultiCiteCommand{\textcites}[\mkoutertextcitedelim]{\textcite}{}
+\DeclareMultiCiteCommand{\textcites}[\mkoutertextcitedelims]{\textcite}{}
 
-\DeclareFieldFormat{bbx:introcitelabeldate}{#1}
-\DeclareFieldFormat{extblx@innerbbx:introcitedelim}{%
-  \csuse{mkinner\blx@delimcontext delim}{#1}}
+\DeclareFieldFormat{bbx@introcitelabeldate}{#1}
+\DeclareFieldFormat{extblx@innerbbx@introcitedelims}{%
+  \csuse{mkinner\blx@delimcontext delims}{#1}}
 
 \endinput
 %

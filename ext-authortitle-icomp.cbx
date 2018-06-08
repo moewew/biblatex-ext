@@ -6,12 +6,12 @@
 
 \RequireCitationStyle{authortitle-icomp}
 
-\DeclareOuterCiteDelim{parencite}{\bibopenparen}{\bibcloseparen}
+\DeclareOuterCiteDelims{parencite}{\bibopenparen}{\bibcloseparen}
 
-\DeclareInnerCiteDelim{cite}{}{}
-\DeclareInnerCiteDelim{parencite}{}{}
-\DeclareInnerCiteDelim{textcite}{\bibopenparen}{\bibcloseparen}
-\DeclareInnerCiteDelim{footcite}{}{}
+\DeclareInnerCiteDelims{cite}{}{}
+\DeclareInnerCiteDelims{parencite}{}{}
+\DeclareInnerCiteDelims{textcite}{\bibopenparen}{\bibcloseparen}
+\DeclareInnerCiteDelims{footcite}{}{}
 
 \renewbibmacro*{cite}{%
   \iffieldundef{shorthand}
@@ -95,7 +95,7 @@
          {}%
        \textcitedelim}}}
 
-\DeclareCiteCommand{\cite}[\mkoutercitedelim]
+\DeclareCiteCommand{\cite}[\mkoutercitedelims]
   {\usebibmacro{cite:init}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
@@ -103,7 +103,7 @@
   {}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand*{\cite}[\mkoutercitedelim]
+\DeclareCiteCommand*{\cite}[\mkoutercitedelims]
   {\usebibmacro{cite:init}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
@@ -111,7 +111,7 @@
   {}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\parencite}[\mkouterparencitedelim]
+\DeclareCiteCommand{\parencite}[\mkouterparencitedelims]
   {\usebibmacro{cite:init}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
@@ -119,7 +119,7 @@
   {}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand*{\parencite}[\mkouterparencitedelim]
+\DeclareCiteCommand*{\parencite}[\mkouterparencitedelims]
   {\usebibmacro{cite:init}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
@@ -137,29 +137,29 @@
   {}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\cbx@textcite}[\mkoutertextcitedelim]
+\DeclareCiteCommand{\cbx@textcite}[\mkoutertextcitedelims]
   {\usebibmacro{cite:init}}
   {\usebibmacro{citeindex}%
    \usebibmacro{textcite}}
   {}
   {\usebibmacro{textcite:postnote}}
 
-\DeclareMultiCiteCommand{\cbx@textcites}[\mkoutertextcitedelim]
+\DeclareMultiCiteCommand{\cbx@textcites}[\mkoutertextcitedelims]
   {\cbx@textcite}{}
 
-\DeclareMultiCiteCommand{\cites}[\mkoutercitedelim]
+\DeclareMultiCiteCommand{\cites}[\mkoutercitedelims]
   {\cite}{\setunit{\multicitedelim}}
-\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]
+\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelims]
   {\parencite}{\setunit{\multicitedelim}}
 \DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
   {\smartcite}{\setunit{\multicitedelim}}
 
-\DeclareCiteCommand{\bbx@cite@inxref}[\mkouterbibinxrefcitedelim]
+\DeclareCiteCommand{\bbx@xrefcite}[\mkouterbbx@xrefcitedelims]
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \boolfalse{backtracker}%
    \usebibmacro{cite:init}}
-  {\usebibmacro{bbx:cite:inxref}}
+  {\usebibmacro{bbx:inxrefcite}}
   {}
   {\usebibmacro{cite:postnote}}
 

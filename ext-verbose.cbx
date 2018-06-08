@@ -5,18 +5,18 @@
 
 \RequireCitationStyle{verbose}
 
-\DeclareOuterCiteDelim{parencite}{\bibopenparen}{\bibcloseparen}
+\DeclareOuterCiteDelims{parencite}{\bibopenparen}{\bibcloseparen}
 
-\DeclareInnerCiteDelim{textcite}{\bibopenparen}{\bibcloseparen}
+\DeclareInnerCiteDelims{textcite}{\bibopenparen}{\bibcloseparen}
 
-\DeclareCiteCommand{\cite}[\mkoutercitedelim]
+\DeclareCiteCommand{\cite}[\mkoutercitedelims]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
   {\multicitedelim}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\parencite}[\mkouterparencitedelim]
+\DeclareCiteCommand{\parencite}[\mkouterparencitedelims]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
@@ -32,7 +32,7 @@
   {\multicitedelim}
   {\usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\cbx@textcite}[\mkoutertextcitedelim]
+\DeclareCiteCommand{\cbx@textcite}[\mkoutertextcitedelims]
   {\usebibmacro{textcite:init}}
   {\iffieldequals{namehash}{\cbx@lasthash}
      {}
@@ -45,12 +45,12 @@
   {}
   {}
 
-\DeclareMultiCiteCommand{\cbx@textcites}[\mkoutertextcitedelim]
+\DeclareMultiCiteCommand{\cbx@textcites}[\mkoutertextcitedelims]
   {\cbx@textcite}{}
 
-\DeclareMultiCiteCommand{\cites}[\mkoutercitedelim]
+\DeclareMultiCiteCommand{\cites}[\mkoutercitedelims]
   {\cite}{\multicitedelim}
-\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]
+\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelims]
   {\parencite}{\multicitedelim}
 \DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
   {\smartcite}{\multicitedelim}

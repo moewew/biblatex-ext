@@ -116,8 +116,8 @@
     iflistundef,iffieldundef,ifnameundef,
     ExecuteBibliographyOptions,
     DeclareFieldFormat,DeclareDelimFormat,DeclareDelimcontextAlias,
-    DeclareInnerCiteDelim,UndeclareInnerCiteDelim,DeclareInnerCiteDelimAlias,
-    DeclareOuterCiteDelim,UndeclareOuterCiteDelim,DeclareOuterCiteDelimAlias,
+    DeclareInnerCiteDelims,UndeclareInnerCiteDelims,DeclareInnerCiteDelimsAlias,
+    DeclareOuterCiteDelims,UndeclareOuterCiteDelims,DeclareOuterCiteDelimsAlias,
     introcitepunct,volnumdelim,maintitletitledelim,voltitledelim,sernumdelim,
     volnumdatedelim,locdatedelim,locpubdelim,publocdelim,pubdatedelim,
     extradateonlycompcitedelim,introcitesep,introcitewidth,introcitesep},
@@ -391,6 +391,7 @@
 \newrobustcmd*{\bibmacro}[1]{\sty{#1}}
 \renewrobustcmd*{\bibtype}[1]{\sty{@#1}}
 \renewrobustcmd*{\cmd}[1]{\sty{\textbackslash #1}}
+\let\cs\cmd
 \newrobustcmd*{\bibfieldformat}[1]{{\bibfieldformatfont #1}}
 
 \newcommand*{\ctan}{\mkbibacro{CTAN}}
@@ -880,12 +881,12 @@ All other entry types are not affected by this option.
 \makeatother
 \endgroup
 
-\boolitem[false]{citeinxref}
+\boolitem[false]{citexref}
 This option controls if \bibtype{inbook}, \bibtype{incollection} and
 \bibtype{inproceedings} entries that are tied to a parent entry with
 \bibfield{xref} or \bibfield{crossref} should cite their parent in the
 bibliography if the parent is listed in the bibliography as a separate entry.
-With the default setting \kvopt{citeinxref}{false} the parent is not cited, the
+With the default setting \kvopt{citexref}{false} the parent is not cited, the
 entry is shown as in the standard styles. If the option is set to
 \opt{true}, the block following the \enquote{in:} is replaced by a citation
 to the parent entry.
@@ -895,35 +896,35 @@ bibliography, this needs to happen either explicitly by citing the parent
 \opt{mincrossrefs} option.
 
 \nocite{westfahl:frontier}
-\begin{bibexample}[title={\kvopt{citeinxref}{true}}]
+\begin{bibexample}[title={\kvopt{citexref}{true}}]
 \makeatletter
 \renewbibmacro*{crosscite}[1]{%
   \printtext[highlight1]{%
-    \iftoggle{bbx:citeinxref}
+    \iftoggle{bbx:citexref}
       {\iffieldundef{crossref}
          {\iffieldundef{xref}
             {\usebibmacro{#1}}
-            {\printtext{\bbx@cite@inxref{\thefield{xref}}}}}
-         {\printtext{\bbx@cite@inxref{\thefield{crossref}}}}}
+            {\printtext{\bbx@xrefcite{\thefield{xref}}}}}
+         {\printtext{\bbx@xrefcite{\thefield{crossref}}}}}
       {\usebibmacro{#1}}}}
 \makeatother
-\toggletrue{bbx:citeinxref}
+\toggletrue{bbx:citexref}
 \exampleprintbib{westfahl:space}
 \end{bibexample}
 
-\begin{bibexample}[title={\kvopt{citeinxref}{false}}]
+\begin{bibexample}[title={\kvopt{citexref}{false}}]
 \makeatletter
 \renewbibmacro*{crosscite}[1]{%
   \printtext[highlight1]{%
-    \iftoggle{bbx:citeinxref}
+    \iftoggle{bbx:citexref}
       {\iffieldundef{crossref}
          {\iffieldundef{xref}
             {\usebibmacro{#1}}
-            {\printtext{\bbx@cite@inxref{\thefield{xref}}}}}
-         {\printtext{\bbx@cite@inxref{\thefield{crossref}}}}}
+            {\printtext{\bbx@xrefcite{\thefield{xref}}}}}
+         {\printtext{\bbx@xrefcite{\thefield{crossref}}}}}
       {\usebibmacro{#1}}}}
 \makeatother
-\togglefalse{bbx:citeinxref}
+\togglefalse{bbx:citexref}
 \exampleprintbib{westfahl:space}
 \end{bibexample}
 
@@ -1195,7 +1196,7 @@ labels in a \sty{numeric} bibliography.
 \begingroup
 \togglefalse{bbx:doi}
 \setlength{\introcitewidth}{5.5\biblabelsep}
-\DeclareFieldFormat{bbx:introcite}{\highlight{#1}}
+\DeclareFieldFormat{bbx@introcite}{\highlight{#1}}
 \renewcommand*{\introcitepunct}{\highlight{\addcolon}\space}
 \makeatletter
 \begin{bibexample}[title={\kvopt{introcite}{false}}]
@@ -1247,7 +1248,7 @@ The label produced by the \opt{plain} option can be customised as follows.
 \renewbibmacro*{related:init}{%
   \csundef{bbx:relatedloop}%
   \iftoggle{bbx:introcite:plain:keeprelated}{%
-    \DeclareFieldFormat{bbx:introcite}{\highlight{##1}}%
+    \DeclareFieldFormat{bbx@introcite}{\highlight{##1}}%
     \renewcommand*{\introcitepunct}{\highlight{\addcolon}\space}%
   }{\renewbibmacro{introcite:plain}{}}}
 \csuse{extblx@opt@dashed@false}
@@ -1321,25 +1322,26 @@ overlay={%
 \makeatother
 
 The appearance of the citation label can be customised mostly as if it were
-produced by a true citation command called \cmd{bbx:introcite}.
-The delimiter context is \sty{bbx:introcite}, the inner citation delimiters
-can be accessed as \sty{bbx:introcite} as well.
+produced by a true citation command called \cmd{bbx@introcite}.
+The delimiter context is \sty{bbx@introcite}, the inner citation delimiters
+can be accessed as \sty{bbx@introcite} as well.
 The label does not have outer citation delimiters, you can use the wrapper
-field format \sty{bbx:introcite} instead. In fact this approach is more
+field format \sty{bbx@introcite} instead. In fact this approach is more
 versatile than the outer citation delimiter feature (see the discussion in
 \cref{sec:opt:citedelims}).
+The default settings for \cmd{bbx@introcite} emulate the output of \cmd{cite}.
 
 \begin{bibexample}[title={Example customisations for \kvopt{introcite}{plain}}]
 \begin{lstlisting}[style=extblxstylelatex]
-\DeclareFieldFormat{bbx:introcite}{\mkbibbrackets{#1}}
-\DeclareDelimFormat[bbx:introcite]{nameyeardelim}{\addcomma\space}
-\UndeclareInnerCiteDelim{bbx:introcite}
+\DeclareFieldFormat{bbx@introcite}{\mkbibbrackets{#1}}
+\DeclareDelimFormat[bbx@introcite]{nameyeardelim}{\addcomma\space}
+\UndeclareInnerCiteDelims{bbx@introcite}
 \renewcommand*{\introcitepunct}{\quad}
 \end{lstlisting}
 \tcblower
-\DeclareFieldFormat{bbx:introcite}{\mkbibbrackets{#1}}
-\DeclareDelimFormat[bbx:introcite]{nameyeardelim}{\addcomma\space}
-\UndeclareInnerCiteDelim{bbx:introcite}
+\DeclareFieldFormat{bbx@introcite}{\mkbibbrackets{#1}}
+\DeclareDelimFormat[bbx@introcite]{nameyeardelim}{\addcomma\space}
+\UndeclareInnerCiteDelims{bbx@introcite}
 \renewcommand*{\introcitepunct}{\quad}
 \csuse{extblx@opt@dashed@false}
 \csletcs{extblx@introcite}{extblx@opt@introcite@plain}
@@ -1348,23 +1350,23 @@ versatile than the outer citation delimiter feature (see the discussion in
 
 \begin{bibexample}[title={Example customisations for \kvopt{introcite}{label}}]
 \begin{lstlisting}[style=extblxstylelatex]
-\DeclareFieldFormat{bbx:introcite}{\mkbibbold{#1}}
-\DeclareDelimcontextAlias{bbx:introcite}{textcite}
-\DeclareInnerCiteDelim{bbx:introcite}{\bibopenparen}{\bibcloseparen}
+\DeclareFieldFormat{bbx@introcite}{\mkbibbold{#1}}
+\DeclareDelimcontextAlias{bbx@introcite}{textcite}
+\DeclareInnerCiteDelims{bbx@introcite}{\bibopenparen}{\bibcloseparen}
 \setlength{\introcitewidth}{0pt}
 \setlength{\introcitesep}{\bibhang}
 \end{lstlisting}
 \tcblower
-\DeclareFieldFormat{bbx:introcite}{\mkbibbold{#1}}
-\DeclareDelimcontextAlias{bbx:introcite}{textcite}
-\DeclareInnerCiteDelim{bbx:introcite}{\bibopenparen}{\bibcloseparen}
+\DeclareFieldFormat{bbx@introcite}{\mkbibbold{#1}}
+\DeclareDelimcontextAlias{bbx@introcite}{textcite}
+\DeclareInnerCiteDelims{bbx@introcite}{\bibopenparen}{\bibcloseparen}
 \setlength{\introcitewidth}{0pt}
 \setlength{\introcitesep}{\bibhang}
 \csuse{extblx@opt@dashed@false}
 \csletcs{extblx@introcite}{extblx@opt@introcite@label}
 \exampleprintbib{coleridge,geer}
 \end{bibexample}
-\csgundef{blx@delimcontextalias@bbx:introcite}
+\csgundef{blx@delimcontextalias@bbx@introcite}
 % because \DeclareDelimcontextAlias is global ... at the moment, this can go
 % with biblatex >= 3.12
 
@@ -1793,7 +1795,7 @@ Style family & \cmd{cite} & \cmd{parencite} & \cmd{textcite}\\
         {closing delimiter}
 
 Sets up the outer delimiters for the citation command
-\cmd{$\langle$\emph{cite command}$\rangle$}. The name of the \prm{cite command}
+\cmd{\prm{cite command}}. The name of the \prm{cite command}
 is given without leading backslash in the argument, it normally corresponds to
 the delimiter context.
 
@@ -1826,24 +1828,24 @@ commands respond to nesting and check if opening brackets are always closed.
 \cmditem{DeclareOuterCiteDelimAlias}{cite alias}{cite command}
 \cmditem*{DeclareOuterCiteDelimAlias*}{cite alias}{cite command}
 
-Use the outer delimiters of \cmd{$\langle$\emph{cite command}$\rangle$} for
-\cmd{$\langle$\emph{cite alias}$\rangle$} as well.
+Use the outer delimiters of \cmd{\prm{cite command}} for
+\cmd{\prm{cite alias}} as well.
 The unstarred version uses \cmd{def} assignment while the starred version uses
 \cmd{let}. This means that the starred version copies the values of the
 definitions at the time of executing the aliasing command,
 whereas the alias created by the unstarred version will only evaluate the
 delimiters whenever the citation command is called.
 
-\cmditem{UndeclareOuterCiteDelim}{cite command}
+\cmditem{UndeclareOuterCiteDelims}{cite command}
 
 Completely remove the definitions of the outer delimiters for
-\cmd{$\langle$\emph{cite command}$\rangle$}.
+\cmd{\prm{cite command}}.
 
 \cmditem{DeclareInnerCiteDelim}{cite command}{opening delimiter}
         {closing delimiter}
 
 Sets up the inner delimiters for the citation command
-\cmd{$\langle$\emph{cite command}$\rangle$}.
+\cmd{\prm{cite command}}.
 
 This command is similar to \cmd{DeclareOuterCiteDelim} and the same
 restrictions for the arguments apply.
@@ -1856,41 +1858,85 @@ This may lead to initially surprising results if aliases are used.
 \cmditem{DeclareInnerCiteDelimAlias}{cite alias}{cite command}
 \cmditem*{DeclareInnerCiteDelimAlias*}{cite alias}{cite command}
 
-Use the inner delimiters of \cmd{$\langle$\emph{cite command}$\rangle$} for
-\cmd{$\langle$\emph{cite alias}$\rangle$} as well.
+Use the inner delimiters of \cmd{\prm{cite command}} for
+\cmd{\prm{cite alias}} as well.
 The unstarred version uses \cmd{def} assignment while the starred version uses
 \cmd{let}. This means that the starred version copies the values of the
 definitions at the time of executing the aliasing command,
 whereas the alias created by the unstarred version will only evaluate the
 delimiters whenever the citation command is called.
 
-\cmditem{UndeclareInnerCiteDelim}{cite command}
+\cmditem{UndeclareInnerCiteDelims}{cite command}
 
 Completely remove the definitions of the inner delimiters for
-\cmd{$\langle$\emph{cite command}$\rangle$}.
+\cmd{\prm{cite command}}.
+
+\cmditem{RegisterCiteDelims}{modifier}{cite command}
+
+Register a pair of \prm{modifier} citation delimiters for
+\cmd{\prm{cite command}}.
+This command will define a delimiter wrapper command
+\cmd{mk\prm{modifier}\prm{cite command}s} that places its argument between
+the opening delimiter
+\cs{ext\allowbreak blx@\allowbreak cite\allowbreak delim@\allowbreak
+  \prm{cite command}@\allowbreak\prm{modifier}@\allowbreak open} and
+the closing delimiter
+\cs{ext\allowbreak blx@\allowbreak cite\allowbreak delim@\allowbreak
+  \prm{cite command}@\allowbreak\prm{modifier}@\allowbreak close}.
+No error will be raised if the opening or closing delimiters are not defined,
+but an error will be raised if \cmd{mk\prm{modifier}\prm{cite command}s} is
+already defined.
+
+The styles of this bundle only use the values \opt{outer} and \opt{inner} for
+\prm{modifier}, but other values are possible. With \opt{outer} and \opt{inner}
+you can use \cmd{DeclareOuterCiteDelim} or \cmd{DeclareInnerCiteDelim} and
+friends to define the opening and closing delimiters, otherwise you need to
+define them manually.
+
+All styles of \sty{biblatex-ext} define the following wrapper commands
+\begin{table}[btph]
+\centering
+\caption{Delimiter wrappers defined by \sty{biblatex-ext}}
+\label{tab:delimwrappers}
+\begin{tabular}{@{}lll@{}}
+\toprule
+                 & \multicolumn{2}{c}{Modifier} \\
+                 \cmidrule(lr){2-3}
+Citation command & Outer & Inner\\
+\midrule
+\cmd{cite} & \cmd{mkoutercitedelims} & \cmd{mkinnercitedelims}\\
+\cmd{parencite} & \cmd{mkouterparencitedelims} & \cmd{mkinnerparencitedelims}\\
+\cmd{textcite} & \cmd{mkoutertextcitedelims} & \cmd{mkinnertextcitedelims}\\
+\cmd{footcite} &  & \cmd{mkinnerfootcitedelims}\\
+\cmd{bbx@xrefcite} & \cmd{mkouterbbx@xrefcitedelims} & \cmd{mkinnerbbx@xrefcitedelims}\\
+\enquote{\cmd{bbx@introcite}} &  & \cmd{mkinnerbbx@introcitedelims}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
 
 The \sty{authoryear} and \sty{authortitle} styles have \cmd{parencite},
 e.g.\ \parencite{knuth:ct:a}, \parencite{sigfridsson}, set up with
 \begin{biblatexcode}
-\DeclareOuterCiteDelim{parencite}{\bibopenparen}{\bibcloseparen}
-\DeclareInnerCiteDelim{parencite}{}{}
+\DeclareOuterCiteDelims{parencite}{\bibopenparen}{\bibcloseparen}
+\DeclareInnerCiteDelims{parencite}{}{}
 \end{biblatexcode}
 and \cmd{textcite}, e.g.\ \textcite{knuth:ct:a}, \textcite{sigfridsson}, with
 \begin{biblatexcode}
-\DeclareOuterCiteDelim{textcite}{}{}
-\DeclareInnerCiteDelim{textcite}{\bibopenparen}{\bibcloseparen}
+\DeclareOuterCiteDelims{textcite}{}{}
+\DeclareInnerCiteDelims{textcite}{\bibopenparen}{\bibcloseparen}
 \end{biblatexcode}
 If you wanted \cmd{parencite} of \sty{authoryear} to look like
 \enquote{[Sigfridsson and Worman (1998)]} you would use
 \begin{biblatexcode}
-\DeclareOuterCiteDelim{parencite}{|1\bibopenbracket1|}{|1\bibclosebracket1|}
-\DeclareInnerCiteDelim{parencite}{|2\bibopenparen2|}{|2\bibcloseparen2|}
+\DeclareOuterCiteDelims{parencite}{|1\bibopenbracket1|}{|1\bibclosebracket1|}
+\DeclareInnerCiteDelims{parencite}{|2\bibopenparen2|}{|2\bibcloseparen2|}
 \end{biblatexcode}
 \citereset
 \begin{bibexample}
-\DeclareOuterCiteDelim{parencite}{\highlightbf[1]{\bibopenbracket}}{%
+\DeclareOuterCiteDelims{parencite}{\highlightbf[1]{\bibopenbracket}}{%
   \highlightbf[1]{\bibclosebracket}}
-\DeclareInnerCiteDelim{parencite}{\highlightbf[2]{\bibopenparen}}{%
+\DeclareInnerCiteDelims{parencite}{\highlightbf[2]{\bibopenparen}}{%
   \highlightbf[2]{\bibcloseparen}}
 \parencite{sigfridsson}\quad\parencite{worman,geer}\quad
 \parencite{knuth:ct:a,knuth:ct:b,knuth:ct:c}
@@ -1981,6 +2027,16 @@ The GitHub repository of this project uses release tags, so you can compare
 the changes in source code there.\footnote{\url{\gitbaseurl/compare/}}
 See also \sty{CHANGES.md}.
 \begin{changelog}
+\begin{release}{<version>}{<date>}
+\item Renamed \cmd{DeclareOuterCiteDelim} and friends to
+  \cmd{DeclareOuterCiteDelims}
+  \see{sec:opt:citedelims}
+\item Added \cmd{RegisterCiteDelims}
+  \see{sec:opt:citedelims}
+\item Renamed \enquote{virtual} cite command \cmd{bbx:introcite} to
+  \cmd{bbx@introcite}
+  \see{sec:opt:style}
+\end{release}
 \begin{release}{0.3}{2018-06-04}
 \item Added \bibfieldformat{titlecase:\dots title} field formats%
   \see{sec:opt:field}

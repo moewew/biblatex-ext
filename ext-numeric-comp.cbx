@@ -5,11 +5,11 @@
 
 \RequireCitationStyle{numeric-comp}
 
-\DeclareOuterCiteDelim{cite}{\bibopenbracket}{\bibclosebracket}
-\DeclareOuterCiteDelimAlias{parencite}{cite}
-\DeclareOuterCiteDelim{textcite}{}{}
+\DeclareOuterCiteDelims{cite}{\bibopenbracket}{\bibclosebracket}
+\DeclareOuterCiteDelimsAlias{parencite}{cite}
+\DeclareOuterCiteDelims{textcite}{}{}
 
-\DeclareInnerCiteDelim{textcite}{\bibopenbracket}{\bibclosebracket}
+\DeclareInnerCiteDelims{textcite}{\bibopenbracket}{\bibclosebracket}
 
 \renewbibmacro*{textcite}{%
   \iffieldequals{namehash}{\cbx@lasthash}
@@ -36,7 +36,7 @@
      \stepcounter{textcitecount}%
      \savefield{namehash}{\cbx@lasthash}}}
 
-\DeclareCiteCommand{\cite}[\mkoutercitedelim]
+\DeclareCiteCommand{\cite}[\mkoutercitedelims]
   {\usebibmacro{cite:init}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
@@ -45,7 +45,7 @@
   {\usebibmacro{cite:dump}%
    \usebibmacro{postnote}}
 
-\DeclareCiteCommand{\parencite}[\mkouterparencitedelim]
+\DeclareCiteCommand{\parencite}[\mkouterparencitedelims]
   {\usebibmacro{cite:init}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
@@ -79,7 +79,7 @@
   {}
   {\usebibmacro{cite:dump}}
 
-\DeclareCiteCommand{\cbx@textcite}[\mkoutertextcitedelim]
+\DeclareCiteCommand{\cbx@textcite}[\mkoutertextcitedelims]
   {\usebibmacro{cite:init}}
   {\usebibmacro{citeindex}%
    \usebibmacro{textcite}}
@@ -91,17 +91,17 @@
       \global\boolfalse{cbx:parens}}
      {}}
 
-\DeclareMultiCiteCommand{\cbx@textcites}[\mkoutertextcitedelim]
+\DeclareMultiCiteCommand{\cbx@textcites}[\mkoutertextcitedelims]
   {\cbx@textcite}{}
 
-\DeclareMultiCiteCommand{\cites}[\mkoutercitedelim]
+\DeclareMultiCiteCommand{\cites}[\mkoutercitedelims]
   {\cite}{\multicitedelim}
-\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]
+\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelims]
   {\parencite}{\multicitedelim}
 \DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
   {\smartcite}{\multicitedelim}
 
-\DeclareCiteCommand{\bbx@cite@inxref}[\mkouterbibinxrefcitedelim]
+\DeclareCiteCommand{\bbx@xrefcite}[\mkouterbbx@xrefcitedelims]
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \boolfalse{backtracker}%
