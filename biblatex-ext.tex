@@ -1351,14 +1351,14 @@ The default settings for \cmd{bbx@introcite} emulate the output of \cmd{cite}.
 \begin{bibexample}[title={Example customisations for \kvopt{introcite}{label}}]
 \begin{lstlisting}[style=extblxstylelatex]
 \DeclareFieldFormat{bbx@introcite}{\mkbibbold{#1}}
-\DeclareDelimcontextAlias{bbx@introcite}{textcite}
+\DeclareDelimFormat[bbx@introcite]{nameyeardelim}{\addspace}
 \DeclareInnerCiteDelims{bbx@introcite}{\bibopenparen}{\bibcloseparen}
 \setlength{\introcitewidth}{0pt}
 \setlength{\introcitesep}{\bibhang}
 \end{lstlisting}
 \tcblower
 \DeclareFieldFormat{bbx@introcite}{\mkbibbold{#1}}
-\DeclareDelimcontextAlias{bbx@introcite}{textcite}
+\DeclareDelimFormat[bbx@introcite]{nameyeardelim}{\addspace}
 \DeclareInnerCiteDelims{bbx@introcite}{\bibopenparen}{\bibcloseparen}
 \setlength{\introcitewidth}{0pt}
 \setlength{\introcitesep}{\bibhang}
