@@ -522,6 +522,31 @@ Most of the new features of this bundle do not require \biber{} explicitly in
 their implementation, but many \sty{biblatex} standard features only work
 properly with \biber{}.
 
+\subsection{Compatibility with earlier versions}\label{sec:backw}
+In an ideal world all changes to the styles in this bundle would be fully
+backwards compatible. Unfortunately we do not live in this ideal world.
+Most changes to this bundle should introduce new features that have little
+relevant impact on existing functionality. But the occasional change
+may have more lasting consequences and may cause existing customisations to
+fail.
+In fact all changes have the potential to break someone's code, since
+\sty{biblatex} styles have little to no distinction between public and internal
+code.
+Still, some changes are more likely to be problematic than others and those
+should be kept to a minimum. They can, however, be required to move development
+forward.
+
+If at all possible, backwards compatiblity code that allows old code to
+continue to work is in place. Sometimes that is not feasible and in those cases
+the next best solution is to warn if old code is used, so please check the
+log file for warnings --  especially after an update.
+But at times not even that is possible, so it is always a good idea to check
+the change history after an update.
+Higher-level changes are found in the revision history in \cref{sec:log},
+more technical changes and commentary can be found in \sty{CHANGES.md},
+the full set of changes can be investigated by comparing the tagged and
+publicly available source code.
+
 \subsection{Installation}\label{sec:install}
 This style bundle is available on \ctan.%
 \fnurl{https://ctan.org/pkg/biblatex-ext}
