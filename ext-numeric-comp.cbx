@@ -16,7 +16,7 @@
     {\usebibmacro{cite:comp}}
     {\usebibmacro{cite:dump}%
      \ifbool{cbx:parens}
-       {\printtext{\csuse{extblx@citedelim@textcite@inner@close}}%
+       {\printtext{\csuse{extblx@citedelim@\blx@delimcontext @inner@close}}%
                    \global\boolfalse{cbx:parens}}
        {}%
      \iffirstcitekey
@@ -27,7 +27,7 @@
        {\printfield[citetitle]{labeltitle}}
        {\printnames{labelname}}%
      \setunit*{\printdelim{namelabeldelim}}%
-     \printtext{\csuse{extblx@citedelim@textcite@inner@open}}%
+     \printtext{\csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
                 \global\booltrue{cbx:parens}%
      \ifnumequal{\value{citecount}}{1}
        {\usebibmacro{prenote}}
@@ -87,7 +87,7 @@
   {\usebibmacro{cite:dump}%
    \usebibmacro{postnote}%
    \ifbool{cbx:parens}
-     {\csuse{extblx@citedelim@textcite@inner@close}%
+     {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
       \global\boolfalse{cbx:parens}}
      {}}
 

@@ -37,7 +37,7 @@
         \setunit{%
           \global\booltrue{cbx:parens}%
           \printdelim{nonameyeardelim}%
-          \csuse{extblx@citedelim@textcite@inner@open}}%
+          \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
         \ifnumequal{\value{citecount}}{1}
           {\usebibmacro{prenote}}
           {}%
@@ -47,7 +47,7 @@
      \setunit{%
        \global\booltrue{cbx:parens}%
        \printdelim{nameyeardelim}%
-       \csuse{extblx@citedelim@textcite@inner@open}}%
+       \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
      \ifnumequal{\value{citecount}}{1}
        {\usebibmacro{prenote}}
        {}%
@@ -56,13 +56,14 @@
 \renewbibmacro*{textcite:postnote}{%
   \iffieldundef{postnote}
     {\ifbool{cbx:parens}
-       {\csuse{extblx@citedelim@textcite@inner@close}}
+       {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}}
        {}}
     {\ifbool{cbx:parens}
        {\setunit{\postnotedelim}}
        {\setunit{\extpostnotedelim
-                 \csuse{extblx@citedelim@textcite@inner@open}}}%
-     \printfield{postnote}\csuse{extblx@citedelim@textcite@inner@close}}}
+                 \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}}%
+     \printfield{postnote}%
+     \csuse{extblx@citedelim@\blx@delimcontext @inner@close}}}
 
 \DeclareCiteCommand{\cite}[\mkoutercitedelim]
   {\usebibmacro{prenote}}
@@ -110,7 +111,7 @@
       \textcitedelim}%
    \usebibmacro{textcite}}
   {\ifbool{cbx:parens}
-     {\csuse{extblx@citedelim@textcite@inner@close}%
+     {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
       \global\boolfalse{cbx:parens}}
      {}}
   {\usebibmacro{textcite:postnote}}

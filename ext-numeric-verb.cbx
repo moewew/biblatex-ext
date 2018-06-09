@@ -59,9 +59,9 @@
      {\stepcounter{textcitetotal}%
       \textcitedelim}%
    \usebibmacro{textcite}}
-  {\csuse{extblx@citedelim@textcite@inner@close}}
+  {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}}
   {\usebibmacro{postnote}%
-   \csuse{extblx@citedelim@textcite@inner@close}}
+   \csuse{extblx@citedelim@\blx@delimcontext @inner@close}}
 
 \DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]
   {\parencite}{\multicitedelim}

@@ -1764,6 +1764,12 @@ Sets up the outer delimiters for the citation command
 is given without leading backslash in the argument, it normally corresponds to
 the delimiter context.
 
+Note that outer citation delimiters are often hard-coded so they usually do not
+respond to delimiter context alises.
+Inner citation delimiters, on the other hand, usually follow delimiter context
+aliases.
+This may lead to initially surprising results if aliases are used.
+
 You may use almost any input for \prm{opening delimiter} and
 \prm{closing delimiter} as long as typesetting of
 \enquote{\prm{opening delimiter}text\prm{closing delimiter}} does not lead to
@@ -1808,6 +1814,11 @@ Sets up the inner delimiters for the citation command
 
 This command is similar to \cmd{DeclareOuterCiteDelim} and the same
 restrictions for the arguments apply.
+
+Note that inner citation delimiters usually follow context delimiter aliases.
+Outer citation delimiters, on the other hand, do not respond to context
+delimiter aliases.
+This may lead to initially surprising results if aliases are used.
 
 \cmditem{DeclareInnerCiteDelimAlias}{cite alias}{cite command}
 \cmditem*{DeclareInnerCiteDelimAlias*}{cite alias}{cite command}

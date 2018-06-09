@@ -27,7 +27,7 @@
     \setunit*{%
       \global\booltrue{cbx:parens}%
       \printdelim{nametitledelim}%
-      \csuse{extblx@citedelim@textcite@inner@open}}%
+      \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
   \ifnumequal{\value{citecount}}{1}
     {\usebibmacro{prenote}}
     {}%
@@ -45,14 +45,14 @@
 \newbibmacro*{textcite:postnote}{%
   \ifthenelse{\iffieldundef{postnote}\OR\boolean{cbx:loccit}}
     {\ifbool{cbx:parens}
-       {\csuse{extblx@citedelim@textcite@inner@close}}
+       {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}}
        {}}
     {\ifbool{cbx:parens}
        {\postnotedelim}
        {\extpostnotedelim
-        \csuse{extblx@citedelim@textcite@inner@open}}%
+        \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
      \printfield{postnote}%
-     \csuse{extblx@citedelim@textcite@inner@close}}}
+     \csuse{extblx@citedelim@\blx@delimcontext @inner@close}}}
 
 \DeclareCiteCommand{\cite}[\mkoutercitedelim]
   {\usebibmacro{prenote}}
@@ -100,7 +100,7 @@
       \textcitedelim}%
    \usebibmacro{textcite}}
   {\ifbool{cbx:parens}
-     {\csuse{extblx@citedelim@textcite@inner@close}%
+     {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
       \global\boolfalse{cbx:parens}}
      {}}
   {\usebibmacro{textcite:postnote}}

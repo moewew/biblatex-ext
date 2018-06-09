@@ -18,7 +18,7 @@
        {\printfield[citetitle]{labeltitle}}
        {\printnames{labelname}}%
      \setunit*{\printdelim{namelabeldelim}}%
-     \printtext{\csuse{extblx@citedelim@textcite@inner@open}}%
+     \printtext{\csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
      \global\booltrue{cbx:parens}%
      \stepcounter{textcitecount}%
      \savefield{namehash}{\cbx@lasthash}}%
@@ -28,7 +28,7 @@
   \usebibmacro{cite}%
   \setunit{%
     \ifbool{cbx:parens}
-      {\csuse{extblx@citedelim@textcite@inner@close}%
+      {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
        \global\boolfalse{cbx:parens}}
       {}%
     \textcitedelim}}
@@ -39,12 +39,12 @@
     {\setunit{}%
      \printtext{%
        \ifbool{cbx:parens}
-         {\csuse{extblx@citedelim@textcite@inner@close}%
+         {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
           \global\boolfalse{cbx:parens}}
          {}}}
     {\setunit{%
        \ifbool{cbx:parens}
-         {\csuse{extblx@citedelim@textcite@inner@close}%
+         {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
           \global\boolfalse{cbx:parens}}
          {}%
        \textcitedelim}}}

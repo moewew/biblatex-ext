@@ -40,7 +40,7 @@
      \setunit*{%
        \global\booltrue{cbx:parens}%
        \printdelim{nametitledelim}%
-       \csuse{extblx@citedelim@textcite@inner@open}}%
+       \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
      \stepcounter{textcitecount}%
      \savefield{namehash}{\cbx@lasthash}}%
   \ifnumequal{\value{citecount}}{1}
@@ -51,7 +51,7 @@
     {\usebibmacro{cite:shorthand}}%
   \setunit{%
     \ifbool{cbx:parens}
-      {\csuse{extblx@citedelim@textcite@inner@close}%
+      {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
        \global\boolfalse{cbx:parens}}
       {}%
     \textcitedelim}}
@@ -70,19 +70,19 @@
     {\setunit{%
        \global\booltrue{cbx:parens}%
        \extpostnotedelim
-       \csuse{extblx@citedelim@textcite@inner@open}}}
+       \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}}
     {\setunit{\postnotedelim}}%
   \printfield{postnote}%
   \ifnumequal{\value{multicitecount}}{\value{multicitetotal}}
     {\setunit{}%
      \printtext{%
        \ifbool{cbx:parens}
-         {\csuse{extblx@citedelim@textcite@inner@close}%
+         {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
           \global\boolfalse{cbx:parens}}
          {}}}
     {\setunit{%
        \ifbool{cbx:parens}
-         {\csuse{extblx@citedelim@textcite@inner@close}%
+         {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
           \global\boolfalse{cbx:parens}}
          {}%
        \textcitedelim}}}

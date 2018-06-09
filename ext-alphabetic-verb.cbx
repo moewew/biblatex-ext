@@ -16,7 +16,7 @@
     {\printfield[citetitle]{labeltitle}}
     {\printnames{labelname}}%
   \printdelim{namelabeldelim}%
-  \csuse{extblx@citedelim@textcite@inner@open}%
+  \csuse{extblx@citedelim@\blx@delimcontext @inner@open}%
   \ifnumequal{\value{citecount}}{1}
     {\usebibmacro{prenote}}
     {}%
@@ -59,9 +59,9 @@
      {\stepcounter{textcitetotal}%
       \textcitedelim}%
    \usebibmacro{textcite}}
-  {\csuse{extblx@citedelim@textcite@inner@close}}
+  {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}}
   {\usebibmacro{postnote}%
-   \csuse{extblx@citedelim@textcite@inner@close}}
+   \csuse{extblx@citedelim@\blx@delimcontext @inner@close}}
 
 \DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]
   {\parencite}{\multicitedelim}

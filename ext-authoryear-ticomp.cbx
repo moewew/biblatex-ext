@@ -68,7 +68,7 @@
            \setunit{%
              \global\booltrue{cbx:parens}%
              \printdelim{nonameyeardelim}%
-             \csuse{extblx@citedelim@textcite@inner@open}}%
+             \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
            \ifnumequal{\value{citecount}}{1}
              {\usebibmacro{prenote}}
              {}%
@@ -83,7 +83,7 @@
            \setunit{%
              \global\booltrue{cbx:parens}%
              \printdelim{nameyeardelim}%
-             \csuse{extblx@citedelim@textcite@inner@open}}%
+             \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
            \ifnumequal{\value{citecount}}{1}
              {\usebibmacro{prenote}}
              {}%
@@ -100,7 +100,7 @@
      \savefield{namehash}{\cbx@lasthash}}%
   \setunit{%
     \ifbool{cbx:parens}
-      {\csuse{extblx@citedelim@textcite@inner@close}%
+      {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
        \global\boolfalse{cbx:parens}}
       {}%
     \textcitedelim}}
@@ -111,7 +111,7 @@
     {\setunit{%
        \global\booltrue{cbx:parens}%
        \extpostnotedelim
-       \csuse{extblx@citedelim@textcite@inner@open}}}%
+       \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}}%
   \ifbool{cbx:loccit}
     {}
     {\printfield{postnote}}%
@@ -119,12 +119,12 @@
     {\setunit{}%
      \printtext{%
        \ifbool{cbx:parens}
-         {\csuse{extblx@citedelim@textcite@inner@close}%
+         {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
           \global\boolfalse{cbx:parens}}
          {}}}
     {\setunit{%
        \ifbool{cbx:parens}
-         {\csuse{extblx@citedelim@textcite@inner@close}%
+         {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
           \global\boolfalse{cbx:parens}}
          {}%
        \textcitedelim}}}
