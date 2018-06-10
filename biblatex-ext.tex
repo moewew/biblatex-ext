@@ -446,7 +446,7 @@ The \sty{biblatex-ext} bundle provides an extended version of the standard
 styles that come with \sty{biblatex}.
 For each standard style this bundle provides a style with the same name
 prefixed with \texttt{ext-} which can be used as a drop-in replacement for the
-standard style -- for example, the replacement for \sty{authoryear-icomp}
+standard style~-- for example, the replacement for \sty{authoryear-icomp}
 is called \sty{ext-authoryear-icomp}.
 
 The aim of the styles of this bundle is to offer a simple interface to change
@@ -470,7 +470,7 @@ But if one does not want to resort to clever tricks,%
 \footnote{See \url{https://tex.stackexchange.com/q/122218/} and
 \url{https://tex.stackexchange.com/q/173638/} for example.}
 the modifications needed to do this in a stable, safe and clean manner by
-redefining the bibliography drivers can easily amass hundred lines of code --
+redefining the bibliography drivers can easily amass hundred lines of code~--
 code you may not want to see in your preamble.
 Some contributed \sty{biblatex} styles already place the editor in the
 desired position, but you may not want to commit to the other changes implied
@@ -536,12 +536,13 @@ Still, some changes are more likely to be problematic than others and those
 should be kept to a minimum. They can, however, be required to move development
 forward.
 
-If at all possible, backwards compatiblity code that allows old code to
-continue to work is in place. Sometimes that is not feasible and in those cases
-the next best solution is to warn if old code is used, so please check the
-log file for warnings --  especially after an update.
-But at times not even that is possible, so it is always a good idea to check
-the change history after an update.
+If possible, backwards compatiblity measures that allow old code to
+continue to work are in place. Sometimes that is not feasible and in those
+cases the next best solution is to warn if old code is used, so please check
+the log file for warnings~-- especially after an update.
+But at times not even that is possible, so it is always a good idea to consult
+the change history after an update and to examine the output with extra
+scrutiny.
 Higher-level changes are found in the revision history in \cref{sec:log},
 more technical changes and commentary can be found in \sty{CHANGES.md},
 the full set of changes can be investigated by comparing the tagged and
@@ -559,8 +560,8 @@ If you must install this package manually, get the files from \ctan{}
 and install the \sty{.bbx}, \sty{.cbx} and \sty{.def} files preferably to
 \path{tex/latex/biblatex-ext} of your local or home \TeX{} tree, the other
 files (\path{CHANGES.md}, \path{README.md}, \path{biblatex-ext.tex},
-\path{biblatex-ext.pdf} and \path{biblatex-ext-examples.bib}) go to
-\path{doc/latex/biblatex-ext}, you may have to refresh your file name database
+\path{biblatex-ext.pdf} and \path{biblatex-ext-examples.bib}) go into
+\path{doc/latex/biblatex-ext}. You may have to refresh your file name database
 afterwards, so \tex{} can find the files.
 
 \subsection{License}\label{sec:license}
@@ -579,8 +580,11 @@ submit suggestions and feature requests, or you can do so via email.
 
 If you do not want to report a bug or request a feature, but are simply in need
 of assistance, you might want to consider posting your question on the
-\texttt{comp.text.tex} newsgroup or \tex{} -- \latex{} Stack Exchange.%
+\texttt{comp.text.tex} newsgroup or \tex{}~--~\latex{} Stack Exchange.%
 \fnurl{https://tex.stackexchange.com/questions/tagged/biblatex}
+If after a consultation on one of these sites it turns out you have happened
+upon a bug or that you can formulate a request for a new feature that could be
+useful, please head over to GitHub or send me an email.
 
 \section{Use}\label{sec:use}
 The \sty{biblatex-ext} bundle is a collection of \sty{biblatex} style files.
@@ -606,10 +610,10 @@ Of the many introductory texts and tutorials available on the internet%
 the author particularly likes
 Knut Hegna and Dag Langmyhr's \emph{Local Guide to \sty{biblatex}}%
 \fnurl{http://dag.at.ifi.uio.no/public/doc/biblatex-guide.pdf}
-and Paul Stanley's \emph{\sty{biblatex} -- An Easier Read}%
+and Paul Stanley's \emph{\sty{biblatex}~-- An Easier Read}%
 \fnurl{https://github.com/PaulStanley/biblatex-tutorial/releases}.
 French speakers may want to consider Maïeul Rouquette's
-\foreignlanguage{french}{\emph{(Xe)\LaTeX{} Appliqué aux sciences humaines}}%
+\foreignlanguage{french}{\emph{(Xe)\LaTeX{} Appliqué aux sciences humaines}}
 available on \ctan\fnurl{https://ctan.org/pkg/latex-sciences-humaines}.
 If you read German you may be interested in Dominik Waßenhoven's two-part
 series \foreignlanguage{ngerman}{\emph{Bibliographien erstellen mit
@@ -1250,6 +1254,10 @@ The label produced by the \opt{plain} option can be customised as follows.
 \csletcs{extblx@introcite}{extblx@opt@introcite@plain}
 \exampleprintbib{vizedom:related}
 \end{bibexample}
+Note that the implementation of some related types automatically suppresses
+the introcite label~-- or rather, does not add the label in the first place.
+That means that the resulting bibliography should be checked for consistency
+if the toggle is set to \opt{true}.
 \end{keymarglistbook}
 
 The \opt{label} option can be configured to not allow the label to run into
