@@ -1,5 +1,5 @@
-# Version <version> (<date>)
-See https://github.com/moewew/biblatex-ext/compare/v0.3...v<version>
+# Version 0.4 (2018-06-10)
+See https://github.com/moewew/biblatex-ext/compare/v0.3...v0.4
 - Renamed `\DeclareOuterCiteDelim` and friends to `\DeclareOuterCiteDelims`,
   backwards compatibility for most of this change should be available.
 - **Incompatible change** Renamed the cite command `\bbx@cite@inxref` to
@@ -19,7 +19,7 @@ See https://github.com/moewew/biblatex-ext/compare/v0.3...v<version>
   later.
 - Renamed option `citeinxref` to `citexref`. Please use the new name.
   Backwards compatibility is in place.
-  
+
 # Version 0.3 (2018-06-04)
 See https://github.com/moewew/biblatex-ext/compare/v0.2...v0.3
 - Added `titlecase:<titletype>` field formats for finer control over the title
