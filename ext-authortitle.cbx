@@ -5,20 +5,20 @@
 
 \RequireCitationStyle{authortitle}
 
-\DeclareOuterCiteDelim{parencite}{\bibopenparen}{\bibcloseparen}
+\DeclareOuterCiteDelims{parencite}{\bibopenparen}{\bibcloseparen}
 
-\DeclareInnerCiteDelim{cite}{}{}
-\DeclareInnerCiteDelim{parencite}{}{}
-\DeclareInnerCiteDelim{textcite}{\bibopenparen}{\bibcloseparen}
-\DeclareInnerCiteDelim{footcite}{}{}
+\DeclareInnerCiteDelims{cite}{}{}
+\DeclareInnerCiteDelims{parencite}{}{}
+\DeclareInnerCiteDelims{textcite}{\bibopenparen}{\bibcloseparen}
+\DeclareInnerCiteDelims{footcite}{}{}
 
-\DeclareFieldFormat{extblx@innercitedelim}{%
-  \csuse{mkinner\blx@delimcontext delim}{#1}}
-\DeclareFieldFormat{extblx@innerparencitedelim}{%
-  \csuse{mkinner\blx@delimcontext delim}{#1}}
-\DeclareFieldFormat{extblx@innertextcitedelim}{#1}
-\DeclareFieldFormat{extblx@innerfootcitedelim}{%
-  \csuse{mkinner\blx@delimcontext delim}{#1}}
+\DeclareFieldFormat{extblx@innercitedelims}{%
+  \csuse{mkinner\blx@delimcontext delims}{#1}}
+\DeclareFieldFormat{extblx@innerparencitedelims}{%
+  \csuse{mkinner\blx@delimcontext delims}{#1}}
+\DeclareFieldFormat{extblx@innertextcitedelims}{#1}
+\DeclareFieldFormat{extblx@innerfootcitedelims}{%
+  \csuse{mkinner\blx@delimcontext delims}{#1}}
 
 \renewbibmacro*{textcite}{%
   \printnames{labelname}%
@@ -34,7 +34,7 @@
     {\usebibmacro{cite:shorthand}}}
 
 \renewbibmacro*{cite:title}{%
-  \printtext[extblx@inner\blx@delimcontext delim]{%
+  \printtext[extblx@inner\blx@delimcontext delims]{%
     \printtext[bibhyperref]{%
       \printfield[citetitle]{labeltitle}}}}
 
@@ -50,28 +50,28 @@
      \printfield{postnote}%
      \csuse{extblx@citedelim@\blx@delimcontext @inner@close}}}
 
-\DeclareCiteCommand{\cite}[\mkoutercitedelim]
+\DeclareCiteCommand{\cite}[\mkoutercitedelims]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
 
-\DeclareCiteCommand*{\cite}[\mkoutercitedelim]
+\DeclareCiteCommand*{\cite}[\mkoutercitedelims]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{citetitle}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
 
-\DeclareCiteCommand{\parencite}[\mkouterparencitedelim]
+\DeclareCiteCommand{\parencite}[\mkouterparencitedelims]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
 
-\DeclareCiteCommand*{\parencite}[\mkouterparencitedelim]
+\DeclareCiteCommand*{\parencite}[\mkouterparencitedelims]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{citetitle}}
@@ -87,7 +87,7 @@
   {\multicitedelim}
   {\usebibmacro{postnote}}
 
-\DeclareCiteCommand{\textcite}[\mkoutertextcitedelim]
+\DeclareCiteCommand{\textcite}[\mkoutertextcitedelims]
   {\boolfalse{cbx:parens}}
   {\usebibmacro{citeindex}%
    \iffirstcitekey
@@ -101,16 +101,16 @@
      {}}
   {\usebibmacro{textcite:postnote}}
 
-\DeclareMultiCiteCommand{\cites}[\mkoutercitedelim]
+\DeclareMultiCiteCommand{\cites}[\mkoutercitedelims]
   {\cite}{\multicitedelim}
-\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]
+\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelims]
   {\parencite}{\multicitedelim}
 \DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
   {\smartcite}{\multicitedelim}
-\DeclareMultiCiteCommand{\textcites}[\mkoutertextcitedelim]{\textcite}{}
+\DeclareMultiCiteCommand{\textcites}[\mkoutertextcitedelims]{\textcite}{}
 
-\DeclareFieldFormat{extblx@innerbbx:introcitedelim}{%
-  \csuse{mkinner\blx@delimcontext delim}{#1}}
+\DeclareFieldFormat{extblx@innerbbx@introcitedelims}{%
+  \csuse{mkinner\blx@delimcontext delims}{#1}}
 
 \endinput
 %

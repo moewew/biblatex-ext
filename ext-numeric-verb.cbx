@@ -5,11 +5,11 @@
 
 \RequireCitationStyle{numeric-verb}
 
-\DeclareOuterCiteDelim{cite}{\bibopenbracket}{\bibclosebracket}
-\DeclareOuterCiteDelimAlias{parencite}{cite}
-\DeclareOuterCiteDelim{textcite}{}{}
+\DeclareOuterCiteDelims{cite}{\bibopenbracket}{\bibclosebracket}
+\DeclareOuterCiteDelimsAlias{parencite}{cite}
+\DeclareOuterCiteDelims{textcite}{}{}
 
-\DeclareInnerCiteDelim{textcite}{\bibopenbracket}{\bibclosebracket}
+\DeclareInnerCiteDelims{textcite}{\bibopenbracket}{\bibclosebracket}
 
 \renewbibmacro*{textcite}{%
   \ifnameundef{labelname}
@@ -35,7 +35,7 @@
   {\usebibmacro{postnote}%
    \csuse{extblx@citedelim@cite@outer@close}}
 
-\DeclareCiteCommand{\parencite}[\mkouterparencitedelim]
+\DeclareCiteCommand{\parencite}[\mkouterparencitedelims]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite}}
@@ -51,7 +51,7 @@
   {\multicitedelim}
   {\usebibmacro{postnote}}
 
-\DeclareCiteCommand{\textcite}[\mkoutertextcitedelim]
+\DeclareCiteCommand{\textcite}[\mkoutertextcitedelims]
   {}
   {\usebibmacro{citeindex}%
    \iffirstcitekey
@@ -63,11 +63,11 @@
   {\usebibmacro{postnote}%
    \csuse{extblx@citedelim@\blx@delimcontext @inner@close}}
 
-\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelim]
+\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelims]
   {\parencite}{\multicitedelim}
 \DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
   {\smartcite}{\multicitedelim}
-\DeclareMultiCiteCommand{\textcites}[\mkoutertextcitedelim]{\textcite}{}
+\DeclareMultiCiteCommand{\textcites}[\mkoutertextcitedelims]{\textcite}{}
 
 \endinput
 %

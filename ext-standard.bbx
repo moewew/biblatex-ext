@@ -11,15 +11,20 @@
 
 \providecommand*{\mkibid}[1]{#1}
 
-\newtoggle{bbx:citeinxref}
+\newtoggle{bbx:citexref}
 \newtoggle{bbx:innamebeforetitle}
 \newtoggle{bbx:innameidem}
 \newtoggle{bbx:articlein}
 \newtoggle{bbx:maintitleaftertitle}
 \newtoggle{bbx:introcite:plain:keeprelated}
 
+\DeclareBibliographyOption[boolean]{citexref}[true]{%
+  \settoggle{bbx:citexref}{#1}}
 \DeclareBibliographyOption[boolean]{citeinxref}[true]{%
-  \settoggle{bbx:citeinxref}{#1}}
+  \blx@warning{The option 'citeinxref' is deprecated.\MessageBreak
+    Use 'citexref' (without in) instead.\MessageBreak
+    Setting 'citexref' now}%
+  \settoggle{bbx:citexref}{#1}}
 \DeclareBibliographyOption[boolean]{innamebeforetitle}[true]{%
   \settoggle{bbx:innamebeforetitle}{#1}}
 \DeclareBibliographyOption[boolean]{innameidem}[true]{%
@@ -41,7 +46,7 @@
 \def\extblx@opt@introcite@plain{2}
 
 \ExecuteBibliographyOptions{%
-  citeinxref          = false,
+  citexref            = false,
   innamebeforetitle   = false,
   innameidem          = false,
   articlein           = true,
@@ -50,8 +55,13 @@
 % maxbibnames         = 999,
 }
 
+\DeclareTypeOption[boolean]{citexref}[true]{%
+  \settoggle{bbx:citexref}{#1}}
 \DeclareTypeOption[boolean]{citeinxref}[true]{%
-  \settoggle{bbx:citeinxref}{#1}}
+  \blx@warning{The option 'citeinxref' is deprecated.\MessageBreak
+    Use 'citexref' (without in) instead.\MessageBreak
+    Setting 'citexref' now}%
+  \settoggle{bbx:citexref}{#1}}
 \DeclareTypeOption[boolean]{innamebeforetitle}[true]{%
   \settoggle{bbx:innamebeforetitle}{#1}}
 \DeclareTypeOption[boolean]{innameidem}[true]{%
@@ -61,8 +71,13 @@
 \DeclareTypeOption[boolean]{maintitleaftertitle}[true]{%
   \settoggle{bbx:maintitleaftertitle}{#1}}
 
+\DeclareEntryOption[boolean]{citexref}[true]{%
+  \settoggle{bbx:citexref}{#1}}
 \DeclareEntryOption[boolean]{citeinxref}[true]{%
-  \settoggle{bbx:citeinxref}{#1}}
+  \blx@warning{The option 'citeinxref' is deprecated.\MessageBreak
+    Use 'citexref' (without in) instead.\MessageBreak
+    Setting 'citexref' now}%
+  \settoggle{bbx:citexref}{#1}}
 \DeclareEntryOption[boolean]{innamebeforetitle}[true]{%
   \settoggle{bbx:innamebeforetitle}{#1}}
 \DeclareEntryOption[boolean]{innameidem}[true]{%
@@ -75,9 +90,9 @@
 
 \newbibmacro*{bbx:introcite}{\usebibmacro{cite}}
 
-\extblx@create@mkcitedelim{inner}{bbx:introcite}
-\DeclareInnerCiteDelimAlias{bbx:introcite}{cite}
-\DeclareFieldFormat{bbx:introcite}{#1}
+\RegisterCiteDelims{inner}{bbx@introcite}
+\DeclareInnerCiteDelimsAlias{bbx@introcite}{cite}
+\DeclareFieldFormat{bbx@introcite}{#1}
 \newcommand*{\introcitepunct}{\addcolon\space}
 \newcommand*{\introcitebreak}{\leavevmode\newline}
 
@@ -93,7 +108,7 @@
       {}
       {\togglefalse{blx@bibliography}%
        \toggletrue{blx@citation}}%
-    \delimcontext{bbx:introcite}%
+    \delimcontext{bbx@introcite}%
     \csuse{blx@hook@cite}%
     \csuse{blx@hook@citekey}%
     \DeclareFieldFormat{bibhyperref}{##1}%
@@ -101,7 +116,7 @@
     \undef\cbx@lastyear
     \citetrackerfalse\pagetrackerfalse\backtrackerfalse
     \defcounter{maxnames}{\blx@maxcitenames}%
-    \printtext[bbx:introcite]{\usebibmacro{bbx:introcite}}%
+    \printtext[bbx@introcite]{\usebibmacro{bbx:introcite}}%
   \endgroup
 }
 
@@ -119,27 +134,30 @@
     {}}
 
 
-\newbibmacro*{bbx:cite:inxref}{\usebibmacro{cite}}
+\newbibmacro*{bbx:inxrefcite}{\usebibmacro{cite}}
 
-\DeclareCiteCommand{\bbx@cite@inxref}[\mkouterbibinxrefcitedelim]
+\DeclareCiteCommand{\bbx@xrefcite}[\mkouterbbx@xrefcitedelims]
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \boolfalse{backtracker}}
-  {\usebibmacro{bbx:cite:inxref}}
+  {\usebibmacro{bbx:inxrefcite}}
   {}
   {}
 
-\DeclareDelimcontextAlias{bbx@cite@inxref}{cite}
-\DeclareOuterCiteDelimAlias{bibinxrefcite}{cite}
+\RegisterCiteDelims{outer}{bbx@xrefcite}
+\DeclareOuterCiteDelimsAlias{bbx@xrefcite}{cite}
+\RegisterCiteDelims{inner}{bbx@xrefcite}
+\DeclareInnerCiteDelimsAlias{bbx@xrefcite}{cite}
+\DeclareDelimcontextAlias{bbx@xrefcite}{cite}
 
 
 \newbibmacro*{crosscite}[1]{%
-  \iftoggle{bbx:citeinxref}
+  \iftoggle{bbx:citexref}
     {\iffieldundef{crossref}
        {\iffieldundef{xref}
           {\usebibmacro{#1}}
-          {\printtext{\bbx@cite@inxref{\thefield{xref}}}}}
-       {\printtext{\bbx@cite@inxref{\thefield{crossref}}}}}
+          {\printtext{\bbx@xrefcite{\thefield{xref}}}}}
+       {\printtext{\bbx@xrefcite{\thefield{crossref}}}}}
     {\usebibmacro{#1}}}
 
 \DeclareDelimAlias{innametitledelim}{nametitledelim}

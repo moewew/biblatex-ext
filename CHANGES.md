@@ -1,3 +1,25 @@
+# Version <version> (<date>)
+See https://github.com/moewew/biblatex-ext/compare/v0.3...v<version>
+- Renamed `\DeclareOuterCiteDelim` and friends to `\DeclareOuterCiteDelims`,
+  backwards compatibility for most of this change should be available.
+- **Incompatible change** Renamed the cite command `\bbx@cite@inxref` to
+  `\bbx@xrefcite` for consistency with other citation commands.
+  There are is no compatibility code set up for this change.
+- **Incompatible change** The "virtual" citation command `\bbx:introcite`
+  is now called `\bbx@introcite`. ("Virtual" because the appearance of the
+  introcite label can be changed mostly as if it were produced by this citation
+  command, but it isn't really produced by a citation command at all.)
+  This means that the delimiter context, inner citation delimiters and wrapper
+  field format are renamed from `bbx:introcite` to `bbx@introcite`.
+  There is no compatibility code set up for this change, but warnings are
+  issued if some typical uses of the old names are detected. This means that
+  people using older code should be warned, but still need to take action
+  themselves. Fortunately the introcite feature is quite a prominent bit of
+  the bibliography, so people will probably realise wrong output sooner than
+  later.
+- Renamed option `citeinxref` to `citexref`. Please use the new name.
+  Backwards compatibility is in place.
+  
 # Version 0.3 (2018-06-04)
 See https://github.com/moewew/biblatex-ext/compare/v0.2...v0.3
 - Added `titlecase:<titletype>` field formats for finer control over the title
