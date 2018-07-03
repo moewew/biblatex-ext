@@ -146,6 +146,7 @@
        The format has been renamed to 'bbx@introcite'.\MessageBreak
        This could mean that you are using the old name\MessageBreak
        which does not work any more.\MessageBreak
+       No effort is made to switch to the new name.\MessageBreak
        Please use 'bbx@introcite' instead}}%
   \ifcsundef{abx@ffd@*@bbx:introcitelabeldate}
     {}
@@ -156,6 +157,7 @@
        'bbx@introcitelabeldate'.\MessageBreak
        This could mean that you are using the old name\MessageBreak
        which does not work any more.\MessageBreak
+       No effort is made to switch to the new name.\MessageBreak
        Please use\MessageBreak'bbx@introcitelabeldate'\MessageBreak instead}}%
   \ifcsundef{blx@delimcontextalias@bbx:introcite}
     {}
@@ -164,6 +166,7 @@
        The context has been renamed to 'bbx@introcite'.\MessageBreak
        This could mean that you are using the old name\MessageBreak
        which does not work any more.\MessageBreak
+       No effort is made to switch to the new name.\MessageBreak
        Please use 'bbx@introcite' instead}}%
   \ifcsundef{extblx@citedelim@bbx:introcite@inner@open}
     {}
@@ -173,6 +176,7 @@
        'bbx@introcite'.\MessageBreak
        This could mean that you are using the old name\MessageBreak
        which does not work any more.\MessageBreak
+       No effort is made to switch to the new name.\MessageBreak
        Please use 'bbx@introcite' instead}}%
   \ifcsundef{extblx@citedelim@bbx:introcite@inner@close}
     {}
@@ -182,6 +186,7 @@
        'bbx@introcite'.\MessageBreak
        This could mean that you are using the old name\MessageBreak
        which does not work any more.\MessageBreak
+       No effort is made to switch to the new name.\MessageBreak
        Please use 'bbx@introcite' instead}}%
 }
 

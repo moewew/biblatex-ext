@@ -33,7 +33,7 @@
 \usepackage[svgnames]{xcolor}
 \usepackage[listings, breakable, skins]{tcolorbox}%
 \usetikzlibrary{arrows.meta}
-\usepackage[style=ext-authoryear-icomp, backend=biber]{biblatex}
+\usepackage[style=ext-authoryear-iecomp, backend=biber]{biblatex}
 \addbibresource{biblatex-examples.bib}
 \addbibresource{biblatex-ext-examples.bib}
 
@@ -626,6 +626,7 @@ Please keep in mind that some of these texts were written a while ago and
 that \sty{biblatex} is actively developed: technical details may have changed
 and new features make some things easier.
 
+\clearpage
 \section{Styles}\label{sec:styles}
 This bundle provides an extended version of each standard style as well as a
 few new styles.
@@ -805,9 +806,25 @@ This style is similar to \sty{ext-verbose-trad2}.
 
 \subsection{New styles}\label{sec:styles:new}
 The following styles are not mere extensions of a particular standard style,
-instead they implement new combinations of the concepts available in the
-standard styles.
+instead they implement new combinations or extensions of the concepts available
+in the standard styles.
 \begin{stylelist}
+\styleitem{ext-authoryear-ecomp}
+An author-year citation that is even more compact than
+\sty{ext-authoryear-comp}, it compresses lists of \bibfield{extradate} letters
+from \enquote{Knuth 1986a,b,c} to \enquote{Knuth 1986a\bibrangedash c}.
+\begin{bibexample}
+Sigfridsson and Ryde 1998 \quad Knuth 1986a\bibrangedash c
+\end{bibexample}
+
+\styleitem{ext-authoryear-iecomp}
+An author-year citation that is even more compact than
+\sty{ext-authoryear-icomp}, it compresses lists of \bibfield{extradate} letters
+from \enquote{Knuth 1986a,b,c} to \enquote{Knuth 1986a\bibrangedash c}.
+\begin{bibexample}
+Sigfridsson and Ryde 1998 \quad ibid.\quad Knuth 1986a\bibrangedash c
+\end{bibexample}
+
 \styleitem{ext-authoryear-terse}
 An author-year citation style that suppresses years for author lists with only
 one work in the bibliography.
@@ -837,7 +854,7 @@ Sigfridsson and Ryde \quad ibid. \quad Knuth 1984, 1986
 
 \end{stylelist}
 
-
+\clearpage
 \section{Options}\label{sec:opt}
 All options of the \sty{biblatex} package are supported and each style supports
 the options of its standard counterpart.
@@ -1400,6 +1417,7 @@ back to the end of the entry.
 \makeatother
 \end{optionlist}
 
+\clearpage
 \section{Further Customisations}\label{sec:opt:cust}
 Aside from the new options mentioned in the last section the styles of this
 bundle also offer additional field formats, punctuation and delimiter commands,
@@ -1717,15 +1735,27 @@ The default is a comma followed by a space.
 \exampleprintbib{knuth:ct:a}
 \end{bibexample}
 
+
 \csitem{extradateonlycompcitedelim}\CSdelimMark
 Similar to \cmd{compcitedelim}, but indended for use between compressed
 citations where the second is an \bibfield{extradate} only.
 The default is a comma (\emph{not} followed by a space).
-\end{ltxsyntax}
 \begin{bibexample}
 \DeclareDelimFormat{extradateonlycompcitedelim}{\highlightbf{\addcomma}}
 \cite{knuth:ct:b,knuth:ct:c}
 \end{bibexample}
+
+
+\csitem{extradateonlycompciterangedelim}\CSdelimMark
+Similar to \cmd{extradateonlycompcitedelim}, but indended for use in a
+compressed list of \bibfield{extradate}s in the \sty{-ecomp} styles.
+The default is \cmd{bibrangedash}.
+\begin{bibexample}
+\DeclareDelimFormat{extradateonlycompciterangedelim}{%
+  \highlightbf{\bibrangedash}}
+\cite{knuth:ct:b,knuth:ct:c,knuth:ct:d}
+\end{bibexample}
+\end{ltxsyntax}
 
 \subsection{Delimiters for citation commands}\label{sec:opt:citedelims}
 The delimiters for citation commands provided by the styles of this bundle
@@ -2027,6 +2057,10 @@ The GitHub repository of this project uses release tags, so you can compare
 the changes in source code there.\footnote{\url{\gitbaseurl/compare/}}
 See also \sty{CHANGES.md}.
 \begin{changelog}
+\begin{release}{<version>}{<date>}
+\item New styles \sty{ext-authoryear-ecomp} and \sty{ext-authoryear-iecomp}%
+  \see{sec:styles:new}
+\end{release}
 \begin{release}{0.4}{2018-06-10}
 \item Renamed \cmd{DeclareOuterCiteDelim} and friends to
   \cmd{DeclareOuterCiteDelims}
@@ -2072,7 +2106,7 @@ The following example bibliography shows some common punctuation commands
 in use.
 Commands provided by standard \sty{biblatex} are marked in
 \textit{\cmd{italics}}, new commands defined by \sty{biblatex-ext} are in
-\textbf{\cmd{bold}}.
+\textbf{\cmd{bold}} and linked to their documentation.
 \begin{bibexample}[title={Punctuation and delimiters
   (defined by \textit{standard \sty{biblatex}} and
   \textbf{\sty{biblatex-ext}})},

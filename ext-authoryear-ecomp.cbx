@@ -1,0 +1,343 @@
+\ProvidesFile{ext-authoryear-ecomp.cbx}
+  [2018/06/10 v0.4 biblatex authoryear-ecomp
+   citation style (MW)]
+
+\blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
+
+\RequireCitationStyle{authoryear-comp}
+
+\DeclareOuterCiteDelims{parencite}{\bibopenparen}{\bibcloseparen}
+
+\DeclareInnerCiteDelims{textcite}{\bibopenparen}{\bibcloseparen}
+
+\DeclareFieldFormat{citelabeldate}{#1}
+\DeclareFieldFormat{parencitelabeldate}{#1}
+\DeclareFieldFormat{textcitelabeldate}{#1}
+\DeclareFieldFormat{footcitelabeldate}{#1}
+
+\DeclareDelimFormat{extradateonlycompcitedelim}{\addcomma}
+\DeclareDelimFormat{extradateonlycompciterangedelim}{\bibrangedash}
+
+\newcounter{cbx@extradatecount}
+
+\renewbibmacro*{cite:init}{%
+  \ifnumless{\value{multicitecount}}{2}
+    {\global\boolfalse{cbx:parens}%
+     \global\undef\cbx@lastkey
+     \global\undef\cbx@lasthash
+     \global\undef\cbx@lastyear
+     \global\undef\cbx@lastextradate
+     \setcounter{cbx@extradatecount}{0}}
+    {\iffieldundef{prenote}
+       {}
+       {\global\undef\cbx@lastkey
+        \global\undef\cbx@lasthash
+        \global\undef\cbx@lastyear
+        \global\undef\cbx@lastextradate
+        \setcounter{cbx@extradatecount}{0}}}}
+
+\renewbibmacro*{cite:reinit}{%
+  \global\undef\cbx@lastkey
+  \global\undef\cbx@lasthash
+  \global\undef\cbx@lastyear
+  \global\undef\cbx@lastextradate
+  \setcounter{cbx@extradatecount}{0}}
+
+\newbibmacro*{generic:dump:extradate}{%
+  \ifundef\cbx@lastkey
+    {}
+    {\entrydata{\cbx@lastkey}
+       {\ifnumless{\value{cbx@extradatecount}}{1}
+          {\extblx@warning{% This should not happen, so warn when it does
+             Uh-oh!
+             The extradate compression is quite likely\MessageBreak
+             wrong for \cbx@lastkey}}%
+          {}%
+        \ifnumgreater{\value{cbx@extradatecount}}{1}
+          {\setunit{\printdelim{extradateonlycompciterangedelim}}}
+          {\setunit{\printdelim{extradateonlycompcitedelim}}}%
+        \usebibmacro{cite:extradate}}%
+     \setunit{\cbx@thiscitedelim}}%
+  \global\undef\cbx@lastkey
+  \setcounter{cbx@extradatecount}{0}%
+}
+
+\newbibmacro*{cite:dump:extradate}{%
+  \def\cbx@thiscitedelim{%
+    \ifbool{cbx:parens}
+      {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
+       \global\boolfalse{cbx:parens}}
+      {}%
+    \multicitedelim}%
+  \usebibmacro{generic:dump:extradate}}
+
+\newbibmacro*{textcite:dump:extradate}{%
+  \def\cbx@thiscitedelim{%
+    \ifbool{cbx:parens}
+      {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
+       \global\boolfalse{cbx:parens}}
+      {}%
+    \textcitedelim}%
+  \usebibmacro{generic:dump:extradate}}
+
+\newbibmacro*{cite:comp:extradate}{%
+  \ifnumequal{\cbx@lastextradate+1}{\thefield{extradate}}
+    {\stepcounter{cbx@extradatecount}%
+     \savefield{entrykey}{\cbx@lastkey}}
+    {\usebibmacro{cite:dump:extradate}%
+     \setunit{\extradateonlycompcitedelim}%
+     \usebibmacro{cite:extradate}}%
+  \savefield{extradate}{\cbx@lastextradate}%
+}
+
+\renewbibmacro*{cite}{%
+  \iffieldundef{shorthand}
+    {\ifboolexpr{test {\ifnameundef{labelname}}
+                 or test {\iffieldundef{labelyear}}}
+       {\usebibmacro{cite:dump:extradate}%
+        \usebibmacro{cite:label}%
+        \setunit{%
+          \global\booltrue{cbx:parens}%
+          \printdelim{nonameyeardelim}%
+          \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
+        \usebibmacro{cite:labeldate+extradate}%
+        \usebibmacro{cite:reinit}}
+       {\iffieldequals{namehash}{\cbx@lasthash}
+          {\ifboolexpr{test {\iffieldequals{labelyear}{\cbx@lastyear}}
+                       and (test {\ifnumequal{\value{multicitecount}}{0}}
+                            or test {\iffieldundef{postnote}})}
+             {\usebibmacro{cite:comp:extradate}}
+             {\usebibmacro{cite:dump:extradate}%
+              \setunit{\compcitedelim}%
+              \usebibmacro{cite:labeldate+extradate}%
+              \savefield{labelyear}{\cbx@lastyear}%
+              \savefield{extradate}{\cbx@lastextradate}%
+              \setcounter{cbx@extradatecount}{0}}}
+          {\usebibmacro{cite:dump:extradate}%
+           \printnames{labelname}%
+           \setunit{%
+             \global\booltrue{cbx:parens}%
+             \printdelim{nameyeardelim}%
+             \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
+           \usebibmacro{cite:labeldate+extradate}%
+           \savefield{namehash}{\cbx@lasthash}%
+           \savefield{labelyear}{\cbx@lastyear}%
+           \savefield{extradate}{\cbx@lastextradate}%
+           \setcounter{cbx@extradatecount}{0}}}}
+    {\usebibmacro{cite:dump:extradate}%
+     \usebibmacro{cite:shorthand}%
+     \usebibmacro{cite:reinit}}%
+  \setunit{%
+    \ifbool{cbx:parens}
+      {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
+       \global\boolfalse{cbx:parens}}
+      {}%
+    \multicitedelim}}
+
+\renewbibmacro*{cite:labeldate+extradate}{%
+  \iffieldundef{labelyear}
+    {}
+    {\printtext[bibhyperref]{%
+       \printtext[\blx@delimcontext labeldate]{%
+         \printlabeldateextra}}}}
+
+\renewbibmacro*{cite:extradate}{%
+  \iffieldundef{extradate}
+    {}
+    {\printtext[bibhyperref]{%
+       \printtext[\blx@delimcontext labeldate]{%
+         \printfield{extradate}}}}}
+
+\newbibmacro*{cite:postnote}{%
+  \setunit{}%
+  \printtext{%
+    \ifbool{cbx:parens}
+      {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
+       \global\boolfalse{cbx:parens}}
+      {}}%
+  \usebibmacro{postnote}}
+
+\renewbibmacro*{textcite}{%
+  \iffieldequals{namehash}{\cbx@lasthash}
+    {\iffieldundef{shorthand}
+       {\ifboolexpr{test {\iffieldequals{labelyear}{\cbx@lastyear}}
+                    and (test {\ifnumequal{\value{multicitecount}}{0}}
+                         or test {\iffieldundef{postnote}})}
+          {\usebibmacro{cite:comp:extradate}}
+          {\usebibmacro{textcite:dump:extradate}%
+           \setunit{\compcitedelim}%
+           \usebibmacro{cite:labeldate+extradate}%
+           \savefield{labelyear}{\cbx@lastyear}%
+           \savefield{extradate}{\cbx@lastextradate}%
+           \setcounter{cbx@extradatecount}{0}}}
+       {\usebibmacro{textcite:dump:extradate}
+        \setunit{\compcitedelim}%
+        \usebibmacro{cite:shorthand}%
+        \global\undef\cbx@lastyear}}
+    {\usebibmacro{textcite:dump:extradate}%
+     \ifnameundef{labelname}
+       {\iffieldundef{shorthand}
+          {\usebibmacro{cite:label}%
+           \setunit{%
+             \global\booltrue{cbx:parens}%
+             \printdelim{nonameyeardelim}%
+             \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
+           \ifnumequal{\value{citecount}}{1}
+             {\usebibmacro{prenote}}
+             {}%
+           \usebibmacro{cite:labeldate+extradate}}
+          {\usebibmacro{cite:shorthand}}}
+       {\printnames{labelname}%
+        \setunit{%
+          \global\booltrue{cbx:parens}%
+          \printdelim{nameyeardelim}%
+          \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
+        \ifnumequal{\value{citecount}}{1}
+          {\usebibmacro{prenote}}
+          {}%
+        \iffieldundef{shorthand}
+          {\iffieldundef{labelyear}
+             {\usebibmacro{cite:label}}
+             {\usebibmacro{cite:labeldate+extradate}}%
+           \savefield{labelyear}{\cbx@lastyear}%
+           \savefield{extradate}{\cbx@lastextradate}%
+           \setcounter{cbx@extradatecount}{0}}
+          {\usebibmacro{cite:shorthand}%
+           \global\undef\cbx@lastyear}}%
+     \stepcounter{textcitecount}%
+     \savefield{namehash}{\cbx@lasthash}}%
+  \setunit{%
+    \ifbool{cbx:parens}
+      {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
+       \global\boolfalse{cbx:parens}}
+      {}%
+    \textcitedelim}}
+
+\renewbibmacro*{textcite:postnote}{%
+  \usebibmacro{postnote}%
+  \ifnumequal{\value{multicitecount}}{\value{multicitetotal}}
+    {\setunit{}%
+     \printtext{%
+       \ifbool{cbx:parens}
+         {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
+          \global\boolfalse{cbx:parens}}
+         {}}}
+    {\setunit{%
+       \ifbool{cbx:parens}
+         {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
+          \global\boolfalse{cbx:parens}}
+         {}%
+       \textcitedelim}}}
+
+\DeclareCiteCommand{\cite}[\mkoutercitedelims]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {}
+  {\usebibmacro{cite:dump:extradate}%
+   \usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand*{\cite}[\mkoutercitedelims]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{citeyear}}
+  {}
+  {\usebibmacro{cite:dump:extradate}%
+   \usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand{\parencite}[\mkouterparencitedelims]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {}
+  {\usebibmacro{cite:dump:extradate}%
+   \usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand*{\parencite}[\mkouterparencitedelims]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{citeyear}}
+  {}
+  {\usebibmacro{cite:dump:extradate}%
+   \usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand{\footcite}[\mkbibfootnote]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {}
+  {\usebibmacro{cite:dump:extradate}%
+   \usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand{\footcitetext}[\mkbibfootnotetext]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {}
+  {\usebibmacro{cite:dump:extradate}%
+   \usebibmacro{cite:postnote}}
+
+% smartcite's delimcontext needs special attention (see ext-biblatex-aux.def)
+\DeclareCiteCommand{\smartcite}[\mksmartcite]
+  {\delimcontext{\extblx@thisdelimcontext}%
+   \usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {}
+  {\usebibmacro{cite:dump:extradate}%
+   \usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand{\cbx@textcite}[\mkoutertextcitedelims]
+  {\usebibmacro{cite:init}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{textcite}}
+  {}
+  {\usebibmacro{cite:dump:extradate}%
+   \usebibmacro{textcite:postnote}}
+
+\DeclareMultiCiteCommand{\cbx@textcites}[\mkoutertextcitedelims]
+  {\cbx@textcite}{}
+
+\DeclareMultiCiteCommand{\cites}[\mkoutercitedelims]
+  {\cite}{\setunit{\multicitedelim}}
+\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelims]
+  {\parencite}{\setunit{\multicitedelim}}
+\DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
+  {\smartcite}{\setunit{\multicitedelim}}
+
+\DeclareCiteCommand{\bbx@xrefcite}[\mkouterbbx@xrefcitedelims]
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \boolfalse{backtracker}%
+   \usebibmacro{cite:init}}
+  {\usebibmacro{bbx:inxrefcite}}
+  {}
+  {\usebibmacro{cite:dump:extradate}%
+   \usebibmacro{cite:postnote}}
+
+\renewbibmacro*{bbx:introcite}{%
+  \usebibmacro{cite}%
+  \clearfield{postnote}%
+  \usebibmacro{cite:postnote}}
+
+\endinput
+%
+% This file is part of the biblatex-ext bundle.
+% biblatex-ext is released under the LaTeX Project Public License v1.3c
+% or later.
+%
+% A complete list of files included in that package can be found in README.md
+% or - failing that - in ext-standard.bbx.
+%
+% Official releases of this package are on CTAN
+%   https://www.ctan.org/pkg/biblatex-ext
+% development takes place on GitHub
+%   https://github.com/moewew/biblatex-ext
+%
