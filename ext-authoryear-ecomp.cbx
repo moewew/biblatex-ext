@@ -265,7 +265,7 @@
   {\usebibmacro{cite:dump:extradate}%
    \usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\footcite}[\mkbibfootnote]
+\DeclareCiteCommand{\footcite}[\mkextblxfootcite]
   {\usebibmacro{cite:init}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
@@ -274,7 +274,7 @@
   {\usebibmacro{cite:dump:extradate}%
    \usebibmacro{cite:postnote}}
 
-\DeclareCiteCommand{\footcitetext}[\mkbibfootnotetext]
+\DeclareCiteCommand{\footcitetext}[\mkextblxfootcitetext]
   {\usebibmacro{cite:init}%
    \usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
@@ -309,6 +309,10 @@
   {\cite}{\setunit{\multicitedelim}}
 \DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelims]
   {\parencite}{\setunit{\multicitedelim}}
+\DeclareMultiCiteCommand{\footcites}[\mkextblxfootcite]
+  {\footcite}{\setunit{\multicitedelim}}
+\DeclareMultiCiteCommand{\footcitetexts}[\mkextblxfootcitetext]
+  {\footcitetext}{\setunit{\multicitedelim}}
 \DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
   {\smartcite}{\setunit{\multicitedelim}}
 

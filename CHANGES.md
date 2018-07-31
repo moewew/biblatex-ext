@@ -1,3 +1,8 @@
+# Version <version> (<date>)
+- Added the `ecomp` style family. The styles of that family compress lists of
+  extradate fields.
+- Added outer cite delimiters for `\footcite`.
+
 # Version 0.4 (2018-06-10)
 See https://github.com/moewew/biblatex-ext/compare/v0.3...v0.4
 - Renamed `\DeclareOuterCiteDelim` and friends to `\DeclareOuterCiteDelims`,

@@ -92,6 +92,20 @@
    \usebibmacro{citeyear}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
+  
+\DeclareCiteCommand{\footcite}[\mkextblxfootcite]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\footcitetext}[\mkextblxfootcitetext]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
 
 % smartcite's delimcontext needs special attention (see ext-biblatex-aux.def)
 \DeclareCiteCommand{\smartcite}[\mksmartcite]
@@ -120,6 +134,10 @@
   {\cite}{\multicitedelim}
 \DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelims]
   {\parencite}{\multicitedelim}
+\DeclareMultiCiteCommand{\footcites}[\mkextblxfootcite]
+  {\smartcite}{\multicitedelim}
+\DeclareMultiCiteCommand{\footcitetexts}[\mkextblxfootcitetext]
+  {\smartcite}{\multicitedelim}
 \DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
   {\smartcite}{\multicitedelim}
 \DeclareMultiCiteCommand{\textcites}[\mkoutertextcitedelims]{\textcite}{}

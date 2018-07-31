@@ -1928,6 +1928,9 @@ All styles of \sty{biblatex-ext} define the following wrapper commands
 \centering
 \caption{Delimiter wrappers defined by \sty{biblatex-ext}}
 \label{tab:delimwrappers}
+\begin{minipage}{\linewidth}
+\renewcommand\footnoterule{}
+\centering
 \begin{tabular}{@{}lll@{}}
 \toprule
                  & \multicolumn{2}{c}{Modifier} \\
@@ -1937,11 +1940,14 @@ Citation command & Outer & Inner\\
 \cmd{cite} & \cmd{mkoutercitedelims} & \cmd{mkinnercitedelims}\\
 \cmd{parencite} & \cmd{mkouterparencitedelims} & \cmd{mkinnerparencitedelims}\\
 \cmd{textcite} & \cmd{mkoutertextcitedelims} & \cmd{mkinnertextcitedelims}\\
-\cmd{footcite} &  & \cmd{mkinnerfootcitedelims}\\
+\cmd{footcite} & \cmd{mkouterfootcitedelims} & \cmd{mkinnerfootcitedelims}\\
 \cmd{bbx@xrefcite} & \cmd{mkouterbbx@xrefcitedelims} & \cmd{mkinnerbbx@xrefcitedelims}\\
-\enquote{\cmd{bbx@introcite}} &  & \cmd{mkinnerbbx@introcitedelims}\\
+\enquote{\cmd{bbx@introcite}} & ---%
+    \footnote{Use the field format \sty{bbx@introcite} instead,
+      see \secref{sec:opt:style}} & \cmd{mkinnerbbx@introcitedelims}\\
 \bottomrule
 \end{tabular}
+\end{minipage}
 \end{table}
 
 
@@ -2060,6 +2066,7 @@ See also \sty{CHANGES.md}.
 \begin{release}{<version>}{<date>}
 \item New styles \sty{ext-authoryear-ecomp} and \sty{ext-authoryear-iecomp}%
   \see{sec:styles:new}
+\item Added outer cite delimiters for \cmd{footcite}\see{sec:opt:citedelims}
 \end{release}
 \begin{release}{0.4}{2018-06-10}
 \item Renamed \cmd{DeclareOuterCiteDelim} and friends to

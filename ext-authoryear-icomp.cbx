@@ -185,6 +185,22 @@
   {}
   {\usebibmacro{cite:postnote}}
 
+\DeclareCiteCommand{\footcite}[\mkextblxfootcite]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {}
+  {\usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand{\footcitetext}[\mkextblxfootcitetext]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {}
+  {\usebibmacro{cite:postnote}}
+
 % smartcite's delimcontext needs special attention (see ext-biblatex-aux.def)
 \DeclareCiteCommand{\smartcite}[\mksmartcite]
   {\delimcontext{\extblx@thisdelimcontext}%
@@ -209,6 +225,10 @@
   {\cite}{\setunit{\multicitedelim}}
 \DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelims]
   {\parencite}{\setunit{\multicitedelim}}
+\DeclareMultiCiteCommand{\footcites}[\mkextblxfootcite]
+  {\footcite}{\setunit{\multicitedelim}}
+\DeclareMultiCiteCommand{\footcitetexts}[\mkextblxfootcitetext]
+  {\footcitetext}{\setunit{\multicitedelim}}
 \DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
   {\smartcite}{\setunit{\multicitedelim}}
 

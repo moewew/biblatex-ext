@@ -85,12 +85,24 @@
 \RegisterCiteDelims{outer}{cite}
 \RegisterCiteDelims{outer}{parencite}
 \RegisterCiteDelims{outer}{textcite}
+\RegisterCiteDelims{outer}{footcite}
+\RegisterCiteDelims{outer}{footcitetext}
+\DeclareOuterCiteDelimsAlias{footcite}{footcitetext}
 
 \RegisterCiteDelims{inner}{cite}
 \RegisterCiteDelims{inner}{parencite}
 \RegisterCiteDelims{inner}{textcite}
 \RegisterCiteDelims{inner}{footcite}
+\RegisterCiteDelims{inner}{footcitetext}
+\DeclareInnerCiteDelimsAlias{footcite}{footcitetext}
 
+
+\newrobustcmd*{\mkextblxfootcite}[1]{%
+  \mkbibfootnote{%
+    \mkouterfootcitedelims{#1}}}
+\newrobustcmd*{\mkextblxfootcitetext}[1]{%
+  \mkbibfootnotetext{%
+    \mkouterfootcitetextdelims{#1}}}
 
 % smartcite is special
 % According to the docs it is like \parencite in a footnote and \footcite in
@@ -104,7 +116,7 @@
     {\mkouterparencitedelims{%
        \def\extblx@thisdelimcontext{parencite}%
        #1}}
-    {\mkbibfootnote{%
+    {\mkextblxfootcite{%
        \def\extblx@thisdelimcontext{footcite}%
        #1}}}
 
