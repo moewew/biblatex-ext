@@ -178,7 +178,7 @@
   \newunit\newblock
   \usebibmacro{bytranslator+others}%
   \newunit\newblock
-  \printfield{version}%
+  \usebibmacro{version}%
   \newunit\newblock
   \iftoggle{bbx:articlein}{\usebibmacro{in:}}{}%
   \usebibmacro{journal+issuetitle}%
@@ -228,7 +228,7 @@
   \newunit\newblock
   \usebibmacro{chapter+pages}%
   \newunit
-  \printfield{pagetotal}%
+  \usebibmacro{pagetotal}%
   \newunit\newblock
   \usebibmacro{isbn}%
   \newunit\newblock
@@ -320,7 +320,7 @@
   \newunit\newblock
   \usebibmacro{chapter+pages}%
   \newunit
-  \printfield{pagetotal}%
+  \usebibmacro{pagetotal}%
   \newunit\newblock
   \usebibmacro{isbn}%
   \newunit\newblock
@@ -418,7 +418,7 @@
   \newunit\newblock
   \usebibmacro{chapter+pages}%
   \newunit
-  \printfield{pagetotal}%
+  \usebibmacro{pagetotal}%
   \newunit\newblock
   \usebibmacro{isbn}%
   \newunit\newblock
@@ -516,7 +516,7 @@
   \newunit\newblock
   \usebibmacro{chapter+pages}%
   \newunit
-  \printfield{pagetotal}%
+  \usebibmacro{pagetotal}%
   \newunit\newblock
   \usebibmacro{doi+eprint+url}%
   \newunit\newblock
@@ -551,7 +551,7 @@
   \newunit\newblock
   \printfield{type}%
   \newunit
-  \printfield{version}%
+  \usebibmacro{version}%
   \newunit
   \usebibmacro{note}%
   \newunit\newblock
@@ -561,7 +561,7 @@
   \newunit\newblock
   \usebibmacro{chapter+pages}%
   \newunit
-  \printfield{pagetotal}%
+  \usebibmacro{pagetotal}%
   \newunit\newblock
   \usebibmacro{isbn}%
   \newunit\newblock
@@ -592,7 +592,7 @@
   \newunit\newblock
   \usebibmacro{byeditor+others}%
   \newunit\newblock
-  \printfield{version}%
+  \usebibmacro{version}%
   \newunit
   \usebibmacro{note}%
   \newunit\newblock
@@ -633,7 +633,7 @@
   \newunit\newblock
   \printfield{type}%
   \newunit
-  \printfield{version}%
+  \usebibmacro{version}%
   \newunit
   \usebibmacro{note}%
   \newunit\newblock
@@ -733,7 +733,7 @@
   \newunit\newblock
   \usebibmacro{type+number}%
   \newunit\newblock
-  \printfield{version}%
+  \usebibmacro{version}%
   \newunit
   \usebibmacro{note}%
   \newunit\newblock
@@ -741,7 +741,7 @@
   \newunit\newblock
   \usebibmacro{chapter+pages}%
   \newunit
-  \printfield{pagetotal}%
+  \usebibmacro{pagetotal}%
   \newunit\newblock
   \usebibmacro{isrn}%
   \newunit\newblock
@@ -778,7 +778,7 @@
   \newunit\newblock
   \usebibmacro{chapter+pages}%
   \newunit
-  \printfield{pagetotal}%
+  \usebibmacro{pagetotal}%
   \newunit\newblock
   \usebibmacro{isbn}%
   \newunit\newblock
@@ -830,6 +830,7 @@
      \usebibmacro{related}}
     {}%
   \usebibmacro{finentry}}
+
 
 \DeclareFieldAlias{titlecase:title}{titlecase}
 \renewbibmacro*{title}{%
@@ -1023,6 +1024,8 @@
 
 
 \newbibmacro*{edition}{\printfield{edition}}
+\newbibmacro*{version}{\printfield{version}}
+\newbibmacro*{pagetotal}{\printfield{pagetotal}}
 
 \newcommand*{\jourvoldelim}{\addspace}
 \newcommand*{\jourserdelim}{\newunitpunct}

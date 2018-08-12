@@ -4,6 +4,7 @@
 \def\extblx@requiredbiblatexversion{3.11}
 \def\extblx@requiredbiblatexdate{2018/02/20}
 
+\newrobustcmd*{\extblx@info}[1]{\PackageInfo{biblatex-ext}{#1}}
 \newrobustcmd*{\extblx@warning}[1]{\PackageWarning{biblatex-ext}{#1}}
 \newrobustcmd*{\extblx@warning@noline}[1]{\PackageWarningNoLine{biblatex-ext}{#1}}
 

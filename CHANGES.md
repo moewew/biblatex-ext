@@ -2,6 +2,7 @@
 - Added the `ecomp` style family. The styles of that family compress lists of
   extradate fields.
 - Added outer cite delimiters for `\footcite`.
+- Added `version` and `pagetotal` bibmacro.
 
 # Version 0.4 (2018-06-10)
 See https://github.com/moewew/biblatex-ext/compare/v0.3...v0.4

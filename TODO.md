@@ -1,7 +1,12 @@
+- Tabular bibliography
+- ISO styles?
+- Compatibility code?
+  - version settings like KOMA or chemmacros
 - Look into author-year verbose styles?
 - Author name in full on first cite (name tracking)?
 - Name wrapper for entire names?
   - One for the core? https://github.com/plk/biblatex/issues/754
+  - `\mkbibcompletename` (maybe dependent on family-given, given-family)?
 - series+number position
 - more modular bib drivers
   - would be quite a shift away from the standard styles, so offer as option?
