@@ -1980,10 +1980,11 @@ Citation command & Outer & Inner\\
 \cmd{parencite} & \cmd{mkouterparencitedelims} & \cmd{mkinnerparencitedelims}\\
 \cmd{textcite} & \cmd{mkoutertextcitedelims} & \cmd{mkinnertextcitedelims}\\
 \cmd{footcite} & \cmd{mkouterfootcitedelims} & \cmd{mkinnerfootcitedelims}\\
-\cmd{bbx@xrefcite} & \cmd{mkouterbbx@xrefcitedelims} & \cmd{mkinnerbbx@xrefcitedelims}\\
+\cmd{bbx@xrefcite} & \cmd{mkouterbbx@xrefcitedelims} &
+  \cmd{mkinnerbbx@xrefcitedelims}\\
 \enquote{\cmd{bbx@introcite}} & ---%
     \footnote{Use the field format \sty{bbx@introcite} instead,
-      see \secref{sec:opt:style}} & \cmd{mkinnerbbx@introcitedelims}\\
+      see \secref{sec:opt:style}.} & \cmd{mkinnerbbx@introcitedelims}\\
 \bottomrule
 \end{tabular}
 \end{minipage}
@@ -2148,7 +2149,8 @@ The default value for \opt{env} is \opt{bibtabular}.
 
 \marginwarn\emph{Note that there is no default definition for the
 \opt{bibtabular} environment, so you must define it with \cmd{defbibtabular}
-before use.}
+before use. An error will be issued if you fail to provide a definition
+before you use \cmd{printbibtabular}, no bibliography will be printed.}
 
 \cmditem{defbibtabular}{name}{begin code}{end code}{row code}
 
@@ -2311,10 +2313,11 @@ Using \cmd{defbibtabulartwocolumn} the example from above could be written as
 The GitHub repository of this project uses release tags, so you can compare
 the changes in source code there.\footnote{\url{\gitbaseurl/compare/}}
 See also \sty{CHANGES.md}.
+
+The numbers on the right indicate the relevant section of the manual.
 \begin{changelog}
 \begin{release}{<version>}{<date>}
-\item New styles \sty{ext-authoryear-ecomp} and \sty{ext-authoryear-iecomp}%
-  \see{sec:styles:new}
+\item New \sty{ext-authoryear-*ecomp} style subfamily\see{sec:styles:new}
 \item Added outer cite delimiters for \cmd{footcite}\see{sec:opt:citedelims}
 \item Added experimental tabular bibliography\see{sec:tabularbib}
 \end{release}
@@ -2353,7 +2356,7 @@ See also \sty{CHANGES.md}.
 \end{changelog}
 
 \begin{bibexample}[breakable]
-\printbibliography[title={Example References}]
+\printbibliography[title={Example \refname}]
 \end{bibexample}
 
 \clearpage
