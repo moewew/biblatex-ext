@@ -1,0 +1,241 @@
+\ProvidesPackage{biblatex-ext-tabular}
+  [2018/06/10 v0.4 tabular bibliographies for biblatex (MW)]
+
+% Code based on Audrey's (https://tex.stackexchange.com/users/4483/audrey)
+% answer https://tex.stackexchange.com/a/71454/35864 on TeX.SX
+% released under CC0 https://tex.meta.stackexchange.com/a/1755/35864
+% Additional modifications by me in
+% https://tex.stackexchange.com/a/440356/35864
+
+\protected\def\extblxtab@error#1#2{%
+  \PackageError{biblatex-ext-tabular}{#1}{#2.}}
+
+\protected\def\extblxtab@warning@noline#1{%
+  \PackageWarningNoLine{biblatex-ext-tabular}{#1}}
+
+\let\extblxtab@warning\extblxtab@warning@noline
+\AtEndOfPackage{%
+  \protected\def\extblxtab@warning#1{%
+    \PackageWarning{biblatex-ext-tabular}{#1}}}
+
+% user-level command for printing tabular bibliography
+
+\newrobustcmd*{\printbibtabular}{%
+  \begingroup % closed in \extblxtab@bibtabular
+  \delimcontext{bib}%
+  \edef\on@line{\on@line}%
+  \@ifnextchar[%]
+    {\extblxtab@printbibtabular}
+    {\extblxtab@printbibtabular[]}}
+
+\def\extblxtab@printbibtabular[#1]{%
+  \toggletrue{blx@tempa}%
+  \toggletrue{blx@tempb}%
+  \def\blx@theheading{bibliography}%
+  \def\blx@theenv{bibtabular}%
+  \let\blx@theprenote\@empty
+  \let\blx@thepostnote\@empty
+  \let\blx@thetitle\@empty
+  % defaults
+  \let\blx@tempa\@empty% before there is a .bbl, this must not be undef
+  \edef\blx@tempe{\the\c@refsection}% default refsection is current
+  \blx@safe@actives
+  \togglefalse{blx@resetnumsexplicit}%
+  \setkeys{blx@bib1}{#1}% First pass options keys - section and resetnumbers
+  % Is there a user-specified option for resetnumbers
+  % If so, this overrides the default
+  % "labelprefix implies resetnumbers" behaviour
+  \iftoggle{blx@resetnumsexplicit}
+    {}
+    {\ifdefempty\blx@refcontext@labelprefix
+      {}
+      {\setkeys{blx@bib2}{resetnumbers}}}%
+  \blx@rest@actives
+  \ifcsvoid{blx@dlist@entry@\blx@tempe @\blx@refcontext@context}
+    {}
+    {\letcs\blx@tempa{blx@dlist@entry@\blx@tempe @\blx@refcontext@context}}%
+  \blx@safe@actives
+  % Must reset omitnumbers as it's a global macro and if we don't, any
+  % \printbibliography following one with this set will inherit any
+  % previous "true" value
+  \togglefalse{blx@omitnumbers}%
+  \setkeys{blx@bib2}{#1}% ... now we have correct \blx@tempa,
+  % set rest of options
+  \blx@rest@actives
+  % Add datalist to list of seen datalists to prevent duplicates
+  \xifinlist{\blx@refcontext@context @\blx@tempe @entry}\blx@dlistnames
+    {}
+    {\listxadd\blx@dlistnames{\blx@refcontext@context @\blx@tempe @entry}%
+     \csxappto{blx@dlists}{%
+       \blx@xml@dlist{\blx@refcontext@context}{entry}{\blx@tempe}{%
+         \blx@xml@dlist@refcontext
+           {\blx@refcontext@sortingtemplatename}
+           {\blx@refcontext@sortingnamekeytemplatename}
+           {\blx@refcontext@labelprefix}
+           {\blx@refcontext@uniquenametemplatename}
+           {\blx@refcontext@labelalphanametemplatename}}{}}}%
+  \ifdefvoid\blx@tempa
+    {\blx@warn@bibempty\endgroup}
+    {\extblxtab@bibtabular\blx@tempa}}
+
+% underlying macros
+\def\extblxtab@bibtabular#1{%
+  \blx@langstrings
+  \blx@bibheading\blx@theheading\blx@thetitle
+  \blx@bibnote\blx@theprenote
+  \begingroup
+  \blx@bibinit
+  \let\@noitemerr\@empty
+  \let\blx@noitem\blx@warn@bibempty
+  \ifnum\bibinitsep=\z@
+    \let\blx@initsep\relax
+  \fi
+  \ifnum\bibnamesep=\z@
+    \let\blx@namesep\relax
+  \fi
+  \csuse{blx@hook@bibinit}%
+  \csuse{blx@hook@bibinit@next}%
+  % copy filtered list of entries to internal list macro
+  \let\blx@tempb\@empty
+  \def\blx@do##1{%
+    \blx@ifdata{##1}{%
+      \begingroup
+      \blx@getdata{##1}%
+      \blx@bibcheck
+      \iftoggle{blx@skipentry}{}{%
+        \global\let\blx@noitem\@empty
+        \listgadd\blx@tempb{##1}}%
+      \endgroup}{}}%
+  \let\blx@done\relax
+  \blx@listloop{#1}%
+  \begingroup
+  % sane names for wrapper macros
+  \def\plain      {\extblxtab@tab@item@plain      {\extblxtab@tabrow@entrykey}}
+  \def\plainlang  {\extblxtab@tab@item@plainlang  {\extblxtab@tabrow@entrykey}}
+  \def\anchor     {\extblxtab@tab@item@anchor     {\extblxtab@tabrow@entrykey}}
+  \def\anchorlang {\extblxtab@tab@item@anchorlang {\extblxtab@tabrow@entrykey}}
+  \def\driver     {\extblxtab@tab@item@driver     {\extblxtab@tabrow@entrykey}}
+  % tabular output for each item in list
+  % note that each cell is in its own group, hence we need \gdef to break
+  % out of the first cell as soon as the row format has a & in it since
+  % the assignment will be counted as being in the first cell
+  \def\do##1{%
+    \gdef\extblxtab@tabrow@entrykey{##1}%
+    \csuse{extblxtab@tabrow@format@\blx@theenv}}%
+  \csuse{extblxtab@env@\blx@theenv}%
+  \dolistloop{\blx@tempb}%
+  \csuse{extblxtab@endenv@\blx@theenv}%
+  \endgroup
+  \blx@bibnote\blx@thepostnote
+  \endgroup
+  \endgroup % this closes the group opened by \printbibtabular
+}
+
+\def\extblxtab@tab@item@aux@lang#1{%
+  \blx@initunit
+  \blx@beglangbib
+  \bibsentence
+  #1%
+  \blx@postpunct
+  \blx@endlangbib
+}
+
+\def\extblxtab@tab@item@plain#1#2{%
+  \begingroup
+  \blx@getdata{#1}%
+  \blx@setoptions@type\abx@field@entrytype
+  \blx@setoptions@entry
+  \blx@thelabelnumber
+  \csuse{blx@hook@bibitem}%
+  \blx@execute
+  #2%
+  \endgroup
+}
+
+\def\extblxtab@tab@item@plainlang#1#2{%
+  \extblxtab@tab@item@plain{#1}{%
+    \extblxtab@tab@item@aux@lang{#2}}}
+
+\def\extblxtab@tab@item@anchor#1#2{%
+  \extblxtab@tab@item@plain{#1}{%
+    \addtocounter{instcount}\@ne
+    \blx@anchor
+    \blx@pagetracker
+    #2}}
+
+\def\extblxtab@tab@item@anchorlang#1#2{%
+  \extblxtab@tab@item@anchor{#1}{%
+    \extblxtab@tab@item@aux@lang{#2}}}
+
+\def\extblxtab@tab@item@driver#1#2{%
+  \begingroup
+  \blx@getdata{#1}%
+  \blx@setdefaultrefcontext{#1}%
+  \blx@setoptions@type\abx@field@entrytype
+  \blx@setoptions@entry
+  \blx@thelabelnumber
+  \csuse{blx@hook@bibitem}%
+  \blx@execute
+  #2%
+  \blx@initunit
+  \blx@beglangbib
+  \bibsentence
+  \blx@driver\abx@field@entrytype
+  \blx@postpunct
+  \blx@endlangbib
+  \endgroup
+}
+
+% user-level command for defining tabular bibliography format
+\newrobustcmd*{\defbibtabular}[4]{%
+  \long\csdef{extblxtab@env@#1}{#2}%
+  \long\csdef{extblxtab@endenv@#1}{#3}%
+  \long\csdef{extblxtab@tabrow@format@#1}{#4}}
+
+% error message in case user does not initialise bibtabular
+\defbibtabular{bibtabular}
+  {\extblxtab@error{%
+     tabular bibliography environment\MessageBreak
+     'bibtabular' undefined}
+     {Please supply a suitable definition with \string\defbibtabular.%
+      \MessageBreak
+      See the documentation for more details}}
+  {\textbf{Error!
+           The tabular bibliography environment `bibtabular' is undefined.
+           No tabular bibliography was produced.
+           Please supply a suitable definition with
+           \mbox{\string\defbibtabular}.
+           See the manual for more information.}}
+  {}
+
+\newrobustcmd*{\defbibtabulartwocolumn}[5]{%
+  \long\csdef{extblxtab@env@#1}{#2}%
+  \long\csdef{extblxtab@endenv@#1}{#3}%
+  \long\csdef{extblxtab@tabrow@format@#1}{%
+    \anchorlang{#4} & \driver{#5}\\
+  }%
+}
+
+% Two useful bibmacros for tabular bibliographies
+
+% print the labelname/sortname with editor or translator string if appropriate
+\newbibmacro*{tabular:sortname}{%
+  \ifnameundef{labelname}
+    {\usebibmacro{labeltitle}}
+    {\printnames[sortname]{labelname}%
+     \iffieldequalstr{labelnamesource}{editor}
+       {\setunit{\printdelim{editortypedelim}}%
+        \usebibmacro{editor+othersstrg}}
+       {\iffieldequalstr{labelnamesource}{translator}
+          {\setunit{\printdelim{translatortypedelim}}%
+           \usebibmacro{translator+othersstrg}}
+          {}}}}
+
+% bibitem hook to suppress redundant sortname list
+% useful for \driver since it usually lives in its own group
+\newbibmacro*{tabular:omitsortname}{%
+  \ifnameundef{labelname}
+    {}
+    {\clearname{\thefield{labelnamesource}}}}
+
+\endinput

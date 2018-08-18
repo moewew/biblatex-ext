@@ -3,6 +3,8 @@
   extradate fields.
 - Added outer cite delimiters for `\footcite`.
 - Added `version` and `pagetotal` bibmacro.
+- First implementation of a tabular bibliography based on Audrey's answer to
+  https://tex.stackexchange.com/q/71088/35864
 
 # Version 0.4 (2018-06-10)
 See https://github.com/moewew/biblatex-ext/compare/v0.3...v0.4

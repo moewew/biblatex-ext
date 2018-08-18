@@ -31,11 +31,17 @@
 \usepackage{booktabs}
 \usepackage{multicol}
 \usepackage[svgnames]{xcolor}
+\usepackage{manfnt}
+\usepackage{longtable}
+\usepackage{array}
+\newcolumntype{L}[1]{%
+  >{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
 \usepackage[listings, breakable, skins]{tcolorbox}%
 \usetikzlibrary{arrows.meta}
 \usepackage[style=ext-authoryear-iecomp, backend=biber]{biblatex}
 \addbibresource{biblatex-examples.bib}
 \addbibresource{biblatex-ext-examples.bib}
+\usepackage{biblatex-ext-tabular}
 
 \makeatletter
 \defbibcheck{examplebib}{%
@@ -50,6 +56,14 @@
   \docsvlist{#1}%
   \printbibliography[check=examplebib, heading=none]}
 
+\newcommand*{\exampleprintbibtab}[1]{%
+  \nocite{#1}%
+  \let\extblxdoc@examplebib@list\empty
+  \def\do##1{\listeadd\extblxdoc@examplebib@list{\detokenize{##1}}}%
+  \docsvlist{#1}%
+  \printbibtabular[check=examplebib, heading=none]}
+
+
 \iffontspec
 \def\textvisiblespace{%
   \raisebox{-2.2pt}{%
@@ -58,6 +72,14 @@
     \hbox{\vrule \@height.5ex \@width.12ex}%
     \kern.04em}}
 \fi
+
+\newcommand{\warnsymbol}{%
+  \makebox[2em][c]{%
+    \makebox[0pt][c]{\raisebox{.26em}{\LARGE\bfseries!}}%
+    \makebox[0pt][c]{\fontsize{40}{40}\selectfont\color{red}$\bigtriangleup$}}}
+
+\newcommand*{\marginwarn}{%
+  \leavevmode\marginpar{\raisebox{-1.5em}{\warnsymbol}}}
 \makeatother
 
 
@@ -108,13 +130,17 @@
 \lstdefinestyle{extblxstylelatex}{%
   language  = {[LaTeX]TeX},
   style     = {extblxstylegeneral},
-  moretexcs = {setlength,bibhang,addcomma,adddot,addperiod,addcolon,addspace,
+  moretexcs = {
+    dimexpr,arraybackslash,newcolumntype,anchor,driver,plain,plainlang,
+    anchorlang,
+    setlength,bibhang,addcomma,adddot,addperiod,addcolon,addspace,
     addnbspace,
     mkbibbold,mkbibemph,mkbibbrackets,mkbibparens,
     usebibmacro,newbibmacro,renewbibmacro,setunit,newunit,printfield,printlist,
     bibopenparen,bibcloseparen,bibopenbracket,bibclosebracket,
     iflistundef,iffieldundef,ifnameundef,
     ExecuteBibliographyOptions,
+    defbibtabular,defbibtabulartwocolumn,defbibenvironment,
     DeclareFieldFormat,DeclareDelimFormat,DeclareDelimcontextAlias,
     DeclareInnerCiteDelims,UndeclareInnerCiteDelims,DeclareInnerCiteDelimsAlias,
     DeclareOuterCiteDelims,UndeclareOuterCiteDelims,DeclareOuterCiteDelimsAlias,
@@ -2012,13 +2038,13 @@ A bibliography macro to print the \bibfield{edition} field, this avoids a direct
 \lstinline|\printfield{edition}| in the bibliography drivers.
 
 \keyitem[version]
-Similar to the \bibmacro{edition} bibmacro, \bibmacro{version} prints the
-\bibfield{version} field, this avoids a direct \lstinline|\printfield{version}|
-in the bibliography drivers.
+Similar to the \bibmacro{edition} bibliography macro, \bibmacro{version}
+prints the \bibfield{version} field, this avoids a direct
+\lstinline|\printfield{version}| in the bibliography drivers.
 
 \keyitem[pagetotal]
-Similar to the \bibmacro{edition} bibmacro, \bibmacro{pagetotal} prints the
-\bibfield{pagetotal} field, this avoids a direct
+Similar to the \bibmacro{edition} bibliograohy macro, \bibmacro{pagetotal}
+prints the \bibfield{pagetotal} field, this avoids a direct
 \lstinline|\printfield{pagetotal}| in the bibliography drivers.
 
 \keyitem[in:editor(+others)]
@@ -2068,6 +2094,206 @@ sensible values are \bibfield{publisher}, \bibfield{institution} and
 A bibliography macro to print the \bibfield{type} and \bibfield{number} fields.
 \end{keymarglistbook}
 
+\clearpage
+\section{Tabular Bibliographies}\label{sec:tabularbib}
+An experimental addition to this bundle is the package
+\sty{biblatex-ext-tabular} which allows you to typeset tabular
+(two-column) bibliographies.
+The package needs to be loaded after \sty{biblatex} and has no further options.
+\begin{biblatexcode}
+\usepackage[(*@\prm{options}@*)]{biblatex}
+(*@\dots @*)
+\usepackage{biblatex-ext-tabular}
+\end{biblatexcode}
+If it turns out that the tabular bibliography package is useful on its own
+right it may be split off from the rest of this bundle in the future.
+In that case the name \sty{biblatex-ext-tabular} may be deprecated in favour
+of something more snappy.
+The old name should continue to work, but you may have to install a new package
+for it to work.
+
+The code for the tabular bibliographies is based on Audrey's%
+\fnurl{https://tex.stackexchange.com/users/4483/audrey}
+answer to a question%
+\fnurl{https://tex.stackexchange.com/q/71088/35864}
+on \tex{}~--~\latex{} Stack Exchange.
+The code has been modernised to keep in sync with changes to internal macros
+and modified to allow for slightly more flexible setups, so any bugs you find
+are mine and not Audrey's. Please report them via the channels mentioned above
+in~\secref{sec:feedback}.
+
+Before tabular bibliographies can be used, a suitable definition must be
+supplied with \cmd{defbibtabular}.
+
+\begin{ltxsyntax}
+\cmditem{printbibtabular}[key=value, \dots]
+
+This commands prints a tabular bibliography.
+It accepts the same options as \cmd{printbibliography}, but note that
+\opt{env} must be a tabular bibliography declared with \cmd{defbibtabular}.
+The default value for \opt{env} is \opt{bibtabular}.
+
+\marginwarn\emph{Note that there is no default definition for the
+\opt{bibtabular} environment, so you must define it with \cmd{defbibtabular}
+before use.}
+
+\cmditem{defbibtabular}{name}{begin code}{end code}{row code}
+
+This command defines a tabular bibliography.
+The \prm{name} is an identifier passed to the \opt{env} option of
+\cmd{printbibtabular} when selecting the environment.
+The \prm{begin code} is \latex{} code to be executed at the beginning of the
+environment, usually it will begin a tabular environment.
+The \prm{end code} is executed at the end of the environment and would
+usually end the tabular environment.
+The \prm{row code} holds the code for one row in the tabular bibliography,
+it should have no more columns than ordered in \prm{begin code} and should
+end with \lstinline|\\|.
+
+Within the \prm{row code} argument the following macros are defined and can be
+used to typeset the result of bibliography macros.
+Every cell should normally be wrapped into exactly one of the following macro
+since they are responsible for providing the necessary entry data to the
+bibliography macros.
+
+\cmditem{plain}{code}
+
+Typesets \prm{code} with the entry data of the current entry.
+
+\cmditem{plainlang}{code}
+
+Like \cmd{plain}, but typesets \prm{code} in the language of the current
+item if the language switching options are enabled.
+
+\cmditem{anchor}{code}
+
+Like \cmd{plain}, and but additionally sets a link anchor for the current entry.
+There should only be one \cmd{anchor} or \cmd{anchorlang} per row,
+and for proper linking there should be at least one.
+Usually \cmd{anchor} or \cmd{anchorlang} is the first cell in the row.
+
+\cmditem{anchorlang}{code}
+
+Like \cmd{anchor}, but in the entry language like \cmd{plainlang}.
+
+\cmditem{driver}{precode}
+
+Typesets the bibliography entry using the correct driver.
+This always uses the entry language if language switching is enabled.
+The \prm{precode} argument can be used to execute code before the driver
+is executed.
+Usually this would be the last cell in a row, duplicate information can be
+cleaned up with help of the \prm{precode} argument.
+
+Recall that standard \env{tabular} can't break across pages, so you may want
+to give \env{longtable} a try.
+Additionally, the standard column specifiers \sty{l}, \sty{r} and \sty{c}
+define flexible-sized columns which might not be appropriate here;
+\sty{p} defines fixed-width columns but imposes justification, which does not
+look good if the columns are too narrow.
+You may want to look into fixed-width flush-left or flush-right columns%
+\fnurl{https://tex.stackexchange.com/q/12703/35864}.
+\end{ltxsyntax}
+
+The package also defines two helpful bibliography macros.
+\begin{keymarglistbook}
+  \item[tabular:sortname] Prints the labelname/sortname.
+  \item[tabular:omitsortname] Suppresses the labelname/sortname in the current
+    group.
+\end{keymarglistbook}
+
+A simple example of a useful tabular bibliography setup is
+\begin{biblatexcode}
+\usepackage{longtable}
+\usepackage{array}
+\newcolumntype{L}[1]{%
+  >{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
+\defbibtabular{bibtabular}
+  {\setlength{\LTpre}{0pt}%
+   \setlength{\LTpost}{0pt}%
+   \renewcommand*{\arraystretch}{2}%
+   \begin{longtable}{%
+     @{}
+     L{\dimexpr0.3\textwidth-\tabcolsep\relax}
+     L{\dimexpr0.7\textwidth-\tabcolsep\relax}
+     @{}}}
+  {\end{longtable}}
+  {\anchorlang{\usebibmacro{tabular:sortname}} &
+   \driver{\usebibmacro{tabular:omitsortname}} \\}
+\end{biblatexcode}
+This defines a two-column bibliography where the first column shows the
+primary name associated with the work (the labelname/sortname) and the
+second colum shows the bibliography data with the primary name suppressed
+to avoid duplication.
+The anchor is set to the first column, so that a viewer jumps there
+if a link to the entry is followed.
+
+\begin{bibexample}
+  \defbibtabular{bibtabular}
+    {\setlength{\LTpre}{0pt}%
+     \setlength{\LTpost}{0pt}%
+     \renewcommand*{\arraystretch}{2}%
+     \begin{longtable}{%
+       @{}
+       L{\dimexpr0.3\textwidth-\tabcolsep\relax}
+       L{\dimexpr0.7\textwidth-\tabcolsep\relax}
+       @{}}}
+    {\end{longtable}}
+    {\anchorlang{\usebibmacro{tabular:sortname}} &
+     \driver{\usebibmacro{tabular:omitsortname}} \\}
+
+  \exampleprintbibtab{sigfridsson,worman,geer,nussbaum}
+\end{bibexample}
+
+For the common case of two-column tabular bibliographies there is a thin
+wrapper around \cmd{defbibtabular} that might turn out a bit easier to use.
+\begin{ltxsyntax}
+  \cmditem{defbibtabulartwocolumn}{name}{begin code}{end code}%
+  {anchor code}{driver precode}
+
+  This defines a two-column tabular bibliography environment with \prm{name},
+  \prm{begin code} and \prm{end code} as for \cmd{defbibtabular}.
+
+  The first column is an \cmd{anchorlang} column that executes
+  \prm{anchor code}, the second column executes a pre-code and
+  the bibliography driver.
+
+\begin{biblatexcode}
+\defbibtabulartwocolumn{(*@\prm{name}@*)}
+  {(*@\prm{begin code}@*)}{(*@\prm{end code}@*)}
+  {(*@\prm{anchor code}@*)}{(*@\prm{driver precode}@*)}
+\end{biblatexcode}
+is equivalent to
+\begin{biblatexcode}
+\defbibtabular{(*@\prm{name}@*)}
+  {(*@\prm{begin code}@*)}{(*@\prm{end code}@*)}
+  {\anchorlang{(*@\prm{anchor code}@*)} & \driver{(*@\prm{driver precode}@*)} \\}
+\end{biblatexcode}
+
+Using \cmd{defbibtabulartwocolumn} the example from above could be written as
+\begin{biblatexcode}
+\usepackage{longtable}
+\usepackage{array}
+\newcolumntype{L}[1]{%
+  >{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
+\defbibtabulartwocolumn{bibtabular}
+  {\setlength{\LTpre}{0pt}%
+   \setlength{\LTpost}{0pt}%
+   \renewcommand*{\arraystretch}{2}%
+   \begin{longtable}{%
+     @{}
+     L{\dimexpr0.3\textwidth-\tabcolsep\relax}
+     L{\dimexpr0.7\textwidth-\tabcolsep\relax}
+     @{}}}
+  {\end{longtable}}
+  {\usebibmacro{tabular:sortname}}
+  {\usebibmacro{tabular:omitsortname}}
+\end{biblatexcode}
+\end{ltxsyntax}
+
+\clearpage
 \section{Revision History}\label{sec:log}
 The GitHub repository of this project uses release tags, so you can compare
 the changes in source code there.\footnote{\url{\gitbaseurl/compare/}}
@@ -2077,6 +2303,7 @@ See also \sty{CHANGES.md}.
 \item New styles \sty{ext-authoryear-ecomp} and \sty{ext-authoryear-iecomp}%
   \see{sec:styles:new}
 \item Added outer cite delimiters for \cmd{footcite}\see{sec:opt:citedelims}
+\item Added experimental tabular bibliography\see{sec:tabularbib}
 \end{release}
 \begin{release}{0.4}{2018-06-10}
 \item Renamed \cmd{DeclareOuterCiteDelim} and friends to
