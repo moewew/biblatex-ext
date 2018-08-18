@@ -31,7 +31,6 @@
 \usepackage{booktabs}
 \usepackage{multicol}
 \usepackage[svgnames]{xcolor}
-\usepackage{manfnt}
 \usepackage{longtable}
 \usepackage{array}
 \newcolumntype{L}[1]{%
@@ -869,6 +868,13 @@ This style is like \sty{ext-authortitle-tcomp}, but it is based on
 Sigfridsson and Ryde \quad Knuth 1984, 1986
 \end{bibexample}
 
+\styleitem{ext-authoryear-tecomp}
+A compact author-year citation style that combines \sty{ext-authoryear-tcomp}
+and \sty{ext-authoryear-ecomp}.
+\begin{bibexample}
+Sigfridsson and Ryde \quad Knuth 1984, 1986a\bibrangedash c
+\end{bibexample}
+
 \styleitem{ext-authoryear-ticomp}
 A compact author-year citation style with \enquote{ibidem} function that
 suppresses years for author lists with only one work in the bibliography.
@@ -876,6 +882,13 @@ This style is like \sty{ext-authortitle-ticomp}, but it is based on
 \sty{ext-authoryear} and not on \sty{ext-authortitle}.
 \begin{bibexample}
 Sigfridsson and Ryde \quad ibid. \quad Knuth 1984, 1986
+\end{bibexample}
+
+\styleitem{ext-authoryear-teicomp}
+A compact author-year citation style that combines \sty{ext-authoryear-ticomp}
+and \sty{ext-authoryear-iecomp}.
+\begin{bibexample}
+Sigfridsson and Ryde \quad ibid. \quad Knuth 1984, 1986a\bibrangedash c
 \end{bibexample}
 
 \end{stylelist}

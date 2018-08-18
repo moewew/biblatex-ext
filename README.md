@@ -44,11 +44,15 @@ standard styles. The bundle consists of the following files
   - `ext-authoryear-common.bbx`
   - `ext-authoryear.bbx` and `ext-authoryear.cbx`
   - `ext-authoryear-comp.bbx` and `ext-authoryear-comp.cbx`
+  - `ext-authoryear-ecomp.bbx` and `ext-authoryear-ecomp.cbx`
   - `ext-authoryear-ibid.bbx` and `ext-authoryear-ibid.cbx`
   - `ext-authoryear-icomp.bbx` and `ext-authoryear-icomp.cbx`
+  - `ext-authoryear-iecomp.bbx` and `ext-authoryear-iecomp.cbx`
   - `ext-authoryear-terse.bbx` and `ext-authoryear-terse.cbx`
   - `ext-authoryear-tcomp.bbx` and `ext-authoryear-tcomp.cbx`
+  - `ext-authoryear-tecomp.bbx` and `ext-authoryear-tecomp.cbx`
   - `ext-authoryear-ticomp.bbx` and `ext-authoryear-ticomp.cbx`
+  - `ext-authoryear-tiecomp.bbx` and `ext-authoryear-tiecomp.cbx`
 - The `numeric` style family
   - `ext-numeric.bbx` and `ext-numeric.cbx`
   - `ext-numeric-comp.bbx` and `ext-numeric-comp.cbx`
@@ -61,7 +65,8 @@ standard styles. The bundle consists of the following files
   - `ext-verbose-trad1.bbx` and `ext-verbose-trad1.cbx`
   - `ext-verbose-trad2.bbx` and `ext-verbose-trad2.cbx`
   - `ext-verbose-trad3.bbx` and `ext-verbose-trad3.cbx`
-
+- The package for tabular bibliographies `biblatex-ext-tabular.sty`
+  
 ## Licence
 
 Copyright 2017-2018 Moritz Wemheuer

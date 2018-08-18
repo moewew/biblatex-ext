@@ -1,4 +1,3 @@
-- Tabular bibliography
 - ISO styles?
 - Compatibility code?
   - version settings like KOMA or chemmacros
