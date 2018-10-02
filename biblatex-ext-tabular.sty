@@ -3,7 +3,9 @@
 
 % Code based on Audrey's (https://tex.stackexchange.com/users/4483/audrey)
 % answer https://tex.stackexchange.com/a/71454/35864 on TeX.SX
-% released under CC0 https://tex.meta.stackexchange.com/a/1755/35864
+% relicensed under CC0, see
+% https://tex.meta.stackexchange.com/a/1755/35864
+% ultimately based on LPPL code from biblatex.sty
 % Additional modifications by me in
 % https://tex.stackexchange.com/a/440356/35864
 
@@ -110,11 +112,11 @@
   \blx@listloop{#1}%
   \begingroup
   % sane names for wrapper macros
-  \def\plain      {\extblxtab@tab@item@plain      {\extblxtab@tabrow@entrykey}}
-  \def\plainlang  {\extblxtab@tab@item@plainlang  {\extblxtab@tabrow@entrykey}}
-  \def\anchor     {\extblxtab@tab@item@anchor     {\extblxtab@tabrow@entrykey}}
-  \def\anchorlang {\extblxtab@tab@item@anchorlang {\extblxtab@tabrow@entrykey}}
-  \def\driver     {\extblxtab@tab@item@driver     {\extblxtab@tabrow@entrykey}}
+  \def\plain     {\extblxtab@tab@item@plain     {\extblxtab@tabrow@entrykey}}%
+  \def\plainlang {\extblxtab@tab@item@plainlang {\extblxtab@tabrow@entrykey}}%
+  \def\anchor    {\extblxtab@tab@item@anchor    {\extblxtab@tabrow@entrykey}}%
+  \def\anchorlang{\extblxtab@tab@item@anchorlang{\extblxtab@tabrow@entrykey}}%
+  \def\driver    {\extblxtab@tab@item@driver    {\extblxtab@tabrow@entrykey}}%
   % tabular output for each item in list
   % note that each cell is in its own group, hence we need \gdef to break
   % out of the first cell as soon as the row format has a & in it since

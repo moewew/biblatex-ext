@@ -2113,18 +2113,23 @@ A bibliography macro to print the \bibfield{type} and \bibfield{number} fields.
 An experimental addition to this bundle is the package
 \sty{biblatex-ext-tabular} which allows you to typeset tabular
 (two-column) bibliographies.
-The package needs to be loaded after \sty{biblatex} and has no further options.
+The package must be loaded after \sty{biblatex} and has no further options.
 \begin{biblatexcode}
 \usepackage[(*@\prm{options}@*)]{biblatex}
 (*@\dots @*)
 \usepackage{biblatex-ext-tabular}
 \end{biblatexcode}
-If it turns out that the tabular bibliography package is useful on its own
-right it may be split off from the rest of this bundle in the future.
+If it turns out that the tabular bibliography package is useful on its own,
+it may be split off from the rest of this bundle in the future.
 In that case the name \sty{biblatex-ext-tabular} may be deprecated in favour
 of something more snappy.
-The old name should continue to work, but you may have to install a new package
-for it to work.
+The old name should then continue to work, but you may have to install a new
+package to be able to use it.
+
+The package \sty{biblatex-ext-tabular} can be used independently of the styles
+provided in this bundle.
+But no matter what style you use, you will probably have to apply some tweaks
+here and there to make the output look acceptable.
 
 The code for the tabular bibliographies is based on Audrey's%
 \fnurl{https://tex.stackexchange.com/users/4483/audrey}
@@ -2136,8 +2141,8 @@ and modified to allow for slightly more flexible setups, so any bugs you find
 are mine and not Audrey's. Please report them via the channels mentioned above
 in~\secref{sec:feedback}.
 
-Before tabular bibliographies can be used, a suitable definition must be
-supplied with \cmd{defbibtabular}.
+\marginwarn Before tabular bibliographies can be used, a suitable definition
+must be supplied with \cmd{defbibtabular}.
 
 \begin{ltxsyntax}
 \cmditem{printbibtabular}[key=value, \dots]
@@ -2150,7 +2155,8 @@ The default value for \opt{env} is \opt{bibtabular}.
 \marginwarn\emph{Note that there is no default definition for the
 \opt{bibtabular} environment, so you must define it with \cmd{defbibtabular}
 before use. An error will be issued if you fail to provide a definition
-before you use \cmd{printbibtabular}, no bibliography will be printed.}
+for \opt{bibtabular} before you use \cmd{printbibtabular} with the default
+\opt{env} value, no bibliography will be printed.}
 
 \cmditem{defbibtabular}{name}{begin code}{end code}{row code}
 
@@ -2164,6 +2170,9 @@ usually end the tabular environment.
 The \prm{row code} holds the code for one row in the tabular bibliography,
 it should have no more columns than ordered in \prm{begin code} and should
 end with \lstinline|\\|.
+
+Please keep in mind that the tabular bibliography is subject to all limitations
+of the particular tabular environment you decide to use.
 
 Within the \prm{row code} argument the following macros are defined and can be
 used to typeset the result of bibliography macros.
@@ -2258,7 +2267,7 @@ if a link to the entry is followed.
     {\anchorlang{\usebibmacro{tabular:sortname}} &
      \driver{\usebibmacro{tabular:omitsortname}} \\}
 
-  \exampleprintbibtab{sigfridsson,worman,geer,nussbaum}
+  \exampleprintbibtab{sigfridsson,geer,nussbaum}
 \end{bibexample}
 
 For the common case of two-column tabular bibliographies there is a thin
