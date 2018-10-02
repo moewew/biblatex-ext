@@ -8,7 +8,7 @@ module = "biblatex-ext"
 unpackfiles = { }
 
 -- Install biblatex style files and use these as the sources
-installfiles = {"*.cbx", "*.bbx", "*.def"}
+installfiles = {"*.cbx", "*.bbx", "*.def", "*.sty"}
 sourcefiles  = installfiles
 
 checkengines = {"pdftex"}
@@ -22,7 +22,7 @@ end
 packtdszip  = true
 
 
-tagfiles = {"*.bbx", "*.cbx", "*.def", "*.tex", "*.md"}
+tagfiles = {"*.bbx", "*.cbx", "*.def", "*.tex", "*.md", "*.sty"}
 
 function update_tag(file, content, tagname, tagdate)
   local isodatescheme = "%d%d%d%d%-%d%d%-%d%d"
@@ -30,26 +30,27 @@ function update_tag(file, content, tagname, tagdate)
   local versionscheme = "%d+%.%d+%.?%d?%w?"
   local latexdate = string.gsub(tagdate, "%-", "/")
   local tagyear = string.match(tagdate, "%d%d%d%d")
+  local safetagname = string.gsub(tagname, "^v", "")
   if string.match(file, "^ext%-standard%.bbx$") then
     content = string.gsub(content , "v" .. versionscheme .. " %(" ..
                                     isodatescheme .. "%)",
-                                    "v" .. tagname .. " (" ..
+                                    "v" .. safetagname .. " (" ..
                                     tagdate .. ")")
     content = string.gsub(content , ltxdatescheme .. " v" .. versionscheme,
-                                    latexdate .. " v" .. tagname)
+                                    latexdate .. " v" .. safetagname)
     return string.gsub(content, "Copyright 2017%-%d%d%d%d",
                                 "Copyright 2017-" .. tagyear)
   elseif string.match(file, "%.bbx$")  or string.match(file, "%.cbx$")
-    or string.match(file, "%.def$") then
+    or string.match(file, "%.def$") or string.match(file, "%.sty$") then
     return string.gsub(content , ltxdatescheme .. " v" .. versionscheme,
-                                 latexdate .. " v" .. tagname)
+                                 latexdate .. " v" .. safetagname)
   elseif string.match(file, "%.tex$") then
     content = string.gsub(content ,"\n\\newcommand%*{\\extblxversion}{"
                                      .. versionscheme .."}\n",
                                    "\n\\newcommand*{\\extblxversion}{"
-                                     .. tagname .. "}\n")
+                                     .. safetagname .. "}\n")
     content = string.gsub(content ,"\n\\begin{release}{<version>}{<date>}\n",
-                                   "\n\\begin{release}{" .. tagname .. "}{"
+                                   "\n\\begin{release}{" .. safetagname .. "}{"
                                      .. tagdate .."}\n")
     content = string.gsub(content, "date%s*=%s*{\\DTMDate{" .. isodatescheme ..
                                      "}}",
@@ -61,14 +62,19 @@ function update_tag(file, content, tagname, tagdate)
                                 "Copyright 2017-" .. tagyear)
   elseif string.match(file, "^CHANGES%.md$") then
     content = string.gsub(content, "# Version <version> %(<date>%)\n",
-                                   "# Version " .. tagname .. " (" .. tagdate ..
-                                   ")\n")
+                                   "# Version " .. safetagname .. " (" ..
+                                   tagdate .. ")\n")
     if string.match(content, "https://github.com/moewew/biblatex%-ext" ..
                              "/compare/v" .. versionscheme ..
                              "...v<version>") then
       return string.gsub(content, "...v<version>",
-                                  "...v" .. tagname)
+                                  "...v" .. safetagname)
     end
   end
   return content
+end
+
+kpse.set_program_name ("kpsewhich")
+if not release_date then
+  dofile(kpse.lookup("l3build.lua"))
 end

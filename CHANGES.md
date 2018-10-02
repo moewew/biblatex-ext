@@ -1,4 +1,5 @@
-# Version <version> (<date>)
+# Version v0.5 (2018-10-02)
+See https://github.com/moewew/biblatex-ext/compare/v0.4...v0.5
 - Added the `ecomp` style family. The styles of that family compress lists of
   extradate fields.
 - Added outer cite delimiters for `\footcite`.
