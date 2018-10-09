@@ -1,5 +1,5 @@
-# Version <version> (<date>)
-See https://github.com/moewew/biblatex-ext/compare/v0.5...v<version>
+# Version 0.5a (2018-10-09)
+See https://github.com/moewew/biblatex-ext/compare/v0.5...v0.5a
 - Fixed a bug with `\footcites` and `\footcitetexts` in `ext-authoryear.cbx`
   https://github.com/moewew/biblatex-ext/issues/12
 
