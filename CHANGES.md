@@ -1,3 +1,8 @@
+# Version <version> (<date>)
+See https://github.com/moewew/biblatex-ext/compare/v0.5...v<version>
+- Fixed a bug with `\footcites` and `\footcitetexts` in `ext-authoryear.cbx`
+  https://github.com/moewew/biblatex-ext/issues/12
+
 # Version v0.5 (2018-10-02)
 See https://github.com/moewew/biblatex-ext/compare/v0.4...v0.5
 - Added the `ecomp` style family. The styles of that family compress lists of
