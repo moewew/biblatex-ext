@@ -1,0 +1,19 @@
+% biblatex dependencies
+\usepackage{pdftexcmds}[2018/01/30]
+\usepackage{etoolbox}
+\usepackage{keyval}
+\usepackage{kvoptions}
+\usepackage{logreq}
+\usepackage{ifthen}
+\usepackage{url}
+
+% suppress counter allocation info in log
+% the original definition ends with
+% \wlog{\string#6=\string#1\the\allocationnumber}
+\makeatletter
+\def\e@alloc#1#2#3#4#5#6{%
+  \global\advance#3\@ne
+  \e@ch@ck{#3}{#4}{#5}#1%
+  \allocationnumber#3\relax
+  \global#2#6\allocationnumber}%
+\makeatother

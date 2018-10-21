@@ -1,2 +1,4 @@
 *.cfg linguist-language=latex
 *.def linguist-language=latex
+*.lvt linguist-language=latex
+*.pvt linguist-language=latex

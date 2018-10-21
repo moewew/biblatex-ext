@@ -11,15 +11,24 @@ unpackfiles = { }
 installfiles = {"*.cbx", "*.bbx", "*.def", "*.sty"}
 sourcefiles  = installfiles
 
+typesetfiles = {"biblatex-ext.tex"}
+textfiles    = {"README.md", "CHANGES.md"}
+
 checkengines = {"pdftex"}
 checkruns    = 3
 
-function runtest_tasks(name)
-  return "biber -q " .. name
+
+function runtest_tasks(name, run)
+  local run = run or 1
+  if run == 1 or not fileexists(testdir .. "/" .. name .. ".bbl") then
+    return "biber -q " .. name
+  else
+    return ""
+  end
 end
 
 -- Release a TDS-style zip
-packtdszip  = true
+packtdszip  = false
 
 
 tagfiles = {"*.bbx", "*.cbx", "*.def", "*.tex", "*.md", "*.sty",

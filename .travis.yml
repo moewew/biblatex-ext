@@ -1,0 +1,25 @@
+os: linux
+language: shell
+
+install:
+ - source ./support/install-texlive.sh
+
+cache:
+  directories:
+    - /tmp/texlive
+    - $HOME/.texlive
+
+jobs:
+  include:
+    - name: "Tests"
+      script:
+      - l3build check -q -H  --show-log-on-error
+    - name: "Documentation"
+      script:
+      - l3build doc -q -H --show-log-on-error
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
+ 

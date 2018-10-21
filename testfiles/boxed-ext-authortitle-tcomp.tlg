@@ -1,0 +1,2670 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+(../biblatex.sty
+Package: biblatex ....-..-.. v... programmable bibliographies (PK/MW)
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+(../blx-dm.def
+File: blx-dm.def ....-..-.. v... biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file 'ext-authortitle-tcomp.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+(../blx-compat.def
+File: blx-compat.def ....-..-.. v... biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+(../biblatex.def
+File: biblatex.def ....-..-.. v... biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load bibliography style 'ext-authortitle-tcomp'...
+Package biblatex Info: ... file 'ext-authortitle-tcomp.bbx' found.
+(ext-authortitle-tcomp.bbx
+File: ext-authortitle-tcomp.bbx ....-..-.. v... extended biblatex authortitle-tcomp bibliography style (MW)
+Package biblatex Info: Trying to load bibliography style 'ext-standard'...
+Package biblatex Info: ... file 'ext-standard.bbx' found.
+(ext-standard.bbx
+File: ext-standard.bbx ....-..-.. v... extended biblatex standard style (MW)
+Package biblatex Info: Trying to load auxiliary code for ext-biblatex...
+Package biblatex Info: ... file 'ext-biblatex-aux.def' found.
+(ext-biblatex-aux.def
+File: ext-biblatex-aux.def ....-..-.. v... auxiliaries for extended biblatex citation style (MW)
+)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+(../standard.bbx
+File: standard.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
+)
+Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@bib@' already defined, overwriting.
+Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@biblist@' already defined, overwriting.
+)
+Package biblatex Info: Trying to load bibliography style 'authortitle-tcomp'...
+Package biblatex Info: ... file 'authortitle-tcomp.bbx' found.
+(../authortitle-tcomp.bbx
+File: authortitle-tcomp.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'authortitle'...
+Package biblatex Info: ... file 'authortitle.bbx' found.
+(../authortitle.bbx
+File: authortitle.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
+))
+Package biblatex Info: Trying to load bibliography style 'ext-authortitle-common'...
+Package biblatex Info: ... file 'ext-authortitle-common.bbx' found.
+(ext-authortitle-common.bbx
+File: ext-authortitle-common.bbx ....-..-.. v... common files for extended biblatex authortitle bibliography styles (MW)
+Package biblatex Info: Trying to load bibliography style 'ext-dashed-common'...
+Package biblatex Info: ... file 'ext-dashed-common.bbx' found.
+(ext-dashed-common.bbx
+File: ext-dashed-common.bbx ....-..-.. v... common files for extended biblatex dashed bibliography styles (MW)
+)))
+Package biblatex Info: Trying to load citation style 'ext-authortitle-tcomp'...
+Package biblatex Info: ... file 'ext-authortitle-tcomp.cbx' found.
+(ext-authortitle-tcomp.cbx
+File: ext-authortitle-tcomp.cbx ....-..-.. v... extended biblatex authortitle-tcomp citation style (MW)
+Package biblatex Info: Trying to load citation style 'ext-authortitle-comp'...
+Package biblatex Info: ... file 'ext-authortitle-comp.cbx' found.
+(ext-authortitle-comp.cbx
+File: ext-authortitle-comp.cbx ....-..-.. v... extended biblatex authortitle-comp citation style (MW)
+Package biblatex Info: Trying to load citation style 'authortitle-comp'...
+Package biblatex Info: ... file 'authortitle-comp.cbx' found.
+(../authortitle-comp.cbx
+File: authortitle-comp.cbx ....-..-.. v... biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\footcites'.
+Package biblatex Info: Redefining '\footcitetexts'.
+Package biblatex Info: Redefining '\smartcites'.
+)
+Package biblatex Warning: Macro 'cite:postnote' undefined.
+(biblatex)                Using \newbibmacro.
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\cbx@textcite'.
+Package biblatex Info: Redefining '\cbx@textcites'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\footcites'.
+Package biblatex Info: Redefining '\footcitetexts'.
+Package biblatex Info: Redefining '\smartcites'.
+Package biblatex Info: Redefining '\bbx@xrefcite'.
+))
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+(../biblatex.cfg
+File: biblatex.cfg 
+))
+============================================================
+TEST 1: Simple cite
+============================================================
+*** sigfridsson (@article) ***
+> \box...=
+\hbox(6.88875+1.94443)x92.22198
+.\write1{\abx@aux@page{1}{\the \c@page }}
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 R
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 2: Ibid cite
+============================================================
+*** nussbaum (@book) ***
+*** nussbaum (@book) ***
+> \box...=
+\hbox(6.88875+0.0)x121.9155
+.\write1{\abx@aux@page{3}{\the \c@page }}
+.\T1/lmr/m/n/10 N
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 m
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 m
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\write1{\abx@aux@page{4}{\the \c@page }}
+.\T1/lmr/m/n/10 N
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 m
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 3: Comp cite
+============================================================
+*** knuth:ct:a (@book) ***
+*** knuth:ct:a (@book) ***
+*** knuth:ct:b (@book) ***
+*** knuth:ct:c (@book) ***
+> \box...=
+\hbox(6.88875+2.15274)x180.56723
+.\write1{\abx@aux@page{7}{\the \c@page }}
+.\T1/lmr/m/n/10 K
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/it/10 T
+.\kern -1.70404
+.\hbox(6.88875+0.0)x6.7835, shifted 2.15274
+..\T1/lmr/m/it/10 E
+.\kern -1.27776
+.\T1/lmr/m/it/10 X
+.\T1/lmr/m/it/10 b
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 k
+.\kern 0.70103
+.\write1{\abx@aux@page{8}{\the \c@page }}
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/it/10 T
+.\kern -1.70404
+.\hbox(6.88875+0.0)x6.7835, shifted 2.15274
+..\T1/lmr/m/it/10 E
+.\kern -1.27776
+.\T1/lmr/m/it/10 X
+.\kern 1.09418
+.\write1{\abx@aux@page{9}{\the \c@page }}
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/it/10 M
+.\T1/lmr/m/it/10 E
+.\T1/lmr/m/it/10 T
+.\kern-0.76666
+.\T1/lmr/m/it/10 A
+.\T1/lmr/m/it/10 F
+.\kern-0.25557
+.\T1/lmr/m/it/10 O
+.\T1/lmr/m/it/10 N
+.\T1/lmr/m/it/10 T
+.\T1/lmr/m/it/10 b
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 k
+.\kern 0.70103
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 4: Sort cite
+============================================================
+*** geer (@thesis) ***
+*** geer (@thesis) ***
+*** nussbaum (@book) ***
+*** sigfridsson (@article) ***
+*** worman (@book) ***
+> \box...=
+\hbox(6.88875+1.94443)x213.84618
+.\write1{\abx@aux@page{13}{\the \c@page }}
+.\T1/lmr/m/n/10 G
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\write1{\abx@aux@page{14}{\the \c@page }}
+.\T1/lmr/m/n/10 ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\T1/lmr/m/n/10 N
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 m
+.\write1{\abx@aux@page{15}{\the \c@page }}
+.\T1/lmr/m/n/10 ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 R
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\write1{\abx@aux@page{16}{\the \c@page }}
+.\T1/lmr/m/n/10 ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\T1/lmr/m/n/10 W
+.\kern-0.83334
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 5: Cite prenote
+============================================================
+*** knuth:ct:a (@book) ***
+> \box...=
+\hbox(6.88875+2.15274)x88.0468
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\write1{\abx@aux@page{21}{\the \c@page }}
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 K
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/it/10 T
+.\kern -1.70404
+.\hbox(6.88875+0.0)x6.7835, shifted 2.15274
+..\T1/lmr/m/it/10 E
+.\kern -1.27776
+.\T1/lmr/m/it/10 X
+.\T1/lmr/m/it/10 b
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 k
+.\kern 0.70103
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 6: Cite pre and postnote
+============================================================
+*** sigfridsson (@article) ***
+> \box...=
+\hbox(6.88875+1.94443)x141.38823
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\write1{\abx@aux@page{23}{\the \c@page }}
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 R
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 3
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 0
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 7: Cite postnote
+============================================================
+*** nussbaum (@book) ***
+> \box...=
+\hbox(6.88875+1.94443)x78.16612
+.\write1{\abx@aux@page{25}{\the \c@page }}
+.\T1/lmr/m/n/10 N
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 0
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 8: Cites note
+============================================================
+*** nussbaum (@book) ***
+*** sigfridsson (@article) ***
+*** knuth:ct:a (@book) ***
+> \box...=
+\hbox(6.88875+2.15274)x319.82332
+.\write1{\abx@aux@page{27}{\the \c@page }}
+.\T1/lmr/m/n/10 N
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\write1{\abx@aux@page{28}{\the \c@page }}
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 R
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 3
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\write1{\abx@aux@page{29}{\the \c@page }}
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 K
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/it/10 T
+.\kern -1.70404
+.\hbox(6.88875+0.0)x6.7835, shifted 2.15274
+..\T1/lmr/m/it/10 E
+.\kern -1.27776
+.\T1/lmr/m/it/10 X
+.\T1/lmr/m/it/10 b
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 k
+.\kern 0.70103
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 9: Parencite (plain)
+============================================================
+*** sigfridsson (@article) ***
+> \box...=
+\hbox(7.5+2.5)x100.0
+.\T1/lmr/m/n/10 (
+.\write1{\abx@aux@page{33}{\the \c@page }}
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 R
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 )
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 10: Parencite (post)
+============================================================
+*** nussbaum (@book) ***
+> \box...=
+\hbox(7.5+2.5)x85.94414
+.\T1/lmr/m/n/10 (
+.\write1{\abx@aux@page{35}{\the \c@page }}
+.\T1/lmr/m/n/10 N
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 )
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 11: Parencite (pre-post)
+============================================================
+*** worman (@book) ***
+> \box...=
+\hbox(7.5+2.5)x94.19406
+.\T1/lmr/m/n/10 (
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\write1{\abx@aux@page{37}{\the \c@page }}
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 W
+.\kern-0.83334
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 )
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 12: Parencite (pre)
+============================================================
+*** geer (@thesis) ***
+> \box...=
+\hbox(7.5+2.5)x44.81927
+.\T1/lmr/m/n/10 (
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\write1{\abx@aux@page{39}{\the \c@page }}
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 G
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 )
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 13: Textcite (plain)
+============================================================
+*** sigfridsson (@article) ***
+*** sigfridsson (@article) ***
+> \box...=
+\hbox(6.88875+1.94443)x92.22198
+.\write1{\abx@aux@page{42}{\the \c@page }}
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 R
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 14: Textcite (post)
+============================================================
+*** nussbaum (@book) ***
+*** nussbaum (@book) ***
+> \box...=
+\hbox(7.5+2.5)x83.16638
+.\write1{\abx@aux@page{46}{\the \c@page }}
+.\T1/lmr/m/n/10 N
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 m
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 (
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 )
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 15: Textcite (pre-post)
+============================================================
+*** worman (@book) ***
+*** worman (@book) ***
+> \box...=
+\hbox(7.5+2.5)x175.47115
+.\write1{\abx@aux@page{50}{\the \c@page }}
+.\T1/lmr/m/n/10 W
+.\kern-0.83334
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 (
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/it/10 C
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 s
+.\T1/lmr/m/it/10 t
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 f
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 C
+.\T1/lmr/m/it/10 h
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 r
+.\kern-0.51112
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 c
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 r
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 )
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 16: Textcite (pre)
+============================================================
+*** geer (@thesis) ***
+*** geer (@thesis) ***
+> \box...=
+\hbox(7.5+2.5)x224.12444
+.\write1{\abx@aux@page{54}{\the \c@page }}
+.\T1/lmr/m/n/10 G
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 (
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 `
+.\penalty 10000
+.\glue -0.0002
+.\glue 0.0002
+.\T1/lmr/m/n/10 E
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 B
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 k
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 d
+.\penalty 10000
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 ^^U (ligature --)
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 M
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 '
+.\T1/lmr/m/n/10 )
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 17: Footcite (plain)
+============================================================
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line ....
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line ....
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line ....
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line ....
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line ....
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line ....
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line ....
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line ....
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line ....
+*** aksin (@article) ***
+> \box...=
+\hbox(8.03691+0.0)x4.486
+.\penalty 10000
+.\hbox(8.03691+0.0)x4.486
+..\mathon
+..\hbox(4.40799+0.0)x4.486, shifted -3.62892
+...\T1/lmr/m/n/7 1
+..\mathoff
+.\insert253, natural size 9.50002; split(6.65,2.85002); float cost 20000
+..\hbox(6.65+2.85002)x345.0, glue set 286.68776fil
+...\hbox(6.62265+0.0)x15.30002, glue set 11.13336fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+....\hbox(6.62265+0.0)x4.16666
+.....\mathon
+.....\hbox(3.79932+0.0)x4.16666, shifted -2.82333
+......\T1/lmr/m/n/6 1
+.....\mathoff
+...\hbox(6.65+0.0)x0.0
+....\rule(6.65+0.0)x0.0
+...\write1{\abx@aux@fnpage{57}{\the \c@page }}
+...\T1/lmr/m/n/8 A
+...\T1/lmr/m/n/8 k
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 ^^Y
+...\T1/lmr/m/n/8 n
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 t
+...\penalty 50
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 a
+...\T1/lmr/m/n/8 l
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\rule(0.0+2.85002)x0.0
+...\penalty 10000
+...\glue(\parfillskip) 0.0 plus 1.0fil
+...\glue(\rightskip) 0.0
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 18: Footcite (post)
+============================================================
+*** pines (@incollection) ***
+> \box...=
+\hbox(8.03691+0.0)x4.486
+.\penalty 10000
+.\hbox(8.03691+0.0)x4.486
+..\mathon
+..\hbox(4.40799+0.0)x4.486, shifted -3.62892
+...\T1/lmr/m/n/7 3
+..\mathoff
+.\insert253, natural size 9.50002; split(6.65,2.85002); float cost 20000
+..\hbox(6.65+2.85002)x345.0, glue set 279.48242fil
+...\hbox(6.62265+0.0)x15.30002, glue set 11.13336fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+....\hbox(6.62265+0.0)x4.16666
+.....\mathon
+.....\hbox(3.79932+0.0)x4.16666, shifted -2.82333
+......\T1/lmr/m/n/6 3
+.....\mathoff
+...\hbox(6.65+0.0)x0.0
+....\rule(6.65+0.0)x0.0
+...\write1{\abx@aux@fnpage{59}{\the \c@page }}
+...\T1/lmr/m/n/8 P
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 n
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 p
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 1
+...\T1/lmr/m/n/8 9
+...\T1/lmr/m/n/8 0
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\rule(0.0+2.85002)x0.0
+...\penalty 10000
+...\glue(\parfillskip) 0.0 plus 1.0fil
+...\glue(\rightskip) 0.0
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 19: Footcite (pre-post)
+============================================================
+*** aksin (@article) ***
+> \box...=
+\hbox(8.03691+0.0)x4.486
+.\penalty 10000
+.\hbox(8.03691+0.0)x4.486
+..\mathon
+..\hbox(4.40799+0.0)x4.486, shifted -3.62892
+...\T1/lmr/m/n/7 5
+..\mathoff
+.\insert253, natural size 9.50002; split(6.65,2.85002); float cost 20000
+..\hbox(6.65+2.85002)x345.0, glue set 242.53441fil
+...\hbox(6.62265+0.0)x15.30002, glue set 11.13336fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+....\hbox(6.62265+0.0)x4.16666
+.....\mathon
+.....\hbox(3.79932+0.0)x4.16666, shifted -2.82333
+......\T1/lmr/m/n/6 5
+.....\mathoff
+...\hbox(6.65+0.0)x0.0
+....\rule(6.65+0.0)x0.0
+...\T1/lmr/m/n/8 C
+...\T1/lmr/m/n/8 f
+...\T1/lmr/m/n/8 .
+...\write1{\abx@aux@fnpage{61}{\the \c@page }}
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 A
+...\T1/lmr/m/n/8 k
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 ^^Y
+...\T1/lmr/m/n/8 n
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 t
+...\penalty 50
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 a
+...\T1/lmr/m/n/8 l
+...\T1/lmr/m/n/8 .
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 p
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 1
+...\T1/lmr/m/n/8 9
+...\T1/lmr/m/n/8 0
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\rule(0.0+2.85002)x0.0
+...\penalty 10000
+...\glue(\parfillskip) 0.0 plus 1.0fil
+...\glue(\rightskip) 0.0
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 20: Footcite (pre)
+============================================================
+*** pines (@incollection) ***
+> \box...=
+\hbox(8.03691+0.0)x4.486
+.\penalty 10000
+.\hbox(8.03691+0.0)x4.486
+..\mathon
+..\hbox(4.40799+0.0)x4.486, shifted -3.62892
+...\T1/lmr/m/n/7 7
+..\mathoff
+.\insert253, natural size 9.50002; split(6.65,2.85002); float cost 20000
+..\hbox(6.65+2.85002)x345.0, glue set 293.41304fil
+...\hbox(6.62265+0.0)x15.30002, glue set 11.13336fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+....\hbox(6.62265+0.0)x4.16666
+.....\mathon
+.....\hbox(3.79932+0.0)x4.16666, shifted -2.82333
+......\T1/lmr/m/n/6 7
+.....\mathoff
+...\hbox(6.65+0.0)x0.0
+....\rule(6.65+0.0)x0.0
+...\T1/lmr/m/n/8 C
+...\T1/lmr/m/n/8 f
+...\T1/lmr/m/n/8 .
+...\write1{\abx@aux@fnpage{63}{\the \c@page }}
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 P
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 n
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\rule(0.0+2.85002)x0.0
+...\penalty 10000
+...\glue(\parfillskip) 0.0 plus 1.0fil
+...\glue(\rightskip) 0.0
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 21: bibliography aksin
+============================================================
+*** aksin (@article) ***
+> \box...=
+\hbox(8.29999+2.5)x860.65193
+.\write1{\abx@aux@page{65}{\the \c@page }}
+.\T1/lmr/m/n/10 A
+.\T1/lmr/m/n/10 k
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 ^^Y
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 ,
+.\penalty 25
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 ^^d6
+.\T1/lmr/m/n/10 z
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 e
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 t
+.\penalty 50
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 `
+.\penalty 10000
+.\glue -0.0002
+.\glue 0.0002
+.\T1/lmr/m/n/10 E
+.\T1/lmr/m/n/10 ^^[ (ligature ff)
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 t
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 f
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 z
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 c
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 c
+.\kern-0.27779
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 s
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 f
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 P
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 -
+.\T1/lmr/m/n/10 N
+.\T1/lmr/m/n/10 -
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 o
+.\kern0.27779
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 c
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 b
+.\kern0.27779
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 s
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 M
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 z
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 k
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 -
+.\T1/lmr/m/n/10 H
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 c
+.\kern-0.27779
+.\T1/lmr/m/n/10 k
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 '
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 I
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 :
+.\glue 3.33333 plus 1.67499 minus 1.10558
+.\T1/lmr/m/it/10 J
+.\T1/lmr/m/it/10 .
+.\penalty 10000
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 O
+.\T1/lmr/m/it/10 r
+.\kern-0.51112
+.\T1/lmr/m/it/10 g
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 n
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 m
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 .
+.\glue 3.57777 plus 1.54251 minus 1.0161
+.\T1/lmr/m/it/10 C
+.\T1/lmr/m/it/10 h
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 m
+.\T1/lmr/m/it/10 .
+.\kern 0.0
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 6
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 .
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 3
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 (
+.\T1/lmr/m/n/10 2
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 6
+.\T1/lmr/m/n/10 )
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 3
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 2
+.\T1/lmr/m/n/10 7
+.\T1/lmr/m/n/10 ^^U
+.\penalty 50
+.\T1/lmr/m/n/10 3
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 3
+.\T1/lmr/m/n/10 6
+.\T1/lmr/m/n/10 .
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...
+============================================================
+============================================================
+TEST 22: bibliography geer
+============================================================
+*** geer (@thesis) ***
+> \box...=
+\hbox(6.88875+1.94443)x773.34676
+.\hbox(0.0+0.0)x0.0
+.\write1{\abx@aux@page{67}{\the \c@page }}
+.\T1/lmr/m/n/10 G
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 ,
+.\penalty 25
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 I
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\penalty 25
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 `
+.\penalty 10000
+.\glue -0.0002
+.\glue 0.0002
+.\T1/lmr/m/n/10 E
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 B
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 k
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 d
+.\penalty 10000
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 ^^U (ligature --)
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 M
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 T
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 e
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 O
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 k
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 y
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 E
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 m
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 f
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 e
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 T
+.\kern-0.83334
+.\T1/lmr/m/n/10 w
+.\kern-0.27779
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 y
+.\kern-0.83334
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 A
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 M
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 l
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 '
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 P
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 D
+.\penalty 50
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 U
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 :
+.\glue 3.33333 plus 1.67499 minus 1.10558
+.\T1/lmr/m/n/10 U
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 a
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 U
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 v
+.\kern-0.27779
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 5
+.\T1/lmr/m/n/10 .
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...
+============================================================
+============================================================
+TEST 23: bibliography knuth:ct:a
+============================================================
+*** knuth:ct:a (@book) ***
+> \box...=
+\hbox(6.88875+2.15274)x467.52386
+.\hbox(0.0+0.0)x0.0
+.\write1{\abx@aux@page{69}{\the \c@page }}
+.\T1/lmr/m/n/10 K
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 ,
+.\penalty 25
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 D
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 d
+.\penalty 50
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 E
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/it/10 C
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 m
+.\T1/lmr/m/it/10 p
+.\T1/lmr/m/it/10 u
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 r
+.\T1/lmr/m/it/10 s
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 &
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 T
+.\kern-0.76666
+.\T1/lmr/m/it/10 y
+.\T1/lmr/m/it/10 p
+.\kern-0.51112
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 s
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 n
+.\T1/lmr/m/it/10 g
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 V
+.\kern-0.83334
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 A
+.\T1/lmr/m/n/10 :
+.\glue 3.33333 plus 1.67499 minus 1.10558
+.\T1/lmr/m/it/10 T
+.\T1/lmr/m/it/10 h
+.\T1/lmr/m/it/10 e
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 T
+.\kern -1.70404
+.\hbox(6.88875+0.0)x6.7835, shifted 2.15274
+..\T1/lmr/m/it/10 E
+.\kern -1.27776
+.\T1/lmr/m/it/10 X
+.\T1/lmr/m/it/10 b
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 k
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 R
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 M
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 .
+.\T1/lmr/m/n/10 :
+.\glue 3.33333 plus 1.67499 minus 1.10558
+.\T1/lmr/m/n/10 A
+.\kern-0.27779
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 -
+.\T1/lmr/m/n/10 W
+.\kern-0.83334
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 4
+.\T1/lmr/m/n/10 .
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...
+============================================================
+============================================================
+TEST 24: bibliography knuth:ct:b
+============================================================
+*** knuth:ct:b (@book) ***
+> \box...=
+\hbox(6.88875+2.15274)x425.09052
+.\hbox(0.0+0.0)x0.0
+.\write1{\abx@aux@page{71}{\the \c@page }}
+.\hbox(2.77+0.0)x15.0, glue set 5.0fil
+..\T1/lmr/m/n/10 ^^V
+..\glue 0.0 plus 1.0fil minus 1.0fil
+.\T1/lmr/m/it/10 C
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 m
+.\T1/lmr/m/it/10 p
+.\T1/lmr/m/it/10 u
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 r
+.\T1/lmr/m/it/10 s
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 &
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 T
+.\kern-0.76666
+.\T1/lmr/m/it/10 y
+.\T1/lmr/m/it/10 p
+.\kern-0.51112
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 s
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 n
+.\T1/lmr/m/it/10 g
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 V
+.\kern-0.83334
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 B
+.\T1/lmr/m/n/10 :
+.\glue 3.33333 plus 1.67499 minus 1.10558
+.\T1/lmr/m/it/10 T
+.\kern -1.70404
+.\hbox(6.88875+0.0)x6.7835, shifted 2.15274
+..\T1/lmr/m/it/10 E
+.\kern -1.27776
+.\T1/lmr/m/it/10 X
+.\T1/lmr/m/it/10 :
+.\glue 3.57777 plus 1.54099 minus 1.0171
+.\T1/lmr/m/it/10 T
+.\T1/lmr/m/it/10 h
+.\T1/lmr/m/it/10 e
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 P
+.\T1/lmr/m/it/10 r
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\kern-0.51112
+.\T1/lmr/m/it/10 g
+.\T1/lmr/m/it/10 r
+.\kern-0.51112
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 m
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 R
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 M
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 .
+.\T1/lmr/m/n/10 :
+.\glue 3.33333 plus 1.67499 minus 1.10558
+.\T1/lmr/m/n/10 A
+.\kern-0.27779
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 -
+.\T1/lmr/m/n/10 W
+.\kern-0.83334
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 6
+.\T1/lmr/m/n/10 .
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...
+============================================================
+============================================================
+TEST 25: bibliography knuth:ct:c
+============================================================
+*** knuth:ct:c (@book) ***
+> \box...=
+\hbox(6.88875+1.94443)x440.01196
+.\hbox(0.0+0.0)x0.0
+.\write1{\abx@aux@page{73}{\the \c@page }}
+.\hbox(2.77+0.0)x15.0, glue set 5.0fil
+..\T1/lmr/m/n/10 ^^V
+..\glue 0.0 plus 1.0fil minus 1.0fil
+.\T1/lmr/m/it/10 C
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 m
+.\T1/lmr/m/it/10 p
+.\T1/lmr/m/it/10 u
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 r
+.\T1/lmr/m/it/10 s
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 &
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 T
+.\kern-0.76666
+.\T1/lmr/m/it/10 y
+.\T1/lmr/m/it/10 p
+.\kern-0.51112
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 s
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 n
+.\T1/lmr/m/it/10 g
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 V
+.\kern-0.83334
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 :
+.\glue 3.33333 plus 1.67499 minus 1.10558
+.\T1/lmr/m/it/10 T
+.\T1/lmr/m/it/10 h
+.\T1/lmr/m/it/10 e
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 M
+.\T1/lmr/m/it/10 E
+.\T1/lmr/m/it/10 T
+.\kern-0.76666
+.\T1/lmr/m/it/10 A
+.\T1/lmr/m/it/10 F
+.\kern-0.25557
+.\T1/lmr/m/it/10 O
+.\T1/lmr/m/it/10 N
+.\T1/lmr/m/it/10 T
+.\T1/lmr/m/it/10 b
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\kern-0.51112
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 k
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 R
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 M
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 .
+.\T1/lmr/m/n/10 :
+.\glue 3.33333 plus 1.67499 minus 1.10558
+.\T1/lmr/m/n/10 A
+.\kern-0.27779
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 -
+.\T1/lmr/m/n/10 W
+.\kern-0.83334
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 6
+.\T1/lmr/m/n/10 .
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...
+============================================================
+============================================================
+TEST 26: bibliography nussbaum
+============================================================
+*** nussbaum (@book) ***
+> \box...=
+\hbox(6.88875+1.94443)x434.76755
+.\hbox(0.0+0.0)x0.0
+.\write1{\abx@aux@page{75}{\the \c@page }}
+.\T1/lmr/m/n/10 N
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 ,
+.\penalty 25
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 M
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/it/10 A
+.\kern-0.51112
+.\T1/lmr/m/it/10 r
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 s
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 l
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 '
+.\T1/lmr/m/it/10 s
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 `
+.\penalty 10000
+.\glue -0.0002
+.\glue 0.0002
+.\T1/lmr/m/it/10 D
+.\T1/lmr/m/it/10 e
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 M
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 u
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 A
+.\kern-0.51112
+.\T1/lmr/m/it/10 n
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 m
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 l
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 u
+.\T1/lmr/m/it/10 m
+.\T1/lmr/m/it/10 '
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 P
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 :
+.\glue 3.33333 plus 1.67499 minus 1.10558
+.\T1/lmr/m/n/10 P
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 U
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 v
+.\kern-0.27779
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 t
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 P
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 7
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 .
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...
+============================================================
+============================================================
+TEST 27: bibliography pines
+============================================================
+*** pines (@incollection) ***
+> \box...=
+\hbox(6.88875+1.94443)x1104.17401
+.\hbox(0.0+0.0)x0.0
+.\write1{\abx@aux@page{77}{\the \c@page }}
+.\T1/lmr/m/n/10 P
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 ,
+.\penalty 25
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 `
+.\penalty 10000
+.\glue -0.0002
+.\glue 0.0002
+.\T1/lmr/m/n/10 T
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 e
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 L
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 s
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 f
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 H
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 K
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 o
+.\kern-0.27779
+.\T1/lmr/m/n/10 w
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 e
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 A
+.\kern-0.27779
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 g
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 o
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 A
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 -
+.\T1/lmr/m/n/10 F
+.\kern-0.83334
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 B
+.\T1/lmr/m/n/10 a
+.\kern0.27779
+.\T1/lmr/m/n/10 j
+.\T1/lmr/m/n/10 j
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 M
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 '
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 I
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 :
+.\glue 3.33333 plus 1.67499 minus 1.10558
+.\T1/lmr/m/it/10 S
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 u
+.\T1/lmr/m/it/10 d
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 s
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 n
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 M
+.\T1/lmr/m/it/10 e
+.\kern-0.51112
+.\T1/lmr/m/it/10 d
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 v
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 l
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 J
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 w
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 s
+.\T1/lmr/m/it/10 h
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 H
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 s
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 r
+.\T1/lmr/m/it/10 y
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 n
+.\T1/lmr/m/it/10 d
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 L
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 r
+.\kern-0.51112
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 u
+.\T1/lmr/m/it/10 r
+.\kern-0.51112
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 E
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 .
+.\penalty 50
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 b
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 I
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 e
+.\penalty 25
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 T
+.\kern-0.83334
+.\T1/lmr/m/n/10 w
+.\kern-0.27779
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 k
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 m
+.\kern-0.27779
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 M
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 .
+.\T1/lmr/m/n/10 :
+.\glue 3.33333 plus 1.67499 minus 1.10558
+.\T1/lmr/m/n/10 H
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 v
+.\kern-0.55556
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 U
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 v
+.\kern-0.27779
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 t
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 P
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 7
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 2
+.\T1/lmr/m/n/10 ^^U
+.\penalty 50
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 .
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...
+============================================================
+============================================================
+TEST 28: bibliography sigfridsson
+============================================================
+*** sigfridsson (@article) ***
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line ....
+> \box...=
+\hbox(7.5+2.5)x1224.05046
+.\hbox(0.0+0.0)x0.0
+.\write1{\abx@aux@page{79}{\the \c@page }}
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 ,
+.\penalty 25
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 E
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 a
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 U
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 f
+.\penalty 25
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 R
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 `
+.\penalty 10000
+.\glue -0.0002
+.\glue 0.0002
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 f
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 o
+.\kern0.27779
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 r
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 v
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 g
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 c
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 c
+.\kern-0.27779
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 s
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 m
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\T1/lmr/m/n/10 e
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 c
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 p
+.\kern0.27779
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 l
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 '
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 I
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 :
+.\glue 3.33333 plus 1.67499 minus 1.10558
+.\T1/lmr/m/it/10 J
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 u
+.\T1/lmr/m/it/10 r
+.\T1/lmr/m/it/10 n
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 l
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 f
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 C
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 m
+.\T1/lmr/m/it/10 p
+.\T1/lmr/m/it/10 u
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 n
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 l
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 C
+.\T1/lmr/m/it/10 h
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 m
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 s
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 r
+.\T1/lmr/m/it/10 y
+.\kern 0.57777
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 .
+.\T1/lmr/m/n/10 4
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 (
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 )
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 3
+.\T1/lmr/m/n/10 7
+.\T1/lmr/m/n/10 7
+.\T1/lmr/m/n/10 ^^U
+.\penalty 50
+.\T1/lmr/m/n/10 3
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 5
+.\T1/lmr/m/n/10 .
+.\kern 0.0
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/sc/10 d
+.\T1/lmr/m/sc/10 o
+.\T1/lmr/m/sc/10 i
+.\kern 0.0
+.\T1/lmr/m/n/10 :
+.\glue 3.33333 plus 1.67499 minus 1.10558
+.\mathon
+.\T1/lmtt/m/n/10 1
+.\T1/lmtt/m/n/10 0
+.\glue(\medmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 .
+.\glue(\medmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 1
+.\T1/lmtt/m/n/10 0
+.\T1/lmtt/m/n/10 0
+.\T1/lmtt/m/n/10 2
+.\glue(\medmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 /
+.\glue(\medmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 (
+.\T1/lmtt/m/n/10 S
+.\T1/lmtt/m/n/10 I
+.\T1/lmtt/m/n/10 C
+.\T1/lmtt/m/n/10 I
+.\glue(\medmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 )
+.\glue(\medmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 1
+.\T1/lmtt/m/n/10 0
+.\T1/lmtt/m/n/10 9
+.\T1/lmtt/m/n/10 6
+.\glue(\thickmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 -
+.\hbox(0.0+0.0)x0.5, shifted 1.49998
+..\kern0.0
+.\glue(\thickmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 9
+.\T1/lmtt/m/n/10 8
+.\T1/lmtt/m/n/10 7
+.\T1/lmtt/m/n/10 X
+.\T1/lmtt/m/n/10 (
+.\T1/lmtt/m/n/10 1
+.\T1/lmtt/m/n/10 9
+.\T1/lmtt/m/n/10 9
+.\T1/lmtt/m/n/10 8
+.\T1/lmtt/m/n/10 0
+.\T1/lmtt/m/n/10 3
+.\glue(\medmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 )
+.\glue(\medmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 1
+.\T1/lmtt/m/n/10 9
+.\glue(\thickmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 :
+.\glue(\thickmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 4
+.\T1/lmtt/m/n/10 <
+.\hbox(0.0+0.0)x0.5, shifted 1.49998
+..\kern0.0
+.\T1/lmtt/m/n/10 3
+.\T1/lmtt/m/n/10 7
+.\T1/lmtt/m/n/10 7
+.\glue(\thickmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 :
+.\T1/lmtt/m/n/10 :
+.\glue(\thickmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 A
+.\T1/lmtt/m/n/10 I
+.\T1/lmtt/m/n/10 D
+.\glue(\thickmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 -
+.\hbox(0.0+0.0)x0.5, shifted 1.49998
+..\kern0.0
+.\glue(\thickmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 J
+.\T1/lmtt/m/n/10 C
+.\T1/lmtt/m/n/10 C
+.\T1/lmtt/m/n/10 1
+.\glue(\medmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 >
+.\hbox(0.0+0.0)x0.5, shifted 1.49998
+..\kern0.0
+.\glue(\medmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 3
+.\glue(\medmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 .
+.\glue(\medmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 0
+.\glue(\medmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 .
+.\glue(\medmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 C
+.\T1/lmtt/m/n/10 O
+.\glue(\medmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 ;
+.\glue(\medmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 2
+.\glue(\thickmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 -
+.\hbox(0.0+0.0)x0.5, shifted 1.49998
+..\kern0.0
+.\glue(\thickmuskip) 0.0 plus 1.66663
+.\T1/lmtt/m/n/10 P
+.\mathoff
+.\T1/lmr/m/n/10 .
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...
+============================================================
+============================================================
+TEST 29: bibliography worman
+============================================================
+*** worman (@book) ***
+> \box...=
+\hbox(6.88875+1.94443)x471.49014
+.\hbox(0.0+0.0)x0.0
+.\write1{\abx@aux@page{81}{\the \c@page }}
+.\T1/lmr/m/n/10 W
+.\kern-0.83334
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 ,
+.\penalty 25
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 N
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/it/10 T
+.\T1/lmr/m/it/10 h
+.\T1/lmr/m/it/10 e
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 C
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 s
+.\T1/lmr/m/it/10 t
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 o
+.\T1/lmr/m/it/10 f
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 C
+.\T1/lmr/m/it/10 h
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 r
+.\kern-0.51112
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 c
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 r
+.\T1/lmr/m/it/10 .
+.\glue 3.57777 plus 1.54251 minus 1.0161
+.\T1/lmr/m/it/10 S
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 y
+.\T1/lmr/m/it/10 l
+.\T1/lmr/m/it/10 e
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 n
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 G
+.\T1/lmr/m/it/10 r
+.\kern-0.51112
+.\T1/lmr/m/it/10 e
+.\kern-0.51112
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 k
+.\glue 3.57777 plus 1.53333 minus 1.0222
+.\T1/lmr/m/it/10 L
+.\T1/lmr/m/it/10 i
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/it/10 r
+.\kern-0.51112
+.\T1/lmr/m/it/10 a
+.\T1/lmr/m/it/10 t
+.\T1/lmr/m/it/10 u
+.\T1/lmr/m/it/10 r
+.\kern-0.51112
+.\T1/lmr/m/it/10 e
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.67665 minus 1.10448
+.\T1/lmr/m/n/10 A
+.\kern-0.27779
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 :
+.\glue 3.33333 plus 1.67499 minus 1.10558
+.\T1/lmr/m/n/10 U
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 v
+.\kern-0.27779
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 t
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 f
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 T
+.\kern-0.83334
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 x
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 s
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 P
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 1.67165 minus 1.10779
+.\T1/lmr/m/n/10 2
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 2
+.\T1/lmr/m/n/10 .
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...
+============================================================

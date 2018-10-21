@@ -1,0 +1,113 @@
+\input{regression-test.tex}
+\documentclass[british]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{babel}
+\usepackage{csquotes}
+
+% load biblatex dependencies and suppress counter allocation logging
+\input{testbiblatex-loaddeps.tex}
+
+\START
+\usepackage[backend=biber, style=ext-authoryear-ecomp]{biblatex}
+\addbibresource{biblatex-examples.bib}
+\OMIT
+
+% set up \extblxtestbox and hack into biblatex internals to add
+% some debugging info
+\input{testbiblatex-boxsetup.tex}
+
+\begin{document}
+\TIMO
+
+\TEST{Simple cite}{
+  \extblxtestbox{\cite{sigfridsson}}
+}
+
+\TEST{Ibid cite}{
+  \extblxtestbox{\cite{nussbaum} lorem \cite{nussbaum}}
+}
+
+\TEST{Comp cite}{
+  \extblxtestbox{\cite{knuth:ct:a,knuth:ct:b,knuth:ct:c}}
+}
+
+\TEST{Sort cite}{
+  \extblxtestbox{\cite{nussbaum,worman,geer,sigfridsson}}
+}
+
+
+\TEST{Cite prenote}{
+  \extblxtestbox{\cite[Cf.][]{knuth:ct:a}}
+}
+
+\TEST{Cite pre and postnote}{
+  \extblxtestbox{\cite[Cf.][380]{sigfridsson}}
+}
+
+\TEST{Cite postnote}{
+  \extblxtestbox{\cite[190]{nussbaum}}
+}
+
+\TEST{Cites note}{
+  \extblxtestbox{%
+    \cites[190]{nussbaum}[Cf.][380]{sigfridsson}[Cf.][]{knuth:ct:a}}
+}
+
+\TEST{Parencite (plain)}{
+  \extblxtestbox{\parencite{sigfridsson}}
+}
+
+\TEST{Parencite (post)}{
+  \extblxtestbox{\parencite[190]{nussbaum}}
+}
+
+\TEST{Parencite (pre-post)}{
+  \extblxtestbox{\parencite[Cf.][190]{worman}}
+}
+
+\TEST{Parencite (pre)}{
+  \extblxtestbox{\parencite[Cf.][]{geer}}
+}
+
+\TEST{Textcite (plain)}{
+  \extblxtestbox{\textcite{sigfridsson}}
+}
+
+\TEST{Textcite (post)}{
+  \extblxtestbox{\textcite[190]{nussbaum}}
+}
+
+\TEST{Textcite (pre-post)}{
+  \extblxtestbox{\textcite[Cf.][190]{worman}}
+}
+
+\TEST{Textcite (pre)}{
+  \extblxtestbox{\textcite[Cf.][]{geer}}
+}
+
+\TEST{Footcite (plain)}{
+  \extblxtestbox{\footcite{aksin}}
+}
+
+\TEST{Footcite (post)}{
+  \extblxtestbox{\footcite[190]{pines}}
+}
+
+\TEST{Footcite (pre-post)}{
+  \extblxtestbox{\footcite[Cf.][190]{aksin}}
+}
+
+\TEST{Footcite (pre)}{
+  \extblxtestbox{\footcite[Cf.][]{pines}}
+}
+
+
+%\nocite{*}
+\OMIT
+% bibliography
+\printbibliography
+
+\end{document}
+\END

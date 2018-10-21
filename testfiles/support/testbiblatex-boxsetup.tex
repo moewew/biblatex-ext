@@ -1,0 +1,25 @@
+\makeatletter
+\newbox\testbox
+
+\newcommand*{\extblxtestbox}[1]{%
+  \setbox\testbox=\hbox{%
+    #1}%
+  \showbox\testbox
+  \OMIT
+  #1%
+  \TIMO
+}
+
+\apptocmd\blx@getdata{%
+  \typeout{*** #1 (@\abx@field@entrytype) ***}%
+}{}{}
+
+\let\orig@blx@bibitem\blx@bibitem
+
+\def\blx@bibitem#1{%
+  \TIMO
+  \TEST{bibliography #1}{%
+    \extblxtestbox{\orig@blx@bibitem{#1}}}%
+  \OMIT
+}
+\makeatother
