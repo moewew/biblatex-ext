@@ -4,7 +4,6 @@
 - Look into author-year verbose styles?
 - Author name in full on first cite (name tracking)?
 - Name wrapper for entire names?
-  - One for the core? https://github.com/plk/biblatex/issues/754
   - `\mkbibcompletename` (maybe dependent on family-given, given-family)?
 - series+number position
 - more modular bib drivers
