@@ -18,6 +18,16 @@
       (\extblx@requiredbiblatexdate) or later.\MessageBreak
       I found '\csuse{abx@version} (\csuse{abx@date})'}}
 
+\newrobustcmd*{\extblx@DeclareBTEOption}[2][boolean]{%
+  \@ifnextchar[%]
+    {\extblx@DeclareBTEOption@i[#1]{#2}}
+    {\extblx@DeclareBTEOption@i[#1]{#2}[]}}
+
+\def\extblx@DeclareBTEOption@i[#1]#2[#3]#4{%
+  \DeclareBibliographyOption[#1]{#2}[#3]{#4}%
+  \DeclareTypeOption[#1]{#2}[#3]{#4}
+  \DeclareEntryOption[#1]{#2}[#3]{#4}}
+
 %{<context>}{<opening delim>}{<closing delim>}
 \newrobustcmd*{\DeclareOuterCiteDelims}{%
   \extblx@declareciteddelims{outer}}

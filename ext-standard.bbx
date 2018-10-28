@@ -18,22 +18,27 @@
 \newtoggle{bbx:maintitleaftertitle}
 \newtoggle{bbx:introcite:plain:keeprelated}
 
-\DeclareBibliographyOption[boolean]{citexref}[true]{%
+\extblx@DeclareBTEOption[boolean]{citexref}[true]{%
   \settoggle{bbx:citexref}{#1}}
-\DeclareBibliographyOption[boolean]{citeinxref}[true]{%
+\extblx@DeclareBTEOption[boolean]{citeinxref}[true]{%
   \blx@warning{The option 'citeinxref' is deprecated.\MessageBreak
     Use 'citexref' (without in) instead.\MessageBreak
     Setting 'citexref' now}%
   \settoggle{bbx:citexref}{#1}}
-\DeclareBibliographyOption[boolean]{innamebeforetitle}[true]{%
+\extblx@DeclareBTEOption[boolean]{innamebeforetitle}[true]{%
   \settoggle{bbx:innamebeforetitle}{#1}}
-\DeclareBibliographyOption[boolean]{innameidem}[true]{%
+\extblx@DeclareBTEOption[boolean]{innameidem}[true]{%
   \settoggle{bbx:innameidem}{#1}}
-\DeclareBibliographyOption[boolean]{articlein}[true]{%
+\extblx@DeclareBTEOption[boolean]{articlein}[true]{%
   \settoggle{bbx:articlein}{#1}}
-\DeclareBibliographyOption[boolean]{maintitleaftertitle}[true]{%
+\extblx@DeclareBTEOption[boolean]{maintitleaftertitle}[true]{%
   \settoggle{bbx:maintitleaftertitle}{#1}}
-\DeclareBibliographyOption[string]{introcite}[label]{%
+
+\def\extblx@opt@introcite@false{0}
+\def\extblx@opt@introcite@label{1}
+\def\extblx@opt@introcite@plain{2}
+
+\def\extblx@opthandler@introcite#1{%
   \ifcsdef{extblx@opt@introcite@#1}
     {\letcs\extblx@introcite{extblx@opt@introcite@#1}}
     {\PackageWarningNoLine{biblatex-ext}{%
@@ -41,9 +46,30 @@
        Possible values are 'false', 'label', 'plain'.\MessageBreak
        Falling back to 'introcite=false'}%
      \letcs\extblx@introcite{extblx@opt@introcite@false}}}
-\def\extblx@opt@introcite@false{0}
-\def\extblx@opt@introcite@label{1}
-\def\extblx@opt@introcite@plain{2}
+
+% {<per-...>}{<option value>}
+\protected\def\extblx@specialopthandler@introcite#1#2{%
+  \ifstrequal{#2}{label}
+    {\ifcsundef{extblx@warn@introcitelabel@#1}
+       {\PackageWarningNoLine{biblatex-ext}{%
+          Value 'introcite=label' not officially supported\MessageBreak
+          on per-#1 level.\MessageBreak
+          It requires setup changes for a complete\MessageBreak
+          bibliography environment,  which can only happen\MessageBreak
+          globally or per bibliography.\MessageBreak
+          Using 'introcite=label' anyway, the result might\MessageBreak
+          be off. You have been warned}%
+        \global\cslet{extblx@warn@introcitelabel@#1}\@empty}
+       {}}}
+
+\DeclareBibliographyOption[string]{introcite}[label]{%
+  \extblx@opthandler@introcite{#1}}
+\DeclareTypeOption[string]{introcite}[label]{%
+  \extblx@opthandler@introcite{#1}%
+  \extblx@specialopthandler@introcite{type}{#1}}
+\DeclareEntryOption[string]{introcite}[label]{%
+  \extblx@opthandler@introcite{#1}%
+  \extblx@specialopthandler@introcite{entry}{#1}}
 
 \ExecuteBibliographyOptions{%
   citexref            = false,
@@ -54,38 +80,6 @@
   introcite           = false,
 % maxbibnames         = 999,
 }
-
-\DeclareTypeOption[boolean]{citexref}[true]{%
-  \settoggle{bbx:citexref}{#1}}
-\DeclareTypeOption[boolean]{citeinxref}[true]{%
-  \blx@warning{The option 'citeinxref' is deprecated.\MessageBreak
-    Use 'citexref' (without in) instead.\MessageBreak
-    Setting 'citexref' now}%
-  \settoggle{bbx:citexref}{#1}}
-\DeclareTypeOption[boolean]{innamebeforetitle}[true]{%
-  \settoggle{bbx:innamebeforetitle}{#1}}
-\DeclareTypeOption[boolean]{innameidem}[true]{%
-  \settoggle{bbx:innameidem}{#1}}
-\DeclareTypeOption[boolean]{articlein}[true]{%
-  \settoggle{bbx:articlein}{#1}}
-\DeclareTypeOption[boolean]{maintitleaftertitle}[true]{%
-  \settoggle{bbx:maintitleaftertitle}{#1}}
-
-\DeclareEntryOption[boolean]{citexref}[true]{%
-  \settoggle{bbx:citexref}{#1}}
-\DeclareEntryOption[boolean]{citeinxref}[true]{%
-  \blx@warning{The option 'citeinxref' is deprecated.\MessageBreak
-    Use 'citexref' (without in) instead.\MessageBreak
-    Setting 'citexref' now}%
-  \settoggle{bbx:citexref}{#1}}
-\DeclareEntryOption[boolean]{innamebeforetitle}[true]{%
-  \settoggle{bbx:innamebeforetitle}{#1}}
-\DeclareEntryOption[boolean]{innameidem}[true]{%
-  \settoggle{bbx:innameidem}{#1}}
-\DeclareEntryOption[boolean]{articlein}[true]{%
-  \settoggle{bbx:articlein}{#1}}
-\DeclareEntryOption[boolean]{maintitleaftertitle}[true]{%
-  \settoggle{bbx:maintitleaftertitle}{#1}}
 
 
 \newbibmacro*{bbx:introcite}{\usebibmacro{cite}}

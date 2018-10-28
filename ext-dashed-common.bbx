@@ -14,7 +14,7 @@
      Please update 'etoolbox' to v2.4 (2017-01-02)\MessageBreak or later}}
   {\listcsremove{blx@globalopts@boolean}{dashed}}
 
-\def\extblx@opthandler@dashed#1{%
+\extblx@DeclareBTEOption[string]{dashed}[true]{%
   \ifcsdef{extblx@opt@dashed@#1}
     {\csuse{extblx@opt@dashed@#1}}
     {\PackageWarningNoLine{biblatex-ext}{%
@@ -23,13 +23,6 @@
        'bibnamehash', 'false'.\MessageBreak
        Falling back to 'dashed=false'}%
      \csuse{extblx@opt@dashed@false}}}
-
-\DeclareBibliographyOption[string]{dashed}[true]{%
-  \extblx@opthandler@dashed{#1}}
-\DeclareTypeOption[string]{dashed}[true]{%
-  \extblx@opthandler@dashed{#1}}
-\DeclareEntryOption[string]{dashed}[true]{%
-  \extblx@opthandler@dashed{#1}}
 
 \csdef{extblx@opt@dashed@fullhash}{%
   \ExecuteBibliographyOptions{pagetracker}%
@@ -72,7 +65,7 @@
   \renewbibmacro*{bbx:savehash}{}%
   \renewbibmacro*{bbx:dashcheck}[2]{##2}}
 
-% We need to execute the option that were already executed
+% We need to execute the options that were already executed
 % by the standard styles again, because we changed the
 % underlying definitions.
 \ExecuteBibliographyOptions{dashed=true}%

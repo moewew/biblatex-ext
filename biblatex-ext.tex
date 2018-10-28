@@ -1142,11 +1142,15 @@ printed with the \bibfield{volumeof} format.
 \end{optionlist}
 
 \subsection{Style-specific options}\label{sec:opt:style}
-The \opt{dashed} option of the \sty{authoryear}- and \sty{authortitle}-like
-bibliography styles allows for finer control over the dashes now.
 \begin{optionlist}
 \optitem[true]{dashed}{\opt{true}, \opt{false}, \opt{fullhash},
                        \opt{bibnamehash}}
+
+The \opt{dashed} option of the \sty{authoryear}- and \sty{authortitle}-like
+bibliography styles allows for finer control over the dashes than in the
+standard styles.
+The option is available globally and additionally on a per-type and per-entry
+level.
 
 This option controls whether or not recurring lists of authors/editors in the
 bibliography are replaced with a dash.
@@ -1229,10 +1233,14 @@ indistinguishable in the bibliography, while with \kvopt{dashed}{fullhash} the
 lists are only replaced if they are indistinguishable in the data source.
 
 
+
+\optitem[false]{introcite}{\opt{false}, \opt{plain}, \opt{label}}
 The \opt{introcite} option is available for the bibliography styles of the
 \sty{authoryear} and \sty{authortitle} family.
-It can not be used with citation styles of the \sty{verbose} family.
-\optitem[false]{introcite}{\opt{false}, \opt{plain}, \opt{label}}
+It can not be used with citation styles of the \sty{verbose} family and may
+produce undesired output or errors.
+The option is available globally and on a per-type and per-entry level, where
+only the values \opt{plain} (and the default \opt{false}) are supported.
 
 This option controls whether or not the citation label is repeated in the
 bibliography.
@@ -1962,7 +1970,8 @@ you can use \cmd{DeclareOuterCiteDelim} or \cmd{DeclareInnerCiteDelim} and
 friends to define the opening and closing delimiters, otherwise you need to
 define them manually.
 
-All styles of \sty{biblatex-ext} define the following wrapper commands
+All styles of \sty{biblatex-ext} define the wrapper commands listed in
+\cref{tab:delimwrappers}.
 \begin{table}[btph]
 \centering
 \caption{Delimiter wrappers defined by \sty{biblatex-ext}}
