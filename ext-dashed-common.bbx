@@ -14,7 +14,7 @@
      Please update 'etoolbox' to v2.4 (2017-01-02)\MessageBreak or later}}
   {\listcsremove{blx@globalopts@boolean}{dashed}}
 
-\DeclareBibliographyOption[string]{dashed}[true]{%
+\def\extblx@opthandler@dashed#1{%
   \ifcsdef{extblx@opt@dashed@#1}
     {\csuse{extblx@opt@dashed@#1}}
     {\PackageWarningNoLine{biblatex-ext}{%
@@ -23,6 +23,13 @@
        'bibnamehash', 'false'.\MessageBreak
        Falling back to 'dashed=false'}%
      \csuse{extblx@opt@dashed@false}}}
+
+\DeclareBibliographyOption[string]{dashed}[true]{%
+  \extblx@opthandler@dashed{#1}}
+\DeclareTypeOption[string]{dashed}[true]{%
+  \extblx@opthandler@dashed{#1}}
+\DeclareEntryOption[string]{dashed}[true]{%
+  \extblx@opthandler@dashed{#1}}
 
 \csdef{extblx@opt@dashed@fullhash}{%
   \ExecuteBibliographyOptions{pagetracker}%
