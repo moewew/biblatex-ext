@@ -1,8 +1,8 @@
 \ProvidesFile{ext-biblatex-aux.def}
   [2018/10/09 v0.5a auxiliaries for extended biblatex citation style (MW)]
 
-\def\extblx@requiredbiblatexversion{3.11}
-\def\extblx@requiredbiblatexdate{2018/02/20}
+\def\extblx@requiredbiblatexversion{3.12}
+\def\extblx@requiredbiblatexdate{2018/11/02}
 
 \newrobustcmd*{\extblx@info}[1]{\PackageInfo{biblatex-ext}{#1}}
 \newrobustcmd*{\extblx@warning}[1]{\PackageWarning{biblatex-ext}{#1}}
