@@ -2185,7 +2185,7 @@ of the particular tabular environment you decide to use.
 
 Within the \prm{row code} argument the following macros are defined and can be
 used to typeset the result of bibliography macros.
-Every cell should normally be wrapped into exactly one of the following macro
+Each cell should normally be wrapped into exactly one of the following macros
 since they are responsible for providing the necessary entry data to the
 bibliography macros.
 
@@ -2200,10 +2200,12 @@ item if the language switching options are enabled.
 
 \cmditem{anchor}{code}
 
-Like \cmd{plain}, and but additionally sets a link anchor for the current entry.
-There should only be one \cmd{anchor} or \cmd{anchorlang} per row,
+Like \cmd{plain}, but additionally sets a link anchor for the current entry.
+That link anchor is used when a citation links to the bibliography entry.
+There should only be one \cmd{anchor} or \cmd{anchorlang} per entry (and
+hence per row),
 and for proper linking there should be at least one.
-Usually \cmd{anchor} or \cmd{anchorlang} is the first cell in the row.
+Usually \cmd{anchor} or \cmd{anchorlang} is the first cell in a row.
 
 \cmditem{anchorlang}{code}
 
@@ -2215,8 +2217,8 @@ Typesets the bibliography entry using the correct driver.
 This always uses the entry language if language switching is enabled.
 The \prm{precode} argument can be used to execute code before the driver
 is executed.
-Usually this would be the last cell in a row, duplicate information can be
-cleaned up with help of the \prm{precode} argument.
+Usually \cmd{driver} would be issued in the last (and widest) cell in a row,
+duplicate information can be cleaned up with help of the \prm{precode} argument.
 
 Recall that standard \env{tabular} can't break across pages, so you may want
 to give \env{longtable} a try.
@@ -2334,6 +2336,11 @@ See also \sty{CHANGES.md}.
 
 The numbers on the right indicate the relevant section of the manual.
 \begin{changelog}
+\begin{release}{<version>}{<date>}
+  \item Require \sty{biblatex} 3.12
+  \item Make \opt{dashed} and \opt{introcite} options available on a per-entry
+    and per-type basis\see{sec:opt:style}
+\end{release}
 \begin{release}{0.5a}{2018-10-09}
   \item Fix a bug with \cmd{footcites} and \cmd{footcitetexts} in
     \sty{ext-authoryear}
