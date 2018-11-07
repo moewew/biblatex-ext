@@ -158,6 +158,7 @@
 \DeclareDelimAlias{innametitledelim}{nametitledelim}
 \DeclareDelimAlias*[bib,biblist]{innametitledelim}{nametitledelim}
 
+\newcommand*{\titleaddonpunct}{\newunitpunct}
 
 \DeclareBibliographyDriver{article}{%
   \usebibmacro{introcite:plain}%
@@ -839,7 +840,7 @@
        \printfield[titlecase:title]{title}%
        \setunit{\subtitlepunct}%
        \printfield[titlecase:title]{subtitle}}%
-     \newunit}%
+     \setunit{\titleaddonpunct}}%
   \printfield{titleaddon}}
 
 \DeclareFieldAlias{titlecase:booktitle}{titlecase}
@@ -854,7 +855,7 @@
        \printfield[titlecase:booktitle]{booktitle}%
        \setunit{\subtitlepunct}%
        \printfield[titlecase:booktitle]{booksubtitle}}%
-     \newunit}%
+     \setunit{\titleaddonpunct}}%
   \printfield{booktitleaddon}}
 
 \DeclareFieldAlias{titlecase:maintitle}{titlecase}
@@ -869,7 +870,7 @@
        \printfield[titlecase:maintitle]{maintitle}%
        \setunit{\subtitlepunct}%
        \printfield[titlecase:maintitle]{mainsubtitle}}%
-     \newunit}%
+     \setunit{\titleaddonpunct}}%
   \printfield{maintitleaddon}}
 
 \DeclareFieldAlias{titlecase:journaltitle}{titlecase}
@@ -978,6 +979,22 @@
     {}%
   \newunit}
 
+\renewbibmacro*{event+venue+date}{%
+  \printfield{eventtitle}%
+  \setunit{\titleaddonpunct}%
+  \printfield{eventtitleaddon}%
+  \ifboolexpr{
+    test {\iffieldundef{venue}}
+    and
+    test {\iffieldundef{eventyear}}
+  }
+    {}
+    {\setunit{\addspace}%
+     \printtext[parens]{%
+       \printfield{venue}%
+       \setunit*{\addcomma\space}%
+       \printeventdate}}%
+  \newunit}
 
 \renewbibmacro*{bybookauthor}{%
   \ifnamesequal{author}{bookauthor}

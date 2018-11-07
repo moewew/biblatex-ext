@@ -1659,6 +1659,16 @@ The default is \cmd{newunitpunct}.
 \exampleprintbib{knuth:ct:a}
 \end{bibexample}
 
+\csitem{titleaddonpunct}
+The punctuation between \bibfield{title}\slash\bibfield{subtitle} and
+\bibfield{maintitle} as well as other \bibfield{title}-like and
+\bibfield{maintitle}-like fields. The default is \cmd{newunitpunct}
+\begin{bibexample}
+\renewcommand*{\titleaddonpunct}{\highlight{\textbf{\addperiod}%
+  \textvisiblespace}\bibsentence}%<- hacky & hard-coded!
+\exampleprintbib{salam}
+\end{bibexample}
+
 \csitem{jourvoldelim}
 The delimiter between the \bibfield{journaltitle} and \bibfield{volume} fields
 for \bibtype{article} if no \bibfield{series} is present.
@@ -2831,6 +2841,7 @@ The numbers on the right indicate the relevant section of the manual.
   \item Require \sty{biblatex} 3.12
   \item Make \opt{dashed} and \opt{introcite} options available on a per-entry
     and per-type basis\see{sec:opt:style}
+  \item Added \cs{titleaddonpunct}\see{sec:opt:punct}
   \item Add \sty{biblatex-ext-oa} package for open access symbols\see{sec:oasymb}
 \end{release}
 \begin{release}{0.5a}{2018-10-09}
