@@ -41,6 +41,7 @@
 \addbibresource{biblatex-examples.bib}
 \addbibresource{biblatex-ext-examples.bib}
 \usepackage{biblatex-ext-tabular}
+\usepackage[tikzsymbol=plos]{biblatex-ext-oa}
 
 \makeatletter
 \defbibcheck{examplebib}{%
@@ -120,7 +121,8 @@
     @proceedings,@reference,@report,@review,@set,@software,@standard,%
     @suppbook,@suppcollection,@suppperiodical,@thesis,@unpublished,@video%
    },
-   morekeywords=[2]{author,title,date},
+   morekeywords=[2]{author,title,date,journal,volume,number,pages,doi,
+                    eprint,eprinttype,eprintclass},
    keywordstyle=[1]{\bfseries\spotcolor},
    keywordstyle=[2]{\spotcolor},
    sensitive=false,
@@ -132,6 +134,7 @@
   moretexcs = {
     dimexpr,arraybackslash,newcolumntype,anchor,driver,plain,plainlang,
     anchorlang,
+    thefield,
     setlength,bibhang,addcomma,adddot,addperiod,addcolon,addspace,
     addnbspace,
     mkbibbold,mkbibemph,mkbibbrackets,mkbibparens,
@@ -145,7 +148,9 @@
     DeclareOuterCiteDelims,UndeclareOuterCiteDelims,DeclareOuterCiteDelimsAlias,
     introcitepunct,volnumdelim,maintitletitledelim,voltitledelim,sernumdelim,
     volnumdatedelim,locdatedelim,locpubdelim,publocdelim,pubdatedelim,
-    extradateonlycompcitedelim,introcitesep,introcitewidth,introcitesep},
+    extradateonlycompcitedelim,introcitesep,introcitewidth,introcitesep,
+    DeclareOpenAccessFieldUrl,DeclareOpenAccessEprintUrl,
+    DeclareOpenAccessEprintAlias,DeclareOpenAccessUrlFieldPriority},
 }
 
 \lstdefinestyle{extblxstylebibtex}{%
@@ -254,6 +259,7 @@
 \newrobustcmd*{\lppl}{\latex{} Project Public License}
 \newrobustcmd*{\pdf}{\acr{PDF}}
 \newrobustcmd*{\utf}{\mbox{\acr{UTF}-8}}
+\newrobustcmd*{\pgftikz}{PGF/Ti\emph{k}Z}
 
 \pdfstringdefDisableCommands{%
   \def\tex{TeX}%
@@ -643,8 +649,7 @@ French speakers may want to consider Maïeul Rouquette's
 available on \ctan\fnurl{https://ctan.org/pkg/latex-sciences-humaines}.
 If you read German you may be interested in Dominik Waßenhoven's two-part
 series \foreignlanguage{ngerman}{\emph{Bibliographien erstellen mit
-\sty{biblatex}}}\fnurl{http://biblatex.dominik-wassenhoven.de/dtk.shtml}
-in \foreignlanguage{ngerman}{\emph{Die \TeX nische Komödie}}
+\sty{biblatex}}} in \foreignlanguage{ngerman}{\emph{Die \TeX nische Komödie}}
 2/2008\fnurl{http://www.dante.de/DTK/Ausgaben/2008-2.pdf} (pp.~53--75)
 and 4/2008\fnurl{http://www.dante.de/DTK/Ausgaben/2008-4.pdf} (pp.~31--51).
 Please keep in mind that some of these texts were written a while ago and
@@ -1285,7 +1290,9 @@ labels in a \sty{numeric} bibliography.
 
 The label produced by the \opt{plain} option can be customised as follows.
 \begin{ltxsyntax}
-\csitem{introcitepunct} The punctuation insterted between the label and the
+\csitem{introcitepunct}
+
+The punctuation insterted between the label and the
   rest of the entry with \kvopt{introcite}{plain}.
  The default value is a colon followed by a space.
 \begin{bibexample}
@@ -1296,8 +1303,9 @@ The label produced by the \opt{plain} option can be customised as follows.
 \exampleprintbib{sigfridsson}
 \end{bibexample}
 \end{ltxsyntax}
+
 \begin{keymarglistbook}
-  \keyitem[bbx:introcite:plain:keeprelated] This toggle controls whether or
+\keyitem[bbx:introcite:plain:keeprelated] This toggle controls whether or
   not the citation label is also repeated for default related entries.
   The default value \opt{false} suppresses the label for related entries.
 \begin{bibexample}[title={\texttt{\string\togglefalse\{%
@@ -2329,6 +2337,489 @@ Using \cmd{defbibtabulartwocolumn} the example from above could be written as
 \end{ltxsyntax}
 
 \clearpage
+\section{Open Access Symbols}\label{sec:oasymb}
+The package \sty{biblatex-ext-oa} was inspired by a question%
+\fnurl{https://tex.stackexchange.com/q/459449/35864}
+by pluton\fnurl{https://tex.stackexchange.com/users/371/pluton} on TeX.SX
+about promoting open access works by adding a small open access symbol into
+the margin.
+
+The package must be loaded after \sty{biblatex}
+and is not tied to use with styles of this bundle, though it can not be
+guaranteed that everything will work out of the box with other styles.
+\begin{biblatexcode}
+\usepackage[(*@\prm{\sty{biblatex} options}@*)]{biblatex}
+(*@\dots @*)
+\usepackage[(*@\prm{\sty{biblatex-ext-oa} options}@*)]{biblatex-ext-oa}
+\end{biblatexcode}%
+
+
+The package may load the support packages \sty{biblatex-ext-oa-doiapi} and
+\sty{biblatex-ext-oa-tikzsymbols}.
+The preferred way to load these packages is with \sty{biblatex-ext-oa}'s
+package options.
+It should usually not be necessary to load these two packages directly with
+\cmd{usepackage}, but it is possible to use them as stand-alone packages
+should the need arise in other situations.
+
+The package \sty{biblatex-ext-oa} provides the following load-time options.
+\begin{optionlist}
+\boolitem[true]{enable}
+
+This option controls whether the package is only loaded (\opt{false}) or
+loaded and active (\opt{true}).
+
+\enquote{Active} means that the initial state of the global bibliography option
+\opt{openaccess} is \opt{auto} and that useful default settings are applied fo
+the semi-automatic open access detection.
+These useful defaults include redefinitions of the bibmacro \bibmacro{begentry}
+and, if \opt{doiapi} is enabled, also \bibmacro{doi+eprint+url}.
+
+If the package is loaded with \opt{enable} set to \opt{false} the global
+bibliography option \opt{openaccess} will be set to \opt{false} and no sensible
+defaults are defined for the semi-automatic open access detection.
+
+\optitem[false]{tikzsymbol}{\opt{true}, \opt{false}, \prm{string}}
+
+Load the support package \sty{biblatex-ext-oa-tikzsymbols} with its load-time
+option \opt{symbol} set to \prm{string}.
+The values \opt{true} and \opt{false} are provided for convenience.
+\opt{false} does not load the package at all, \opt{true} is like giving the
+value \opt{plos}.
+
+See \cref{sec:oa-symbol} for a thorough discussion of the available symbols
+as well as a short note on their respective licenses.
+
+\marginwarn Note that \sty{biblatex-ext-oa-tikzsymbols} will load \pgftikz
+\fnurl{https://ctan.org/pkg/pgf} to draw the open access symbols.
+If you prefer a more light-weight solution you can define a symbol yourself
+with an external graphics file.
+
+\marginwarn
+Note further that for the package \sty{biblatex-ext-oa} to work properly
+the macro \cmd{oasymbol} must be defined and should contain an open access
+symbol that can be printed in the margin.
+The package \sty{biblatex-ext-oa} itself does not provide a defintion for
+\cmd{oasymbol} if the option \opt{tikzsymbol} is not used.
+
+\boolitem[false]{doiapi}
+
+Whether or not to the support package \sty{biblatex-ext-oa-doiapi},
+which provides a Lua module that can be used to query open access information
+from Unpaywall\fnurl{https://unpaywall.org/} via the DOI of an entry.
+
+\marginwarn The package \sty{biblatex-ext-oa-doiapi} and hence this option can
+only be used with \lualatex.
+\end{optionlist}
+
+The following macros in \sty{biblatex-ext-oa} are also of interest.
+\begin{ltxsyntax}
+\cmditem{LoadTikZOASymbol}[symbol]
+
+This command provides an alternative way of loading the
+\sty{biblatex-ext-oa-tikzsymbols} package.
+The optional argument \prm{symbol} has the same meaning as the possible values
+for the \opt{tikzsymbol} package option.
+
+The command can only be used in the preamble.
+It may only be used once.
+
+\cmditem{oasymbol}
+
+This commands holds the little symbol that is going to be printed in the margin
+to mark open access publications.
+
+\marginwarn The command is initially undefined and must be defined for the
+package to work.
+One way of giving this command a useful definition is via the \opt{tikzsymbol}
+option of \sty{biblatex-ext-oa}.
+\end{ltxsyntax}
+
+An entry will be marked as open access if it has a \enquote{best open access
+URL}.
+This best open access URL will be determined according to the rules set out by
+the \opt{openaccess} bibliography option (see \cref{sec:oa:detect}) in the
+\cmd{AtDataInput} hook,
+it is stored in the newly defined field \bibfield{bestoaurl}.
+\begin{fieldlist}
+\fielditem{bestoaurl}{literal}
+This field holds the \enquote{best open access URL} as determined by the open
+access detection outlined in \cref{sec:oa:detect}.
+
+Note that this field need not hold the URL in expanded form.
+\end{fieldlist}
+
+Depending on the load-time options the package may define the following two
+bibliography macros.
+\begin{keymarglistbook}
+\keyitem[oamark]
+
+Prints the open access symbol if a best open access URL is available.
+This bibliography macro is available if the package is loaded with \opt{enable}
+set to \opt{true}
+
+\keyitem[api:bestoaurl]
+
+Display the best open access URL according to the Unpaywall API.
+The URL is not shown if it coincides with the DOI, the check for that is
+performed by \cmd{OpenaccessURLisDOI} (see \cref{sec:oa:doiapi}).
+This macro is only available if both the \opt{enable} and the \opt{doiapi}
+options are set to \opt{true}.
+
+This macro is useful in connection with the Unpaywall API since the best
+open access URL may not be amongst the fields that are already displayed
+in the entry.
+\end{keymarglistbook}
+
+With \opt{enable} set to \opt{true} the package will furtermore redefine the
+bibliography macro \bibmacro{begentry} to execute the bibliography macro
+\bibmacro{oamark}.
+If additionally \opt{doiapi} is \opt{true} the bibliography macro
+\bibmacro{doi+eprint+url} will be redefined to include a call to
+\bibmacro{api:bestoaurl}.
+
+\subsection{Open access detection}\label{sec:oa:detect}
+The heart of the package \sty{biblatex-ext-oa} is the bibliography option
+\opt{openaccess}, which can be set globally, per type or per entry.
+
+A short example document can be found at
+\url{https://github.com/moewew/biblatex-ext/blob/master/oaslinks.tex}.
+
+\begin{optionlist}
+\optitem[auto/none]{openaccess}{\opt{auto}, \opt{doiapi}, \opt{forcedoiapi},
+  \opt{true}, \opt{false}, \opt{none}, \prm{open access field}}
+
+This option controls how the best open access URL is detected.
+The initial value is \opt{none} when the package is loaded with the \opt{enable}
+option set to \opt{false}, otherwise~-- and by default~-- it is \opt{auto}.
+
+All following values are valid at all three levels (global, per-type and
+per-entry), but it may not be useful to use a particular option at all levels.
+\begin{valuelist}
+\item[auto] Use a semi-automatic heuristic to find the best open access URL.
+
+\item[all] Assume that all known \enquote{open access fields} contain an open
+  access URL.
+
+  Note that an entry still needs at least one field that open access field
+  for the open access symbol to show up.
+
+\item[none] Assume that no known \enquote{open access field} contains an open
+  access URL.
+
+  The value \opt{none} may be used to disable the \opt{openaccess} feature.
+
+\item[doiapi] Use API queries from the \sty{biblatex-ext-oa-doiapi} package
+  to determine the best open access link from the DOI.
+
+  \marginwarn This option requires that the \opt{doiapi} package option be set
+  to \opt{true} and only works with \lualatex.
+  Furthermore it needs a DOI in the \bibfield{doi} field.
+  If the \bibfield{doi} field is empty, this option falls back to \opt{auto}.
+
+\item[onlydoiapi] Like \opt{doiapi}, but does not fall back to \opt{auto}
+  in case no DOI is present.
+
+\item[forcedoiapi] Like \opt{doiapi}, but overrides more specific option levels
+  that would say otherwise.
+
+  By default more specific options take precedence over more general options,
+  that means that a per-entry option trumps a per-type option, which in turn
+  overrides the global setting.
+  If \opt{forcedoiapi} is set it will prevail over more specific options that
+  would say otherwise. A common use case is to override per-entry options with
+  a global \opt{forcedoiapi}.
+
+\item[forceonlydoiapi] A combination of \opt{onlydoiapi} and \opt{forcedoiapi}.
+  This options overrides all more specific values and does not fall back to
+  \opt{auto} in case the DOI is not given.
+
+\item[true] An alias for \opt{all}.
+\item[false] An alias for \opt{none}.
+
+\item[\prm{open access field}] Specifies that the open access version is given
+  by \prm{open access field}.
+  This value would normally be used only on a per-enry level.
+
+  Any field for which \cmd{DeclareOpenAccessFieldUrl} has declared a URL
+  specification is a valid \enquote{open access field}.
+\end{valuelist}
+
+\end{optionlist}
+
+The heuristics to find the best open access link are governed
+by the following commands and rely on information present in the \sty{.bib} file
+(ideally in field annotations).
+
+\begin{ltxsyntax}
+\cmditem{DeclareOpenAccessFieldUrl}[openness]{field}{url spec}
+
+Declares \prm{field} to be an \enquote{open access field}.
+The code for \prm{url spec} should expand to the full URL under which the entry
+can be accessed.
+The optional \prm{openness} argument indicates whether the URL will always be
+open access (\texttt{always}) or whether it is only open access under certain
+conditions (\texttt{conditional});
+if it is not present \texttt{conditional} is assumed.
+
+If the package is loaded with \opt{enable} set to \opt{true},
+the following declarations are active.
+\begin{biblatexcode}
+\DeclareOpenAccessFieldUrl{url}{\thefield{url}}
+\DeclareOpenAccessFieldUrl{doi}{https://doi.org/\thefield{doi}}
+\end{biblatexcode}
+
+\cmditem{UndeclareOpenAccessFieldUrl}{field}
+
+Disable \prm{field} as \enquote{open access field} and remove its mapping
+to a URL.
+
+\cmditem{DeclareOpenAccessEprintUrl}[openness]{eprinttype}{url spec}
+
+Declares the \bibfield{eprinttype} \prm{eprinttype} to be an
+\enquote{open access eprint type}.
+The code for \prm{url spec} should expand to the full URL under which the entry
+can be accessed.
+
+The optional \prm{openness} argument indicates whether the URL will always be
+open access (\texttt{always}) or whether it is only open access under certain
+conditions (\texttt{conditional});
+if it is not present \texttt{conditional} is assumed.
+
+The \texttt{always} decision can be overridden on a per-entry basis by
+giving the field annotation \texttt{closedaccess}.
+If a field has openness \texttt{conditional} it is only considered for a
+particular entry if the field annotation \texttt{openaccess} is set.
+
+If the package is loaded with \opt{enable} set to \opt{true},
+the following declarations are active.
+\begin{biblatexcode}
+\DeclareOpenAccessEprintUrl{jstor}{%
+  http://www.jstor.org/stable/\thefield{eprint}}
+\DeclareOpenAccessEprintUrl{hdl}{%
+  http://hdl.handle.net/\thefield{eprint}}
+\DeclareOpenAccessEprintUrl{pubmed}{%
+  http://www.ncbi.nlm.nih.gov/pubmed/\thefield{eprint}}
+\DeclareOpenAccessEprintUrl[always]{arxiv}{%
+  https://arxiv.org/\abx@arxivpath/\thefield{eprint}}
+\end{biblatexcode}
+Note the optional argument \texttt{always} for \bibfield{arxiv}, because
+articles on the arXiv are always open access.
+
+\cmditem{DeclareOpenAccessEprintAlias}{alias}{eprinttype}
+
+Handle the open access URL detection for \prm{alias} exactly as that for
+\prm{eprinttype}.
+
+If the package is loaded with \opt{enable} set to \opt{true},
+the following declarations are active.
+\begin{biblatexcode}
+\DeclareOpenAccessEprintAlias{JSTOR}{jstor}
+\DeclareOpenAccessEprintAlias{HDL}{hdl}
+\DeclareOpenAccessEprintAlias{PubMed}{pubmed}
+\DeclareOpenAccessEprintAlias{arXiv}{arxiv}
+\end{biblatexcode}
+
+\cmditem{UndeclareOpenAccessEprintUrl}{eprinttype}
+
+Disable \prm{eprinttype} as \enquote{open access eprint type} and remove its
+mapping to a URL.
+
+\cmditem{DeclareOpenAccessUrlFieldPriority}{fields}
+
+Define the priority order of \enquote{open access fields} if several fields
+contain valid open access URLs.
+The fields processed in the given order and the last field prevails, meaning
+that fields later in the list have higher priority.
+
+The default definition if the package is active is
+\begin{biblatexcode}
+\DeclareOpenAccessUrlFieldPriority{url,eprint,doi}
+\end{biblatexcode}
+which means that the DOI is given preference over eprints, which in turn
+prevail over the \bibfield{url} field.
+\end{ltxsyntax}
+
+The \opt{auto} detection works as follows.
+\begin{itemize}
+\item The best known open access URL is cleared.
+\item For each non-empty field listed in \cmd{DeclareOpenAccessUrlFieldPriority}
+  the URL specification is obtained.
+  \begin{itemize}
+    \item If the field has \prm{openness} \texttt{always}, the best known open
+    access URL is updated with the new value, unless the field has been
+    explicitly marked as closed acces with the field annotation
+    \texttt{closedaccess}.
+    \item If the field has \prm{openness} \texttt{conditional}, the best known
+    open access URL is updated with the new value if the field has been marked
+    with the field annotation \texttt{openaccess}.
+  \end{itemize}
+\end{itemize}
+
+For \opt{auto}-detection, an open access article with DOI would ideally
+look like this.
+\begin{bibtexfile}
+@article{cipriani,
+  author  = {Cipriani, Alessandra and Hazra, Rajat Subhra
+             and Ruszel, Wioletta M.},
+  title   = {Scaling limit of the odometer in divisible sandpiles},
+  journal = {Probability Theory and Related Fields},
+  date    = {2018},
+  volume  = {172},
+  number  = {3},
+  pages   = {829--868},
+  doi     = {10.1007/s00440-017-0821-x},
+  doi+an  = {=openaccess},
+}
+\end{bibtexfile}
+Preprints on the arXiv, on the other hand, need no field annotation, because
+they are always open access.
+\begin{bibtexfile}
+@online{meckes,
+  author      = {Elizabeth Meckes and Kathryn Stewart},
+  title       = {On the eigenvalues of truncations
+                 of random unitary matrices},
+  eprinttype  = {arxiv},
+  eprint      = {1811.08340},
+  eprintclass = {math.PR},
+  date        = {2018-11-20}
+}
+\end{bibtexfile}
+
+If the \opt{openaccess} option is set to one specific field only, only
+that field will be taken into consideration and it will be assumed that the
+field contains an open access link unless the field annotation
+\texttt{closedaccess} is set.
+In particular the \prm{openness} of each field does not play a role.
+
+
+\subsection{Open access detection with the Unpaywall API}\label{sec:oa:doiapi}
+Inspired by Eric Marsden's%
+\fnurl{https://tex.stackexchange.com/users/29621/eric-marsden}
+answer to the open access symbol question on TeX.SX, the package
+\sty{biblatex-oa-doiapi}, which can be loaded via the \opt{doiapi} option
+of \sty{biblatex-oa}, provides means to automatically find the best open
+access link to a given article via its DOI by querying the Unpaywall API%
+\fnurl{https://unpaywall.org/}.
+
+\marginwarn This package can only be used with \lualatex{} and needs online
+access.
+Furthermore the Unpaywall API requires an email address and asks to limit
+calls to 100000 per day\fnurl{https://unpaywall.org/products/api}.
+
+To avoid too many calls to the API, the package caches its information in the
+temporary \sty{.oai} file.
+It is safe to delete that file at any point, but if you do so the next
+\lualatex{} run may take a while, because all information has to be retrieved
+from the APIs.
+To avoid old information sticking around for too long you can set a cache
+expiration period.
+
+\begin{ltxsyntax}
+\cmditem{SetDOIAPIMail}{email}
+
+Define the email address that is going to be used for API queries that require
+an email.
+
+\marginwarn
+There is no predefined default email address.
+If the package is loaded and no email was provided until the
+beginning of the document (as tested in an \cmd{AtBeginDocument} hook)
+you will recieve a warning.
+A fatal error will be thrown if you try to query the Unpaywall database
+without an email.
+
+\cmditem{SetDOIAPICacheExpiration}{days}
+
+Set the expiration period for the cache.
+If the information for an entry in the cache is older than \prm{days} days
+it will be queried again.
+The default expiration period is seven days.
+
+\cmditem{IsOpenaccess}{DOI}{true}{false}
+
+Expands to \prm{true} if the DOI is an open access work according to the
+Unpaywall database and to \prm{false} otherwise.
+
+\cmditem{GetOpenaccessURLWrapped}{DOI}
+
+Obtain the best open access URL as returned by the Unpaywall API wrapped in
+the \cmd{url} macro.
+
+\cmditem{OpenaccessURLisDOI}{DOI}{true}{false}
+
+Expands to \prm{true} if the best open access URL as resturned by the Unpaywall
+API is the DOI and to \prm{false} otherwise.
+\end{ltxsyntax}
+
+
+
+\subsection{Open access symbols with Ti\emph{k}Z}\label{sec:oa-symbol}
+The main purpose of the package \sty{biblatex-ext-oa-tikzsymbols}
+is to define the command \cmd{oasymbol}.
+As mentioned above, usually this package is not going to be loaded as a
+stand-alone package, instead it is loaded via \sty{biblatex-ext-oa}.
+
+If used as a stand-alone package, \sty{biblatex-ext-oa-tikzsymbols} has one
+load-time option.
+\begin{optionlist}
+\optitem{symbol}{\opt{plos}, \opt{oanet}}
+
+This options determines which of the two provided symbols is going to be used
+for \cmd{oasymbol}.
+
+\begin{valuelist}
+\item[plos] Use the open access symbol by PLOS | Public Library of Science%
+  \fnurl{https://www.plos.org/} \csuse{extblx@oasymbol@plos}.
+
+  The drawing is based on a CC0 work by PLoS, modified by Wikipedia users
+  Nina, Beao, and JakobVoss%
+\fnurl{https://commons.wikimedia.org/wiki/File:Open_Access_logo_PLoS_white.svg}.
+
+\item[oanet] Use the open access symbol by open-access.net%
+  \fnurl{https://open-access.net/}
+  \csuse{extblx@oasymbol@oanet}.
+
+  The drawing is based on the logo uploaded to Wikimedia%
+  \fnurl{https://commons.wikimedia.org/wiki/File:Open_access.svg}
+  and originally from open-access.net%
+  \fnurl{https://open-access.net/fileadmin/logos/oa.svg}.
+  Wikimedia claims the content does not meet the threshold of originality
+  for copyright protection.
+  Even if that is not the case, the legal notices on open-access.net%
+  \fnurl{https://open-access.net/DE-EN/provider-legal-notices-and-terms/}
+  place all contents under a Creative Commons 4.0 Attribution International
+  (CC BY 4.0) Licence\fnurl{https://creativecommons.org/licenses/by/4.0/}
+  unless stated otherwise.
+  The logo designer is listed as
+  \emph{Medien + Design\fnurl{http://www.cedis.fu-berlin.de/mediendesign/},
+  Center for Digital Systems,
+  Competence Center for E-Learning and Multimedia, Freie Universität Berlin}.
+
+  There is no implication that the open-access.net logo is not covered by
+  the CC BY 4.0 terms.
+  Indeed, the German \enquote{about us} page explicitly states
+  \foreignquote{ngerman}{%
+    Das Logo der Informationsplattform darf nachgenutzt werden,
+    gerne mit einem Link zu open-access.net.}%
+  \fnurl{https://open-access.net/ueber-uns/}
+  The English version has \enquote{The logo of the information platform
+  may be reused with a link to open-access.net}%
+  \fnurl{https://open-access.net/DE-EN/about-us/}.
+  While the German version leaves some leeway as to whether or not a link is
+  required as attribution, the English version seems more explicit.
+\end{valuelist}
+\end{optionlist}
+
+Apart from \cmd{oasymbol} the package only defines one other user-level command.
+\begin{ltxsyntax}
+\cmditem{DefineTikZOASymbol}[symbol]
+
+This command redefines \cmd{oasymbol} to point to either the PLOS version or
+the open-access.net version of the logo.
+\end{ltxsyntax}
+
+\clearpage
 \section{Revision History}\label{sec:log}
 The GitHub repository of this project uses release tags, so you can compare
 the changes in source code there.\footnote{\url{\gitbaseurl/compare/}}
@@ -2340,6 +2831,7 @@ The numbers on the right indicate the relevant section of the manual.
   \item Require \sty{biblatex} 3.12
   \item Make \opt{dashed} and \opt{introcite} options available on a per-entry
     and per-type basis\see{sec:opt:style}
+  \item Add \sty{biblatex-ext-oa} package for open access symbols\see{sec:oasymb}
 \end{release}
 \begin{release}{0.5a}{2018-10-09}
   \item Fix a bug with \cmd{footcites} and \cmd{footcitetexts} in

@@ -1,0 +1,331 @@
+\ProvidesPackage{biblatex-ext-oa}
+  [2018/10/09 v0.5a mark open access in biblatex bibliographies (MW)]
+
+\protected\def\extblx@oa@error#1#2{%
+  \PackageError{biblatex-ext-oa}{#1}{#2.}}
+
+\protected\def\extblx@oa@warning@noline#1{%
+  \PackageWarningNoLine{biblatex-ext-oa}{#1}}
+
+\let\extblx@oa@warning\extblx@oa@warning@noline
+\AtEndOfPackage{%
+  \protected\def\extblx@oa@warning#1{%
+    \PackageWarning{biblatex-ext-oa}{#1}}}
+
+\@ifpackageloaded{biblatex}
+  {}
+  {\extblx@oa@error
+     {biblatex not loaded!\MessageBreak
+      This package must be loaded after biblatex.\MessageBreak
+      This is a fatal error, the package will not\MessageBreak be loaded}
+     {Load biblatex with \string\usepackage{biblatex} before
+      you load 'biblatex-ext-oa'.\MessageBreak
+      Please see the documentation of biblatex-ext for more information}%
+   \endinput}
+
+\newtoggle{extblx@oa@opt@forcedoiapi}
+\DeclareBibliographyOption[string]{openaccess}[true]{%
+  \ifstrequal{#1}{forcedoiapi}
+    {\@firstoftwo}
+    {\ifstrequal{#1}{forceonlydoiapi}
+       {\@firstoftwo}
+       {\@secondoftwo}}
+    {\toggletrue{extblx@oa@opt@forcedoiapi}}
+    {}%
+  \extblx@oa@blxopt@openaccess{#1}}
+\DeclareTypeOption[string]{openaccess}[true]{%
+  \ifstrequal{#1}{forcedoiapi}
+    {\toggletrue{extblx@oa@opt@forcedoiapi}%
+     \csletcs{extblx@oa@url@from}{extblx@oa@url@from@forcedoiapi}}
+    {}%
+  \ifstrequal{#1}{forcedoiapi}
+    {\toggletrue{extblx@oa@opt@forceonlydoiapi}%
+     \csletcs{extblx@oa@url@from}{extblx@oa@url@from@forceonlydoiapi}}
+    {}%
+  \iftoggle{extblx@oa@opt@forcedoiapi}
+    {}
+    {\extblx@oa@blxopt@openaccess{#1}}}
+\DeclareEntryOption[string]{openaccess}[true]{%
+  \iftoggle{extblx@oa@opt@forcedoiapi}
+    {}
+    {\extblx@oa@blxopt@openaccess{#1}}}
+
+\def\extblx@oa@blxopt@openaccess#1{%
+  \ifcsundef{extblx@oa@url@from@#1}
+    {\ifcsundef{extblx@oa@warn@field@\abx@field@entrykey @#1}
+       {\extblx@oa@warning@noline{%
+          Field '#1' not set up for\MessageBreak
+          open access detection.\MessageBreak
+          Ignoring the option\MessageBreak
+          'openaccess=#1'\MessageBreak
+          for entry '\abx@field@entrykey'}%
+        \global\cslet{extblx@oa@warn@field@\abx@field@entrykey @#1}\@empty}
+       {}}
+    {\csletcs{extblx@oa@url@from}{extblx@oa@url@from@#1}}%
+  \ifcsequal{extblx@oa@url@from}{extblx@oa@url@from@onlydoiapi}
+    {\@firstoftwo}
+    {\ifcsequal{extblx@oa@url@from}{extblx@oa@url@from@doiapi}
+       {\@firstoftwo}
+       {\@secondoftwo}}
+    {\ifextblx@oa@opt@doiapi
+     \else
+       \extblx@oa@error
+         {'openaccess=#1' requires 'doiapi=true'\MessageBreak
+          and LuaLaTeX}
+         {If you want to use 'openaccess=#1', you must load the
+          'biblatex-ext-oa'\MessageBreak
+          package with the option 'doiapi=true'.
+          That option also requires LuaLaTeX.\MessageBreak
+          Please see the documentation of biblatex-ext for more information}
+     \fi}
+    {}
+}
+
+% define special detection settings
+% auto, all (=:true), none (=:false),
+% doiapi, forcedoiapi (=doiapi, but overrides more specific options)
+% onlydoiapi, forceonlydoiapi
+\csdef{extblx@oa@url@from@auto}{auto}
+\csdef{extblx@oa@url@from@all}{all}
+\csletcs{extblx@oa@url@from@true}{extblx@oa@url@from@all}
+\csdef{extblx@oa@url@from@none}{none}
+\csletcs{extblx@oa@url@from@false}{extblx@oa@url@from@none}
+\csdef{extblx@oa@url@from@doiapi}{doiapi}
+\csdef{extblx@oa@url@from@onlydoiapi}{onlydoiapi}
+\csletcs{extblx@oa@url@from@forcedoiapi}{extblx@oa@url@from@doiapi}
+\csletcs{extblx@oa@url@from@forceonlydoiapi}{extblx@oa@url@from@onlydoiapi}
+
+% {<field_1,...,field_n>}
+\newrobustcmd*{\DeclareOpenAccessUrlFieldPriority}{%
+  \let\extblx@oa@url@autofields\@empty
+  \forcsvlist{\listadd\extblx@oa@url@autofields}}
+
+% {<macroname>}{<field>}{<url spec>}{<openness>}
+\def\extblx@oa@url@definefieldurl#1#2#3#4{%
+  \csdef{extblx@oa@url@from@#2}{#2}%
+  \ifstrequal{#4}{always}
+    {\csdef{extblx@oa@url@getfromfield@#1}{%
+       \iffieldannotation[#2]{closedaccess}
+         {}
+         {\def\extblx@oa@url{#3}}}}
+    {\csdef{extblx@oa@url@getfromfield@#1}{%
+       \iffieldannotation[#2]{closedaccess}
+          {\@secondoftwo}
+          {\iffieldannotation[#2]{openaccess}
+             {\@firstoftwo}
+             {\ifcsequal{extblx@oa@url@from}{extblx@oa@url@from@#2}
+                {\@firstoftwo}
+                {\ifcsequal{extblx@oa@url@from}{extblx@oa@url@from@all}
+                  {\@firstoftwo}
+                  {\@secondoftwo}}}}
+         {\def\extblx@oa@url{#3}}
+         {}}}}
+
+% [<openness>]{<field>}{<url spec>}
+\newrobustcmd*{\DeclareOpenAccessFieldUrl}[3][conditional]{%
+  \extblx@oa@url@definefieldurl{#2}{#2}{#3}{#1}}
+% [<openness>]{<eprint type>}{<url spec>}
+\newrobustcmd*{\DeclareOpenAccessEprintUrl}[3][conditional]{%
+  \extblx@oa@url@definefieldurl{eprint@#2}{eprint}{#3}{#1}}
+
+\newrobustcmd*{\DeclareOpenAccessEprintAlias}[2]{%
+  \csdef{extblx@oa@url@getfromfield@eprint@#1}{%
+    \csuse{extblx@oa@url@getfromfield@eprint@#2}}}
+
+\def\extblx@oa@url@undefinefieldurl#1#2{
+  \csundef{extblx@oa@url@from@#2}
+  \csundef{extblx@oa@url@getfromfield@#1}}
+
+\newrobustcmd*{\UndeclareOpenAccessFieldUrl}[1]{%
+  \extblx@oa@url@undefinefieldurl{#1}{#1}}
+\newrobustcmd*{\UndeclareOpenAccessEprintUrl}[1]{%
+  \extblx@oa@url@undefinefieldurl{eprint@#1}{eprint}}
+
+
+\def\extblx@oa@url@processfield@@generic#1{%
+  \csuse{extblx@oa@url@getfromfield@#1}}
+
+\def\extblx@oa@url@processfield@eprint#1{%
+  \iffieldundef{eprinttype}
+    {\csuse{extblx@oa@url@getfromfield@#1}}
+    {\csuse{extblx@oa@url@getfromfield@eprint@\thefield{eprinttype}}}}
+
+\def\extblx@oa@url@processfield#1{%
+  \iffieldundef{#1}
+    {}
+    {\ifcsundef{extblx@oa@url@processfield@#1}
+       {\extblx@oa@url@processfield@@generic{#1}}
+       {\csuse{extblx@oa@url@processfield@#1}{#1}}}}
+
+\newcommand*{\extblx@oa@url@getoaurl}{%
+  \ifcsequal{extblx@oa@url@from}{extblx@oa@url@from@onlydoiapi}
+    {\iffieldundef{doi}
+       {}
+       {\extblx@oa@api@getoaurl{\thefield{doi}}}}
+    {\ifcsequal{extblx@oa@url@from}{extblx@oa@url@from@doiapi}
+       {\iffieldundef{doi}
+         {\forlistloop{\extblx@oa@url@processfield}{\extblx@oa@url@autofields}}
+         {\extblx@oa@api@getoaurl{\thefield{doi}}}}
+       {\ifcsequal{extblx@oa@url@from}{extblx@oa@url@from@none}
+          {}
+          {\ifcsequal{extblx@oa@url@from}{extblx@oa@url@from@all}
+             {\@firstoftwo}
+             {\ifcsequal{extblx@oa@url@from}{extblx@oa@url@from@auto}
+                {\@firstoftwo}
+                {\@secondoftwo}}
+           {\forlistloop{\extblx@oa@url@processfield}{\extblx@oa@url@autofields}}
+           {\extblx@oa@url@processfield{\csuse{extblx@oa@url@from}}}}}}}
+
+
+\newrobustcmd*{\LoadTikZOASymbol}[1][plos]{%
+  \@ifpackageloaded{biblatex-ext-oa-tikzsymbols}
+    {\extblx@oa@warning{%
+       TikZ open access symbols already loaded.\MessageBreak
+       Redefining the symbol with\MessageBreak\string\DefineTikZOASymbol}%
+     \DefineTikZOASymbol[#1]}
+    {\RequirePackage[symbol=#1]{biblatex-ext-oa-tikzsymbols}}%
+  \gdef\LoadTikZOASymbol{%
+    \extblx@oa@warning{%
+      TikZ open access symbols can not be\MessageBreak
+      loaded more than once.\MessageBreak
+      I'll now behave like \string\DefineTikZOASymbol\MessageBreak}%
+    \DefineTikZOASymbol}}
+\@onlypreamble\LoadTikZOASymbol
+
+\def\extblx@oa@opt@tikzsymbol@val@false{}
+\def\extblx@oa@opt@tikzsymbol@val@true{\LoadTikZOASymbol[plos]}
+
+\def\extblx@oa@opt@tikzsymbol@process#1{%
+  \begingroup
+  \edef\extblx@oa@tempa{\endgroup
+    \noexpand\extblx@oa@opt@tikzsymbol@process@i{#1}}
+  \extblx@oa@tempa}
+
+\def\extblx@oa@opt@tikzsymbol@process@i#1{%
+  \ifcsundef{extblx@oa@opt@tikzsymbol@val@#1}
+    {\LoadTikZOASymbol[#1]}
+    {\csuse{extblx@oa@opt@tikzsymbol@val@#1}}}
+
+\SetupKeyvalOptions{
+  family=extblx@oa@opt,
+  prefix=extblx@oa@opt@,
+}
+
+\DeclareBoolOption[true]{enable}
+\DeclareBoolOption[false]{doiapi}
+\DeclareStringOption[false]{tikzsymbol}[true]
+
+
+\ProcessKeyvalOptions*
+
+\extblx@oa@opt@tikzsymbol@process{\csuse{extblx@oa@opt@tikzsymbol}}
+
+\ifbool{extblx@oa@opt@doiapi}
+  {\RequirePackage{biblatex-ext-oa-doiapi}}
+  {}
+
+\def\extbl@oa@bbl@fielddef@bestoaurl#1{%
+  \blx@bbl@fielddef{bestoaurl}{#1}}
+
+\AtDataInput{%
+  \undef\extblx@oa@url
+  \extblx@oa@url@getoaurl
+  \ifundef\extblx@oa@url
+    {}
+    {\expandafter\extbl@oa@bbl@fielddef@bestoaurl\expandafter{\extblx@oa@url}}}
+
+
+
+% based on egreg's (https://tex.stackexchange.com/users/4427/egreg)
+% answer to https://tex.stackexchange.com/a/123451/35864
+% originally CC BY-SA 3.0, but dual-licensed under LPPL
+% see https://tex.meta.stackexchange.com/a/3333/35864
+\newcommand{\extblx@oa@marginmark}{\strut\vadjust{\extblx@oa@marginmark@do}}
+\newcommand{\extblx@oa@marginmark@do}{%
+  \vbox to 0pt{%
+    \kern-3\dp\strutbox
+    \strut
+    \hfill
+    \rlap{\kern1em
+      \ifhyperref
+        {\href{\thefield{bestoaurl}}}
+        {\@firstofone}%
+      {\oasymbol}}
+    \vss
+  }%
+}
+
+
+\ifbool{extblx@oa@opt@enable}
+  {\csletcs{extblx@oa@url@from}{extblx@oa@url@from@auto}
+   \DeclareOpenAccessFieldUrl{url}{\thefield{url}}
+   \DeclareOpenAccessFieldUrl{doi}{https://doi.org/\thefield{doi}}
+
+   \DeclareOpenAccessEprintUrl{jstor}{%
+     http://www.jstor.org/stable/\thefield{eprint}}
+   \DeclareOpenAccessEprintAlias{JSTOR}{jstor}
+   \DeclareOpenAccessEprintUrl{hdl}{%
+     http://hdl.handle.net/\thefield{eprint}}
+   \DeclareOpenAccessEprintAlias{HDL}{hdl}
+   \DeclareOpenAccessEprintUrl{pubmed}{%
+     http://www.ncbi.nlm.nih.gov/pubmed/\thefield{eprint}}
+   \DeclareOpenAccessEprintAlias{PubMed}{pubmed}
+   \DeclareOpenAccessEprintUrl[always]{arxiv}{%
+     https://arxiv.org/\abx@arxivpath/\thefield{eprint}}
+   \DeclareOpenAccessEprintAlias{arXiv}{arxiv}
+
+   \DeclareOpenAccessUrlFieldPriority{url,eprint,doi}
+
+   \DeclareFieldFormat{bestoaurl}{\url{#1}}
+
+   \newbibmacro*{oamark}{%
+     \iffieldundef{bestoaurl}
+       {}
+       {\extblx@oa@marginmark}}
+
+   \renewbibmacro*{begentry}{%
+     \usebibmacro{oamark}}
+
+   \ifbool{extblx@oa@opt@doiapi}
+     {\NewBibliographyString{openaccessat}
+      \DefineBibliographyStrings{english}{
+        openaccessat = {open access version at},
+      }
+      \newbibmacro{api:bestoaurl}{%
+        \ifcsequal{extblx@oa@url@from}{extblx@oa@url@from@doiapi}
+          {\iffieldundef{doi}
+             {\@secondoftwo}
+             {\iffieldundef{bestoaurl}
+                {\@secondoftwo}
+                {\OpenaccessURLisDOI{\thefield{doi}}
+                   {\@secondoftwo}
+                   {\@firstoftwo}}}}
+          {\@secondoftwo}
+          {\bibstring{openaccessat}%
+           \setunit{\addspace}%
+           \printfield{bestoaurl}%
+           \newunit\newblock}
+          {}}
+
+      \letbibmacro*{bbxorig:doi+eprint+url}{doi+eprint+url}
+      \renewbibmacro*{doi+eprint+url}{%
+        \usebibmacro{bbxorig:doi+eprint+url}%
+        \newunit\newblock
+        \usebibmacro{api:bestoaurl}}}}
+  {\csletcs{extblx@oa@url@from}{extblx@oa@url@from@none}}
+
+
+\endinput
+%
+% This file is part of the biblatex-ext bundle.
+% biblatex-ext is released under the LaTeX Project Public License v1.3c
+% or later.
+%
+% A complete list of files included in that package can be found in README.md
+% or - failing that - in ext-standard.bbx.
+%
+% Official releases of this package are on CTAN
+%   https://www.ctan.org/pkg/biblatex-ext
+% development takes place on GitHub
+%   https://github.com/moewew/biblatex-ext
+%

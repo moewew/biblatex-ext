@@ -66,12 +66,17 @@ standard styles. The bundle consists of the following files
   - `ext-verbose-trad2.bbx` and `ext-verbose-trad2.cbx`
   - `ext-verbose-trad3.bbx` and `ext-verbose-trad3.cbx`
 - The package for tabular bibliographies `biblatex-ext-tabular.sty`
-  
+- The package `biblatex-ext-oa.sty`
+  - The support package `biblatex-ext-oa-doiapi.sty`
+    - The Lua module `blxextdoiapi-lua`
+  - The symbol package `biblatex-ext-oa-tikzsymbols.sty`
+
 ## Licence
 
 Copyright 2017-2018 Moritz Wemheuer
 
-This work consists of the `.bbx`, `.cbx` and `.def` files mentioned above.
+This work consists of the `.bbx`, `.cbx`, `.def`, `.sty` and `.lua` files
+mentioned above.
 
 This work may be distributed and/or modified under the
 conditions of the LaTeX Project Public License (LPPL), either

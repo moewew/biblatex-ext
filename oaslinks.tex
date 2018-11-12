@@ -1,0 +1,118 @@
+% run with LuaLaTeX or pdfLaTeX
+\documentclass{article}
+\ifundef\luatexversion
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{lmodern}
+\fi
+
+\usepackage[backend=biber, style=ext-numeric]{biblatex}
+\usepackage[doiapi=true, tikzsymbol=plos]{biblatex-ext-oa}
+\ExecuteBibliographyOptions{openaccess=doiapi}
+
+\usepackage[colorlinks]{hyperref}
+
+\usepackage{kantlipsum}
+
+\newcommand*{\halurl}[1]{http://hal.archives-ouvertes.fr/#1}
+\DeclareFieldFormat{eprint:hal}{%
+  \ifhyperref
+    {\href{\halurl{#1}}{hal:~\nolinkurl{#1}}}
+    {hal:~\nolinkurl{#1}}}
+\DeclareFieldAlias{eprint:HAL}{eprint:hal}
+
+\DeclareOpenAccessEprintUrl[always]{hal}{%
+  http://hal.archives-ouvertes.fr/\thefield{eprint}}
+\DeclareOpenAccessEprintAlias{HAL}{hal}
+
+\usepackage{filecontents}
+\begin{filecontents*}{\jobname.bib}
+@article{cipriani,
+  author  = {Cipriani, Alessandra and Hazra, Rajat Subhra
+             and Ruszel, Wioletta M.},
+  title   = {Scaling limit of the odometer in divisible sandpiles},
+  journal = {Probability Theory and Related Fields},
+  date    = {2018},
+  volume  = {172},
+  number  = {3},
+  pages   = {829--868},
+  doi     = {10.1007/s00440-017-0821-x},
+  doi+an  = {=openaccess},
+}
+@online{meckes,
+  author      = {Elizabeth Meckes and Kathryn Stewart},
+  title       = {On the eigenvalues of truncations
+                 of random unitary matrices},
+  eprinttype  = {arxiv},
+  eprint      = {1811.08340},
+  eprintclass = {math.PR},
+  date        = {2018-11-20}
+}
+@article{kucsko,
+  author  = {G. Kucsko and P. C. Maurer and N. Y. Yao and M. Kubo
+             and H. J. Noh and P. K. Lo and H. Park and M. D. Lukin},
+  title   = {Nanometre-scale thermometry in a living cell},
+  journal = {Nature},
+  volume  = {500},
+  number  = {7460},
+  pages   = {54--58},
+  doi     = {10.1038/nature12373},
+  date    = {2013},
+}
+@article{dolan,
+  author      = {Matthew J. Dolan and Christoph Englert and Michael Spannowsky},
+  title       = {Higgs self-coupling measurements at the {LHC}},
+  journal     = {Journal of High Energy Physics},
+  volume      = {2012},
+  number      = {10},
+  doi         = {10.1007/jhep10(2012)112},
+  eid         = {112},
+  date        = {2012},
+  eprint      = {1206.5001},
+  eprinttype  = {arxiv},
+  eprintclass = {hep-ph},
+}
+@article{sigfridsson,
+  author       = {Sigfridsson, Emma and Ryde, Ulf},
+  title        = {Comparison of methods for deriving atomic charges from the
+                  electrostatic potential and moments},
+  journaltitle = {Journal of Computational Chemistry},
+  date         = 1998,
+  volume       = 19,
+  number       = 4,
+  pages        = {377-395},
+  doi          = {10.1002/(SICI)1096-987X(199803)19:4<377::AID-JCC1>3.0.CO;2-P},
+}
+@article{randall,
+  author  = {Lisa Randall and Raman Sundrum},
+  title   = {Large Mass Hierarchy from a Small Extra Dimension},
+  journal = {Physical Review Letters},
+  year    = {1999},
+  volume  = {83},
+  number  = {17},
+  pages   = {3370--3373},
+  doi     = {10.1103/physrevlett.83.3370},
+}
+@article{valfort,
+  author  = {Valfort, Aurore-Cécile and Launay, Caroline and Sémon, Marie
+             and Delattre, Marie},
+  title   = {Evolution of mitotic spindle behavior during the first
+             asymmetric embryonic division of nematodes},
+  journal = {PLOS Biology},
+  date    = {2018-01},
+  volume  = {16},
+  number  = {1},
+  pages   = {1-23},
+  doi     = {10.1371/journal.pbio.2005099}
+}
+\end{filecontents*}
+
+\SetDOIAPIMail{mwemheu@gmail.com}
+%\SetDOIAPICacheExpiration{15}
+
+\addbibresource{\jobname.bib}
+\begin{document}
+\kant[1]
+\nocite{*}
+\printbibliography
+\end{document}

@@ -1,0 +1,139 @@
+\ProvidesPackage{biblatex-ext-oa-tikzsymbols}
+  [2018/10/09 v0.5a open access symbols (MW)]
+
+\protected\def\extblx@oasymb@error#1#2{%
+  \PackageError{biblatex-ext-oa-tikzsymbols}{#1}{#2.}}
+
+\protected\def\extblx@oasymb@warning@noline#1{%
+  \PackageWarningNoLine{biblatex-ext-oa-tikzsymbols}{#1}}
+
+\let\extblx@oasymb@warning\extblx@oasymb@warning@noline
+\AtEndOfPackage{%
+  \protected\def\extblx@oasymb@warning#1{%
+    \PackageWarning{biblatex-ext-oa-tikzsymbols}{#1}}}
+
+\RequirePackage{tikz}
+
+% PLoS Open Access symbol based on
+% https://commons.wikimedia.org/wiki/File:Open_Access_logo_PLoS_white.svg
+% public domain/CC0 by PLoS & Wikipedia users Nina, Beao and JakobVoss
+\definecolor{extblx@oasymbol@plos@orange}{HTML}{f68212}
+\newcommand*{\extblx@oasymbol@plos@tikz}{%
+  \begin{tikzpicture}[x=.1pt,y=.1pt]
+    \fill[extblx@oasymbol@plos@orange] (06,73  ) arc (180:0:26);
+    \fill[white]                       (17,72.9) arc (180:-45:15);
+    \fill[extblx@oasymbol@plos@orange] (47,32  ) rectangle ++ (11,41.1);
+    \fill[extblx@oasymbol@plos@orange] (32,32  ) circle[radius=32];
+    \fill[white]                       (32,32  ) circle[radius=21];
+    \fill[extblx@oasymbol@plos@orange] (32,32  ) circle[radius= 9];
+  \end{tikzpicture}%
+}
+
+\newsavebox{\extblx@oasymbol@plos@box}
+\sbox{\extblx@oasymbol@plos@box}{\extblx@oasymbol@plos@tikz}
+\newcommand*{\extblx@oasymbol@plos}{\usebox{\extblx@oasymbol@plos@box}}
+
+% PLoS symbols is standard
+\newcommand*{\oasymbol}{\extblx@oasymbol@plos}
+
+% Open-Acess.net Open Acess symbol
+% redrawn with TikZ from
+% http://open-access.net/fileadmin/logos/oa.svg
+% public domain according to
+% https://commons.wikimedia.org/wiki/File:Open_access.svg
+% might be covered by open-access.net's overall CC-BY 4.0
+% https://creativecommons.org/licenses/by/4.0/
+% https://open-access.net/impressum/
+% the site states no specific conditions for use of the logo
+% other than
+%   "Das Logo der Informationsplattform darf nachgenutzt werden,
+%    gerne mit einem Link zu open-access.net"
+% on https://open-access.net/ueber-uns/
+% see also https://open-access.net/community/materialien/
+% logo by
+% Medien + Design
+% Center for Digital Systems
+% Competence Center for E-Learning and Multimedia
+% Freie Universität Berlin
+\definecolor{extblx@oasymbol@oanet@green}{HTML}{356031}
+\definecolor{extblx@oasymbol@oanet@gold}{HTML}{f9c63a}
+\definecolor{extblx@oasymbol@oanet@intersect}{HTML}{89923a}
+
+\newcommand*{\extblx@oasymbol@oanet@tikz}{%
+  \begin{tikzpicture}[x=1.1pt,y=1.1pt]
+    \fill[extblx@oasymbol@oanet@green] ( 4,4) circle[radius=4.3];
+    \fill[extblx@oasymbol@oanet@gold]  (11,4) ++ (0:4.3) arc (0:300:4.3)
+                                    -- (11,4) ++ (300:4.3) -- cycle;
+    \begin{scope}
+      \clip                                  ( 4,4) circle[radius=4.3];
+      \fill[extblx@oasymbol@oanet@intersect] (11,4) circle[radius=4.3];
+    \end{scope}
+    \fill[white]                      ( 4,4) circle[radius=2.7];
+    \fill[white]                      (11,4) circle[radius=2.7];
+    \fill[extblx@oasymbol@oanet@gold] (11,4) ++ (2.7,.1) rectangle ++(1.6,-4.1);
+  \end{tikzpicture}%
+}
+
+\newsavebox{\extblx@oasymbol@oanet@box}
+\sbox{\extblx@oasymbol@oanet@box}{\extblx@oasymbol@oanet@tikz}
+\newcommand*{\extblx@oasymbol@oanet}{\usebox{\extblx@oasymbol@oanet@box}}
+
+\protected\def\extblx@oasymbol@opt@symbol@process#1{%
+  \begingroup
+  \edef\extblx@oasymb@tempa{\endgroup
+    \noexpand\extblx@oasymbol@opt@symbol@process@i{#1}}
+  \extblx@oasymb@tempa}
+
+\def\extblx@oasymbol@opt@symbol@process@i#1{%
+  \ifcsundef{extblx@oasymbol@#1}
+    {\extblx@oasymb@error
+      {Unknown value\MessageBreak
+       \space\space'#1'\MessageBreak
+       for option 'symbol'}
+      {The symbol '#1' does not exist.\MessageBreak
+       Please consult the documentation for a list of valid options}}
+    {\edef\oasymbol{\expandonce{\csname extblx@oasymbol@#1\endcsname}}}}
+
+
+\newrobustcmd*{\DefineTikZOASymbol}[1][plos]{%
+  \begingroup
+  \edef\extblx@oasymb@tempa{\endgroup
+    \noexpand\extblx@oasymbol@DefineTikZOASymbol@i{#1}}
+  \extblx@oasymb@tempa}
+
+\protected\def\extblx@oasymbol@DefineTikZOASymbol@i#1{%
+  \ifcsundef{extblx@oasymbol@#1}
+    {\extblx@oasymb@error
+      {Unknown symbol option\MessageBreak
+       \space\space'#1'}
+      {The symbol '#1' does not exist.\MessageBreak
+       Please consult the documentation for a list of valid options}}
+    {\edef\oasymbol{\expandonce{\csname extblx@oasymbol@#1\endcsname}}}}
+
+\SetupKeyvalOptions{
+  family=extblx@oasymb@opt,
+  prefix=extblx@oasymb@opt@,
+}
+
+\DeclareStringOption[plos]{symbol}
+\DeclareVoidOption{plos}{\csdef{extblx@oasymb@opt@symbol}{plos}}
+\DeclareVoidOption{oanet}{\csdef{extblx@oasymb@opt@symbol}{oanet}}
+
+\ProcessKeyvalOptions*
+
+\extblx@oasymbol@opt@symbol@process{\csuse{extblx@oasymb@opt@symbol}}
+
+\endinput
+%
+% This file is part of the biblatex-ext bundle.
+% biblatex-ext is released under the LaTeX Project Public License v1.3c
+% or later.
+%
+% A complete list of files included in that package can be found in README.md
+% or - failing that - in ext-standard.bbx.
+%
+% Official releases of this package are on CTAN
+%   https://www.ctan.org/pkg/biblatex-ext
+% development takes place on GitHub
+%   https://github.com/moewew/biblatex-ext
+%

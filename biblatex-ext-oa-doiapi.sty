@@ -1,0 +1,105 @@
+\ProvidesPackage{biblatex-ext-oa-doiapi}
+  [2018/10/09 v0.5a Obtain open access information from DOI via unpaywall.org
+   and doi.org (MW)]
+
+\protected\def\extblx@oa@api@error#1#2{%
+  \PackageError{biblatex-ext-oa-doiapi}{#1}{#2.}}
+
+\protected\def\extblx@oa@api@warning@noline#1{%
+  \PackageWarningNoLine{biblatex-ext-oa-doiapi}{#1}}
+
+\protected\def\extblx@oa@api@info@noline#1{%
+  \PackageInfo{biblatex-ext-oa-doiapi}{#1\@gobble}}
+
+\let\extblx@oa@api@warning\extblx@oa@api@warning@noline
+\AtEndOfPackage{%
+  \protected\def\extblx@oa@api@warning#1{%
+    \PackageWarning{biblatex-ext-oa-doiapi}{#1}}}
+
+% LuaLaTeX only!
+\ifundef\luatexversion
+  {\extblx@oa@api@error
+     {Not running under LuaLaTeX!\MessageBreak
+      This package needs LuaLaTeX.\MessageBreak
+      I will stop right here}
+     {This package can only be run with LuaLaTeX.\MessageBreak
+      Please see the documentation of biblatex-ext for more information}
+   \endinput}
+  {}
+
+\def\extblx@oa@api@luastring#1{"\luaescapestring{#1}"}
+\def\extblx@oa@api@luastringN#1{\extblx@oa@api@luastring{\unexpanded{#1}}}
+
+% The oai file should contain a Lua table with the relevant OA data
+\IfFileExists{\jobname.oai}
+  {\extblx@oa@api@info@noline{%
+     Load OA database from\MessageBreak
+     \jobname.oai}%
+   \directlua{dofile(\extblx@oa@api@luastring{\jobname.oai})}}
+  {\extblx@oa@api@info@noline{%
+     No OA database file present at\MessageBreak
+     \jobname.oai}}
+
+\directlua{require("blxextdoiapi")}
+
+\newcommand*{\SetDOIAPIMail}[1]{%
+  \cslet{extblx@oa@api@mailset}\@empty
+  \directlua{
+    blxextdoiapi.mail = \extblx@oa@api@luastring{#1}}}
+
+\newcommand*{\SetDOIAPICacheExpiration}[1]{%
+  \directlua{
+    blxextdoiapi.cache_expire = \extblx@oa@api@luastring{#1}}}
+
+\newcommand*{\IsOpenaccess}[1]{%
+  \directlua{
+    blxextdoiapi.texify_conditional(
+      blxextdoiapi.is_openaccess(\extblx@oa@api@luastring{#1}))}}
+
+\newcommand*{\GetOpenaccessURLWrapped}[1]{%
+  \directlua{
+    blxextdoiapi.get_openaccess_url_tex(\extblx@oa@api@luastring{#1})}}
+
+\newcommand*{\OpenaccessURLisDOI}[1]{%
+  \directlua{
+    blxextdoiapi.texify_conditional(
+      blxextdoiapi.openaccess_url_is_doi(\extblx@oa@api@luastring{#1}))}}
+
+\newcommand*{\extblx@oa@api@getoaurl}[1]{%
+  \directlua{
+    blxextdoiapi.assign_openaccess_url_to
+      (\extblx@oa@api@luastringN{\extblx@oa@url},
+       \extblx@oa@api@luastring{#1})
+  }%
+}
+
+\AtBeginDocument{%
+  \ifcsundef{extblx@oa@api@mailset}
+    {\extblx@oa@api@warning@noline{%
+       No mail address declared.\MessageBreak
+       To access the Unpaywall.org api\MessageBreak
+       an email address is required.\MessageBreak
+       It should be given in the preamble\MessageBreak
+       with '\string\SetDOIAPIMail'.\MessageBreak
+       The API request will fail with a\MessageBreak
+       fatal error if no email is provided}}
+    {}}
+
+\AtEndDocument{%
+  \directlua{%
+    table.tofile(\extblx@oa@api@luastring{\jobname.oai}, oadb, "oadb")}}
+
+\endinput
+%
+% This file is part of the biblatex-ext bundle.
+% biblatex-ext is released under the LaTeX Project Public License v1.3c
+% or later.
+%
+% A complete list of files included in that package can be found in README.md
+% or - failing that - in ext-standard.bbx.
+%
+% Official releases of this package are on CTAN
+%   https://www.ctan.org/pkg/biblatex-ext
+% development takes place on GitHub
+%   https://github.com/moewew/biblatex-ext
+%
