@@ -156,8 +156,21 @@ local function get_unpaywall_info(doi)
   if code == 200 and upw_info then
     oadb[doi] = oadb[doi] or {}
     oadb[doi]["cache_date_upw"] = TODAY_STR
+    -- Don't read "is_oa", we go to the URL directly.
     if upw_info["best_oa_location"] then
       oadb[doi]["oa_url"] = upw_info["best_oa_location"]["url_for_landing_page"]
+                            or upw_info["best_oa_location"]["url"]
+                            or upw_info["best_oa_location"]["url_for_pdf"]
+      -- For reasons I don't quite understand, url_for_landing_page might be
+      -- null even though there is a url and a url_for_pdf.
+      -- http://unpaywall.org/data-format does not explicitly list
+      -- url_for_landing_page as String|Null like other null-able objects.
+      -- But request 10.1007/s00163-016-0235-2 to see this issue
+      -- (at least updated: "2018-07-28T00:37:18.524676").
+      -- I don't understand why Unpaywall returns to objects in the first place
+      -- they are clearly the same. Yet the one identified as 'best' has a
+      -- longer, weird URL and no landing page. It was probably chosen because
+      -- it is marked as having been updated more recently.
     else
       oadb[doi]["oa_url"] = nil
     end

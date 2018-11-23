@@ -1,18 +1,21 @@
 % run with LuaLaTeX or pdfLaTeX
 \documentclass{article}
+\usepackage{etoolbox}
 \ifundef\luatexversion
-  \usepackage[utf8]{inputenc}
-  \usepackage[T1]{fontenc}
-  \usepackage{lmodern}
-\fi
-
+  {\usepackage[utf8]{inputenc}
+   \usepackage[T1]{fontenc}
+   \usepackage{lmodern}}
+  {}
 \usepackage[backend=biber, style=ext-numeric]{biblatex}
 \usepackage[doiapi=true, tikzsymbol=plos]{biblatex-ext-oa}
-\ExecuteBibliographyOptions{openaccess=doiapi}
+\ExecuteBibliographyOptions{openaccess=auto}% or doiapi
 
-\usepackage[colorlinks]{hyperref}
+%\SetDOIAPIMail{<your email here>}% <- this MUST be set for doiapi
+%\SetDOIAPICacheExpiration{15}
 
 \usepackage{kantlipsum}
+\usepackage[colorlinks]{hyperref}
+
 
 \newcommand*{\halurl}[1]{http://hal.archives-ouvertes.fr/#1}
 \DeclareFieldFormat{eprint:hal}{%
@@ -21,6 +24,7 @@
     {hal:~\nolinkurl{#1}}}
 \DeclareFieldAlias{eprint:HAL}{eprint:hal}
 
+% HAL is always open access (I think)
 \DeclareOpenAccessEprintUrl[always]{hal}{%
   http://hal.archives-ouvertes.fr/\thefield{eprint}}
 \DeclareOpenAccessEprintAlias{HAL}{hal}
@@ -105,10 +109,20 @@
   pages   = {1-23},
   doi     = {10.1371/journal.pbio.2005099}
 }
+@article{abiakle,
+  author     = {Abi Akle, Audrey and Stéphanie Minel and Bernard Yannou},
+  title      = {Information visualization for selection in Design by Shopping},
+  journal    = {Research in Engineering Design},
+  volume     = {28},
+  number     = {1},
+  year       = {2017},
+  pages      = {99--117},
+  doi        = {10.1007/s00163-016-0235-2},
+  eprint     = {hal-01438790},
+  eprinttype = {hal},
+}
 \end{filecontents*}
 
-\SetDOIAPIMail{mwemheu@gmail.com}
-%\SetDOIAPICacheExpiration{15}
 
 \addbibresource{\jobname.bib}
 \begin{document}
