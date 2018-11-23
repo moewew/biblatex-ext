@@ -1,6 +1,9 @@
 \ProvidesPackage{biblatex-ext-oa-tikzsymbols}
   [2018/10/09 v0.5a open access symbols (MW)]
 
+\RequirePackage{etoolbox}
+\RequirePackage{kvoptions}
+
 \protected\def\extblx@oasymb@error#1#2{%
   \PackageError{biblatex-ext-oa-tikzsymbols}{#1}{#2.}}
 
@@ -20,12 +23,18 @@
 \definecolor{extblx@oasymbol@plos@orange}{HTML}{f68212}
 \newcommand*{\extblx@oasymbol@plos@tikz}{%
   \begin{tikzpicture}[x=.1pt,y=.1pt]
-    \fill[extblx@oasymbol@plos@orange] (06,73  ) arc (180:0:26);
-    \fill[white]                       (17,72.9) arc (180:-45:15);
-    \fill[extblx@oasymbol@plos@orange] (47,32  ) rectangle ++ (11,41.1);
-    \fill[extblx@oasymbol@plos@orange] (32,32  ) circle[radius=32];
-    \fill[white]                       (32,32  ) circle[radius=21];
-    \fill[extblx@oasymbol@plos@orange] (32,32  ) circle[radius= 9];
+    \begin{scope}
+      \clip (06,73) rectangle ++(52,26);
+      \fill[extblx@oasymbol@plos@orange, even odd rule]
+        (32,73) circle[radius=26]
+        (32,73) circle[radius=15];
+    \end{scope}
+    \fill[extblx@oasymbol@plos@orange, even odd rule]
+      (32,32) circle[radius=32]
+      (32,32) circle[radius=21]
+      (32,32) circle[radius= 9];
+    \fill[extblx@oasymbol@plos@orange]
+      (47,47) rectangle ++ (11,26);
   \end{tikzpicture}%
 }
 
@@ -41,9 +50,9 @@
 % http://open-access.net/fileadmin/logos/oa.svg
 % public domain according to
 % https://commons.wikimedia.org/wiki/File:Open_access.svg
-% might be covered by open-access.net's overall CC-BY 4.0
-% https://creativecommons.org/licenses/by/4.0/
-% https://open-access.net/impressum/
+% might be covered by open-access.net's overall CC-BY 4.0 license
+% (https://creativecommons.org/licenses/by/4.0/)
+% see https://open-access.net/impressum/
 % the site states no specific conditions for use of the logo
 % other than
 %   "Das Logo der Informationsplattform darf nachgenutzt werden,
@@ -61,15 +70,23 @@
 
 \newcommand*{\extblx@oasymbol@oanet@tikz}{%
   \begin{tikzpicture}[x=1.1pt,y=1.1pt]
-    \fill[extblx@oasymbol@oanet@green] ( 4,4) circle[radius=4.3];
-    \fill[extblx@oasymbol@oanet@gold]  (11,4) ++ (0:4.3) arc (0:300:4.3)
-                                    -- (11,4) ++ (300:4.3) -- cycle;
+    \fill[extblx@oasymbol@oanet@green, even odd rule]
+      ( 4,4) circle[radius=4.3]
+      ( 4,4) circle[radius=2.7];
+    \begin{scope}
+      \clip % this is *terrible*, but it was the only way I could stop
+            % some viewers from adding thin lines that shouldn't be there
+        (11,4) circle[radius=2.7]
+        -- +(-4.3,-4.3) -- +(-4.3,+4.3) -- +(+4.3,+4.3) -- +(+4.3,-4.3)
+        -- +(-4.3,-4.3);
+      \fill[extblx@oasymbol@oanet@gold, even odd rule]
+        (11,4) ++ (0:4.3) arc (0:300:4.3) -- (11,4) ++ (300:4.3) -- cycle
+        (11,4) ++ (0:2.7) arc (0:300:2.7) -- (11,4) ++ (300:2.7) -- cycle;
+    \end{scope}
     \begin{scope}
       \clip                                  ( 4,4) circle[radius=4.3];
       \fill[extblx@oasymbol@oanet@intersect] (11,4) circle[radius=4.3];
     \end{scope}
-    \fill[white]                      ( 4,4) circle[radius=2.7];
-    \fill[white]                      (11,4) circle[radius=2.7];
     \fill[extblx@oasymbol@oanet@gold] (11,4) ++ (2.7,.1) rectangle ++(1.6,-4.1);
   \end{tikzpicture}%
 }

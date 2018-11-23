@@ -13,21 +13,27 @@
 \else
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
+  \input glyphtounicode
+  \pdfgentounicode=1
 \fi
 \usepackage[french,ngerman,british]{babel}
 \usepackage{csquotes}
 \usepackage[useregional]{datetime2}
-\usepackage{lmodern}
-\usepackage[mono=false]{libertine}
-\usepackage[libertine]{newtxmath}
+\iffontspec\else
+  \usepackage{lmodern}
+\fi
+\usepackage[mono=false]{libertinus}
 \iffontspec
   \setmonofont[Scale=0.78]{Bitstream Vera Sans Mono}
+  \usepackage{unicode-math}
+  \setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}
 \else
+  \usepackage[libertine]{newtxmath}
   \usepackage[scaled=0.78]{beramono}
+  \usepackage{bm}
 \fi
 \usepackage{microtype}
 \usepackage{hyphenat}
-\usepackage{bm}
 \usepackage{booktabs}
 \usepackage{multicol}
 \usepackage[svgnames]{xcolor}
@@ -62,25 +68,6 @@
   \def\do##1{\listeadd\extblxdoc@examplebib@list{\detokenize{##1}}}%
   \docsvlist{#1}%
   \printbibtabular[check=examplebib, heading=none]}
-
-
-\iffontspec
-\def\textvisiblespace{%
-  \raisebox{-2.2pt}{%
-    \mbox{\kern.04em\vrule \@height.5ex \@width.12ex}%
-    \vbox{\hrule \@width.2em \@height.12ex}%
-    \hbox{\vrule \@height.5ex \@width.12ex}%
-    \kern.04em}}
-\fi
-
-\newcommand{\warnsymbol}{%
-  \makebox[2em][c]{%
-    \makebox[0pt][c]{\raisebox{.26em}{\LARGE\bfseries!}}%
-    \makebox[0pt][c]{\fontsize{40}{40}\selectfont\color{red}$\bigtriangleup$}}}
-
-\newcommand*{\marginwarn}{%
-  \leavevmode\marginpar{\raisebox{-1.5em}{\warnsymbol}}}
-\makeatother
 
 
 \usepackage{ltxdockit}
@@ -243,6 +230,7 @@
 
 \BeforeStartingTOC[toc]{\begin{multicols}{2}}
 \AfterStartingTOC[toc]{\end{multicols}}
+\BeforeTOCHead[toc]{\pdfbookmark[1]{\contentsname}{contents}}
 
 \newrobustcmd*{\tex}{\TeX}
 \newrobustcmd*{\etex}{\mbox{e-TeX}}
@@ -437,6 +425,37 @@
 \newrobustcmd*{\CSdelimMark}{%
   \leavevmode\marginpar{\CSdelim}}
 
+\newcommand*{\mpdl}{$\langle$}
+\newcommand*{\mpdr}{$\rangle$}
+  
+\iffontspec
+  \newcommand*{\hmpdl}{$\langle$}
+  \newcommand*{\hmpdr}{$\rangle$}
+\else
+  \newcommand*{\hmpdl}{$\bm{\langle}$}
+  \newcommand*{\hmpdr}{$\bm{\rangle}$}
+\fi
+
+\makeatletter
+\iffontspec
+\def\textvisiblespace{%
+  \raisebox{-2.2pt}{%
+    \mbox{\kern.04em\vrule \@height.5ex \@width.12ex}%
+    \vbox{\hrule \@width.2em \@height.12ex}%
+    \hbox{\vrule \@height.5ex \@width.12ex}%
+    \kern.04em}}
+\fi
+\makeatother
+
+\newcommand{\warnsymbol}{%
+  \makebox[2em][c]{%
+    \makebox[0pt][c]{\raisebox{.26em}{\LARGE\bfseries!}}%
+    \makebox[0pt][c]{\fontsize{40}{40}\selectfont\color{red}$\bigtriangleup$}}}
+
+\newcommand*{\marginwarn}{%
+  \leavevmode\marginpar{\raisebox{-1.5em}{\warnsymbol}}}
+\makeatother
+
 \titlepage{%
   title    = {The \sty{biblatex-ext} Bundle},
   subtitle = {Extensions for the \sty{biblatex} standard styles},
@@ -466,6 +485,7 @@
   main-title-after-title
   jour-vol-delim
 }
+
 
 \begin{document}
 
@@ -590,7 +610,8 @@ If at all possible you should install this bundle via your \tex{} distribution
 \sty{tlmgr} for \texlive\fnurl{https://www.tug.org/texlive/pkginstall.html}).
 If you must install this package manually, get the files from \ctan{}
 and install the \sty{.bbx}, \sty{.cbx} and \sty{.def} files preferably to
-\path{tex/latex/biblatex-ext} of your local or home \TeX{} tree, the other
+\path{tex/latex/biblatex-ext} of your local or home \TeX{} tree%
+\fnurl{https://texfaq.org/FAQ-inst-wlcf}, the other
 files (\path{CHANGES.md}, \path{README.md}, \path{biblatex-ext.tex},
 \path{biblatex-ext.pdf} and \path{biblatex-ext-examples.bib}) go into
 \path{doc/latex/biblatex-ext}. You may have to refresh your file name database
@@ -1854,7 +1875,7 @@ wrapper command as an argument.
 \centering
 \caption[Outer and inner citation delimiters by style]{\highlight[1]{Outer} and
 \highlight[2]{inner} citation delimiters by style. If the style does not use
-the delimiters by default, $\langle$ and $\rangle$ are substituted in the
+the delimiters by default, \mpdl{} and \mpdr{} are substituted in the
 appropriate place.}
 \label{tab:citationdelims}
 \begin{tabular}{@{}llll@{}}
@@ -1864,23 +1885,23 @@ appropriate place.}
 Style family & \cmd{cite} & \cmd{parencite} & \cmd{textcite}\\
 \midrule
 \sty{alphabetic} & \highlightbf[1]{[}Knu84\highlightbf[1]{]} &
-  \highlightbf[1]{[}Knu84\highlightbf[1]{]} & \highlight[1]{$\bm{\langle}$}Knuth
-  \highlightbf[2]{[}2\highlightbf[2]{]}\highlight[1]{$\bm{\rangle}$}\\
+  \highlightbf[1]{[}Knu84\highlightbf[1]{]} & \highlightbf[1]{\hmpdl}Knuth
+  \highlightbf[2]{[}2\highlightbf[2]{]}\highlightbf[1]{\hmpdr}\\
 \sty{numeric} & \highlightbf[1]{[}2\highlightbf[1]{]} &
-  \highlightbf[1]{[}2\highlightbf[1]{]} & \highlight[1]{$\bm{\langle}$}Knuth
-  \highlightbf[2]{[}2\highlightbf[2]{]}\highlight[1]{$\bm{\rangle}$}\\
-\sty{authortitle} & \highlight[1]{$\bm{\langle}$}Knuth,
-  \highlight[2]{$\bm{\langle}$}\emph{\TeX book}\highlight[2]{$\bm{\rangle}$}%
-  \highlight[1]{$\bm{\rangle}$} & \highlightbf[1]{(}Knuth,
-  \highlight[2]{$\bm{\langle}$}\emph{\TeX book}\highlight[2]{$\bm{\rangle}$}%
-  \highlightbf[1]{)} & \highlight[1]{$\bm{\langle}$}Knuth \highlightbf[2]{(}%
-  \emph{\TeX book}\highlightbf[2]{)}\highlight[1]{$\bm{\rangle}$}\\
-\sty{authoryear} & \highlight[1]{$\bm{\langle}$}Knuth
-  \highlight[2]{$\bm{\langle}$}1984\highlight[2]{$\bm{\rangle}$}%
-  \highlight[1]{$\bm{\rangle}$} & \highlightbf[1]{(}Knuth
-  \highlight[2]{$\bm{\langle}$}1984\highlight[2]{$\bm{\rangle}$}%
-  \highlightbf[1]{)} & \highlight[1]{$\bm{\langle}$}Knuth
-  \highlightbf[2]{(}1984\highlightbf[2]{)}\highlight[1]{$\bm{\rangle}$}\\
+  \highlightbf[1]{[}2\highlightbf[1]{]} & \highlightbf[1]{\hmpdl}Knuth
+  \highlightbf[2]{[}2\highlightbf[2]{]}\highlightbf[1]{\hmpdr}\\
+\sty{authortitle} & \highlightbf[1]{\hmpdl}Knuth,
+  \highlightbf[2]{\hmpdl}\emph{\TeX book}\highlightbf[2]{\hmpdr}%
+  \highlightbf[1]{\hmpdr} & \highlightbf[1]{(}Knuth,
+  \highlightbf[2]{\hmpdl}\emph{\TeX book}\highlightbf[2]{\hmpdr}%
+  \highlightbf[1]{)} & \highlightbf[1]{\hmpdl}Knuth \highlightbf[2]{(}%
+  \emph{\TeX book}\highlightbf[2]{)}\highlightbf[1]{\hmpdr}\\
+\sty{authoryear} & \highlightbf[1]{\hmpdl}Knuth
+  \highlightbf[2]{\hmpdl}1984\highlightbf[2]{\hmpdr}%
+  \highlightbf[1]{\hmpdr} & \highlightbf[1]{(}Knuth
+  \highlightbf[2]{\hmpdl}1984\highlightbf[2]{\hmpdr}%
+  \highlightbf[1]{)} & \highlightbf[1]{\hmpdl}Knuth
+  \highlightbf[2]{(}1984\highlightbf[2]{)}\highlightbf[1]{\hmpdr}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -2667,33 +2688,34 @@ The \opt{auto} detection works as follows.
 
 For \opt{auto}-detection, an open access article with DOI would ideally
 look like this.
-\begin{bibtexfile}
-@article{cipriani,
-  author  = {Cipriani, Alessandra and Hazra, Rajat Subhra
-             and Ruszel, Wioletta M.},
-  title   = {Scaling limit of the odometer in divisible sandpiles},
-  journal = {Probability Theory and Related Fields},
-  date    = {2018},
-  volume  = {172},
-  number  = {3},
-  pages   = {829--868},
-  doi     = {10.1007/s00440-017-0821-x},
-  doi+an  = {=openaccess},
-}
-\end{bibtexfile}
+% cipriani
+\inputexamplebibfile[listing options={linerange={27-38},
+                                      style = extblxstylebibtex}]
+                    {biblatex-ext-examples.bib}
 Preprints on the arXiv, on the other hand, need no field annotation, because
 they are always open access.
-\begin{bibtexfile}
-@online{meckes,
-  author      = {Elizabeth Meckes and Kathryn Stewart},
-  title       = {On the eigenvalues of truncations
-                 of random unitary matrices},
-  eprinttype  = {arxiv},
-  eprint      = {1811.08340},
-  eprintclass = {math.PR},
-  date        = {2018-11-20}
+% meckes
+\inputexamplebibfile[listing options={linerange={40-48},
+                                      style = extblxstylebibtex}]
+                    {biblatex-ext-examples.bib}
+\makeatletter
+\renewcommand{\extblx@oa@marginmark@do}{%
+  \vbox to 0pt{%
+    \kern-3\dp\strutbox
+    \strut
+    \hfill
+    \rlap{\kern.6em
+      \ifhyperref
+        {\href{\thefield{bestoaurl}}}
+        {\@firstofone}%
+      {\oasymbol}}
+    \vss
+  }%
 }
-\end{bibtexfile}
+\makeatother
+\begin{bibexample}
+\exampleprintbib{cipriani,meckes,sigfridsson}
+\end{bibexample}
 
 If the \opt{openaccess} option is set to one specific field only, only
 that field will be taken into consideration and it will be assumed that the
@@ -2887,7 +2909,7 @@ The numbers on the right indicate the relevant section of the manual.
 \end{changelog}
 
 \begin{bibexample}[breakable]
-\printbibliography[title={Example \refname}]
+\printbibliography[heading=bibintoc, title={Example \refname}]
 \end{bibexample}
 
 \clearpage
