@@ -1,3 +1,23 @@
+# Version 0.6 (2018-11-23)
+See https://github.com/moewew/biblatex-ext/compare/v0.5a..v0.6
+- Sync `mergedate` code with `biblatex` 3.12
+  (https://github.com/plk/biblatex/pull/810
+   https://github.com/plk/biblatex/issues/752).
+- `biblatex` 3.12 is now recommended.
+- Added `\titleaddonpunct`.
+- Make `introcite` and `dashed` option available on per-entry and
+  per-type basis.
+  - `introcite=label` needs support of the bibliography environment,
+    so it is not officially supported if its is not set globally.
+  - Simplify code to set options at all three levels at the same time.
+- Added package for open access symbols and open access 'detection'.
+  See https://tex.stackexchange.com/q/459449/.
+  - The default detection relies on explicit configuration for all url,
+    doi and eprint-like and data in the `.bib` file.
+  - There is a Lua module that queries Unpaywall.org by DOI to find
+    open access info.
+  - A support package provides two open access symbols drawn with TikZ.
+
 # Version 0.5a (2018-10-09)
 See https://github.com/moewew/biblatex-ext/compare/v0.5...v0.5a
 - Fixed a bug with `\footcites` and `\footcitetexts` in `ext-authoryear.cbx`
