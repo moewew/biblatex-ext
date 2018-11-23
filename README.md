@@ -68,7 +68,7 @@ standard styles. The bundle consists of the following files
 - The package for tabular bibliographies `biblatex-ext-tabular.sty`
 - The package `biblatex-ext-oa.sty`
   - The support package `biblatex-ext-oa-doiapi.sty`
-    - The Lua module `blxextdoiapi-lua`
+    - The Lua module `blxextdoiapi.lua`
   - The symbol package `biblatex-ext-oa-tikzsymbols.sty`
 
 ## Licence
