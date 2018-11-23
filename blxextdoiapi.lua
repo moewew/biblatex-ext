@@ -9,6 +9,7 @@ local blxextdoiapi_module = {
   license       = "LPPL v1.3c",
   url           = "https://github.com/moewew/biblatex-ext/",
 }
+-- inspired by Eric Marsden's answer to https://tex.stackexchange.com/q/459449/
 
 local err, warn, info, log = luatexbase.provides_module(blxextdoiapi_module)
 
@@ -99,6 +100,7 @@ local function query_json_api(url)
   body, code, headers = http.request(url)
   if body then
     -- JSON escapes don't quite work for Lua
+    -- https://tools.ietf.org/html/rfc8259, §7
     -- http://lua-users.org/lists/lua-l/2017-04/msg00100.html
     -- query DOI 10.1371/journal.pbio.2005099 from Unpaywall
     -- to see what goes wrong
@@ -161,13 +163,13 @@ local function get_unpaywall_info(doi)
       oadb[doi]["oa_url"] = upw_info["best_oa_location"]["url_for_landing_page"]
                             or upw_info["best_oa_location"]["url"]
                             or upw_info["best_oa_location"]["url_for_pdf"]
-      -- For reasons I don't quite understand, url_for_landing_page might be
-      -- null even though there is a url and a url_for_pdf.
+      -- As it turns out url_for_landing_page might be null
+      -- even though there is a url and a url_for_pdf.
       -- http://unpaywall.org/data-format does not explicitly list
       -- url_for_landing_page as String|Null like other null-able objects.
       -- But request 10.1007/s00163-016-0235-2 to see this issue
       -- (at least updated: "2018-07-28T00:37:18.524676").
-      -- I don't understand why Unpaywall returns to objects in the first place
+      -- I don't understand why Unpaywall returns two objects in the first place
       -- they are clearly the same. Yet the one identified as 'best' has a
       -- longer, weird URL and no landing page. It was probably chosen because
       -- it is marked as having been updated more recently.
