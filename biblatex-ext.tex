@@ -609,7 +609,8 @@ If at all possible you should install this bundle via your \tex{} distribution
 (using \miktex{} Console\fnurl{https://miktex.org/howto/miktex-console} or
 \sty{tlmgr} for \texlive\fnurl{https://www.tug.org/texlive/pkginstall.html}).
 If you must install this package manually, get the files from \ctan{}
-and install the \sty{.bbx}, \sty{.cbx} and \sty{.def} files preferably to
+and install the \sty{.bbx}, \sty{.cbx}, \sty{.def}, \sty{.sty} and \sty{.lua}
+files preferably to
 \path{tex/latex/biblatex-ext} of your local or home \TeX{} tree%
 \fnurl{https://texfaq.org/FAQ-inst-wlcf}, the other
 files (\path{CHANGES.md}, \path{README.md}, \path{biblatex-ext.tex},
@@ -2375,9 +2376,16 @@ by pluton\fnurl{https://tex.stackexchange.com/users/371/pluton} on TeX.SX
 about promoting open access works by adding a small open access symbol into
 the margin.
 
-The package must be loaded after \sty{biblatex}
-and is not tied to use with styles of this bundle, though it can not be
-guaranteed that everything will work out of the box with other styles.
+The package must be loaded after \sty{biblatex}.
+It is not tied to use with styles of this bundle, though it can not be
+guaranteed that everything will work out of the box with all other styles.
+The package works as expected with the standard styles and
+should work with most contributed styles at least to some extent.
+For the actual typesetting of the symbol \sty{biblatex-ext-oa}
+patches the bibliography macro \bibmacro{begentry} to include a call to the
+bibliography macro \bibmacro{oamark}.
+That means that you have to keep in mind this behaviour should you want to
+redefine \bibmacro{begentry} yourself.
 \begin{biblatexcode}
 \usepackage[(*@\prm{\sty{biblatex} options}@*)]{biblatex}
 (*@\dots @*)
@@ -2409,10 +2417,10 @@ If the package is loaded with \opt{enable} set to \opt{false} the global
 bibliography option \opt{openaccess} will be set to \opt{false} and no sensible
 defaults are defined for the semi-automatic open access detection.
 
-\optitem[false]{tikzsymbol}{\opt{true}, \opt{false}, \prm{string}}
+\optitem[false]{tikzsymbol}{\opt{true}, \opt{false}, \prm{symbol identifier}}
 
 Load the support package \sty{biblatex-ext-oa-tikzsymbols} with its load-time
-option \opt{symbol} set to \prm{string}.
+option \opt{symbol} set to \prm{symbol identifier}.
 The values \opt{true} and \opt{false} are provided for convenience.
 \opt{false} does not load the package at all, \opt{true} is like giving the
 value \opt{plos}.
@@ -2422,7 +2430,7 @@ as well as a short note on their respective licenses.
 
 \marginwarn Note that \sty{biblatex-ext-oa-tikzsymbols} will load \pgftikz
 \fnurl{https://ctan.org/pkg/pgf} to draw the open access symbols.
-If you prefer a more light-weight solution you can define a symbol yourself
+If you prefer a more light-weight solution, you can define a symbol yourself
 with an external graphics file.
 
 \marginwarn
@@ -2501,12 +2509,15 @@ open access URL may not be amongst the fields that are already displayed
 in the entry.
 \end{keymarglistbook}
 
-With \opt{enable} set to \opt{true} the package will furtermore redefine the
-bibliography macro \bibmacro{begentry} to execute the bibliography macro
+\marginwarn
+With \opt{enable} set to \opt{true} the package will furtermore patch
+the bibliography macro \bibmacro{begentry} to execute the bibliography macro
 \bibmacro{oamark}.
-If additionally \opt{doiapi} is \opt{true} the bibliography macro
-\bibmacro{doi+eprint+url} will be redefined to include a call to
+If additionally \opt{doiapi} is \opt{true}, the bibliography macro
+\bibmacro{doi+eprint+url} will be patched to include a call to
 \bibmacro{api:bestoaurl}.
+Please keep that in mind should you need to redefine \bibmacro{begentry}
+or \bibmacro{doi+eprint+url}.
 
 \subsection{Open access detection}\label{sec:oa:detect}
 The heart of the package \sty{biblatex-ext-oa} is the bibliography option
@@ -2758,7 +2769,7 @@ If the package is loaded and no email was provided until the
 beginning of the document (as tested in an \cmd{AtBeginDocument} hook)
 you will recieve a warning.
 A fatal error will be thrown if you try to query the Unpaywall database
-without an email.
+without an email address.
 
 \cmditem{SetDOIAPICacheExpiration}{days}
 
@@ -2803,8 +2814,10 @@ for \cmd{oasymbol}.
 \item[plos] Use the open access symbol by PLOS | Public Library of Science%
   \fnurl{https://www.plos.org/} \csuse{extblx@oasymbol@plos}.
 
-  The drawing is based on a CC0 work by PLoS, modified by Wikipedia users
-  Nina, Beao, and JakobVoss%
+  The drawing is based on a CC0%
+  \fnurl{https://creativecommons.org/publicdomain/zero/1.0/deed.en}
+  work by PLoS (now PLOS | Public Library of Science),
+  modified by Wikipedia users Nina, Beao, and JakobVoss%
 \fnurl{https://commons.wikimedia.org/wiki/File:Open_Access_logo_PLoS_white.svg}.
 
 \item[oanet] Use the open access symbol by open-access.net%
@@ -2839,6 +2852,15 @@ for \cmd{oasymbol}.
   \fnurl{https://open-access.net/DE-EN/about-us/}.
   While the German version leaves some leeway as to whether or not a link is
   required as attribution, the English version seems more explicit.
+  
+  That means that if you do not follow Wikimedia in considering the symbol
+  not protected by copyright in your~-- and all other relevant jurisdictions%
+  ~-- due to its failure to cross the threshold of originality,
+  you should probably treat it as CC BY 4.0 and treat the link to
+  \url{https://open-access.net} as attribution requested by the Licensor
+  according to Section 3(a)(1)(A) of the license.
+  If you can't reasonably meet the requirements of the license in your work,
+  you may want to consider using the PLOS logo, which is licensed under CC0.
 \end{valuelist}
 \end{optionlist}
 
@@ -2858,6 +2880,9 @@ See also \sty{CHANGES.md}.
 
 The numbers on the right indicate the relevant section of the manual.
 \begin{changelog}
+\begin{release}{<version>}{<date>}
+  \item Minor improvements for \sty{biblatex-ext-oa}\see{sec:oasymb}
+\end{release}
 \begin{release}{0.6}{2018-11-23}
   \item Require \sty{biblatex} 3.12
   \item Make \opt{dashed} and \opt{introcite} options available on a per-entry

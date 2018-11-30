@@ -23,6 +23,15 @@
       Please see the documentation of biblatex-ext for more information}%
    \endinput}
 
+% xpatch has xapptobibmacro,
+% but I did not want to buy into all of expl3 just for this one macro
+% ... at least for the moment
+% note that this is not nearly as sophisticated as xpatch and does not
+% deal with optional arguments
+\newcommand*{\extblx@oa@apptobibmcro}[1]{%
+  \expandafter\apptocmd
+    \expandafter{\csname abx@macro@\detokenize{#1}\endcsname}}
+
 \newtoggle{extblx@oa@opt@forcedoiapi}
 \DeclareBibliographyOption[string]{openaccess}[true]{%
   \ifstrequal{#1}{forcedoiapi}
@@ -283,8 +292,15 @@
        {}
        {\extblx@oa@marginmark}}
 
-   \renewbibmacro*{begentry}{%
-     \usebibmacro{oamark}}
+   % patch begentry bibmacro
+   % safer than \renewbibmacro{begentry} if it contains something,
+   % but uses the internal implementation of bibmacros
+   \extblx@oa@apptobibmcro{begentry}
+     {\usebibmacro{oamark}}
+     {}
+     {\extblx@oa@warning@noline{%
+        Failed to patch 'begentry' bibmacro.\MessageBreak
+        The open access logo may not be displayed at all}}
 
    \ifbool{extblx@oa@opt@doiapi}
      {\NewBibliographyString{openaccessat}
@@ -307,11 +323,13 @@
            \newunit\newblock}
           {}}
 
-      \letbibmacro*{bbxorig:doi+eprint+url}{doi+eprint+url}
-      \renewbibmacro*{doi+eprint+url}{%
-        \usebibmacro{bbxorig:doi+eprint+url}%
-        \newunit\newblock
-        \usebibmacro{api:bestoaurl}}}}
+     \extblx@oa@apptobibmcro{doi+eprint+url}
+       {\newunit\newblock
+        \usebibmacro{api:bestoaurl}}
+       {}
+       {\extblx@oa@warning@noline{%
+          Failed to patch 'doi+eprint+url' bibmacro.\MessageBreak
+          The best open access URL might not be shown}}}}
   {\csletcs{extblx@oa@url@from}{extblx@oa@url@from@none}}
 
 

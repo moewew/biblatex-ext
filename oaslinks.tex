@@ -1,21 +1,23 @@
 % run with LuaLaTeX or pdfLaTeX
-\documentclass{article}
+\documentclass[british]{article}
 \usepackage{etoolbox}
 \ifundef\luatexversion
   {\usepackage[utf8]{inputenc}
    \usepackage[T1]{fontenc}
    \usepackage{lmodern}}
   {}
-\usepackage[backend=biber, style=ext-numeric]{biblatex}
+\usepackage{babel}
+\usepackage{csquotes}
+
+\usepackage[backend=biber, style=ext-numeric, defernumbers]{biblatex}
 \usepackage[doiapi=true, tikzsymbol=plos]{biblatex-ext-oa}
-\ExecuteBibliographyOptions{openaccess=auto}% or doiapi
+\ExecuteBibliographyOptions{openaccess=doiapi}% or doiapi
 
 %\SetDOIAPIMail{<your email here>}% <- this MUST be set for doiapi
 %\SetDOIAPICacheExpiration{15}
 
 \usepackage{kantlipsum}
 \usepackage[colorlinks]{hyperref}
-
 
 \newcommand*{\halurl}[1]{http://hal.archives-ouvertes.fr/#1}
 \DeclareFieldFormat{eprint:hal}{%
@@ -29,8 +31,11 @@
   http://hal.archives-ouvertes.fr/\thefield{eprint}}
 \DeclareOpenAccessEprintAlias{HAL}{hal}
 
+
+
 \usepackage{filecontents}
 \begin{filecontents*}{\jobname.bib}
+% open access DOIs need to be marked up explicitly
 @article{cipriani,
   author  = {Cipriani, Alessandra and Hazra, Rajat Subhra
              and Ruszel, Wioletta M.},
@@ -43,6 +48,7 @@
   doi     = {10.1007/s00440-017-0821-x},
   doi+an  = {=openaccess},
 }
+% arXiv is always open access
 @online{meckes,
   author      = {Elizabeth Meckes and Kathryn Stewart},
   title       = {On the eigenvalues of truncations
@@ -52,17 +58,7 @@
   eprintclass = {math.PR},
   date        = {2018-11-20}
 }
-@article{kucsko,
-  author  = {G. Kucsko and P. C. Maurer and N. Y. Yao and M. Kubo
-             and H. J. Noh and P. K. Lo and H. Park and M. D. Lukin},
-  title   = {Nanometre-scale thermometry in a living cell},
-  journal = {Nature},
-  volume  = {500},
-  number  = {7460},
-  pages   = {54--58},
-  doi     = {10.1038/nature12373},
-  date    = {2013},
-}
+% DOI is not open access, the arXiv has an open access version
 @article{dolan,
   author      = {Matthew J. Dolan and Christoph Englert and Michael Spannowsky},
   title       = {Higgs self-coupling measurements at the {LHC}},
@@ -76,6 +72,18 @@
   eprinttype  = {arxiv},
   eprintclass = {hep-ph},
 }
+% new eprinttype hal: is always open access, see
+% \DeclareOpenAccessEprintUrl[always]{hal}{...}
+@online{labbe,
+  title      = {New models for the location of \emph{controversial}
+                facilities},
+  subtitle   = {A bilevel programming approach},
+  author     = {Labbé, Martine and Leal, Marina and Puerto, Justo},
+  date       = {2018-11},
+  eprinttype = {hal},
+  eprint     = {hal-01933601},
+}
+% no open access that I know of
 @article{sigfridsson,
   author       = {Sigfridsson, Emma and Ryde, Ulf},
   title        = {Comparison of methods for deriving atomic charges from the
@@ -87,28 +95,75 @@
   pages        = {377-395},
   doi          = {10.1002/(SICI)1096-987X(199803)19:4<377::AID-JCC1>3.0.CO;2-P},
 }
-@article{randall,
-  author  = {Lisa Randall and Raman Sundrum},
-  title   = {Large Mass Hierarchy from a Small Extra Dimension},
-  journal = {Physical Review Letters},
-  year    = {1999},
-  volume  = {83},
-  number  = {17},
-  pages   = {3370--3373},
-  doi     = {10.1103/physrevlett.83.3370},
+% non-open JSTOR
+@article{russell:denoting,
+  author     = {Bertrand Russell},
+  title      = {On Denoting},
+  journal    = {Mind},
+  series     = {newseries},
+  volume     = {14},
+  number     = {56},
+  date       = {1905-10},
+  pages      = {479-493},
+  eprinttype = {jstor},
+  eprint     = {2248381},
 }
+% open access JSTOR
+@article{russell:atomism,
+  author     = {Bertrand Russell},
+  title      = {The Philosophy of Logical Atomism},
+  subtitle   = {{V}. {General} Propositions and Existence},
+  journal    = {The Monist},
+  volume     = {29},
+  number     = {2},
+  date       = {1919-04},
+  pages      = {190-222},
+  eprinttype = {jstor},
+  eprint     = {27900737},
+  eprint+an  = {=openaccess},
+}
+%%%% the following entries demonstrate the 'doiapi' feature
+%%%% everything is figured out by Unpaywall.org from the DOI
+% this article is open access at the source
 @article{valfort,
-  author  = {Valfort, Aurore-Cécile and Launay, Caroline and Sémon, Marie
-             and Delattre, Marie},
-  title   = {Evolution of mitotic spindle behavior during the first
-             asymmetric embryonic division of nematodes},
-  journal = {PLOS Biology},
-  date    = {2018-01},
-  volume  = {16},
-  number  = {1},
-  pages   = {1-23},
-  doi     = {10.1371/journal.pbio.2005099}
+  author   = {Valfort, Aurore-Cécile and Launay, Caroline and Sémon, Marie
+              and Delattre, Marie},
+  title    = {Evolution of mitotic spindle behavior during the first
+              asymmetric embryonic division of nematodes},
+  journal  = {PLOS Biology},
+  date     = {2018-01},
+  volume   = {16},
+  number   = {1},
+  pages    = {1-23},
+  doi      = {10.1371/journal.pbio.2005099},
+  keywords = {doibib},% just for the example, is only used for filtering
 }
+% has open access version on Harvard DASH
+@article{kucsko,
+  author   = {G. Kucsko and P. C. Maurer and N. Y. Yao and M. Kubo
+              and H. J. Noh and P. K. Lo and H. Park and M. D. Lukin},
+  title    = {Nanometre-scale thermometry in a living cell},
+  journal  = {Nature},
+  volume   = {500},
+  number   = {7460},
+  pages    = {54--58},
+  doi      = {10.1038/nature12373},
+  date     = {2013},
+  keywords = {doibib},% just for the example, is only used for filtering
+}
+% has open access version on the arXiv
+@article{randall,
+  author   = {Lisa Randall and Raman Sundrum},
+  title    = {Large Mass Hierarchy from a Small Extra Dimension},
+  journal  = {Physical Review Letters},
+  year     = {1999},
+  volume   = {83},
+  number   = {17},
+  pages    = {3370--3373},
+  doi      = {10.1103/physrevlett.83.3370},
+  keywords = {doibib},% just for the example, is only used for filtering
+}
+% second open access at HAL
 @article{abiakle,
   author     = {Abi Akle, Audrey and Stéphanie Minel and Bernard Yannou},
   title      = {Information visualization for selection in Design by Shopping},
@@ -120,6 +175,7 @@
   doi        = {10.1007/s00163-016-0235-2},
   eprint     = {hal-01438790},
   eprinttype = {hal},
+  keywords   = {doibib},% just for the example, is only used for filtering
 }
 \end{filecontents*}
 
@@ -128,5 +184,6 @@
 \begin{document}
 \kant[1]
 \nocite{*}
-\printbibliography
+\printbibliography[notkeyword=doibib, title={Open access info from bib}]
+\printbibliography[keyword=doibib, title={Open access info by DOI}]
 \end{document}
