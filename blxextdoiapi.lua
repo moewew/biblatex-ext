@@ -11,8 +11,10 @@ local blxextdoiapi_module = {
 }
 -- inspired by Eric Marsden's answer to https://tex.stackexchange.com/q/459449/
 
+-- luatexbase's luatexbase.provides_module returns the loggers directly
 local err, warn, info, log = luatexbase.provides_module(blxextdoiapi_module)
 
+-- for ltluatex's luatexbase.provides_module we need to construct the loggers
 local error   = err  or
   (function (s) luatexbase.module_error(blxextdoiapi_module.name, s) end)
 local warning = warn or
@@ -24,15 +26,21 @@ local log     = log  or
 
 
 local http        = require("socket.http")
+local url         = require("socket.url")
 local json        = utilities.json
 local os_time     = os.time
 local os_date     = os.date
 local os_difftime = os.difftime
-local format      = string.format
 local gsub        = string.gsub
-local byte        = string.byte
 local texwrite    = tex.write
 
+-- cf. fontspec.lua and microtype.lua
+-- http://mirrors.ctan.org/macros/latex/contrib/fontspec/fontspec-lua.dtx
+-- http://mirrors.ctan.org/macros/latex/contrib/microtype/microtype.dtx
+-- as well as luatexja.lua (luatexbase.catcodetables['latex-package'])
+-- http://mirrors.ctan.org/macros/luatex/generic/luatexja/src/luatexja.lua
+-- and luaotfload-auxiliary.lua (luatexbase.catcodetables["latex-package"])
+-- http://mirrors.ctan.org/macros/luatex/generic/luaotfload/luaotfload-auxiliary.lua
 local catpackage
 if luatexbase.catcodetables then
   catpackage = luatexbase.catcodetables["latex-package"]          -- luatexbase
@@ -84,23 +92,11 @@ local function is_recent_info(doi, days, api)
   return false
 end
 
-local function chr_to_perchex (chr)
-  return format("%%%02X", byte(chr))
-end
-
-local function url_encode(url)
-  if url then
-    return gsub(url, "([%W])", chr_to_perchex)
-  end
-
-  return nil
-end
-
-local function query_json_api(url)
-  body, code, headers = http.request(url)
+local function query_json_api(req_url)
+  body, code, headers = http.request(req_url)
   if body then
     -- JSON escapes don't quite work for Lua
-    -- https://tools.ietf.org/html/rfc8259, §7
+    -- https://tools.ietf.org/html/rfc8259, section 7
     -- http://lua-users.org/lists/lua-l/2017-04/msg00100.html
     -- query DOI 10.1371/journal.pbio.2005099 from Unpaywall
     -- to see what goes wrong
@@ -112,8 +108,8 @@ local function query_json_api(url)
 end
 
 local function get_doi_info(doi)
-  local url = "https://doi.org/api/handles/" .. url_encode(doi)
-  local doi_info, code  = query_json_api(url)
+  local req_url = "https://doi.org/api/handles/" .. url.escape(doi)
+  local doi_info, code  = query_json_api(req_url)
 
   if doi_info then
     oadb[doi] = oadb[doi] or {}
@@ -151,9 +147,9 @@ local function get_unpaywall_info(doi)
     return nil
   end
 
-  local url = "https://api.unpaywall.org/v2/" .. doi
-              .. "?email=" .. blxextdoiapi.mail
-  local upw_info, code = query_json_api(url)
+  local req_url = "https://api.unpaywall.org/v2/" .. doi
+                  .. "?email=" .. blxextdoiapi.mail
+  local upw_info, code = query_json_api(req_url)
 
   if code == 200 and upw_info then
     oadb[doi] = oadb[doi] or {}
@@ -208,10 +204,10 @@ end
 -- For TeX. I'd have liked this better in the .sty, but the whole \ escape
 -- malarkey made that a pain, so the function is here now.
 local function assign_openaccess_url_to(macro, doi)
-  local url = get_openaccess_url(doi)
-  if url then
+  local oa_url = get_openaccess_url(doi)
+  if oa_url then
     texsprint("\\def"..macro.."{")
-    texwrite(url)
+    texwrite(oa_url)
     texsprint("}")
   end
 end
