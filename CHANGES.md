@@ -2,6 +2,7 @@
 See https://github.com/moewew/biblatex-ext/compare/v0.6...v<version>
 - Only patch bibmacros in `biblatex-ext-oa`. This avoids redefinitions,
   which could clear out custom definitions.
+- Use socket.url's URL escape/encode function in blxextdoiapi.lua.
 
 # Version 0.6 (2018-11-23)
 See https://github.com/moewew/biblatex-ext/compare/v0.5a...v0.6

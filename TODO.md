@@ -28,3 +28,4 @@
   - Rethink the names...
 - Test suite
 - Less intrusive versioning
+- blxextdoiapi for non-Lua engines with shell escape calling texlua?
