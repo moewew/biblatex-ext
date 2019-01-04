@@ -73,7 +73,7 @@ standard styles. The bundle consists of the following files
 
 ## Licence
 
-Copyright 2017-2018 Moritz Wemheuer
+Copyright 2017-2019 Moritz Wemheuer
 
 This work consists of the `.bbx`, `.cbx`, `.def`, `.sty` and `.lua` files
 mentioned above.
