@@ -134,22 +134,28 @@
 % Legacy names
 
 % compability for versions < 0.3
-\def\extblx@deprecate@delimcommand@robust#1{%
+\def\extblx@deprecate@delimcommand@robust#1#2{%
   \protected\csedef{#1}{%
     \noexpand\extblx@warning{%
       \expandafter\string\csname#1\endcsname\space is deprecated.
       \MessageBreak
-      Use \expandafter\string\csname#1s\endcsname\space (with s) instead.
+      Use \expandafter\string\csname#2\endcsname\space (with s) instead.
       \MessageBreak
-      Using \expandafter\string\csname#1s\endcsname\space}%
-  \expandonce{\csname#1s\endcsname}}}
+      Using \expandafter\string\csname#2\endcsname}%
+  \expandonce{\csname#2\endcsname}}}
 
 \extblx@deprecate@delimcommand@robust{DeclareOuterCiteDelim}
+  {DeclareOuterCiteDelims}
 \extblx@deprecate@delimcommand@robust{DeclareInnerCiteDelim}
+  {DeclareInnerCiteDelims}
 \extblx@deprecate@delimcommand@robust{UndeclareOuterCiteDelim}
+  {UndeclareOuterCiteDelims}
 \extblx@deprecate@delimcommand@robust{UndeclareInnerCiteDelim}
+  {UndeclareInnerCiteDelims}
 \extblx@deprecate@delimcommand@robust{DeclareOuterCiteDelimAlias}
+  {DeclareOuterCiteDelimsAlias}
 \extblx@deprecate@delimcommand@robust{DeclareInnerCiteDelimAlias}
+  {DeclareInnerCiteDelimsAlias}
 
 \newrobustcmd*{\extblx@create@mkcitedelim}{%
   \extblx@warning{%
