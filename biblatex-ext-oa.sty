@@ -4,13 +4,13 @@
 \protected\def\extblx@oa@error#1#2{%
   \PackageError{biblatex-ext-oa}{#1}{#2.}}
 
-\protected\def\extblx@oa@warning@noline#1{%
-  \PackageWarningNoLine{biblatex-ext-oa}{#1}}
+\protected\def\extblx@oa@warning@noline{%
+  \PackageWarningNoLine{biblatex-ext-oa}}
 
 \let\extblx@oa@warning\extblx@oa@warning@noline
 \AtEndOfPackage{%
-  \protected\def\extblx@oa@warning#1{%
-    \PackageWarning{biblatex-ext-oa}{#1}}}
+  \protected\def\extblx@oa@warning{%
+    \PackageWarning{biblatex-ext-oa}}}
 
 \@ifpackageloaded{biblatex}
   {}

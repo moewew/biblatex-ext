@@ -41,7 +41,7 @@
 \def\extblx@opthandler@introcite#1{%
   \ifcsdef{extblx@opt@introcite@#1}
     {\letcs\extblx@introcite{extblx@opt@introcite@#1}}
-    {\PackageWarningNoLine{biblatex-ext}{%
+    {\extblx@warning@noline{%
        Invalid value '#1' for option 'introcite'.\MessageBreak
        Possible values are 'false', 'label', 'plain'.\MessageBreak
        Falling back to 'introcite=false'}%
@@ -51,7 +51,7 @@
 \protected\def\extblx@specialopthandler@introcite#1#2{%
   \ifstrequal{#2}{label}
     {\ifcsundef{extblx@warn@introcitelabel@#1}
-       {\PackageWarningNoLine{biblatex-ext}{%
+       {\extblx@warning@noline{%
           Value 'introcite=label' not officially supported\MessageBreak
           on per-#1 level.\MessageBreak
           It requires setup changes for a complete\MessageBreak

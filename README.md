@@ -71,6 +71,11 @@ standard styles. The bundle consists of the following files
     - The Lua module `blxextdoiapi.lua`
   - The symbol package `biblatex-ext-oa-tikzsymbols.sty`
 
+All of these files (including `blxextdoiapi.lua`) are runtime files that
+need to be installed where LaTeX can find them.
+It is highly recommended to install this bundle via your TeX distribution
+and not manually. See the documentation for more installation instructions.
+
 ## Licence
 
 Copyright 2017-2019 Moritz Wemheuer

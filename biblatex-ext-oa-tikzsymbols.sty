@@ -7,13 +7,13 @@
 \protected\def\extblx@oasymb@error#1#2{%
   \PackageError{biblatex-ext-oa-tikzsymbols}{#1}{#2.}}
 
-\protected\def\extblx@oasymb@warning@noline#1{%
-  \PackageWarningNoLine{biblatex-ext-oa-tikzsymbols}{#1}}
+\protected\def\extblx@oasymb@warning@noline{%
+  \PackageWarningNoLine{biblatex-ext-oa-tikzsymbols}}
 
 \let\extblx@oasymb@warning\extblx@oasymb@warning@noline
 \AtEndOfPackage{%
-  \protected\def\extblx@oasymb@warning#1{%
-    \PackageWarning{biblatex-ext-oa-tikzsymbols}{#1}}}
+  \protected\def\extblx@oasymb@warning{%
+    \PackageWarning{biblatex-ext-oa-tikzsymbols}}}
 
 \RequirePackage{tikz}
 

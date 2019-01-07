@@ -50,9 +50,11 @@
     {\entrydata{\cbx@lastkey}
        {\ifnumless{\value{cbx@extradatecount}}{1}
           {\extblx@warning{% This should not happen, so warn when it does
-             Uh-oh!
+             Uh-oh!\MessageBreak
              The extradate compression is quite likely\MessageBreak
-             wrong for \cbx@lastkey}}%
+             wrong for \cbx@lastkey.\MessageBreak
+             This should not happen.\MessageBreak
+             Please report this as a bug}}%
           {}%
         \ifnumgreater{\value{cbx@extradatecount}}{1}
           {\setunit{\printdelim{extradateonlycompciterangedelim}}}

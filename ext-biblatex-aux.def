@@ -4,9 +4,9 @@
 \def\extblx@requiredbiblatexversion{3.12}
 \def\extblx@requiredbiblatexdate{2018/11/02}
 
-\newrobustcmd*{\extblx@info}[1]{\PackageInfo{biblatex-ext}{#1}}
-\newrobustcmd*{\extblx@warning}[1]{\PackageWarning{biblatex-ext}{#1}}
-\newrobustcmd*{\extblx@warning@noline}[1]{\PackageWarningNoLine{biblatex-ext}{#1}}
+\newrobustcmd*{\extblx@info}{\PackageInfo{biblatex-ext}}
+\newrobustcmd*{\extblx@warning}{\PackageWarning{biblatex-ext}}
+\newrobustcmd*{\extblx@warning@noline}{\PackageWarningNoLine{biblatex-ext}}
 
 \newrobustcmd*{\extblx@error}[2]{\PackageError{biblatex-ext}{#1}{#2.}}
 
@@ -133,7 +133,8 @@
 
 % Legacy names
 
-% compability for versions < 0.3
+% Compability for versions <= 0.3
+% Changes were made for v0.4 2018-06-10.
 \def\extblx@deprecate@delimcommand@robust#1#2{%
   \protected\csedef{#1}{%
     \noexpand\extblx@warning{%
@@ -161,12 +162,12 @@
   \extblx@warning{%
     \string\extblx@create@mkcitedelim\space is deprecated.\MessageBreak
     Use \string\RegisterCiteDelims\space instead.\MessageBreak
-    Using \string\RegisterCiteDelims\MessageBreak}
+    Using \string\RegisterCiteDelims}
   \RegisterCiteDelims}
 
 % Some very rudimentary backwards warning code for old names
-% this only warns, it can't salvage anything
-
+% this only warns, it can't salvage anything.
+% Can/should this be removed in the future?
 \AtEndDocument{%
   \ifcsundef{abx@ffd@*@bbx:introcite}
     {}

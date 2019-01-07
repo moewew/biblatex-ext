@@ -12,13 +12,13 @@
 \protected\def\extblxtab@error#1#2{%
   \PackageError{biblatex-ext-tabular}{#1}{#2.}}
 
-\protected\def\extblxtab@warning@noline#1{%
-  \PackageWarningNoLine{biblatex-ext-tabular}{#1}}
+\protected\def\extblxtab@warning@noline{%
+  \PackageWarningNoLine{biblatex-ext-tabular}}
 
 \let\extblxtab@warning\extblxtab@warning@noline
 \AtEndOfPackage{%
-  \protected\def\extblxtab@warning#1{%
-    \PackageWarning{biblatex-ext-tabular}{#1}}}
+  \protected\def\extblxtab@warning{%
+    \PackageWarning{biblatex-ext-tabular}}}
 
 % user-level command for printing tabular bibliography
 

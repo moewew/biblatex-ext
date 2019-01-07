@@ -1,3 +1,6 @@
+# Version <version> (<date>)
+See https://github.com/moewew/biblatex-ext/compare/v0.6a...v<version>
+
 # Version 0.6a (2019-01-04)
 See https://github.com/moewew/biblatex-ext/compare/v0.6...v0.6a
 - Only patch bibmacros in `biblatex-ext-oa`. This avoids redefinitions,
