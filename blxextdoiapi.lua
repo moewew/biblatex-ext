@@ -26,7 +26,7 @@ local log     = log  or
 
 
 local http        = require("socket.http")
-local url         = require("socket.url")
+local url         = socket.url or require("socket.url")
 local json        = utilities.json
 local os_time     = os.time
 local os_date     = os.date
