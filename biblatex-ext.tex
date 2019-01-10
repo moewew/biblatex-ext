@@ -427,7 +427,7 @@
 
 \newcommand*{\mpdl}{$\langle$}
 \newcommand*{\mpdr}{$\rangle$}
-  
+
 \iffontspec
   \newcommand*{\hmpdl}{$\langle$}
   \newcommand*{\hmpdr}{$\rangle$}
@@ -2852,7 +2852,7 @@ for \cmd{oasymbol}.
   \fnurl{https://open-access.net/DE-EN/about-us/}.
   While the German version leaves some leeway as to whether or not a link is
   required as attribution, the English version seems more explicit.
-  
+
   That means that if you do not follow Wikimedia in considering the symbol
   not protected by copyright in your~-- and all other relevant jurisdictions%
   ~-- due to its failure to cross the threshold of originality,
@@ -2881,20 +2881,22 @@ See also \sty{CHANGES.md}.
 The numbers on the right indicate the relevant section of the manual.
 \begin{changelog}
 \begin{release}{<version>}{<date>}
-  \item ?
+  \item Fixed issue loading \texttt{socket.url} module in
+    \sty{biblatex-ext-oa-doiapi}\see{sec:oasymb}
 \end{release}
 \begin{release}{0.6a}{2019-01-04}
   \item Minor improvements for \sty{biblatex-ext-oa}\see{sec:oasymb}
 \end{release}
 \begin{release}{0.6}{2018-11-23}
   \item Require \sty{biblatex} 3.12
-  \item Make \opt{dashed} and \opt{introcite} options available on a per-entry
+  \item Made \opt{dashed} and \opt{introcite} options available on a per-entry
     and per-type basis\see{sec:opt:style}
   \item Added \cs{titleaddonpunct}\see{sec:opt:punct}
-  \item Add \sty{biblatex-ext-oa} package for open access symbols\see{sec:oasymb}
+  \item Added \sty{biblatex-ext-oa} package for open access symbols%
+    \see{sec:oasymb}
 \end{release}
 \begin{release}{0.5a}{2018-10-09}
-  \item Fix a bug with \cmd{footcites} and \cmd{footcitetexts} in
+  \item Fixed a bug with \cmd{footcites} and \cmd{footcitetexts} in
     \sty{ext-authoryear}
 \end{release}
 \begin{release}{0.5}{2018-10-02}
@@ -2904,13 +2906,10 @@ The numbers on the right indicate the relevant section of the manual.
 \end{release}
 \begin{release}{0.4}{2018-06-10}
 \item Renamed \cmd{DeclareOuterCiteDelim} and friends to
-  \cmd{DeclareOuterCiteDelims}
-  \see{sec:opt:citedelims}
-\item Added \cmd{RegisterCiteDelims}
-  \see{sec:opt:citedelims}
+  \cmd{DeclareOuterCiteDelims}\see{sec:opt:citedelims}
+\item Added \cmd{RegisterCiteDelims}\see{sec:opt:citedelims}
 \item Renamed \enquote{virtual} cite command \cmd{bbx:introcite} to
-  \cmd{bbx@introcite}
-  \see{sec:opt:style}
+  \cmd{bbx@introcite}\see{sec:opt:style}
 \end{release}
 \begin{release}{0.3}{2018-06-04}
 \item Added \bibfieldformat{titlecase:\dots title} field formats%

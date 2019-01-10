@@ -1,22 +1,24 @@
 # Version <version> (<date>)
 See https://github.com/moewew/biblatex-ext/compare/v0.6a...v<version>
+- Fixed issue loading socket.url
+  (https://github.com/moewew/biblatex-ext/issues/17)
 
 # Version 0.6a (2019-01-04)
 See https://github.com/moewew/biblatex-ext/compare/v0.6...v0.6a
 - Only patch bibmacros in `biblatex-ext-oa`. This avoids redefinitions,
   which could clear out custom definitions.
 - Use socket.url's URL escape/encode function in blxextdoiapi.lua.
-- Fix bug in deprecation handling.
+- Fixed bug in deprecation handling.
 
 # Version 0.6 (2018-11-23)
 See https://github.com/moewew/biblatex-ext/compare/v0.5a...v0.6
-- Sync `mergedate` code with `biblatex` 3.12
+- Synced `mergedate` code with `biblatex` 3.12
   (https://github.com/plk/biblatex/pull/810
    https://github.com/plk/biblatex/issues/752).
 - `biblatex` 3.12 is now recommended.
 - Added `\titleaddonpunct`.
-- Make `introcite` and `dashed` option available on per-entry and
-  per-type basis.
+- Made `introcite` and `dashed` option available on per-entry and
+  per-type basis. (https://github.com/moewew/biblatex-ext/issues/13)
   - `introcite=label` needs support of the bibliography environment,
     so it is not officially supported if its is not set globally.
   - Simplify code to set options at all three levels at the same time.
@@ -31,14 +33,14 @@ See https://github.com/moewew/biblatex-ext/compare/v0.5a...v0.6
 # Version 0.5a (2018-10-09)
 See https://github.com/moewew/biblatex-ext/compare/v0.5...v0.5a
 - Fixed a bug with `\footcites` and `\footcitetexts` in `ext-authoryear.cbx`
-  https://github.com/moewew/biblatex-ext/issues/12
+  (https://github.com/moewew/biblatex-ext/issues/12)
 
 # Version v0.5 (2018-10-02)
 See https://github.com/moewew/biblatex-ext/compare/v0.4...v0.5
 - Added the `ecomp` style family. The styles of that family compress lists of
   extradate fields.
 - Added outer cite delimiters for `\footcite`.
-- Added `version` and `pagetotal` bibmacro.
+- Added `version` and `pagetotal` bibmacros.
 - First implementation of a tabular bibliography based on Audrey's answer to
   https://tex.stackexchange.com/q/71088/35864
 
