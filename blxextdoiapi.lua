@@ -222,7 +222,7 @@ local function texify_conditional(cond)
 end
 
 -- mail is not exported, we just expect the user to set it
-blxextdoiapi = {
+return {
   module                   = module,
   cache_expire             = cache_expire,
   is_valid_doi             = is_valid_doi,

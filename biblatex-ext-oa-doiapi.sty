@@ -34,7 +34,11 @@
 \def\extblx@oa@api@luastring#1{"\luaescapestring{#1}"}
 \def\extblx@oa@api@luastringN#1{\extblx@oa@api@luastring{\unexpanded{#1}}}
 
-% The oai file should contain a Lua table with the relevant OA data
+% no local here, since that would restrict the assignment to
+% this \directlua only, that would be too local
+\directlua{blxextdoiapi = require("blxextdoiapi")}
+
+% The oai file should contain a (global!) Lua table with the relevant OA data
 \IfFileExists{\jobname.oai}
   {\extblx@oa@api@info@noline{%
      Load OA database from\MessageBreak
@@ -43,8 +47,6 @@
   {\extblx@oa@api@info@noline{%
      No OA database file present at\MessageBreak
      \jobname.oai}}
-
-\directlua{require("blxextdoiapi")}
 
 \newcommand*{\SetDOIAPIMail}[1]{%
   \cslet{extblx@oa@api@mailset}\@empty
