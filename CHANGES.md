@@ -2,6 +2,7 @@
 See https://github.com/moewew/biblatex-ext/compare/v0.6a...v<version>
 - Fixed issue loading socket.url
   (https://github.com/moewew/biblatex-ext/issues/17)
+- Changed `blxextdoiapi.lua` so that it returns the module.
 
 # Version 0.6a (2019-01-04)
 See https://github.com/moewew/biblatex-ext/compare/v0.6...v0.6a
