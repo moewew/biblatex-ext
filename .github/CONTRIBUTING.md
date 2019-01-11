@@ -13,7 +13,7 @@ You can report bugs at the ['Issues' tab](https://github.com/moewew/biblatex-ext
 Please make sure that the bugs you report here are bugs of the `biblatex-ext` styles and not problems in the `biblatex` core.
 If you can reproduce the same issue with a standard style, please report the issue at the [`biblatex` bugtracker](https://github.com/plk/biblatex/issues).
 
-Please include an accurate description of the undesired/unexpected and the desired/expected behaviour.
+Please include an accurate description of the undesired/unexpected *and* the desired/expected behaviour.
 
 ### Example documents
 
@@ -27,9 +27,9 @@ There are many resources out there that can help you create a good example docum
 * https://tex.meta.stackexchange.com/q/228/35864
 * https://tex.meta.stackexchange.com/q/4407/35864
 
-The main points are that the example document should be as small as possible while still reproducing the issue.
-It should be portable and compilable on other people's machines, so it should ideally only reference classes, packages and files available on [CTAN](https://ctan.org/) and should be self-contained as far as possible.
-Avoid `\include` and `\input` and include anything that is necessary directly in the main `.tex` file and not in several auxiliary files.
+The main point is that the example document should be as small as possible while still reproducing the issue.
+It should be portable and compilable on other people's machines, so it should ideally only load classes, packages and files available on [CTAN](https://ctan.org/) and should be self-contained as far as possible.
+Avoid `\include` and `\input` as far as possible and include anything that is necessary directly in the main `.tex` file and try not to spread it out over several files.
 For bibliographies it is important that the `.bib` entries used in the example are available:
 Either use the file [`biblatex-examples.bib`](https://github.com/plk/biblatex/blob/master/bibtex/bib/biblatex/biblatex-examples.bib), which comes with every `biblatex` installation and contains many examples that might be helpful, or share a few entries from your `.bib` file (the `filecontents` environment can be very useful to make a file truly self-contained, but if you don't feel comfortable using it you can just paste the example entries separately).
 
@@ -37,9 +37,9 @@ Either use the file [`biblatex-examples.bib`](https://github.com/plk/biblatex/bl
 
 Suggestions for enhancements and new features are always very welcome.
 As in the case of bugs, please consider whether or not the feature request may be more suited for the `biblatex` core.
-Naturally that decision is much more subjective than whether or not a bug is a core or style bug, so do pick whicnever you think is more suitable.
+Naturally that decision is much more subjective than whether or not a bug is a core or style bug, so do pick whichever you think is more suitable.
 
-Please keep in mind that the main aim of this project is to provide styles compatible with the standard biblatex styles that offer a simple way to do some customisations that are otherwise more tedious.
+Please keep in mind that the main aim of this project is to provide styles compatible with the standard `biblatex` styles that offer a simple way to do some customisations that are otherwise more tedious.
 That is a very vague aim and leaves a lot of wiggle room.
 
 Please describe what feature or other suggestion you have in mind.
@@ -53,6 +53,6 @@ Even if there is 'nothing to see at the moment' a short example of the intended 
 Pull requests are very welcome, but please keep in mind that the project goals are vague and that not every suggestion 'feels right'.
 Please document your changes and motivate them briefly in the pull request description.
 
-If possible please submit pull requests with medium-sized, logical commits (not too long so that you lose track of what is going on, but not so short that a single pull request consists of dozens of commits).
+If possible please submit pull requests with medium-sized, logical commits (not too long so that I lose track of what is going on, but not so short that a single pull request consists of dozens of commits).
 If you can rebase your branch upon `dev` before you submit the pull request that would be greatly appreciated.
 Pull requests with many commits may be squashed before merging.
