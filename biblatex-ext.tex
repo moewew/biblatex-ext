@@ -340,19 +340,11 @@
   \par\endgroup
   \nobreak\vspace{\itemsep}}
 
-\def\ltd@item@ii#1#2{%
-  \ltd@itemsave
-  \ifhmode
-    \itemsep\z@
-  \else
-    \ltd@itembreak
-  \fi
-  \item[#1]%
-  \ifblank{#2}
-    {}
-    {\phantomsection\label{exltd@itm@#2}}%
-  \ltd@itemrest
-  \ifblank{#2}{}{\ltd@pdfbookmark{#2}{#1}}}
+% inject a label additional to the bookmark so we can link stuff
+\let\exltd@pdfbookmark\ltd@pdfbookmark
+\def\ltd@pdfbookmark#1#2{%
+  \phantomsection\label{exltd@itm@#1}%
+  \exltd@pdfbookmark{#1}{#2}}
 
 \blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
 \newcommand*{\biblatexversion}{\extblx@requiredbiblatexversion}
@@ -407,11 +399,30 @@
 \renewrobustcmd*{\sty}[1]{{\verbatimfont\justify #1}}
 \renewrobustcmd*{\bibfield}[1]{\sty{#1}}
 \renewrobustcmd*{\opt}[1]{\sty{#1}}
+\newrobustcmd*{\optval}[1]{\sty{#1}}
 \newrobustcmd*{\bibmacro}[1]{\sty{#1}}
 \renewrobustcmd*{\bibtype}[1]{\sty{@#1}}
 \renewrobustcmd*{\cmd}[1]{\sty{\textbackslash #1}}
 \let\cs\cmd
 \newrobustcmd*{\bibfieldformat}[1]{{\bibfieldformatfont #1}}
+
+\makeatletter
+\def\exltd@buildhypercmd@i#1{%
+  \expandafter\newrobustcmd\expandafter*\expandafter
+    {\csname hyper#1@i\endcsname}[2][]{%
+    \hyperref[exltd@itm@##1]{\csname #1\endcsname{##2}}}
+  \csdef{hyper#1}{\@dblarg{\csname hyper#1@i\endcsname}}}
+
+\def\exltd@buildhypercmd{\forcsvlist{\exltd@buildhypercmd@i}}
+
+\exltd@buildhypercmd{cmd,opt,bibmacro,len,sty,bibfield,bibfieldformat}
+
+\newrobustcmd*{\hyperkvopt}[2]{{%
+  \verbatimfont\hyperref[exltd@itm@#1]{#1}\penalty\@M
+  \hskip 0em plus 0.15em\relax
+  =\penalty\hyphenpenalty
+  \hskip 0em plus 0.15em\relax #2}}
+\makeatother
 
 \newcommand*{\ctan}{\mkbibacro{CTAN}}
 \newcommand*{\gitbaseurl}{https://github.com/moewew/biblatex-ext}
@@ -484,6 +495,7 @@
   bib-close-bracket
   main-title-after-title
   jour-vol-delim
+  in-name-before-title
 }
 
 
@@ -515,7 +527,7 @@ followed at all times and the occasional solution for things that already are
 \enquote{simple enough} pop up here and there.}
 
 The initial motivation for this bundle was what has now become the option
-\opt{in\-name\-before\-title}.
+\hyperopt{innamebeforetitle}.
 It is fairly straighforward to print the name of the editor of an
 \bibtype{incollection} before the \bibfield{booktitle}.
 But if one does not want to resort to clever tricks,%
@@ -971,7 +983,7 @@ This option controls if \bibtype{inbook}, \bibtype{incollection} and
 bibliography if the parent is listed in the bibliography as a separate entry.
 With the default setting \kvopt{citexref}{false} the parent is not cited, the
 entry is shown as in the standard styles. If the option is set to
-\opt{true}, the block following the \enquote{in:} is replaced by a citation
+\optval{true}, the block following the \enquote{in:} is replaced by a citation
 to the parent entry.
 The option itself does \emph{not} cause the parent entry to be added to the
 bibliography, this needs to happen either explicitly by citing the parent
@@ -1058,7 +1070,8 @@ Whether or not the \bibfield{editor} of the \bibfield{booktitle}
 for the entry types \bibtype{inbook}, \bibtype{incollection} and
 \bibtype{inproceedings} is replaced by \enquote{idem} in case the
 \bibfield{editor} and \bibfield{author} name lists coincide.
-This option only has an effect if \opt{innamebeforetitle} is set to \opt{true}.
+This option only has an effect if \hyperopt{innamebeforetitle} is set to
+\optval{true}.
 
 \begin{bibexample}[title={\kvopt{innameidem}{true}}]
 \togglefalse{bbx:isbn}
@@ -1108,8 +1121,8 @@ This option only has an effect if \opt{innamebeforetitle} is set to \opt{true}.
 \boolitem[false]{maintitleaftertitle}
 Whether or not the \bibfield{maintitle} is printed after the
 \bibfield{title} or \bibfield{booktitle} of the work.
-If \opt{maintitleaftertitle} is \opt{true}, the \bibfield{volume} field will be
-printed with the \bibfield{volumeof} format.
+If \opt{maintitleaftertitle} is \optval{true}, the \bibfield{volume} field will
+be printed with the \hyperbibfieldformat{volumeof} format.
 
 \begingroup
 \makeatletter
@@ -1170,8 +1183,8 @@ printed with the \bibfield{volumeof} format.
 
 \subsection{Style-specific options}\label{sec:opt:style}
 \begin{optionlist}
-\optitem[true]{dashed}{\opt{true}, \opt{false}, \opt{fullhash},
-                       \opt{bibnamehash}}
+\optitem[true]{dashed}{\optval{true}, \optval{false}, \optval{fullhash},
+                       \optval{bibnamehash}}
 
 The \opt{dashed} option of the \sty{authoryear}- and \sty{authortitle}-like
 bibliography styles allows for finer control over the dashes than in the
@@ -1181,13 +1194,13 @@ level.
 
 This option controls whether or not recurring lists of authors/editors in the
 bibliography are replaced with a dash.
-The standard values \opt{true} and \opt{false} are still valid and give the
-exact same output as in the standard styles.
+The standard values \optval{true} and \optval{false} are still valid and give
+the exact same output as in the standard styles.
 This means that the output is fully compatible with the standard styles.
-The new values \opt{fullhash} and \opt{bibnamehash} differ in how exactly they
-determine if a list of authors/editors is the same as the previous.
+The new values \optval{fullhash} and \optval{bibnamehash} differ in how exactly
+they determine if a list of authors/editors is the same as the previous.
 \begin{valuelist}
-\item[true] An alias for \opt{fullhash}.
+\item[true] An alias for \optval{fullhash}.
 \item[false] Disable this feature.
 \item[bibnamehash] Replace recurring name lists with a dash.
                    Compare name lists using \bibfield{bib\-name\-hash}, taking
@@ -1261,13 +1274,15 @@ lists are only replaced if they are indistinguishable in the data source.
 
 
 
-\optitem[false]{introcite}{\opt{false}, \opt{plain}, \opt{label}}
+\optitem[false]{introcite}{\optval{false}, \optval{plain}, \optval{label}}
 The \opt{introcite} option is available for the bibliography styles of the
-\sty{authoryear} and \sty{authortitle} family.
-It can not be used with citation styles of the \sty{verbose} family and may
-produce undesired output or errors.
+\hypersty[ext-authoryear]{authoryear} and
+\hypersty[ext-authortitle]{authortitle} family.
+It can not be used with citation styles of the \hypersty[ext-verbose]{verbose}
+family, where
+it may produce undesired output or errors.
 The option is available globally and on a per-type and per-entry level, where
-only the values \opt{plain} (and the default \opt{false}) are supported.
+only the values \optval{plain} (and the default \optval{false}) are supported.
 
 This option controls whether or not the citation label is repeated in the
 bibliography.
@@ -1276,13 +1291,14 @@ There are two possible output formats.
 \item[false] Do not show the citation label in the bibliography.
 \item[plain] Show the citation label at the beginning of an entry.
 \item[label] Show the citation label as the label of a list similar to the
-             \sty{numeric} or \sty{alphabetic} styles.
+             \hypersty[ext-numeric]{numeric} or
+             \hypersty[ext-alphabetic]{alphabetic} styles.
 \end{valuelist}
 
-The difference between \opt{plain} and \opt{label} is that the former simply
-prints the citation label at the beginning of the entry, while the latter
+The difference between \optval{plain} and \optval{label} is that the former
+simply prints the citation label at the beginning of the entry, while the latter
 prints the citation label similar to the item labels in a list or the numeric
-labels in a \sty{numeric} bibliography.
+labels in a \hypersty[ext-numeric]{numeric} bibliography.
 
 \begingroup
 \togglefalse{bbx:doi}
@@ -1310,7 +1326,7 @@ labels in a \sty{numeric} bibliography.
 \makeatother
 \endgroup
 
-The label produced by the \opt{plain} option can be customised as follows.
+The label produced by the \optval{plain} option can be customised as follows.
 \begin{ltxsyntax}
 \csitem{introcitepunct}
 
@@ -1329,7 +1345,7 @@ The punctuation insterted between the label and the
 \begin{keymarglistbook}
 \keyitem[bbx:introcite:plain:keeprelated] This toggle controls whether or
   not the citation label is also repeated for default related entries.
-  The default value \opt{false} suppresses the label for related entries.
+  The default value \optval{false} suppresses the label for related entries.
 \begin{bibexample}[title={\texttt{\string\togglefalse\{%
   bbx:introcite:plain:keeprelated\}} (default)}]
 \togglefalse{bbx:doi}
@@ -1352,10 +1368,10 @@ The punctuation insterted between the label and the
 Note that the implementation of some related types automatically suppresses
 the introcite label~-- or rather, does not add the label in the first place.
 That means that the resulting bibliography should be checked for consistency
-if the toggle is set to \opt{true}.
+if the toggle is set to \optval{true}.
 \end{keymarglistbook}
 
-The \opt{label} option can be configured to not allow the label to run into
+The \optval{label} option can be configured to not allow the label to run into
 the remaining bibliography entry thus creating the appearance of a tabular-like
 bibliography.
 The citation label is not broken across lines, instead it moves the entry text
@@ -1539,7 +1555,7 @@ Field formats can be modified with \cmd{DeclareFieldFormat}.
   \end{bibexample}
 
 \bibfieldformatitem{volumeof} The format for the \bibfield{volume} of a
-  \bibfield{maintitle} used when \kvopt{maintitleaftertitle}{true}.
+  \bibfield{maintitle} used when \hyperkvopt{maintitleaftertitle}{true}.
   \begin{bibexample}
   \togglefalse{bbx:isbn}\toggletrue{bbx:maintitleaftertitle}
   \DeclareFieldFormat{volumeof}{\highlight{\bibstring{volume}}~%
@@ -1611,12 +1627,12 @@ can be found in \cref{sec:punctinuse}.
 \begin{ltxsyntax}
 \csitem{innametitledelim}\CSdelimMark
 Similar to \cmd{nametitledelim}, but for names after the \enquote{in:} if
-\opt{innamebeforetitle} is \opt{true}.
+\hyperopt{innamebeforetitle} is \optval{true}.
 The default value is that of \cmd{nametitledelim} for all contexts.
 Since the definition of \cmd{nametitledelim} is different for the delimiter
-contexts \opt{bib} and \opt{biblist}, you may have to use the optional argument
-to redefine the delimiter.\footnote{The author admits that it is somewhat
-pointless to make \cmd{innametitledelim} context sensitive.
+contexts \optval{bib} and \optval{biblist}, you may have to use the optional
+argument to redefine the delimiter.\footnote{The author admits that it is
+somewhat pointless to make \cmd{innametitledelim} context sensitive.
 But the obvious parallels with \cmd{nametitledelim} were too tempting.
 It is probably too late now.}
 \begin{bibexample}
@@ -1649,7 +1665,8 @@ values that would otherwise not be redefined.
 
 \csitem{maintitletitledelim}
 The punctuation between the \bibfield{maintitle} and \bibfield{title} or
-\bibfield{booktitle} of a work if \opt{maintitleaftertitle} is \opt{false}.
+\bibfield{booktitle} of a work if \hyperopt{maintitleaftertitle} is
+\optval{false}.
 The default is \cs{newunitpunct}.
 \begin{bibexample}
 \togglefalse{bbx:isbn}
@@ -1660,7 +1677,8 @@ The default is \cs{newunitpunct}.
 
 \csitem{voltitledelim}
 The punctuation between the \bibfield{volume} and \bibfield{title} or
-\bibfield{booktitle} of a work if \opt{maintitleaftertitle} is \opt{false}.
+\bibfield{booktitle} of a work if \hyperopt{maintitleaftertitle} is
+\optval{false}.
 The default is a colon followed by a space.
 \begin{bibexample}
 \togglefalse{bbx:isbn}
@@ -1671,7 +1689,8 @@ The default is a colon followed by a space.
 
 \csitem{titlemaintitledelim}
 The punctuation between the \bibfield{title} or \bibfield{booktitle} and
-\bibfield{maintitle} of a work if \opt{maintitleaftertitle} is \opt{true}.
+\bibfield{maintitle} of a work if \hyperopt{maintitleaftertitle} is
+\optval{true}.
 The default is \cmd{newunitpunct}.
 \begin{bibexample}
 \togglefalse{bbx:isbn}
@@ -2004,11 +2023,11 @@ No error will be raised if the opening or closing delimiters are not defined,
 but an error will be raised if \cmd{mk\prm{modifier}\prm{cite command}s} is
 already defined.
 
-The styles of this bundle only use the values \opt{outer} and \opt{inner} for
-\prm{modifier}, but other values are possible. With \opt{outer} and \opt{inner}
-you can use \cmd{DeclareOuterCiteDelim} or \cmd{DeclareInnerCiteDelim} and
-friends to define the opening and closing delimiters, otherwise you need to
-define them manually.
+The styles of this bundle only use the values \optval{outer} and \optval{inner}
+for \prm{modifier}, but other values are possible. With \optval{outer} and
+\optval{inner} you can use \cmd{DeclareOuterCiteDelim} or
+\cmd{DeclareInnerCiteDelim} and friends to define the opening and closing
+delimiters, otherwise you need to define them manually.
 
 All styles of \sty{biblatex-ext} define the wrapper commands listed in
 \cref{tab:delimwrappers}.
@@ -2113,7 +2132,8 @@ prints the \bibfield{pagetotal} field, this avoids a direct
 \keyitem[in:editor(+others)]
 The bibliography macro to print the \bibfield{editor} before the
 \bibfield{booktitle} for \bibtype{inbook}, \bibtype{incollection} and
-\bibtype{inproceedings} when \opt{innamebeforetitle} is set to \opt{true}.
+\bibtype{inproceedings} when \hyperopt{innamebeforetitle} is set to
+\optval{true}.
 The \cmd{printname} uses the name format \bibfield{ineditor}.
 
 \keyitem[language]
@@ -2191,26 +2211,27 @@ are mine and not Audrey's. Please report them via the channels mentioned above
 in~\secref{sec:feedback}.
 
 \marginwarn Before tabular bibliographies can be used, a suitable definition
-must be supplied with \cmd{defbibtabular}.
+must be supplied with \hypercmd{defbibtabular}.
 
 \begin{ltxsyntax}
 \cmditem{printbibtabular}[key=value, \dots]
 
 This commands prints a tabular bibliography.
 It accepts the same options as \cmd{printbibliography}, but note that
-\opt{env} must be a tabular bibliography declared with \cmd{defbibtabular}.
-The default value for \opt{env} is \opt{bibtabular}.
+\optval{env} must be a tabular bibliography declared with
+\hypercmd{defbibtabular}.
+The default value for \optval{env} is \optval{bibtabular}.
 
 \marginwarn\emph{Note that there is no default definition for the
 \opt{bibtabular} environment, so you must define it with \cmd{defbibtabular}
 before use. An error will be issued if you fail to provide a definition
-for \opt{bibtabular} before you use \cmd{printbibtabular} with the default
-\opt{env} value, no bibliography will be printed.}
+for \optval{bibtabular} before you use \cmd{printbibtabular} with the default
+\optval{env} value, no bibliography will be printed.}
 
 \cmditem{defbibtabular}{name}{begin code}{end code}{row code}
 
 This command defines a tabular bibliography.
-The \prm{name} is an identifier passed to the \opt{env} option of
+The \prm{name} is an identifier passed to the \optval{env} option of
 \cmd{printbibtabular} when selecting the environment.
 The \prm{begin code} is \latex{} code to be executed at the beginning of the
 environment, usually it will begin a tabular environment.
@@ -2404,26 +2425,27 @@ The package \sty{biblatex-ext-oa} provides the following load-time options.
 \begin{optionlist}
 \boolitem[true]{enable}
 
-This option controls whether the package is only loaded (\opt{false}) or
-loaded and active (\opt{true}).
+This option controls whether the package is only loaded (\optval{false}) or
+loaded and active (\optval{true}).
 
 \enquote{Active} means that the initial state of the global bibliography option
-\opt{openaccess} is \opt{auto} and that useful default settings are applied for
-semi-automatic open access detection.
-These useful defaults include redefinitions of the bibmacro \bibmacro{begentry}
-and, if \opt{doiapi} is enabled, also \bibmacro{doi+eprint+url}.
+\opt{openaccess} is \optval{auto} and that useful default settings are applied
+for semi-automatic open access detection.
+These useful defaults include patches of the bibmacro \bibmacro{begentry}
+and, if \hyperopt{doiapi} is enabled, also \bibmacro{doi+eprint+url}.
 
-If the package is loaded with \opt{enable} set to \opt{false} the global
-bibliography option \opt{openaccess} will be set to \opt{false} and no sensible
-defaults are defined for the semi-automatic open access detection.
+If the package is loaded with \opt{enable} set to \optval{false} the global
+bibliography option \hyperopt{openaccess} will be set to \optval{false} and no
+sensible defaults are defined for the semi-automatic open access detection.
 
-\optitem[false]{tikzsymbol}{\opt{true}, \opt{false}, \prm{symbol identifier}}
+\optitem[false]{tikzsymbol}{\optval{true}, \optval{false},
+  \prm{symbol identifier}}
 
 Load the support package \sty{biblatex-ext-oa-tikzsymbols} with its load-time
 option \opt{symbol} set to \prm{symbol identifier}.
-The values \opt{true} and \opt{false} are provided for convenience.
-\opt{false} does not load the package at all, \opt{true} is like giving the
-value \opt{plos}.
+The values \optval{true} and \optval{false} are provided for convenience.
+\optval{false} does not load the package at all, \optval{true} is like giving
+the value \optval{plos}.
 
 See \cref{sec:oa-symbol} for a thorough discussion of the available symbols
 as well as a short note on their respective licenses.
@@ -2442,11 +2464,11 @@ The package \sty{biblatex-ext-oa} itself does not provide a defintion for
 
 \boolitem[false]{doiapi}
 
-Whether or not to the support package \sty{biblatex-ext-oa-doiapi},
-which provides a Lua module that can be used to query open access information
+Whether or not to load the support package \sty{biblatex-ext-oa-doiapi}
+that provides a Lua module to query open access information
 from Unpaywall\fnurl{https://unpaywall.org/} via the DOI of an entry.
 
-\marginwarn The package \sty{biblatex-ext-oa-doiapi} and hence this option can
+\marginwarn The package \sty{biblatex-ext-oa-doiapi} and thus this option can
 only be used with \lualatex.
 \end{optionlist}
 
@@ -2455,12 +2477,16 @@ The following macros in \sty{biblatex-ext-oa} are also of interest.
 \cmditem{LoadTikZOASymbol}[symbol]
 
 This command provides an alternative way of loading the
-\sty{biblatex-ext-oa-tikzsymbols} package.
+\sty{biblatex-ext-oa-tikzsymbols} support package.
 The optional argument \prm{symbol} has the same meaning as the possible values
 for the \opt{tikzsymbol} package option.
 
 The command can only be used in the preamble.
-It may only be used once.
+It may only be used once and only if \sty{biblatex-ext-oa-tikzsymbols} has
+not been loaded before.
+
+This command is related to \hypercmd{DefineTikZOASymbol} of
+\sty{biblatex-ext-oa-tikzsymbols} (see \secref{sec:oa-symbol}).
 
 \cmditem{oasymbol}
 
@@ -2493,8 +2519,8 @@ bibliography macros.
 \keyitem[oamark]
 
 Prints the open access symbol if a best open access URL is available.
-This bibliography macro is available if the package is loaded with \opt{enable}
-set to \opt{true}
+This bibliography macro is available if the package is loaded with
+\hyperopt{enable} set to \optval{true}
 
 \keyitem[api:bestoaurl]
 
@@ -2502,7 +2528,7 @@ Display the best open access URL according to the Unpaywall API.
 The URL is not shown if it coincides with the DOI, the check for that is
 performed by \cmd{OpenaccessURLisDOI} (see \cref{sec:oa:doiapi}).
 This macro is only available if both the \opt{enable} and the \opt{doiapi}
-options are set to \opt{true}.
+options are set to \optval{true}.
 
 This macro is useful in connection with the Unpaywall API since the best
 open access URL may not be amongst the fields that are already displayed
@@ -2510,10 +2536,10 @@ in the entry.
 \end{keymarglistbook}
 
 \marginwarn
-With \opt{enable} set to \opt{true} the package will furtermore patch
+With \opt{enable} set to \optval{true} the package will furtermore patch
 the bibliography macro \bibmacro{begentry} to execute the bibliography macro
 \bibmacro{oamark}.
-If additionally \opt{doiapi} is \opt{true}, the bibliography macro
+If additionally \opt{doiapi} is \optval{true}, the bibliography macro
 \bibmacro{doi+eprint+url} will be patched to include a call to
 \bibmacro{api:bestoaurl}.
 Please keep that in mind should you need to redefine \bibmacro{begentry}
@@ -2527,12 +2553,14 @@ A short example document can be found at
 \url{https://github.com/moewew/biblatex-ext/blob/master/oaslinks.tex}.
 
 \begin{optionlist}
-\optitem[auto/none]{openaccess}{\opt{auto}, \opt{doiapi}, \opt{forcedoiapi},
-  \opt{true}, \opt{false}, \opt{none}, \prm{open access field}}
+\optitem[auto/none]{openaccess}{\optval{auto}, \optval{doiapi},
+  \optval{forcedoiapi}, \optval{true}, \optval{false}, \optval{none},
+  \prm{open access field}}
 
 This option controls how the best open access URL is detected.
-The initial value is \opt{none} when the package is loaded with the \opt{enable}
-option set to \opt{false}, otherwise~-- and by default~-- it is \opt{auto}.
+The initial value is \optval{none} when the package is loaded with the
+\opt{enable} option set to \optval{false}, otherwise~-- and by default~-- it is
+\optval{auto}.
 
 All following values are valid at all three levels (global, per-type and
 per-entry), but it may not be useful to use a particular option at all levels.
@@ -2548,35 +2576,36 @@ per-entry), but it may not be useful to use a particular option at all levels.
 \item[none] Assume that no known \enquote{open access field} contains an open
   access URL.
 
-  The value \opt{none} may be used to disable the \opt{openaccess} feature.
+  The value \optval{none} may be used to disable the \opt{openaccess} feature.
 
 \item[doiapi] Use API queries from the \sty{biblatex-ext-oa-doiapi} package
   to determine the best open access link from the DOI.
 
   \marginwarn This option requires that the \opt{doiapi} package option be set
-  to \opt{true} and only works with \lualatex.
+  to \optval{true} and only works with \lualatex.
   Furthermore it needs a DOI in the \bibfield{doi} field.
-  If the \bibfield{doi} field is empty, this option falls back to \opt{auto}.
+  If the \bibfield{doi} field is empty, this option falls back to \optval{auto}.
 
-\item[onlydoiapi] Like \opt{doiapi}, but does not fall back to \opt{auto}
+\item[onlydoiapi] Like \optval{doiapi}, but does not fall back to \optval{auto}
   in case no DOI is present.
 
-\item[forcedoiapi] Like \opt{doiapi}, but overrides more specific option levels
-  that would say otherwise.
+\item[forcedoiapi] Like \optval{doiapi}, but overrides more specific option
+  levels that would say otherwise.
 
   By default more specific options take precedence over more general options,
   that means that a per-entry option trumps a per-type option, which in turn
   overrides the global setting.
-  If \opt{forcedoiapi} is set it will prevail over more specific options that
+  If \optval{forcedoiapi} is set it will prevail over more specific options that
   would say otherwise. A common use case is to override per-entry options with
-  a global \opt{forcedoiapi}.
+  a global \optval{forcedoiapi}.
 
-\item[forceonlydoiapi] A combination of \opt{onlydoiapi} and \opt{forcedoiapi}.
+\item[forceonlydoiapi] A combination of \optval{onlydoiapi} and
+  \optval{forcedoiapi}.
   This options overrides all more specific values and does not fall back to
-  \opt{auto} in case the DOI is not given.
+  \optval{auto} in case the DOI is not given.
 
-\item[true] An alias for \opt{all}.
-\item[false] An alias for \opt{none}.
+\item[true] An alias for \optval{all}.
+\item[false] An alias for \optval{none}.
 
 \item[\prm{open access field}] Specifies that the open access version is given
   by \prm{open access field}.
@@ -2603,7 +2632,7 @@ open access (\texttt{always}) or whether it is only open access under certain
 conditions (\texttt{conditional});
 if it is not present \texttt{conditional} is assumed.
 
-If the package is loaded with \opt{enable} set to \opt{true},
+If the package is loaded with \opt{enable} set to \optval{true},
 the following declarations are active.
 \begin{biblatexcode}
 \DeclareOpenAccessFieldUrl{url}{\thefield{url}}
@@ -2632,7 +2661,7 @@ giving the field annotation \texttt{closedaccess}.
 If a field has openness \texttt{conditional} it is only considered for a
 particular entry if the field annotation \texttt{openaccess} is set.
 
-If the package is loaded with \opt{enable} set to \opt{true},
+If the package is loaded with \opt{enable} set to \optval{true},
 the following declarations are active.
 \begin{biblatexcode}
 \DeclareOpenAccessEprintUrl{jstor}{%
@@ -2652,7 +2681,7 @@ articles on the arXiv are always open access.
 Handle the open access URL detection for \prm{alias} exactly as that for
 \prm{eprinttype}.
 
-If the package is loaded with \opt{enable} set to \opt{true},
+If the package is loaded with \opt{enable} set to \optval{true},
 the following declarations are active.
 \begin{biblatexcode}
 \DeclareOpenAccessEprintAlias{JSTOR}{jstor}
@@ -2681,7 +2710,7 @@ which means that the DOI is given preference over eprints, which in turn
 prevail over the \bibfield{url} field.
 \end{ltxsyntax}
 
-The \opt{auto} detection works as follows.
+The \optval{auto} detection works as follows.
 \begin{itemize}
 \item The best known open access URL is cleared.
 \item For each non-empty field listed in \cmd{DeclareOpenAccessUrlFieldPriority}
@@ -2697,7 +2726,7 @@ The \opt{auto} detection works as follows.
   \end{itemize}
 \end{itemize}
 
-For \opt{auto}-detection, an open access article with DOI would ideally
+For \optval{auto}-detection, an open access article with DOI would ideally
 look like this.
 % cipriani
 \inputexamplebibfile[listing options={linerange={27-38},
@@ -2739,7 +2768,7 @@ In particular the \prm{openness} of each field does not play a role.
 Inspired by Eric Marsden's%
 \fnurl{https://tex.stackexchange.com/users/29621/eric-marsden}
 answer to the open access symbol question on TeX.SX, the package
-\sty{biblatex-oa-doiapi}, which can be loaded via the \opt{doiapi} option
+\sty{biblatex-oa-doiapi}, which can be loaded via the \hyperopt{doiapi} option
 of \sty{biblatex-oa}, provides means to automatically find the best open
 access link to a given article via its DOI by querying the Unpaywall API%
 \fnurl{https://unpaywall.org/}.
@@ -2798,14 +2827,14 @@ API is the DOI and to \prm{false} otherwise.
 
 \subsection{Open access symbols with Ti\emph{k}Z}\label{sec:oa-symbol}
 The main purpose of the package \sty{biblatex-ext-oa-tikzsymbols}
-is to define the command \cmd{oasymbol}.
+is to define the command \hypercmd{oasymbol}.
 As mentioned above, usually this package is not going to be loaded as a
 stand-alone package, instead it is loaded via \sty{biblatex-ext-oa}.
 
 If used as a stand-alone package, \sty{biblatex-ext-oa-tikzsymbols} has one
 load-time option.
 \begin{optionlist}
-\optitem{symbol}{\opt{plos}, \opt{oanet}}
+\optitem{symbol}{\optval{plos}, \optval{oanet}}
 
 This options determines which of the two provided symbols is going to be used
 for \cmd{oasymbol}.
@@ -2868,8 +2897,8 @@ Apart from \cmd{oasymbol} the package only defines one other user-level command.
 \begin{ltxsyntax}
 \cmditem{DefineTikZOASymbol}[symbol]
 
-This command redefines \cmd{oasymbol} to point to either the PLOS version or
-the open-access.net version of the logo.
+This command redefines \hypercmd{oasymbol} to point to either the PLOS version
+or the open-access.net version of the logo.
 \end{ltxsyntax}
 
 \clearpage
