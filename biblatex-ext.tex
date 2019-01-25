@@ -348,7 +348,10 @@
 
 \blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
 \newcommand*{\biblatexversion}{\extblx@requiredbiblatexversion}
+\def\exltd@isofydate#1/#2/#3{#1-#2-#3}
 \newcommand*{\biblatexdate}{\extblx@requiredbiblatexdate}
+\expandafter\def\expandafter\biblatexdate\expandafter{%
+  \expandafter\exltd@isofydate\extblx@requiredbiblatexdate}
 
 \AtEndPreamble{%
   \deflength{\marglistwidth}{(\oddsidemargin+2cm)*85/100}}
@@ -397,6 +400,8 @@
 
 % no \mbox here, we may have to break things
 \renewrobustcmd*{\sty}[1]{{\verbatimfont\justify #1}}
+\newrobustcmd*{\blxstyle}[1]{{\verbatimfont\justify #1}}
+\newrobustcmd*{\filename}[1]{{\verbatimfont\justify #1}}
 \renewrobustcmd*{\bibfield}[1]{\sty{#1}}
 \renewrobustcmd*{\opt}[1]{\sty{#1}}
 \newrobustcmd*{\optval}[1]{\sty{#1}}
@@ -405,6 +410,8 @@
 \renewrobustcmd*{\cmd}[1]{\sty{\textbackslash #1}}
 \let\cs\cmd
 \newrobustcmd*{\bibfieldformat}[1]{{\bibfieldformatfont #1}}
+
+\newrobustcmd*{\gencode}[1]{{\verbatimfont\justify #1}}
 
 \makeatletter
 \def\exltd@buildhypercmd@i#1{%
@@ -415,7 +422,8 @@
 
 \def\exltd@buildhypercmd{\forcsvlist{\exltd@buildhypercmd@i}}
 
-\exltd@buildhypercmd{cmd,opt,bibmacro,len,sty,bibfield,bibfieldformat}
+\exltd@buildhypercmd{cmd,opt,bibmacro,len,blxstyle,sty,bibfield,bibfieldformat,
+  filename}
 
 \newrobustcmd*{\hyperkvopt}[2]{{%
   \verbatimfont\hyperref[exltd@itm@#1]{#1}\penalty\@M
@@ -509,9 +517,9 @@
 The \sty{biblatex-ext} bundle provides an extended version of the standard
 styles that come with \sty{biblatex}.
 For each standard style this bundle provides a style with the same name
-prefixed with \texttt{ext-} which can be used as a drop-in replacement for the
-standard style~-- for example, the replacement for \sty{authoryear-icomp}
-is called \sty{ext-authoryear-icomp}.
+prefixed with \blxstyle{ext-} which can be used as a drop-in replacement for the
+standard style~-- for example, the replacement for \blxstyle{authoryear-icomp}
+is called \hyperblxstyle{ext-authoryear-icomp}.
 
 The aim of the styles of this bundle is to offer a simple interface to change
 some of the stylistic decisions made for the standard styles that would
@@ -558,15 +566,15 @@ maybe you are lucky and the style you are looking for has already been
 implemented by someone else.
 As was the intention, most methods to modify the standard styles are also
 applicable to the styles of this bundle, but you may break some of their
-features if you happen to modify something that the \sty{ext-} styles redefine
-themselves.
+features if you happen to modify something that the \blxstyle{ext-} styles
+redefine themselves.
 While many contributed \sty{biblatex} styles are examples of good \sty{biblatex}
 style coding, this can not be said of all of the files included in this bundle.
 Especially the citation styles for compact citations have to work harder
 to implement the citation delimiter feature properly.
 So if you want to get inspired for your \sty{biblatex} coding, be warned that
-terrible things lurk in the \sty{.cbx} files.
-The standard \sty{.cbx} files will give you a much better impression of how
+terrible things lurk in the \filename{.cbx} files.
+The standard \filename{.cbx} files will give you a much better impression of how
 things should be done.
 
 
@@ -608,7 +616,7 @@ But at times not even that is possible, so it is always a good idea to consult
 the change history after an update and to examine the output with extra
 scrutiny.
 Higher-level changes are found in the revision history in \cref{sec:log},
-more technical changes and commentary can be found in \sty{CHANGES.md},
+more technical changes and commentary can be found in \filename{CHANGES.md},
 the full set of changes can be investigated by comparing the tagged and
 publicly available source code.
 
@@ -619,10 +627,11 @@ The current release is also available in \miktex{} and \texlive{} 2018 or
 newer.
 If at all possible you should install this bundle via your \tex{} distribution
 (using \miktex{} Console\fnurl{https://miktex.org/howto/miktex-console} or
-\sty{tlmgr} for \texlive\fnurl{https://www.tug.org/texlive/pkginstall.html}).
+\gencode{tlmgr} for \texlive
+\fnurl{https://www.tug.org/texlive/pkginstall.html}).
 If you must install this package manually, get the files from \ctan{}
-and install the \sty{.bbx}, \sty{.cbx}, \sty{.def}, \sty{.sty} and \sty{.lua}
-files preferably to
+and install the \filename{.bbx}, \filename{.cbx}, \filename{.def},
+\filename{.sty} and \filename{.lua} files preferably to
 \path{tex/latex/biblatex-ext} of your local or home \TeX{} tree%
 \fnurl{https://texfaq.org/FAQ-inst-wlcf}, the other
 files (\path{CHANGES.md}, \path{README.md}, \path{biblatex-ext.tex},
@@ -659,9 +668,9 @@ You can load the styles exactly as you would load the standard styles:
 \usepackage[style=(*@\prm{style}@*)]{biblatex}
 \end{biblatexcode}
 The naming of the styles follows the scheme
-\mbox{\texttt{ext-}\prm{standard style}}, e.g.,
-the style corresponding to \sty{authoryear-icomp} is called
-\sty{ext-authoryear-icomp}.
+\mbox{\blxstyle{ext-}\prm{standard style}}, e.g.,
+the style corresponding to \blxstyle{authoryear-icomp} is called
+\hyperblxstyle{ext-authoryear-icomp}.
 
 This manual assumes familiarity with the concepts of \sty{biblatex} and does
 not attempt to explain any of the standard \sty{biblatex} features, so you may
@@ -701,57 +710,57 @@ and the style examples%
 \fnurl{http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/examples/}
 for a more detailed description of each standard style.
 The relations between the styles are exactly as in their standard counterparts.
-The \texttt{ext-} styles only build on top of the standard files.
+The \blxstyle{ext-} styles only build on top of the standard files.
 \begin{stylelist}
 \styleitem{ext-numeric}
-An extended version of the standard \sty{numeric} style for citations with
+An extended version of the standard \blxstyle{numeric} style for citations with
 numeric labels.
 \begin{bibexample}[]
 [1, 2, 5, 6, 7]
 \end{bibexample}
 
 \styleitem{ext-numeric-comp}
-An extended version of the standard \sty{numeric-comp} style.
-Similar to \sty{ext-numeric}, but citation labels are
+An extended version of the standard \blxstyle{numeric-comp} style.
+Similar to \blxstyle{ext-numeric}, but citation labels are
 compressed to give \enquote{[1--3]} instead of \enquote{[1, 2, 3]}.
 \begin{bibexample}[]
 [1, 2, 5--7]
 \end{bibexample}
 
 \styleitem{ext-numeric-verb}
-An extended version of the standard \sty{numeric-verb} style.
-This style is similar to the \sty{numeric} style, but each citation label
+An extended version of the standard \blxstyle{numeric-verb} style.
+This style is similar to the \blxstyle{numeric} style, but each citation label
 is in its own set of brackets: \enquote{[1], [2], [3]}.
 \begin{bibexample}[]
 [1], [3], [5], [6], [7]
 \end{bibexample}
 
 \styleitem{ext-alphabetic}
-An extended version of the standard \sty{alphabetic} style for citations with
-alphabetic labels derived from author name and year.
+An extended version of the standard \blxstyle{alphabetic} style for citations
+with alphabetic labels derived from author name and year.
 \begin{bibexample}[]
 [SR98, Knu86c]
 \end{bibexample}
 
 \styleitem{ext-alphabetic-verb}
-An extended version of the standard \sty{alphabetic-verb} style.
-This style is based on \sty{ext-alphabetic}, but like
-\sty{ext-numeric-verb} places each citation label in its own pair of
+An extended version of the standard \blxstyle{alphabetic-verb} style.
+This style is based on \blxstyle{ext-alphabetic}, but like
+\blxstyle{ext-numeric-verb} places each citation label in its own pair of
 brackets: \enquote{[SR98], [Knu86c]}.
 \begin{bibexample}[]
 [SR98], [Knu86c]
 \end{bibexample}
 
 \styleitem{ext-authoryear}
-An extended version of the standard \sty{authoryear} style for citations
+An extended version of the standard \blxstyle{authoryear} style for citations
 using author name and year.
 \begin{bibexample}
 Sigfridsson and Ryde 1998
 \end{bibexample}
 
 \styleitem{ext-authoryear-comp}
-An extended version of the standard \sty{authoryear-comp} style.
-The style is based on the author-year citations of \sty{ext-authoryear},
+An extended version of the standard \blxstyle{authoryear-comp} style.
+The style is based on the author-year citations of \blxstyle{ext-authoryear},
 but several works by the same author are compressed by not displaying the
 author multiple times: \enquote{Knuth 1984, 1986} instead of
 \enquote{Knuth 1984; Knuth 1986}.
@@ -760,32 +769,32 @@ Knuth 1984, 1986
 \end{bibexample}
 
 \styleitem{ext-authoryear-ibid}
-An extended version of the standard \sty{authoryear-ibid} style.
-This style is similar to \sty{ext-authoryear}, but repeated citations are
+An extended version of the standard \blxstyle{authoryear-ibid} style.
+This style is similar to \blxstyle{ext-authoryear}, but repeated citations are
 replaced with \enquote{ibidem}.
 \begin{bibexample}
 Knuth 1984\quad ibid.
 \end{bibexample}
 
 \styleitem{ext-authoryear-icomp}
-An extended version of the standard \sty{authoryear-icomp} style.
-This style combines the two styles \sty{ext-authoryear-comp} and
-\sty{ext-authoryear-ibid}.
+An extended version of the standard \blxstyle{authoryear-icomp} style.
+This style combines the two styles \blxstyle{ext-authoryear-comp} and
+\blxstyle{ext-authoryear-ibid}.
 \begin{bibexample}
 Knuth 1984, 1986 \quad Sigfridsson and Ryde 1998 \quad ibid.
 \end{bibexample}
 
 \styleitem{ext-authortitle}
-An extended version of the standard \sty{authortitle} style for citations
+An extended version of the standard \blxstyle{authortitle} style for citations
 by author and title.
 \begin{bibexample}
 Maron, \emph{Animal Triste}
 \end{bibexample}
 
 \styleitem{ext-authortitle-comp}
-An extended version of the standard \sty{authortitle-comp} style.
-This style is based on \sty{ext-authortitle} and compresses several citations
-by the same author just like \sty{ext-author\-year-comp}:
+An extended version of the standard \blxstyle{authortitle-comp} style.
+This style is based on \blxstyle{ext-authortitle} and compresses several
+citations by the same author just like \blxstyle{ext-author\-year-comp}:
 \enquote{Aristotle, \emph{Physics}, \emph{Poetics}} instead of
 \enquote{Aristotle, \emph{Physics}; Aristotle, \emph{Poetics}}.
 \begin{bibexample}
@@ -793,79 +802,79 @@ Aristotle, \emph{Physics}, \emph{Poetics}
 \end{bibexample}
 
 \styleitem{ext-authortitle-ibid}
-An extended version of the standard \sty{authortitle-ibid} style.
-This style is similar to \sty{ext-authortitle}, but replaces repeated
+An extended version of the standard \blxstyle{authortitle-ibid} style.
+This style is similar to \blxstyle{ext-authortitle}, but replaces repeated
 citations of the same work with \enquote{ibidem}.
 \begin{bibexample}
 Maron, \emph{Animal Triste}\quad ibid.
 \end{bibexample}
 
 \styleitem{ext-authortitle-icomp}
-An extended version of the standard \sty{authortitle-icomp} style.
-This style combines \sty{ext-authortitle-comp} and
-\sty{ext-authortitle-ibid}.
+An extended version of the standard \blxstyle{authortitle-icomp} style.
+This style combines \blxstyle{ext-authortitle-comp} and
+\blxstyle{ext-authortitle-ibid}.
 \begin{bibexample}
 Aristotle, \emph{Physics}, \emph{Poetics}\quad Maron, \emph{Animal Triste}\quad
 ibid.
 \end{bibexample}
 
 \styleitem{ext-authortitle-terse}
-An extended version of the standard \sty{authortitle-terse} style.
-This style is similar to \sty{ext-authortitle}, but the title is omitted in
-citations if there is only one work by the relevant author.
+An extended version of the standard \blxstyle{authortitle-terse} style.
+This style is similar to \blxstyle{ext-authortitle}, but the title is omitted
+in citations if there is only one work by the relevant author.
 \begin{bibexample}
 Sigfridsson and Ryde \quad Aristotle, \emph{Physics}; Aristotle, \emph{Poetics}
 \end{bibexample}
 
 \styleitem{ext-authortitle-tcomp}
-An extended version of the standard \sty{authortitle-tcomp} style.
-This style combines \sty{ext-authortitle-terse} and
-\sty{ext-authortitle-comp}.
+An extended version of the standard \blxstyle{authortitle-tcomp} style.
+This style combines \blxstyle{ext-authortitle-terse} and
+\blxstyle{ext-authortitle-comp}.
 \begin{bibexample}
 Sigfridsson and Ryde \quad Aristotle, \emph{Physics}, \emph{Poetics}
 \end{bibexample}
 
 \styleitem{ext-authortitle-ticomp}
-An extended version of the standard \sty{authortitle-ticomp} style.
-This style combines \sty{ext-authortitle-terse},
-\sty{ext-authortitle-comp} and \sty{ext-authortitle-ibid}.
+An extended version of the standard \blxstyle{authortitle-ticomp} style.
+This style combines \blxstyle{ext-authortitle-terse},
+\blxstyle{ext-authortitle-comp} and \blxstyle{ext-authortitle-ibid}.
 \begin{bibexample}
 Aristotle, \emph{Physics}, \emph{Poetics} \quad Sigfridsson and Ryde \quad ibid.
 \end{bibexample}
 
 \styleitem{ext-verbose}
-An extended version of the standard \sty{verbose} style.
+An extended version of the standard \blxstyle{verbose} style.
 This style shows the full bibliographic reference the first time a work is
 cited.
 
 \styleitem{ext-verbose-ibid}
-An extended version of the standard \sty{verbose-ibid} style.
-Based on \sty{ext-verbose}, repeated citations to the same work are replaced
-with \enquote{ibidem}.
+An extended version of the standard \blxstyle{verbose-ibid} style.
+Based on \blxstyle{ext-verbose}, repeated citations to the same work are
+replaced with \enquote{ibidem}.
 
 \styleitem{ext-verbose-note}
-An extended version of the standard \sty{verbose-note} style.
-Based on \sty{ext-verbose} and intended for use in footnotes, subsequent
+An extended version of the standard \blxstyle{verbose-note} style.
+Based on \blxstyle{ext-verbose} and intended for use in footnotes, subsequent
 citations link back to the footnote the entry was cited at first and in full.
 
 \styleitem{ext-verbose-inote}
-An extended version of the standard \sty{verbose-inote} style.
-Similar to \sty{verbose-note}, but repeated citations to the same work are
+An extended version of the standard \blxstyle{verbose-inote} style.
+Similar to \blxstyle{verbose-note}, but repeated citations to the same work are
 replaced with \enquote{ibidem}.
 
 \styleitem{ext-verbose-trad1}
-An extended version of the standard \sty{verbose-trad1} style.
+An extended version of the standard \blxstyle{verbose-trad1} style.
 This style makes extensive use of scholarly abbreviations and is otherwise
-similar to \sty{ext-verbose}.
+similar to \blxstyle{ext-verbose}.
 
 \styleitem{ext-verbose-trad2}
-An extended version of the standard \sty{verbose-trad2} style.
-The style is similar to \sty{ext-verbose-inote} and
+An extended version of the standard \blxstyle{verbose-trad2} style.
+The style is similar to \blxstyle{ext-verbose-inote} and
 uses scholarly abbreviations to shorten citations.
 
 \styleitem{ext-verbose-trad3}
-An extended version of the standard \sty{verbose-trad3} style.
-This style is similar to \sty{ext-verbose-trad2}.
+An extended version of the standard \blxstyle{verbose-trad3} style.
+This style is similar to \blxstyle{ext-verbose-trad2}.
 \end{stylelist}
 
 \subsection{New styles}\label{sec:styles:new}
@@ -875,16 +884,16 @@ in the standard styles.
 \begin{stylelist}
 \styleitem{ext-authoryear-ecomp}
 An author-year citation that is even more compact than
-\sty{ext-authoryear-comp}, it compresses lists of \bibfield{extradate} letters
-from \enquote{Knuth 1986a,b,c} to \enquote{Knuth 1986a\bibrangedash c}.
+\blxstyle{ext-authoryear-comp}, it compresses lists of \bibfield{extradate}
+letters from \enquote{Knuth 1986a,b,c} to \enquote{Knuth 1986a\bibrangedash c}.
 \begin{bibexample}
 Sigfridsson and Ryde 1998 \quad Knuth 1986a\bibrangedash c
 \end{bibexample}
 
 \styleitem{ext-authoryear-iecomp}
 An author-year citation that is even more compact than
-\sty{ext-authoryear-icomp}, it compresses lists of \bibfield{extradate} letters
-from \enquote{Knuth 1986a,b,c} to \enquote{Knuth 1986a\bibrangedash c}.
+\blxstyle{ext-authoryear-icomp}, it compresses lists of \bibfield{extradate}
+letters from \enquote{Knuth 1986a,b,c} to \enquote{Knuth 1986a\bibrangedash c}.
 \begin{bibexample}
 Sigfridsson and Ryde 1998 \quad ibid.\quad Knuth 1986a\bibrangedash c
 \end{bibexample}
@@ -892,8 +901,8 @@ Sigfridsson and Ryde 1998 \quad ibid.\quad Knuth 1986a\bibrangedash c
 \styleitem{ext-authoryear-terse}
 An author-year citation style that suppresses years for author lists with only
 one work in the bibliography.
-This style is like \sty{ext-authortitle-terse}, but it is based on
-\sty{ext-authoryear} and not on \sty{ext-authortitle}.
+This style is like \blxstyle{ext-authortitle-terse}, but it is based on
+\blxstyle{ext-authoryear} and not on \blxstyle{ext-authortitle}.
 \begin{bibexample}
 Sigfridsson and Ryde \quad Knuth 1984 \quad Knuth 1986
 \end{bibexample}
@@ -901,15 +910,15 @@ Sigfridsson and Ryde \quad Knuth 1984 \quad Knuth 1986
 \styleitem{ext-authoryear-tcomp}
 A compact author-year citation style that suppresses years for author lists
 with only one work in the bibliography.
-This style is like \sty{ext-authortitle-tcomp}, but it is based on
-\sty{ext-authoryear} and not on \sty{ext-authortitle}.
+This style is like \blxstyle{ext-authortitle-tcomp}, but it is based on
+\blxstyle{ext-authoryear} and not on \blxstyle{ext-authortitle}.
 \begin{bibexample}
 Sigfridsson and Ryde \quad Knuth 1984, 1986
 \end{bibexample}
 
 \styleitem{ext-authoryear-tecomp}
-A compact author-year citation style that combines \sty{ext-authoryear-tcomp}
-and \sty{ext-authoryear-ecomp}.
+A compact author-year citation style that combines
+\blxstyle{ext-authoryear-tcomp} and \blxstyle{ext-authoryear-ecomp}.
 \begin{bibexample}
 Sigfridsson and Ryde \quad Knuth 1984, 1986a\bibrangedash c
 \end{bibexample}
@@ -917,15 +926,15 @@ Sigfridsson and Ryde \quad Knuth 1984, 1986a\bibrangedash c
 \styleitem{ext-authoryear-ticomp}
 A compact author-year citation style with \enquote{ibidem} function that
 suppresses years for author lists with only one work in the bibliography.
-This style is like \sty{ext-authortitle-ticomp}, but it is based on
-\sty{ext-authoryear} and not on \sty{ext-authortitle}.
+This style is like \blxstyle{ext-authortitle-ticomp}, but it is based on
+\blxstyle{ext-authoryear} and not on \blxstyle{ext-authortitle}.
 \begin{bibexample}
 Sigfridsson and Ryde \quad ibid. \quad Knuth 1984, 1986
 \end{bibexample}
 
 \styleitem{ext-authoryear-teicomp}
-A compact author-year citation style that combines \sty{ext-authoryear-ticomp}
-and \sty{ext-authoryear-iecomp}.
+A compact author-year citation style that combines
+\blxstyle{ext-authoryear-ticomp} and \blxstyle{ext-authoryear-iecomp}.
 \begin{bibexample}
 Sigfridsson and Ryde \quad ibid. \quad Knuth 1984, 1986a\bibrangedash c
 \end{bibexample}
@@ -1186,9 +1195,9 @@ be printed with the \hyperbibfieldformat{volumeof} format.
 \optitem[true]{dashed}{\optval{true}, \optval{false}, \optval{fullhash},
                        \optval{bibnamehash}}
 
-The \opt{dashed} option of the \sty{authoryear}- and \sty{authortitle}-like
-bibliography styles allows for finer control over the dashes than in the
-standard styles.
+The \opt{dashed} option of the \hyperblxstyle[ext-authoryear]{authoryear}- and
+\hyperblxstyle[ext-authortitle]{authortitle}-like bibliography styles allows for
+finer control over the dashes than in the standard styles.
 The option is available globally and additionally on a per-type and per-entry
 level.
 
@@ -1276,10 +1285,10 @@ lists are only replaced if they are indistinguishable in the data source.
 
 \optitem[false]{introcite}{\optval{false}, \optval{plain}, \optval{label}}
 The \opt{introcite} option is available for the bibliography styles of the
-\hypersty[ext-authoryear]{authoryear} and
-\hypersty[ext-authortitle]{authortitle} family.
-It can not be used with citation styles of the \hypersty[ext-verbose]{verbose}
-family, where
+\hyperblxstyle[ext-authoryear]{authoryear} and
+\hyperblxstyle[ext-authortitle]{authortitle} family.
+It can not be used with citation styles of the
+\hyperblxstyle[ext-verbose]{verbose} family, where
 it may produce undesired output or errors.
 The option is available globally and on a per-type and per-entry level, where
 only the values \optval{plain} (and the default \optval{false}) are supported.
@@ -1291,14 +1300,14 @@ There are two possible output formats.
 \item[false] Do not show the citation label in the bibliography.
 \item[plain] Show the citation label at the beginning of an entry.
 \item[label] Show the citation label as the label of a list similar to the
-             \hypersty[ext-numeric]{numeric} or
-             \hypersty[ext-alphabetic]{alphabetic} styles.
+             \hyperblxstyle[ext-numeric]{numeric} or
+             \hyperblxstyle[ext-alphabetic]{alphabetic} styles.
 \end{valuelist}
 
 The difference between \optval{plain} and \optval{label} is that the former
 simply prints the citation label at the beginning of the entry, while the latter
 prints the citation label similar to the item labels in a list or the numeric
-labels in a \hypersty[ext-numeric]{numeric} bibliography.
+labels in a \hyperblxstyle[ext-numeric]{numeric} bibliography.
 
 \begingroup
 \togglefalse{bbx:doi}
@@ -1346,13 +1355,13 @@ The punctuation insterted between the label and the
 \keyitem[bbx:introcite:plain:keeprelated] This toggle controls whether or
   not the citation label is also repeated for default related entries.
   The default value \optval{false} suppresses the label for related entries.
-\begin{bibexample}[title={\texttt{\string\togglefalse\{%
+\begin{bibexample}[title={\gencode{\string\togglefalse\{%
   bbx:introcite:plain:keeprelated\}} (default)}]
 \togglefalse{bbx:doi}
 \csletcs{extblx@introcite}{extblx@opt@introcite@plain}
 \exampleprintbib{vizedom:related}
 \end{bibexample}
-\begin{bibexample}[title={\texttt{\string\toggletrue\{%
+\begin{bibexample}[title={\gencode{\string\toggletrue\{%
   bbx:introcite:plain:keeprelated\}}}]
 \toggletrue{bbx:introcite:plain:keeprelated}
 \renewbibmacro*{related:init}{%
@@ -1433,10 +1442,10 @@ overlay={%
 
 The appearance of the citation label can be customised mostly as if it were
 produced by a true citation command called \cmd{bbx@introcite}.
-The delimiter context is \sty{bbx@introcite}, the inner citation delimiters
-can be accessed as \sty{bbx@introcite} as well.
+The delimiter context is \gencode{bbx@introcite}, the inner citation delimiters
+can be accessed as \gencode{bbx@introcite} as well.
 The label does not have outer citation delimiters, you can use the wrapper
-field format \sty{bbx@introcite} instead. In fact this approach is more
+field format \gencode{bbx@introcite} instead. In fact this approach is more
 versatile than the outer citation delimiter feature (see the discussion in
 \cref{sec:opt:citedelims}).
 The default settings for \cmd{bbx@introcite} emulate the output of \cmd{cite}.
@@ -1520,8 +1529,8 @@ The citation delimiter interface is a novel feature of \sty{biblatex-ext},
 but for the other subsections familiarity with the underlying \sty{biblatex}
 concepts is assumed.
 Some of this is easier understood by looking at the source code directly,
-so it might not be a bad idea to have \sty{ext-standard.bbx} open when perusing
-this section of the manual.
+so it might not be a bad idea to have \filename{ext-standard.bbx} open when
+perusing this section of the manual.
 
 \subsection{Field formats}\label{sec:opt:field}
 In a few places where the standard styles employ hard-coded formatting
@@ -1530,8 +1539,8 @@ Field formats can be modified with \cmd{DeclareFieldFormat}.
 
 \begin{bibfieldformatlist}
 \bibfieldformatitem{biblabeldate} The format for the labeldate in the
-  bibliography for \sty{authoryear}-like styles. The default is to wrap
-  the date in round brackets.
+  bibliography for \hyperblxstyle[ext-authoryear]{authoryear}-like styles.
+  The default is to wrap the date in round brackets.
   \begin{bibexample}
   \togglefalse{bbx:doi}
   \DeclareFieldFormat{biblabeldate}{\highlight{\bibopenparen}\highlight[2]{#1}%
@@ -1541,7 +1550,7 @@ Field formats can be modified with \cmd{DeclareFieldFormat}.
 
 \bibfieldformatitem{biblistlabeldate} Like \bibfieldformat{biblabeldate},
   but for bibliography lists created by \cmd{printbiblist}.
-  The default is to use the same format as \bibfieldformat{biblabeldate}.
+  The default is to use the same format as \hyperbibfieldformat{biblabeldate}.
 
 \bibfieldformatitem{issuedate} The format of the \bibfield{issue} and
   \bibfield{date} information for \bibtype{article}s. By default this block is
@@ -1573,21 +1582,21 @@ Field formats can be modified with \cmd{DeclareFieldFormat}.
   \bibfield{title} and \bibfield{subtitle}.
   By default this field format is an alias for \bibfieldformat{titlecase}.
 
-\bibfieldformatitem{titlecase:booktitle} Like \bibfieldformat{titlecase:title},
-  but controls the title casing of the \bibfield{booktitle} and
-  \bibfield{booksubtitle} fields.
+\bibfieldformatitem{titlecase:booktitle}
+  Like \hyperbibfieldformat{titlecase:title}, but controls the title casing
+  of the \bibfield{booktitle} and \bibfield{booksubtitle} fields.
 
-\bibfieldformatitem{titlecase:maintitle} Like \bibfieldformat{titlecase:title},
-  but controls the title casing of the \bibfield{maintitle} and
-  \bibfield{mainsubtitle} fields.
+\bibfieldformatitem{titlecase:maintitle}
+  Like \hyperbibfieldformat{titlecase:title}, but controls the title casing
+  of the \bibfield{maintitle} and \bibfield{mainsubtitle} fields.
 
-\bibfieldformatitem{titlecase:journaltitle} Like
-  \bibfieldformat{titlecase:title}, but controls the title casing of the
-  \bibfield{journaltitle} and \bibfield{journalsubtitle} fields.
+\bibfieldformatitem{titlecase:journaltitle}
+  Like \hyperbibfieldformat{titlecase:title}, but controls the title casing
+  of the \bibfield{journaltitle} and \bibfield{journalsubtitle} fields.
 
-\bibfieldformatitem{titlecase:issuetitle} Like \bibfieldformat{titlecase:title},
-  but controls the title casing of the \bibfield{issuetitle} and
-  \bibfield{issuesubtitle} fields.
+\bibfieldformatitem{titlecase:issuetitle}
+  Like \hyperbibfieldformat{titlecase:title}, but controls the title casing
+  of the \bibfield{issuetitle} and \bibfield{issuesubtitle} fields.
 
 The \bibfieldformat{citetitle} field format can be used to change the title
 case in author-title citations, so there is no
@@ -1737,7 +1746,7 @@ The default is \cmd{newunitpunct}.
 \csitem{servoldelim}
 The delimiter between the \bibfield{series} and \bibfield{volume} fields
 for \bibtype{article}.
-The default is \cmd{jourvoldelim}.
+The default is \hypercmd{jourvoldelim}.
 \begin{bibexample}
 \togglefalse{bbx:doi}
 \renewcommand*{\servoldelim}{\highlight{\textvisiblespace}}% <- hard-coded!
@@ -1803,7 +1812,7 @@ The default is a comma followed by a space.
 This delimiter is not used by the default style, since the standard order of
 fields is \bibfield{location}, \bibfield{publisher}\slash
 \bibfield{organization}\slash\bibfield{institution}, \bibfield{date}.
-You could use \cs{publocdelim} if you changed the order of these fields to
+You could use \cmd{publocdelim} if you changed the order of these fields to
 \bibfield{publisher}\slash\bibfield{organization}\slash\bibfield{institution},
 \bibfield{location} \bibfield{date} with
 \begin{biblatexcode}
@@ -1853,8 +1862,8 @@ The default is a comma (\emph{not} followed by a space).
 
 
 \csitem{extradateonlycompciterangedelim}\CSdelimMark
-Similar to \cmd{extradateonlycompcitedelim}, but indended for use in a
-compressed list of \bibfield{extradate}s in the \sty{-ecomp} styles.
+Similar to \hypercmd{extradateonlycompcitedelim}, but indended for use in a
+compressed list of \bibfield{extradate}s in the \blxstyle{-ecomp} styles.
 The default is \cmd{bibrangedash}.
 \begin{bibexample}
 \DeclareDelimFormat{extradateonlycompciterangedelim}{%
@@ -1872,16 +1881,18 @@ two sets of delimiters: A pair of \emph{outer delimiters} wrapped around the
 resulting citation in its entirety and a pair of \emph{inner delimiters} that
 sets off certains bits of the citation label from other information.
 An example for outer delimiters would be the round brackets of \cmd{parencite}
-for \sty{authoryear}-like styles or the square brackets of \cmd{cite} for
-\sty{numeric}- or \sty{alphabetic}-like styles.
+for \hyperblxstyle[ext-authoryear]{authoryear}-like styles or the
+square brackets of \cmd{cite} for \hyperblxstyle[ext-numeric]{numeric}- or
+\hyperblxstyle[ext-alphabetic]{alphabetic}-like styles.
 Inner delimiters would be the round brackets in \cmd{textcite} around
-the year for \sty{authoryear} or around the title for \sty{authortitle}.
+the year for \hyperblxstyle[ext-authoryear]{authoryear} or around the title for
+\hyperblxstyle[ext-authortitle]{authortitle}.
 See \cref{tab:citationdelims} for more details.
 
 The delimiters are set up to work as paired delimiters, but you are free to
 use non-matching pairs or to leave the opening or closing delimiter empty.
 If you want to add punctuation, the context-sensitive delimiters
-\sty{nameyeardelim}, \sty{nametitledelim} and friends as well as
+\gencode{nameyeardelim}, \gencode{nametitledelim} and friends as well as
 the context-insensitive \cmd{postnotedelim} and friends are more approriate.
 Although the outer delimiters can be set up using \cmd{DeclareCiteCommand}'s
 optional \prm{wrapper} argument for most styles, this is not possible for all
@@ -1904,19 +1915,19 @@ appropriate place.}
              \cmidrule(lr){2-4}
 Style family & \cmd{cite} & \cmd{parencite} & \cmd{textcite}\\
 \midrule
-\sty{alphabetic} & \highlightbf[1]{[}Knu84\highlightbf[1]{]} &
+\blxstyle{alphabetic} & \highlightbf[1]{[}Knu84\highlightbf[1]{]} &
   \highlightbf[1]{[}Knu84\highlightbf[1]{]} & \highlightbf[1]{\hmpdl}Knuth
   \highlightbf[2]{[}2\highlightbf[2]{]}\highlightbf[1]{\hmpdr}\\
-\sty{numeric} & \highlightbf[1]{[}2\highlightbf[1]{]} &
+\blxstyle{numeric} & \highlightbf[1]{[}2\highlightbf[1]{]} &
   \highlightbf[1]{[}2\highlightbf[1]{]} & \highlightbf[1]{\hmpdl}Knuth
   \highlightbf[2]{[}2\highlightbf[2]{]}\highlightbf[1]{\hmpdr}\\
-\sty{authortitle} & \highlightbf[1]{\hmpdl}Knuth,
+\blxstyle{authortitle} & \highlightbf[1]{\hmpdl}Knuth,
   \highlightbf[2]{\hmpdl}\emph{\TeX book}\highlightbf[2]{\hmpdr}%
   \highlightbf[1]{\hmpdr} & \highlightbf[1]{(}Knuth,
   \highlightbf[2]{\hmpdl}\emph{\TeX book}\highlightbf[2]{\hmpdr}%
   \highlightbf[1]{)} & \highlightbf[1]{\hmpdl}Knuth \highlightbf[2]{(}%
   \emph{\TeX book}\highlightbf[2]{)}\highlightbf[1]{\hmpdr}\\
-\sty{authoryear} & \highlightbf[1]{\hmpdl}Knuth
+\blxstyle{authoryear} & \highlightbf[1]{\hmpdl}Knuth
   \highlightbf[2]{\hmpdl}1984\highlightbf[2]{\hmpdr}%
   \highlightbf[1]{\hmpdr} & \highlightbf[1]{(}Knuth
   \highlightbf[2]{\hmpdl}1984\highlightbf[2]{\hmpdr}%
@@ -1927,7 +1938,7 @@ Style family & \cmd{cite} & \cmd{parencite} & \cmd{textcite}\\
 \end{table}
 
 \begin{ltxsyntax}
-\cmditem{DeclareOuterCiteDelim}{cite command}{opening delimiter}
+\cmditem{DeclareOuterCiteDelims}{cite command}{opening delimiter}
         {closing delimiter}
 
 Sets up the outer delimiters for the citation command
@@ -1956,13 +1967,13 @@ As mentioned above, this approach is not suitable to wrap the citation up in a
 wrapper command, i.e.\ to pass the entire output of the citation command as
 argument to a macro.
 
-Instead of hard-coded \texttt{(}, \texttt{)}, \texttt{[} and \texttt{]} their
-\sty{biblatex} counterparts \cmd{bibopenparen}, \cmd{bibcloseparen},
+Instead of hard-coded \gencode{(}, \gencode{)}, \gencode{[} and \gencode{]}
+their \sty{biblatex} counterparts \cmd{bibopenparen}, \cmd{bibcloseparen},
 \cmd{bibopenbracket} and \cmd{bibclosebracket} are preferable, since these
 commands respond to nesting and check if opening brackets are always closed.
 
-\cmditem{DeclareOuterCiteDelimAlias}{cite alias}{cite command}
-\cmditem*{DeclareOuterCiteDelimAlias*}{cite alias}{cite command}
+\cmditem{DeclareOuterCiteDelimsAlias}{cite alias}{cite command}
+\cmditem*{DeclareOuterCiteDelimsAlias*}{cite alias}{cite command}
 
 Use the outer delimiters of \cmd{\prm{cite command}} for
 \cmd{\prm{cite alias}} as well.
@@ -1977,13 +1988,13 @@ delimiters whenever the citation command is called.
 Completely remove the definitions of the outer delimiters for
 \cmd{\prm{cite command}}.
 
-\cmditem{DeclareInnerCiteDelim}{cite command}{opening delimiter}
+\cmditem{DeclareInnerCiteDelims}{cite command}{opening delimiter}
         {closing delimiter}
 
 Sets up the inner delimiters for the citation command
 \cmd{\prm{cite command}}.
 
-This command is similar to \cmd{DeclareOuterCiteDelim} and the same
+This command is similar to \hypercmd{DeclareOuterCiteDelims} and the same
 restrictions for the arguments apply.
 
 Note that inner citation delimiters usually follow context delimiter aliases.
@@ -1991,8 +2002,8 @@ Outer citation delimiters, on the other hand, do not respond to context
 delimiter aliases.
 This may lead to initially surprising results if aliases are used.
 
-\cmditem{DeclareInnerCiteDelimAlias}{cite alias}{cite command}
-\cmditem*{DeclareInnerCiteDelimAlias*}{cite alias}{cite command}
+\cmditem{DeclareInnerCiteDelimsAlias}{cite alias}{cite command}
+\cmditem*{DeclareInnerCiteDelimsAlias*}{cite alias}{cite command}
 
 Use the inner delimiters of \cmd{\prm{cite command}} for
 \cmd{\prm{cite alias}} as well.
@@ -2025,8 +2036,8 @@ already defined.
 
 The styles of this bundle only use the values \optval{outer} and \optval{inner}
 for \prm{modifier}, but other values are possible. With \optval{outer} and
-\optval{inner} you can use \cmd{DeclareOuterCiteDelim} or
-\cmd{DeclareInnerCiteDelim} and friends to define the opening and closing
+\optval{inner} you can use \hypercmd{DeclareOuterCiteDelims} or
+\hypercmd{DeclareInnerCiteDelims} and friends to define the opening and closing
 delimiters, otherwise you need to define them manually.
 
 All styles of \sty{biblatex-ext} define the wrapper commands listed in
@@ -2051,15 +2062,16 @@ Citation command & Outer & Inner\\
 \cmd{bbx@xrefcite} & \cmd{mkouterbbx@xrefcitedelims} &
   \cmd{mkinnerbbx@xrefcitedelims}\\
 \enquote{\cmd{bbx@introcite}} & ---%
-    \footnote{Use the field format \sty{bbx@introcite} instead,
-      see \secref{sec:opt:style}.} & \cmd{mkinnerbbx@introcitedelims}\\
+    \footnote{Use the field format \bibfieldformat{bbx@introcite} instead,
+      see \cref{sec:opt:style}.} & \cmd{mkinnerbbx@introcitedelims}\\
 \bottomrule
 \end{tabular}
 \end{minipage}
 \end{table}
 
 
-The \sty{authoryear} and \sty{authortitle} styles have \cmd{parencite},
+The \hyperblxstyle[ext-authoryear]{authoryear} and
+\hyperblxstyle[ext-authortitle]{authortitle} styles have \cmd{parencite},
 e.g.\ \parencite{knuth:ct:a}, \parencite{sigfridsson}, set up with
 \begin{biblatexcode}
 \DeclareOuterCiteDelims{parencite}{\bibopenparen}{\bibcloseparen}
@@ -2070,8 +2082,8 @@ and \cmd{textcite}, e.g.\ \textcite{knuth:ct:a}, \textcite{sigfridsson}, with
 \DeclareOuterCiteDelims{textcite}{}{}
 \DeclareInnerCiteDelims{textcite}{\bibopenparen}{\bibcloseparen}
 \end{biblatexcode}
-If you wanted \cmd{parencite} of \sty{authoryear} to look like
-\enquote{[Sigfridsson and Worman (1998)]} you would use
+If you wanted \cmd{parencite} of \hyperblxstyle[ext-authoryear]{authoryear}
+to look like \enquote{[Sigfridsson and Worman (1998)]} you would use
 \begin{biblatexcode}
 \DeclareOuterCiteDelims{parencite}{|1\bibopenbracket1|}{|1\bibclosebracket1|}
 \DeclareInnerCiteDelims{parencite}{|2\bibopenparen2|}{|2\bibcloseparen2|}
@@ -2088,7 +2100,7 @@ If you wanted \cmd{parencite} of \sty{authoryear} to look like
 \end{ltxsyntax}
 
 \subsection{Selected bibliography macros}\label{sec:opt:bibmacros}
-The following macros are defined in \texttt{ext-standard.bbx} and may make
+The following macros are defined in \filename{ext-standard.bbx} and may make
 certain things easier to customise.
 Many of these macros are replacements for bare \cmd{printfield} or
 \cmd{printlist} in the bibliography drivers, or pack a frequently-used
@@ -2120,12 +2132,12 @@ A bibliography macro to print the \bibfield{edition} field, this avoids a direct
 \lstinline|\printfield{edition}| in the bibliography drivers.
 
 \keyitem[version]
-Similar to the \bibmacro{edition} bibliography macro, \bibmacro{version}
+Similar to the \hyperbibmacro{edition} bibliography macro, \bibmacro{version}
 prints the \bibfield{version} field, this avoids a direct
 \lstinline|\printfield{version}| in the bibliography drivers.
 
 \keyitem[pagetotal]
-Similar to the \bibmacro{edition} bibliograohy macro, \bibmacro{pagetotal}
+Similar to the \hyperbibmacro{edition} bibliography macro, \bibmacro{pagetotal}
 prints the \bibfield{pagetotal} field, this avoids a direct
 \lstinline|\printfield{pagetotal}| in the bibliography drivers.
 
@@ -2179,6 +2191,7 @@ A bibliography macro to print the \bibfield{type} and \bibfield{number} fields.
 
 \clearpage
 \section{Tabular Bibliographies}\label{sec:tabularbib}
+\label{exltd@itm@biblatex-ext-tabular}
 An experimental addition to this bundle is the package
 \sty{biblatex-ext-tabular} which allows you to typeset tabular
 (two-column) bibliographies.
@@ -2208,7 +2221,7 @@ on \tex{}~--~\latex{} Stack Exchange.
 The code has been modernised to keep in sync with changes to internal macros
 and modified to allow for slightly more flexible setups, so any bugs you find
 are mine and not Audrey's. Please report them via the channels mentioned above
-in~\secref{sec:feedback}.
+in~\cref{sec:feedback}.
 
 \marginwarn Before tabular bibliographies can be used, a suitable definition
 must be supplied with \hypercmd{defbibtabular}.
@@ -2223,8 +2236,9 @@ It accepts the same options as \cmd{printbibliography}, but note that
 The default value for \optval{env} is \optval{bibtabular}.
 
 \marginwarn\emph{Note that there is no default definition for the
-\opt{bibtabular} environment, so you must define it with \cmd{defbibtabular}
-before use. An error will be issued if you fail to provide a definition
+\opt{bibtabular} environment, so you must define it with
+\hypercmd{defbibtabular} before use.
+An error will be issued if you fail to provide a definition
 for \optval{bibtabular} before you use \cmd{printbibtabular} with the default
 \optval{env} value, no bibliography will be printed.}
 
@@ -2232,7 +2246,7 @@ for \optval{bibtabular} before you use \cmd{printbibtabular} with the default
 
 This command defines a tabular bibliography.
 The \prm{name} is an identifier passed to the \optval{env} option of
-\cmd{printbibtabular} when selecting the environment.
+\hypercmd{printbibtabular} when selecting the environment.
 The \prm{begin code} is \latex{} code to be executed at the beginning of the
 environment, usually it will begin a tabular environment.
 The \prm{end code} is executed at the end of the environment and would
@@ -2263,14 +2277,14 @@ item if the language switching options are enabled.
 
 Like \cmd{plain}, but additionally sets a link anchor for the current entry.
 That link anchor is used when a citation links to the bibliography entry.
-There should only be one \cmd{anchor} or \cmd{anchorlang} per entry (and
+There should only be one \cmd{anchor} or \hypercmd{anchorlang} per entry (and
 hence per row),
 and for proper linking there should be at least one.
-Usually \cmd{anchor} or \cmd{anchorlang} is the first cell in a row.
+Usually \cmd{anchor} or \hypercmd{anchorlang} is the first cell in a row.
 
 \cmditem{anchorlang}{code}
 
-Like \cmd{anchor}, but in the entry language like \cmd{plainlang}.
+Like \hypercmd{anchor}, but in the entry language like \hypercmd{plainlang}.
 
 \cmditem{driver}{precode}
 
@@ -2283,10 +2297,10 @@ duplicate information can be cleaned up with help of the \prm{precode} argument.
 
 Recall that standard \env{tabular} can't break across pages, so you may want
 to give \env{longtable} a try.
-Additionally, the standard column specifiers \sty{l}, \sty{r} and \sty{c}
-define flexible-sized columns which might not be appropriate here;
-\sty{p} defines fixed-width columns but imposes justification, which does not
-look good if the columns are too narrow.
+Additionally, the standard column specifiers \gencode{l}, \gencode{r} and
+\gencode{c} define flexible-sized columns which might not be appropriate here;
+\gencode{p} defines fixed-width columns but imposes justification, which does
+not look good if the columns are too narrow.
 You may want to look into fixed-width flush-left or flush-right columns%
 \fnurl{https://tex.stackexchange.com/q/12703/35864}.
 \end{ltxsyntax}
@@ -2343,15 +2357,15 @@ if a link to the entry is followed.
 \end{bibexample}
 
 For the common case of two-column tabular bibliographies there is a thin
-wrapper around \cmd{defbibtabular} that might turn out a bit easier to use.
+wrapper around \hypercmd{defbibtabular} that might turn out a bit easier to use.
 \begin{ltxsyntax}
   \cmditem{defbibtabulartwocolumn}{name}{begin code}{end code}%
   {anchor code}{driver precode}
 
   This defines a two-column tabular bibliography environment with \prm{name},
-  \prm{begin code} and \prm{end code} as for \cmd{defbibtabular}.
+  \prm{begin code} and \prm{end code} as for \hypercmd{defbibtabular}.
 
-  The first column is an \cmd{anchorlang} column that executes
+  The first column is an \hypercmd{anchorlang} column that executes
   \prm{anchor code}, the second column executes a pre-code and
   the bibliography driver.
 
@@ -2391,6 +2405,7 @@ Using \cmd{defbibtabulartwocolumn} the example from above could be written as
 
 \clearpage
 \section{Open Access Symbols}\label{sec:oasymb}
+\label{exltd@itm@biblatex-ext-oa}
 The package \sty{biblatex-ext-oa} was inspired by a question%
 \fnurl{https://tex.stackexchange.com/q/459449/35864}
 by pluton\fnurl{https://tex.stackexchange.com/users/371/pluton} on TeX.SX
@@ -2404,7 +2419,7 @@ The package works as expected with the standard styles and
 should work with most contributed styles at least to some extent.
 For the actual typesetting of the symbol \sty{biblatex-ext-oa}
 patches the bibliography macro \bibmacro{begentry} to include a call to the
-bibliography macro \bibmacro{oamark}.
+bibliography macro \hyperbibmacro{oamark}.
 That means that you have to keep in mind this behaviour should you want to
 redefine \bibmacro{begentry} yourself.
 \begin{biblatexcode}
@@ -2413,8 +2428,8 @@ redefine \bibmacro{begentry} yourself.
 \usepackage[(*@\prm{\sty{biblatex-ext-oa} options}@*)]{biblatex-ext-oa}
 \end{biblatexcode}
 
-The package may load the support packages \sty{biblatex-ext-oa-doiapi} and
-\sty{biblatex-ext-oa-tikzsymbols}.
+The package may load the support packages \hypersty{biblatex-ext-oa-doiapi} and
+\hypersty{biblatex-ext-oa-tikzsymbols}.
 The preferred way to load these packages is with \sty{biblatex-ext-oa}'s
 package options.
 It should usually not be necessary to load these two packages directly with
@@ -2429,8 +2444,8 @@ This option controls whether the package is only loaded (\optval{false}) or
 loaded and active (\optval{true}).
 
 \enquote{Active} means that the initial state of the global bibliography option
-\opt{openaccess} is \optval{auto} and that useful default settings are applied
-for semi-automatic open access detection.
+\hyperopt{openaccess} is \optval{auto} and that useful default settings are
+applied for semi-automatic open access detection.
 These useful defaults include patches of the bibmacro \bibmacro{begentry}
 and, if \hyperopt{doiapi} is enabled, also \bibmacro{doi+eprint+url}.
 
@@ -2441,8 +2456,8 @@ sensible defaults are defined for the semi-automatic open access detection.
 \optitem[false]{tikzsymbol}{\optval{true}, \optval{false},
   \prm{symbol identifier}}
 
-Load the support package \sty{biblatex-ext-oa-tikzsymbols} with its load-time
-option \opt{symbol} set to \prm{symbol identifier}.
+Load the support package \hypersty{biblatex-ext-oa-tikzsymbols} with its
+load-time option \opt{symbol} set to \prm{symbol identifier}.
 The values \optval{true} and \optval{false} are provided for convenience.
 \optval{false} does not load the package at all, \optval{true} is like giving
 the value \optval{plos}.
@@ -2450,26 +2465,26 @@ the value \optval{plos}.
 See \cref{sec:oa-symbol} for a thorough discussion of the available symbols
 as well as a short note on their respective licenses.
 
-\marginwarn Note that \sty{biblatex-ext-oa-tikzsymbols} will load \pgftikz
+\marginwarn Note that \hypersty{biblatex-ext-oa-tikzsymbols} will load \pgftikz
 \fnurl{https://ctan.org/pkg/pgf} to draw the open access symbols.
 If you prefer a more light-weight solution, you can define a symbol yourself
 with an external graphics file.
 
 \marginwarn
 Note further that for the package \sty{biblatex-ext-oa} to work properly
-the macro \cmd{oasymbol} must be defined and should contain an open access
+the macro \hypercmd{oasymbol} must be defined and should contain an open access
 symbol that can be printed in the margin.
 The package \sty{biblatex-ext-oa} itself does not provide a defintion for
-\cmd{oasymbol} if the option \opt{tikzsymbol} is not used.
+\hypercmd{oasymbol} if the option \opt{tikzsymbol} is not used.
 
 \boolitem[false]{doiapi}
 
-Whether or not to load the support package \sty{biblatex-ext-oa-doiapi}
+Whether or not to load the support package \hypersty{biblatex-ext-oa-doiapi}
 that provides a Lua module to query open access information
 from Unpaywall\fnurl{https://unpaywall.org/} via the DOI of an entry.
 
-\marginwarn The package \sty{biblatex-ext-oa-doiapi} and thus this option can
-only be used with \lualatex.
+\marginwarn The package \hypersty{biblatex-ext-oa-doiapi} and thus this option
+can only be used with \lualatex.
 \end{optionlist}
 
 The following macros in \sty{biblatex-ext-oa} are also of interest.
@@ -2477,16 +2492,16 @@ The following macros in \sty{biblatex-ext-oa} are also of interest.
 \cmditem{LoadTikZOASymbol}[symbol]
 
 This command provides an alternative way of loading the
-\sty{biblatex-ext-oa-tikzsymbols} support package.
+\hypersty{biblatex-ext-oa-tikzsymbols} support package.
 The optional argument \prm{symbol} has the same meaning as the possible values
-for the \opt{tikzsymbol} package option.
+for the \hyperopt{tikzsymbol} package option.
 
 The command can only be used in the preamble.
-It may only be used once and only if \sty{biblatex-ext-oa-tikzsymbols} has
+It may only be used once and only if \hypersty{biblatex-ext-oa-tikzsymbols} has
 not been loaded before.
 
 This command is related to \hypercmd{DefineTikZOASymbol} of
-\sty{biblatex-ext-oa-tikzsymbols} (see \secref{sec:oa-symbol}).
+\hypersty{biblatex-ext-oa-tikzsymbols} (see \cref{sec:oa-symbol}).
 
 \cmditem{oasymbol}
 
@@ -2495,16 +2510,16 @@ to mark open access publications.
 
 \marginwarn The command is initially undefined and must be defined for the
 package to work.
-One way of giving this command a useful definition is via the \opt{tikzsymbol}
-option of \sty{biblatex-ext-oa}.
+One way of giving this command a useful definition is via the
+\hyperopt{tikzsymbol} option of \sty{biblatex-ext-oa}.
 \end{ltxsyntax}
 
 An entry will be marked as open access if it has a \enquote{best open access
 URL}.
 This best open access URL will be determined according to the rules set out by
-the \opt{openaccess} bibliography option (see \cref{sec:oa:detect}) in the
+the \hyperopt{openaccess} bibliography option (see \cref{sec:oa:detect}) in the
 \cmd{AtDataInput} hook,
-it is stored in the newly defined field \bibfield{bestoaurl}.
+it is stored in the newly defined field \hyperbibfield{bestoaurl}.
 \begin{fieldlist}
 \fielditem{bestoaurl}{literal}
 This field holds the \enquote{best open access URL} as determined by the open
@@ -2526,9 +2541,9 @@ This bibliography macro is available if the package is loaded with
 
 Display the best open access URL according to the Unpaywall API.
 The URL is not shown if it coincides with the DOI, the check for that is
-performed by \cmd{OpenaccessURLisDOI} (see \cref{sec:oa:doiapi}).
-This macro is only available if both the \opt{enable} and the \opt{doiapi}
-options are set to \optval{true}.
+performed by \hypercmd{OpenaccessURLisDOI} (see \cref{sec:oa:doiapi}).
+This macro is only available if both the \hyperopt{enable} and the
+\hyperopt{doiapi} options are set to \optval{true}.
 
 This macro is useful in connection with the Unpaywall API since the best
 open access URL may not be amongst the fields that are already displayed
@@ -2538,29 +2553,29 @@ in the entry.
 \marginwarn
 With \opt{enable} set to \optval{true} the package will furtermore patch
 the bibliography macro \bibmacro{begentry} to execute the bibliography macro
-\bibmacro{oamark}.
-If additionally \opt{doiapi} is \optval{true}, the bibliography macro
+\hyperbibmacro{oamark}.
+If additionally \hyperopt{doiapi} is \optval{true}, the bibliography macro
 \bibmacro{doi+eprint+url} will be patched to include a call to
-\bibmacro{api:bestoaurl}.
+\hyperbibmacro{api:bestoaurl}.
 Please keep that in mind should you need to redefine \bibmacro{begentry}
 or \bibmacro{doi+eprint+url}.
 
 \subsection{Open access detection}\label{sec:oa:detect}
 The heart of the package \sty{biblatex-ext-oa} is the bibliography option
-\opt{openaccess}, which can be set globally, per type or per entry.
+\hyperopt{openaccess}, which can be set globally, per type or per entry.
 
 A short example document can be found at
 \url{https://github.com/moewew/biblatex-ext/blob/master/oaslinks.tex}.
 
 \begin{optionlist}
-\optitem[auto/none]{openaccess}{\optval{auto}, \optval{doiapi},
-  \optval{forcedoiapi}, \optval{true}, \optval{false}, \optval{none},
-  \prm{open access field}}
+\optitem[auto {\normalfont(\optval{none})}]{openaccess}{\optval{auto},
+  \optval{doiapi}, \optval{forcedoiapi}, \optval{true}, \optval{false},
+  \optval{none}, \prm{open access field}}
 
 This option controls how the best open access URL is detected.
-The initial value is \optval{none} when the package is loaded with the
-\opt{enable} option set to \optval{false}, otherwise~-- and by default~-- it is
-\optval{auto}.
+The initial value is \optval{auto} unless the package is loaded with the
+\hyperopt{enable} option set to \optval{false} in which case the initial
+value changes to \optval{none}.
 
 All following values are valid at all three levels (global, per-type and
 per-entry), but it may not be useful to use a particular option at all levels.
@@ -2581,8 +2596,8 @@ per-entry), but it may not be useful to use a particular option at all levels.
 \item[doiapi] Use API queries from the \sty{biblatex-ext-oa-doiapi} package
   to determine the best open access link from the DOI.
 
-  \marginwarn This option requires that the \opt{doiapi} package option be set
-  to \optval{true} and only works with \lualatex.
+  \marginwarn This option requires that the \hyperopt{doiapi} package option be
+  set to \optval{true} and only works with \lualatex.
   Furthermore it needs a DOI in the \bibfield{doi} field.
   If the \bibfield{doi} field is empty, this option falls back to \optval{auto}.
 
@@ -2611,15 +2626,15 @@ per-entry), but it may not be useful to use a particular option at all levels.
   by \prm{open access field}.
   This value would normally be used only on a per-enry level.
 
-  Any field for which \cmd{DeclareOpenAccessFieldUrl} has declared a URL
+  Any field for which \hypercmd{DeclareOpenAccessFieldUrl} has declared a URL
   specification is a valid \enquote{open access field}.
 \end{valuelist}
 
 \end{optionlist}
 
 The heuristics to find the best open access link are governed
-by the following commands and rely on information present in the \sty{.bib} file
-(ideally in field annotations).
+by the following commands and rely on information present in the \filename{.bib}
+file (ideally in field annotations).
 
 \begin{ltxsyntax}
 \cmditem{DeclareOpenAccessFieldUrl}[openness]{field}{url spec}
@@ -2713,8 +2728,9 @@ prevail over the \bibfield{url} field.
 The \optval{auto} detection works as follows.
 \begin{itemize}
 \item The best known open access URL is cleared.
-\item For each non-empty field listed in \cmd{DeclareOpenAccessUrlFieldPriority}
-  the URL specification is obtained.
+\item For each non-empty field listed in
+  \hypercmd{DeclareOpenAccessUrlFieldPriority} the URL specification is
+  obtained.
   \begin{itemize}
     \item If the field has \prm{openness} \texttt{always}, the best known open
     access URL is updated with the new value, unless the field has been
@@ -2765,13 +2781,14 @@ In particular the \prm{openness} of each field does not play a role.
 
 
 \subsection{Open access detection with the Unpaywall API}\label{sec:oa:doiapi}
+\label{exltd@itm@biblatex-ext-oa-doiapi}
 Inspired by Eric Marsden's%
 \fnurl{https://tex.stackexchange.com/users/29621/eric-marsden}
 answer to the open access symbol question on TeX.SX, the package
-\sty{biblatex-oa-doiapi}, which can be loaded via the \hyperopt{doiapi} option
-of \sty{biblatex-oa}, provides means to automatically find the best open
-access link to a given article via its DOI by querying the Unpaywall API%
-\fnurl{https://unpaywall.org/}.
+\sty{biblatex-ext-oa-doiapi}, which can be loaded via the \hyperopt{doiapi}
+option of \sty{biblatex-ext-oa}, provides means to automatically find the
+best open access link to a given article via its DOI by querying the
+Unpaywall API\fnurl{https://unpaywall.org/}.
 
 \marginwarn This package can only be used with \lualatex{} and needs online
 access.
@@ -2779,7 +2796,7 @@ Furthermore the Unpaywall API requires an email address and asks to limit
 calls to 100000 per day\fnurl{https://unpaywall.org/products/api}.
 
 To avoid too many calls to the API, the package caches its information in the
-temporary \sty{.oai} file.
+temporary \filename{.oai} file.
 It is safe to delete that file at any point, but if you do so the next
 \lualatex{} run may take a while, because all information has to be retrieved
 from the APIs.
@@ -2826,10 +2843,12 @@ API is the DOI and to \prm{false} otherwise.
 
 
 \subsection{Open access symbols with Ti\emph{k}Z}\label{sec:oa-symbol}
+\label{exltd@itm@biblatex-ext-oa-tikzsymbols}
 The main purpose of the package \sty{biblatex-ext-oa-tikzsymbols}
 is to define the command \hypercmd{oasymbol}.
 As mentioned above, usually this package is not going to be loaded as a
-stand-alone package, instead it is loaded via \sty{biblatex-ext-oa}.
+stand-alone package, instead it is loaded via
+\hypersty[tikzsymbol]{biblatex-ext-oa}.
 
 If used as a stand-alone package, \sty{biblatex-ext-oa-tikzsymbols} has one
 load-time option.
@@ -2837,7 +2856,7 @@ load-time option.
 \optitem{symbol}{\optval{plos}, \optval{oanet}}
 
 This options determines which of the two provided symbols is going to be used
-for \cmd{oasymbol}.
+for \hypercmd{oasymbol}.
 
 \begin{valuelist}
 \item[plos] Use the open access symbol by PLOS | Public Library of Science%
@@ -2893,7 +2912,8 @@ for \cmd{oasymbol}.
 \end{valuelist}
 \end{optionlist}
 
-Apart from \cmd{oasymbol} the package only defines one other user-level command.
+Apart from \hypercmd{oasymbol} the package only defines one other user-level
+command.
 \begin{ltxsyntax}
 \cmditem{DefineTikZOASymbol}[symbol]
 
@@ -2905,58 +2925,60 @@ or the open-access.net version of the logo.
 \section{Revision History}\label{sec:log}
 The GitHub repository of this project uses release tags, so you can compare
 the changes in source code there.\footnote{\url{\gitbaseurl/compare/}}
-See also \sty{CHANGES.md}.
+See also \filename{CHANGES.md}.
 
 The numbers on the right indicate the relevant section of the manual.
 \begin{changelog}
 \begin{release}{0.6b}{2019-01-11}
   \item Fixed issue loading \texttt{socket.url} module in
-    \sty{biblatex-ext-oa-doiapi}\see{sec:oasymb}
+    \hypersty{biblatex-ext-oa-doiapi}\see{sec:oa:doiapi}
 \end{release}
 \begin{release}{0.6a}{2019-01-04}
-  \item Minor improvements for \sty{biblatex-ext-oa}\see{sec:oasymb}
+  \item Minor improvements for \hypersty{biblatex-ext-oa}\see{sec:oasymb}
 \end{release}
 \begin{release}{0.6}{2018-11-23}
   \item Require \sty{biblatex} 3.12
-  \item Made \opt{dashed} and \opt{introcite} options available on a per-entry
-    and per-type basis\see{sec:opt:style}
-  \item Added \cs{titleaddonpunct}\see{sec:opt:punct}
-  \item Added \sty{biblatex-ext-oa} package for open access symbols%
+  \item Made \hyperopt{dashed} and \hyperopt{introcite} options available on a
+    per-entry and per-type basis\see{sec:opt:style}
+  \item Added \hypercmd{titleaddonpunct}\see{sec:opt:punct}
+  \item Added \hypersty{biblatex-ext-oa} package for open access symbols%
     \see{sec:oasymb}
 \end{release}
 \begin{release}{0.5a}{2018-10-09}
   \item Fixed a bug with \cmd{footcites} and \cmd{footcitetexts} in
-    \sty{ext-authoryear}
+    \blxstyle{ext-authoryear}
 \end{release}
 \begin{release}{0.5}{2018-10-02}
-  \item New \sty{ext-authoryear-*ecomp} style subfamily\see{sec:styles:new}
+  \item New \hyperblxstyle[ext-authoryear-ecomp]{ext-authoryear-*ecomp} style
+    subfamily\see{sec:styles:new}
   \item Added outer cite delimiters for \cmd{footcite}\see{sec:opt:citedelims}
   \item Added experimental tabular bibliography\see{sec:tabularbib}
 \end{release}
 \begin{release}{0.4}{2018-06-10}
 \item Renamed \cmd{DeclareOuterCiteDelim} and friends to
-  \cmd{DeclareOuterCiteDelims}\see{sec:opt:citedelims}
-\item Added \cmd{RegisterCiteDelims}\see{sec:opt:citedelims}
+  \hypercmd{DeclareOuterCiteDelims}\see{sec:opt:citedelims}
+\item Added \hypercmd{RegisterCiteDelims}\see{sec:opt:citedelims}
 \item Renamed \enquote{virtual} cite command \cmd{bbx:introcite} to
   \cmd{bbx@introcite}\see{sec:opt:style}
 \end{release}
 \begin{release}{0.3}{2018-06-04}
-\item Added \bibfieldformat{titlecase:\dots title} field formats%
-  \see{sec:opt:field}
-\item Added \sty{bbx:introcite:plain:keeprelated} toggle%
+\item Added \hyperbibfieldformat[titlecase:title]{titlecase:\dots title}
+  field formats\see{sec:opt:field}
+\item Added \hypersty{bbx:introcite:plain:keeprelated} toggle%
   \see{sec:opt:style}
-\item Added \cs{jourvoldelim}, \cs{jourserdelim} and \cs{servoldelim}%
-  \see{sec:opt:punct}
+\item Added \hypercmd{jourvoldelim}, \hypercmd{jourserdelim} and
+  \hypercmd{servoldelim}\see{sec:opt:punct}
 \item Improve documentation
 \end{release}
 \begin{release}{0.2}{2018-03-28}
-\item Rework lengths for \kvopt{introcite}{label}\see{sec:opt:style}
-\item Fixed meaning of \cs{maintitletitledelim}\see{sec:opt:punct}
-\item Added \cs{voltitledelim}\see{sec:opt:punct}
+\item Rework lengths for \hyperkvopt{introcite}{label}\see{sec:opt:style}
+\item Fixed meaning of \hypercmd{maintitletitledelim}\see{sec:opt:punct}
+\item Added \hypercmd{voltitledelim}\see{sec:opt:punct}
 \end{release}
 \begin{release}{0.1a}{2018-03-20}
-\item Fixed inner citation delimiters for \sty{ext-authoryear},
-  \sty{ext-authortitle} and their \sty{-ibid} versions\see{sec:opt:citedelims}
+\item Fixed inner citation delimiters for \hyperblxstyle{ext-authoryear},
+  \hyperblxstyle{ext-authortitle} and their \blxstyle{-ibid} versions%
+  \see{sec:opt:citedelims}
 \item Fixed \cmd{smartcite} delimiters\see{sec:opt:citedelims}
 \end{release}
 \begin{release}{0.1}{2018-03-18}
