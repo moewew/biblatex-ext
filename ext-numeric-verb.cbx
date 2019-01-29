@@ -77,6 +77,18 @@
   {\usebibmacro{postnote}%
    \csuse{extblx@citedelim@\blx@delimcontext @inner@close}}
 
+\DeclareCiteCommand{\supercite}[\mkextblxsupercite]
+  {\iffieldundef{prenote}
+     {}
+     {\BibliographyWarning{Ignoring prenote argument}}%
+   \iffieldundef{postnote}
+     {}
+     {\BibliographyWarning{Ignoring postnote argument}}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {\supercitedelim}
+  {}
+
 \DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelims]
   {\parencite}{\multicitedelim}
 \DeclareMultiCiteCommand{\footcites}[\mkextblxfootcite]

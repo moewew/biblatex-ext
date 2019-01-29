@@ -2059,6 +2059,8 @@ Citation command & Outer & Inner\\
 \cmd{parencite} & \cmd{mkouterparencitedelims} & \cmd{mkinnerparencitedelims}\\
 \cmd{textcite} & \cmd{mkoutertextcitedelims} & \cmd{mkinnertextcitedelims}\\
 \cmd{footcite} & \cmd{mkouterfootcitedelims} & \cmd{mkinnerfootcitedelims}\\
+\cmd{supercite}\footnote{If defined by the citation style.}
+ & \cmd{mkoutersupercitedelims} & ---\\
 \cmd{bbx@xrefcite} & \cmd{mkouterbbx@xrefcitedelims} &
   \cmd{mkinnerbbx@xrefcitedelims}\\
 \enquote{\cmd{bbx@introcite}} & ---%
@@ -2929,6 +2931,10 @@ See also \filename{CHANGES.md}.
 
 The numbers on the right indicate the relevant section of the manual.
 \begin{changelog}
+\begin{release}{<version>}{<date>}
+  \item Added outer citation delimiters for \cmd{supercite}%
+    \see{sec:opt:citedelims}
+\end{release}
 \begin{release}{0.6b}{2019-01-11}
   \item Fixed issue loading \texttt{socket.url} module in
     \hypersty{biblatex-ext-oa-doiapi}\see{sec:oa:doiapi}

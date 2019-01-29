@@ -95,6 +95,7 @@
 
 \RegisterCiteDelims{outer}{cite}
 \RegisterCiteDelims{outer}{parencite}
+\RegisterCiteDelims{outer}{supercite}
 \RegisterCiteDelims{outer}{textcite}
 \RegisterCiteDelims{outer}{footcite}
 \RegisterCiteDelims{outer}{footcitetext}
@@ -102,12 +103,15 @@
 
 \RegisterCiteDelims{inner}{cite}
 \RegisterCiteDelims{inner}{parencite}
+\RegisterCiteDelims{inner}{supercite}
 \RegisterCiteDelims{inner}{textcite}
 \RegisterCiteDelims{inner}{footcite}
 \RegisterCiteDelims{inner}{footcitetext}
 \DeclareInnerCiteDelimsAlias{footcite}{footcitetext}
 
-
+\newrobustcmd*{\mkextblxsupercite}[1]{%
+  \mkbibsuperscript{%
+    \mkoutersupercitedelims{#1}}}
 \newrobustcmd*{\mkextblxfootcite}[1]{%
   \mkbibfootnote{%
     \mkouterfootcitedelims{#1}}}

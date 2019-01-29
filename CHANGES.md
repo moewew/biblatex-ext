@@ -1,17 +1,23 @@
-# Version 0.6b (2019-01-11)
+# Changelog
+
+## Unreleased
+See https://github.com/moewew/biblatex-ext/compare/v0.6b...HEAD
+- Added outer citation delimiters for `\supercite`.
+
+## Version 0.6b (2019-01-11)
 See https://github.com/moewew/biblatex-ext/compare/v0.6a...v0.6b
 - Fixed issue loading socket.url
   (https://github.com/moewew/biblatex-ext/issues/17)
 - Changed `blxextdoiapi.lua` so that it returns the module.
 
-# Version 0.6a (2019-01-04)
+## Version 0.6a (2019-01-04)
 See https://github.com/moewew/biblatex-ext/compare/v0.6...v0.6a
 - Only patch bibmacros in `biblatex-ext-oa`. This avoids redefinitions,
   which could clear out custom definitions.
 - Use socket.url's URL escape/encode function in blxextdoiapi.lua.
 - Fixed bug in deprecation handling.
 
-# Version 0.6 (2018-11-23)
+## Version 0.6 (2018-11-23)
 See https://github.com/moewew/biblatex-ext/compare/v0.5a...v0.6
 - Synced `mergedate` code with `biblatex` 3.12
   (https://github.com/plk/biblatex/pull/810
@@ -31,12 +37,12 @@ See https://github.com/moewew/biblatex-ext/compare/v0.5a...v0.6
     open access info.
   - A support package provides two open access symbols drawn with TikZ.
 
-# Version 0.5a (2018-10-09)
+## Version 0.5a (2018-10-09)
 See https://github.com/moewew/biblatex-ext/compare/v0.5...v0.5a
 - Fixed a bug with `\footcites` and `\footcitetexts` in `ext-authoryear.cbx`
   (https://github.com/moewew/biblatex-ext/issues/12)
 
-# Version v0.5 (2018-10-02)
+## Version 0.5 (2018-10-02)
 See https://github.com/moewew/biblatex-ext/compare/v0.4...v0.5
 - Added the `ecomp` style family. The styles of that family compress lists of
   extradate fields.
@@ -45,7 +51,7 @@ See https://github.com/moewew/biblatex-ext/compare/v0.4...v0.5
 - First implementation of a tabular bibliography based on Audrey's answer to
   https://tex.stackexchange.com/q/71088/35864
 
-# Version 0.4 (2018-06-10)
+## Version 0.4 (2018-06-10)
 See https://github.com/moewew/biblatex-ext/compare/v0.3...v0.4
 - Renamed `\DeclareOuterCiteDelim` and friends to `\DeclareOuterCiteDelims`,
   backwards compatibility for most of this change should be available.
@@ -67,7 +73,7 @@ See https://github.com/moewew/biblatex-ext/compare/v0.3...v0.4
 - Renamed option `citeinxref` to `citexref`. Please use the new name.
   Backwards compatibility is in place.
 
-# Version 0.3 (2018-06-04)
+## Version 0.3 (2018-06-04)
 See https://github.com/moewew/biblatex-ext/compare/v0.2...v0.3
 - Added `titlecase:<titletype>` field formats for finer control over the title
   casing. The standard styles have the catch-all format `titlecase`. This
@@ -80,7 +86,7 @@ See https://github.com/moewew/biblatex-ext/compare/v0.2...v0.3
   it back).
 - Added `\jourvoldelim`, `\jourserdelim` and `\servoldelim`.
 
-# Version 0.2 (2018-03-28)
+## Version 0.2 (2018-03-28)
 See https://github.com/moewew/biblatex-ext/compare/v0.1a...v0.2
 - Fixed indentation with `introcite=label`.
 - **Incompatible change** The lengths for `introcite=label` now work like
@@ -94,12 +100,12 @@ See https://github.com/moewew/biblatex-ext/compare/v0.1a...v0.2
   between the `maintitle` and `(book)title` field.
   What was formerly `\maintitledelim` is now `\voltitledelim`.
 
-# Version 0.1a (2018-03-20)
+## Version 0.1a (2018-03-20)
 See https://github.com/moewew/biblatex-ext/compare/v0.1...v0.1a
 - Fixed inner cite delims for authoryear/authortitle and their ibid versions.
 - Fixed delimiters for `\smartcite`.
   `\smartcite` really behaves like `\parencite` and `\footcite` now.
   This needed some trickery to get the delimiter context right.
 
-# Version 0.1 (2018-03-18)
+## Version 0.1 (2018-03-18)
 - First public release.

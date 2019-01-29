@@ -68,13 +68,13 @@ function update_tag(file, content, tagname, tagdate)
     return string.gsub(content, "Copyright 2017%-%d%d%d%d",
                                 "Copyright 2017-" .. tagyear)
   elseif string.match(file, "^CHANGES%.md$") then
-    content = string.gsub(content, "# Version <version> %(<date>%)\n",
-                                   "# Version " .. tagname_safe .. " (" ..
+    content = string.gsub(content, "## Unreleased\n",
+                                   "## Version " .. tagname_safe .. " (" ..
                                    tagdate .. ")\n")
     if string.match(content, "https://github.com/moewew/biblatex%-ext" ..
                              "/compare/v" .. version_scheme ..
-                             "...v<version>") then
-      return string.gsub(content, "...v<version>",
+                             "...HEAD") then
+      return string.gsub(content, "...HEAD",
                                   "...v" .. tagname_safe)
     end
   end
