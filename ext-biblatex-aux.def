@@ -20,15 +20,6 @@
       (\extblx@requiredbiblatexdate) or later.\MessageBreak
       I found '\csuse{abx@version} (\csuse{abx@date})'}}
 
-\newrobustcmd*{\extblx@DeclareBTEOption}[2][boolean]{%
-  \@ifnextchar[%]
-    {\extblx@DeclareBTEOption@i[#1]{#2}}
-    {\extblx@DeclareBTEOption@i[#1]{#2}[]}}
-
-\def\extblx@DeclareBTEOption@i[#1]#2[#3]#4{%
-  \DeclareBibliographyOption[#1]{#2}[#3]{#4}%
-  \DeclareTypeOption[#1]{#2}[#3]{#4}
-  \DeclareEntryOption[#1]{#2}[#3]{#4}}
 
 %{<context>}{<opening delim>}{<closing delim>}
 \newrobustcmd*{\DeclareOuterCiteDelims}{%
@@ -140,6 +131,7 @@
        \def\extblx@thisdelimcontext{footcite}%
        #1}}}
 
+%% Compatibility with older biblatex-ext
 % Legacy names
 
 % Compability for versions <= 0.3
@@ -230,6 +222,31 @@
        Please use 'bbx@introcite' instead}}%
 }
 
+% Compatibility with older biblatex
+
+% \DeclareBiblatexOption (biblatex 3.13)
+\ifcsundef{DeclareBiblatexOption}
+  {\newcommand*{\extblx@DeclareBiblatexOption}[1]{%
+     \extblx@warning{%
+       This isn't actually \string\DeclareBiblatexOption.\MessageBreak
+       This is only its biblatex-ext emulation.\MessageBreak
+       The scopes 'global,type,entry' are hard-coded\MessageBreak
+       and can't be changed}%
+     \extblx@DeclareBiblatexOption@i}
+   \newcommand*{\extblx@DeclareBiblatexOption@i}[2][boolean]{%
+     \@ifnextchar[%]
+      {\extblx@DeclareBiblatexOption@ii[#1]{#2}}
+      {\extblx@DeclareBiblatexOption@iii[#1]{#2}}}
+   \def\extblx@DeclareBiblatexOption@ii[#1]#2[#3]#4{%
+     \DeclareBibliographyOption[#1]{#2}[#3]{#4}%
+     \DeclareTypeOption[#1]{#2}[#3]{#4}%
+     \DeclareEntryOption[#1]{#2}[#3]{#4}}
+   \def\extblx@DeclareBiblatexOption@iii[#1]#2#3{%
+     \DeclareBibliographyOption[#1]{#2}{#3}%
+     \DeclareTypeOption[#1]{#2}{#3}%
+     \DeclareEntryOption[#1]{#2}{#3}}%
+   \let\DeclareBiblatexOption\extblx@DeclareBiblatexOption}
+  {}
 
 \endinput
 %

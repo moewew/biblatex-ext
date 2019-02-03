@@ -19,20 +19,20 @@
 \newtoggle{bbx:maintitleaftertitle}
 \newtoggle{bbx:introcite:plain:keeprelated}
 
-\extblx@DeclareBTEOption[boolean]{citexref}[true]{%
+\DeclareBiblatexOption{global,type,entry}[boolean]{citexref}[true]{%
   \settoggle{bbx:citexref}{#1}}
-\extblx@DeclareBTEOption[boolean]{citeinxref}[true]{%
+\DeclareBiblatexOption{global,type,entry}[boolean]{citeinxref}[true]{%
   \blx@warning{The option 'citeinxref' is deprecated.\MessageBreak
     Use 'citexref' (without in) instead.\MessageBreak
     Setting 'citexref' now}%
   \settoggle{bbx:citexref}{#1}}
-\extblx@DeclareBTEOption[boolean]{innamebeforetitle}[true]{%
+\DeclareBiblatexOption{global,type,entry}[boolean]{innamebeforetitle}[true]{%
   \settoggle{bbx:innamebeforetitle}{#1}}
-\extblx@DeclareBTEOption[boolean]{innameidem}[true]{%
+\DeclareBiblatexOption{global,type,entry}[boolean]{innameidem}[true]{%
   \settoggle{bbx:innameidem}{#1}}
-\extblx@DeclareBTEOption[boolean]{articlein}[true]{%
+\DeclareBiblatexOption{global,type,entry}[boolean]{articlein}[true]{%
   \settoggle{bbx:articlein}{#1}}
-\extblx@DeclareBTEOption[boolean]{maintitleaftertitle}[true]{%
+\DeclareBiblatexOption{global,type,entry}[boolean]{maintitleaftertitle}[true]{%
   \settoggle{bbx:maintitleaftertitle}{#1}}
 
 \def\extblx@opt@introcite@false{0}

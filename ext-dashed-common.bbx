@@ -19,7 +19,7 @@
      or later}}
   {\listcsremove{blx@globalopts@boolean}{dashed}}
 
-\extblx@DeclareBTEOption[string]{dashed}[true]{%
+\DeclareBiblatexOption{global,type,entry}[string]{dashed}[true]{%
   \ifcsdef{extblx@opt@dashed@#1}
     {\csuse{extblx@opt@dashed@#1}}
     {\extblx@warning@noline{%
