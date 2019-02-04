@@ -225,13 +225,44 @@
 % Compatibility with older biblatex
 
 % \DeclareBiblatexOption (biblatex 3.13)
+% we emulate \DeclareBiblatexOption only as far as we need it
+% i.e. with scope 'global,type,entry' hard-coded
+% we'll see for how long this is viable
 \ifcsundef{DeclareBiblatexOption}
   {\newcommand*{\extblx@DeclareBiblatexOption}[1]{%
-     \extblx@warning{%
-       This isn't actually \string\DeclareBiblatexOption.\MessageBreak
-       This is only its biblatex-ext emulation.\MessageBreak
-       The scopes 'global,type,entry' are hard-coded\MessageBreak
-       and can't be changed}%
+     \ifstrequal{#1}{global,type,entry}
+       {\ifundef\extblx@warn@emulate@declarebiblatexoption
+          {\global\let\extblx@warn@emulate@declarebiblatexoption\@empty
+           \extblx@warning@noline{%
+             Using biblatex-ext emulation of\MessageBreak
+             \string\DeclareBiblatexOption\MessageBreak
+             The scope argument 'global,type,entry' is hard-\MessageBreak
+             coded and can't be changed.\MessageBreak
+             Please update to biblatex 3.13 or above.\MessageBreak
+             This warning can be silenced by defining\MessageBreak
+             \string\extblx@warn@emulate@declarebiblatexoption}}
+          {}}
+       {\extblx@error
+         {Emulation of \string\DeclareBiblatexOption\space only%
+          \MessageBreak
+          supports hard-coded scope argument\MessageBreak
+          'global,type,entry'.\MessageBreak
+          Update to biblatex 3.13 or above to use the real\MessageBreak
+          definition instead of a cheap imitation}
+         {This isn't actually \string\DeclareBiblatexOption,
+          it is only the biblatex-ext\MessageBreak
+          emulation.\MessageBreak
+          The scope 'global,type,entry' is hard-coded and can't be changed.%
+          \MessageBreak
+          If you force compilation despite this error, 'global,type,entry'%
+          \MessageBreak
+          will be assumed.\MessageBreak
+          That may cause further errors or undesirable and unexpected
+          behaviour.\MessageBreak
+          Update to biblatex 3.13 or above to use the real definition%
+          \MessageBreak
+          instead of a cheap imitation.\MessageBreak
+          This emulation may be removed in a future version of biblatex-ext}}%
      \extblx@DeclareBiblatexOption@i}
    \newcommand*{\extblx@DeclareBiblatexOption@i}[2][boolean]{%
      \@ifnextchar[%]
