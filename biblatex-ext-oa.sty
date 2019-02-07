@@ -88,7 +88,7 @@
           That option also requires LuaLaTeX.\MessageBreak
           Please see the documentation of biblatex-ext for more information}
      \fi}
-    {}
+    {}%
 }
 
 % define special detection settings
@@ -251,10 +251,10 @@
            \DefineOASymbol[#1]}
           {\RequirePackage[symbol=#1]{biblatex-ext-oasymb-#2}}}}
     {\extblx@oa@error
-      {Unknown symbol package/method '#2'}
-      {The symbol method '#2' (package 'biblatex-ext-oasymb-#2') is unknown.%
-       \MessageBreak
-       See the documentation for a list of available values}}}
+       {Unknown symbol package/method '#2'}
+       {The symbol method '#2' (package 'biblatex-ext-oasymb-#2') is unknown.%
+        \MessageBreak
+        See the documentation for a list of available values}}}
 
 \SetupKeyvalOptions{
   family=extblx@oa@opt,
