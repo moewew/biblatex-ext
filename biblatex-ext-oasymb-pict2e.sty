@@ -117,17 +117,6 @@
        Please consult the documentation for a list of valid options}}
     {\edef\oasymbol{\expandonce{\csname extblx@oasymb@pict@#1\endcsname}}}}
 
-% Was never defined, so no point in defining it now.
-\iffalse
-\newrobustcmd*{\DefinePictOASymbol}{%
-  \extblx@oasymb@pict@warning{%
-    The command '\DefinePictOASymbol'\MessageBreak
-    is deprecated.\MessageBreak
-    Use '\string\DefineOASymbol' instead.\MessageBreak
-    Using '\string\DefineOASymbol'}%
-  \DefineOASymbol}
-\fi
-
 \newrobustcmd*{\DefineOASymbol}[1][plos]{%
   \begingroup
   \edef\extblx@oasymb@pict@tempa{\endgroup
