@@ -1,21 +1,32 @@
 # Changelog
 
+
 ## Unreleased
 See https://github.com/moewew/biblatex-ext/compare/v0.6b...HEAD
-- Added outer citation delimiters for `\supercite`.
-- Added `biblatex-ext-oasymb-pict2e` with open access symbols drawn in `pict2e`.
+
+### Added
+- Outer citation delimiters for `\supercite`.
+- `biblatex-ext-oasymb-pict2e` with open access symbols drawn in `pict2e`.
   The package can be used via the `symbolpackage=pict2e` option to
   `biblatex-ext-oa` and provides a light-weight alternative to the the symbols
   drawn with TikZ or the experimental `l3draw` (of LaTeX3 fame).
-- Added `biblatex-ext-oasymb-l3draw` with open access symbols drawn in `l3draw`.
+- `biblatex-ext-oasymb-l3draw` with open access symbols drawn in `l3draw`.
   The package can be used via the `symbolpackage=l3draw` option to
   `biblatex-ext-oa` and provides a LaTeX3 alternative to the the symbols drawn
   with TikZ or `pict2e`.
+- `\LoadOASymbolPackage`, `\DeclareOASymbol` to load an open access symbol
+  package and set the symbol.
+- `symbolpackage` and `symbol` options for `biblatex-ext-oa` corresponding to
+  `\LoadOASymbolPackage` and `\DeclareOASymbol`, respectively.
+
+### Changed
 - **Incompatible change** Renamed `biblatex-ext-oa-tikzsymbols` to
   `biblatex-ext-oasymb-tikz` for consistency.
   No serious impact for end users is expected since the package should normally
   not be used as a stand-alone package.
   It should be loaded via `biblatex-ext-oa`.
+
+### Deprecated
 - Deprecate `\DefineTikZOASymbol` in favour of a more universal
   `\DeclareOASymbol`.
 - Deprecate `\LoadTikZOASymbol` in favour of a more universal
@@ -23,32 +34,36 @@ See https://github.com/moewew/biblatex-ext/compare/v0.6b...HEAD
 - Deprecate the `biblatex-ext-oa` option `tikzsymbol` in favour of the new
   options `symbolpackage` and `symbol`.
 
+
 ## Version 0.6b (2019-01-11)
 See https://github.com/moewew/biblatex-ext/compare/v0.6a...v0.6b
-- Fixed issue loading socket.url
+
+### Changed
+- `blxextdoiapi.lua` now returns the module as a table.
+
+### Fixed
+- Issue loading `socket.url` with LuaLaTeX 1.07 (TeX Live 2018)
   (https://github.com/moewew/biblatex-ext/issues/17)
-- Changed `blxextdoiapi.lua` so that it returns the module.
+
 
 ## Version 0.6a (2019-01-04)
 See https://github.com/moewew/biblatex-ext/compare/v0.6...v0.6a
+
+### Changed
 - Only patch bibmacros in `biblatex-ext-oa`. This avoids redefinitions,
   which could clear out custom definitions.
 - Use socket.url's URL escape/encode function in blxextdoiapi.lua.
-- Fixed bug in deprecation handling.
+
+### Fixed
+- A bug in deprecation handling.
+
 
 ## Version 0.6 (2018-11-23)
 See https://github.com/moewew/biblatex-ext/compare/v0.5a...v0.6
-- Synced `mergedate` code with `biblatex` 3.12
-  (https://github.com/plk/biblatex/pull/810
-   https://github.com/plk/biblatex/issues/752).
-- `biblatex` 3.12 is now recommended.
-- Added `\titleaddonpunct`.
-- Made `introcite` and `dashed` option available on per-entry and
-  per-type basis. (https://github.com/moewew/biblatex-ext/issues/13)
-  - `introcite=label` needs support of the bibliography environment,
-    so it is not officially supported if its is not set globally.
-  - Simplify code to set options at all three levels at the same time.
-- Added package for open access symbols and open access 'detection'.
+
+### Added
+- `\titleaddonpunct`
+- A package for open access symbols and open access 'detection'.
   See https://tex.stackexchange.com/q/459449/.
   - The default detection relies on explicit configuration for all url,
     doi and eprint-like and data in the `.bib` file.
@@ -56,26 +71,49 @@ See https://github.com/moewew/biblatex-ext/compare/v0.5a...v0.6
     open access info.
   - A support package provides two open access symbols drawn with TikZ.
 
+### Changed
+- `biblatex` 3.12 is now recommended.
+- Synced `mergedate` code with `biblatex` 3.12
+  (https://github.com/plk/biblatex/pull/810
+   https://github.com/plk/biblatex/issues/752).
+- Made `introcite` and `dashed` option available on per-entry and
+  per-type basis. (https://github.com/moewew/biblatex-ext/issues/13)
+  - `introcite=label` needs support of the bibliography environment,
+    so it is not officially supported if its is not set globally.
+  - Simplify code to set options at all three levels at the same time.
+
+
 ## Version 0.5a (2018-10-09)
 See https://github.com/moewew/biblatex-ext/compare/v0.5...v0.5a
-- Fixed a bug with `\footcites` and `\footcitetexts` in `ext-authoryear.cbx`
+
+### Fixed
+- Bug with `\footcites` and `\footcitetexts` in `ext-authoryear.cbx`
   (https://github.com/moewew/biblatex-ext/issues/12)
+
 
 ## Version 0.5 (2018-10-02)
 See https://github.com/moewew/biblatex-ext/compare/v0.4...v0.5
-- Added the `ecomp` style family. The styles of that family compress lists of
+
+### Added
+- New `ecomp` style family. The styles of that family compress lists of
   extradate fields.
-- Added outer cite delimiters for `\footcite`.
-- Added `version` and `pagetotal` bibmacros.
 - First implementation of a tabular bibliography based on Audrey's answer to
   https://tex.stackexchange.com/q/71088/35864
+- Outer cite delimiters for `\footcite`.
+- `version` and `pagetotal` bibmacros.
+
+### Changed
+- Use `version` and `pagetotal` macros instead of `\printfield`.
+
 
 ## Version 0.4 (2018-06-10)
 See https://github.com/moewew/biblatex-ext/compare/v0.3...v0.4
+
+### Changed
 - Renamed `\DeclareOuterCiteDelim` and friends to `\DeclareOuterCiteDelims`,
   backwards compatibility for most of this change should be available.
-- **Incompatible change** Renamed the cite command `\bbx@cite@inxref` to
-  `\bbx@xrefcite` for consistency with other citation commands.
+- **Incompatible change** Renamed `\bbx@cite@inxref` to `\bbx@xrefcite`
+  for consistency with other citation commands.
   There are is no compatibility code set up for this change.
 - **Incompatible change** The "virtual" citation command `\bbx:introcite`
   is now called `\bbx@introcite`. ("Virtual" because the appearance of the
@@ -92,22 +130,33 @@ See https://github.com/moewew/biblatex-ext/compare/v0.3...v0.4
 - Renamed option `citeinxref` to `citexref`. Please use the new name.
   Backwards compatibility is in place.
 
+
 ## Version 0.3 (2018-06-04)
 See https://github.com/moewew/biblatex-ext/compare/v0.2...v0.3
-- Added `titlecase:<titletype>` field formats for finer control over the title
+
+### Added
+- `titlecase:<titletype>` field formats for finer control over the title
   casing. The standard styles have the catch-all format `titlecase`. This
   bundle now has `titlecase:title`, `titlecase:booktitle`,
   `titlecase:maintitle`, `titlecase:issuetitle` and `titlecase:journaltitle`.
-- Various documentation improvements.
-- Added toggle `bbx:introcite:plain:keeprelated` to choose not to suppress the
+- Toggle `bbx:introcite:plain:keeprelated` to choose not to suppress the
   `introcite=plain` cite label for default related entries (other
   `relatedtype`s may already suppress the cite label without chance of getting
   it back).
-- Added `\jourvoldelim`, `\jourserdelim` and `\servoldelim`.
+- `\jourvoldelim`, `\jourserdelim` and `\servoldelim`.
+
+### Changed
+- Turned `extradateonlycompcitedelim` into a context-sensitive delimiter.
+- Various documentation improvements.
+
 
 ## Version 0.2 (2018-03-28)
 See https://github.com/moewew/biblatex-ext/compare/v0.1a...v0.2
-- Fixed indentation with `introcite=label`.
+
+### Added
+- `\voltitledelim`
+
+### Changed
 - **Incompatible change** The lengths for `introcite=label` now work like
   `\labelwidth` and `\labelsep` in all other lists.
   `\introcitewidth` controls the maximum length of the label, while
@@ -118,14 +167,25 @@ See https://github.com/moewew/biblatex-ext/compare/v0.1a...v0.2
 - **Incompatible change** `\maintitletitledelim` is now truly the punctuation
   between the `maintitle` and `(book)title` field.
   What was formerly `\maintitledelim` is now `\voltitledelim`.
+- Renamed `bbx:cite:intro` to `bbx:introcite`.
+- Sync with upstream `biblatex` to add `type` and `event+venue+date` to
+  `@unpublished`
+
+### Fixed
+- Indentation with `introcite=label`.
+- Bug in `@online` printing `organization+location+date`.
+
 
 ## Version 0.1a (2018-03-20)
 See https://github.com/moewew/biblatex-ext/compare/v0.1...v0.1a
-- Fixed inner cite delims for `authoryear`/`authortitle` and their `-ibid`
+
+### Fixed
+- Inner cite delims for `authoryear`/`authortitle` and their `-ibid`
   versions.
-- Fixed delimiters for `\smartcite`.
+- Delimiters for `\smartcite`.
   `\smartcite` really behaves like `\parencite` and `\footcite` now.
   This needed some trickery to get the delimiter context right.
+
 
 ## Version 0.1 (2018-03-18)
 - First public release.
