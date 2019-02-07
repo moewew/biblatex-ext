@@ -165,8 +165,8 @@
 \newrobustcmd*{\extblx@create@mkcitedelim}{%
   \extblx@warning{%
     '\string\extblx@create@mkcitedelim' is deprecated.\MessageBreak
-    Use '\RegisterCiteDelims' instead.\MessageBreak
-    Using '\RegisterCiteDelims'}
+    Use '\string\RegisterCiteDelims' instead.\MessageBreak
+    Using '\string\RegisterCiteDelims'}
   \RegisterCiteDelims}
 
 % Some very rudimentary backwards warning code for old names
