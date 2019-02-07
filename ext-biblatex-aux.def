@@ -164,9 +164,9 @@
 
 \newrobustcmd*{\extblx@create@mkcitedelim}{%
   \extblx@warning{%
-    \string\extblx@create@mkcitedelim\space is deprecated.\MessageBreak
-    Use \string\RegisterCiteDelims\space instead.\MessageBreak
-    Using \string\RegisterCiteDelims}
+    '\string\extblx@create@mkcitedelim' is deprecated.\MessageBreak
+    Use '\RegisterCiteDelims' instead.\MessageBreak
+    Using '\RegisterCiteDelims'}
   \RegisterCiteDelims}
 
 % Some very rudimentary backwards warning code for old names

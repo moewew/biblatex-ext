@@ -1,0 +1,172 @@
+﻿\ProvidesPackage{biblatex-ext-oasymb-pict2e}
+  [2019/01/11 v0.6b open access symbols with pict2e (MW)]
+
+\RequirePackage{etoolbox}
+\RequirePackage{kvoptions}
+
+% Internals called 'extblx@oasymb@pict' instead of 'extblx@oasymb@pict2e'
+% to avoid the non-letter "2".
+
+\protected\def\extblx@oasymb@pict@error#1#2{%
+  \PackageError{biblatex-ext-oasymb-pict2e}{#1}{#2.}}
+
+\protected\def\extblx@oasymb@pict@warning@noline{%
+  \PackageWarningNoLine{biblatex-ext-oasymb-pict2e}}
+
+\let\extblx@oasymb@pict@warning\extblx@oasymb@pict@warning@noline
+\AtEndOfPackage{%
+  \protected\def\extblx@oasymb@pict@warning{%
+    \PackageWarning{biblatex-ext-oasymb-pict2e}}}
+
+\RequirePackage{pict2e}
+\RequirePackage{xcolor}
+
+% PLoS Open Access symbol based on
+% https://commons.wikimedia.org/wiki/File:Open_Access_logo_PLoS_white.svg
+% public domain/CC0 by PLoS & Wikipedia users Nina, Beao and JakobVoss
+\definecolor{extblx@oasymb@pict@plos@orange}{HTML}{f68212}
+\newcommand*{\extblx@oasymb@pict@plos@pict}{%
+  \begingroup
+  \setlength{\unitlength}{.1pt}%
+  \begin{picture}(64,99)
+    \color{extblx@oasymb@pict@plos@orange}%
+    \moveto(47,73)\circlearc{32}{73}{15}{000}{180}%
+    \lineto(6,73)\circlearc{32}{73}{26}{180}{0}%
+    \moveto(47,47)\lineto(58,47)\lineto(58,73)\lineto(47,73)\closepath
+    \moveto(64,32)
+    \circlearc{32}{32}{32}{000}{360}%
+    \circlearc{32}{32}{21}{360}{000}%
+    \moveto(41,32)
+    \circlearc{32}{32}{09}{000}{360}%
+    \fillpath
+  \end{picture}%
+  \endgroup
+}
+
+\newsavebox{\extblx@oasymb@pict@plos@box}
+\sbox{\extblx@oasymb@pict@plos@box}{\extblx@oasymb@pict@plos@pict}
+\newcommand*{\extblx@oasymb@pict@plos}{\usebox{\extblx@oasymb@pict@plos@box}}
+
+% PLoS symbols is standard
+\newcommand*{\oasymbol}{\extblx@oasymb@pict@plos}
+
+% Open-Acess.net Open Acess symbol
+% redrawn with pict2e from
+% http://open-access.net/fileadmin/logos/oa.svg
+% public domain according to
+% https://commons.wikimedia.org/wiki/File:Open_access.svg
+% might be covered by open-access.net's overall CC-BY 4.0 license
+% (https://creativecommons.org/licenses/by/4.0/)
+% see https://open-access.net/impressum/
+% the site states no specific conditions for use of the logo
+% other than
+%   "Das Logo der Informationsplattform darf nachgenutzt werden,
+%    gerne mit einem Link zu open-access.net"
+% on https://open-access.net/ueber-uns/
+% see also https://open-access.net/community/materialien/
+% logo by
+% Medien + Design
+% Center for Digital Systems
+% Competence Center for E-Learning and Multimedia
+% Freie Universität Berlin
+\definecolor{extblx@oasymb@pict@oanet@green}{HTML}{356031}
+\definecolor{extblx@oasymb@pict@oanet@gold}{HTML}{f9c63a}
+\definecolor{extblx@oasymb@pict@oanet@intersect}{HTML}{89923a}
+
+\newcommand*{\extblx@oasymb@pict@oanet@pict}{%
+  \begingroup
+  \setlength{\unitlength}{1.1pt}%
+  \begin{picture}(15,8)
+    \color{extblx@oasymb@pict@oanet@green}%
+    \moveto(08.3,04)
+    \circlearc{04}{04}{4.3}{000}{360}%
+    \circlearc{04}{04}{2.7}{360}{000}
+    \fillpath
+    \color{extblx@oasymb@pict@oanet@gold}%
+    \moveto(15.3,04)
+    \circlearc{11}{04}{4.3}{000}{300}%
+    \circlearc{11}{04}{2.7}{300}{000}
+    \lineto(13.7,-.1)\lineto(15.3,-.1)
+    \fillpath
+    \color{extblx@oasymb@pict@oanet@intersect}
+    \moveto(8.3,4)
+    \circlearc{11}{04}{4.3}{144.5}{215.5}%
+    \circlearc{04}{04}{4.3}{-035.5}{035.5}%
+    \fillpath
+  \end{picture}%
+  \endgroup
+}
+
+\newsavebox{\extblx@oasymb@pict@oanet@box}
+\sbox{\extblx@oasymb@pict@oanet@box}{\extblx@oasymb@pict@oanet@pict}
+\newcommand*{\extblx@oasymb@pict@oanet}{\usebox{\extblx@oasymb@pict@oanet@box}}
+
+\protected\def\extblx@oasymb@pict@opt@symbol@process#1{%
+  \begingroup
+  \edef\extblx@oasymb@pict@tempa{\endgroup
+    \noexpand\extblx@oasymb@pict@opt@symbol@process@i{#1}}
+  \extblx@oasymb@pict@tempa}
+
+\def\extblx@oasymb@pict@opt@symbol@process@i#1{%
+  \ifcsundef{extblx@oasymb@pict@#1}
+    {\extblx@oasymb@pict@error
+      {Unknown value\MessageBreak
+       \space\space'#1'\MessageBreak
+       for option 'symbol'}
+      {The symbol '#1' does not exist.\MessageBreak
+       Please consult the documentation for a list of valid options}}
+    {\edef\oasymbol{\expandonce{\csname extblx@oasymb@pict@#1\endcsname}}}}
+
+% Was never defined, so no point in defining it now.
+\iffalse
+\newrobustcmd*{\DefinePictOASymbol}{%
+  \extblx@oasymb@pict@warning{%
+    The command '\DefinePictOASymbol'\MessageBreak
+    is deprecated.\MessageBreak
+    Use '\string\DefineOASymbol' instead.\MessageBreak
+    Using '\string\DefineOASymbol'}%
+  \DefineOASymbol}
+\fi
+
+\newrobustcmd*{\DefineOASymbol}[1][plos]{%
+  \begingroup
+  \edef\extblx@oasymb@pict@tempa{\endgroup
+    \noexpand\extblx@oasymb@pict@DefineOASymbol@i{#1}}%
+  \extblx@oasymb@pict@tempa}
+
+\protected\def\extblx@oasymb@pict@DefineOASymbol@i#1{%
+  \ifcsundef{extblx@oasymb@pict@#1}
+    {\extblx@oasymb@pict@error
+      {Unknown symbol option\MessageBreak
+       \space\space'#1'}
+      {The symbol '#1' does not exist.\MessageBreak
+       Please consult the documentation for a list of valid options}}
+    {\edef\oasymbol{\expandonce{\csname extblx@oasymb@pict@#1\endcsname}}}}
+
+\SetupKeyvalOptions{
+  family=extblx@oasymb@pict@opt,
+  prefix=extblx@oasymb@pict@opt@,
+}
+
+\DeclareStringOption[plos]{symbol}
+\DeclareVoidOption{plos}{\csdef{extblx@oasymb@pict@opt@symbol}{plos}}
+\DeclareVoidOption{oanet}{\csdef{extblx@oasymb@pict@opt@symbol}{oanet}}
+
+\ProcessKeyvalOptions*
+
+\extblx@oasymb@pict@opt@symbol@process{\csuse{extblx@oasymb@pict@opt@symbol}}
+
+\endinput
+%
+% This file is part of the biblatex-ext bundle.
+% biblatex-ext is released under the LaTeX Project Public License v1.3c
+% or later.
+%
+% A complete list of files included in that package can be found in README.md
+% or - failing that - in ext-standard.bbx.
+%
+% Official releases of this package are on CTAN
+%   https://www.ctan.org/pkg/biblatex-ext
+% development takes place on GitHub
+%   https://github.com/moewew/biblatex-ext
+%

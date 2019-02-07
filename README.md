@@ -69,7 +69,9 @@ standard styles. The bundle consists of the following files
 - The package `biblatex-ext-oa.sty`
   - The support package `biblatex-ext-oa-doiapi.sty`
     - The Lua module `blxextdoiapi.lua`
-  - The symbol package `biblatex-ext-oa-tikzsymbols.sty`
+  - The `pict2e` symbol package `biblatex-ext-oasymb-pict2e.sty`
+  - The TikZ symbol package `biblatex-ext-oasymb-tikz.sty`
+  - The `l3draw` symbol package `biblatex-ext-oasymb-l3draw.sty`
 
 All of these files (including `blxextdoiapi.lua`) are runtime files that
 need to be installed where LaTeX can find them.

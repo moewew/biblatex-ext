@@ -17,8 +17,9 @@
   {\extblx@oa@error
      {biblatex not loaded!\MessageBreak
       This package must be loaded after biblatex.\MessageBreak
-      This is a fatal error, the package will not\MessageBreak be loaded}
-     {Load biblatex with \string\usepackage{biblatex} before
+      This is a fatal error, the package will not\MessageBreak
+      be loaded}
+     {Load biblatex with '\string\usepackage{biblatex}' before
       you load 'biblatex-ext-oa'.\MessageBreak
       Please see the documentation of biblatex-ext for more information}%
    \endinput}
@@ -182,38 +183,121 @@
              {\ifcsequal{extblx@oa@url@from}{extblx@oa@url@from@auto}
                 {\@firstoftwo}
                 {\@secondoftwo}}
-           {\forlistloop{\extblx@oa@url@processfield}{\extblx@oa@url@autofields}}
+           {\forlistloop{\extblx@oa@url@processfield}
+                        {\extblx@oa@url@autofields}}
            {\extblx@oa@url@processfield{\csuse{extblx@oa@url@from}}}}}}}
 
 
-\newrobustcmd*{\LoadTikZOASymbol}[1][plos]{%
-  \@ifpackageloaded{biblatex-ext-oa-tikzsymbols}
-    {\extblx@oa@warning{%
-       TikZ open access symbols already loaded.\MessageBreak
-       Redefining the symbol with\MessageBreak\string\DefineTikZOASymbol}%
-     \DefineTikZOASymbol[#1]}
-    {\RequirePackage[symbol=#1]{biblatex-ext-oa-tikzsymbols}}%
-  \gdef\LoadTikZOASymbol{%
-    \extblx@oa@warning{%
-      TikZ open access symbols can not be\MessageBreak
-      loaded more than once.\MessageBreak
-      I'll now behave like \string\DefineTikZOASymbol\MessageBreak}%
-    \DefineTikZOASymbol}}
-\@onlypreamble\LoadTikZOASymbol
+% \Load...Symbol
+\newcommand*{\extblx@oa@loadsymbol@iferror@severalpackages@i}[1]{%
+  \@ifpackageloaded{biblatex-ext-oasymb-#1}
+    {\extblx@oa@error
+       {Package 'biblatex-ext-oasymb-#1' already\MessageBreak
+        loaded.\MessageBreak
+        You can't load several open access\MessageBreak
+        symbol packages together}
+       {You can only load one of the symbol packages.\MessageBreak
+        If you force compilation despite the error I'll pretend to be
+        '\string\DefineOASymbol'}%
+     \edef\extblx@oa@tempa{\endgroup
+       \noexpand\@firstoftwo}}
+    {}}
 
-\def\extblx@oa@opt@tikzsymbol@val@false{}
-\def\extblx@oa@opt@tikzsymbol@val@true{\LoadTikZOASymbol[plos]}
-
-\def\extblx@oa@opt@tikzsymbol@process#1{%
+\newcommand*{\extblx@oa@loadsymbol@iferror@severalpackages}[1]{%
   \begingroup
   \edef\extblx@oa@tempa{\endgroup
-    \noexpand\extblx@oa@opt@tikzsymbol@process@i{#1}}
+    \noexpand\@secondoftwo}%
+  \forcsvlist{\extblx@oa@loadsymbol@iferror@severalpackages@i}{#1}%
   \extblx@oa@tempa}
 
-\def\extblx@oa@opt@tikzsymbol@process@i#1{%
-  \ifcsundef{extblx@oa@opt@tikzsymbol@val@#1}
-    {\LoadTikZOASymbol[#1]}
-    {\csuse{extblx@oa@opt@tikzsymbol@val@#1}}}
+% Define \Load...OASymbol
+% {<Cmd name>}{<package suffix>}{<package description>}
+% {<incompatible package suffixes>}
+\newrobustcmd*{\extblx@oa@define@loadsymbol}[4]{%
+  \expandafter\newrobustcmd\expandafter*\expandafter{%
+  \csname Load#1OASymbol\endcsname}[1][plos]{%
+    \extblx@oa@loadsymbol@iferror@severalpackages{#4}
+      {\DefineOASymbol[##1]}
+      {\@ifpackageloaded{biblatex-ext-oasymb-#2}
+         {\extblx@oa@warning{%
+            #3 open access symbols already loaded.\MessageBreak
+            Redefining the symbol with\MessageBreak
+            '\string\DefineOASymbol'}%
+          \DefineOASymbol[##1]}
+         {\RequirePackage[symbol=##1]{biblatex-ext-oasymb-#2}}%
+       \csgdef{Load#1OASymbol}{%
+         \extblx@oa@warning{%
+           #3 open access symbols can not be\MessageBreak
+           loaded more than once.\MessageBreak
+           I'll now behave like '\string\DefineOASymbol'\MessageBreak}%
+         \DefineOASymbol}}}
+  \expandafter\@onlypreamble\csname Load#1OASymbol\endcsname}
+
+% \LoadPictOASymbol
+\extblx@oa@define@loadsymbol{Pict}{pict}{pict2e}{draw,tikz}
+% \LoadDrawOASymbol
+\extblx@oa@define@loadsymbol{Draw}{draw}{l3draw}{pict,tikz}
+% \LoadTikZOASymbol
+\extblx@oa@define@loadsymbol{TikZ}{tikz}{TikZ}{pict,draw}
+
+
+\newcommand*{\extblx@oa@symbolpackages}{}
+\forcsvlist{\listadd\extblx@oa@symbolpackages}{pict2e,l3draw,tikz}
+
+\newtoggle{extblx@tempa}
+\newcommand*{\extblx@oa@loadoasymbol@errorincompatible}[2]{%
+  \ifstrequal{#1}{#2}
+    {}
+    {\@ifpackageloaded{biblatex-ext-oasymb-#2}
+       {\extblx@oa@error
+          {Incompatible symbol method '#2' already loaded}
+          {Only one symbol package can be loaded.\MessageBreak
+           The symbol method '#2' is already loaded, so '#1' can't be used.%
+           \MessageBreak
+           If you ignore this error and press on, I will ignore this command}%
+        \edef\extblx@oa@tempa{\endgroup
+          \noexpand\@firstoftwo}%
+        \listbreak}
+       {}}}
+
+% [<symbol id>]{<method>}
+% first step expands fully(!)
+\newrobustcmd*{\LoadOASymbolPackage}[2][plos]{%
+  \begingroup
+  \edef\extblx@oa@tempa{\endgroup
+    \noexpand\LoadOASymbolPackage@i[#1]{#2}}%
+  \extblx@oa@tempa}
+
+% second step gives all lowercase
+\def\LoadOASymbolPackage@i[#1]#2{%
+  \begingroup
+  \lowercase{\def\extblx@oa@tempb{#1}}%
+  \lowercase{\def\extblx@oa@tempc{#2}}
+  \edef\extblx@oa@tempa{\endgroup
+    \noexpand\LoadOASymbolPackage@ii[\extblx@oa@tempb]{\extblx@oa@tempc}}%
+  \extblx@oa@tempa}%
+
+\def\LoadOASymbolPackage@ii[#1]#2{%
+  \ifinlist{#2}{\extblx@oa@symbolpackages}
+    {\begingroup
+     \edef\extblx@oa@tempa{\endgroup
+       \noexpand\@secondoftwo}%
+     \forlistloop
+       {\extblx@oa@loadoasymbol@errorincompatible{#2}}
+       {\extblx@oa@symbolpackages}%
+     \extblx@oa@tempa
+       {}
+       {\@ifpackageloaded{biblatex-ext-oasymb-#2}
+          {\extblx@oa@warning{%
+             Symbol method '#2' already loaded.\MessageBreak
+             I'll behave like '\string\DefineOASymbol'}%
+           \DefineOASymbol[#1]}
+          {\RequirePackage[symbol=#1]{biblatex-ext-oasymb-#2}}}}
+    {\extblx@oa@error
+      {Unknown symbol package/method '#2'}
+      {The symbol method '#2' (package 'biblatex-ext-oasymb-#2') is unknown.%
+       \MessageBreak
+       See the documentation for a list of available values}}}
 
 \SetupKeyvalOptions{
   family=extblx@oa@opt,
@@ -222,12 +306,61 @@
 
 \DeclareBoolOption[true]{enable}
 \DeclareBoolOption[false]{doiapi}
-\DeclareStringOption[false]{tikzsymbol}[true]
+\DeclareStringOption[false]{symbolpackage}
+\DeclareStringOption{symbol}
+
+% deprecated option
+\DeclareStringOption{tikzsymbol}[true]
+
+\def\extblx@oa@opt@tikzsymbol@val@false{}
+\def\extblx@oa@opt@tikzsymbol@val@true{\LoadOASymbolPackage[plos]{tikz}}
+
+\def\extblx@oa@opt@tikzsymbol@process#1{%
+  \begingroup
+  \edef\extblx@oa@tempa{\endgroup
+    \noexpand\extblx@oa@opt@tikzsymbol@process@i{#1}}
+  \extblx@oa@tempa}
+
+\def\extblx@oa@opt@tikzsymbol@process@i#1{%
+  \extblx@oa@warning{%
+    The option 'tikzsymbol' is deprecated.\MessageBreak
+    It has been replaced by the separate options\MessageBreak
+    'symbolpackage' and 'symbol'.\MessageBreak
+    Setting 'symbolpackage=tikz, symbol=#1'}%
+  \ifcsundef{extblx@oa@opt@tikzsymbol@val@#1}
+    {\LoadOASymbolPackage[#1]{tikz}}
+    {\csuse{extblx@oa@opt@tikzsymbol@val@#1}}}
+
+
 
 
 \ProcessKeyvalOptions*
 
-\extblx@oa@opt@tikzsymbol@process{\csuse{extblx@oa@opt@tikzsymbol}}
+% deprecated option 'tikzsymbol'
+\ifdefvoid\extblx@oa@opt@tikzsymbol
+  {}
+  {\extblx@oa@opt@tikzsymbol@process{\extblx@oa@opt@tikzsymbol}}
+
+% option 'symbolpackage'
+\ifdefstring{\extblx@oa@opt@symbolpackage}{false}
+  {}
+  {\LoadOASymbolPackage{\extblx@oa@opt@symbolpackage}}
+
+% option 'symbol'
+\ifdefvoid\extblx@oa@opt@symbol
+  {}
+  {\ifundef\DefineOASymbol
+     {\extblx@oa@error
+        {Option 'symbol' used, but no symbol method\MessageBreak
+         has been set and no symbol package loaded}
+        {The option 'symbol' can only be used if\MessageBreak
+         * the option 'symbolpackage' is set to a valid value other than 'false',
+         or\MessageBreak
+         * an open access symbol package has been loaded manually
+         (not recommended)}}
+     {\DefineOASymbol[\extblx@oa@opt@symbol]}}
+
+
 
 \ifbool{extblx@oa@opt@doiapi}
   {\RequirePackage{biblatex-ext-oa-doiapi}}

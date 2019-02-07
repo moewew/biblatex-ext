@@ -43,11 +43,24 @@
   >{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
 \usepackage[listings, breakable, skins]{tcolorbox}%
 \usetikzlibrary{arrows.meta}
+\usetikzlibrary{shapes.geometric}
 \usepackage[style=ext-authoryear-iecomp, backend=biber]{biblatex}
 \addbibresource{biblatex-examples.bib}
 \addbibresource{biblatex-ext-examples.bib}
 \usepackage{biblatex-ext-tabular}
-\usepackage[tikzsymbol=plos]{biblatex-ext-oa}
+\usepackage{biblatex-ext-oa}
+% Normally, the following packages should not be loaded explicitly.
+% Instead, one of them (and *only* one) should be loaded via
+% biblatex-ext-oa's options.
+\usepackage{biblatex-ext-oasymb-tikz}
+% We need to undefine \oasymbol to be able to load the other packages as well.
+\undef\oasymbol
+\undef\DefineOASymbol
+\usepackage{biblatex-ext-oasymb-l3draw}
+% We need to undefine \oasymbol to be able to load the other packages as well.
+\undef\oasymbol
+\undef\DefineOASymbol
+\usepackage{biblatex-ext-oasymb-pict2e}
 
 \makeatletter
 \defbibcheck{examplebib}{%
@@ -177,7 +190,24 @@
   listing style = extblxstylebibtex,
   #1}
 
-\makeatletter
+\newtcolorbox{warnbox}[1][]{%
+  enhanced,
+  colframe=red, colback=red!5!white,
+  underlay={%
+    \path[draw=none] (interior.south east)
+                     rectangle node{\warnsymbol}
+                     ([xshift=15mm,yshift=.1cm]interior.north east);},
+  #1}
+
+\newtcolorbox{remindbox}[1][]{%
+  enhanced,
+  colframe=yellow, colback=yellow!5!white,
+  underlay={%
+    \path[draw=none] (interior.south east)
+                     rectangle node{\dbendsymbol}
+                     ([xshift=15mm,yshift=.1cm]interior.north east);},
+  #1}
+
 \AtUsedriver*{%
   \let\newblock\relax
   \let\abx@macro@bibindex\@empty
@@ -387,7 +417,6 @@
     node[anchor=\punctarrow@nodeanchor,text = black]
     {\punctarrow@hyperref{#1}{\punctarrow@cmdfont\cmd{#1}}};%
 }
-\makeatother
 
 % By Stefan Kottwitz, see https://tex.stackexchange.com/a/799/35864
 \newcommand*\justify{%
@@ -413,7 +442,6 @@
 
 \newrobustcmd*{\gencode}[1]{{\verbatimfont\justify #1}}
 
-\makeatletter
 \def\exltd@buildhypercmd@i#1{%
   \expandafter\newrobustcmd\expandafter*\expandafter
     {\csname hyper#1@i\endcsname}[2][]{%
@@ -430,7 +458,6 @@
   \hskip 0em plus 0.15em\relax
   =\penalty\hyphenpenalty
   \hskip 0em plus 0.15em\relax #2}}
-\makeatother
 
 \newcommand*{\ctan}{\mkbibacro{CTAN}}
 \newcommand*{\gitbaseurl}{https://github.com/moewew/biblatex-ext}
@@ -455,7 +482,6 @@
   \newcommand*{\hmpdr}{$\bm{\rangle}$}
 \fi
 
-\makeatletter
 \iffontspec
 \def\textvisiblespace{%
   \raisebox{-2.2pt}{%
@@ -464,15 +490,36 @@
     \hbox{\vrule \@height.5ex \@width.12ex}%
     \kern.04em}}
 \fi
-\makeatother
+
+% Bourbaki dangerous bend symbol by Heiko Oberdiek
+% https://tex.stackexchange.com/users/16967/heiko-oberdiek
+% https://tex.stackexchange.com/a/262510/35864
+\newcommand*{\dbendsymbol@tikz}{%
+  \begin{tikzpicture}[
+    line cap=but,
+    line join=round,
+    x=1.2em,
+    line width=2pt,
+    y=2*(height("Z")-\pgflinewidth)*(1-sin(10)),
+    rotate=-10,
+    rounded corners=1.5pt,]
+    \draw (.5,.5) node[scale=2,draw,diamond,fill=yellow,color=yellow] {};
+    \draw (1, 0) -- (0, 0) -- (1, 1) -- (0, 1);
+  \end{tikzpicture}}
+
+\newsavebox{\dbendsymbol@box}
+\sbox{\dbendsymbol@box}{\dbendsymbol@tikz}
+\newcommand*{\dbendsymbol}{\usebox{\dbendsymbol@box}}
 
 \newcommand{\warnsymbol}{%
   \makebox[2em][c]{%
     \makebox[0pt][c]{\raisebox{.26em}{\LARGE\bfseries!}}%
-    \makebox[0pt][c]{\fontsize{40}{40}\selectfont\color{red}$\bigtriangleup$}}}
+    \makebox[0pt][c]{%
+      \fontsize{40}{40}\selectfont\color{red}$\bigtriangleup$}}}
 
 \newcommand*{\marginwarn}{%
   \leavevmode\marginpar{\raisebox{-1.5em}{\warnsymbol}}}
+
 \makeatother
 
 \titlepage{%
@@ -504,6 +551,8 @@
   main-title-after-title
   jour-vol-delim
   in-name-before-title
+  tikz-picture
+  Define-OA-Symbol
 }
 
 
@@ -2225,7 +2274,7 @@ and modified to allow for slightly more flexible setups, so any bugs you find
 are mine and not Audrey's. Please report them via the channels mentioned above
 in~\cref{sec:feedback}.
 
-\marginwarn Before tabular bibliographies can be used, a suitable definition
+Before tabular bibliographies can be used, a suitable definition
 must be supplied with \hypercmd{defbibtabular}.
 
 \begin{ltxsyntax}
@@ -2237,12 +2286,14 @@ It accepts the same options as \cmd{printbibliography}, but note that
 \hypercmd{defbibtabular}.
 The default value for \optval{env} is \optval{bibtabular}.
 
-\marginwarn\emph{Note that there is no default definition for the
+\begin{warnbox}
+Note that there is no default definition for the
 \opt{bibtabular} environment, so you must define it with
 \hypercmd{defbibtabular} before use.
 An error will be issued if you fail to provide a definition
 for \optval{bibtabular} before you use \cmd{printbibtabular} with the default
-\optval{env} value, no bibliography will be printed.}
+\optval{env} value and no bibliography will be printed.
+\end{warnbox}
 
 \cmditem{defbibtabular}{name}{begin code}{end code}{row code}
 
@@ -2257,8 +2308,10 @@ The \prm{row code} holds the code for one row in the tabular bibliography,
 it should have no more columns than ordered in \prm{begin code} and should
 end with \lstinline|\\|.
 
+\begin{remindbox}
 Please keep in mind that the tabular bibliography is subject to all limitations
 of the particular tabular environment you decide to use.
+\end{remindbox}
 
 Within the \prm{row code} argument the following macros are defined and can be
 used to typeset the result of bibliography macros.
@@ -2406,7 +2459,7 @@ Using \cmd{defbibtabulartwocolumn} the example from above could be written as
 \end{ltxsyntax}
 
 \clearpage
-\section{Open Access Symbols}\label{sec:oasymb}
+\section{Open Access Symbols}\label{sec:oa}
 \label{exltd@itm@biblatex-ext-oa}
 The package \sty{biblatex-ext-oa} was inspired by a question%
 \fnurl{https://tex.stackexchange.com/q/459449/35864}
@@ -2422,21 +2475,30 @@ should work with most contributed styles at least to some extent.
 For the actual typesetting of the symbol \sty{biblatex-ext-oa}
 patches the bibliography macro \bibmacro{begentry} to include a call to the
 bibliography macro \hyperbibmacro{oamark}.
-That means that you have to keep in mind this behaviour should you want to
-redefine \bibmacro{begentry} yourself.
 \begin{biblatexcode}
 \usepackage[(*@\prm{\sty{biblatex} options}@*)]{biblatex}
 (*@\dots @*)
 \usepackage[(*@\prm{\sty{biblatex-ext-oa} options}@*)]{biblatex-ext-oa}
 \end{biblatexcode}
 
-The package may load the support packages \hypersty{biblatex-ext-oa-doiapi} and
-\hypersty{biblatex-ext-oa-tikzsymbols}.
-The preferred way to load these packages is with \sty{biblatex-ext-oa}'s
+The package may load the support packages \hypersty{biblatex-ext-oa-doiapi},
+\hypersty{biblatex-ext-oasymb-pict2e}, \hypersty{biblatex-ext-oasymb-l3draw}
+ and \hypersty{biblatex-ext-oasymb-tikz}.
+The preferred way to load these packages is via \sty{biblatex-ext-oa}'s
 package options.
-It should usually not be necessary to load these two packages directly with
-\cmd{usepackage}, but it is possible to use them as stand-alone packages
-should the need arise in other situations.
+It should usually not be necessary to load any of these support packages
+directly with \cmd{usepackage}, but it is possible to use them as stand-alone
+packages should the need arise in other situations.
+
+\begin{warnbox}
+Note that the macro \hypercmd{oasymbol} must be defined and should contain an
+open access symbol that can be printed in the margin for the package
+\sty{biblatex-ext-oa} to work properly.
+The package \sty{biblatex-ext-oa} itself does not provide a defintion for
+\hypercmd{oasymbol} if the option \hyperopt{symbolpackage} is not used.
+So you should either set that option or define command \hypercmd{oasymbol}
+yourself.
+\end{warnbox}
 
 The package \sty{biblatex-ext-oa} provides the following load-time options.
 \begin{optionlist}
@@ -2455,29 +2517,49 @@ If the package is loaded with \opt{enable} set to \optval{false} the global
 bibliography option \hyperopt{openaccess} will be set to \optval{false} and no
 sensible defaults are defined for the semi-automatic open access detection.
 
-\optitem[false]{tikzsymbol}{\optval{true}, \optval{false},
-  \prm{symbol identifier}}
+\optitem[false]{symbolpackage}{\optval{false}, \optval{pict2e}, \optval{l3draw},
+  \optval{tikz}}
 
-Load the support package \hypersty{biblatex-ext-oa-tikzsymbols} with its
-load-time option \opt{symbol} set to \prm{symbol identifier}.
-The values \optval{true} and \optval{false} are provided for convenience.
-\optval{false} does not load the package at all, \optval{true} is like giving
-the value \optval{plos}.
+Load one of the available open access symbol support packages.
+\begin{valuelist}
+  \item[false] Don't load any symbol package.
+    \begin{warnbox}
+      Since \sty{biblatex-ext-oa} does not provide a default definition for
+      \hypercmd{oasymbol}, you will have to define that command yourself if you
+      don't load any of the symbol packages.
+    \end{warnbox}
+  \item[pict2e] Load \hypersty{biblatex-ext-oasymb-pict2e} to provide a
+    definition for \hypercmd{oasymbol}.
+    See \cref{sec:oa:symbol,sec:oa:symbol-pict2e}.
+  \item[l3draw] Load \hypersty{biblatex-ext-oasymb-l3draw} to provide a
+    definition for \hypercmd{oasymbol}.
+    See \cref{sec:oa:symbol,sec:oa:symbol-l3draw}.
+    \begin{remindbox}
+      The package \hypersty{biblatex-ext-oasymb-l3draw} will load the entire
+      \LaTeX3 core.
+      Furthermore, \sty{l3draw} is still considered experimental.
+    \end{remindbox}
+  \item[tikz] Load \hypersty{biblatex-ext-oasymb-tikz} to provide a
+    definition for \hypercmd{oasymbol}.
+    See \cref{sec:oa:symbol,sec:oa:symbol-tikz}.
+    \begin{remindbox}
+      The package \hypersty{biblatex-ext-oasymb-tikz} will load \pgftikz.
+    \end{remindbox}
+\end{valuelist}
 
-See \cref{sec:oa-symbol} for a thorough discussion of the available symbols
-as well as a short note on their respective licenses.
+\begingroup
+\makeatletter
+% Avoid a multiply defined label.
+% I know this is terrible, ...
+\def\ltd@pdfbookmark#1#2{%
+  \exltd@pdfbookmark{#1}{#2}}
+\makeatother
+\optitem{symbol}{\prm{symbol}}
+\endgroup
 
-\marginwarn Note that \hypersty{biblatex-ext-oa-tikzsymbols} will load \pgftikz
-\fnurl{https://ctan.org/pkg/pgf} to draw the open access symbols.
-If you prefer a more light-weight solution, you can define a symbol yourself
-with an external graphics file.
+Set \hypercmd{oasymbol} to output the symbol identified as \prm{symbol}.
+The available options can be found in \cref{sec:oa:symbol}.
 
-\marginwarn
-Note further that for the package \sty{biblatex-ext-oa} to work properly
-the macro \hypercmd{oasymbol} must be defined and should contain an open access
-symbol that can be printed in the margin.
-The package \sty{biblatex-ext-oa} itself does not provide a defintion for
-\hypercmd{oasymbol} if the option \opt{tikzsymbol} is not used.
 
 \boolitem[false]{doiapi}
 
@@ -2485,35 +2567,41 @@ Whether or not to load the support package \hypersty{biblatex-ext-oa-doiapi}
 that provides a Lua module to query open access information
 from Unpaywall\fnurl{https://unpaywall.org/} via the DOI of an entry.
 
-\marginwarn The package \hypersty{biblatex-ext-oa-doiapi} and thus this option
+\begin{warnbox}
+The package \hypersty{biblatex-ext-oa-doiapi} and thus this option
 can only be used with \lualatex.
+\end{warnbox}
 \end{optionlist}
 
+\clearpage
 The following macros in \sty{biblatex-ext-oa} are also of interest.
 \begin{ltxsyntax}
-\cmditem{LoadTikZOASymbol}[symbol]
 
-This command provides an alternative way of loading the
-\hypersty{biblatex-ext-oa-tikzsymbols} support package.
+
+\cmditem{LoadOASymbolPackage}[symbol]{package}
+
+This command provides an alternative to \hyperopt{symbolpackage} for loading
+a symbol package.
+The mandatory argument \prm{package} can take the same values as the
+\hyperopt{symbolpackage} option.
 The optional argument \prm{symbol} has the same meaning as the possible values
-for the \hyperopt{tikzsymbol} package option.
+for the \hyperopt{symbol} package option.
 
 The command can only be used in the preamble.
-It may only be used once and only if \hypersty{biblatex-ext-oa-tikzsymbols} has
-not been loaded before.
+It may only be used once and only if none of the symbol packages have been
+loaded either explicitly or via the \hyperopt{symbolpackage} option.
 
-This command is related to \hypercmd{DefineTikZOASymbol} of
-\hypersty{biblatex-ext-oa-tikzsymbols} (see \cref{sec:oa-symbol}).
+This command is related to \hypercmd{DefineOASymbol} (see \cref{sec:oa:symbol}).
 
 \cmditem{oasymbol}
 
 This commands holds the little symbol that is going to be printed in the margin
 to mark open access publications.
 
-\marginwarn The command is initially undefined and must be defined for the
+This command is initially undefined and must be defined for the
 package to work.
 One way of giving this command a useful definition is via the
-\hyperopt{tikzsymbol} option of \sty{biblatex-ext-oa}.
+\hyperopt{symbolpackage} option of \sty{biblatex-ext-oa}.
 \end{ltxsyntax}
 
 An entry will be marked as open access if it has a \enquote{best open access
@@ -2552,8 +2640,8 @@ open access URL may not be amongst the fields that are already displayed
 in the entry.
 \end{keymarglistbook}
 
-\marginwarn
-With \opt{enable} set to \optval{true} the package will furtermore patch
+\begin{remindbox}
+With \opt{enable} set to \optval{true} the package will furthermore patch
 the bibliography macro \bibmacro{begentry} to execute the bibliography macro
 \hyperbibmacro{oamark}.
 If additionally \hyperopt{doiapi} is \optval{true}, the bibliography macro
@@ -2561,6 +2649,7 @@ If additionally \hyperopt{doiapi} is \optval{true}, the bibliography macro
 \hyperbibmacro{api:bestoaurl}.
 Please keep that in mind should you need to redefine \bibmacro{begentry}
 or \bibmacro{doi+eprint+url}.
+\end{remindbox}
 
 \subsection{Open access detection}\label{sec:oa:detect}
 The heart of the package \sty{biblatex-ext-oa} is the bibliography option
@@ -2598,10 +2687,12 @@ per-entry), but it may not be useful to use a particular option at all levels.
 \item[doiapi] Use API queries from the \sty{biblatex-ext-oa-doiapi} package
   to determine the best open access link from the DOI.
 
-  \marginwarn This option requires that the \hyperopt{doiapi} package option be
+  \begin{warnbox}
+  This option requires that the \hyperopt{doiapi} package option be
   set to \optval{true} and only works with \lualatex.
   Furthermore it needs a DOI in the \bibfield{doi} field.
   If the \bibfield{doi} field is empty, this option falls back to \optval{auto}.
+  \end{warnbox}
 
 \item[onlydoiapi] Like \optval{doiapi}, but does not fall back to \optval{auto}
   in case no DOI is present.
@@ -2792,10 +2883,12 @@ option of \sty{biblatex-ext-oa}, provides means to automatically find the
 best open access link to a given article via its DOI by querying the
 Unpaywall API\fnurl{https://unpaywall.org/}.
 
-\marginwarn This package can only be used with \lualatex{} and needs online
+\begin{warnbox}
+This package can only be used with \lualatex{} and needs online
 access.
 Furthermore the Unpaywall API requires an email address and asks to limit
 calls to 100000 per day\fnurl{https://unpaywall.org/products/api}.
+\end{warnbox}
 
 To avoid too many calls to the API, the package caches its information in the
 temporary \filename{.oai} file.
@@ -2811,13 +2904,14 @@ expiration period.
 Define the email address that is going to be used for API queries that require
 an email.
 
-\marginwarn
+\begin{warnbox}
 There is no predefined default email address.
 If the package is loaded and no email was provided until the
 beginning of the document (as tested in an \cmd{AtBeginDocument} hook)
 you will recieve a warning.
 A fatal error will be thrown if you try to query the Unpaywall database
 without an email address.
+\end{warnbox}
 
 \cmditem{SetDOIAPICacheExpiration}{days}
 
@@ -2838,31 +2932,41 @@ the \cmd{url} macro.
 
 \cmditem{OpenaccessURLisDOI}{DOI}{true}{false}
 
-Expands to \prm{true} if the best open access URL as resturned by the Unpaywall
+Expands to \prm{true} if the best open access URL as returned by the Unpaywall
 API is the DOI and to \prm{false} otherwise.
 \end{ltxsyntax}
 
 
+\subsection{Open access symbols}\label{sec:oa:symbol}
+Currently, this bundle offers three options to provide the open access
+symbols.
+The package \hypersty{biblatex-ext-oasymb-pict2e} draws the symbols using
+\sty{pict2e}'s \env{picture} environment.
+The package \hypersty{biblatex-ext-oasymb-tikz}
+uses \pgftikz's \env{tikzpicture}.
+The package \hypersty{biblatex-ext-oasymb-l3draw} finally
+uses \LaTeX3's \sty{l3draw} package.
+The main purpose of these packages is to define the macro \cmd{oasymbol} for
+use with \sty{biblatex-ext-oa}.
 
-\subsection{Open access symbols with Ti\emph{k}Z}\label{sec:oa-symbol}
-\label{exltd@itm@biblatex-ext-oa-tikzsymbols}
-The main purpose of the package \sty{biblatex-ext-oa-tikzsymbols}
-is to define the command \hypercmd{oasymbol}.
-As mentioned above, usually this package is not going to be loaded as a
-stand-alone package, instead it is loaded via
-\hypersty[tikzsymbol]{biblatex-ext-oa}.
+The packages should usually not have to be loaded explicitly, instead
+they are loaded via the \hyperopt{symbolpackage} option of
+\hypersty{biblatex-ext-oa}.
 
-If used as a stand-alone package, \sty{biblatex-ext-oa-tikzsymbols} has one
-load-time option.
+All packages define a similar set of macros, so they can not be loaded
+together.
+If used as stand-alone packages, all packages only have one option.
+
 \begin{optionlist}
-\optitem{symbol}{\optval{plos}, \optval{oanet}}
+\optitem[plos]{symbol}{\optval{plos}, \optval{oanet}}
 
 This options determines which of the two provided symbols is going to be used
 for \hypercmd{oasymbol}.
 
+The possible values are
 \begin{valuelist}
 \item[plos] Use the open access symbol by PLOS | Public Library of Science%
-  \fnurl{https://www.plos.org/} \csuse{extblx@oasymbol@plos}.
+  \fnurl{https://www.plos.org/} \csuse{extblx@oasymb@pict@plos}.
 
   The drawing is based on a CC0%
   \fnurl{https://creativecommons.org/publicdomain/zero/1.0/deed.en}
@@ -2872,7 +2976,7 @@ for \hypercmd{oasymbol}.
 
 \item[oanet] Use the open access symbol by open-access.net%
   \fnurl{https://open-access.net/}
-  \csuse{extblx@oasymbol@oanet}.
+  \csuse{extblx@oasymb@pict@oanet}.
 
   The drawing is based on the logo uploaded to Wikimedia%
   \fnurl{https://commons.wikimedia.org/wiki/File:Open_access.svg}
@@ -2914,14 +3018,100 @@ for \hypercmd{oasymbol}.
 \end{valuelist}
 \end{optionlist}
 
-Apart from \hypercmd{oasymbol} the package only defines one other user-level
+Apart from \hypercmd{oasymbol} the packages only define one other user-level
 command.
 \begin{ltxsyntax}
-\cmditem{DefineTikZOASymbol}[symbol]
+\cmditem{DefineOASymbol}[symbol]
 
-This command redefines \hypercmd{oasymbol} to point to either the PLOS version
-or the open-access.net version of the logo.
+This command redefines \hypercmd{oasymbol} to point to a different version
+of the symbol.
+The possible values for the \prm{symbol} argument are the values of the
+\hyperopt{symbol} option.
 \end{ltxsyntax}
+
+\subsubsection[\sty{pict2e}]{Open access symbols with \sty{pict2e}}
+\label{sec:oa:symbol-pict2e}
+\label{exltd@itm@biblatex-ext-oasymb-pict2e}
+The main purpose of the package \sty{biblatex-ext-oasymb-pict2e}
+is to define the command \hypercmd{oasymbol}.
+As mentioned above, usually this package is not going to be loaded as a
+stand-alone package, instead it is loaded via
+\hypersty[symbolpackage]{biblatex-ext-oa}.
+
+The package requires and loads the packages
+\sty{pict2e}\fnurl{https://ctan.org/pkg/pict2e} by Hubert Gäßlein,
+Rolf Nie\-praschk and Josef Tkadlec
+as well as
+\sty{xcolor}\fnurl{https://ctan.org/pkg/xcolor} by Uwe Kern.
+
+If used as a stand-alone package, \sty{biblatex-ext-oasymb-pict2e} has one
+load-time option, namely \hyperopt{symbol}, and defines one command besides
+\hypercmd{oasymbol}, namely \hypercmd{DefineOASymbol}.
+The option determines whether \cmd{oasymbol} is defined to display
+the PLOS symbol~(\csuse{extblx@oasymb@pict@plos})
+or the open-access.net symbol~(\csuse{extblx@oasymb@pict@oanet}).
+The command \hypercmd{DefineOASymbol} can be used to change the definition
+of \cmd{oasymbol} on the fly.
+
+
+\subsubsection[Ti\emph{k}Z]{Open access symbols with Ti\emph{k}Z}
+\label{sec:oa:symbol-tikz}
+\label{exltd@itm@biblatex-ext-oasymb-tikz}
+The main purpose of the package \sty{biblatex-ext-oasymb-tikz}
+is to define the command \hypercmd{oasymbol}.
+As mentioned above, usually this package is not going to be loaded as a
+stand-alone package, instead it is loaded via
+\hypersty[symbolpackage]{biblatex-ext-oa}.
+
+This package requires and loads the package
+\sty{tikz}\fnurl{https://ctan.org/pkg/pgf} by Till Tantau as well as all
+its dependencies.
+
+If used as a stand-alone package, \sty{biblatex-ext-oasymb-tikz} has one
+load-time option, namely \hyperopt{symbol}, and defines one command besides
+\hypercmd{oasymbol}, namely \hypercmd{DefineOASymbol}.
+The option determines whether \cmd{oasymbol} is defined to display
+the PLOS symbol~(\csuse{extblx@oasymb@tikz@plos})
+or the open-access.net symbol~(\csuse{extblx@oasymb@tikz@oanet}).
+The command \hypercmd{DefineOASymbol} can be used to change the definition
+of \cmd{oasymbol} on the fly.
+
+This package used to be called \sty{biblatex-ext-oa-tikzsymbols},
+for consistency reasons it has been renamed to \sty{biblatex-ext-oasymb-tikz}.
+
+The command \cmd{DefineTikZOASymbol} has been renamed to the more generic
+\hypercmd{DefineOASymbol}.
+Backwards compatibility code for that change is in place.
+
+
+\subsubsection[\sty{l3draw}]{Open access symbols with \sty{l3draw}}
+\label{sec:oa:symbol-l3draw}
+\label{exltd@itm@biblatex-ext-oasymb-l3draw}
+The main purpose of the package \sty{biblatex-ext-oasymb-l3draw}
+is to define the command \hypercmd{oasymbol}.
+As mentioned above, usually this package is not going to be loaded as a
+stand-alone package, instead it is loaded via
+\hypersty[symbolpackage]{biblatex-ext-oa}.
+
+This package requires and loads the full force of \LaTeX3.
+Aside from the main package \sty{expl3}\fnurl{https://ctan.org/pkg/expl3} it
+loads \sty{xparse}\fnurl{https://ctan.org/pkg/xparse},
+and \sty{l3keys2e}\fnurl{https://ctan.org/pkg/l3keys2e}.
+Drawing is performed with the (still experimental)
+\sty{l3draw}\fnurl{https://ctan.org/pkg/l3experimental} and
+\sty{l3color}\fnurl{https://ctan.org/pkg/l3experimental} packages.
+
+If used as a stand-alone package, \sty{biblatex-ext-oasymb-l3draw} has one
+load-time option, namely \hyperopt{symbol}, and defines one command besides
+\hypercmd{oasymbol}, namely \hypercmd{DefineOASymbol}.
+The option determines whether \cmd{oasymbol} is defined to display
+the PLOS symbol~(\csuse{extblx@oasymb@draw@plos})
+or the open-access.net symbol~(\csuse{extblx@oasymb@draw@oanet}).
+The command \hypercmd{DefineOASymbol} can be used to change the definition
+of \cmd{oasymbol} on the fly.
+
+
+
 
 \clearpage
 \section{Revision History}\label{sec:log}
@@ -2934,13 +3124,23 @@ The numbers on the right indicate the relevant section of the manual.
 \begin{release}{<version>}{<date>}
   \item Added outer citation delimiters for \cmd{supercite}%
     \see{sec:opt:citedelims}
+  \item Added \hypersty{biblatex-ext-oasymb-pict2e}\see{sec:oa:symbol-pict2e}
+  \item Added \hypersty{biblatex-ext-oasymb-l3draw}\see{sec:oa:symbol-l3draw}
+  \item Renamed  \sty{biblatex-ext-oa-tikzsymbols} to
+    \hypersty{biblatex-ext-oasymb-tikz}\see{sec:oa:symbol-tikz}
+  \item Deprecated option \opt{tikzsymbol} of \hypersty{biblatex-ext-oa} in
+    favour of \hyperopt{symbolpackage} and \hyperopt{symbol}\see{sec:oa}
+  \item Renamed and generalised \cmd{DefineTikZOASymbol} to
+    \hypercmd{DefineOASymbol}\see{sec:oa:symbol}
+  \item Renamed and generalised \cmd{LoadTikZOASymbol} to
+    \hypercmd{LoadOASymbolPackage}\see{sec:oa}
 \end{release}
 \begin{release}{0.6b}{2019-01-11}
   \item Fixed issue loading \texttt{socket.url} module in
     \hypersty{biblatex-ext-oa-doiapi}\see{sec:oa:doiapi}
 \end{release}
 \begin{release}{0.6a}{2019-01-04}
-  \item Minor improvements for \hypersty{biblatex-ext-oa}\see{sec:oasymb}
+  \item Minor improvements for \hypersty{biblatex-ext-oa}\see{sec:oa}
 \end{release}
 \begin{release}{0.6}{2018-11-23}
   \item Require \sty{biblatex} 3.12
@@ -2948,7 +3148,7 @@ The numbers on the right indicate the relevant section of the manual.
     per-entry and per-type basis\see{sec:opt:style}
   \item Added \hypercmd{titleaddonpunct}\see{sec:opt:punct}
   \item Added \hypersty{biblatex-ext-oa} package for open access symbols%
-    \see{sec:oasymb}
+    \see{sec:oa}
 \end{release}
 \begin{release}{0.5a}{2018-10-09}
   \item Fixed a bug with \cmd{footcites} and \cmd{footcitetexts} in

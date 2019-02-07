@@ -1,0 +1,204 @@
+﻿\RequirePackage{expl3}
+
+\ProvidesExplPackage {biblatex-ext-oasymb-l3draw}
+  {2019/01/11} {0.6b}
+  {open access symbols with TikZ (MW)}
+
+\RequirePackage{xparse}
+\RequirePackage{l3keys2e}
+\RequirePackage{l3draw}
+
+% PLoS Open Access symbol based on
+% https://commons.wikimedia.org/wiki/File:Open_Access_logo_PLoS_white.svg
+% public domain/CC0 by PLoS & Wikipedia users Nina, Beao and JakobVoss
+
+\color_set:nnn {oasymb_plos_orange} {cmyk} {0, .47, .93, .04}
+\dim_const:Nn \l__extblx_oasymb_scale_plos_dim {.1pt}
+
+\cs_new_protected:Nn \__extblx_oasymb_plos_path:
+{
+  \draw_begin:
+    \draw_path_moveto:n { 47*\l__extblx_oasymb_scale_plos_dim,
+                          73*\l__extblx_oasymb_scale_plos_dim }
+    \draw_path_arc:nnn { 000 } { 180 } { 15*\l__extblx_oasymb_scale_plos_dim }
+    \draw_path_lineto:n {  6*\l__extblx_oasymb_scale_plos_dim,
+                          73*\l__extblx_oasymb_scale_plos_dim }
+    \draw_path_arc:nnn { 180 } { 000 } { 26*\l__extblx_oasymb_scale_plos_dim }
+    \draw_path_rectangle_corners:nn { 47*\l__extblx_oasymb_scale_plos_dim,
+                                      47*\l__extblx_oasymb_scale_plos_dim }
+                                    { 58*\l__extblx_oasymb_scale_plos_dim,
+                                      73*\l__extblx_oasymb_scale_plos_dim }
+    \draw_path_moveto:n { 64*\l__extblx_oasymb_scale_plos_dim,
+                          32*\l__extblx_oasymb_scale_plos_dim }
+    \draw_path_arc:nnn { 000 } { 360 } { 32*\l__extblx_oasymb_scale_plos_dim }
+    \draw_path_moveto:n { 53*\l__extblx_oasymb_scale_plos_dim,
+                          32*\l__extblx_oasymb_scale_plos_dim }
+    \draw_path_arc:nnn { 360 } { 000 } { 21*\l__extblx_oasymb_scale_plos_dim }
+    \draw_path_moveto:n { 41*\l__extblx_oasymb_scale_plos_dim,
+                          32*\l__extblx_oasymb_scale_plos_dim }
+    \draw_path_arc:nnn { 000 } { 360 } { 09*\l__extblx_oasymb_scale_plos_dim }
+    \draw_color_fill:n { oasymb_plos_orange }
+    \draw_path_use_clear:n { fill }
+  \draw_end:
+}
+
+
+\box_new:N \l__extblx_oasymb_plos_box
+
+\hbox_set:Nn \l__extblx_oasymb_plos_box { \__extblx_oasymb_plos_path: }
+
+\NewDocumentCommand \extblx_oasymb_draw_plos { }
+{
+  \mode_leave_vertical:
+  \box_use:N \l__extblx_oasymb_plos_box
+}
+
+% LaTeX2e name
+\cs_set_eq:NN \extblx@oasymb@draw@plos \extblx_oasymb_draw_plos
+
+% PLoS symbols is standard
+\NewExpandableDocumentCommand \oasymbol { } { \extblx_oasymb_draw_plos }
+
+% Open-Acess.net Open Acess symbol
+% redrawn with TikZ from
+% http://open-access.net/fileadmin/logos/oa.svg
+% public domain according to
+% https://commons.wikimedia.org/wiki/File:Open_access.svg
+% might be covered by open-access.net's overall CC-BY 4.0 license
+% (https://creativecommons.org/licenses/by/4.0/)
+% see https://open-access.net/impressum/
+% the site states no specific conditions for use of the logo
+% other than
+%   "Das Logo der Informationsplattform darf nachgenutzt werden,
+%    gerne mit einem Link zu open-access.net"
+% on https://open-access.net/ueber-uns/
+% see also https://open-access.net/community/materialien/
+% logo by
+% Medien + Design
+% Center for Digital Systems
+% Competence Center for E-Learning and Multimedia
+% Freie Universität Berlin
+\color_set:nnn {oasymb_oanet_green}     {cmyk} {.45, 0, .49, .62}
+\color_set:nnn {oasymb_oanet_gold}      {cmyk} {0, .2, .77, .02}
+\color_set:nnn {oasymb_oanet_intersect} {cmyk} {.06, 0, .6, .43}
+\dim_const:Nn \l__extblx_oasymb_scale_oanet_dim {1.1pt}
+
+\cs_new_protected:Nn \__extblx_oasymb_oanet_path:
+{
+  \draw_begin:
+    \draw_path_moveto:n { 8.3*\l__extblx_oasymb_scale_oanet_dim,
+                          4  *\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_arc:nnn { 000 } { 360 } { 4.3*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_moveto:n { 6.7*\l__extblx_oasymb_scale_oanet_dim,
+                          4  *\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_arc:nnn { 360 } { 000 } { 2.7*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_color_fill:n { oasymb_oanet_green }
+    \draw_path_use_clear:n { fill }
+
+    \draw_path_rectangle_corners:nn { 13.7*\l__extblx_oasymb_scale_oanet_dim,
+                                       -.1*\l__extblx_oasymb_scale_oanet_dim }
+                                    { 15.3*\l__extblx_oasymb_scale_oanet_dim,
+                                       4  *\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_moveto:n { 13.7*\l__extblx_oasymb_scale_oanet_dim,
+                             4*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_lineto:n { 15.3*\l__extblx_oasymb_scale_oanet_dim,
+                           4*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_arc:nnn { 000 } { 300 } { 4.3*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_moveto:n { (11+cosd(300)*4.3)*\l__extblx_oasymb_scale_oanet_dim,
+                          (4+sind(300)*4.3)*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_lineto:n { (11+cosd(300)*2.7)*\l__extblx_oasymb_scale_oanet_dim,
+                          (4+sind(300)*2.7)*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_arc:nnn { 300 } { 000 } { 2.7*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_color_fill:n { oasymb_oanet_gold }
+    \draw_path_use_clear:n { fill }
+
+    \draw_path_moveto:n
+      { (4+cosd(035.5)*4.3)*\l__extblx_oasymb_scale_oanet_dim,
+        (4+sind(035.5)*4.3)*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_arc:nnn { 144.5 } { 215.5 }
+                       { 4.3*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_moveto:n
+      { (4+cosd(-035.5)*4.3)*\l__extblx_oasymb_scale_oanet_dim,
+        (4+sind(-035.5)*4.3)*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_arc:nnn { -035.5 } { 035.5 }
+                       { 4.3*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_color_fill:n { oasymb_oanet_intersect }
+    \draw_path_use_clear:n { fill }
+  \draw_end:
+}
+
+
+\box_new:N \l__extblx_oasymb_oanet_box
+
+\hbox_set:Nn \l__extblx_oasymb_oanet_box { \__extblx_oasymb_oanet_path: }
+
+\NewDocumentCommand \extblx_oasymb_draw_oanet { }
+{
+  \mode_leave_vertical:
+  \box_use:N \l__extblx_oasymb_oanet_box
+}
+
+% LaTeX2e name
+\cs_set_eq:NN \extblx@oasymb@draw@oanet \extblx_oasymb_draw_oanet
+
+\msg_new:nnnn { biblatex-ext-oasymb-l3draw } { UnknownSymbol }
+  { Unknown~symbol~'#1'.}
+  { The~symbol~'#1'~does~not~exist.\\
+    Please~consult~the~documentation~for~a~list~of~valid~options. }
+
+\cs_new_protected_nopar:Nn \__extblx_oasymb_define_oasymbol:n
+{
+  \cs_if_exist:cTF {extblx_oasymb_draw_#1}
+    { \cs_set_eq:Nc \oasymbol {extblx_oasymb_draw_#1} }
+    {
+      \msg_error:nnn
+        {biblatex-ext-oasymb-l3draw}
+        {UnknownSymbol}
+        {#1}
+    }
+}
+
+\cs_generate_variant:Nn \__extblx_oasymb_define_oasymbol:n {x}
+
+\NewDocumentCommand \DefineOASymbol { O{plos} }
+{
+  \__extblx_oasymb_define_oasymbol:x {#1}
+}
+
+
+\tl_new:N \l__extblx_oasymb_symbol_tl
+
+\keys_define:nn { biblatex-ext-oasymb-l3draw }
+{
+  symbol .code:n    = \DefineOASymbol[#1],
+  symbol .initial:n = plos,
+  plos   .value_forbidden:n = true,
+  plos   .code:n            =
+  {
+    \keys_set:nn { biblatex-ext-oasymb-l3draw } { symbol=plos }
+  },
+  oanet   .value_forbidden:n = true,
+  oanet   .code:n            =
+  {
+    \keys_set:nn { biblatex-ext-oasymb-l3draw } { symbol=oanet }
+  },
+}
+
+
+\ProcessKeysOptions {biblatex-ext-oasymb-l3draw}
+
+
+\tex_endinput:D
+%
+% This file is part of the biblatex-ext bundle.
+% biblatex-ext is released under the LaTeX Project Public License v1.3c
+% or later.
+%
+% A complete list of files included in that package can be found in README.md
+% or - failing that - in ext-standard.bbx.
+%
+% Official releases of this package are on CTAN
+%   https://www.ctan.org/pkg/biblatex-ext
+% development takes place on GitHub
+%   https://github.com/moewew/biblatex-ext
+%

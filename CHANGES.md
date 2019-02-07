@@ -3,6 +3,22 @@
 ## Unreleased
 See https://github.com/moewew/biblatex-ext/compare/v0.6b...HEAD
 - Added outer citation delimiters for `\supercite`.
+- Added `biblatex-ext-oasymb-pict2e` with open access symbols drawn in `pict2e`.
+  The package can be used via the `pictsymbol` option to `biblatex-ext-oa`
+  and provides a light-weight alternative to the the symbols drawn with TikZ or
+  the experimental `l3draw` (of LaTeX3 fame).
+- Added `biblatex-ext-oasymb-l3draw` with open access symbols drawn in `l3draw`.
+  The package can be used via the `drawsymbol` option to `biblatex-ext-oa`
+  and provides a LaTeX3 alternative to the the symbols drawn with TikZ or
+  `pict2e`.
+- **Incompatible change** Renamed `biblatex-ext-oa-tikzsymbols` to
+  `biblatex-ext-oasymb-tikz` for consistency.
+  No serious impact for end users is expected since the package should not be
+  used as a stand-alone package. It should be loaded via `biblatex-ext-oa`.
+- Deprecate `\DefineTikZOASymbol` in favour of a more universal
+  `\DeclareOASymbol`.
+- Deprecate `\LoadTikZOASymbol` in favour of a more universal
+  `\LoadOASymbolPackage`.
 
 ## Version 0.6b (2019-01-11)
 See https://github.com/moewew/biblatex-ext/compare/v0.6a...v0.6b

@@ -1,49 +1,49 @@
-\ProvidesPackage{biblatex-ext-oa-tikzsymbols}
-  [2019/01/11 v0.6b open access symbols (MW)]
+\ProvidesPackage{biblatex-ext-oasymb-tikz}
+  [2019/01/11 v0.6b open access symbols with TikZ (MW)]
 
 \RequirePackage{etoolbox}
 \RequirePackage{kvoptions}
 
-\protected\def\extblx@oasymb@error#1#2{%
-  \PackageError{biblatex-ext-oa-tikzsymbols}{#1}{#2.}}
+\protected\def\extblx@oasymb@tikz@error#1#2{%
+  \PackageError{biblatex-ext-oasymb-tikz}{#1}{#2.}}
 
-\protected\def\extblx@oasymb@warning@noline{%
-  \PackageWarningNoLine{biblatex-ext-oa-tikzsymbols}}
+\protected\def\extblx@oasymb@tikz@warning@noline{%
+  \PackageWarningNoLine{biblatex-ext-oasymb-tikz}}
 
-\let\extblx@oasymb@warning\extblx@oasymb@warning@noline
+\let\extblx@oasymb@tikz@warning\extblx@oasymb@tikz@warning@noline
 \AtEndOfPackage{%
-  \protected\def\extblx@oasymb@warning{%
-    \PackageWarning{biblatex-ext-oa-tikzsymbols}}}
+  \protected\def\extblx@oasymb@tikz@warning{%
+    \PackageWarning{biblatex-ext-oasymb-tikz}}}
 
 \RequirePackage{tikz}
 
 % PLoS Open Access symbol based on
 % https://commons.wikimedia.org/wiki/File:Open_Access_logo_PLoS_white.svg
 % public domain/CC0 by PLoS & Wikipedia users Nina, Beao and JakobVoss
-\definecolor{extblx@oasymbol@plos@orange}{HTML}{f68212}
-\newcommand*{\extblx@oasymbol@plos@tikz}{%
+\definecolor{extblx@oasymb@tikz@plos@orange}{HTML}{f68212}
+\newcommand*{\extblx@oasymb@tikz@plos@tikz}{%
   \begin{tikzpicture}[x=.1pt,y=.1pt]
     \begin{scope}
       \clip (06,73) rectangle ++(52,26);
-      \fill[extblx@oasymbol@plos@orange, even odd rule]
+      \fill[extblx@oasymb@tikz@plos@orange, even odd rule]
         (32,73) circle[radius=26]
         (32,73) circle[radius=15];
     \end{scope}
-    \fill[extblx@oasymbol@plos@orange, even odd rule]
+    \fill[extblx@oasymb@tikz@plos@orange, even odd rule]
       (32,32) circle[radius=32]
       (32,32) circle[radius=21]
       (32,32) circle[radius= 9];
-    \fill[extblx@oasymbol@plos@orange]
+    \fill[extblx@oasymb@tikz@plos@orange]
       (47,47) rectangle ++ (11,26);
   \end{tikzpicture}%
 }
 
-\newsavebox{\extblx@oasymbol@plos@box}
-\sbox{\extblx@oasymbol@plos@box}{\extblx@oasymbol@plos@tikz}
-\newcommand*{\extblx@oasymbol@plos}{\usebox{\extblx@oasymbol@plos@box}}
+\newsavebox{\extblx@oasymb@tikz@plos@box}
+\sbox{\extblx@oasymb@tikz@plos@box}{\extblx@oasymb@tikz@plos@tikz}
+\newcommand*{\extblx@oasymb@tikz@plos}{\usebox{\extblx@oasymb@tikz@plos@box}}
 
 % PLoS symbols is standard
-\newcommand*{\oasymbol}{\extblx@oasymbol@plos}
+\newcommand*{\oasymbol}{\extblx@oasymb@tikz@plos}
 
 % Open-Acess.net Open Acess symbol
 % redrawn with TikZ from
@@ -64,13 +64,13 @@
 % Center for Digital Systems
 % Competence Center for E-Learning and Multimedia
 % Freie Universität Berlin
-\definecolor{extblx@oasymbol@oanet@green}{HTML}{356031}
-\definecolor{extblx@oasymbol@oanet@gold}{HTML}{f9c63a}
-\definecolor{extblx@oasymbol@oanet@intersect}{HTML}{89923a}
+\definecolor{extblx@oasymb@tikz@oanet@green}{HTML}{356031}
+\definecolor{extblx@oasymb@tikz@oanet@gold}{HTML}{f9c63a}
+\definecolor{extblx@oasymb@tikz@oanet@intersect}{HTML}{89923a}
 
-\newcommand*{\extblx@oasymbol@oanet@tikz}{%
+\newcommand*{\extblx@oasymb@tikz@oanet@tikz}{%
   \begin{tikzpicture}[x=1.1pt,y=1.1pt]
-    \fill[extblx@oasymbol@oanet@green, even odd rule]
+    \fill[extblx@oasymb@tikz@oanet@green, even odd rule]
       ( 4,4) circle[radius=4.3]
       ( 4,4) circle[radius=2.7];
     \begin{scope}
@@ -79,66 +79,74 @@
         (11,4) circle[radius=2.7]
         -- +(-4.3,-4.3) -- +(-4.3,+4.3) -- +(+4.3,+4.3) -- +(+4.3,-4.3)
         -- +(-4.3,-4.3);
-      \fill[extblx@oasymbol@oanet@gold, even odd rule]
+      \fill[extblx@oasymb@tikz@oanet@gold, even odd rule]
         (11,4) ++ (0:4.3) arc (0:300:4.3) -- (11,4) ++ (300:4.3) -- cycle
         (11,4) ++ (0:2.7) arc (0:300:2.7) -- (11,4) ++ (300:2.7) -- cycle;
     \end{scope}
     \begin{scope}
       \clip                                  ( 4,4) circle[radius=4.3];
-      \fill[extblx@oasymbol@oanet@intersect] (11,4) circle[radius=4.3];
+      \fill[extblx@oasymb@tikz@oanet@intersect] (11,4) circle[radius=4.3];
     \end{scope}
-    \fill[extblx@oasymbol@oanet@gold] (11,4) ++ (2.7,.1) rectangle ++(1.6,-4.1);
+    \fill[extblx@oasymb@tikz@oanet@gold]
+      (11,4) ++ (2.7,.1) rectangle ++(1.6,-4.1);
   \end{tikzpicture}%
 }
 
-\newsavebox{\extblx@oasymbol@oanet@box}
-\sbox{\extblx@oasymbol@oanet@box}{\extblx@oasymbol@oanet@tikz}
-\newcommand*{\extblx@oasymbol@oanet}{\usebox{\extblx@oasymbol@oanet@box}}
+\newsavebox{\extblx@oasymb@tikz@oanet@box}
+\sbox{\extblx@oasymb@tikz@oanet@box}{\extblx@oasymb@tikz@oanet@tikz}
+\newcommand*{\extblx@oasymb@tikz@oanet}{\usebox{\extblx@oasymb@tikz@oanet@box}}
 
-\protected\def\extblx@oasymbol@opt@symbol@process#1{%
+\protected\def\extblx@oasymb@tikz@opt@symbol@process#1{%
   \begingroup
-  \edef\extblx@oasymb@tempa{\endgroup
-    \noexpand\extblx@oasymbol@opt@symbol@process@i{#1}}
-  \extblx@oasymb@tempa}
+  \edef\extblx@oasymb@tikz@tempa{\endgroup
+    \noexpand\extblx@oasymb@tikz@opt@symbol@process@i{#1}}
+  \extblx@oasymb@tikz@tempa}
 
-\def\extblx@oasymbol@opt@symbol@process@i#1{%
-  \ifcsundef{extblx@oasymbol@#1}
-    {\extblx@oasymb@error
+\def\extblx@oasymb@tikz@opt@symbol@process@i#1{%
+  \ifcsundef{extblx@oasymb@tikz@#1}
+    {\extblx@oasymb@tikz@error
       {Unknown value\MessageBreak
        \space\space'#1'\MessageBreak
        for option 'symbol'}
       {The symbol '#1' does not exist.\MessageBreak
        Please consult the documentation for a list of valid options}}
-    {\edef\oasymbol{\expandonce{\csname extblx@oasymbol@#1\endcsname}}}}
+    {\edef\oasymbol{\expandonce{\csname extblx@oasymb@tikz@#1\endcsname}}}}
 
+\newrobustcmd*{\DefineTikZOASymbol}{%
+  \extblx@oasymb@tikz@warning{%
+    The command '\string\DefineTikZOASymbol'\MessageBreak
+    is deprecated.\MessageBreak
+    Use '\string\DefineOASymbol' instead.\MessageBreak
+    Using '\string\DefineOASymbol'}%
+  \DefineOASymbol}
 
-\newrobustcmd*{\DefineTikZOASymbol}[1][plos]{%
+\newrobustcmd*{\DefineOASymbol}[1][plos]{%
   \begingroup
-  \edef\extblx@oasymb@tempa{\endgroup
-    \noexpand\extblx@oasymbol@DefineTikZOASymbol@i{#1}}
-  \extblx@oasymb@tempa}
+  \edef\extblx@oasymb@tikz@tempa{\endgroup
+    \noexpand\extblx@oasymb@tikz@DefineOASymbol@i{#1}}%
+  \extblx@oasymb@tikz@tempa}
 
-\protected\def\extblx@oasymbol@DefineTikZOASymbol@i#1{%
-  \ifcsundef{extblx@oasymbol@#1}
-    {\extblx@oasymb@error
+\protected\def\extblx@oasymb@tikz@DefineOASymbol@i#1{%
+  \ifcsundef{extblx@oasymb@tikz@#1}
+    {\extblx@oasymb@tikz@error
       {Unknown symbol option\MessageBreak
        \space\space'#1'}
       {The symbol '#1' does not exist.\MessageBreak
        Please consult the documentation for a list of valid options}}
-    {\edef\oasymbol{\expandonce{\csname extblx@oasymbol@#1\endcsname}}}}
+    {\edef\oasymbol{\expandonce{\csname extblx@oasymb@tikz@#1\endcsname}}}}
 
 \SetupKeyvalOptions{
-  family=extblx@oasymb@opt,
-  prefix=extblx@oasymb@opt@,
+  family=extblx@oasymb@tikz@opt,
+  prefix=extblx@oasymb@tikz@opt@,
 }
 
 \DeclareStringOption[plos]{symbol}
-\DeclareVoidOption{plos}{\csdef{extblx@oasymb@opt@symbol}{plos}}
-\DeclareVoidOption{oanet}{\csdef{extblx@oasymb@opt@symbol}{oanet}}
+\DeclareVoidOption{plos}{\csdef{extblx@oasymb@tikz@opt@symbol}{plos}}
+\DeclareVoidOption{oanet}{\csdef{extblx@oasymb@tikz@opt@symbol}{oanet}}
 
 \ProcessKeyvalOptions*
 
-\extblx@oasymbol@opt@symbol@process{\csuse{extblx@oasymb@opt@symbol}}
+\extblx@oasymb@tikz@opt@symbol@process{\csuse{extblx@oasymb@tikz@opt@symbol}}
 
 \endinput
 %
