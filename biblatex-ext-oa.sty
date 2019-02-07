@@ -188,57 +188,14 @@
            {\extblx@oa@url@processfield{\csuse{extblx@oa@url@from}}}}}}}
 
 
-% \Load...Symbol
-\newcommand*{\extblx@oa@loadsymbol@iferror@severalpackages@i}[1]{%
-  \@ifpackageloaded{biblatex-ext-oasymb-#1}
-    {\extblx@oa@error
-       {Package 'biblatex-ext-oasymb-#1' already\MessageBreak
-        loaded.\MessageBreak
-        You can't load several open access\MessageBreak
-        symbol packages together}
-       {You can only load one of the symbol packages.\MessageBreak
-        If you force compilation despite the error I'll pretend to be
-        '\string\DefineOASymbol'}%
-     \edef\extblx@oa@tempa{\endgroup
-       \noexpand\@firstoftwo}}
-    {}}
-
-\newcommand*{\extblx@oa@loadsymbol@iferror@severalpackages}[1]{%
-  \begingroup
-  \edef\extblx@oa@tempa{\endgroup
-    \noexpand\@secondoftwo}%
-  \forcsvlist{\extblx@oa@loadsymbol@iferror@severalpackages@i}{#1}%
-  \extblx@oa@tempa}
-
-% Define \Load...OASymbol
-% {<Cmd name>}{<package suffix>}{<package description>}
-% {<incompatible package suffixes>}
-\newrobustcmd*{\extblx@oa@define@loadsymbol}[4]{%
-  \expandafter\newrobustcmd\expandafter*\expandafter{%
-  \csname Load#1OASymbol\endcsname}[1][plos]{%
-    \extblx@oa@loadsymbol@iferror@severalpackages{#4}
-      {\DefineOASymbol[##1]}
-      {\@ifpackageloaded{biblatex-ext-oasymb-#2}
-         {\extblx@oa@warning{%
-            #3 open access symbols already loaded.\MessageBreak
-            Redefining the symbol with\MessageBreak
-            '\string\DefineOASymbol'}%
-          \DefineOASymbol[##1]}
-         {\RequirePackage[symbol=##1]{biblatex-ext-oasymb-#2}}%
-       \csgdef{Load#1OASymbol}{%
-         \extblx@oa@warning{%
-           #3 open access symbols can not be\MessageBreak
-           loaded more than once.\MessageBreak
-           I'll now behave like '\string\DefineOASymbol'\MessageBreak}%
-         \DefineOASymbol}}}
-  \expandafter\@onlypreamble\csname Load#1OASymbol\endcsname}
-
-% \LoadPictOASymbol
-\extblx@oa@define@loadsymbol{Pict}{pict}{pict2e}{draw,tikz}
-% \LoadDrawOASymbol
-\extblx@oa@define@loadsymbol{Draw}{draw}{l3draw}{pict,tikz}
-% \LoadTikZOASymbol
-\extblx@oa@define@loadsymbol{TikZ}{tikz}{TikZ}{pict,draw}
+% deprecated
+\newrobustcmd*{\LoadTikZOASymbol}[1][plos]{%
+  \extblx@oa@warning{%
+    Macro '\string\LoadTikZOASymbol' deprecated.\MessageBreak
+    Please use '\string\LoadOASymbolPackage' or\MessageBreak
+    '\string\DefineOASymbol' instead.\MessageBreak
+    Using '\string\LoadOASymbolPackage'}%
+  \LoadOASymbolPackage[#1]{tikz}}
 
 
 \newcommand*{\extblx@oa@symbolpackages}{}
