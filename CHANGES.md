@@ -6,11 +6,11 @@ See https://github.com/moewew/biblatex-ext/compare/v0.6b...HEAD
 
 ### Added
 - Outer citation delimiters for `\supercite`.
-- `biblatex-ext-oasymb-pict2e` with open access symbols drawn in `pict2e`.
+- `biblatex-ext-oasymb-pict2e` for open access symbols drawn in `pict2e`.
   The package can be used via the `symbolpackage=pict2e` option to
   `biblatex-ext-oa` and provides a light-weight alternative to the the symbols
   drawn with TikZ or the experimental `l3draw` (of LaTeX3 fame).
-- `biblatex-ext-oasymb-l3draw` with open access symbols drawn in `l3draw`.
+- `biblatex-ext-oasymb-l3draw` for open access symbols drawn in `l3draw`.
   The package can be used via the `symbolpackage=l3draw` option to
   `biblatex-ext-oa` and provides a LaTeX3 alternative to the the symbols drawn
   with TikZ or `pict2e`.
@@ -27,9 +27,9 @@ See https://github.com/moewew/biblatex-ext/compare/v0.6b...HEAD
   It should be loaded via `biblatex-ext-oa`.
 
 ### Deprecated
-- Deprecate `\DefineTikZOASymbol` in favour of a more universal
+- Deprecate `\DefineTikZOASymbol` in favour of the more universal
   `\DeclareOASymbol`.
-- Deprecate `\LoadTikZOASymbol` in favour of a more universal
+- Deprecate `\LoadTikZOASymbol` in favour of the more universal
   `\LoadOASymbolPackage`.
 - Deprecate the `biblatex-ext-oa` option `tikzsymbol` in favour of the new
   options `symbolpackage` and `symbol`.
@@ -63,10 +63,11 @@ See https://github.com/moewew/biblatex-ext/compare/v0.5a...v0.6
 
 ### Added
 - `\titleaddonpunct`
-- A package for open access symbols and open access 'detection'.
+- The package `biblatex-ext-oa` for open access symbols and open access
+  'detection'.
   See https://tex.stackexchange.com/q/459449/.
-  - The default detection relies on explicit configuration for all url,
-    doi and eprint-like and data in the `.bib` file.
+  - The default detection relies on explicit configuration for all URL,
+    DOI and eprint-like and data in the `.bib` file.
   - There is a Lua module that queries Unpaywall.org by DOI to find
     open access info.
   - A support package provides two open access symbols drawn with TikZ.
