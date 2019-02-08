@@ -5,6 +5,7 @@ dtxs
 biblatex-ext
 biblatex-ext.pdf
 intype*
+textspicts*
 *.aux
 *.bbl
 *.bcf
@@ -18,6 +19,7 @@ intype*
 *.synctex.gz
 *.listing
 *.zip
+*.oai
 howtowrite.md
 *.pdf
 *.tex~
