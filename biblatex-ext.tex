@@ -1333,6 +1333,8 @@ lists are only replaced if they are indistinguishable in the data source.
 
 
 \optitem[false]{introcite}{\optval{false}, \optval{plain}, \optval{label}}
+
+\begin{warnbox}
 The \opt{introcite} option is available for the bibliography styles of the
 \hyperblxstyle[ext-authoryear]{authoryear} and
 \hyperblxstyle[ext-authortitle]{authortitle} family.
@@ -1341,6 +1343,7 @@ It can not be used with citation styles of the
 it may produce undesired output or errors.
 The option is available globally and on a per-type and per-entry level, where
 only the values \optval{plain} (and the default \optval{false}) are supported.
+\end{warnbox}
 
 This option controls whether or not the citation label is repeated in the
 bibliography.
@@ -1943,13 +1946,17 @@ use non-matching pairs or to leave the opening or closing delimiter empty.
 If you want to add punctuation, the context-sensitive delimiters
 \gencode{nameyeardelim}, \gencode{nametitledelim} and friends as well as
 the context-insensitive \cmd{postnotedelim} and friends are more approriate.
+
+\begin{remindbox}
 Although the outer delimiters can be set up using \cmd{DeclareCiteCommand}'s
 optional \prm{wrapper} argument for most styles, this is not possible for all
-styles. Inner delimiters can be set up with \cmd{DeclareFieldFormat} in some
+styles.
+Similarly, inner delimiters can be set up with \cmd{DeclareFieldFormat} in some
 styles, but other styles need more intricate implementations.
 This means that the commands discussed here can be used to place the citations
 between delimiters, but not natively to pass the result of a citation to a
 wrapper command as an argument.
+\end{remindbox}
 
 \begin{table}[btph]
 \centering
@@ -1996,7 +2003,7 @@ is given without leading backslash in the argument, it normally corresponds to
 the delimiter context.
 
 Note that outer citation delimiters are often hard-coded so they usually do not
-respond to delimiter context alises.
+respond to delimiter context aliases.
 Inner citation delimiters, on the other hand, usually follow delimiter context
 aliases.
 This may lead to initially surprising results if aliases are used.
