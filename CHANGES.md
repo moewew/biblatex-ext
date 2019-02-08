@@ -2,7 +2,7 @@
 
 
 ## Unreleased
-See https://github.com/moewew/biblatex-ext/compare/v0.6b...HEAD
+See <https://github.com/moewew/biblatex-ext/compare/v0.6b...HEAD>
 
 ### Added
 - Outer citation delimiters for `\supercite`.
@@ -36,18 +36,18 @@ See https://github.com/moewew/biblatex-ext/compare/v0.6b...HEAD
 
 
 ## Version 0.6b (2019-01-11)
-See https://github.com/moewew/biblatex-ext/compare/v0.6a...v0.6b
+See <https://github.com/moewew/biblatex-ext/compare/v0.6a...v0.6b>
 
 ### Changed
 - `blxextdoiapi.lua` now returns the module as a table.
 
 ### Fixed
 - Issue loading `socket.url` with LuaLaTeX 1.07 (TeX Live 2018)
-  (https://github.com/moewew/biblatex-ext/issues/17)
+  (<https://github.com/moewew/biblatex-ext/issues/17>)
 
 
 ## Version 0.6a (2019-01-04)
-See https://github.com/moewew/biblatex-ext/compare/v0.6...v0.6a
+See <https://github.com/moewew/biblatex-ext/compare/v0.6...v0.6a>
 
 ### Changed
 - Only patch bibmacros in `biblatex-ext-oa`. This avoids redefinitions,
@@ -59,13 +59,13 @@ See https://github.com/moewew/biblatex-ext/compare/v0.6...v0.6a
 
 
 ## Version 0.6 (2018-11-23)
-See https://github.com/moewew/biblatex-ext/compare/v0.5a...v0.6
+See <https://github.com/moewew/biblatex-ext/compare/v0.5a...v0.6>
 
 ### Added
 - `\titleaddonpunct`
 - The package `biblatex-ext-oa` for open access symbols and open access
   'detection'.
-  See https://tex.stackexchange.com/q/459449/.
+  See <https://tex.stackexchange.com/q/459449/>.
   - The default detection relies on explicit configuration for all URL,
     DOI and eprint-like and data in the `.bib` file.
   - There is a Lua module that queries Unpaywall.org by DOI to find
@@ -75,31 +75,31 @@ See https://github.com/moewew/biblatex-ext/compare/v0.5a...v0.6
 ### Changed
 - `biblatex` 3.12 is now recommended.
 - Synced `mergedate` code with `biblatex` 3.12
-  (https://github.com/plk/biblatex/pull/810
-   https://github.com/plk/biblatex/issues/752).
+  (<https://github.com/plk/biblatex/pull/810>,
+   <https://github.com/plk/biblatex/issues/752>).
 - Made `introcite` and `dashed` option available on per-entry and
-  per-type basis. (https://github.com/moewew/biblatex-ext/issues/13)
+  per-type basis. (<https://github.com/moewew/biblatex-ext/issues/13>)
   - `introcite=label` needs support of the bibliography environment,
     so it is not officially supported if its is not set globally.
   - Simplify code to set options at all three levels at the same time.
 
 
 ## Version 0.5a (2018-10-09)
-See https://github.com/moewew/biblatex-ext/compare/v0.5...v0.5a
+See <https://github.com/moewew/biblatex-ext/compare/v0.5...v0.5a>
 
 ### Fixed
 - Bug with `\footcites` and `\footcitetexts` in `ext-authoryear.cbx`
-  (https://github.com/moewew/biblatex-ext/issues/12)
+  (<https://github.com/moewew/biblatex-ext/issues/12>)
 
 
 ## Version 0.5 (2018-10-02)
-See https://github.com/moewew/biblatex-ext/compare/v0.4...v0.5
+See <https://github.com/moewew/biblatex-ext/compare/v0.4...v0.5>
 
 ### Added
 - New `ecomp` style family. The styles of that family compress lists of
   extradate fields.
 - First implementation of a tabular bibliography based on Audrey's answer to
-  https://tex.stackexchange.com/q/71088/35864
+  <https://tex.stackexchange.com/q/71088/35864>
 - Outer cite delimiters for `\footcite`.
 - `version` and `pagetotal` bibmacros.
 
@@ -108,7 +108,7 @@ See https://github.com/moewew/biblatex-ext/compare/v0.4...v0.5
 
 
 ## Version 0.4 (2018-06-10)
-See https://github.com/moewew/biblatex-ext/compare/v0.3...v0.4
+See <https://github.com/moewew/biblatex-ext/compare/v0.3...v0.4>
 
 ### Changed
 - Renamed `\DeclareOuterCiteDelim` and friends to `\DeclareOuterCiteDelims`,
@@ -133,7 +133,7 @@ See https://github.com/moewew/biblatex-ext/compare/v0.3...v0.4
 
 
 ## Version 0.3 (2018-06-04)
-See https://github.com/moewew/biblatex-ext/compare/v0.2...v0.3
+See <https://github.com/moewew/biblatex-ext/compare/v0.2...v0.3>
 
 ### Added
 - `titlecase:<titletype>` field formats for finer control over the title
@@ -152,7 +152,7 @@ See https://github.com/moewew/biblatex-ext/compare/v0.2...v0.3
 
 
 ## Version 0.2 (2018-03-28)
-See https://github.com/moewew/biblatex-ext/compare/v0.1a...v0.2
+See <https://github.com/moewew/biblatex-ext/compare/v0.1a...v0.2>
 
 ### Added
 - `\voltitledelim`
@@ -178,7 +178,7 @@ See https://github.com/moewew/biblatex-ext/compare/v0.1a...v0.2
 
 
 ## Version 0.1a (2018-03-20)
-See https://github.com/moewew/biblatex-ext/compare/v0.1...v0.1a
+See <https://github.com/moewew/biblatex-ext/compare/v0.1...v0.1a>
 
 ### Fixed
 - Inner cite delims for `authoryear`/`authortitle` and their `-ibid`
