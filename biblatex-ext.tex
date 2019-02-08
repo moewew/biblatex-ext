@@ -2525,8 +2525,8 @@ Load one of the available open access symbol support packages.
   \item[false] Don't load any symbol package.
     \begin{warnbox}
       Since \sty{biblatex-ext-oa} does not provide a default definition for
-      \hypercmd{oasymbol}, you will have to define that command yourself if you
-      don't load any of the symbol packages.
+      \hypercmd{oasymbol}, you will have to make sure to define that command
+      yourself if you don't load any of the symbol packages.
     \end{warnbox}
   \item[pict2e] Load \hypersty{biblatex-ext-oasymb-pict2e} to provide a
     definition for \hypercmd{oasymbol}.
@@ -2560,6 +2560,13 @@ Load one of the available open access symbol support packages.
 Set \hypercmd{oasymbol} to output the symbol identified as \prm{symbol}.
 The available options can be found in \cref{sec:oa:symbol}.
 
+\begin{warnbox}
+Note that this option is only available if \hypercmd{symbolpackage} has been
+set to a valid value different from \optval{false} or one of the open access
+symbol packages has been loaded manually (the latter is usually not recommended,
+the option \hypercmd{symbolpackage} is the preferred way to load those
+packages).
+\end{warnbox}
 
 \boolitem[false]{doiapi}
 
@@ -3147,8 +3154,8 @@ The numbers on the right indicate the relevant section of the manual.
   \item Made \hyperopt{dashed} and \hyperopt{introcite} options available on a
     per-entry and per-type basis\see{sec:opt:style}
   \item Added \hypercmd{titleaddonpunct}\see{sec:opt:punct}
-  \item Added \hypersty{biblatex-ext-oa} package for open access symbols%
-    \see{sec:oa}
+  \item Added \hypersty{biblatex-ext-oa} package for open access detection and
+    symbols\see{sec:oa}
 \end{release}
 \begin{release}{0.5a}{2018-10-09}
   \item Fixed a bug with \cmd{footcites} and \cmd{footcitetexts} in
@@ -3161,34 +3168,35 @@ The numbers on the right indicate the relevant section of the manual.
   \item Added experimental tabular bibliography\see{sec:tabularbib}
 \end{release}
 \begin{release}{0.4}{2018-06-10}
-\item Renamed \cmd{DeclareOuterCiteDelim} and friends to
-  \hypercmd{DeclareOuterCiteDelims}\see{sec:opt:citedelims}
-\item Added \hypercmd{RegisterCiteDelims}\see{sec:opt:citedelims}
-\item Renamed \enquote{virtual} cite command \cmd{bbx:introcite} to
-  \cmd{bbx@introcite}\see{sec:opt:style}
+  \item Renamed \cmd{DeclareOuterCiteDelim} and friends to
+    \hypercmd{DeclareOuterCiteDelims}\see{sec:opt:citedelims}
+  \item Added \hypercmd{RegisterCiteDelims}\see{sec:opt:citedelims}
+  \item Renamed \enquote{virtual} cite command \cmd{bbx:introcite} to
+    \cmd{bbx@introcite}\see{sec:opt:style}
+  \item Renamed \opt{citeinxref} to \hyperopt{citexref}\see{sec:opt}
 \end{release}
 \begin{release}{0.3}{2018-06-04}
-\item Added \hyperbibfieldformat[titlecase:title]{titlecase:\dots title}
-  field formats\see{sec:opt:field}
-\item Added \hypersty{bbx:introcite:plain:keeprelated} toggle%
-  \see{sec:opt:style}
-\item Added \hypercmd{jourvoldelim}, \hypercmd{jourserdelim} and
-  \hypercmd{servoldelim}\see{sec:opt:punct}
-\item Improve documentation
+  \item Added \hyperbibfieldformat[titlecase:title]{titlecase:\dots title}
+    field formats\see{sec:opt:field}
+  \item Added \hypersty{bbx:introcite:plain:keeprelated} toggle%
+    \see{sec:opt:style}
+  \item Added \hypercmd{jourvoldelim}, \hypercmd{jourserdelim} and
+    \hypercmd{servoldelim}\see{sec:opt:punct}
+  \item Improve documentation
 \end{release}
 \begin{release}{0.2}{2018-03-28}
-\item Rework lengths for \hyperkvopt{introcite}{label}\see{sec:opt:style}
-\item Fixed meaning of \hypercmd{maintitletitledelim}\see{sec:opt:punct}
-\item Added \hypercmd{voltitledelim}\see{sec:opt:punct}
+  \item Rework lengths for \hyperkvopt{introcite}{label}\see{sec:opt:style}
+  \item Fixed meaning of \hypercmd{maintitletitledelim}\see{sec:opt:punct}
+  \item Added \hypercmd{voltitledelim}\see{sec:opt:punct}
 \end{release}
 \begin{release}{0.1a}{2018-03-20}
-\item Fixed inner citation delimiters for \hyperblxstyle{ext-authoryear},
-  \hyperblxstyle{ext-authortitle} and their \blxstyle{-ibid} versions%
-  \see{sec:opt:citedelims}
-\item Fixed \cmd{smartcite} delimiters\see{sec:opt:citedelims}
+  \item Fixed inner citation delimiters for \hyperblxstyle{ext-authoryear},
+    \hyperblxstyle{ext-authortitle} and their \blxstyle{-ibid} versions%
+    \see{sec:opt:citedelims}
+  \item Fixed \cmd{smartcite} delimiters\see{sec:opt:citedelims}
 \end{release}
 \begin{release}{0.1}{2018-03-18}
-\item First public release
+  \item First public release
 \end{release}
 \end{changelog}
 

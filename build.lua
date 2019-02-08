@@ -44,6 +44,12 @@ function update_tag(file, content, tagname, tagdate)
                                 "Copyright 2017-" .. tagyear)
   elseif string.match(file, "%.bbx$")  or string.match(file, "%.cbx$")
     or string.match(file, "%.def$") or string.match(file, "%.sty$") then
+    content = string.gsub(content , "\\ProvidesExplPackage {(.-)}\n  {"
+                                    .. ltxdate_scheme .. "} {" .. version_scheme
+                                    .. "}",
+                                    "\\ProvidesExplPackage {%1}\n  {"
+                                    .. tagdate_ltx .. "} {" .. tagname_safe
+                                    .. "}")
     return string.gsub(content , ltxdate_scheme .. " v" .. version_scheme,
                                  tagdate_ltx .. " v" .. tagname_safe)
   elseif string.match(file, "%.tex$") then

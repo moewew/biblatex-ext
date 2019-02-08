@@ -196,6 +196,7 @@
     '\string\DefineOASymbol' instead.\MessageBreak
     Using '\string\LoadOASymbolPackage'}%
   \LoadOASymbolPackage[#1]{tikz}}
+\@onlypreamble\LoadTikZOASymbol
 
 
 \newcommand*{\extblx@oa@symbolpackages}{}
@@ -224,6 +225,7 @@
   \edef\extblx@oa@tempa{\endgroup
     \noexpand\LoadOASymbolPackage@i[#1]{#2}}%
   \extblx@oa@tempa}
+\@onlypreamble\LoadOASymbolPackage
 
 % second step gives all lowercase
 \def\LoadOASymbolPackage@i[#1]#2{%
