@@ -35,8 +35,8 @@ function update_tag(file, content, tagname, tagdate)
 
   if string.match(file, "^ext%-standard%.bbx$") then
     content = string.gsub(content,
-                          "v" .. version_scheme .. " %(" .. isodate_scheme
-                            .. "%)",
+                          "v" .. version_scheme
+                            .. " %(" .. isodate_scheme .. "%)",
                           "v" .. tagname_safe .. " (" .. tagdate .. ")")
     content = string.gsub(content, 
                           ltxdate_scheme .. " v" .. version_scheme,
@@ -89,11 +89,11 @@ function update_tag(file, content, tagname, tagdate)
   elseif string.match(file, "^CHANGES%.md$") then
     content = string.gsub(content,
                           "## Unreleased\n",
-                          "## Version " .. tagname_safe .. " ("
-                            .. tagdate .. ")\n")
+                          "## Version " .. tagname_safe
+                            .. " (" .. tagdate .. ")\n")
     if string.match(content,
-                    "https://github.com/moewew/biblatex%-ext" .. "/compare/v"
-                    .. version_scheme .. "...HEAD") then
+                    "https://github.com/moewew/biblatex%-ext"
+                      .. "/compare/v" .. version_scheme .. "...HEAD") then
       content = string.gsub(content,
                             "...HEAD",
                             "...v" .. tagname_safe)
