@@ -1,8 +1,8 @@
 # Changelog
 
 
-## Unreleased
-See <https://github.com/moewew/biblatex-ext/compare/v0.6b...HEAD>
+## Version 0.7 (2019-02-08)
+See <https://github.com/moewew/biblatex-ext/compare/v0.6b...v0.7>
 
 ### Added
 - Outer citation delimiters for `\supercite`.
