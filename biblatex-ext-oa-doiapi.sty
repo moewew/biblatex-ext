@@ -79,7 +79,7 @@
   }%
 }
 
-\AtBeginDocument{%
+\AtEndPreamble{%
   \ifcsundef{extblx@oa@api@mailset}
     {\extblx@oa@api@warning@noline{%
        No mail address declared.\MessageBreak
