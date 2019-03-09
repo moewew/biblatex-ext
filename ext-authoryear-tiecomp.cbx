@@ -1,8 +1,10 @@
 \ProvidesFile{ext-authoryear-tiecomp.cbx}
-  [2019/02/08 v0.7 extended biblatex authoryear-tiecomp citation style (MW)]
+  [2019/02/08 v0.7 extended biblatex authoryear-tiecomp citation style
+   (MW)]
 
 \RequireCitationStyle{ext-authoryear-icomp}
-\ExecuteBibliographyOptions{singletitle,uniquename,uniquelist,autocite=inline}
+\ExecuteBibliographyOptions{singletitle, uniquename, uniquelist,
+  autocite=inline}
 
 \renewcommand*{\iffinalcitedelim}{%
   \ifnumequal{\value{textcitecount}}{\value{textcitetotal}-1}}
@@ -23,9 +25,10 @@
            \usebibmacro{cite:labeldate+extradate}%
            \usebibmacro{cite:reinit}}
           {\iffieldequals{namehash}{\cbx@lasthash}
-             {\ifboolexpr{test {\iffieldequals{labelyear}{\cbx@lastyear}}
-                          and (test {\ifnumequal{\value{multicitecount}}{0}}
-                               or test {\iffieldundef{postnote}})}
+             {\ifboolexpr{
+                test {\iffieldequals{labelyear}{\cbx@lastyear}}
+                and (   test {\ifnumequal{\value{multicitecount}}{0}}
+                     or test {\iffieldundef{postnote}})}
                 {\usebibmacro{cite:comp:extradate}}
                 {\usebibmacro{cite:dump:extradate}%
                  \setunit{\compcitedelim}%
@@ -40,7 +43,8 @@
                  \setunit{%
                    \global\booltrue{cbx:parens}%
                    \printdelim{nameyeardelim}%
-                   \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}}%
+                   \csuse{extblx@citedelim@\blx@delimcontext
+                          @inner@open}}}%
               \usebibmacro{cite:labeldate+extradate}%
               \savefield{namehash}{\cbx@lasthash}%
               \savefield{labelyear}{\cbx@lastyear}%
@@ -154,8 +158,8 @@
 % biblatex-ext is released under the LaTeX Project Public License v1.3c
 % or later.
 %
-% A complete list of files included in that package can be found in README.md
-% or - failing that - in ext-standard.bbx.
+% A complete list of files included in that package can be found in
+% README.md or - failing that - in ext-standard.bbx.
 %
 % Official releases of this package are on CTAN
 %   https://www.ctan.org/pkg/biblatex-ext

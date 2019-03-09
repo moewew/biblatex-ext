@@ -1,8 +1,10 @@
 \ProvidesFile{ext-authortitle-ticomp.cbx}
-  [2019/02/08 v0.7 extended biblatex authortitle-ticomp citation style (MW)]
+  [2019/02/08 v0.7 extended biblatex authortitle-ticomp citation style
+   (MW)]
 
 \RequireCitationStyle{ext-authortitle-icomp}
-\ExecuteBibliographyOptions{singletitle,uniquename,uniquelist,autocite=inline}
+\ExecuteBibliographyOptions{singletitle, uniquename, uniquelist,
+  autocite=inline}
 
 \renewcommand*{\iffinalcitedelim}{%
   \ifnumequal{\value{textcitecount}}{\value{textcitetotal}-1}}
@@ -22,7 +24,8 @@
                  \setunit{%
                    \global\booltrue{cbx:parens}%
                    \printdelim{nametitledelim}%
-                   \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
+                   \csuse{extblx@citedelim@\blx@delimcontext
+                          @inner@open}}%
                  \usebibmacro{cite:title}}}%
            \savefield{namehash}{\cbx@lasthash}}}}
     {\usebibmacro{cite:shorthand}%
@@ -118,8 +121,8 @@
 % biblatex-ext is released under the LaTeX Project Public License v1.3c
 % or later.
 %
-% A complete list of files included in that package can be found in README.md
-% or - failing that - in ext-standard.bbx.
+% A complete list of files included in that package can be found in
+% README.md or - failing that - in ext-standard.bbx.
 %
 % Official releases of this package are on CTAN
 %   https://www.ctan.org/pkg/biblatex-ext

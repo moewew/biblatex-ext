@@ -1,12 +1,14 @@
 \ProvidesFile{ext-biblatex-aux.def}
-  [2019/02/08 v0.7 auxiliaries for extended biblatex citation style (MW)]
+  [2019/02/08 v0.7 auxiliaries for extended biblatex citation style
+   (MW)]
 
 \def\extblx@requiredbiblatexversion{3.12}
 \def\extblx@requiredbiblatexdate{2018/11/02}
 
 \newrobustcmd*{\extblx@info}{\PackageInfo{biblatex-ext}}
 \newrobustcmd*{\extblx@warning}{\PackageWarning{biblatex-ext}}
-\newrobustcmd*{\extblx@warning@noline}{\PackageWarningNoLine{biblatex-ext}}
+\newrobustcmd*{\extblx@warning@noline}{%
+  \PackageWarningNoLine{biblatex-ext}}
 
 \newrobustcmd*{\extblx@error}[2]{\PackageError{biblatex-ext}{#1}{#2.}}
 
@@ -62,8 +64,10 @@
 
 %{<inner/outer>}{<alias>}{<cite context>}
 \def\extblx@declareciteddelims@alias#1#2#3{%
-  \csdef{extblx@citedelim@#2@#1@open}{\csuse{extblx@citedelim@#3@#1@open}}%
-  \csdef{extblx@citedelim@#2@#1@close}{\csuse{extblx@citedelim@#3@#1@close}}}
+  \csdef{extblx@citedelim@#2@#1@open}{%
+    \csuse{extblx@citedelim@#3@#1@open}}%
+  \csdef{extblx@citedelim@#2@#1@close}{%
+    \csuse{extblx@citedelim@#3@#1@close}}}
 \def\extblx@declareciteddelims@alias@i#1#2#3{%
   \csletcs{extblx@citedelim@#2@#1@open}{extblx@citedelim@#3@#1@open}%
   \csletcs{extblx@citedelim@#2@#1@close}{extblx@citedelim@#3@#1@close}}
@@ -75,12 +79,12 @@
     {\extblx@error
        {Command \expandafter\string\csname mk#1#2delims\endcsname\space
         already defined}
-       {biblatex-ext needs to define this command for the citation delimiter
-        feature,\MessageBreak
+       {biblatex-ext needs to define this command for the citation
+        delimiter feature,\MessageBreak
         but \expandafter\string\csname mk#1#2delims\endcsname\space
         is already defined.\MessageBreak
-        I don't want to overwrite the existing definition to avoid breaking
-        your document.\MessageBreak
+        I don't want to overwrite the existing definition to avoid
+        breaking your document.\MessageBreak
         If you force compilation despite the error, the command will be
         overwritten\MessageBreak
         with potentially catastrophic consequences}}%
@@ -120,12 +124,13 @@
     \mkouterfootcitetextdelims{#1}}}
 
 % smartcite is special
-% According to the docs it is like \parencite in a footnote and \footcite in
-% the body.
-% To mirror that as closely as possible, we need to change the delimiter
-% context. The delimcontext is set in the pre-code, it is too late to detect
-% a footnote at that point (since we will have started the footnote ourselves
-% with \mkbibfootnote from the body), so we need to do it earlier.
+% According to the docs it is like \parencite in a footnote and
+% \footcite in the body.
+% To mirror that as closely as possible, we need to change the
+% delimiter context. The delimcontext is set in the pre-code, it is too
+% late to detect a footnote at that point (since we will have started
+% the footnote ourselves with \mkbibfootnote from the body), so we
+% need to do it earlier.
 \newrobustcmd*{\mksmartcite}[1]{%
   \iffootnote
     {\mkouterparencitedelims{%
@@ -192,7 +197,8 @@
        This could mean that you are using the old name\MessageBreak
        which does not work any more.\MessageBreak
        No effort is made to switch to the new name.\MessageBreak
-       Please use\MessageBreak'bbx@introcitelabeldate'\MessageBreak instead}}%
+       Please use\MessageBreak'bbx@introcitelabeldate'\MessageBreak
+       instead}}%
   \ifcsundef{blx@delimcontextalias@bbx:introcite}
     {}
     {\extblx@warning@noline{%
@@ -231,8 +237,8 @@
 % biblatex-ext is released under the LaTeX Project Public License v1.3c
 % or later.
 %
-% A complete list of files included in that package can be found in README.md
-% or - failing that - in ext-standard.bbx.
+% A complete list of files included in that package can be found in
+% README.md or - failing that - in ext-standard.bbx.
 %
 % Official releases of this package are on CTAN
 %   https://www.ctan.org/pkg/biblatex-ext

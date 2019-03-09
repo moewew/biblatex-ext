@@ -4,8 +4,8 @@
 \RequirePackage{etoolbox}
 \RequirePackage{kvoptions}
 
-% Internals called 'extblx@oasymb@pict' instead of 'extblx@oasymb@pict2e'
-% to avoid the non-letter "2".
+% Internals called 'extblx@oasymb@pict' instead of
+% 'extblx@oasymb@pict2e' to avoid the non-letter "2".
 
 \protected\def\extblx@oasymb@pict@error#1#2{%
   \PackageError{biblatex-ext-oasymb-pict2e}{#1}{#2.}}
@@ -45,7 +45,8 @@
 
 \newsavebox{\extblx@oasymb@pict@plos@box}
 \sbox{\extblx@oasymb@pict@plos@box}{\extblx@oasymb@pict@plos@pict}
-\newcommand*{\extblx@oasymb@pict@plos}{\usebox{\extblx@oasymb@pict@plos@box}}
+\newcommand*{\extblx@oasymb@pict@plos}{%
+  \usebox{\extblx@oasymb@pict@plos@box}}
 
 % PLoS symbols is standard
 \newcommand*{\oasymbol}{\extblx@oasymb@pict@plos}
@@ -99,7 +100,8 @@
 
 \newsavebox{\extblx@oasymb@pict@oanet@box}
 \sbox{\extblx@oasymb@pict@oanet@box}{\extblx@oasymb@pict@oanet@pict}
-\newcommand*{\extblx@oasymb@pict@oanet}{\usebox{\extblx@oasymb@pict@oanet@box}}
+\newcommand*{\extblx@oasymb@pict@oanet}{%
+  \usebox{\extblx@oasymb@pict@oanet@box}}
 
 \protected\def\extblx@oasymb@pict@opt@symbol@process#1{%
   \begingroup
@@ -115,7 +117,8 @@
        for option 'symbol'}
       {The symbol '#1' does not exist.\MessageBreak
        Please consult the documentation for a list of valid options}}
-    {\edef\oasymbol{\expandonce{\csname extblx@oasymb@pict@#1\endcsname}}}}
+    {\edef\oasymbol{%
+       \expandonce{\csname extblx@oasymb@pict@#1\endcsname}}}}
 
 \newrobustcmd*{\DefineOASymbol}[1][plos]{%
   \begingroup
@@ -130,7 +133,8 @@
        \space\space'#1'}
       {The symbol '#1' does not exist.\MessageBreak
        Please consult the documentation for a list of valid options}}
-    {\edef\oasymbol{\expandonce{\csname extblx@oasymb@pict@#1\endcsname}}}}
+    {\edef\oasymbol{%
+       \expandonce{\csname extblx@oasymb@pict@#1\endcsname}}}}
 
 \SetupKeyvalOptions{
   family=extblx@oasymb@pict@opt,
@@ -143,7 +147,8 @@
 
 \ProcessKeyvalOptions*
 
-\extblx@oasymb@pict@opt@symbol@process{\csuse{extblx@oasymb@pict@opt@symbol}}
+\extblx@oasymb@pict@opt@symbol@process{%
+  \csuse{extblx@oasymb@pict@opt@symbol}}
 
 \endinput
 %
@@ -151,8 +156,8 @@
 % biblatex-ext is released under the LaTeX Project Public License v1.3c
 % or later.
 %
-% A complete list of files included in that package can be found in README.md
-% or - failing that - in ext-standard.bbx.
+% A complete list of files included in that package can be found in
+% README.md or - failing that - in ext-standard.bbx.
 %
 % Official releases of this package are on CTAN
 %   https://www.ctan.org/pkg/biblatex-ext

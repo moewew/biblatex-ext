@@ -21,7 +21,8 @@
       be loaded}
      {Load biblatex with '\string\usepackage{biblatex}' before
       you load 'biblatex-ext-oa'.\MessageBreak
-      Please see the documentation of biblatex-ext for more information}%
+      Please see the documentation of biblatex-ext for more
+      information}%
    \endinput}
 
 % xpatch has xapptobibmacro,
@@ -69,7 +70,8 @@
           Ignoring the option\MessageBreak
           'openaccess=#1'\MessageBreak
           for entry '\abx@field@entrykey'}%
-        \global\cslet{extblx@oa@warn@field@\abx@field@entrykey @#1}\@empty}
+        \global\cslet{extblx@oa@warn@field@\abx@field@entrykey @#1}
+          \@empty}
        {}}
     {\csletcs{extblx@oa@url@from}{extblx@oa@url@from@#1}}%
   \ifcsequal{extblx@oa@url@from}{extblx@oa@url@from@onlydoiapi}
@@ -86,7 +88,8 @@
           'biblatex-ext-oa'\MessageBreak
           package with the option 'doiapi=true'.
           That option also requires LuaLaTeX.\MessageBreak
-          Please see the documentation of biblatex-ext for more information}
+          Please see the documentation of biblatex-ext for more
+          information}
      \fi}
     {}%
 }
@@ -103,7 +106,8 @@
 \csdef{extblx@oa@url@from@doiapi}{doiapi}
 \csdef{extblx@oa@url@from@onlydoiapi}{onlydoiapi}
 \csletcs{extblx@oa@url@from@forcedoiapi}{extblx@oa@url@from@doiapi}
-\csletcs{extblx@oa@url@from@forceonlydoiapi}{extblx@oa@url@from@onlydoiapi}
+\csletcs{extblx@oa@url@from@forceonlydoiapi}
+        {extblx@oa@url@from@onlydoiapi}
 
 % {<field_1,...,field_n>}
 \newrobustcmd*{\DeclareOpenAccessUrlFieldPriority}{%
@@ -174,7 +178,8 @@
        {\extblx@oa@api@getoaurl{\thefield{doi}}}}
     {\ifcsequal{extblx@oa@url@from}{extblx@oa@url@from@doiapi}
        {\iffieldundef{doi}
-         {\forlistloop{\extblx@oa@url@processfield}{\extblx@oa@url@autofields}}
+         {\forlistloop{\extblx@oa@url@processfield}
+                      {\extblx@oa@url@autofields}}
          {\extblx@oa@api@getoaurl{\thefield{doi}}}}
        {\ifcsequal{extblx@oa@url@from}{extblx@oa@url@from@none}
           {}
@@ -210,9 +215,10 @@
        {\extblx@oa@error
           {Incompatible symbol method '#2' already loaded}
           {Only one symbol package can be loaded.\MessageBreak
-           The symbol method '#2' is already loaded, so '#1' can't be used.%
-           \MessageBreak
-           If you ignore this error and press on, I will ignore this command}%
+           The symbol method '#2' is already loaded, so '#1' can't be
+           used.\MessageBreak
+           If you ignore this error and press on, I will ignore this
+           command}%
         \edef\extblx@oa@tempa{\endgroup
           \noexpand\@firstoftwo}%
         \listbreak}
@@ -233,7 +239,8 @@
   \lowercase{\def\extblx@oa@tempb{#1}}%
   \lowercase{\def\extblx@oa@tempc{#2}}
   \edef\extblx@oa@tempa{\endgroup
-    \noexpand\LoadOASymbolPackage@ii[\extblx@oa@tempb]{\extblx@oa@tempc}}%
+    \noexpand\LoadOASymbolPackage@ii[\extblx@oa@tempb]{%
+      \extblx@oa@tempc}}%
   \extblx@oa@tempa}%
 
 \def\LoadOASymbolPackage@ii[#1]#2{%
@@ -254,8 +261,8 @@
           {\RequirePackage[symbol=#1]{biblatex-ext-oasymb-#2}}}}
     {\extblx@oa@error
        {Unknown symbol package/method '#2'}
-       {The symbol method '#2' (package 'biblatex-ext-oasymb-#2') is unknown.%
-        \MessageBreak
+       {The symbol method '#2' (package 'biblatex-ext-oasymb-#2') is
+        unknown.\MessageBreak
         See the documentation for a list of available values}}}
 
 \SetupKeyvalOptions{
@@ -313,8 +320,8 @@
         {Option 'symbol' used, but no symbol method\MessageBreak
          has been set and no symbol package loaded}
         {The option 'symbol' can only be used if\MessageBreak
-         * the option 'symbolpackage' is set to a valid value other than 'false',
-         or\MessageBreak
+         * the option 'symbolpackage' is set to a valid value other
+         than 'false', or\MessageBreak
          * an open access symbol package has been loaded manually
          (not recommended)}}
      {\DefineOASymbol[\extblx@oa@opt@symbol]}}
@@ -333,7 +340,8 @@
   \extblx@oa@url@getoaurl
   \ifundef\extblx@oa@url
     {}
-    {\expandafter\extbl@oa@bbl@fielddef@bestoaurl\expandafter{\extblx@oa@url}}}
+    {\expandafter\extbl@oa@bbl@fielddef@bestoaurl
+     \expandafter{\extblx@oa@url}}}
 
 
 
@@ -341,7 +349,8 @@
 % answer to https://tex.stackexchange.com/a/123451/35864
 % originally CC BY-SA 3.0, but dual-licensed under LPPL
 % see https://tex.meta.stackexchange.com/a/3333/35864
-\newcommand{\extblx@oa@marginmark}{\strut\vadjust{\extblx@oa@marginmark@do}}
+\newcommand{\extblx@oa@marginmark}{%
+  \strut\vadjust{\extblx@oa@marginmark@do}}
 \newcommand{\extblx@oa@marginmark@do}{%
   \vbox to 0pt{%
     \kern-3\dp\strutbox
@@ -431,8 +440,8 @@
 % biblatex-ext is released under the LaTeX Project Public License v1.3c
 % or later.
 %
-% A complete list of files included in that package can be found in README.md
-% or - failing that - in ext-standard.bbx.
+% A complete list of files included in that package can be found in
+% README.md or - failing that - in ext-standard.bbx.
 %
 % Official releases of this package are on CTAN
 %   https://www.ctan.org/pkg/biblatex-ext

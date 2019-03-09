@@ -6,24 +6,26 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.6b...v0.7>
 
 ### Added
 - Outer citation delimiters for `\supercite`.
-- `biblatex-ext-oasymb-pict2e` for open access symbols drawn in `pict2e`.
-  The package can be used via the `symbolpackage=pict2e` option to
-  `biblatex-ext-oa` and provides a light-weight alternative to the the symbols
-  drawn with TikZ or the experimental `l3draw` (of LaTeX3 fame).
-- `biblatex-ext-oasymb-l3draw` for open access symbols drawn in `l3draw`.
-  The package can be used via the `symbolpackage=l3draw` option to
-  `biblatex-ext-oa` and provides a LaTeX3 alternative to the the symbols drawn
-  with TikZ or `pict2e`.
-- `\LoadOASymbolPackage`, `\DeclareOASymbol` to load an open access symbol
-  package and set the symbol.
-- `symbolpackage` and `symbol` options for `biblatex-ext-oa` corresponding to
-  `\LoadOASymbolPackage` and `\DeclareOASymbol`, respectively.
+- `biblatex-ext-oasymb-pict2e` for open access symbols drawn in
+  `pict2e`. The package can be used via the `symbolpackage=pict2e`
+  option to `biblatex-ext-oa` and provides a light-weight alternative
+  to the the symbols drawn with TikZ or the experimental `l3draw`
+  (of LaTeX3 fame).
+- `biblatex-ext-oasymb-l3draw` for open access symbols drawn in
+  `l3draw`. The package can be used via the `symbolpackage=l3draw`
+  option to `biblatex-ext-oa` and provides a LaTeX3 alternative to the
+  the symbols drawn with TikZ or `pict2e`.
+- `\LoadOASymbolPackage`, `\DeclareOASymbol` to load an open access
+  symbol package and set the symbol.
+- `symbolpackage` and `symbol` options for `biblatex-ext-oa`
+  corresponding to `\LoadOASymbolPackage` and `\DeclareOASymbol`,
+  respectively.
 
 ### Changed
 - **Incompatible change** Renamed `biblatex-ext-oa-tikzsymbols` to
   `biblatex-ext-oasymb-tikz` for consistency.
-  No serious impact for end users is expected since the package should normally
-  not be used as a stand-alone package.
+  No serious impact for end users is expected since the package should
+  normally not be used as a stand-alone package.
   It should be loaded via `biblatex-ext-oa`.
 
 ### Deprecated
@@ -31,8 +33,8 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.6b...v0.7>
   `\DeclareOASymbol`.
 - Deprecate `\LoadTikZOASymbol` in favour of the more universal
   `\LoadOASymbolPackage`.
-- Deprecate the `biblatex-ext-oa` option `tikzsymbol` in favour of the new
-  options `symbolpackage` and `symbol`.
+- Deprecate the `biblatex-ext-oa` option `tikzsymbol` in favour of the
+  new options `symbolpackage` and `symbol`.
 
 
 ## Version 0.6b (2019-01-11)
@@ -98,8 +100,8 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.4...v0.5>
 ### Added
 - New `ecomp` style family. The styles of that family compress lists of
   extradate fields.
-- First implementation of a tabular bibliography based on Audrey's answer to
-  <https://tex.stackexchange.com/q/71088/35864>
+- First implementation of a tabular bibliography based on Audrey's
+  answer to <https://tex.stackexchange.com/q/71088/35864>
 - Outer cite delimiters for `\footcite`.
 - `version` and `pagetotal` bibmacros.
 
@@ -111,23 +113,26 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.4...v0.5>
 See <https://github.com/moewew/biblatex-ext/compare/v0.3...v0.4>
 
 ### Changed
-- Renamed `\DeclareOuterCiteDelim` and friends to `\DeclareOuterCiteDelims`,
-  backwards compatibility for most of this change should be available.
+- Renamed `\DeclareOuterCiteDelim` and friends to 
+  `\DeclareOuterCiteDelims`, backwards compatibility for most of this
+  change should be available.
 - **Incompatible change** Renamed `\bbx@cite@inxref` to `\bbx@xrefcite`
   for consistency with other citation commands.
   There are is no compatibility code set up for this change.
-- **Incompatible change** The "virtual" citation command `\bbx:introcite`
-  is now called `\bbx@introcite`. ("Virtual" because the appearance of the
-  introcite label can be changed mostly as if it were produced by this citation
-  command, but it isn't really produced by a citation command at all.)
-  This means that the delimiter context, inner citation delimiters and wrapper
-  field format are renamed from `bbx:introcite` to `bbx@introcite`.
-  There is no compatibility code set up for this change, but warnings are
-  issued if some typical uses of the old names are detected. This means that
-  people using older code should be warned, but still need to take action
-  themselves. Fortunately the introcite feature is quite a prominent bit of
-  the bibliography, so people will probably realise wrong output sooner than
-  later.
+- **Incompatible change** The "virtual" citation command
+  `\bbx:introcite` is now called `\bbx@introcite`. ("Virtual" because
+  the appearance of the introcite label can be changed mostly as if it
+  were produced by this citation command, but it isn't really produced
+  by a citation command at all.)
+  This means that the delimiter context, inner citation delimiters and
+  wrapper field format are renamed from `bbx:introcite` to
+  `bbx@introcite`.
+  There is no compatibility code set up for this change, but warnings
+  are issued if some typical uses of the old names are detected.
+  This means that people using older code should be warned, but still
+  need to take action themselves. Fortunately the `introcite` feature
+  is quite a prominent bit of the bibliography, so people will probably
+  realise wrong output sooner than later.
 - Renamed option `citeinxref` to `citexref`. Please use the new name.
   Backwards compatibility is in place.
 
@@ -136,18 +141,21 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.3...v0.4>
 See <https://github.com/moewew/biblatex-ext/compare/v0.2...v0.3>
 
 ### Added
-- `titlecase:<titletype>` field formats for finer control over the title
-  casing. The standard styles have the catch-all format `titlecase`. This
-  bundle now has `titlecase:title`, `titlecase:booktitle`,
-  `titlecase:maintitle`, `titlecase:issuetitle` and `titlecase:journaltitle`.
-- Toggle `bbx:introcite:plain:keeprelated` to choose not to suppress the
-  `introcite=plain` cite label for default related entries (other
-  `relatedtype`s may already suppress the cite label without chance of getting
-  it back).
+- `titlecase:<titletype>` field formats for finer control over the
+  title casing. The standard styles have the catch-all format
+  `titlecase`.
+  This bundle now has `titlecase:title`, `titlecase:booktitle`,
+  `titlecase:maintitle`, `titlecase:issuetitle` and
+  `titlecase:journaltitle`.
+- Toggle `bbx:introcite:plain:keeprelated` to choose not to suppress
+  the `introcite=plain` cite label for default related entries (other
+  `relatedtype`s may already suppress the cite label without chance of
+  getting it back).
 - `\jourvoldelim`, `\jourserdelim` and `\servoldelim`.
 
 ### Changed
-- Turned `extradateonlycompcitedelim` into a context-sensitive delimiter.
+- Turned `extradateonlycompcitedelim` into a context-sensitive
+  delimiter.
 - Various documentation improvements.
 
 
@@ -158,15 +166,15 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.1a...v0.2>
 - `\voltitledelim`
 
 ### Changed
-- **Incompatible change** The lengths for `introcite=label` now work like
-  `\labelwidth` and `\labelsep` in all other lists.
+- **Incompatible change** The lengths for `introcite=label` now work
+  like `\labelwidth` and `\labelsep` in all other lists.
   `\introcitewidth` controls the maximum length of the label, while
-  `\introcitesep` controls the separation between the end of the label and
-  the beginning of the reference.
-  The total indentation is now `\introcitewidth`+`\introcitesep` and not
-  only `\introcitewidth` as before.
-- **Incompatible change** `\maintitletitledelim` is now truly the punctuation
-  between the `maintitle` and `(book)title` field.
+  `\introcitesep` controls the separation between the end of the label
+  and the beginning of the reference.
+  The total indentation is now `\introcitewidth`+`\introcitesep` and
+  not only `\introcitewidth` as before.
+- **Incompatible change** `\maintitletitledelim` is now truly the
+  punctuation between the `maintitle` and `(book)title` field.
   What was formerly `\maintitledelim` is now `\voltitledelim`.
 - Renamed `bbx:cite:intro` to `bbx:introcite`.
 - Sync with upstream `biblatex` to add `type` and `event+venue+date` to

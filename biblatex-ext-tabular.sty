@@ -1,7 +1,8 @@
 \ProvidesPackage{biblatex-ext-tabular}
   [2019/02/08 v0.7 tabular bibliographies for biblatex (MW)]
 
-% Code based on Audrey's (https://tex.stackexchange.com/users/4483/audrey)
+% Code based on Audrey's
+% (https://tex.stackexchange.com/users/4483/audrey)
 % answer https://tex.stackexchange.com/a/71454/35864 on TeX.SX
 % relicensed under CC0, see
 % https://tex.meta.stackexchange.com/a/1755/35864
@@ -43,7 +44,8 @@
   \edef\blx@tempe{\the\c@refsection}% default refsection is current
   \blx@safe@actives
   \togglefalse{blx@resetnumsexplicit}%
-  \setkeys{blx@bib1}{#1}% First pass options keys - section and resetnumbers
+  % First pass options keys - section and resetnumbers
+  \setkeys{blx@bib1}{#1}%
   % Is there a user-specified option for resetnumbers
   % If so, this overrides the default
   % "labelprefix implies resetnumbers" behaviour
@@ -55,7 +57,8 @@
   \blx@rest@actives
   \ifcsvoid{blx@dlist@entry@\blx@tempe @\blx@refcontext@context}
     {}
-    {\letcs\blx@tempa{blx@dlist@entry@\blx@tempe @\blx@refcontext@context}}%
+    {\letcs\blx@tempa{blx@dlist@entry@\blx@tempe
+                      @\blx@refcontext@context}}%
   \blx@safe@actives
   % Must reset omitnumbers as it's a global macro and if we don't, any
   % \printbibliography following one with this set will inherit any
@@ -67,7 +70,8 @@
   % Add datalist to list of seen datalists to prevent duplicates
   \xifinlist{\blx@refcontext@context @\blx@tempe @entry}\blx@dlistnames
     {}
-    {\listxadd\blx@dlistnames{\blx@refcontext@context @\blx@tempe @entry}%
+    {\listxadd\blx@dlistnames{\blx@refcontext@context @\blx@tempe
+                              @entry}%
      \csxappto{blx@dlists}{%
        \blx@xml@dlist{\blx@refcontext@context}{entry}{\blx@tempe}{%
          \blx@xml@dlist@refcontext
@@ -112,15 +116,20 @@
   \blx@listloop{#1}%
   \begingroup
   % sane names for wrapper macros
-  \def\plain     {\extblxtab@tab@item@plain     {\extblxtab@tabrow@entrykey}}%
-  \def\plainlang {\extblxtab@tab@item@plainlang {\extblxtab@tabrow@entrykey}}%
-  \def\anchor    {\extblxtab@tab@item@anchor    {\extblxtab@tabrow@entrykey}}%
-  \def\anchorlang{\extblxtab@tab@item@anchorlang{\extblxtab@tabrow@entrykey}}%
-  \def\driver    {\extblxtab@tab@item@driver    {\extblxtab@tabrow@entrykey}}%
+  \def\plain     {\extblxtab@tab@item@plain
+                    {\extblxtab@tabrow@entrykey}}%
+  \def\plainlang {\extblxtab@tab@item@plainlang 
+                    {\extblxtab@tabrow@entrykey}}%
+  \def\anchor    {\extblxtab@tab@item@anchor
+                    {\extblxtab@tabrow@entrykey}}%
+  \def\anchorlang{\extblxtab@tab@item@anchorlang
+                    {\extblxtab@tabrow@entrykey}}%
+  \def\driver    {\extblxtab@tab@item@driver
+                    {\extblxtab@tabrow@entrykey}}%
   % tabular output for each item in list
-  % note that each cell is in its own group, hence we need \gdef to break
-  % out of the first cell as soon as the row format has a & in it since
-  % the assignment will be counted as being in the first cell
+  % note that each cell is in its own group, hence we need \gdef to
+  % break out of the first cell as soon as the row format has a & in it
+  % since the assignment will be counted as being in the first cell
   \def\do##1{%
     \gdef\extblxtab@tabrow@entrykey{##1}%
     \csuse{extblxtab@tabrow@format@\blx@theenv}}%
@@ -203,7 +212,8 @@
       \MessageBreak
       See the documentation for more details}}
   {\textbf{Error!
-           The tabular bibliography environment `bibtabular' is undefined.
+           The tabular bibliography environment `bibtabular' is
+           undefined.
            No tabular bibliography was produced.
            Please supply a suitable definition with
            \mbox{\string\defbibtabular}.
@@ -220,7 +230,8 @@
 
 % Two useful bibmacros for tabular bibliographies
 
-% print the labelname/sortname with editor or translator string if appropriate
+% print the labelname/sortname with editor or translator string if
+% appropriate
 \newbibmacro*{tabular:sortname}{%
   \ifnameundef{labelname}
     {\usebibmacro{labeltitle}}
@@ -246,8 +257,8 @@
 % biblatex-ext is released under the LaTeX Project Public License v1.3c
 % or later.
 %
-% A complete list of files included in that package can be found in README.md
-% or - failing that - in ext-standard.bbx.
+% A complete list of files included in that package can be found in
+% README.md or - failing that - in ext-standard.bbx.
 %
 % Official releases of this package are on CTAN
 %   https://www.ctan.org/pkg/biblatex-ext

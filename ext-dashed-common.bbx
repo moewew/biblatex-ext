@@ -2,18 +2,21 @@
   [2019/02/08 v0.7 common files for extended biblatex
    dashed bibliography styles (MW)]
 
-\blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
+\blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}
+  {}{}{}{}
 
 % \DeclareBibliographyOption checks if an option is already defined.
 % if we want to overwrite the definition we need to trick it into
 % thinking the option has not been defined yet.
 \csundef{KV@blx@opt@pre@dashed}
-% We want to define 'dashed' with a new type, so we need to make biblatex
-% forget about the old type when it passes the options over to Biber.
+% We want to define 'dashed' with a new type, so we need to make
+% biblatex forget about the old type when it passes the options over to
+% Biber.
 \ifundef\listcsremove
   {\extblx@warning@noline{%
      'etoolbox' does not provide '\string\listcsremove'.\MessageBreak
-     Please update 'etoolbox' to v2.4 (2017-01-02)\MessageBreak or later}}
+     Please update 'etoolbox' to v2.4 (2017-01-02)\MessageBreak
+     or later}}
   {\listcsremove{blx@globalopts@boolean}{dashed}}
 
 \extblx@DeclareBTEOption[string]{dashed}[true]{%
@@ -78,8 +81,8 @@
 % biblatex-ext is released under the LaTeX Project Public License v1.3c
 % or later.
 %
-% A complete list of files included in that package can be found in README.md
-% or - failing that - in ext-standard.bbx.
+% A complete list of files included in that package can be found in
+% README.md or - failing that - in ext-standard.bbx.
 %
 % Official releases of this package are on CTAN
 %   https://www.ctan.org/pkg/biblatex-ext

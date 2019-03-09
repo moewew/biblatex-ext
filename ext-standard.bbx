@@ -5,7 +5,8 @@
 \ProvidesFile{ext-standard.bbx}
   [2019/02/08 v0.7 extended biblatex standard style (MW)]
 
-\blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
+\blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}
+  {}{}{}{}
 
 \RequireBibliographyStyle{standard}
 
@@ -123,7 +124,8 @@
 
 % This macro is used in \defbibenvironment
 \newbibmacro*{introcite:break}{%
-  \settowidth{\extbl@this@introcitewidth}{\usebibmacro{introcite:typeset}}%
+  \settowidth{\extbl@this@introcitewidth}
+    {\usebibmacro{introcite:typeset}}%
   \ifdimgreater{\extbl@this@introcitewidth}{\introcitewidth}
     {\introcitebreak}
     {}}
@@ -1208,7 +1210,9 @@
 
 % Copyright 2017-2019 Moritz Wemheuer
 %
-% This work consists of the `.bbx`, `.cbx`, `.def`, `.sty` and `.lua` files
+% This work consists of the `.bbx`, `.cbx`, `.def`, `.sty` and `.lua`
+% files
+%
 % ext-standard.bbx
 % ext-biblatex-aux.def
 % ext-dashed-common.bbx
@@ -1264,10 +1268,13 @@
 %
 % This work has the LPPL maintenance status 'maintained'.
 %
-% The Current Maintainer of the work is Moritz Wemheuer <mwemheu@gmail.com>.
+% The Current Maintainer of the work is Moritz Wemheuer
+% <mwemheu@gmail.com>.
 %
-% Please report bugs at https://github.com/moewew/biblatex-ext or via email.
-% Suggestions for improvements and feature request are also very welcome.
+% Please report bugs at https://github.com/moewew/biblatex-ext or
+% via email.
+% Suggestions for improvements and feature request are also very
+% welcome.
 %
 % The bundle is available on CTAN
 %   https://www.ctan.org/pkg/biblatex-ext

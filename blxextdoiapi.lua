@@ -11,22 +11,35 @@ local blxextdoiapi_module = {
 }
 -- inspired by Eric Marsden's answer to https://tex.stackexchange.com/q/459449/
 
+
 -- luatexbase's luatexbase.provides_module returns the loggers directly
 local err, warn, info, log = luatexbase.provides_module(blxextdoiapi_module)
 
+-- Does it even make sense to try and make use of the extra luatexbase stuff
+-- from luatexbase.sty? Since we don't want to assume that package in general,
+-- we have to manually recode it anyway...
+
 -- for ltluatex's luatexbase.provides_module we need to construct the loggers
 local error   = err  or
-  (function (s) luatexbase.module_error(blxextdoiapi_module.name, s) end)
+  (function (s,...)
+     return luatexbase.module_error(blxextdoiapi_module.name, s:format(...))
+   end)
 local warning = warn or
-  (function (s) luatexbase.module_warning(blxextdoiapi_module.name, s) end)
+  (function (s,...)
+     return luatexbase.module_warning(blxextdoiapi_module.name, s:format(...))
+   end)
 local info    = info or
-  (function (s) luatexbase.module_info(blxextdoiapi_module.name, s) end)
+  (function (s,...)
+     return luatexbase.module_info(blxextdoiapi_module.name, s:format(...))
+   end)
 local log     = log  or
-  (function (s) luatexbase.module_info(blxextdoiapi_module.name, s) end)
+  (function (s,...)
+     return luatexbase.module_info(blxextdoiapi_module.name, s:format(...))
+   end)
 
 
 local http        = require("socket.http")
-local url         = socket.url or require("socket.url")
+local url         = socket.url or require("socket.url") --- #17, LuaTeX 1.07
 local json        = utilities.json
 local os_time     = os.time
 local os_date     = os.date
@@ -53,8 +66,7 @@ local function texsprint(s)
 end
 
 -- global database of DOIs
--- is going to be loaded from \jobname.oai beforehand
--- if the file exists
+-- is going to be loaded from \jobname.oai beforehand if the file exists
 oadb = oadb or {}
 
 -- parse YYYY-MM-DD date as string (UTC time!)

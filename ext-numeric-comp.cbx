@@ -1,7 +1,8 @@
 \ProvidesFile{ext-numeric-comp.cbx}
   [2019/02/08 v0.7 extended biblatex numeric-comp citation style (MW)]
 
-\blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}{}{}{}{}
+\blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}
+  {}{}{}{}
 
 \RequireCitationStyle{numeric-comp}
 
@@ -16,7 +17,8 @@
     {\usebibmacro{cite:comp}}
     {\usebibmacro{cite:dump}%
      \ifbool{cbx:parens}
-       {\printtext{\csuse{extblx@citedelim@\blx@delimcontext @inner@close}}%
+       {\printtext{\csuse{extblx@citedelim@\blx@delimcontext
+                          @inner@close}}%
         \global\boolfalse{cbx:parens}}
        {}%
      \iffirstcitekey
@@ -72,7 +74,8 @@
   {\usebibmacro{cite:dump}%
    \usebibmacro{postnote}}
 
-% smartcite's delimcontext needs special attention (see ext-biblatex-aux.def)
+% smartcite's delimcontext needs special attention
+% (see ext-biblatex-aux.def)
 \DeclareCiteCommand{\smartcite}[\mksmartcite]
   {\delimcontext{\extblx@thisdelimcontext}%
    \usebibmacro{cite:init}%
@@ -145,8 +148,8 @@
 % biblatex-ext is released under the LaTeX Project Public License v1.3c
 % or later.
 %
-% A complete list of files included in that package can be found in README.md
-% or - failing that - in ext-standard.bbx.
+% A complete list of files included in that package can be found in
+% README.md or - failing that - in ext-standard.bbx.
 %
 % Official releases of this package are on CTAN
 %   https://www.ctan.org/pkg/biblatex-ext
