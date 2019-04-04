@@ -33,7 +33,7 @@
 
 \def\extblxtab@key@env#1{%
   \ifcsundef{extblxtab@env@#1}
-     {\blx@error
+     {\extblxtab@error
         {Environment '#1' not found}
         {The environment '#1' could not be found.\MessageBreak
          Use \string\defbibtabular\space to define it}}
