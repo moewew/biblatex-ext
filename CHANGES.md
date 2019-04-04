@@ -11,6 +11,9 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.7...HEAD>
   environment of the same name as the *bibtabular* environment passed
   to `env`.
 
+### Changed
+- `biblatex-ext-doiapi` warns about missing email just a tad earlier.
+
 ## Version 0.7 (2019-02-08)
 See <https://github.com/moewew/biblatex-ext/compare/v0.6b...v0.7>
 
@@ -123,7 +126,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.4...v0.5>
 See <https://github.com/moewew/biblatex-ext/compare/v0.3...v0.4>
 
 ### Changed
-- Renamed `\DeclareOuterCiteDelim` and friends to 
+- Renamed `\DeclareOuterCiteDelim` and friends to
   `\DeclareOuterCiteDelims`, backwards compatibility for most of this
   change should be available.
 - **Incompatible change** Renamed `\bbx@cite@inxref` to `\bbx@xrefcite`
