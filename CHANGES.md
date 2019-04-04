@@ -1,7 +1,7 @@
 # Changelog
 
-## Unreleased
-See <https://github.com/moewew/biblatex-ext/compare/v0.7...HEAD>
+## Version 0.7a (2019-04-04)
+See <https://github.com/moewew/biblatex-ext/compare/v0.7...v0.7a>
 
 ### Fixed
 - Bug in the `env` option to `\printbibtabular`. The old version would
