@@ -31,6 +31,14 @@
     {\extblxtab@printbibtabular}
     {\extblxtab@printbibtabular[]}}
 
+\def\extblxtab@key@env#1{%
+  \ifcsundef{extblxtab@env@#1}
+     {\blx@error
+        {Environment '#1' not found}
+        {The environment '#1' could not be found.\MessageBreak
+         Use \string\defbibtabular\space to define it}}
+     {\def\blx@theenv{#1}}}
+
 \def\extblxtab@printbibtabular[#1]{%
   \toggletrue{blx@tempa}%
   \toggletrue{blx@tempb}%
@@ -39,6 +47,8 @@
   \let\blx@theprenote\@empty
   \let\blx@thepostnote\@empty
   \let\blx@thetitle\@empty
+  \let\blx@key@env\extblxtab@key@env % redirect the 'env' option
+                                     % to tabular envs
   % defaults
   \let\blx@tempa\@empty% before there is a .bbl, this must not be undef
   \edef\blx@tempe{\the\c@refsection}% default refsection is current

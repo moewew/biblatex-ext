@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+See <https://github.com/moewew/biblatex-ext/compare/v0.7...HEAD>
+
+### Fixed
+- Bug in the `env` option to `\printbibtabular`. The old version would
+  check for a *bib* environment as defined with `\defbibenvironment`
+  and not a *bibtabular* environment as defined with `\defbibtabular`.
+  Hence, the option would throw an error if there was no bib
+  environment of the same name as the *bibtabular* environment passed
+  to `env`.
 
 ## Version 0.7 (2019-02-08)
 See <https://github.com/moewew/biblatex-ext/compare/v0.6b...v0.7>
