@@ -3,8 +3,6 @@
   - version settings like KOMA or chemmacros
 - Look into author-year verbose styles?
 - Author name in full on first cite (name tracking)?
-- Name wrapper for entire names?
-  - `\mkbibcompletename` (maybe dependent on family-given, given-family)?
 - series+number position
 - more modular bib drivers
   - would be quite a shift away from the standard styles, so offer as option?
@@ -25,7 +23,7 @@
 - \mkbibname... only for the 'primary' name of a source?
 - in... names, see https://tex.stackexchange.com/q/216369/35864
   - This needs to be done carefully to not clash with in:editor
-  - Rethink the names...
+  - Rethink the names...: bookeditor?
 - Test suite
 - Less intrusive versioning
 - blxextdoiapi for non-Lua engines with shell escape calling texlua?

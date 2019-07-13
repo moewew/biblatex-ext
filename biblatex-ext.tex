@@ -468,7 +468,7 @@
   \href{\gitbaseurl/issues/#1}{issue \##1 on github}}
 
 \newrobustcmd*{\CSdelim}{%
-  \textcolor{spot}{\margnotefont context sensitive}}
+  \textcolor{spot}{\margnotefont\footnotesize context sensitive}}
 \newrobustcmd*{\CSdelimMark}{%
   \leavevmode\marginpar{\CSdelim}}
 
@@ -1390,11 +1390,22 @@ labels in a \hyperblxstyle[ext-numeric]{numeric} bibliography.
 
 The label produced by the \optval{plain} option can be customised as follows.
 \begin{ltxsyntax}
+\cmditem{AtIntrocite}{code}
+\cmditem*{AtIntrocite}*{code}
+
+Appends the \prm{code} to an internal hook executed when initializing
+\cmd{introcite}.
+The starred variant of the command clears the initialisation hook,
+so the defaults can be overwritten.
+The default settings execute the internal macro
+\cs{extblx@introcite@init}, which makes sure that the label produced
+by for introcite takes into account the cite settings.
+
 \csitem{introcitepunct}
 
 The punctuation insterted between the label and the
-  rest of the entry with \kvopt{introcite}{plain}.
- The default value is a colon followed by a space.
+rest of the entry with \kvopt{introcite}{plain}.
+The default value is a colon followed by a space.
 \begin{bibexample}
 \togglefalse{bbx:doi}
 \renewcommand*{\introcitepunct}{\highlight{\textbf{\addcolon}\textvisiblespace}}
@@ -3136,8 +3147,11 @@ See also \filename{CHANGES.md}.
 
 The numbers on the right indicate the relevant section of the manual.
 \begin{changelog}
+\begin{release}{<version>}{<date>}
+  \item Added \hypercmd{AtIntrocite} \see{sec:opt:style}
+\end{release}
 \begin{release}{0.7a}{2019-04-04}
-  \item Fix bug in the \opt{env} option of \hypercmd{printbibtabular}%
+  \item Fixed bug in the \opt{env} option of \hypercmd{printbibtabular}%
     \see{sec:tabularbib}
 \end{release}
 \begin{release}{0.7}{2019-02-08}

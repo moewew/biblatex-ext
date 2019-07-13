@@ -97,21 +97,33 @@
 \newlength{\introcitesep}
 \setlength{\introcitesep}{\biblabelsep}
 
+\newrobustcmd*{\AtIntrocite}{%
+  \@ifstar
+    {\global\undef\extblx@hook@introcite
+     \gappto\extblx@hook@introcite}
+    {\gappto\extblx@hook@introcite}}
+
+\newcommand*{\extblx@introcite@init}{%
+  \iftoggle{blx@citation}
+    {}
+    {\togglefalse{blx@bibliography}%
+     \toggletrue{blx@citation}}%
+  \delimcontext{bbx@introcite}%
+  \csuse{blx@hook@cite}%
+  \csuse{blx@hook@citekey}%
+  \DeclareFieldFormat{bibhyperref}{##1}%
+  \undef\cbx@lasthash
+  \undef\cbx@lastyear
+  \citetrackerfalse\pagetrackerfalse\backtrackerfalse
+  \defcounter{maxnames}{\blx@maxcitenames}%
+  \defcounter{minnames}{\blx@mincitenames}%
+}
+
+\AtIntrocite{\extblx@introcite@init}
+
 \newbibmacro{introcite:typeset}{%
   \begingroup
-    \iftoggle{blx@citation}
-      {}
-      {\togglefalse{blx@bibliography}%
-       \toggletrue{blx@citation}}%
-    \delimcontext{bbx@introcite}%
-    \csuse{blx@hook@cite}%
-    \csuse{blx@hook@citekey}%
-    \DeclareFieldFormat{bibhyperref}{##1}%
-    \undef\cbx@lasthash
-    \undef\cbx@lastyear
-    \citetrackerfalse\pagetrackerfalse\backtrackerfalse
-    \defcounter{maxnames}{\blx@maxcitenames}%
-    \defcounter{minnames}{\blx@mincitenames}%
+    \csuse{extblx@hook@introcite}%
     \printtext[bbx@introcite]{\usebibmacro{bbx:introcite}}%
   \endgroup
 }
