@@ -1388,22 +1388,12 @@ labels in a \hyperblxstyle[ext-numeric]{numeric} bibliography.
 \makeatother
 \endgroup
 
+
 The label produced by the \optval{plain} option can be customised as follows.
 \begin{ltxsyntax}
-\cmditem{AtIntrocite}{code}
-\cmditem*{AtIntrocite}*{code}
-
-Appends the \prm{code} to an internal hook executed when initializing
-\cmd{introcite}.
-The starred variant of the command clears the initialisation hook,
-so the defaults can be overwritten.
-The default settings execute the internal macro
-\cs{extblx@introcite@init}, which makes sure that the label produced
-by for introcite takes into account the cite settings.
-
 \csitem{introcitepunct}
 
-The punctuation insterted between the label and the
+The punctuation inserted between the label and the
 rest of the entry with \kvopt{introcite}{plain}.
 The default value is a colon followed by a space.
 \begin{bibexample}
@@ -1503,6 +1493,22 @@ overlay={%
 \exampleprintbib{sigfridsson,geer}
 \end{bibexample}
 \makeatother
+
+In order to reproduce the citation label accurately in the bibliography,
+some initialisation and housekeeping needs to be done.
+\begin{ltxsyntax}
+\cmditem{AtIntrocite}{code}
+\cmditem*{AtIntrocite}*{code}
+
+Appends the \prm{code} to an internal hook executed when initializing
+\cmd{introcite}.
+The starred variant of the command clears the initialisation hook,
+so the defaults can be overwritten.
+The default settings execute the internal macro
+\cs{extblx@introcite@init}, which makes sure that the label produced
+for introcite takes into account the citation settings and suppresses
+unwanted citation tracking and hyperlinks.
+\end{ltxsyntax}
 
 The appearance of the citation label can be customised mostly as if it were
 produced by a true citation command called \cmd{bbx@introcite}.
@@ -1711,10 +1717,15 @@ It is probably too late now.}
 \begin{bibexample}
 \toggletrue{bbx:innamebeforetitle}
 \togglefalse{bbx:isbn}
+\DeclareFieldFormat{editortype}{\mkbibparens{#1}}
+\DeclareDelimFormat{editortypedelim}{\addspace}
 \DeclareDelimFormat[bib,biblist]{innametitledelim}{\highlight{\textbf{%
   \addperiod}\textvisiblespace}\bibsentence}% <- hacky & hard-coded!
 \exampleprintbib{pines}
 \end{bibexample}
+Note that \bibfieldformat{editortype} and \cmd{editortypedelim}
+were changed for this example to avoid punctuation clashes.
+
 Since \cmd{nametitledelim} and \cmd{innametitledelim} are independent,
 the following output is easily achieved.
 Note that the optional argument to \cmd{DeclareDelimFormat} is used
