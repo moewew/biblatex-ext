@@ -1603,8 +1603,9 @@ so it might not be a bad idea to have \filename{ext-standard.bbx} open when
 perusing this section of the manual.
 
 \subsection{Field formats}\label{sec:opt:field}
-In a few places where the standard styles employ hard-coded formatting
-directives the styles of this bundle offer customisable formats instead.
+The styles of this bundle offer customisable field formats
+in a few places where the standard styles employ hard-coded formatting
+directives instead.
 Field formats can be modified with \cmd{DeclareFieldFormat}.
 
 \begin{bibfieldformatlist}
@@ -2511,14 +2512,16 @@ bibliography macro \hyperbibmacro{oamark}.
 \usepackage[(*@\prm{\sty{biblatex-ext-oa} options}@*)]{biblatex-ext-oa}
 \end{biblatexcode}
 
-The package may load the support packages \hypersty{biblatex-ext-oa-doiapi},
-\hypersty{biblatex-ext-oasymb-pict2e}, \hypersty{biblatex-ext-oasymb-l3draw}
- and \hypersty{biblatex-ext-oasymb-tikz}.
-The preferred way to load these packages is via \sty{biblatex-ext-oa}'s
-package options.
+The package may load the support packages
+\hypersty{biblatex-ext-oa-doiapi},
+\hypersty{biblatex-ext-oasymb-pict2e},
+\hypersty{biblatex-ext-oasymb-l3draw}
+and \hypersty{biblatex-ext-oasymb-tikz}.
+The preferred way to use those packages is to have them loaded
+automatically via \sty{biblatex-ext-oa}'s package options.
 It should usually not be necessary to load any of these support packages
-directly with \cmd{usepackage}, but it is possible to use them as stand-alone
-packages should the need arise in other situations.
+directly with \cmd{usepackage}, but it is possible to use them as
+stand-alone packages should the need arise in other situations.
 
 \begin{warnbox}
 Note that the macro \hypercmd{oasymbol} must be defined and should contain an
@@ -2591,10 +2594,11 @@ Set \hypercmd{oasymbol} to output the symbol identified as \prm{symbol}.
 The available options can be found in \cref{sec:oa:symbol}.
 
 \begin{warnbox}
-Note that this option is only available if \hypercmd{symbolpackage} has been
-set to a valid value different from \optval{false} or one of the open access
-symbol packages has been loaded manually (the latter is usually not recommended,
-the option \hypercmd{symbolpackage} is the preferred way to load those
+Note that this option is only available if the
+option~\hyperopt{symbolpackage} has been set to a valid value different
+from \optval{false} or one of the open access symbol packages has
+been loaded manually (the latter is usually not recommended, the
+option~\hyperopt{symbolpackage} is the preferred way to load those
 packages).
 \end{warnbox}
 
@@ -2692,7 +2696,8 @@ or \bibmacro{doi+eprint+url}.
 The heart of the package \sty{biblatex-ext-oa} is the bibliography option
 \hyperopt{openaccess}, which can be set globally, per type or per entry.
 
-A short example document can be found at
+A longer example document exploring various aspects of open access
+detection can be found at
 \url{https://github.com/moewew/biblatex-ext/blob/master/oaslinks.tex}.
 
 \begin{optionlist}
@@ -2705,8 +2710,9 @@ The initial value is \optval{auto} unless the package is loaded with the
 \hyperopt{enable} option set to \optval{false} in which case the initial
 value changes to \optval{none}.
 
-All following values are valid at all three levels (global, per-type and
-per-entry), but it may not be useful to use a particular option at all levels.
+All of the following values are valid at all three levels (global,
+per-type and per-entry), but not all options may be useful at all
+available levels.
 \begin{valuelist}
 \item[auto] Use a semi-automatic heuristic to find the best open access URL.
 
@@ -2754,7 +2760,7 @@ per-entry), but it may not be useful to use a particular option at all levels.
 
 \item[\prm{open access field}] Specifies that the open access version is given
   by \prm{open access field}.
-  This value would normally be used only on a per-enry level.
+  This value would normally be used only on a per-entry level.
 
   Any field for which \hypercmd{DeclareOpenAccessFieldUrl} has declared a URL
   specification is a valid \enquote{open access field}.
@@ -2818,8 +2824,9 @@ the following declarations are active.
 \DeclareOpenAccessEprintUrl[always]{arxiv}{%
   https://arxiv.org/\abx@arxivpath/\thefield{eprint}}
 \end{biblatexcode}
-Note the optional argument \texttt{always} for \bibfield{arxiv}, because
-articles on the arXiv are always open access.
+Since articles on the arXiv are always open access, the declaration
+for \bibfield{arxiv} features the optional \prm{openness} argument
+\texttt{always}.
 
 \cmditem{DeclareOpenAccessEprintAlias}{alias}{eprinttype}
 
@@ -2872,8 +2879,9 @@ The \optval{auto} detection works as follows.
   \end{itemize}
 \end{itemize}
 
-For \optval{auto}-detection, an open access article with DOI would ideally
-look like this.
+For \optval{auto}-detection, an open access article with DOI would
+ideally use the field annotation \texttt{openaccess}
+(\lstinline[style=extblxstylebibtex]|{doi+an = {=openaccess},|).
 % cipriani
 \inputexamplebibfile[listing options={linerange={27-38},
                                       style = extblxstylebibtex}]
@@ -2924,7 +2932,7 @@ Unpaywall API\fnurl{https://unpaywall.org/}.
 This package can only be used with \lualatex{} and needs online
 access.
 Furthermore the Unpaywall API requires an email address and asks to limit
-calls to 100000 per day\fnurl{https://unpaywall.org/products/api}.
+requests to 100,000 calls per day\fnurl{https://unpaywall.org/products/api}.
 \end{warnbox}
 
 To avoid too many calls to the API, the package caches its information in the
@@ -2945,7 +2953,7 @@ an email.
 There is no predefined default email address.
 If the package is loaded and no email was provided until the
 beginning of the document (as tested in an \cmd{AtEndPreamble} hook)
-you will recieve a warning.
+you will receive a warning.
 A fatal error will be thrown if you try to query the Unpaywall database
 without an email address.
 \end{warnbox}
@@ -2975,30 +2983,30 @@ API is the DOI and to \prm{false} otherwise.
 
 
 \subsection{Open access symbols}\label{sec:oa:symbol}
-Currently, this bundle offers three options to provide the open access
+Currently, this bundle offers three methods of drawing the open access
 symbols.
+Each method is packed up in a little sub-package, end users are not
+expected to load these packages manually, instead they should use
+the option~\hyperopt{symbolpackage} of \hypersty{biblatex-ext-oa}.
+
 The package \hypersty{biblatex-ext-oasymb-pict2e} draws the symbols using
 \sty{pict2e}'s \env{picture} environment.
 The package \hypersty{biblatex-ext-oasymb-tikz}
 uses \pgftikz's \env{tikzpicture}.
 The package \hypersty{biblatex-ext-oasymb-l3draw} finally
 uses \LaTeX3's \sty{l3draw} package.
-The main purpose of these packages is to define the macro \cmd{oasymbol} for
-use with \sty{biblatex-ext-oa}.
+The main purpose of these packages is to define the macro \cmd{oasymbol}
+for use with \sty{biblatex-ext-oa}.
 
-The packages should usually not have to be loaded explicitly, instead
-they are loaded via the \hyperopt{symbolpackage} option of
-\hypersty{biblatex-ext-oa}.
-
-All packages define a similar set of macros, so they can not be loaded
-together.
+All packages define a similar set of macros, so they are not indended to 
+be loaded together.
 If used as stand-alone packages, all packages only have one option.
 
 \begin{optionlist}
 \optitem[plos]{symbol}{\optval{plos}, \optval{oanet}}
 
-This options determines which of the two provided symbols is going to be used
-for \hypercmd{oasymbol}.
+This options determines which of the two available symbols is going to
+be used for \hypercmd{oasymbol}.
 
 The possible values are
 \begin{valuelist}
