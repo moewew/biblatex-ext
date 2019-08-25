@@ -1,7 +1,7 @@
 # Changelog
 
 ## Version <version> (<date>)
-See <https://github.com/moewew/biblatex-ext/compare/v0.7a...HEAD>
+See <https://github.com/moewew/biblatex-ext/compare/v0.7a...v0.8>
 
 ###
 - `\AtIntrocite` to customise initialisation code for introcite
