@@ -1,5 +1,15 @@
 # Changelog
 
+## Version <version> (<date>)
+See <https://github.com/moewew/biblatex-ext/compare/v0.7a...HEAD>
+
+###
+- `\AtIntrocite` to customise initialisation code for introcite
+  citations.
+
+### Changed
+- Require `biblatex` v3.13 (some backwards compatiblity is in place).
+
 ## Version 0.7a (2019-04-04)
 See <https://github.com/moewew/biblatex-ext/compare/v0.7...v0.7a>
 
