@@ -78,9 +78,9 @@
     {\ifnameundef{labelname}
        {\setunit{%
           \global\booltrue{cbx:parens}%
-          \extpostnotedelim
+          \printdelim{extpostnotedelim}%
           \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}}
-       {\setunit{\postnotedelim}}%
+       {\setunit{\printdelim{postnotedelim}}}%
      \printfield{postnote}}%
   \ifnumequal{\value{multicitecount}}{\value{multicitetotal}}
     {\setunit{}%

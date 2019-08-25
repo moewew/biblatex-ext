@@ -104,10 +104,10 @@
 
 \renewbibmacro*{textcite:postnote}{%
   \ifbool{cbx:parens}
-    {\setunit{\postnotedelim}}
+    {\setunit{\printdelim{postnotedelim}}}
     {\setunit{%
        \global\booltrue{cbx:parens}%
-       \extpostnotedelim
+       \printdelim{extpostnotedelim}%
        \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}}%
   \printfield{postnote}%
   \ifnumequal{\value{multicitecount}}{\value{multicitetotal}}

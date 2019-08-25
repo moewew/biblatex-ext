@@ -49,8 +49,8 @@
        {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}}
        {}}
     {\ifbool{cbx:parens}
-       {\postnotedelim}
-       {\extpostnotedelim
+       {\printdelim{postnotedelim}}
+       {\printdelim{extpostnotedelim}%
         \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
      \printfield{postnote}%
      \csuse{extblx@citedelim@\blx@delimcontext @inner@close}}}
