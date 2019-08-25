@@ -1,6 +1,6 @@
 # Changelog
 
-## Version <version> (<date>)
+## Version 0.8 (2019-08-25)
 See <https://github.com/moewew/biblatex-ext/compare/v0.7a...v0.8>
 
 ###
