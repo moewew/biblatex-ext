@@ -22,7 +22,7 @@
 \DeclareFieldFormat{extblx@innerfootcitedelims}{%
   \csuse{mkinner\blx@delimcontext delims}{#1}}
 
-\newbibmacro*{textcite}{%
+\renewbibmacro*{textcite}{%
   \global\boolfalse{cbx:loccit}%
   \printnames{labelname}%
     \setunit*{%
@@ -43,7 +43,7 @@
     \printtext[bibhyperref]{%
       \printfield[citetitle]{labeltitle}}}}
 
-\newbibmacro*{textcite:postnote}{%
+\renewbibmacro*{textcite:postnote}{%
   \ifthenelse{\iffieldundef{postnote}\OR\boolean{cbx:loccit}}
     {\ifbool{cbx:parens}
        {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}}
