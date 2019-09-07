@@ -1883,15 +1883,17 @@ The default is a colon followed by a space.
 
 
 \csitem{publocdelim}
-The delimiter between \bibfield{publisher}\slash\bibfield{organization}\slash
+The delimiter between \bibfield{publisher}\slash
+\bibfield{organization}\slash
 \bibfield{institution} and \bibfield{location}.
 The default is a comma followed by a space.
-This delimiter is not used by the default style, since the standard order of
-fields is \bibfield{location}, \bibfield{publisher}\slash
+This delimiter is not used by the default style, since the standard
+order of fields is \bibfield{location}, \bibfield{publisher}\slash
 \bibfield{organization}\slash\bibfield{institution}, \bibfield{date}.
-You could use \cmd{publocdelim} if you changed the order of these fields to
-\bibfield{publisher}\slash\bibfield{organization}\slash\bibfield{institution},
-\bibfield{location} \bibfield{date} with
+You could use \cmd{publocdelim} if you changed the order of these
+fields to \bibfield{publisher}\slash\bibfield{organization}\slash
+\bibfield{institution}, \bibfield{location} \bibfield{date} by
+redefining the bibmacro~\bibmacro{pubinstorg+location+date} as follows.
 \begin{biblatexcode}
 \renewbibmacro*{pubinstorg+location+date}[1]{%
   \printlist{#1}%
@@ -2246,7 +2248,7 @@ A general-purpose bibliography macro to catch
 This bibliography macro has one mandatory argument: the name of a list field,
 sensible values are \bibfield{publisher}, \bibfield{institution} and
 \bibfield{organization}.
-
+By default the macro is defined and used as follows. 
 \begin{biblatexcode}
 \newbibmacro*{pubinstorg+location+date}[1]{%
   \printlist{location}%
