@@ -4,6 +4,14 @@
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.8...HEAD>
 
+### Fixed
+
+- The default value of `\servoldelim` was documented as
+  and should be `\jourvoldelim`. 
+  Previous versions had `\addspace` (the default value of
+  `\jourvoldelim`) instead.
+- Reenabled visible space in documentation.
+
 
 ## Version 0.8 (2019-08-25)
 See <https://github.com/moewew/biblatex-ext/compare/v0.7a...v0.8>
