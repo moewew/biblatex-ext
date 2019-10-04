@@ -1006,6 +1006,9 @@ for the standard files without significant changes in output.
 Whether or not to display \enquote{in:} before the journal information in
 \bibtype{article} entries.
 All other entry types are not affected by this option.
+If it is desired to remove the \enquote{in:} for more entry types or
+a more specific behaviour is required, then it is still going to be
+necessary to modify the bibmacro~\bibmacro{in:}.
 
 \begingroup
 \makeatletter
@@ -1038,15 +1041,20 @@ All other entry types are not affected by this option.
 This option controls if \bibtype{inbook}, \bibtype{incollection} and
 \bibtype{inproceedings} entries that are tied to a parent entry with
 \bibfield{xref} or \bibfield{crossref} should cite their parent in the
-bibliography if the parent is listed in the bibliography as a separate entry.
-With the default setting \kvopt{citexref}{false} the parent is not cited, the
-entry is shown as in the standard styles. If the option is set to
-\optval{true}, the block following the \enquote{in:} is replaced by a citation
-to the parent entry.
-The option itself does \emph{not} cause the parent entry to be added to the
-bibliography, this needs to happen either explicitly by citing the parent
-(this includes \cmd{nocite}) or implicitly via the \opt{minxrefs} or
-\opt{mincrossrefs} option.
+bibliography \emph{if} the parent is listed in the bibliography as a
+separate entry.
+With the default setting \kvopt{citexref}{false} the parent is not
+cited, the entry is shown as in the standard styles.
+If the option is set to \optval{true}, the block following the
+\enquote{in:} is replaced by a citation to the parent entry.
+
+\begin{remindbox}
+The option itself does \emph{not} cause the parent entry to be added
+to the bibliography automatically.
+This needs to happen either explicitly by citing the parent
+(possibly with \cmd{nocite})
+or implicitly via the \opt{minxrefs} or \opt{mincrossrefs} option.
+\end{remindbox}
 
 \nocite{westfahl:frontier}
 \begin{bibexample}[title={\kvopt{citexref}{true}}]
@@ -1131,7 +1139,8 @@ for the entry types \bibtype{inbook}, \bibtype{incollection} and
 This option only has an effect if \hyperopt{innamebeforetitle} is set to
 \optval{true}.
 
-\begin{bibexample}[title={\kvopt{innameidem}{true}}]
+\begin{bibexample}[title={\kvopt{innameidem}{true}}
+  {\small (and \kvopt{innamebeforetitle}{true})}]
 \togglefalse{bbx:isbn}
 \makeatletter
 \renewbibmacro*{bbx:in:editor}[1]{%
@@ -1153,7 +1162,8 @@ This option only has an effect if \hyperopt{innamebeforetitle} is set to
 \exampleprintbib{gaonkar:in}
 \end{bibexample}
 
-\begin{bibexample}[title={\kvopt{innameidem}{false}}]
+\begin{bibexample}[title={\kvopt{innameidem}{false}}
+  {\small (and \kvopt{innamebeforetitle}{true})}]
 \togglefalse{bbx:isbn}
 \makeatletter
 \renewbibmacro*{bbx:in:editor}[1]{%
