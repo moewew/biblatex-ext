@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## Version 0.8a (2019-10-31)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.8...HEAD>
+See <https://github.com/moewew/biblatex-ext/compare/v0.8...v0.8a>
 
 ### Fixed
 
@@ -11,6 +11,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8...HEAD>
   Previous versions had `\addspace` (the default value of
   `\jourvoldelim`) instead.
 - Reenabled visible space in documentation.
+- Typo in `ext-authoryear-tiecomp.cbx`.
 
 
 ## Version 0.8 (2019-08-25)
