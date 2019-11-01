@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.8a...HEAD>
+
+### Fixed
+
+- Call to removed option in `ext-verbose-trad2`.
+
 ## Version 0.8a (2019-10-31)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.8...v0.8a>

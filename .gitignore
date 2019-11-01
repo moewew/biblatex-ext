@@ -18,6 +18,7 @@ textspicts*
 *.toc
 *.run.xml
 *.synctex.gz
+*.synctex(busy)
 *.listing
 *.zip
 *.oai
