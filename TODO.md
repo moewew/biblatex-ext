@@ -27,3 +27,6 @@
 - Test suite
 - Less intrusive versioning
 - blxextdoiapi for non-Lua engines with shell escape calling texlua?
+
+- Link style names in doc
+- Disable (or at least warn) introcite for verbose styles.
