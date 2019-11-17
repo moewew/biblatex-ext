@@ -1,14 +1,6 @@
 \documentclass[DIV=9]{scrartcl}
-\usepackage{ifxetex,ifluatex}
-\newif\iffontspec
-\ifxetex
-  \fontspectrue
-\else\ifluatex
-  \fontspectrue
-\else
-  \fontspecfalse
-\fi\fi
-\iffontspec
+\usepackage{iftex}
+\iftutex
   \usepackage{fontspec}
 \else
   \usepackage[T1]{fontenc}
@@ -19,11 +11,11 @@
 \usepackage[french,ngerman,british]{babel}
 \usepackage{csquotes}
 \usepackage[useregional]{datetime2}
-\iffontspec\else
+\iftutex\else
   \usepackage{lmodern}
 \fi
 \usepackage[mono=false]{libertinus}
-\iffontspec
+\iftutex
   \setmonofont[Scale=0.78]{Bitstream Vera Sans Mono}
   \usepackage{unicode-math}
   \setmathfont[Scale=MatchUppercase]{libertinusmath-regular.otf}
@@ -196,7 +188,7 @@
   colframe=red, colback=red!5!white,
   underlay={%
     \path[draw=none] (interior.south east)
-                     rectangle node{\warnsymbol}
+                     rectangle node {\warnsymbol}
                      ([xshift=15mm,yshift=.1cm]interior.north east);},
   #1}
 
@@ -205,7 +197,7 @@
   colframe=yellow, colback=yellow!5!white,
   underlay={%
     \path[draw=none] (interior.south east)
-                     rectangle node{\dbendsymbol}
+                     rectangle node {\dbendsymbol}
                      ([xshift=15mm,yshift=.1cm]interior.north east);},
   #1}
 
@@ -476,7 +468,7 @@
 \newcommand*{\mpdl}{$\langle$}
 \newcommand*{\mpdr}{$\rangle$}
 
-\iffontspec
+\iftutex
   \newcommand*{\hmpdl}{$\langle$}
   \newcommand*{\hmpdr}{$\rangle$}
 \else
@@ -511,14 +503,21 @@
 \sbox{\dbendsymbol@box}{\dbendsymbol@tikz}
 \newcommand*{\dbendsymbol}{\usebox{\dbendsymbol@box}}
 
-\newcommand{\warnsymbol}{%
-  \makebox[2em][c]{%
-    \makebox[0pt][c]{\raisebox{.26em}{\LARGE\bfseries!}}%
-    \makebox[0pt][c]{%
-      \fontsize{40}{40}\selectfont\color{red}$\bigtriangleup$}}}
+\newcommand*{\warnsymbol@tikz}{%
+  \begin{tikzpicture}[
+    line cap=but,
+    line join=round,
+    line width=2pt,
+    rounded corners=1.5pt,]
+    \node[regular polygon, regular polygon sides=3,
+          scale=1.2, inner sep=-.22em,
+           draw=red]
+      {\raisebox{.26em}{\LARGE\bfseries !}};
+  \end{tikzpicture}}
 
-\newcommand*{\marginwarn}{%
-  \leavevmode\marginpar{\raisebox{-1.5em}{\warnsymbol}}}
+\newsavebox{\warnsymbol@box}
+\sbox{\warnsymbol@box}{\warnsymbol@tikz}
+\newcommand*{\warnsymbol}{\usebox{\warnsymbol@box}}
 
 \makeatother
 
