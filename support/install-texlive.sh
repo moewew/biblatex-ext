@@ -29,6 +29,9 @@ tlmgr install l3build
 # latex formats
 tlmgr install latex-bin tex
 
+# metafont
+tlmgr install metafont
+
 # required LaTeX packages
 tlmgr install latex amsmath graphics tools
 
