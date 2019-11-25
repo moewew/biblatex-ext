@@ -20,6 +20,6 @@ jobs:
 
 notifications:
   email:
-    on_success: never
+    on_success: change
     on_failure: always
  

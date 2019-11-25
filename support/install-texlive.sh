@@ -71,6 +71,7 @@ tlmgr install       \
   datetime2         \
   datetime2-english \
   environ           \
+  epstopdf-pkg      \
   fontaxes          \
   hyphenat          \
   koma-script       \
