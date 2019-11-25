@@ -52,6 +52,7 @@ tlmgr install    \
   lm-math        \
   logreq         \
   oberdiek       \
+  pdftexcmds     \
   psnfss         \
   unicode-math   \
   url            \
