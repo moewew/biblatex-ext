@@ -33,8 +33,8 @@
 
 
 
-\usepackage{filecontents}
-\begin{filecontents*}{\jobname.bib}
+% this now assumes a new LaTeX kernel (2019-10-01)
+\begin{filecontents*}[force]{\jobname.bib}
 % open access DOIs need to be marked up explicitly
 @article{cipriani,
   author  = {Cipriani, Alessandra and Hazra, Rajat Subhra
@@ -183,6 +183,7 @@
 \addbibresource{\jobname.bib}
 \begin{document}
 \kant[1]
+\showoutput
 \nocite{*}
 \printbibliography[notkeyword=doibib, title={Open access info from bib}]
 \printbibliography[keyword=doibib, title={Open access info by DOI}]

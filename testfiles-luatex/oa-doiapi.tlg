@@ -1,0 +1,168 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+(biblatex-ext-oa-doiapi.sty
+Package: biblatex-ext-oa-doiapi ....-..-.. v... Obtain open access information from DOI via unpaywall.org and doi.org (MW)
+Lua module: blxextdoiapi ....-..-.. v... Obtain open access information from DOI via unpaywall.org
+Package biblatex-ext-oa-doiapi Info: No OA database file present at
+(biblatex-ext-oa-doiapi)             oa-doiapi.oai.
+)
+============================================================
+TEST 1: IsOpenaccess: Sigfridsson and Ryde: FALSE
+============================================================
+Module blxextdoiapi Info: Successfully queried unpaywall.org
+(blxextdoiapi)            for info on
+(blxextdoiapi)            10.1002/(SICI)1096-987X(199803)19:4<377::AID-JCC1>3.0.CO;2-P on input line ...
+FALSE
+============================================================
+============================================================
+TEST 2: IsOpenaccess: Randall and Sundrum: TRUE
+============================================================
+Module blxextdoiapi Info: Successfully queried unpaywall.org
+(blxextdoiapi)            for info on
+(blxextdoiapi)            10.1103/physrevlett.83.3370 on input line ...
+TRUE
+============================================================
+============================================================
+TEST 3: IsOpenaccess: Valfort et al.: TRUE
+============================================================
+Module blxextdoiapi Info: Successfully queried unpaywall.org
+(blxextdoiapi)            for info on
+(blxextdoiapi)            10.1371/journal.pbio.2005099 on input line ...
+TRUE
+============================================================
+============================================================
+TEST 4: OpenaccessURLisDOI: Randall and Sundrum: FALSE
+============================================================
+FALSE
+============================================================
+============================================================
+TEST 5: OpenaccessURLisDOI: Valfort et al.: TRUE
+============================================================
+TRUE
+============================================================
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line ....
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line ....
+> \box...=
+\hbox(6.94+2.29)x184.25, direction TLT
+.\mathon
+.\TU/lmtt/m/n/10 h
+.\TU/lmtt/m/n/10 t
+.\TU/lmtt/m/n/10 t
+.\TU/lmtt/m/n/10 p
+.\glue(\thickmuskip) 0.0
+.\TU/lmtt/m/n/10 :
+.\glue(\thickmuskip) 0.0
+.\TU/lmtt/m/n/10 /
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 /
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 a
+.\TU/lmtt/m/n/10 r
+.\TU/lmtt/m/n/10 x
+.\TU/lmtt/m/n/10 i
+.\TU/lmtt/m/n/10 v
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 .
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 o
+.\TU/lmtt/m/n/10 r
+.\TU/lmtt/m/n/10 g
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 /
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 a
+.\TU/lmtt/m/n/10 b
+.\TU/lmtt/m/n/10 s
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 /
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 h
+.\TU/lmtt/m/n/10 e
+.\TU/lmtt/m/n/10 p
+.\TU/lmtt/m/n/10 -
+.\hbox(0.0+0.0)x0.5, shifted 1.49998, direction TLT
+..\kern0.0 (font)
+.\TU/lmtt/m/n/10 p
+.\TU/lmtt/m/n/10 h
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 /
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 9
+.\TU/lmtt/m/n/10 9
+.\TU/lmtt/m/n/10 0
+.\TU/lmtt/m/n/10 5
+.\TU/lmtt/m/n/10 2
+.\TU/lmtt/m/n/10 2
+.\TU/lmtt/m/n/10 1
+.\mathoff
+! OK.
+l. ...\showbox0
+> \box...=
+\hbox(6.94+2.29)x231.0, direction TLT
+.\mathon
+.\TU/lmtt/m/n/10 h
+.\TU/lmtt/m/n/10 t
+.\TU/lmtt/m/n/10 t
+.\TU/lmtt/m/n/10 p
+.\TU/lmtt/m/n/10 s
+.\glue(\thickmuskip) 0.0
+.\TU/lmtt/m/n/10 :
+.\glue(\thickmuskip) 0.0
+.\TU/lmtt/m/n/10 /
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 /
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 d
+.\TU/lmtt/m/n/10 o
+.\TU/lmtt/m/n/10 i
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 .
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 o
+.\TU/lmtt/m/n/10 r
+.\TU/lmtt/m/n/10 g
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 /
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 1
+.\TU/lmtt/m/n/10 0
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 .
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 1
+.\TU/lmtt/m/n/10 3
+.\TU/lmtt/m/n/10 7
+.\TU/lmtt/m/n/10 1
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 /
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 j
+.\TU/lmtt/m/n/10 o
+.\TU/lmtt/m/n/10 u
+.\TU/lmtt/m/n/10 r
+.\TU/lmtt/m/n/10 n
+.\TU/lmtt/m/n/10 a
+.\TU/lmtt/m/n/10 l
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 .
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 p
+.\TU/lmtt/m/n/10 b
+.\TU/lmtt/m/n/10 i
+.\TU/lmtt/m/n/10 o
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 .
+.\glue(\medmuskip) 0.0
+.\TU/lmtt/m/n/10 2
+.\TU/lmtt/m/n/10 0
+.\TU/lmtt/m/n/10 0
+.\TU/lmtt/m/n/10 5
+.\TU/lmtt/m/n/10 0
+.\TU/lmtt/m/n/10 9
+.\TU/lmtt/m/n/10 9
+.\mathoff
+! OK.
+l. ...\showbox0
+(oa-doiapi.aux)

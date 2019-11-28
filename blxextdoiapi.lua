@@ -119,8 +119,13 @@ local function query_json_api(req_url)
   return nil, code
 end
 
+-- DISABLED for now :-(
+-- doi.org only serves via HTTPS, but Lua(TeX) has no built-in
+-- support for SLL at the moment, so we can't query the API
+-- as we only get 301 response
+--[[
 local function get_doi_info(doi)
-  local req_url = "https://doi.org/api/handles/" .. url.escape(doi)
+  local req_url = "http://doi.org/api/handles/" .. url.escape(doi)
   local doi_info, code  = query_json_api(req_url)
 
   if doi_info then
@@ -143,6 +148,7 @@ local function is_valid_doi(doi)
 
   return get_doi_info(doi)
 end
+]]--
 
 -- email is required, error out if not given
 -- Unfortunately, this gives a weird Lua dump as well and one has to scroll
@@ -150,16 +156,17 @@ end
 -- a usual TeX error instead of the generic LuaTeX error provided by ltluatex.
 -- Only makes sense if the DOI is valid.
 local function get_unpaywall_info(doi)
-  if not is_valid_doi(doi) then
-    return nil
-  elseif not blxextdoiapi.mail or blxextdoiapi.mail == "" then
+  -- if not is_valid_doi(doi) then
+  --   return nil
+  -- elseif not blxextdoiapi.mail or blxextdoiapi.mail == "" then
+  if not blxextdoiapi.mail or blxextdoiapi.mail == "" then
     error("No mail address supplied.\n" ..
           "You must give a valid email address\n" ..
           "to be able to use the Unpaywall API\n")
     return nil
   end
 
-  local req_url = "https://api.unpaywall.org/v2/" .. doi
+  local req_url = "http://api.unpaywall.org/v2/" .. doi
                   .. "?email=" .. blxextdoiapi.mail
   local upw_info, code = query_json_api(req_url)
 
@@ -204,14 +211,17 @@ local function get_openaccess_url(doi)
   return get_unpaywall_info(doi)
 end
 
--- returns false if there is no open access URL since the RHS ~= nil
-local function openaccess_url_is_doi(doi)
-  return get_openaccess_url(doi) == "https://doi.org/" .. doi
+-- Has \url hard-coded, people probably shouldn't be using this,
+-- but it's documented now
+local function get_openaccess_url_tex(doi)
+  local oa_url = get_openaccess_url(doi)
+  if oa_url then
+    texsprint("\\url{")
+    texwrite(oa_url)
+    texsprint("}")
+  end
 end
 
-local function is_openaccess(doi)
-  return get_openaccess_url(doi) ~= nil
-end
 
 -- For TeX. I'd have liked this better in the .sty, but the whole \ escape
 -- malarkey made that a pain, so the function is here now.
@@ -223,6 +233,16 @@ local function assign_openaccess_url_to(macro, doi)
     texsprint("}")
   end
 end
+
+-- returns false if there is no open access URL since the RHS ~= nil
+local function openaccess_url_is_doi(doi)
+  return get_openaccess_url(doi) == "https://doi.org/" .. doi
+end
+
+local function is_openaccess(doi)
+  return get_openaccess_url(doi) ~= nil
+end
+
 
 -- make conditionals usable as \<...>{<true>}{<false>} directly
 local function texify_conditional(cond)
@@ -240,6 +260,7 @@ return {
   is_valid_doi             = is_valid_doi,
   is_openaccess            = is_openaccess,
   get_openaccess_url       = get_openaccess_url,
+  get_openaccess_url_tex   = get_openaccess_url_tex,
   assign_openaccess_url_to = assign_openaccess_url_to,
   openaccess_url_is_doi    = openaccess_url_is_doi,
   texify_conditional       = texify_conditional,

@@ -1,0 +1,63 @@
+\input{regression-test.tex}
+\documentclass{article}
+
+\usepackage{etoolbox}
+\usepackage{url}
+
+\START
+\usepackage{biblatex-ext-oa-doiapi}
+\OMIT
+
+\START
+\SetDOIAPIMail{mwemheu@gmail.com}
+\OMIT
+
+\begin{document}
+\TIMO
+
+\TEST{IsOpenaccess: Sigfridsson and Ryde: FALSE}
+{
+  \IsOpenaccess{10.1002/(SICI)1096-987X(199803)19:4<377::AID-JCC1>3.0.CO;2-P}
+    {\TRUE}
+    {\FALSE}
+}
+
+\TEST{IsOpenaccess: Randall and Sundrum: TRUE}
+{
+  \IsOpenaccess{10.1103/physrevlett.83.3370}
+    {\TRUE}
+    {\FALSE}
+}
+
+\TEST{IsOpenaccess: Valfort et al.: TRUE}
+{
+  \IsOpenaccess{10.1371/journal.pbio.2005099}
+    {\TRUE}
+    {\FALSE}
+}
+
+
+\TEST{OpenaccessURLisDOI: Randall and Sundrum: FALSE}
+{
+  \OpenaccessURLisDOI{10.1103/physrevlett.83.3370}
+    {\TRUE}
+    {\FALSE}
+}
+
+\TEST{OpenaccessURLisDOI: Valfort et al.: TRUE}
+{
+  \OpenaccessURLisDOI{10.1371/journal.pbio.2005099}
+    {\TRUE}
+    {\FALSE}
+}
+
+
+\setbox0=\hbox{\GetOpenaccessURLWrapped{10.1103/physrevlett.83.3370}}
+\showbox0
+
+\setbox0=\hbox{\GetOpenaccessURLWrapped{10.1371/journal.pbio.2005099}}
+\showbox0
+
+
+\end{document}
+\END

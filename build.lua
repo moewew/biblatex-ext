@@ -8,11 +8,13 @@ module = "biblatex-ext"
 unpackfiles = { }
 
 -- Install biblatex style files and use these as the sources
-installfiles = {"*.cbx", "*.bbx", "*.def", "*.sty"}
+installfiles = {"*.cbx", "*.bbx", "*.def", "*.sty", "blxextdoiapi.lua"}
 sourcefiles  = installfiles
 
 typesetfiles = {"biblatex-ext.tex"}
 textfiles    = {"README.md", "CHANGES.md"}
+
+checkconfigs = {"build", "config-luatex"}
 
 checkengines = {"pdftex"}
 checkruns    = 3
