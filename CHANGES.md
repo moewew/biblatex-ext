@@ -1,11 +1,22 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.8b...HEAD>
+
+### Changed
+- The Unpaywall API queries don't include a sanity check for
+  the DOI to DOI.org any more, since DOI.org only serves HTTPS
+  now and Lua(TeX) doesn't easily do SSL.
+  Fortunately, there were no user-level or even author-level
+  macros documented that would expose the answer of the DOI.org
+  query, so we can simply drop that function.
+
 ## Version 0.8b (2019-11-01)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.8a...v0.8b>
 
 ### Fixed
-
 - Call to removed option in `ext-verbose-trad2`.
 
 ## Version 0.8a (2019-10-31)
@@ -13,7 +24,6 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8a...v0.8b>
 See <https://github.com/moewew/biblatex-ext/compare/v0.8...v0.8a>
 
 ### Fixed
-
 - The default value of `\servoldelim` was documented as
   and should be `\jourvoldelim`. 
   Previous versions had `\addspace` (the default value of

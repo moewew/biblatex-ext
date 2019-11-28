@@ -257,7 +257,7 @@ end
 return {
   module                   = module,
   cache_expire             = cache_expire,
-  is_valid_doi             = is_valid_doi,
+  -- is_valid_doi             = is_valid_doi,
   is_openaccess            = is_openaccess,
   get_openaccess_url       = get_openaccess_url,
   get_openaccess_url_tex   = get_openaccess_url_tex,
