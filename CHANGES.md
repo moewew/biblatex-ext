@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## Version 0.8c (2019-11-30)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.8b...HEAD>
+See <https://github.com/moewew/biblatex-ext/compare/v0.8b...v0.8c>
 
 ### Changed
 - The Unpaywall API queries don't include a sanity check for
