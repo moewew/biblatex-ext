@@ -48,6 +48,7 @@ tlmgr install    \
   etoolbox       \
   iftex          \
   hyperref       \
+  kvoptions      \
   lm             \
   lm-math        \
   logreq         \
