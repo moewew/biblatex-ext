@@ -48,15 +48,10 @@ tlmgr install    \
   etoolbox       \
   iftex          \
   hyperref       \
-  kvoptions      \
   lm             \
   lm-math        \
-  logreq         \
-  oberdiek       \
-  pdftexcmds     \
   psnfss         \
   unicode-math   \
-  url            \
   xkeyval
 
 tlmgr install       \
@@ -85,6 +80,7 @@ tlmgr install       \
   ms                \
   mweights          \
   newtx             \
+  oberdiek          \
   pgf               \
   pict2e            \
   tcolorbox         \
