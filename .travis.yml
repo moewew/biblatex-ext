@@ -17,9 +17,3 @@ jobs:
     - name: "Documentation"
       script:
       - l3build doc -q -H --show-log-on-error
-
-notifications:
-  email:
-    on_success: change
-    on_failure: always
- 
