@@ -63,6 +63,7 @@ tlmgr install       \
   hyphen-french     \
   bera              \
   dvips             \
+  bookmark          \
   booktabs          \
   carlisle          \
   cleveref          \
