@@ -48,6 +48,8 @@ tlmgr install    \
   etoolbox       \
   iftex          \
   hyperref       \
+  infwarerr      \
+  letltxmacro    \
   lm             \
   lm-math        \
   psnfss         \
