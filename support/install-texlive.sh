@@ -48,12 +48,13 @@ tlmgr install    \
   etoolbox       \
   iftex          \
   hyperref       \
+  atbegshi       \
   infwarerr      \
   letltxmacro    \
+  rerunfilecheck \
   lm             \
   lm-math        \
   psnfss         \
-  rerunfilecheck \
   unicode-math   \
   xkeyval
 
