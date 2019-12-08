@@ -49,6 +49,7 @@ tlmgr install    \
   iftex          \
   hyperref       \
   atbegshi       \
+  atveryend      \
   infwarerr      \
   letltxmacro    \
   rerunfilecheck \
