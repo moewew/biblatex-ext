@@ -53,6 +53,7 @@ tlmgr install    \
   lm             \
   lm-math        \
   psnfss         \
+  rerunfilecheck \
   unicode-math   \
   xkeyval
 

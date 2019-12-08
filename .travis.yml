@@ -16,4 +16,4 @@ jobs:
       - l3build check -q -H  --show-log-on-error
     - name: "Documentation"
       script:
-      - l3build doc -q -H --show-log-on-error
+      - l3build doc
