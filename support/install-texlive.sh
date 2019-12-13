@@ -52,6 +52,7 @@ tlmgr install    \
   atveryend      \
   infwarerr      \
   letltxmacro    \
+  pdfescape      \
   rerunfilecheck \
   lm             \
   lm-math        \
