@@ -50,6 +50,7 @@ tlmgr install    \
   hyperref       \
   atbegshi       \
   atveryend      \
+  bitset         \
   infwarerr      \
   letltxmacro    \
   pdfescape      \
