@@ -53,6 +53,7 @@ tlmgr install    \
   bitset         \
   infwarerr      \
   letltxmacro    \
+  ltxcmds        \
   pdfescape      \
   rerunfilecheck \
   lm             \
