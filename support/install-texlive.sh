@@ -58,6 +58,7 @@ tlmgr install    \
   kvdefinekeys   \
   hycolor        \
   intcalc        \
+  etexcmds       \
   pdfescape      \
   rerunfilecheck \
   lm             \
