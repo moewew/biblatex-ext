@@ -60,6 +60,7 @@ tlmgr install    \
   hycolor        \
   intcalc        \
   bigintcalc     \
+  uniquecounter  \
   pdfescape      \
   rerunfilecheck \
   lm             \
