@@ -55,6 +55,7 @@ tlmgr install    \
   letltxmacro    \
   ltxcmds        \
   kvsetkeys      \
+  kvdefinekeys   \
   pdfescape      \
   rerunfilecheck \
   lm             \
