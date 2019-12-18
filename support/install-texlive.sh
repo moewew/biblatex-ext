@@ -62,6 +62,7 @@ tlmgr install    \
   bigintcalc     \
   uniquecounter  \
   pdfescape      \
+  refcount       \
   rerunfilecheck \
   lm             \
   lm-math        \
