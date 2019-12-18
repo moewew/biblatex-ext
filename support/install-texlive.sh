@@ -54,6 +54,7 @@ tlmgr install    \
   infwarerr      \
   letltxmacro    \
   ltxcmds        \
+  kvsetkeys      \
   pdfescape      \
   rerunfilecheck \
   lm             \
