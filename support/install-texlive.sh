@@ -54,11 +54,12 @@ tlmgr install    \
   infwarerr      \
   letltxmacro    \
   ltxcmds        \
+  etexcmds       \
   kvsetkeys      \
   kvdefinekeys   \
   hycolor        \
   intcalc        \
-  etexcmds       \
+  bigintcalc     \
   pdfescape      \
   rerunfilecheck \
   lm             \
