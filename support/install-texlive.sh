@@ -64,6 +64,7 @@ tlmgr install    \
   pdfescape      \
   refcount       \
   rerunfilecheck \
+  gettitlestring \
   lm             \
   lm-math        \
   psnfss         \
