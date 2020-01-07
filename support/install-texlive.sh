@@ -45,6 +45,7 @@ tlmgr install    \
   bibtex         \
   csquotes       \
   ec             \
+  cm-super       \
   etoolbox       \
   iftex          \
   hyperref       \
