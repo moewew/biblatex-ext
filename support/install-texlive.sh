@@ -30,7 +30,7 @@ tlmgr install l3build
 tlmgr install latex-bin tex
 
 # metafont
-tlmgr install metafont mfware
+tlmgr install metafont mfware texlive-scripts
 
 # required LaTeX packages
 tlmgr install latex amsmath graphics tools
