@@ -2,8 +2,8 @@
   [2019/11/30 v0.8c auxiliaries for extended biblatex citation style
    (MW)]
 
-\def\extblx@requiredbiblatexversion{3.13a}
-\def\extblx@requiredbiblatexdate{2019/08/31}
+\def\extblx@requiredbiblatexversion{3.14}
+\def\extblx@requiredbiblatexdate{2019/12/01}
 
 \newrobustcmd*{\extblx@info}{\PackageInfo{biblatex-ext}}
 \newrobustcmd*{\extblx@warning}{\PackageWarning{biblatex-ext}}
