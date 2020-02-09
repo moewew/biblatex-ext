@@ -43,8 +43,8 @@
 % OA data
 \IfFileExists{\jobname.oai}
   {\extblx@oa@api@info@noline{%
-     Load OA database from\MessageBreak
-     \jobname.oai}%
+     Loading OA database from\MessageBreak
+     \jobname.oai ...}%
    \directlua{dofile(\extblx@oa@api@luastring{\jobname.oai})}}
   {\extblx@oa@api@info@noline{%
      No OA database file present at\MessageBreak
