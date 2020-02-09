@@ -4,19 +4,19 @@
 
 \RequirePackage{etoolbox}
 
-\def\extblx@oa@api@error#1#2{%
+\protected\def\extblx@oa@api@error#1#2{%
   \PackageError{biblatex-ext-oa-doiapi}{#1}{#2.}}
 
-\def\extblx@oa@api@warning@noline#1{%
-  \PackageWarningNoLine{biblatex-ext-oa-doiapi}{#1}}
+\protected\def\extblx@oa@api@warning@noline{%
+  \PackageWarningNoLine{biblatex-ext-oa-doiapi}}
 
-\def\extblx@oa@api@info@noline#1{%
+\protected\def\extblx@oa@api@info@noline#1{%
   \PackageInfo{biblatex-ext-oa-doiapi}{#1\@gobble}}
 
 \let\extblx@oa@api@warning\extblx@oa@api@warning@noline
 \AtEndOfPackage{%
-  \def\extblx@oa@api@warning#1{%
-    \PackageWarning{biblatex-ext-oa-doiapi}{#1}}}
+  \protected\def\extblx@oa@api@warning{%
+    \PackageWarning{biblatex-ext-oa-doiapi}}}
 
 % LuaLaTeX only!
 \ifundef\luatexversion

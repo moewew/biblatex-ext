@@ -10,15 +10,15 @@
 % Additional modifications by me in
 % https://tex.stackexchange.com/a/440356/35864
 
-\def\extblxtab@error#1#2{%
+\protected\def\extblxtab@error#1#2{%
   \PackageError{biblatex-ext-tabular}{#1}{#2.}}
 
-\def\extblxtab@warning@noline{%
+\protected\def\extblxtab@warning@noline{%
   \PackageWarningNoLine{biblatex-ext-tabular}}
 
 \let\extblxtab@warning\extblxtab@warning@noline
 \AtEndOfPackage{%
-  \def\extblxtab@warning{%
+  \protected\def\extblxtab@warning{%
     \PackageWarning{biblatex-ext-tabular}}}
 
 % user-level command for printing tabular bibliography
