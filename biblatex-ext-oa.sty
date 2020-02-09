@@ -1,15 +1,15 @@
 \ProvidesPackage{biblatex-ext-oa}
   [2019/11/30 v0.8c mark open access in biblatex bibliographies (MW)]
 
-\protected\def\extblx@oa@error#1#2{%
+\def\extblx@oa@error#1#2{%
   \PackageError{biblatex-ext-oa}{#1}{#2.}}
 
-\protected\def\extblx@oa@warning@noline{%
+\def\extblx@oa@warning@noline{%
   \PackageWarningNoLine{biblatex-ext-oa}}
 
 \let\extblx@oa@warning\extblx@oa@warning@noline
 \AtEndOfPackage{%
-  \protected\def\extblx@oa@warning{%
+  \def\extblx@oa@warning{%
     \PackageWarning{biblatex-ext-oa}}}
 
 \@ifpackageloaded{biblatex}

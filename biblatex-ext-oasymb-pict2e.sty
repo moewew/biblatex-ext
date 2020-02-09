@@ -7,15 +7,15 @@
 % Internals called 'extblx@oasymb@pict' instead of
 % 'extblx@oasymb@pict2e' to avoid the non-letter "2".
 
-\protected\def\extblx@oasymb@pict@error#1#2{%
+\def\extblx@oasymb@pict@error#1#2{%
   \PackageError{biblatex-ext-oasymb-pict2e}{#1}{#2.}}
 
-\protected\def\extblx@oasymb@pict@warning@noline{%
+\def\extblx@oasymb@pict@warning@noline{%
   \PackageWarningNoLine{biblatex-ext-oasymb-pict2e}}
 
 \let\extblx@oasymb@pict@warning\extblx@oasymb@pict@warning@noline
 \AtEndOfPackage{%
-  \protected\def\extblx@oasymb@pict@warning{%
+  \def\extblx@oasymb@pict@warning{%
     \PackageWarning{biblatex-ext-oasymb-pict2e}}}
 
 \RequirePackage{pict2e}

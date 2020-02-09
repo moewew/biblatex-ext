@@ -5,12 +5,12 @@
 \def\extblx@requiredbiblatexversion{3.14}
 \def\extblx@requiredbiblatexdate{2019/12/01}
 
-\newrobustcmd*{\extblx@info}{\PackageInfo{biblatex-ext}}
-\newrobustcmd*{\extblx@warning}{\PackageWarning{biblatex-ext}}
-\newrobustcmd*{\extblx@warning@noline}{%
+\newcommand*{\extblx@info}{\PackageInfo{biblatex-ext}}
+\newcommand*{\extblx@warning}{\PackageWarning{biblatex-ext}}
+\newcommand*{\extblx@warning@noline}{%
   \PackageWarningNoLine{biblatex-ext}}
 
-\newrobustcmd*{\extblx@error}[2]{\PackageError{biblatex-ext}{#1}{#2.}}
+\newcommand*{\extblx@error}[2]{\PackageError{biblatex-ext}{#1}{#2.}}
 
 \@ifpackagelater{biblatex}{\extblx@requiredbiblatexdate}
   {}
