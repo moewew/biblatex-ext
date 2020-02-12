@@ -89,6 +89,9 @@
 \DeclareCiteCommand{\supercite}[\mkextblxsupercite]
   {\usebibmacro{cite:init}%
    \let\multicitedelim=\supercitedelim
+   \let\multicitesubentrydelim=\supercitesubentrydelim
+   \let\multiciterangedelim=\superciterangedelim
+   \let\multicitesubentryrangedelim=\supercitesubentryrangedelim
    \iffieldundef{prenote}
      {}
      {\BibliographyWarning{Ignoring prenote argument}}%
