@@ -49,23 +49,9 @@ tlmgr install    \
   etoolbox       \
   iftex          \
   hyperref       \
-  atbegshi       \
   atveryend      \
-  bitset         \
   infwarerr      \
-  letltxmacro    \
-  ltxcmds        \
-  etexcmds       \
-  kvsetkeys      \
-  kvdefinekeys   \
   hycolor        \
-  intcalc        \
-  bigintcalc     \
-  uniquecounter  \
-  pdfescape      \
-  refcount       \
-  rerunfilecheck \
-  gettitlestring \
   lm             \
   lm-math        \
   psnfss         \
