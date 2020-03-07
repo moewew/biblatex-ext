@@ -243,7 +243,7 @@
 % appropriate
 \newbibmacro*{tabular:sortname}{%
   \ifnameundef{labelname}
-    {\usebibmacro{labeltitle}}
+    {\usebibmacro{tabular:labeltitle}}
     {\printnames[sortname]{labelname}%
      \iffieldequalstr{labelnamesource}{editor}
        {\setunit{\printdelim{editortypedelim}}%
@@ -259,6 +259,20 @@
   \ifnameundef{labelname}
     {}
     {\clearname{\thefield{labelnamesource}}}}
+
+% as it turns out 'labeltitle' is only defined in authoryear.bbx
+% so we need a replacement if we can't have it
+\ifbibmacroundef{labeltitle}
+  {\newbibmacro*{tabular:labeltitle}{%
+     \iffieldundef{label}
+       {\iffieldundef{shorttitle}
+          {\printfield{title}%
+           \clearfield{title}}
+          {\printfield[title]{shorttitle}}}
+       {\printfield{label}}}}
+  {\ifundef\letbibmacro
+     {\newbibmacro*{tabular:labeltitle}{\usebibmacro{labeltitle}}}
+     {\letbibmacro{tabular:labeltitle}{labeltitle}}}
 
 \endinput
 %
