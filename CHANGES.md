@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.8d...HEAD>
+
 ## Version 0.8d (2020-03-15)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.8c...v0.8d>
