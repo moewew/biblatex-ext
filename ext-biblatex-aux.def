@@ -1,5 +1,5 @@
 \ProvidesFile{ext-biblatex-aux.def}
-  [2019/11/30 v0.8c auxiliaries for extended biblatex citation style
+  [2020/03/15 v0.8d auxiliaries for extended biblatex citation style
    (MW)]
 
 \def\extblx@requiredbiblatexversion{3.14}

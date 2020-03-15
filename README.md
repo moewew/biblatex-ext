@@ -83,7 +83,7 @@ installation instructions.
 
 ## Licence
 
-Copyright 2017-2019 Moritz Wemheuer
+Copyright 2017-2020 Moritz Wemheuer
 
 This work consists of the `.bbx`, `.cbx`, `.def`, `.sty` and `.lua`
 files mentioned above.
