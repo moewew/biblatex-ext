@@ -7,7 +7,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8c...v0.8d>
 ### Fixed
 - Avoid an error about the bibmacro `labeltitle` being undefined
   in some contexts.
-  Define and use `tabular:labeltitle` in 'tabular:sortname`.
+  Define and use `tabular:labeltitle` in `tabular:sortname`.
   If available `tabular:labeltitle` is just `labeltitle`,
   if not we recreate the definition from `authoryear.bbx`.
 
