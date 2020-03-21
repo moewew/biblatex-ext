@@ -1,11 +1,13 @@
 ---
 name: Bug report
 about: Report a bug or undesired or unexpected behaviour
+labels: bug
 
 ---
 
 <!---
-This is just a convenient template for a bug report to make it easier for you to check that all the necessary information is included. Please don't feel intimidated by this template (I know I always feel a bit weird when I encounter these templates).
+This is just a convenient template for a bug report to make it easier for you to check that all the necessary information is included.
+Please don't feel intimidated by this template (I know I always feel a bit weird when I encounter these templates).
 Feel free to change the structure suggested below as you see fit or to discard it completely if you don't feel comfortable using it.
 --->
 
