@@ -27,7 +27,7 @@ tlmgr update --self
 tlmgr install l3build
 
 # latex formats
-tlmgr install latex-bin tex
+tlmgr install latex-bin luahbtex tex
 
 # metafont
 tlmgr install metafont mfware texlive-scripts
