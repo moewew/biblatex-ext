@@ -126,6 +126,7 @@
 \DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
   {\smartcite}{\multicitedelim}
 
+
 \DeclareCiteCommand{\bbx@xrefcite}[\mkouterbbx@xrefcitedelims]
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
@@ -136,11 +137,9 @@
   {}
 
 \renewbibmacro*{bbx:introcite}{%
-  \printfield{labelprefix}%
-  \printfield{labelnumber}%
-  \ifbool{bbx:subentry}
-    {\printfield{entrysetcount}}
-    {}}
+  \usebibmacro{cite:init}%
+  \usebibmacro{cite:comp}%
+  \usebibmacro{cite:dump}}
 
 \endinput
 %

@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+### Fixed
+- Fixed `bbx:introcite` definition for `ext-numeric-comp`.
+
 See <https://github.com/moewew/biblatex-ext/compare/v0.8d...HEAD>
 
 ## Version 0.8d (2020-03-15)
