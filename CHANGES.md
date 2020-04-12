@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.15...HEAD>
+
+### Changed
+- Reworked the implementation of `citexref`.
+  The citation is no longer printed with a citation command,
+  it uses only bibmacros now.
+
 ## Version 0.15 (2022-03-06)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.14...v0.15>

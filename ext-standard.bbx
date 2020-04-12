@@ -82,9 +82,25 @@
 % maxbibnames         = 999,
 }
 
+% introcite & xrefcite and possibly more ...
+% initialise "cite" emulation in the bibliography
+% {<delimcontext>}
+\newcommand*{\extblx@bibcite@init}[1]{%
+  \iftoggle{blx@citation}
+    {}
+    {\togglefalse{blx@bibliography}%
+     \toggletrue{blx@citation}}%
+  \delimcontext{#1}%
+  \csuse{blx@hook@cite}%
+  \csuse{blx@hook@citekey}%
+  \undef\cbx@lasthash
+  \undef\cbx@lastyear
+  \citetrackerfalse\pagetrackerfalse\backtrackerfalse
+  \defcounter{maxnames}{\blx@maxcitenames}%
+  \defcounter{minnames}{\blx@mincitenames}%
+}
 
-\newbibmacro*{bbx:introcite}{\usebibmacro{cite}}
-
+% introcite
 \RegisterCiteDelims{inner}{bbx@introcite}
 \DeclareInnerCiteDelimsAlias{bbx@introcite}{cite}
 \DeclareFieldFormat{bbx@introcite}{#1}
@@ -97,38 +113,28 @@
 \newlength{\introcitesep}
 \setlength{\introcitesep}{\biblabelsep}
 
+
 \newrobustcmd*{\AtIntrocite}{%
   \@ifstar
     {\global\undef\extblx@hook@introcite
      \gappto\extblx@hook@introcite}
     {\gappto\extblx@hook@introcite}}
 
-\newcommand*{\extblx@introcite@init}{%
-  \iftoggle{blx@citation}
-    {}
-    {\togglefalse{blx@bibliography}%
-     \toggletrue{blx@citation}}%
-  \delimcontext{bbx@introcite}%
-  \csuse{blx@hook@cite}%
-  \csuse{blx@hook@citekey}%
-  \DeclareFieldFormat{bibhyperref}{##1}%
-  \undef\cbx@lasthash
-  \undef\cbx@lastyear
-  \citetrackerfalse\pagetrackerfalse\backtrackerfalse
-  \defcounter{maxnames}{\blx@maxcitenames}%
-  \defcounter{minnames}{\blx@mincitenames}%
-}
+% we also disable links
+\AtIntrocite{%
+  \extblx@bibcite@init{bbx@introcite}%
+  \DeclareFieldFormat{bibhyperref}{#1}}
 
-\AtIntrocite{\extblx@introcite@init}
+\newbibmacro*{bbx:introcite}{\usebibmacro{cite}}
 
-\newbibmacro{introcite:typeset}{%
+\newbibmacro*{introcite:typeset}{%
   \begingroup
     \csuse{extblx@hook@introcite}%
     \printtext[bbx@introcite]{\usebibmacro{bbx:introcite}}%
   \endgroup
 }
 
-\newbibmacro{introcite:plain}{%
+\newbibmacro*{introcite:plain}{%
   \ifcsequal{extblx@introcite}{extblx@opt@introcite@plain}
     {\usebibmacro{introcite:typeset}%
      \printunit*{\introcitepunct}}
@@ -142,16 +148,14 @@
     {\introcitebreak}
     {}}
 
+% xrefcite (for citexref option)
+\newrobustcmd*{\AtXrefcite}{%
+  \@ifstar
+    {\global\undef\extblx@hook@xrefcite
+     \gappto\extblx@hook@xrefcite}
+    {\gappto\extblx@hook@xrefcite}}
 
-\newbibmacro*{bbx:inxrefcite}{\usebibmacro{cite}}
-
-\DeclareCiteCommand{\bbx@xrefcite}[\mkouterbbx@xrefcitedelims]
-  {\boolfalse{citetracker}%
-   \boolfalse{pagetracker}%
-   \boolfalse{backtracker}}
-  {\usebibmacro{bbx:inxrefcite}}
-  {}
-  {}
+\AtXrefcite{\extblx@bibcite@init{bbx@xrefcite}}
 
 \RegisterCiteDelims{outer}{bbx@xrefcite}
 \DeclareOuterCiteDelimsAlias{bbx@xrefcite}{cite}
@@ -159,14 +163,24 @@
 \DeclareInnerCiteDelimsAlias{bbx@xrefcite}{cite}
 \DeclareDelimcontextAlias{bbx@xrefcite}{cite}
 
+\DeclareFieldFormat{bbx@xrefcite}{%
+  \mkouterbbx@xrefcitedelims{#1}}
+
+\newbibmacro*{bbx@xrefcite}[1]{%
+  \entrydata*{#1}{%
+    \csuse{extblx@hook@xrefcite}%
+    \printtext[bbx@xrefcite]{%
+      \usebibmacro{bbx:xrefcite}}}}
+
+\newbibmacro*{bbx:xrefcite}{\usebibmacro{cite}}
 
 \newbibmacro*{crosscite}[1]{%
   \iftoggle{bbx:citexref}
     {\iffieldundef{crossref}
        {\iffieldundef{xref}
           {\usebibmacro{#1}}
-          {\printtext{\bbx@xrefcite{\thefield{xref}}}}}
-       {\printtext{\bbx@xrefcite{\thefield{crossref}}}}}
+          {\usebibmacro{bbx@xrefcite}{\thefield{xref}}}}
+       {\usebibmacro{bbx@xrefcite}{\thefield{crossref}}}}
     {\usebibmacro{#1}}}
 
 \DeclareDelimAlias{innametitledelim}{nametitledelim}

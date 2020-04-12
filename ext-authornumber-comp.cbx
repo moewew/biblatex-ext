@@ -287,19 +287,18 @@
 \DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
   {\smartcite}{\setunit{\multicitedelim}}
 
+
+\renewbibmacro*{bbx:xrefcite}{%
+  \usebibmacro{cite:init}%
+  \usebibmacro{cite}%
+  \clearfield{postnote}%
+  \usebibmacro{cite:postnote}}
+
 \DeclareFieldFormat{extblx@innerbbx@introcitedelims}{%
   \csuse{mkinner\blx@delimcontext delims}{#1}}
 
-\DeclareCiteCommand{\bbx@xrefcite}[\mkouterbbx@xrefcitedelims]
-  {\boolfalse{citetracker}%
-   \boolfalse{pagetracker}%
-   \boolfalse{backtracker}%
-   \usebibmacro{cite:init}}
-  {\usebibmacro{bbx:inxrefcite}}
-  {}
-  {\usebibmacro{cite:postnote}}
-
 \renewbibmacro*{bbx:introcite}{%
+  \usebibmacro{cite:init}%
   \usebibmacro{cite}%
   \clearfield{postnote}%
   \usebibmacro{cite:postnote}}

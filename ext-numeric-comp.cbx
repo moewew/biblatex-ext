@@ -130,14 +130,10 @@
   {\smartcite}{\multicitedelim}
 
 
-\DeclareCiteCommand{\bbx@xrefcite}[\mkouterbbx@xrefcitedelims]
-  {\boolfalse{citetracker}%
-   \boolfalse{pagetracker}%
-   \boolfalse{backtracker}%
-   \usebibmacro{cite:init}}
-  {\usebibmacro{cite:comp}}
-  {\usebibmacro{cite:dump}}
-  {}
+\renewbibmacro*{bbx:xrefcite}{%
+  \usebibmacro{cite:init}%
+  \usebibmacro{cite:comp}%
+  \usebibmacro{cite:dump}}
 
 \renewbibmacro*{bbx:introcite}{%
   \usebibmacro{cite:init}%
