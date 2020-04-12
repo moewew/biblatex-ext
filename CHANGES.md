@@ -1,11 +1,13 @@
 # Changelog
 
+
 ## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.8d...HEAD>
 
 ### Fixed
 - Fixed `bbx:introcite` definition for `ext-numeric-comp`.
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.8d...HEAD>
 
 ## Version 0.8d (2020-03-15)
 
@@ -17,6 +19,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8c...v0.8d>
   Define and use `tabular:labeltitle` in `tabular:sortname`.
   If available `tabular:labeltitle` is just `labeltitle`,
   if not we recreate the definition from `authoryear.bbx`.
+
 
 ## Version 0.8c (2019-11-30)
 
@@ -30,12 +33,14 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8b...v0.8c>
   macros documented that would expose the answer of the DOI.org
   query, so we can simply drop that function.
 
+
 ## Version 0.8b (2019-11-01)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.8a...v0.8b>
 
 ### Fixed
 - Call to removed option in `ext-verbose-trad2`.
+
 
 ## Version 0.8a (2019-10-31)
 
@@ -60,6 +65,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.7a...v0.8>
 ### Changed
 - Require `biblatex` v3.13 (some backwards compatiblity is in place).
 
+
 ## Version 0.7a (2019-04-04)
 See <https://github.com/moewew/biblatex-ext/compare/v0.7...v0.7a>
 
@@ -73,6 +79,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.7...v0.7a>
 
 ### Changed
 - `biblatex-ext-doiapi` warns about missing email just a tad earlier.
+
 
 ## Version 0.7 (2019-02-08)
 See <https://github.com/moewew/biblatex-ext/compare/v0.6b...v0.7>
