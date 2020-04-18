@@ -48,5 +48,7 @@
 \showoutput
 \printbibtabular
 
+\clearpage
+
 \end{document}
 \END
