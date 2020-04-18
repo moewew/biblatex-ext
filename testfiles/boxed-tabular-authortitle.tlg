@@ -1,0 +1,130 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+(../biblatex.sty
+Package: biblatex ....-..-.. v... programmable bibliographies (PK/MW)
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+(../blx-dm.def
+File: blx-dm.def ....-..-.. v... biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file 'ext-authortitle.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+(../blx-compat.def
+File: blx-compat.def ....-..-.. v... biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+(../biblatex.def
+File: biblatex.def ....-..-.. v... biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load bibliography style 'ext-authortitle'...
+Package biblatex Info: ... file 'ext-authortitle.bbx' found.
+(ext-authortitle.bbx
+File: ext-authortitle.bbx ....-..-.. v... extended biblatex authortitle bibliography style (MW)
+Package biblatex Info: Trying to load bibliography style 'ext-standard'...
+Package biblatex Info: ... file 'ext-standard.bbx' found.
+(ext-standard.bbx
+File: ext-standard.bbx ....-..-.. v... extended biblatex standard style (MW)
+Package biblatex Info: Trying to load auxiliary code for ext-biblatex...
+Package biblatex Info: ... file 'ext-biblatex-aux.def' found.
+(ext-biblatex-aux.def
+File: ext-biblatex-aux.def ....-..-.. v... auxiliaries for extended biblatex citation style (MW)
+)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+(../standard.bbx
+File: standard.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
+)
+Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@bib@' already defined, overwriting.
+Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@biblist@' already defined, overwriting.
+)
+Package biblatex Info: Trying to load bibliography style 'authortitle'...
+Package biblatex Info: ... file 'authortitle.bbx' found.
+(../authortitle.bbx
+File: authortitle.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
+)
+Package biblatex Info: Trying to load bibliography style 'ext-authortitle-common'...
+Package biblatex Info: ... file 'ext-authortitle-common.bbx' found.
+(ext-authortitle-common.bbx
+File: ext-authortitle-common.bbx ....-..-.. v... common files for extended biblatex authortitle bibliography styles (MW)
+Package biblatex Info: Trying to load bibliography style 'ext-dashed-common'...
+Package biblatex Info: ... file 'ext-dashed-common.bbx' found.
+(ext-dashed-common.bbx
+File: ext-dashed-common.bbx ....-..-.. v... common files for extended biblatex dashed bibliography styles (MW)
+)))
+Package biblatex Info: Trying to load citation style 'ext-authortitle'...
+Package biblatex Info: ... file 'ext-authortitle.cbx' found.
+(ext-authortitle.cbx
+File: ext-authortitle.cbx ....-..-.. v... extended biblatex authortitle citation style (MW)
+Package biblatex Info: Trying to load citation style 'authortitle'...
+Package biblatex Info: ... file 'authortitle.cbx' found.
+(../authortitle.cbx
+File: authortitle.cbx ....-..-.. v... biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\footcites'.
+Package biblatex Info: Redefining '\footcitetexts'.
+Package biblatex Info: Redefining '\smartcites'.
+Package biblatex Info: Redefining '\textcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+(../biblatex.cfg
+File: biblatex.cfg 
+))
+(biblatex-ext-tabular.sty
+Package: biblatex-ext-tabular ....-..-.. v... tabular bibliographies for biblatex (MW)
+)
+*** geer (@thesis) ***
+*** knuth:ct:a (@book) ***
+*** knuth:ct:b (@book) ***
+*** knuth:ct:c (@book) ***
+*** nussbaum (@book) ***
+*** sigfridsson (@article) ***
+*** worman (@book) ***
+*** geer (@thesis) ***
+*** geer (@thesis) ***
+*** knuth:ct:a (@book) ***
+*** knuth:ct:a (@book) ***
+*** knuth:ct:b (@book) ***
+*** knuth:ct:b (@book) ***
+*** knuth:ct:c (@book) ***
+*** knuth:ct:c (@book) ***
+*** nussbaum (@book) ***
+*** nussbaum (@book) ***
+*** sigfridsson (@article) ***
+*** sigfridsson (@article) ***
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line ....
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line ....
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line ....
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line ....
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line ....
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line ....
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line ....
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line ....
+*** worman (@book) ***
+*** worman (@book) ***
+[1
+] (boxed-tabular-authortitle.aux)
+Package logreq Info: Writing requests to 'boxed-tabular-authortitle.run.xml'.
