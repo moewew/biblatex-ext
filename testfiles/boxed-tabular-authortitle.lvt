@@ -45,6 +45,7 @@
 
 \nocite{sigfridsson,worman,geer,nussbaum,knuth:ct:a,knuth:ct:b,knuth:ct:c}
 % bibliography
+\showoutput
 \printbibtabular
 
 \end{document}
