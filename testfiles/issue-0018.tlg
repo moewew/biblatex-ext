@@ -1,0 +1,511 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+(../biblatex.sty
+Package: biblatex ....-..-.. v... programmable bibliographies (PK/MW)
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+(../blx-dm.def
+File: blx-dm.def ....-..-.. v... biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file 'numeric.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+(../blx-compat.def
+File: blx-compat.def ....-..-.. v... biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+(../biblatex.def
+File: biblatex.def ....-..-.. v... biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load bibliography style 'numeric'...
+Package biblatex Info: ... file 'numeric.bbx' found.
+(../numeric.bbx
+File: numeric.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+(../standard.bbx
+File: standard.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
+))
+Package biblatex Info: Trying to load citation style 'numeric'...
+Package biblatex Info: ... file 'numeric.cbx' found.
+(../numeric.cbx
+File: numeric.cbx ....-..-.. v... biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\supercite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\smartcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+(../biblatex.cfg
+File: biblatex.cfg 
+))
+(biblatex-ext-tabular.sty
+Package: biblatex-ext-tabular ....-..-.. v... tabular bibliographies for biblatex (MW)
+)
+*** sigfridsson (@article) ***
+*** sigfridsson (@article) ***
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line ....
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line ....
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line ....
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line ....
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line ....
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line ....
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line ....
+*** sigfridsson (@article) ***
+*** sigfridsson (@article) ***
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line ....
+Completed box being shipped out [1]
+\vbox(633.0+0.0)x407.0
+.\glue 16.0
+.\vbox(617.0+0.0)x345.0, shifted 62.0
+..\vbox(12.0+0.0)x345.0, glue set 12.0fil
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x345.0
+..\glue 25.0
+..\glue(\lineskip) 0.0
+..\vbox(550.0+0.0)x345.0, glue set 440.98102fil
+...\write-{}
+...\write1{\@writefile{toc}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse \ETC.}
+...\write1{\@writefile{lof}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse \ETC.}
+...\write1{\@writefile{lot}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse \ETC.}
+...\write1{\babel@aux{british}{}}
+...\glue(\topskip) 2.5
+...\hbox(7.5+2.5)x345.0, glue set 311.94449fil
+....\hbox(0.0+0.0)x15.0
+....\T1/lmr/m/n/10 [
+....\T1/lmr/m/n/10 A
+....\T1/lmr/m/n/10 1
+....\T1/lmr/m/n/10 ]
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\penalty -300
+...\glue 15.06923 plus 4.3055 minus 0.86108
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\baselineskip) 5.65462
+...\hbox(9.84538+0.0)x345.0, glue set 269.19131fil
+....\hbox(0.0+0.0)x0.0
+.....\glue 0.0
+....\T1/lmr/bx/n/14.4 R
+....\T1/lmr/bx/n/14.4 e
+....\T1/lmr/bx/n/14.4 f
+....\T1/lmr/bx/n/14.4 e
+....\T1/lmr/bx/n/14.4 r
+....\T1/lmr/bx/n/14.4 e
+....\T1/lmr/bx/n/14.4 n
+....\T1/lmr/bx/n/14.4 c
+....\T1/lmr/bx/n/14.4 e
+....\T1/lmr/bx/n/14.4 s
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\penalty 10000
+...\glue 9.90265 plus 0.86108
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\lineskip) 1.0
+...\hbox(32.5+27.5)x345.0, glue set 20.0197fil
+....\hbox(32.5+27.5)x324.9803
+.....\mathon
+.....\vbox(32.5+27.5)x324.9803
+......\hbox(8.39996+51.60004)x324.9803
+.......\glue(\tabskip) 0.0
+.......\hbox(8.39996+51.60004)x91.35826
+........\rule(8.39996+3.60004)x0.0
+........\vbox(8.39996+15.60004)x85.35826
+.........\hbox(8.39996+1.94443)x85.35826, glue set 3.69255fil
+..........\hbox(0.0+0.0)x0.0
+..........\rule(8.39996+*)x0.0
+..........\glue 0.0
+..........\T1/lmr/m/n/10 S
+..........\T1/lmr/m/n/10 i
+..........\T1/lmr/m/n/10 g
+..........\T1/lmr/m/n/10 f
+..........\T1/lmr/m/n/10 r
+..........\T1/lmr/m/n/10 i
+..........\T1/lmr/m/n/10 d
+..........\T1/lmr/m/n/10 s
+..........\T1/lmr/m/n/10 s
+..........\T1/lmr/m/n/10 o
+..........\T1/lmr/m/n/10 n
+..........\T1/lmr/m/n/10 ,
+..........\penalty 25
+..........\glue 3.33333 plus 1.67165 minus 1.10779
+..........\T1/lmr/m/n/10 E
+..........\T1/lmr/m/n/10 m
+..........\T1/lmr/m/n/10 m
+..........\T1/lmr/m/n/10 a
+..........\glue(\rightskip) 0.0 plus 1.0fil
+.........\penalty 25000
+.........\glue(\baselineskip) 3.16682
+.........\hbox(6.88875+3.60004)x85.35826, glue set 13.44308fil
+..........\T1/lmr/m/n/10 a
+..........\T1/lmr/m/n/10 n
+..........\T1/lmr/m/n/10 d
+..........\glue 3.33333 plus 1.66666 minus 1.11111
+..........\T1/lmr/m/n/10 U
+..........\T1/lmr/m/n/10 l
+..........\T1/lmr/m/n/10 f
+..........\penalty 25
+..........\glue 3.33333 plus 1.66666 minus 1.11111
+..........\T1/lmr/m/n/10 R
+..........\kern-0.27779
+..........\T1/lmr/m/n/10 y
+..........\T1/lmr/m/n/10 d
+..........\T1/lmr/m/n/10 e
+..........\penalty 10000
+..........\rule(0.0+3.60004)x0.0
+..........\penalty 10000
+..........\glue(\parfillskip) 0.0 plus 1.0fil
+..........\glue(\rightskip) 0.0 plus 1.0fil
+........\glue 0.0 plus 1.0fil
+........\glue 6.0
+.......\glue(\tabskip) 0.0
+.......\hbox(8.39996+51.60004)x233.62204
+........\glue 6.0
+........\vbox(8.39996+51.60004)x227.62204
+.........\hbox(8.39996+1.94443)x227.62204, glue set - 0.18988
+..........\hbox(0.0+0.0)x0.0
+..........\rule(8.39996+*)x0.0
+..........\glue 0.0
+..........\T1/lmr/m/n/10 `
+..........\penalty 10000
+..........\glue -0.0002
+..........\glue 0.0002
+..........\T1/lmr/m/n/10 C
+..........\T1/lmr/m/n/10 o
+..........\T1/lmr/m/n/10 m
+..........\T1/lmr/m/n/10 p
+..........\T1/lmr/m/n/10 a
+..........\T1/lmr/m/n/10 r
+..........\T1/lmr/m/n/10 i
+..........\T1/lmr/m/n/10 s
+..........\T1/lmr/m/n/10 o
+..........\T1/lmr/m/n/10 n
+..........\glue 3.33333 plus 1.66666 minus 1.11111
+..........\T1/lmr/m/n/10 o
+..........\T1/lmr/m/n/10 f
+..........\glue 3.33333 plus 1.66666 minus 1.11111
+..........\T1/lmr/m/n/10 m
+..........\T1/lmr/m/n/10 e
+..........\T1/lmr/m/n/10 t
+..........\T1/lmr/m/n/10 h
+..........\T1/lmr/m/n/10 o
+..........\kern0.27779
+..........\T1/lmr/m/n/10 d
+..........\T1/lmr/m/n/10 s
+..........\glue 3.33333 plus 1.66666 minus 1.11111
+..........\T1/lmr/m/n/10 f
+..........\T1/lmr/m/n/10 o
+..........\T1/lmr/m/n/10 r
+..........\glue 3.33333 plus 1.66666 minus 1.11111
+..........\T1/lmr/m/n/10 d
+..........\T1/lmr/m/n/10 e
+..........\T1/lmr/m/n/10 r
+..........\T1/lmr/m/n/10 i
+..........\T1/lmr/m/n/10 v
+..........\T1/lmr/m/n/10 i
+..........\T1/lmr/m/n/10 n
+..........\T1/lmr/m/n/10 g
+..........\glue 3.33333 plus 1.66666 minus 1.11111
+..........\T1/lmr/m/n/10 a
+..........\T1/lmr/m/n/10 t
+..........\T1/lmr/m/n/10 o
+..........\T1/lmr/m/n/10 m
+..........\T1/lmr/m/n/10 i
+..........\T1/lmr/m/n/10 c
+..........\glue 3.33333 plus 1.66666 minus 1.11111
+..........\T1/lmr/m/n/10 c
+..........\kern-0.27779
+..........\T1/lmr/m/n/10 h
+..........\T1/lmr/m/n/10 a
+..........\T1/lmr/m/n/10 r
+..........\T1/lmr/m/n/10 g
+..........\T1/lmr/m/n/10 e
+..........\T1/lmr/m/n/10 s
+..........\glue(\rightskip) 0.0 plus 1.0fil
+.........\penalty 15000
+.........\glue(\baselineskip) 3.16682
+.........\hbox(6.88875+1.94443)x227.62204, glue set 8.84473fil
+..........\T1/lmr/m/n/10 f
+..........\T1/lmr/m/n/10 r
+..........\T1/lmr/m/n/10 o
+..........\T1/lmr/m/n/10 m
+..........\glue 3.33333 plus 1.66666 minus 1.11111
+..........\T1/lmr/m/n/10 t
+..........\T1/lmr/m/n/10 h
+..........\T1/lmr/m/n/10 e
+..........\glue 3.33333 plus 1.66666 minus 1.11111
+..........\T1/lmr/m/n/10 e
+..........\T1/lmr/m/n/10 l
+..........\T1/lmr/m/n/10 e
+..........\T1/lmr/m/n/10 c
+..........\T1/lmr/m/n/10 t
+..........\T1/lmr/m/n/10 r
+..........\T1/lmr/m/n/10 o
+..........\T1/lmr/m/n/10 s
+..........\T1/lmr/m/n/10 t
+..........\T1/lmr/m/n/10 a
+..........\T1/lmr/m/n/10 t
+..........\T1/lmr/m/n/10 i
+..........\T1/lmr/m/n/10 c
+..........\glue 3.33333 plus 1.66666 minus 1.11111
+..........\T1/lmr/m/n/10 p
+..........\kern0.27779
+..........\T1/lmr/m/n/10 o
+..........\T1/lmr/m/n/10 t
+..........\T1/lmr/m/n/10 e
+..........\T1/lmr/m/n/10 n
+..........\kern-0.27779
+..........\T1/lmr/m/n/10 t
+..........\T1/lmr/m/n/10 i
+..........\T1/lmr/m/n/10 a
+..........\T1/lmr/m/n/10 l
+..........\glue 3.33333 plus 1.66666 minus 1.11111
+..........\T1/lmr/m/n/10 a
+..........\T1/lmr/m/n/10 n
+..........\T1/lmr/m/n/10 d
+..........\glue 3.33333 plus 1.66666 minus 1.11111
+..........\T1/lmr/m/n/10 m
+..........\T1/lmr/m/n/10 o
+..........\T1/lmr/m/n/10 m
+..........\T1/lmr/m/n/10 e
+..........\T1/lmr/m/n/10 n
+..........\kern-0.27779
+..........\T1/lmr/m/n/10 t
+..........\T1/lmr/m/n/10 s
+..........\T1/lmr/m/n/10 '
+..........\T1/lmr/m/n/10 .
+..........\glue 3.33333 plus 1.67665 minus 1.10448
+..........\T1/lmr/m/n/10 I
+..........\T1/lmr/m/n/10 n
+..........\T1/lmr/m/n/10 :
+..........\glue(\rightskip) 0.0 plus 1.0fil
+.........\penalty 5000
+.........\glue(\baselineskip) 2.55557
+.........\hbox(7.5+2.5)x227.62204, glue set 11.16223fil
+..........\T1/lmr/m/it/10 J
+..........\T1/lmr/m/it/10 o
+..........\T1/lmr/m/it/10 u
+..........\T1/lmr/m/it/10 r
+..........\T1/lmr/m/it/10 n
+..........\T1/lmr/m/it/10 a
+..........\T1/lmr/m/it/10 l
+..........\glue 3.57777 plus 1.53333 minus 1.0222
+..........\T1/lmr/m/it/10 o
+..........\T1/lmr/m/it/10 f
+..........\glue 3.57777 plus 1.53333 minus 1.0222
+..........\T1/lmr/m/it/10 C
+..........\T1/lmr/m/it/10 o
+..........\T1/lmr/m/it/10 m
+..........\T1/lmr/m/it/10 p
+..........\T1/lmr/m/it/10 u
+..........\T1/lmr/m/it/10 t
+..........\T1/lmr/m/it/10 a
+..........\T1/lmr/m/it/10 t
+..........\T1/lmr/m/it/10 i
+..........\T1/lmr/m/it/10 o
+..........\T1/lmr/m/it/10 n
+..........\T1/lmr/m/it/10 a
+..........\T1/lmr/m/it/10 l
+..........\glue 3.57777 plus 1.53333 minus 1.0222
+..........\T1/lmr/m/it/10 C
+..........\T1/lmr/m/it/10 h
+..........\T1/lmr/m/it/10 e
+..........\T1/lmr/m/it/10 m
+..........\T1/lmr/m/it/10 i
+..........\T1/lmr/m/it/10 s
+..........\T1/lmr/m/it/10 t
+..........\T1/lmr/m/it/10 r
+..........\T1/lmr/m/it/10 y
+..........\kern 0.57777
+..........\glue 3.33333 plus 1.66666 minus 1.11111
+..........\T1/lmr/m/n/10 1
+..........\T1/lmr/m/n/10 9
+..........\T1/lmr/m/n/10 .
+..........\T1/lmr/m/n/10 4
+..........\glue 3.33333 plus 1.66666 minus 1.11111
+..........\T1/lmr/m/n/10 (
+..........\T1/lmr/m/n/10 1
+..........\T1/lmr/m/n/10 9
+..........\T1/lmr/m/n/10 9
+..........\T1/lmr/m/n/10 8
+..........\T1/lmr/m/n/10 )
+..........\T1/lmr/m/n/10 ,
+..........\glue(\rightskip) 0.0 plus 1.0fil
+.........\penalty 5000
+.........\glue(\baselineskip) 2.5555
+.........\hbox(6.9445+1.94443)x227.62204, glue set 47.3059fil
+..........\T1/lmr/m/n/10 p
+..........\T1/lmr/m/n/10 p
+..........\T1/lmr/m/n/10 .
+..........\penalty 10000
+..........\glue 3.33333 plus 1.66998 minus 1.10889
+..........\T1/lmr/m/n/10 3
+..........\T1/lmr/m/n/10 7
+..........\T1/lmr/m/n/10 7
+..........\T1/lmr/m/n/10 ^^U
+..........\penalty 50
+..........\T1/lmr/m/n/10 3
+..........\T1/lmr/m/n/10 9
+..........\T1/lmr/m/n/10 5
+..........\T1/lmr/m/n/10 .
+..........\kern 0.0
+..........\glue 3.33333 plus 1.67665 minus 1.10448
+..........\T1/lmr/m/sc/10 d
+..........\T1/lmr/m/sc/10 o
+..........\T1/lmr/m/sc/10 i
+..........\kern 0.0
+..........\T1/lmr/m/n/10 :
+..........\glue 3.33333 plus 1.67499 minus 1.10558
+..........\mathon
+..........\T1/lmtt/m/n/10 1
+..........\T1/lmtt/m/n/10 0
+..........\glue(\medmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 .
+..........\penalty 200
+..........\glue(\medmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 1
+..........\T1/lmtt/m/n/10 0
+..........\T1/lmtt/m/n/10 0
+..........\T1/lmtt/m/n/10 2
+..........\glue(\medmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 /
+..........\penalty 200
+..........\glue(\medmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 (
+..........\T1/lmtt/m/n/10 S
+..........\T1/lmtt/m/n/10 I
+..........\T1/lmtt/m/n/10 C
+..........\T1/lmtt/m/n/10 I
+..........\glue(\medmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 )
+..........\penalty 200
+..........\glue(\medmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 1
+..........\T1/lmtt/m/n/10 0
+..........\T1/lmtt/m/n/10 9
+..........\T1/lmtt/m/n/10 6
+..........\glue(\thickmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 -
+..........\hbox(0.0+0.0)x0.5, shifted 1.49998
+...........\kern0.0
+..........\penalty 100
+..........\glue(\rightskip) 0.0 plus 1.0fil
+.........\penalty 15000
+.........\glue(\baselineskip) 3.11107
+.........\hbox(6.9445+3.60004)x227.62204, glue set 3.79745fil
+..........\T1/lmtt/m/n/10 9
+..........\T1/lmtt/m/n/10 8
+..........\T1/lmtt/m/n/10 7
+..........\T1/lmtt/m/n/10 X
+..........\T1/lmtt/m/n/10 (
+..........\T1/lmtt/m/n/10 1
+..........\T1/lmtt/m/n/10 9
+..........\T1/lmtt/m/n/10 9
+..........\T1/lmtt/m/n/10 8
+..........\T1/lmtt/m/n/10 0
+..........\T1/lmtt/m/n/10 3
+..........\glue(\medmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 )
+..........\penalty 200
+..........\glue(\medmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 1
+..........\T1/lmtt/m/n/10 9
+..........\glue(\thickmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 :
+..........\penalty 100
+..........\glue(\thickmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 4
+..........\T1/lmtt/m/n/10 <
+..........\hbox(0.0+0.0)x0.5, shifted 1.49998
+...........\kern0.0
+..........\T1/lmtt/m/n/10 3
+..........\T1/lmtt/m/n/10 7
+..........\T1/lmtt/m/n/10 7
+..........\glue(\thickmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 :
+..........\T1/lmtt/m/n/10 :
+..........\penalty 100
+..........\glue(\thickmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 A
+..........\T1/lmtt/m/n/10 I
+..........\T1/lmtt/m/n/10 D
+..........\glue(\thickmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 -
+..........\hbox(0.0+0.0)x0.5, shifted 1.49998
+...........\kern0.0
+..........\penalty 100
+..........\glue(\thickmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 J
+..........\T1/lmtt/m/n/10 C
+..........\T1/lmtt/m/n/10 C
+..........\T1/lmtt/m/n/10 1
+..........\glue(\medmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 >
+..........\hbox(0.0+0.0)x0.5, shifted 1.49998
+...........\kern0.0
+..........\penalty 200
+..........\glue(\medmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 3
+..........\glue(\medmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 .
+..........\penalty 200
+..........\glue(\medmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 0
+..........\glue(\medmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 .
+..........\penalty 200
+..........\glue(\medmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 C
+..........\T1/lmtt/m/n/10 O
+..........\glue(\medmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 ;
+..........\penalty 200
+..........\glue(\medmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 2
+..........\glue(\thickmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 -
+..........\hbox(0.0+0.0)x0.5, shifted 1.49998
+...........\kern0.0
+..........\penalty 100
+..........\glue(\thickmuskip) 0.0 plus 1.66663
+..........\T1/lmtt/m/n/10 P
+..........\mathoff
+..........\T1/lmr/m/n/10 .
+..........\penalty 10000
+..........\rule(0.0+3.60004)x0.0
+..........\penalty 10000
+..........\glue(\parfillskip) 0.0 plus 1.0fil
+..........\glue(\rightskip) 0.0 plus 1.0fil
+........\glue 0.0 plus 1.0fil
+.......\glue(\tabskip) 0.0
+.....\mathoff
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\glue -5.0
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+...\glue 0.0 plus 0.0001fil
+..\glue(\baselineskip) 23.70276
+..\hbox(6.29724+0.0)x345.0, glue set 170.0fil
+...\glue 0.0 plus 1.0fil
+...\T1/lmr/m/n/10 1
+...\glue 0.0 plus 1.0fil
+(issue-0018.aux)
+Package logreq Info: Writing requests to 'issue-0018.run.xml'.
