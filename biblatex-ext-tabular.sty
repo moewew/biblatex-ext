@@ -21,6 +21,29 @@
   \protected\def\extblxtab@warning{%
     \PackageWarning{biblatex-ext-tabular}}}
 
+\@ifpackageloaded{biblatex}
+  {}
+  {\extblxtab@error
+     {biblatex not loaded!\MessageBreak
+      Please load biblatex before you\MessageBreak
+      load biblatex-ext-tabular}
+     {biblatex needs to be loaded before biblatex-ext-tabular.%
+      \MessageBreak
+      This is a fatal error. I'm aborting now}%
+   \endinput}
+
+\def\extblxtab@requiredbiblatexversion{3.14}
+\def\extblxtab@requiredbiblatexdate{2019/12/01}
+
+\@ifpackagelater{biblatex}{\extblxtab@requiredbiblatexdate}
+  {}
+  {\extblxtab@warning@noline{%
+      Outdated version of biblatex detected.\MessageBreak
+      Upgrade to biblatex \extblxtab@requiredbiblatexversion\space
+      (\extblxtab@requiredbiblatexdate) or later.\MessageBreak
+      I found '\csuse{abx@version} (\csuse{abx@date})'}}
+
+
 % user-level command for printing tabular bibliography
 
 \newrobustcmd*{\printbibtabular}{%
