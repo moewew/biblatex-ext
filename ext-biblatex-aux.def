@@ -279,6 +279,11 @@
    \let\DeclareBiblatexOption\extblx@DeclareBiblatexOption}
   {}
 
+% generalised keyval interface (biblatex 3.15)
+% https://github.com/plk/biblatex/pull/991
+% \blx@kv@undef relying on keyval definitions
+\providecommand*{\blx@kv@undef}[2]{\csundef{KV@#1@#2}}
+
 \endinput
 %
 % This file is part of the biblatex-ext bundle.

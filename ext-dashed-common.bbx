@@ -8,7 +8,7 @@
 % \DeclareBibliographyOption checks if an option is already defined.
 % if we want to overwrite the definition we need to trick it into
 % thinking the option has not been defined yet.
-\csundef{KV@blx@opt@pre@dashed}
+\blx@kv@undef{blx@opt@pre}{dashed}
 % We want to define 'dashed' with a new type, so we need to make
 % biblatex forget about the old type when it passes the options over to
 % Biber.

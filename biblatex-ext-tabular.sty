@@ -21,6 +21,7 @@
   \protected\def\extblxtab@warning{%
     \PackageWarning{biblatex-ext-tabular}}}
 
+
 \@ifpackageloaded{biblatex}
   {}
   {\extblxtab@error
@@ -43,6 +44,11 @@
       (\extblxtab@requiredbiblatexdate) or later.\MessageBreak
       I found '\csuse{abx@version} (\csuse{abx@date})'}}
 
+
+% generalised key-val interface (biblatex v3.15)
+% https://github.com/plk/biblatex/pull/991
+% rely on keyval
+\providerobustcmd*{\blx@kv@setkeys}{\setkeys}
 
 % user-level command for printing tabular bibliography
 
@@ -87,6 +93,7 @@
   \togglefalse{blx@resetnumsexplicit}%
   % First pass options keys - section and resetnumbers
   \setkeys{blx@bib1}{#1}%
+  \blx@kv@setkeys{blx@bib1}{#1}%
   \ifundef\blx@refcontext@labelprefix@real
     {\let\blx@refcontext@labelprefix@real\blx@refcontext@labelprefix}
     {}%
@@ -99,7 +106,7 @@
       {\ifdefempty\blx@refcontext@labelprefix@real}
       {\@secondoftwo}
       {}
-      {\setkeys{blx@bib2}{resetnumbers}}}%
+      {\blx@kv@setkeys{blx@bib2}{resetnumbers}}}%
   \blx@rest@actives
   \ifcsvoid{blx@dlist@entry@\blx@tempe @\blx@refcontext@context}
     {}
@@ -110,7 +117,7 @@
   % \printbibliography following one with this set will inherit any
   % previous "true" value
   \togglefalse{blx@omitnumbers}%
-  \setkeys{blx@bib2}{#1}% ... now we have correct \blx@tempa,
+  \blx@kv@setkeys{blx@bib2}{#1}% ... now we have correct \blx@tempa,
   % set rest of options
   \blx@rest@actives
   % Add datalist to list of seen datalists to prevent duplicates
