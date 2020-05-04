@@ -1,0 +1,47 @@
+\input{regression-test.tex}
+\documentclass[british]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{babel}
+\usepackage{csquotes}
+
+% some tabular setup
+\usepackage{longtable}
+\usepackage{array}
+\newcolumntype{L}[1]{%
+  >{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
+% load biblatex dependencies and suppress counter allocation logging
+\input{testbiblatex-loaddeps.tex}
+
+\START
+\usepackage[style=numeric,defernumbers=true]{biblatex}
+\usepackage{biblatex-ext-tabular}
+\addbibresource{biblatex-examples.bib}
+\OMIT
+
+% set up \extblxtestbox and hack into biblatex internals to add
+% some debugging info
+\input{testbiblatex-boxsetup.tex}
+
+\TIMO
+\defbibtabular{bibtabular}
+  {\begin{tabular}{@{}L{3cm}L{8cm}@{}}}
+  {\end{tabular}}
+  {\anchorlang{\usebibmacro{tabular:sortname}} &
+   \driver{\usebibmacro{tabular:omitsortname}} \\}
+\OMIT
+
+\begin{document}
+\TIMO
+
+\showoutput
+\cite{sigfridsson}
+\newrefcontext[labelprefix=A]
+\printbibtabular
+
+\clearpage
+
+\end{document}
+\END

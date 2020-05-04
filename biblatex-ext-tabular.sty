@@ -42,11 +42,19 @@
 \def\extblxtab@printbibtabular[#1]{%
   \toggletrue{blx@tempa}%
   \toggletrue{blx@tempb}%
-  \def\blx@theheading{bibliography}%
+  \ifundef\blx@default@theheading
+    {\def\blx@theheading{bibliography}}
+    {\let\blx@theheading\blx@default@theheading}%
   \def\blx@theenv{bibtabular}%
-  \let\blx@theprenote\@empty
-  \let\blx@thepostnote\@empty
-  \let\blx@thetitle\@empty
+  \ifundef\blx@default@theprenote
+    {\let\blx@theprenote\@empty}
+    {\let\blx@theprenote\blx@default@theprenote}%
+  \ifundef\blx@default@thepostnote
+    {\let\blx@thepostnote\@empty}
+    {\let\blx@thepostnote\blx@default@thepostnote}%
+  \ifundef\blx@default@thetitle
+    {\let\blx@thetitle\@empty}
+    {\let\blx@thetitle\blx@default@thetitle}%
   \let\blx@key@env\extblxtab@key@env % redirect the 'env' option
                                      % to tabular envs
   % defaults
@@ -56,12 +64,17 @@
   \togglefalse{blx@resetnumsexplicit}%
   % First pass options keys - section and resetnumbers
   \setkeys{blx@bib1}{#1}%
+  \ifundef\blx@refcontext@labelprefix@real
+    {\let\blx@refcontext@labelprefix@real\blx@refcontext@labelprefix}
+    {}%
   % Is there a user-specified option for resetnumbers
   % If so, this overrides the default
   % "labelprefix implies resetnumbers" behaviour
   \iftoggle{blx@resetnumsexplicit}
     {}
     {\ifdefempty\blx@refcontext@labelprefix
+      {\ifdefempty\blx@refcontext@labelprefix@real}
+      {\@secondoftwo}
       {}
       {\setkeys{blx@bib2}{resetnumbers}}}%
   \blx@rest@actives
@@ -87,7 +100,7 @@
          \blx@xml@dlist@refcontext
            {\blx@refcontext@sortingtemplatename}
            {\blx@refcontext@sortingnamekeytemplatename}
-           {\blx@refcontext@labelprefix}
+           {\blx@refcontext@labelprefix@real}
            {\blx@refcontext@uniquenametemplatename}
            {\blx@refcontext@labelalphanametemplatename}}{}}}%
   \ifdefvoid\blx@tempa
