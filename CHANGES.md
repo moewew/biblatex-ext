@@ -7,6 +7,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8d...HEAD>
 
 ### Fixed
 - Fixed `bbx:introcite` definition for `ext-numeric-comp`.
+- Fixed issue with `labelprefix` in `\printbibtabular` (#18).
 
 
 ## Version 0.8d (2020-03-15)
