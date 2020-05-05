@@ -1715,7 +1715,157 @@ TEST 12: Parencite (pre)
 l. ...}
 ============================================================
 ============================================================
-TEST 13: Textcite (plain)
+TEST 13: Parencites note
+============================================================
+*** sigfridsson (@article) ***
+*** nussbaum (@book) ***
+*** worman (@book) ***
+*** geer (@thesis) ***
+> \box...=
+\hbox(7.5+2.5)x519.48466
+.\T1/lmr/m/n/10 (
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 -
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 e
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\write1{\abx@aux@page{41}{\the \c@page }}
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 R
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 50
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 .
+.\T1/lmr/m/n/10 ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\write1{\abx@aux@page{42}{\the \c@page }}
+.\T1/lmr/m/n/10 N
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 o
+.\kern0.27779
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 .
+.\penalty 50
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 .
+.\T1/lmr/m/n/10 ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\write1{\abx@aux@page{43}{\the \c@page }}
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 W
+.\kern-0.83334
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 50
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 .
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 4
+.\T1/lmr/m/n/10 ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\write1{\abx@aux@page{44}{\the \c@page }}
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 G
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 50
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 c
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 .
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 -
+.\T1/lmr/m/n/10 p
+.\kern0.27779
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 )
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 14: Textcite (plain)
 ============================================================
 *** sigfridsson (@article) ***
 *** sigfridsson (@article) ***
@@ -1764,7 +1914,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 .....\mathoff
 ...\hbox(6.65+0.0)x0.0
 ....\rule(6.65+0.0)x0.0
-...\write1{\abx@aux@fnpage{43}{\the \c@page }}
+...\write1{\abx@aux@fnpage{51}{\the \c@page }}
 ...\T1/lmr/m/n/8 E
 ...\T1/lmr/m/n/8 m
 ...\T1/lmr/m/n/8 m
@@ -2112,7 +2262,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 l. ...}
 ============================================================
 ============================================================
-TEST 14: Textcite (post)
+TEST 15: Textcite (post)
 ============================================================
 *** nussbaum (@book) ***
 *** nussbaum (@book) ***
@@ -2144,7 +2294,7 @@ TEST 14: Textcite (post)
 .....\mathoff
 ...\hbox(6.65+0.0)x0.0
 ....\rule(6.65+0.0)x0.0
-...\write1{\abx@aux@fnpage{49}{\the \c@page }}
+...\write1{\abx@aux@fnpage{57}{\the \c@page }}
 ...\T1/lmr/m/n/8 M
 ...\T1/lmr/m/n/8 a
 ...\T1/lmr/m/n/8 r
@@ -2270,7 +2420,7 @@ TEST 14: Textcite (post)
 l. ...}
 ============================================================
 ============================================================
-TEST 15: Textcite (pre-post)
+TEST 16: Textcite (pre-post)
 ============================================================
 *** worman (@book) ***
 *** worman (@book) ***
@@ -2304,7 +2454,7 @@ TEST 15: Textcite (pre-post)
 ...\T1/lmr/m/n/8 C
 ...\T1/lmr/m/n/8 f
 ...\T1/lmr/m/n/8 .
-...\write1{\abx@aux@fnpage{55}{\the \c@page }}
+...\write1{\abx@aux@fnpage{63}{\the \c@page }}
 ...\glue 2.83337 plus 1.41951 minus 0.94257
 ...\T1/lmr/m/n/8 N
 ...\T1/lmr/m/n/8 a
@@ -2444,7 +2594,7 @@ TEST 15: Textcite (pre-post)
 l. ...}
 ============================================================
 ============================================================
-TEST 16: Textcite (pre)
+TEST 17: Textcite (pre)
 ============================================================
 *** geer (@thesis) ***
 *** geer (@thesis) ***
@@ -2475,7 +2625,7 @@ TEST 16: Textcite (pre)
 ...\T1/lmr/m/n/8 C
 ...\T1/lmr/m/n/8 f
 ...\T1/lmr/m/n/8 .
-...\write1{\abx@aux@fnpage{61}{\the \c@page }}
+...\write1{\abx@aux@fnpage{69}{\the \c@page }}
 ...\glue 2.83337 plus 1.41951 minus 0.94257
 ...\T1/lmr/m/n/8 I
 ...\T1/lmr/m/n/8 n
@@ -2676,19 +2826,79 @@ TEST 16: Textcite (pre)
 l. ...}
 ============================================================
 ============================================================
-TEST 17: Footcite (plain)
+TEST 18: Textcites note
 ============================================================
-*** aksin (@article) ***
+*** sigfridsson (@article) ***
+*** nussbaum (@book) ***
+*** worman (@book) ***
+*** geer (@thesis) ***
+*** sigfridsson (@article) ***
+*** nussbaum (@book) ***
+*** worman (@book) ***
+*** geer (@thesis) ***
+*** sigfridsson (@article) ***
+*** nussbaum (@book) ***
+*** worman (@book) ***
+*** geer (@thesis) ***
 > \box...=
-\hbox(8.03691+0.0)x4.486
+\hbox(8.03691+1.94443)x234.99873
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 R
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 N
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 W
+.\kern-0.83334
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 G
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
 .\penalty 10000
 .\hbox(8.03691+0.0)x4.486
 ..\mathon
 ..\hbox(4.40799+0.0)x4.486, shifted -3.62892
 ...\T1/lmr/m/n/7 9
 ..\mathoff
-.\insert253, natural size 28.51802; split(6.65,2.85002); float cost 20000
-..\hbox(6.668+1.55556)x345.0, glue set - 0.36346
+.\insert253, natural size 19.00002; split(6.65,2.85002); float cost 20000
+..\hbox(6.65+1.55556)x345.0, glue set 0.11499
 ...\hbox(6.62265+0.0)x15.30002, glue set 11.13336fil
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\hbox(6.62265+0.0)x4.16666
@@ -2698,7 +2908,182 @@ TEST 17: Footcite (plain)
 .....\mathoff
 ...\hbox(6.65+0.0)x0.0
 ....\rule(6.65+0.0)x0.0
-...\write1{\abx@aux@fnpage{65}{\the \c@page }}
+...\T1/lmr/m/n/8 g
+...\T1/lmr/m/n/8 l
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 b
+...\T1/lmr/m/n/8 -
+...\discretionary
+...\T1/lmr/m/n/8 p
+...\T1/lmr/m/n/8 r
+...\T1/lmr/m/n/8 e
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\write1{\abx@aux@fnpage{81}{\the \c@page }}
+...\T1/lmr/m/n/8 S
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 g
+...\T1/lmr/m/n/8 f
+...\T1/lmr/m/n/8 r
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 d
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 n
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 a
+...\T1/lmr/m/n/8 n
+...\T1/lmr/m/n/8 d
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 R
+...\kern-0.23611
+...\T1/lmr/m/n/8 y
+...\T1/lmr/m/n/8 d
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 p
+...\T1/lmr/m/n/8 .
+...\penalty 50
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 c
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 t
+...\T1/lmr/m/n/8 .
+...\T1/lmr/m/n/8 ;
+...\glue 2.83337 plus 2.12503 minus 0.62964
+...\write1{\abx@aux@fnpage{82}{\the \c@page }}
+...\T1/lmr/m/n/8 N
+...\T1/lmr/m/n/8 u
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 b
+...\T1/lmr/m/n/8 a
+...\T1/lmr/m/n/8 u
+...\T1/lmr/m/n/8 m
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 l
+...\T1/lmr/m/n/8 o
+...\kern0.23611
+...\T1/lmr/m/n/8 c
+...\T1/lmr/m/n/8 .
+...\penalty 50
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 c
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 t
+...\T1/lmr/m/n/8 .
+...\T1/lmr/m/n/8 ;
+...\glue 2.83337 plus 2.12503 minus 0.62964
+...\T1/lmr/m/n/8 C
+...\T1/lmr/m/n/8 f
+...\T1/lmr/m/n/8 .
+...\write1{\abx@aux@fnpage{83}{\the \c@page }}
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 W
+...\kern-0.70834
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 r
+...\T1/lmr/m/n/8 m
+...\T1/lmr/m/n/8 a
+...\T1/lmr/m/n/8 n
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 p
+...\T1/lmr/m/n/8 .
+...\penalty 50
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 c
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 t
+...\T1/lmr/m/n/8 .
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 p
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 1
+...\T1/lmr/m/n/8 4
+...\T1/lmr/m/n/8 ;
+...\glue(\rightskip) 0.0
+..\penalty 400
+..\glue(\baselineskip) 2.43344
+..\hbox(5.511+2.85002)x345.0, glue set 237.69232fil
+...\T1/lmr/m/n/8 C
+...\T1/lmr/m/n/8 f
+...\T1/lmr/m/n/8 .
+...\write1{\abx@aux@fnpage{84}{\the \c@page }}
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 G
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 r
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 p
+...\T1/lmr/m/n/8 .
+...\penalty 50
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 c
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 t
+...\T1/lmr/m/n/8 .
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 g
+...\T1/lmr/m/n/8 l
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 b
+...\T1/lmr/m/n/8 -
+...\discretionary
+...\T1/lmr/m/n/8 p
+...\kern0.23611
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 t
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\rule(0.0+2.85002)x0.0
+...\penalty 10000
+...\glue(\parfillskip) 0.0 plus 1.0fil
+...\glue(\rightskip) 0.0
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 19: Footcite (plain)
+============================================================
+*** aksin (@article) ***
+> \box...=
+\hbox(8.03691+0.0)x8.47198
+.\penalty 10000
+.\hbox(8.03691+0.0)x8.47198
+..\mathon
+..\hbox(4.40799+0.0)x8.47198, shifted -3.62892
+...\T1/lmr/m/n/7 1
+...\T1/lmr/m/n/7 1
+..\mathoff
+.\insert253, natural size 28.51802; split(6.65,2.85002); float cost 20000
+..\hbox(6.668+1.55556)x345.0, glue set - 0.36346
+...\hbox(6.62265+0.0)x15.30002, glue set 7.4667fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+....\hbox(6.62265+0.0)x7.83331
+.....\mathon
+.....\hbox(3.79932+0.0)x7.83331, shifted -2.82333
+......\T1/lmr/m/n/6 1
+......\T1/lmr/m/n/6 1
+.....\mathoff
+...\hbox(6.65+0.0)x0.0
+....\rule(6.65+0.0)x0.0
+...\write1{\abx@aux@fnpage{97}{\the \c@page }}
 ...\T1/lmr/m/n/8 ^^d6
 ...\T1/lmr/m/n/8 z
 ...\T1/lmr/m/n/8 g
@@ -2928,7 +3313,7 @@ TEST 17: Footcite (plain)
 l. ...}
 ============================================================
 ============================================================
-TEST 18: Footcite (post)
+TEST 20: Footcite (post)
 ============================================================
 *** pines (@incollection) ***
 > \box...=
@@ -2938,7 +3323,7 @@ TEST 18: Footcite (post)
 ..\mathon
 ..\hbox(4.40799+0.0)x8.47198, shifted -3.62892
 ...\T1/lmr/m/n/7 1
-...\T1/lmr/m/n/7 1
+...\T1/lmr/m/n/7 3
 ..\mathoff
 .\insert253, natural size 28.50002; split(6.65,2.85002); float cost 20000
 ..\hbox(6.65+1.55556)x345.0, glue set - 0.29361
@@ -2948,11 +3333,11 @@ TEST 18: Footcite (post)
 .....\mathon
 .....\hbox(3.79932+0.0)x7.83331, shifted -2.82333
 ......\T1/lmr/m/n/6 1
-......\T1/lmr/m/n/6 1
+......\T1/lmr/m/n/6 3
 .....\mathoff
 ...\hbox(6.65+0.0)x0.0
 ....\rule(6.65+0.0)x0.0
-...\write1{\abx@aux@fnpage{67}{\the \c@page }}
+...\write1{\abx@aux@fnpage{99}{\the \c@page }}
 ...\T1/lmr/m/n/8 S
 ...\T1/lmr/m/n/8 h
 ...\T1/lmr/m/n/8 l
@@ -3244,7 +3629,7 @@ TEST 18: Footcite (post)
 l. ...}
 ============================================================
 ============================================================
-TEST 19: Footcite (pre-post)
+TEST 21: Footcite (pre-post)
 ============================================================
 *** aksin (@article) ***
 > \box...=
@@ -3254,7 +3639,7 @@ TEST 19: Footcite (pre-post)
 ..\mathon
 ..\hbox(4.40799+0.0)x8.47198, shifted -3.62892
 ...\T1/lmr/m/n/7 1
-...\T1/lmr/m/n/7 3
+...\T1/lmr/m/n/7 5
 ..\mathoff
 .\insert253, natural size 9.50002; split(6.65,2.85002); float cost 20000
 ..\hbox(6.65+2.85002)x345.0, glue set 211.36702fil
@@ -3264,14 +3649,14 @@ TEST 19: Footcite (pre-post)
 .....\mathon
 .....\hbox(3.79932+0.0)x7.83331, shifted -2.82333
 ......\T1/lmr/m/n/6 1
-......\T1/lmr/m/n/6 3
+......\T1/lmr/m/n/6 5
 .....\mathoff
 ...\hbox(6.65+0.0)x0.0
 ....\rule(6.65+0.0)x0.0
 ...\T1/lmr/m/n/8 C
 ...\T1/lmr/m/n/8 f
 ...\T1/lmr/m/n/8 .
-...\write1{\abx@aux@fnpage{69}{\the \c@page }}
+...\write1{\abx@aux@fnpage{101}{\the \c@page }}
 ...\glue 2.83337 plus 1.41951 minus 0.94257
 ...\T1/lmr/m/n/8 A
 ...\T1/lmr/m/n/8 k
@@ -3318,7 +3703,7 @@ TEST 19: Footcite (pre-post)
 l. ...}
 ============================================================
 ============================================================
-TEST 20: Footcite (pre)
+TEST 22: Footcite (pre)
 ============================================================
 *** pines (@incollection) ***
 > \box...=
@@ -3328,7 +3713,7 @@ TEST 20: Footcite (pre)
 ..\mathon
 ..\hbox(4.40799+0.0)x8.47198, shifted -3.62892
 ...\T1/lmr/m/n/7 1
-...\T1/lmr/m/n/7 5
+...\T1/lmr/m/n/7 7
 ..\mathoff
 .\insert253, natural size 9.50002; split(6.65,2.85002); float cost 20000
 ..\hbox(6.65+2.85002)x345.0, glue set 264.60681fil
@@ -3338,14 +3723,14 @@ TEST 20: Footcite (pre)
 .....\mathon
 .....\hbox(3.79932+0.0)x7.83331, shifted -2.82333
 ......\T1/lmr/m/n/6 1
-......\T1/lmr/m/n/6 5
+......\T1/lmr/m/n/6 7
 .....\mathoff
 ...\hbox(6.65+0.0)x0.0
 ....\rule(6.65+0.0)x0.0
 ...\T1/lmr/m/n/8 C
 ...\T1/lmr/m/n/8 f
 ...\T1/lmr/m/n/8 .
-...\write1{\abx@aux@fnpage{71}{\the \c@page }}
+...\write1{\abx@aux@fnpage{103}{\the \c@page }}
 ...\glue 2.83337 plus 1.41951 minus 0.94257
 ...\T1/lmr/m/n/8 P
 ...\T1/lmr/m/n/8 i
@@ -3374,12 +3759,638 @@ TEST 20: Footcite (pre)
 l. ...}
 ============================================================
 ============================================================
-TEST 21: bibliography aksin
+TEST 23: Footcites note
+============================================================
+*** sigfridsson (@article) ***
+*** nussbaum (@book) ***
+*** worman (@book) ***
+*** geer (@thesis) ***
+> \box...=
+\hbox(8.03691+0.0)x8.47198
+.\penalty 10000
+.\hbox(8.03691+0.0)x8.47198
+..\mathon
+..\hbox(4.40799+0.0)x8.47198, shifted -3.62892
+...\T1/lmr/m/n/7 1
+...\T1/lmr/m/n/7 9
+..\mathoff
+.\insert253, natural size 19.00002; split(6.65,2.85002); float cost 20000
+..\hbox(6.65+1.55556)x345.0, glue set 0.49205
+...\hbox(6.62265+0.0)x15.30002, glue set 7.4667fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+....\hbox(6.62265+0.0)x7.83331
+.....\mathon
+.....\hbox(3.79932+0.0)x7.83331, shifted -2.82333
+......\T1/lmr/m/n/6 1
+......\T1/lmr/m/n/6 9
+.....\mathoff
+...\hbox(6.65+0.0)x0.0
+....\rule(6.65+0.0)x0.0
+...\T1/lmr/m/n/8 g
+...\T1/lmr/m/n/8 l
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 b
+...\T1/lmr/m/n/8 -
+...\discretionary
+...\T1/lmr/m/n/8 p
+...\T1/lmr/m/n/8 r
+...\T1/lmr/m/n/8 e
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\write1{\abx@aux@fnpage{105}{\the \c@page }}
+...\T1/lmr/m/n/8 S
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 g
+...\T1/lmr/m/n/8 f
+...\T1/lmr/m/n/8 r
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 d
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 n
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 a
+...\T1/lmr/m/n/8 n
+...\T1/lmr/m/n/8 d
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 R
+...\kern-0.23611
+...\T1/lmr/m/n/8 y
+...\T1/lmr/m/n/8 d
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 p
+...\T1/lmr/m/n/8 .
+...\penalty 50
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 c
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 t
+...\T1/lmr/m/n/8 .
+...\T1/lmr/m/n/8 ;
+...\glue 2.83337 plus 2.12503 minus 0.62964
+...\write1{\abx@aux@fnpage{106}{\the \c@page }}
+...\T1/lmr/m/n/8 N
+...\T1/lmr/m/n/8 u
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 b
+...\T1/lmr/m/n/8 a
+...\T1/lmr/m/n/8 u
+...\T1/lmr/m/n/8 m
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 l
+...\T1/lmr/m/n/8 o
+...\kern0.23611
+...\T1/lmr/m/n/8 c
+...\T1/lmr/m/n/8 .
+...\penalty 50
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 c
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 t
+...\T1/lmr/m/n/8 .
+...\T1/lmr/m/n/8 ;
+...\glue 2.83337 plus 2.12503 minus 0.62964
+...\T1/lmr/m/n/8 C
+...\T1/lmr/m/n/8 f
+...\T1/lmr/m/n/8 .
+...\write1{\abx@aux@fnpage{107}{\the \c@page }}
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 W
+...\kern-0.70834
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 r
+...\T1/lmr/m/n/8 m
+...\T1/lmr/m/n/8 a
+...\T1/lmr/m/n/8 n
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 l
+...\T1/lmr/m/n/8 o
+...\kern0.23611
+...\T1/lmr/m/n/8 c
+...\T1/lmr/m/n/8 .
+...\penalty 50
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 c
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 t
+...\T1/lmr/m/n/8 .
+...\T1/lmr/m/n/8 ;
+...\glue 2.83337 plus 2.12503 minus 0.62964
+...\T1/lmr/m/n/8 C
+...\T1/lmr/m/n/8 f
+...\T1/lmr/m/n/8 .
+...\write1{\abx@aux@fnpage{108}{\the \c@page }}
+...\glue(\rightskip) 0.0
+..\penalty 400
+..\glue(\baselineskip) 2.43344
+..\hbox(5.511+2.85002)x345.0, glue set 251.62311fil
+...\T1/lmr/m/n/8 G
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 r
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 p
+...\T1/lmr/m/n/8 .
+...\penalty 50
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 c
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 t
+...\T1/lmr/m/n/8 .
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 g
+...\T1/lmr/m/n/8 l
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 b
+...\T1/lmr/m/n/8 -
+...\discretionary
+...\T1/lmr/m/n/8 p
+...\kern0.23611
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 t
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\rule(0.0+2.85002)x0.0
+...\penalty 10000
+...\glue(\parfillskip) 0.0 plus 1.0fil
+...\glue(\rightskip) 0.0
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 24: Autocite prenote
+============================================================
+*** knuth:ct:a (@book) ***
+> \box...=
+\hbox(8.03691+0.0)x8.47198
+.\penalty 10000
+.\hbox(8.03691+0.0)x8.47198
+..\mathon
+..\hbox(4.40799+0.0)x8.47198, shifted -3.62892
+...\T1/lmr/m/n/7 2
+...\T1/lmr/m/n/7 1
+..\mathoff
+.\insert253, natural size 19.00002; split(6.65,2.85002); float cost 20000
+..\hbox(6.65+1.72224)x345.0, glue set 0.01604
+...\hbox(6.62265+0.0)x15.30002, glue set 7.4667fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+....\hbox(6.62265+0.0)x7.83331
+.....\mathon
+.....\hbox(3.79932+0.0)x7.83331, shifted -2.82333
+......\T1/lmr/m/n/6 2
+......\T1/lmr/m/n/6 1
+.....\mathoff
+...\hbox(6.65+0.0)x0.0
+....\rule(6.65+0.0)x0.0
+...\T1/lmr/m/n/8 C
+...\T1/lmr/m/n/8 f
+...\T1/lmr/m/n/8 .
+...\write1{\abx@aux@fnpage{113}{\the \c@page }}
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 D
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 n
+...\T1/lmr/m/n/8 a
+...\T1/lmr/m/n/8 l
+...\T1/lmr/m/n/8 d
+...\penalty 50
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 E
+...\T1/lmr/m/n/8 .
+...\penalty 25
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 K
+...\T1/lmr/m/n/8 n
+...\kern-0.23611
+...\T1/lmr/m/n/8 u
+...\T1/lmr/m/n/8 t
+...\T1/lmr/m/n/8 h
+...\T1/lmr/m/n/8 .
+...\glue 3.77783 plus 4.25006 minus 0.31482
+...\T1/lmr/m/it/8 C
+...\T1/lmr/m/it/8 o
+...\T1/lmr/m/it/8 m
+...\T1/lmr/m/it/8 p
+...\T1/lmr/m/it/8 u
+...\T1/lmr/m/it/8 t
+...\T1/lmr/m/it/8 e
+...\T1/lmr/m/it/8 r
+...\T1/lmr/m/it/8 s
+...\glue 3.07224 plus 1.31667 minus 0.87778
+...\T1/lmr/m/it/8 &
+...\glue 3.07224 plus 1.31667 minus 0.87778
+...\T1/lmr/m/it/8 T
+...\kern-0.65834
+...\T1/lmr/m/it/8 y
+...\T1/lmr/m/it/8 p
+...\kern-0.43889
+...\T1/lmr/m/it/8 e
+...\T1/lmr/m/it/8 s
+...\T1/lmr/m/it/8 e
+...\T1/lmr/m/it/8 t
+...\T1/lmr/m/it/8 t
+...\T1/lmr/m/it/8 i
+...\T1/lmr/m/it/8 n
+...\T1/lmr/m/it/8 g
+...\T1/lmr/m/n/8 .
+...\glue 3.77783 plus 4.25006 minus 0.31482
+...\T1/lmr/m/n/8 V
+...\kern-0.70834
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 l
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 A
+...\T1/lmr/m/n/8 :
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/it/8 T
+...\T1/lmr/m/it/8 h
+...\T1/lmr/m/it/8 e
+...\glue 3.07224 plus 1.31667 minus 0.87778
+...\T1/lmr/m/it/8 T
+...\kern -1.46326
+...\hbox(5.511+0.0)x5.8195, shifted 1.72224
+....\T1/lmr/m/it/8 E
+...\kern -1.09721
+...\T1/lmr/m/it/8 X
+...\T1/lmr/m/it/8 b
+...\kern-0.43889
+...\T1/lmr/m/it/8 o
+...\kern-0.43889
+...\T1/lmr/m/it/8 o
+...\T1/lmr/m/it/8 k
+...\T1/lmr/m/n/8 .
+...\glue 3.77783 plus 4.25006 minus 0.31482
+...\T1/lmr/m/n/8 R
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 a
+...\T1/lmr/m/n/8 d
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 n
+...\T1/lmr/m/n/8 g
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 M
+...\T1/lmr/m/n/8 a
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 .
+...\T1/lmr/m/n/8 :
+...\glue(\rightskip) 0.0
+..\penalty 400
+..\glue(\baselineskip) 2.26675
+..\hbox(5.511+2.85002)x345.0, glue set 261.57312fil
+...\T1/lmr/m/n/8 A
+...\kern-0.23611
+...\T1/lmr/m/n/8 d
+...\T1/lmr/m/n/8 d
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 n
+...\T1/lmr/m/n/8 -
+...\discretionary
+...\T1/lmr/m/n/8 W
+...\kern-0.70834
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 l
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 y
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 1
+...\T1/lmr/m/n/8 9
+...\T1/lmr/m/n/8 8
+...\T1/lmr/m/n/8 4
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\rule(0.0+2.85002)x0.0
+...\penalty 10000
+...\glue(\parfillskip) 0.0 plus 1.0fil
+...\glue(\rightskip) 0.0
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 25: Autocite pre and postnote
+============================================================
+*** sigfridsson (@article) ***
+> \box...=
+\hbox(8.03691+0.0)x8.47198
+.\penalty 10000
+.\hbox(8.03691+0.0)x8.47198
+..\mathon
+..\hbox(4.40799+0.0)x8.47198, shifted -3.62892
+...\T1/lmr/m/n/7 2
+...\T1/lmr/m/n/7 3
+..\mathoff
+.\insert253, natural size 9.50002; split(6.65,2.85002); float cost 20000
+..\hbox(6.65+2.85002)x345.0, glue set 176.00954fil
+...\hbox(6.62265+0.0)x15.30002, glue set 7.4667fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+....\hbox(6.62265+0.0)x7.83331
+.....\mathon
+.....\hbox(3.79932+0.0)x7.83331, shifted -2.82333
+......\T1/lmr/m/n/6 2
+......\T1/lmr/m/n/6 3
+.....\mathoff
+...\hbox(6.65+0.0)x0.0
+....\rule(6.65+0.0)x0.0
+...\T1/lmr/m/n/8 C
+...\T1/lmr/m/n/8 f
+...\T1/lmr/m/n/8 .
+...\write1{\abx@aux@fnpage{115}{\the \c@page }}
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 S
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 g
+...\T1/lmr/m/n/8 f
+...\T1/lmr/m/n/8 r
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 d
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 n
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 a
+...\T1/lmr/m/n/8 n
+...\T1/lmr/m/n/8 d
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 R
+...\kern-0.23611
+...\T1/lmr/m/n/8 y
+...\T1/lmr/m/n/8 d
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 p
+...\T1/lmr/m/n/8 .
+...\penalty 50
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 c
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 t
+...\T1/lmr/m/n/8 .
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 p
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 3
+...\T1/lmr/m/n/8 8
+...\T1/lmr/m/n/8 0
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\rule(0.0+2.85002)x0.0
+...\penalty 10000
+...\glue(\parfillskip) 0.0 plus 1.0fil
+...\glue(\rightskip) 0.0
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 26: Autocite postnote
+============================================================
+*** nussbaum (@book) ***
+> \box...=
+\hbox(8.03691+0.0)x8.47198
+.\penalty 10000
+.\hbox(8.03691+0.0)x8.47198
+..\mathon
+..\hbox(4.40799+0.0)x8.47198, shifted -3.62892
+...\T1/lmr/m/n/7 2
+...\T1/lmr/m/n/7 5
+..\mathoff
+.\insert253, natural size 9.50002; split(6.65,2.85002); float cost 20000
+..\hbox(6.65+2.85002)x345.0, glue set 258.30615fil
+...\hbox(6.62265+0.0)x15.30002, glue set 7.4667fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+....\hbox(6.62265+0.0)x7.83331
+.....\mathon
+.....\hbox(3.79932+0.0)x7.83331, shifted -2.82333
+......\T1/lmr/m/n/6 2
+......\T1/lmr/m/n/6 5
+.....\mathoff
+...\hbox(6.65+0.0)x0.0
+....\rule(6.65+0.0)x0.0
+...\write1{\abx@aux@fnpage{117}{\the \c@page }}
+...\T1/lmr/m/n/8 N
+...\T1/lmr/m/n/8 u
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 b
+...\T1/lmr/m/n/8 a
+...\T1/lmr/m/n/8 u
+...\T1/lmr/m/n/8 m
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 l
+...\T1/lmr/m/n/8 o
+...\kern0.23611
+...\T1/lmr/m/n/8 c
+...\T1/lmr/m/n/8 .
+...\penalty 50
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 c
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 t
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\rule(0.0+2.85002)x0.0
+...\penalty 10000
+...\glue(\parfillskip) 0.0 plus 1.0fil
+...\glue(\rightskip) 0.0
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 27: Autocites note
+============================================================
+*** nussbaum (@book) ***
+*** sigfridsson (@article) ***
+*** knuth:ct:a (@book) ***
+> \box...=
+\hbox(8.03691+0.0)x8.47198
+.\penalty 10000
+.\hbox(8.03691+0.0)x8.47198
+..\mathon
+..\hbox(4.40799+0.0)x8.47198, shifted -3.62892
+...\T1/lmr/m/n/7 2
+...\T1/lmr/m/n/7 7
+..\mathoff
+.\insert253, natural size 19.00002; split(6.65,2.85002); float cost 20000
+..\hbox(6.65+1.55556)x345.0, glue set 0.36865
+...\hbox(6.62265+0.0)x15.30002, glue set 7.4667fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+....\hbox(6.62265+0.0)x7.83331
+.....\mathon
+.....\hbox(3.79932+0.0)x7.83331, shifted -2.82333
+......\T1/lmr/m/n/6 2
+......\T1/lmr/m/n/6 7
+.....\mathoff
+...\hbox(6.65+0.0)x0.0
+....\rule(6.65+0.0)x0.0
+...\write1{\abx@aux@fnpage{119}{\the \c@page }}
+...\T1/lmr/m/n/8 I
+...\T1/lmr/m/n/8 d
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 m
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/it/8 A
+...\kern-0.43889
+...\T1/lmr/m/it/8 r
+...\T1/lmr/m/it/8 i
+...\T1/lmr/m/it/8 s
+...\T1/lmr/m/it/8 t
+...\T1/lmr/m/it/8 o
+...\T1/lmr/m/it/8 t
+...\T1/lmr/m/it/8 l
+...\T1/lmr/m/it/8 e
+...\T1/lmr/m/it/8 '
+...\T1/lmr/m/it/8 s
+...\glue 3.07224 plus 1.31667 minus 0.87778
+...\T1/lmr/m/it/8 `
+...\penalty 10000
+...\glue -0.0002
+...\glue 0.0002
+...\T1/lmr/m/it/8 D
+...\T1/lmr/m/it/8 e
+...\glue 3.07224 plus 1.31667 minus 0.87778
+...\T1/lmr/m/it/8 M
+...\T1/lmr/m/it/8 o
+...\T1/lmr/m/it/8 t
+...\T1/lmr/m/it/8 u
+...\glue 3.07224 plus 1.31667 minus 0.87778
+...\T1/lmr/m/it/8 A
+...\kern-0.43889
+...\T1/lmr/m/it/8 n
+...\T1/lmr/m/it/8 i
+...\T1/lmr/m/it/8 m
+...\T1/lmr/m/it/8 a
+...\T1/lmr/m/it/8 l
+...\T1/lmr/m/it/8 i
+...\T1/lmr/m/it/8 u
+...\T1/lmr/m/it/8 m
+...\T1/lmr/m/it/8 '
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 p
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 1
+...\T1/lmr/m/n/8 9
+...\T1/lmr/m/n/8 0
+...\T1/lmr/m/n/8 ;
+...\glue 2.83337 plus 2.12503 minus 0.62964
+...\T1/lmr/m/n/8 C
+...\T1/lmr/m/n/8 f
+...\T1/lmr/m/n/8 .
+...\write1{\abx@aux@fnpage{120}{\the \c@page }}
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 S
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 g
+...\T1/lmr/m/n/8 f
+...\T1/lmr/m/n/8 r
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 d
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 n
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 a
+...\T1/lmr/m/n/8 n
+...\T1/lmr/m/n/8 d
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 R
+...\kern-0.23611
+...\T1/lmr/m/n/8 y
+...\T1/lmr/m/n/8 d
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 l
+...\T1/lmr/m/n/8 o
+...\kern0.23611
+...\T1/lmr/m/n/8 c
+...\T1/lmr/m/n/8 .
+...\penalty 50
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 c
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 t
+...\T1/lmr/m/n/8 .
+...\T1/lmr/m/n/8 ;
+...\glue 2.83337 plus 2.12503 minus 0.62964
+...\T1/lmr/m/n/8 C
+...\T1/lmr/m/n/8 f
+...\T1/lmr/m/n/8 .
+...\write1{\abx@aux@fnpage{121}{\the \c@page }}
+...\glue(\rightskip) 0.0
+..\penalty 400
+..\glue(\baselineskip) 2.43344
+..\hbox(5.511+2.85002)x345.0, glue set 289.99306fil
+...\T1/lmr/m/n/8 K
+...\T1/lmr/m/n/8 n
+...\kern-0.23611
+...\T1/lmr/m/n/8 u
+...\T1/lmr/m/n/8 t
+...\T1/lmr/m/n/8 h
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 p
+...\T1/lmr/m/n/8 .
+...\penalty 50
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 c
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 t
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\rule(0.0+2.85002)x0.0
+...\penalty 10000
+...\glue(\parfillskip) 0.0 plus 1.0fil
+...\glue(\rightskip) 0.0
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 28: bibliography aksin
 ============================================================
 *** aksin (@article) ***
 > \box...=
 \hbox(8.29999+2.5)x860.65193
-.\write1{\abx@aux@page{73}{\the \c@page }}
+.\write1{\abx@aux@page{125}{\the \c@page }}
 .\T1/lmr/m/n/10 A
 .\T1/lmr/m/n/10 k
 .\T1/lmr/m/n/10 s
@@ -3595,13 +4606,13 @@ TEST 21: bibliography aksin
 l. ...
 ============================================================
 ============================================================
-TEST 22: bibliography geer
+TEST 29: bibliography geer
 ============================================================
 *** geer (@thesis) ***
 > \box...=
 \hbox(6.88875+1.94443)x773.34676
 .\hbox(0.0+0.0)x0.0
-.\write1{\abx@aux@page{75}{\the \c@page }}
+.\write1{\abx@aux@page{127}{\the \c@page }}
 .\T1/lmr/m/n/10 G
 .\T1/lmr/m/n/10 e
 .\T1/lmr/m/n/10 e
@@ -3793,13 +4804,13 @@ TEST 22: bibliography geer
 l. ...
 ============================================================
 ============================================================
-TEST 23: bibliography knuth:ct:a
+TEST 30: bibliography knuth:ct:a
 ============================================================
 *** knuth:ct:a (@book) ***
 > \box...=
 \hbox(6.88875+2.15274)x467.52386
 .\hbox(0.0+0.0)x0.0
-.\write1{\abx@aux@page{77}{\the \c@page }}
+.\write1{\abx@aux@page{129}{\the \c@page }}
 .\T1/lmr/m/n/10 K
 .\T1/lmr/m/n/10 n
 .\kern-0.27779
@@ -3920,13 +4931,13 @@ TEST 23: bibliography knuth:ct:a
 l. ...
 ============================================================
 ============================================================
-TEST 24: bibliography knuth:ct:b
+TEST 31: bibliography knuth:ct:b
 ============================================================
 *** knuth:ct:b (@book) ***
 > \box...=
 \hbox(6.88875+2.15274)x425.09052
 .\hbox(0.0+0.0)x0.0
-.\write1{\abx@aux@page{79}{\the \c@page }}
+.\write1{\abx@aux@page{131}{\the \c@page }}
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
 ..\glue 0.0 plus 1.0fil minus 1.0fil
@@ -4036,13 +5047,13 @@ TEST 24: bibliography knuth:ct:b
 l. ...
 ============================================================
 ============================================================
-TEST 25: bibliography knuth:ct:c
+TEST 32: bibliography knuth:ct:c
 ============================================================
 *** knuth:ct:c (@book) ***
 > \box...=
 \hbox(6.88875+1.94443)x440.01196
 .\hbox(0.0+0.0)x0.0
-.\write1{\abx@aux@page{81}{\the \c@page }}
+.\write1{\abx@aux@page{133}{\the \c@page }}
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
 ..\glue 0.0 plus 1.0fil minus 1.0fil
@@ -4150,13 +5161,13 @@ TEST 25: bibliography knuth:ct:c
 l. ...
 ============================================================
 ============================================================
-TEST 26: bibliography nussbaum
+TEST 33: bibliography nussbaum
 ============================================================
 *** nussbaum (@book) ***
 > \box...=
 \hbox(6.88875+1.94443)x434.76755
 .\hbox(0.0+0.0)x0.0
-.\write1{\abx@aux@page{83}{\the \c@page }}
+.\write1{\abx@aux@page{135}{\the \c@page }}
 .\T1/lmr/m/n/10 N
 .\T1/lmr/m/n/10 u
 .\T1/lmr/m/n/10 s
@@ -4266,13 +5277,13 @@ TEST 26: bibliography nussbaum
 l. ...
 ============================================================
 ============================================================
-TEST 27: bibliography pines
+TEST 34: bibliography pines
 ============================================================
 *** pines (@incollection) ***
 > \box...=
 \hbox(6.88875+1.94443)x1104.17401
 .\hbox(0.0+0.0)x0.0
-.\write1{\abx@aux@page{85}{\the \c@page }}
+.\write1{\abx@aux@page{137}{\the \c@page }}
 .\T1/lmr/m/n/10 P
 .\T1/lmr/m/n/10 i
 .\T1/lmr/m/n/10 n
@@ -4544,13 +5555,13 @@ TEST 27: bibliography pines
 l. ...
 ============================================================
 ============================================================
-TEST 28: bibliography sigfridsson
+TEST 35: bibliography sigfridsson
 ============================================================
 *** sigfridsson (@article) ***
 > \box...=
 \hbox(7.5+2.5)x1224.05046
 .\hbox(0.0+0.0)x0.0
-.\write1{\abx@aux@page{87}{\the \c@page }}
+.\write1{\abx@aux@page{139}{\the \c@page }}
 .\T1/lmr/m/n/10 S
 .\T1/lmr/m/n/10 i
 .\T1/lmr/m/n/10 g
@@ -4872,13 +5883,13 @@ TEST 28: bibliography sigfridsson
 l. ...
 ============================================================
 ============================================================
-TEST 29: bibliography worman
+TEST 36: bibliography worman
 ============================================================
 *** worman (@book) ***
 > \box...=
 \hbox(6.88875+1.94443)x471.49014
 .\hbox(0.0+0.0)x0.0
-.\write1{\abx@aux@page{89}{\the \c@page }}
+.\write1{\abx@aux@page{141}{\the \c@page }}
 .\T1/lmr/m/n/10 W
 .\kern-0.83334
 .\T1/lmr/m/n/10 o

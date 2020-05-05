@@ -659,13 +659,146 @@ TEST 12: Parencite (pre)
 l. ...}
 ============================================================
 ============================================================
-TEST 13: Textcite (plain)
+TEST 13: Parencites note
+============================================================
+*** sigfridsson (@article) ***
+*** nussbaum (@book) ***
+*** worman (@book) ***
+*** geer (@thesis) ***
+> \box...=
+\hbox(7.5+2.5)x496.98434
+.\T1/lmr/m/n/10 (
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 -
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 e
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\write1{\abx@aux@page{43}{\the \c@page }}
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 R
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 8
+.\write1{\abx@aux@page{44}{\the \c@page }}
+.\T1/lmr/m/n/10 ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\T1/lmr/m/n/10 N
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 m
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 7
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\write1{\abx@aux@page{45}{\the \c@page }}
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 W
+.\kern-0.83334
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 2
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 2
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 4
+.\T1/lmr/m/n/10 ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\write1{\abx@aux@page{46}{\the \c@page }}
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 G
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 5
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 -
+.\T1/lmr/m/n/10 p
+.\kern0.27779
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 )
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 14: Textcite (plain)
 ============================================================
 *** sigfridsson (@article) ***
 *** sigfridsson (@article) ***
 > \box...=
 \hbox(7.5+2.5)x123.33333
-.\write1{\abx@aux@page{44}{\the \c@page }}
+.\write1{\abx@aux@page{52}{\the \c@page }}
 .\T1/lmr/m/n/10 S
 .\T1/lmr/m/n/10 i
 .\T1/lmr/m/n/10 g
@@ -700,13 +833,13 @@ TEST 13: Textcite (plain)
 l. ...}
 ============================================================
 ============================================================
-TEST 14: Textcite (post)
+TEST 15: Textcite (post)
 ============================================================
 *** nussbaum (@book) ***
 *** nussbaum (@book) ***
 > \box...=
 \hbox(7.5+2.5)x109.27747
-.\write1{\abx@aux@page{48}{\the \c@page }}
+.\write1{\abx@aux@page{56}{\the \c@page }}
 .\T1/lmr/m/n/10 N
 .\T1/lmr/m/n/10 u
 .\T1/lmr/m/n/10 s
@@ -737,13 +870,13 @@ TEST 14: Textcite (post)
 l. ...}
 ============================================================
 ============================================================
-TEST 15: Textcite (pre-post)
+TEST 16: Textcite (pre-post)
 ============================================================
 *** worman (@book) ***
 *** worman (@book) ***
 > \box...=
 \hbox(7.5+2.5)x117.52739
-.\write1{\abx@aux@page{52}{\the \c@page }}
+.\write1{\abx@aux@page{60}{\the \c@page }}
 .\T1/lmr/m/n/10 W
 .\kern-0.83334
 .\T1/lmr/m/n/10 o
@@ -777,13 +910,13 @@ TEST 15: Textcite (pre-post)
 l. ...}
 ============================================================
 ============================================================
-TEST 16: Textcite (pre)
+TEST 17: Textcite (pre)
 ============================================================
 *** geer (@thesis) ***
 *** geer (@thesis) ***
 > \box...=
 \hbox(7.5+2.5)x68.1526
-.\write1{\abx@aux@page{56}{\the \c@page }}
+.\write1{\abx@aux@page{64}{\the \c@page }}
 .\T1/lmr/m/n/10 G
 .\T1/lmr/m/n/10 e
 .\T1/lmr/m/n/10 e
@@ -805,7 +938,153 @@ TEST 16: Textcite (pre)
 l. ...}
 ============================================================
 ============================================================
-TEST 17: Footcite (plain)
+TEST 18: Textcites note
+============================================================
+*** sigfridsson (@article) ***
+*** nussbaum (@book) ***
+*** worman (@book) ***
+*** geer (@thesis) ***
+*** sigfridsson (@article) ***
+*** nussbaum (@book) ***
+*** worman (@book) ***
+*** geer (@thesis) ***
+> \box...=
+\hbox(7.5+2.5)x536.98495
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 -
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 e
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\write1{\abx@aux@page{71}{\the \c@page }}
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 R
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 (
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 8
+.\write1{\abx@aux@page{72}{\the \c@page }}
+.\T1/lmr/m/n/10 )
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 N
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 m
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 (
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 7
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 0
+.\write1{\abx@aux@page{73}{\the \c@page }}
+.\T1/lmr/m/n/10 )
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 W
+.\kern-0.83334
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 m
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 (
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 2
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 2
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 4
+.\write1{\abx@aux@page{74}{\the \c@page }}
+.\T1/lmr/m/n/10 )
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 G
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 e
+.\T1/lmr/m/n/10 r
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 (
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 5
+.\T1/lmr/m/n/10 )
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 l
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 -
+.\T1/lmr/m/n/10 p
+.\kern0.27779
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 t
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 19: Footcite (plain)
 ============================================================
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line ....
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line ....
@@ -841,7 +1120,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 .....\mathoff
 ...\hbox(6.65+0.0)x0.0
 ....\rule(6.65+0.0)x0.0
-...\write1{\abx@aux@fnpage{59}{\the \c@page }}
+...\write1{\abx@aux@fnpage{83}{\the \c@page }}
 ...\T1/lmr/m/n/8 A
 ...\T1/lmr/m/n/8 k
 ...\T1/lmr/m/n/8 s
@@ -872,7 +1151,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 l. ...}
 ============================================================
 ============================================================
-TEST 18: Footcite (post)
+TEST 20: Footcite (post)
 ============================================================
 *** pines (@incollection) ***
 > \box...=
@@ -894,7 +1173,7 @@ TEST 18: Footcite (post)
 .....\mathoff
 ...\hbox(6.65+0.0)x0.0
 ....\rule(6.65+0.0)x0.0
-...\write1{\abx@aux@fnpage{61}{\the \c@page }}
+...\write1{\abx@aux@fnpage{85}{\the \c@page }}
 ...\T1/lmr/m/n/8 P
 ...\T1/lmr/m/n/8 i
 ...\T1/lmr/m/n/8 n
@@ -926,7 +1205,7 @@ TEST 18: Footcite (post)
 l. ...}
 ============================================================
 ============================================================
-TEST 19: Footcite (pre-post)
+TEST 21: Footcite (pre-post)
 ============================================================
 *** aksin (@article) ***
 > \box...=
@@ -951,7 +1230,7 @@ TEST 19: Footcite (pre-post)
 ...\T1/lmr/m/n/8 C
 ...\T1/lmr/m/n/8 f
 ...\T1/lmr/m/n/8 .
-...\write1{\abx@aux@fnpage{63}{\the \c@page }}
+...\write1{\abx@aux@fnpage{87}{\the \c@page }}
 ...\glue 2.83337 plus 1.41951 minus 0.94257
 ...\T1/lmr/m/n/8 A
 ...\T1/lmr/m/n/8 k
@@ -992,7 +1271,7 @@ TEST 19: Footcite (pre-post)
 l. ...}
 ============================================================
 ============================================================
-TEST 20: Footcite (pre)
+TEST 22: Footcite (pre)
 ============================================================
 *** pines (@incollection) ***
 > \box...=
@@ -1017,7 +1296,7 @@ TEST 20: Footcite (pre)
 ...\T1/lmr/m/n/8 C
 ...\T1/lmr/m/n/8 f
 ...\T1/lmr/m/n/8 .
-...\write1{\abx@aux@fnpage{65}{\the \c@page }}
+...\write1{\abx@aux@fnpage{89}{\the \c@page }}
 ...\glue 2.83337 plus 1.41951 minus 0.94257
 ...\T1/lmr/m/n/8 P
 ...\T1/lmr/m/n/8 i
@@ -1041,12 +1320,387 @@ TEST 20: Footcite (pre)
 l. ...}
 ============================================================
 ============================================================
-TEST 21: bibliography aksin
+TEST 23: Footcites note
+============================================================
+*** sigfridsson (@article) ***
+*** nussbaum (@book) ***
+*** worman (@book) ***
+*** geer (@thesis) ***
+> \box...=
+\hbox(8.03691+0.0)x4.486
+.\penalty 10000
+.\hbox(8.03691+0.0)x4.486
+..\mathon
+..\hbox(4.40799+0.0)x4.486, shifted -3.62892
+...\T1/lmr/m/n/7 9
+..\mathoff
+.\insert253, natural size 19.00002; split(6.65,2.85002); float cost 20000
+..\hbox(6.65+1.55556)x345.0, glue set - 0.29669
+...\hbox(6.62265+0.0)x15.30002, glue set 11.13336fil
+....\glue 0.0 plus 1.0fil minus 1.0fil
+....\hbox(6.62265+0.0)x4.16666
+.....\mathon
+.....\hbox(3.79932+0.0)x4.16666, shifted -2.82333
+......\T1/lmr/m/n/6 9
+.....\mathoff
+...\hbox(6.65+0.0)x0.0
+....\rule(6.65+0.0)x0.0
+...\T1/lmr/m/n/8 g
+...\T1/lmr/m/n/8 l
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 b
+...\T1/lmr/m/n/8 -
+...\discretionary
+...\T1/lmr/m/n/8 p
+...\T1/lmr/m/n/8 r
+...\T1/lmr/m/n/8 e
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\write1{\abx@aux@fnpage{91}{\the \c@page }}
+...\T1/lmr/m/n/8 S
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 g
+...\T1/lmr/m/n/8 f
+...\T1/lmr/m/n/8 r
+...\T1/lmr/m/n/8 i
+...\T1/lmr/m/n/8 d
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 n
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 a
+...\T1/lmr/m/n/8 n
+...\T1/lmr/m/n/8 d
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 R
+...\kern-0.23611
+...\T1/lmr/m/n/8 y
+...\T1/lmr/m/n/8 d
+...\T1/lmr/m/n/8 e
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 1
+...\T1/lmr/m/n/8 9
+...\T1/lmr/m/n/8 9
+...\T1/lmr/m/n/8 8
+...\write1{\abx@aux@fnpage{92}{\the \c@page }}
+...\T1/lmr/m/n/8 ;
+...\glue 2.83337 plus 2.12503 minus 0.62964
+...\T1/lmr/m/n/8 N
+...\T1/lmr/m/n/8 u
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 b
+...\T1/lmr/m/n/8 a
+...\T1/lmr/m/n/8 u
+...\T1/lmr/m/n/8 m
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 1
+...\T1/lmr/m/n/8 9
+...\T1/lmr/m/n/8 7
+...\T1/lmr/m/n/8 8
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 p
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 1
+...\T1/lmr/m/n/8 9
+...\T1/lmr/m/n/8 0
+...\T1/lmr/m/n/8 ;
+...\glue 2.83337 plus 2.12503 minus 0.62964
+...\T1/lmr/m/n/8 C
+...\T1/lmr/m/n/8 f
+...\T1/lmr/m/n/8 .
+...\write1{\abx@aux@fnpage{93}{\the \c@page }}
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 W
+...\kern-0.70834
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 r
+...\T1/lmr/m/n/8 m
+...\T1/lmr/m/n/8 a
+...\T1/lmr/m/n/8 n
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 2
+...\T1/lmr/m/n/8 0
+...\T1/lmr/m/n/8 0
+...\T1/lmr/m/n/8 2
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 p
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\glue 2.83337 plus 1.41951 minus 0.94257
+...\T1/lmr/m/n/8 1
+...\T1/lmr/m/n/8 4
+...\T1/lmr/m/n/8 ;
+...\glue 2.83337 plus 2.12503 minus 0.62964
+...\T1/lmr/m/n/8 C
+...\T1/lmr/m/n/8 f
+...\T1/lmr/m/n/8 .
+...\write1{\abx@aux@fnpage{94}{\the \c@page }}
+...\glue(\rightskip) 0.0
+..\penalty 400
+..\glue(\baselineskip) 2.43344
+..\hbox(5.511+2.85002)x345.0, glue set 262.95712fil
+...\T1/lmr/m/n/8 G
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 e
+...\T1/lmr/m/n/8 r
+...\glue 2.83337 plus 1.41669 minus 0.94446
+...\T1/lmr/m/n/8 1
+...\T1/lmr/m/n/8 9
+...\T1/lmr/m/n/8 8
+...\T1/lmr/m/n/8 5
+...\T1/lmr/m/n/8 ,
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\glue 2.83337 plus 1.77086 minus 0.75555
+...\T1/lmr/m/n/8 g
+...\T1/lmr/m/n/8 l
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 b
+...\T1/lmr/m/n/8 -
+...\discretionary
+...\T1/lmr/m/n/8 p
+...\kern0.23611
+...\T1/lmr/m/n/8 o
+...\T1/lmr/m/n/8 s
+...\T1/lmr/m/n/8 t
+...\T1/lmr/m/n/8 .
+...\penalty 10000
+...\rule(0.0+2.85002)x0.0
+...\penalty 10000
+...\glue(\parfillskip) 0.0 plus 1.0fil
+...\glue(\rightskip) 0.0
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 24: Autocite prenote
+============================================================
+*** knuth:ct:a (@book) ***
+> \box...=
+\hbox(7.5+2.5)x75.55562
+.\T1/lmr/m/n/10 (
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\write1{\abx@aux@page{99}{\the \c@page }}
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 K
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 4
+.\T1/lmr/m/n/10 )
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 25: Autocite pre and postnote
+============================================================
+*** sigfridsson (@article) ***
+> \box...=
+\hbox(7.5+2.5)x172.49957
+.\T1/lmr/m/n/10 (
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\write1{\abx@aux@page{101}{\the \c@page }}
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 R
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 3
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 )
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 26: Autocite postnote
+============================================================
+*** nussbaum (@book) ***
+> \box...=
+\hbox(7.5+2.5)x109.27747
+.\T1/lmr/m/n/10 (
+.\write1{\abx@aux@page{103}{\the \c@page }}
+.\T1/lmr/m/n/10 N
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 m
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 7
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 )
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 27: Autocites note
+============================================================
+*** nussbaum (@book) ***
+*** sigfridsson (@article) ***
+*** knuth:ct:a (@book) ***
+> \box...=
+\hbox(7.5+2.5)x353.9988
+.\T1/lmr/m/n/10 (
+.\write1{\abx@aux@page{105}{\the \c@page }}
+.\T1/lmr/m/n/10 N
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 b
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 m
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 7
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\write1{\abx@aux@page{106}{\the \c@page }}
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 S
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 g
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 r
+.\T1/lmr/m/n/10 i
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 s
+.\T1/lmr/m/n/10 o
+.\T1/lmr/m/n/10 n
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 a
+.\T1/lmr/m/n/10 n
+.\T1/lmr/m/n/10 d
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 R
+.\kern-0.27779
+.\T1/lmr/m/n/10 y
+.\T1/lmr/m/n/10 d
+.\T1/lmr/m/n/10 e
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 ,
+.\glue 3.33333 plus 2.08331 minus 0.88889
+.\T1/lmr/m/n/10 p
+.\T1/lmr/m/n/10 .
+.\penalty 10000
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 3
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 0
+.\T1/lmr/m/n/10 ;
+.\glue 3.33333 plus 2.49998 minus 0.74074
+.\T1/lmr/m/n/10 C
+.\T1/lmr/m/n/10 f
+.\T1/lmr/m/n/10 .
+.\write1{\abx@aux@page{107}{\the \c@page }}
+.\glue 3.33333 plus 1.66998 minus 1.10889
+.\T1/lmr/m/n/10 K
+.\T1/lmr/m/n/10 n
+.\kern-0.27779
+.\T1/lmr/m/n/10 u
+.\T1/lmr/m/n/10 t
+.\T1/lmr/m/n/10 h
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.\T1/lmr/m/n/10 1
+.\T1/lmr/m/n/10 9
+.\T1/lmr/m/n/10 8
+.\T1/lmr/m/n/10 4
+.\T1/lmr/m/n/10 )
+! OK.
+\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
+                                                  \OMIT #1\TIMO 
+l. ...}
+============================================================
+============================================================
+TEST 28: bibliography aksin
 ============================================================
 *** aksin (@article) ***
 > \box...=
 \hbox(8.29999+2.5)x863.42969
-.\write1{\abx@aux@page{67}{\the \c@page }}
+.\write1{\abx@aux@page{111}{\the \c@page }}
 .\T1/lmr/m/n/10 A
 .\T1/lmr/m/n/10 k
 .\T1/lmr/m/n/10 s
@@ -1263,13 +1917,13 @@ TEST 21: bibliography aksin
 l. ...
 ============================================================
 ============================================================
-TEST 22: bibliography geer
+TEST 29: bibliography geer
 ============================================================
 *** geer (@thesis) ***
 > \box...=
 \hbox(7.5+2.5)x778.34702
 .\hbox(0.0+0.0)x0.0
-.\write1{\abx@aux@page{69}{\the \c@page }}
+.\write1{\abx@aux@page{113}{\the \c@page }}
 .\T1/lmr/m/n/10 G
 .\T1/lmr/m/n/10 e
 .\T1/lmr/m/n/10 e
@@ -1462,13 +2116,13 @@ TEST 22: bibliography geer
 l. ...
 ============================================================
 ============================================================
-TEST 23: bibliography knuth:ct:a
+TEST 30: bibliography knuth:ct:a
 ============================================================
 *** knuth:ct:a (@book) ***
 > \box...=
 \hbox(7.5+2.5)x475.30188
 .\hbox(0.0+0.0)x0.0
-.\write1{\abx@aux@page{71}{\the \c@page }}
+.\write1{\abx@aux@page{115}{\the \c@page }}
 .\T1/lmr/m/n/10 K
 .\T1/lmr/m/n/10 n
 .\kern-0.27779
@@ -1591,13 +2245,13 @@ TEST 23: bibliography knuth:ct:a
 l. ...
 ============================================================
 ============================================================
-TEST 24: bibliography knuth:ct:b
+TEST 31: bibliography knuth:ct:b
 ============================================================
 *** knuth:ct:b (@book) ***
 > \box...=
 \hbox(7.5+2.5)x437.86853
 .\hbox(0.0+0.0)x0.0
-.\write1{\abx@aux@page{73}{\the \c@page }}
+.\write1{\abx@aux@page{117}{\the \c@page }}
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
 ..\glue 0.0 plus 1.0fil minus 1.0fil
@@ -1710,13 +2364,13 @@ TEST 24: bibliography knuth:ct:b
 l. ...
 ============================================================
 ============================================================
-TEST 25: bibliography knuth:ct:c
+TEST 32: bibliography knuth:ct:c
 ============================================================
 *** knuth:ct:c (@book) ***
 > \box...=
 \hbox(7.5+2.5)x453.34547
 .\hbox(0.0+0.0)x0.0
-.\write1{\abx@aux@page{75}{\the \c@page }}
+.\write1{\abx@aux@page{119}{\the \c@page }}
 .\hbox(2.77+0.0)x15.0, glue set 5.0fil
 ..\T1/lmr/m/n/10 ^^V
 ..\glue 0.0 plus 1.0fil minus 1.0fil
@@ -1827,13 +2481,13 @@ TEST 25: bibliography knuth:ct:c
 l. ...
 ============================================================
 ============================================================
-TEST 26: bibliography nussbaum
+TEST 33: bibliography nussbaum
 ============================================================
 *** nussbaum (@book) ***
 > \box...=
 \hbox(7.5+2.5)x439.7678
 .\hbox(0.0+0.0)x0.0
-.\write1{\abx@aux@page{77}{\the \c@page }}
+.\write1{\abx@aux@page{121}{\the \c@page }}
 .\T1/lmr/m/n/10 N
 .\T1/lmr/m/n/10 u
 .\T1/lmr/m/n/10 s
@@ -1944,13 +2598,13 @@ TEST 26: bibliography nussbaum
 l. ...
 ============================================================
 ============================================================
-TEST 27: bibliography pines
+TEST 34: bibliography pines
 ============================================================
 *** pines (@incollection) ***
 > \box...=
 \hbox(7.5+2.5)x1109.17427
 .\hbox(0.0+0.0)x0.0
-.\write1{\abx@aux@page{79}{\the \c@page }}
+.\write1{\abx@aux@page{123}{\the \c@page }}
 .\T1/lmr/m/n/10 P
 .\T1/lmr/m/n/10 i
 .\T1/lmr/m/n/10 n
@@ -2223,14 +2877,14 @@ TEST 27: bibliography pines
 l. ...
 ============================================================
 ============================================================
-TEST 28: bibliography sigfridsson
+TEST 35: bibliography sigfridsson
 ============================================================
 *** sigfridsson (@article) ***
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line ....
 > \box...=
 \hbox(7.5+2.5)x1224.05046
 .\hbox(0.0+0.0)x0.0
-.\write1{\abx@aux@page{81}{\the \c@page }}
+.\write1{\abx@aux@page{125}{\the \c@page }}
 .\T1/lmr/m/n/10 S
 .\T1/lmr/m/n/10 i
 .\T1/lmr/m/n/10 g
@@ -2552,13 +3206,13 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line ..
 l. ...
 ============================================================
 ============================================================
-TEST 29: bibliography worman
+TEST 36: bibliography worman
 ============================================================
 *** worman (@book) ***
 > \box...=
 \hbox(7.5+2.5)x476.4904
 .\hbox(0.0+0.0)x0.0
-.\write1{\abx@aux@page{83}{\the \c@page }}
+.\write1{\abx@aux@page{127}{\the \c@page }}
 .\T1/lmr/m/n/10 W
 .\kern-0.83334
 .\T1/lmr/m/n/10 o

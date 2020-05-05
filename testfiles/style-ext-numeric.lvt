@@ -71,6 +71,11 @@
   \extblxtestbox{\parencite[Cf.][]{geer}}
 }
 
+\TEST{Parencites note}{
+  \extblxtestbox{%
+    \parencites(glob-pre)(glob-post){sigfridsson}[190]{nussbaum}[Cf.][14]{worman}[Cf.][]{geer}}
+}
+
 \TEST{Textcite (plain)}{
   \extblxtestbox{\textcite{sigfridsson}}
 }
@@ -87,6 +92,11 @@
   \extblxtestbox{\textcite[Cf.][]{geer}}
 }
 
+\TEST{Textcites note}{
+  \extblxtestbox{%
+    \textcites(glob-pre)(glob-post){sigfridsson}[190]{nussbaum}[Cf.][14]{worman}[Cf.][]{geer}}
+}
+
 \TEST{Footcite (plain)}{
   \extblxtestbox{\footcite{aksin}}
 }
@@ -101,6 +111,28 @@
 
 \TEST{Footcite (pre)}{
   \extblxtestbox{\footcite[Cf.][]{pines}}
+}
+
+\TEST{Footcites note}{
+  \extblxtestbox{%
+    \footcites(glob-pre)(glob-post){sigfridsson}[190]{nussbaum}[Cf.][14]{worman}[Cf.][]{geer}}
+}
+
+\TEST{Autocite prenote}{
+  \extblxtestbox{\autocite[Cf.][]{knuth:ct:a}}
+}
+
+\TEST{Autocite pre and postnote}{
+  \extblxtestbox{\autocite[Cf.][380]{sigfridsson}}
+}
+
+\TEST{Autocite postnote}{
+  \extblxtestbox{\autocite[190]{nussbaum}}
+}
+
+\TEST{Autocites note}{
+  \extblxtestbox{%
+    \autocites[190]{nussbaum}[Cf.][380]{sigfridsson}[Cf.][]{knuth:ct:a}}
 }
 
 

@@ -210,5 +210,5 @@ Overfull \hbox (4.04544pt too wide) in paragraph at lines 28--28
 .\T1/lmr/bx/n/10 .
 .\glue(\rightskip) 0.0
 [1
-] (boxed-tabular-fail.aux)
-Package logreq Info: Writing requests to 'boxed-tabular-fail.run.xml'.
+] (tabular-fail.aux)
+Package logreq Info: Writing requests to 'tabular-fail.run.xml'.
