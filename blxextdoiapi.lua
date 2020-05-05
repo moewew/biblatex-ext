@@ -2,8 +2,8 @@ blxextdoiapi = blxextdoiapi or {}
 
 local blxextdoiapi_module = {
   name          = "blxextdoiapi",
-  version       = "v0.8d",
-  date          = "2020/03/15",
+  version       = "v0.8e",
+  date          = "2020/05/05",
   description   = "Obtain open access information from DOI via unpaywall.org",
   author        = "Moritz Wemheuer",
   license       = "LPPL v1.3c",

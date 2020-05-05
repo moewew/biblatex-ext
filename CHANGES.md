@@ -1,9 +1,9 @@
 # Changelog
 
 
-## Unreleased
+## Version 0.8e (2020-05-05)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.8d...HEAD>
+See <https://github.com/moewew/biblatex-ext/compare/v0.8d...v0.8e>
 
 ### Fixed
 - Fixed `bbx:introcite` definition for `ext-numeric-comp`.
