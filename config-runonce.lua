@@ -1,7 +1,7 @@
-testfiledir  = "testfiles-luatex"
+testfiledir  = "testfiles-runonce"
 testsuppdir  = "testsupport"
-checkengines = {"luatex"}
-stdengine    =  "luatex"
+checkengines = {"pdftex"}
+stdengine    =  "pdftex"
 checkruns    = 1
 
 

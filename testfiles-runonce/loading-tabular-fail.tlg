@@ -1,0 +1,14 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+(biblatex-ext-tabular.sty
+Package: biblatex-ext-tabular ....-..-.. v... tabular bibliographies for biblatex (MW)
+! Package biblatex-ext-tabular Error: biblatex not loaded!
+(biblatex-ext-tabular)                Please load biblatex before you
+(biblatex-ext-tabular)                load biblatex-ext-tabular.
+See the biblatex-ext-tabular package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+l. ...   \endinput}
+biblatex needs to be loaded before biblatex-ext-tabular.
+This is a fatal error. I'm aborting now.
+)

@@ -21,10 +21,6 @@
 \addbibresource{biblatex-examples.bib}
 \OMIT
 
-% set up \extblxtestbox and hack into biblatex internals to add
-% some debugging info
-\input{testbiblatex-boxsetup.tex}
-
 \TIMO
 \defbibtabular{bibtabular}
   {\begin{tabular}{@{}L{3cm}L{8cm}@{}}}
