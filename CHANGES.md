@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.8e...HEAD>
+
+### Fixed
+- Fixed inner cite delimiters for `\footcitetext` in `authoryear`
+  and `authortitle` (not `comp`) styles
+  (https://github.com/moewew/biblatex-ext/issues/19).
+
 
 ## Version 0.8e (2020-05-05)
 
@@ -7,7 +16,8 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8d...v0.8e>
 
 ### Fixed
 - Fixed `bbx:introcite` definition for `ext-numeric-comp`.
-- Fixed issue with `labelprefix` in `\printbibtabular` (#18).
+- Fixed issue with `labelprefix` in `\printbibtabular`
+  (https://github.com/moewew/biblatex-ext/pull/18).
 
 ### Changed
 - `biblatex-ext-tabular` now checks for the recommended `biblatex`

@@ -1,0 +1,34 @@
+\input{regression-test.tex}
+\documentclass[british]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{babel}
+\usepackage{csquotes}
+
+
+% load biblatex dependencies and suppress counter allocation logging
+\input{testbiblatex-loaddeps.tex}
+
+\START
+\usepackage[style=ext-authoryear, backend=biber]{biblatex}
+\addbibresource{biblatex-examples.bib}
+\OMIT
+
+\TIMO
+\DeclareInnerCiteDelims{footcite}{\bibopenparen}{\bibcloseparen}
+\DeclareFieldFormat{footcitelabeldate}{\mkbibemph{#1}}
+\OMIT
+
+\begin{document}
+\TIMO
+
+\showoutput
+Lorem\footcite{sigfridsson}
+
+Lorem\footnotemark\footcitetext{sigfridsson}
+
+\clearpage
+
+\end{document}
+\END

@@ -18,11 +18,15 @@
 \DeclareFieldFormat{extblx@innertextcitedelims}{#1}
 \DeclareFieldFormat{extblx@innerfootcitedelims}{%
   \csuse{mkinner\blx@delimcontext delims}{#1}}
+\DeclareFieldAlias
+  {extblx@innerfootcitetextdelims}
+  {extblx@innerfootcitedelims}
 
 \DeclareFieldFormat{citelabeldate}{#1}
 \DeclareFieldFormat{parencitelabeldate}{#1}
 \DeclareFieldFormat{textcitelabeldate}{#1}
 \DeclareFieldFormat{footcitelabeldate}{#1}
+\DeclareFieldAlias{footcitetextlabeldate}{footcitelabeldate}
 
 \renewbibmacro*{cite:labeldate+extradate}{%
   \iffieldundef{labelyear}

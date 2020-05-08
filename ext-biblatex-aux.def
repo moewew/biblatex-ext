@@ -94,7 +94,7 @@
 \RegisterCiteDelims{outer}{textcite}
 \RegisterCiteDelims{outer}{footcite}
 \RegisterCiteDelims{outer}{footcitetext}
-\DeclareOuterCiteDelimsAlias{footcite}{footcitetext}
+\DeclareOuterCiteDelimsAlias{footcitetext}{footcite}
 
 \RegisterCiteDelims{inner}{cite}
 \RegisterCiteDelims{inner}{parencite}
@@ -102,7 +102,7 @@
 \RegisterCiteDelims{inner}{textcite}
 \RegisterCiteDelims{inner}{footcite}
 \RegisterCiteDelims{inner}{footcitetext}
-\DeclareInnerCiteDelimsAlias{footcite}{footcitetext}
+\DeclareInnerCiteDelimsAlias{footcitetext}{footcite}
 
 \newrobustcmd*{\mkextblxsupercite}[1]{%
   \mkbibsuperscript{%
