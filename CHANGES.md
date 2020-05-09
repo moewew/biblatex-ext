@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## Version 0.8f (2020-05-09)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.8e...HEAD>
+See <https://github.com/moewew/biblatex-ext/compare/v0.8e...v0.8f>
 
 ### Fixed
 - Fixed inner cite delimiters for `\footcitetext` in `authoryear`
