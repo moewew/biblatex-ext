@@ -649,15 +649,7 @@
   \newunit\newblock
   \usebibmacro{organization+location+date}%
   \newunit\newblock
-  \iftoggle{bbx:doi}
-    {\printfield{doi}}
-    {}%
-  \newunit\newblock
-  \iftoggle{bbx:eprint}
-    {\usebibmacro{eprint}}
-    {}%
-  \newunit\newblock
-  \usebibmacro{url+urldate}%
+  \usebibmacro{doi+eprint+url}%
   \newunit\newblock
   \usebibmacro{addendum+pubstate}%
   \setunit{\bibpagerefpunct}\newblock
@@ -872,9 +864,7 @@
   \newunit\newblock
   \usebibmacro{location+date}%
   \newunit\newblock
-  \iftoggle{bbx:url}
-    {\usebibmacro{url+urldate}}
-    {}%
+  \usebibmacro{doi+eprint+url}%
   \newunit\newblock
   \usebibmacro{addendum+pubstate}%
   \setunit{\bibpagerefpunct}\newblock
@@ -943,7 +933,9 @@
     {\printtext[journaltitle]{%
        \printfield[titlecase:journaltitle]{journaltitle}%
        \setunit{\subtitlepunct}%
-       \printfield[titlecase:journaltitle]{journalsubtitle}}}}
+       \printfield[titlecase:journaltitle]{journalsubtitle}}%
+     \setunit{\titleaddonpunct}}%
+  \printfield{journaltitleaddon}}
 
 \renewbibmacro*{periodical}{%
   \ifboolexpr{
@@ -955,7 +947,9 @@
     {\printtext[title]{%
        \printfield[titlecase:title]{title}%
        \setunit{\subtitlepunct}%
-       \printfield[titlecase:title]{subtitle}}}}
+       \printfield[titlecase:title]{subtitle}}%
+     \setunit{\titleaddonpunct}}%
+  \printfield{titleaddon}}
 
 \DeclareFieldAlias{titlecase:issuetitle}{titlecase}
 \renewbibmacro*{issue}{%
@@ -968,7 +962,9 @@
     {\printtext[issuetitle]{%
        \printfield[titlecase:issuetitle]{issuetitle}%
        \setunit{\subtitlepunct}%
-       \printfield[titlecase:issuetitle]{issuesubtitle}}}}
+       \printfield[titlecase:issuetitle]{issuesubtitle}}%
+     \setunit{\titleaddonpunct}}%
+  \printfield{issuetitleaddon}}
 
 \DeclareFieldFormat{volumeof}{\bibstring{volume}~#1}
 \newcommand*{\titlemaintitledelim}{\newunitpunct}
@@ -1119,12 +1115,14 @@
   \newunit}
 
 \newcommand*{\volnumdelim}{\adddot}
+% \bibeidpunct is defined by biblatex v3.15+
+\providecommand*{\bibeidpunct}{\addcomma\space}
 
 \renewbibmacro*{volume+number+eid}{%
   \printfield{volume}%
   \setunit*{\volnumdelim}%
   \printfield{number}%
-  \setunit{\addcomma\space}%
+  \setunit{\bibeidpunct}%
   \printfield{eid}}
 
 \newbibmacro*{barevolume+volumes}{%
