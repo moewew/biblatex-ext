@@ -935,7 +935,9 @@
        \setunit{\subtitlepunct}%
        \printfield[titlecase:journaltitle]{journalsubtitle}}%
      \setunit{\titleaddonpunct}}%
-  \printfield{journaltitleaddon}}
+  \iffieldundef{journaltitleaddon}
+    {}
+    {\printfield{journaltitleaddon}}}
 
 \renewbibmacro*{periodical}{%
   \ifboolexpr{
@@ -949,7 +951,9 @@
        \setunit{\subtitlepunct}%
        \printfield[titlecase:title]{subtitle}}%
      \setunit{\titleaddonpunct}}%
-  \printfield{titleaddon}}
+  \iffieldundef{titleaddon}
+    {}
+    {\printfield{titleaddon}}}
 
 \DeclareFieldAlias{titlecase:issuetitle}{titlecase}
 \renewbibmacro*{issue}{%
