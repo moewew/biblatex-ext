@@ -1524,5 +1524,5 @@ Completed box being shipped out [1]
 ...\glue 0.0 plus 1.0fil
 ...\T1/lmr/m/n/10 1
 ...\glue 0.0 plus 1.0fil
-(tabular-authortitle.aux)
-Package logreq Info: Writing requests to 'tabular-authortitle.run.xml'.
+(latex-dev-tabular-authortitle.aux)
+Package logreq Info: Writing requests to 'latex-dev-tabular-authortitle.run.xml'.
