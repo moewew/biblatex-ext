@@ -35,6 +35,13 @@ tlmgr install metafont mfware texlive-scripts
 # required LaTeX packages
 tlmgr install latex amsmath graphics tools
 
+# LaTeX-dev
+tlmlgr install latex-bin-dev \
+  latex-base-dev \
+  latex-graphics-dev \
+  latex-tools-dev \
+  latex-amsmath-dev
+
 # dependencies
 tlmgr install    \
   babel          \

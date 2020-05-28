@@ -1,0 +1,30 @@
+\input{regression-test.tex}
+\documentclass[british]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{babel}
+\usepackage{csquotes}
+
+% load biblatex dependencies and suppress counter allocation logging
+\input{testbiblatex-loaddeps.tex}
+
+\START
+\usepackage[backend=biber, style=ext-authortitle]{biblatex}
+\usepackage{biblatex-ext-tabular}
+\addbibresource{biblatex-examples.bib}
+\OMIT
+
+% set up \extblxtestbox and hack into biblatex internals to add
+% some debugging info
+\input{testbiblatex-boxsetup.tex}
+
+\begin{document}
+\TIMO
+
+\nocite{sigfridsson,worman,geer,nussbaum,knuth:ct:a,knuth:ct:b,knuth:ct:c}
+% bibliography
+\printbibtabular
+
+\end{document}
+\END

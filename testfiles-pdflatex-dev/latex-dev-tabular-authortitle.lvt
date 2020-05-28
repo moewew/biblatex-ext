@@ -1,0 +1,54 @@
+\input{regression-test.tex}
+\documentclass[british]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{babel}
+\usepackage{csquotes}
+
+% some tabular setup
+\usepackage{longtable}
+\usepackage{array}
+\newcolumntype{L}[1]{%
+  >{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
+% load biblatex dependencies and suppress counter allocation logging
+\input{testbiblatex-loaddeps.tex}
+
+\START
+\usepackage[backend=biber, style=ext-authortitle]{biblatex}
+\usepackage{biblatex-ext-tabular}
+\addbibresource{biblatex-examples.bib}
+\OMIT
+
+% set up \extblxtestbox and hack into biblatex internals to add
+% some debugging info
+\input{testbiblatex-boxsetup.tex}
+
+\TIMO
+\defbibtabular{bibtabular}
+  {\setlength{\LTpre}{0pt}%
+   \setlength{\LTpost}{0pt}%
+   \renewcommand*{\arraystretch}{2}%
+   \begin{longtable}{%
+     @{}
+     L{\dimexpr0.3\textwidth-\tabcolsep\relax}
+     L{\dimexpr0.7\textwidth-\tabcolsep\relax}
+     @{}}}
+  {\end{longtable}}
+  {\anchorlang{\usebibmacro{tabular:sortname}} &
+   \driver{\usebibmacro{tabular:omitsortname}} \\}
+\OMIT
+
+\begin{document}
+\TIMO
+
+\nocite{sigfridsson,worman,geer,nussbaum,knuth:ct:a,knuth:ct:b,knuth:ct:c}
+% bibliography
+\showoutput
+\printbibtabular
+
+\clearpage
+
+\end{document}
+\END

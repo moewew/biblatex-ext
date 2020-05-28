@@ -14,7 +14,7 @@ sourcefiles  = installfiles
 typesetfiles = {"biblatex-ext.tex"}
 textfiles    = {"README.md", "CHANGES.md"}
 
-checkconfigs = {"build", "config-luatex", "config-runonce"}
+checkconfigs = {"build", "config-luatex", "config-runonce", "config-pdflatex-dev"}
 
 testsuppdir  = "testsupport"
 checkengines = {"pdftex"}
