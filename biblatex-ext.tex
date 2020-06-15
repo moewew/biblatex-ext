@@ -1732,8 +1732,15 @@ It is probably too late now.}
   \addperiod}\textvisiblespace}\bibsentence}% <- hacky & hard-coded!
 \exampleprintbib{pines}
 \end{bibexample}
+\begin{remindbox}
 Note that \bibfieldformat{editortype} and \cmd{editortypedelim}
-were changed for this example to avoid punctuation clashes.
+were changed to
+\begin{biblatexcode}
+\DeclareFieldFormat{editortype}{\mkbibparens{#1}}
+\DeclareDelimFormat{editortypedelim}{\addspace}
+\end{biblatexcode}
+in this example to avoid punctuation clashes.
+\end{remindbox}
 
 Since \cmd{nametitledelim} and \cmd{innametitledelim} are independent,
 the following output is easily achieved.
