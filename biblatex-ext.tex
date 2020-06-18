@@ -185,6 +185,10 @@
 
 \newtcolorbox{warnbox}[1][]{%
   enhanced,
+  before upper={
+    \parskip=0.5\baselineskip
+    \advance\parskip by 0pt plus 2pt
+  },
   colframe=red, colback=red!5!white,
   underlay={%
     \path[draw=none] (interior.south east)
@@ -194,6 +198,10 @@
 
 \newtcolorbox{remindbox}[1][]{%
   enhanced,
+  before upper={
+    \parskip=0.5\baselineskip
+    \advance\parskip by 0pt plus 2pt
+  },
   colframe=yellow, colback=yellow!5!white,
   underlay={%
     \path[draw=none] (interior.south east)
@@ -1039,15 +1047,19 @@ necessary to modify the bibmacro~\bibmacro{in:}.
 \boolitem[false]{citexref}
 This option controls if \bibtype{inbook}, \bibtype{incollection} and
 \bibtype{inproceedings} entries that are tied to a parent entry with
-\bibfield{xref} or \bibfield{crossref} should cite their parent in the
-bibliography \emph{if} the parent is listed in the bibliography as a
+\bibfield{xref} or \bibfield{crossref} should show all data of their
+parent entry inline as usual or if they should cite their parent entry
+instead \emph{if} the parent is listed in the bibliography as a
 separate entry.
 With the default setting \kvopt{citexref}{false} the parent is not
 cited, the entry is shown as in the standard styles.
 If the option is set to \optval{true}, the block following the
-\enquote{in:} is replaced by a citation to the parent entry.
+\enquote{in:} with the parent data is replaced by a citation to the
+parent entry and thus becomes more compact.
 
 \begin{remindbox}
+Parent entries can only be cited if they appear in the bibliography.
+
 The option itself does \emph{not} cause the parent entry to be added
 to the bibliography automatically.
 This needs to happen either explicitly by citing the parent
