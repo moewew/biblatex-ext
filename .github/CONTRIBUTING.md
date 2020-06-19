@@ -56,5 +56,5 @@ Pull requests are very welcome, but please keep in mind that the project goals a
 Please document your changes and motivate them briefly in the pull request description.
 
 If possible please submit pull requests with medium-sized, logical commits (not too long so that I lose track of what is going on, but not so short that a single pull request consists of dozens of commits).
-If you can rebase your branch upon `master` before you submit the pull request that would be appreciated.
+If you can rebase your branch upon `dev` before you submit the pull request that would be appreciated.
 Pull requests with many commits may be squashed before merging.
