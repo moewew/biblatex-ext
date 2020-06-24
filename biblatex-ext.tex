@@ -1496,6 +1496,11 @@ overlay={%
 
 \begin{bibexample}[enhanced, title={\kvopt{introcite}{label} with empty
   \cs{introcitebreak}}]
+\begin{lstlisting}[style=extblxstylelatex]
+%\usepackage[..., introcite=label]{biblatex}
+\renewcommand*{\introcitebreak}{}
+\end{lstlisting}
+\tcblower
 \renewcommand*{\introcitebreak}{}
 \setlength{\introcitewidth}{1.8cm}
 \csuse{extblx@opt@dashed@false}
@@ -1506,6 +1511,12 @@ overlay={%
 \begin{bibexample}[enhanced, title={\kvopt{introcite}{label} with
   \len{introcitewidth} set to zero and \len{introcitesep} equal to
   \len{bibhang}}]
+\begin{lstlisting}[style=extblxstylelatex]
+%\usepackage[..., introcite=label]{biblatex}
+\setlength{\introcitewidth}{0pt}
+\setlength{\introcitesep}{\bibhang}
+\end{lstlisting}
+\tcblower
 \setlength{\introcitewidth}{0pt}
 \setlength{\introcitesep}{\bibhang}
 \csuse{extblx@opt@dashed@false}
@@ -1542,6 +1553,7 @@ The default settings for \cmd{bbx@introcite} emulate the output of \cmd{cite}.
 
 \begin{bibexample}[title={Example customisations for \kvopt{introcite}{plain}}]
 \begin{lstlisting}[style=extblxstylelatex]
+%\usepackage[..., introcite=plain]{biblatex}
 \DeclareFieldFormat{bbx@introcite}{\mkbibbrackets{#1}}
 \DeclareDelimFormat[bbx@introcite]{nameyeardelim}{\addcomma\space}
 \UndeclareInnerCiteDelims{bbx@introcite}
@@ -1557,8 +1569,23 @@ The default settings for \cmd{bbx@introcite} emulate the output of \cmd{cite}.
 \exampleprintbib{sigfridsson}
 \end{bibexample}
 
+\begin{bibexample}[title={Example customisations for \kvopt{introcite}{plain}}]
+\begin{lstlisting}[style=extblxstylelatex]
+%\usepackage[..., introcite=plain]{biblatex}
+\DeclareFieldFormat{bbx@introcite}{\mkbibbold{#1}}
+\renewcommand*{\introcitepunct}{\\}
+\end{lstlisting}
+\tcblower
+\DeclareFieldFormat{bbx@introcite}{\mkbibbold{#1}}
+\renewcommand*{\introcitepunct}{\\}
+\csuse{extblx@opt@dashed@false}
+\csletcs{extblx@introcite}{extblx@opt@introcite@plain}
+\exampleprintbib{sigfridsson}
+\end{bibexample}
+
 \begin{bibexample}[title={Example customisations for \kvopt{introcite}{label}}]
 \begin{lstlisting}[style=extblxstylelatex]
+%\usepackage[..., introcite=label]{biblatex}
 \DeclareFieldFormat{bbx@introcite}{\mkbibbold{#1}}
 \DeclareDelimFormat[bbx@introcite]{nameyeardelim}{\addspace}
 \DeclareInnerCiteDelims{bbx@introcite}{\bibopenparen}{\bibcloseparen}
@@ -1586,6 +1613,18 @@ back to the end of the entry.
 \makeatletter
 \begin{bibexample}[enhanced, title={\kvopt{introcite}{label} with
   \kvopt{style}{ext-authoryear} and \kvopt{bibstyle}{ext-authortitle}}]
+\begin{lstlisting}[style=extblxstylelatex]
+%\usepackage[
+%  citestyle=ext-authoryear,
+%  bibstyle=ext-authortitle,
+%  sorting=nyt,
+%  introcite=label,
+%  ...
+%]{biblatex}
+\setlength{\introcitewidth}{0pt}
+\setlength{\introcitesep}{\bibhang}
+\end{lstlisting}
+\tcblower
 \setlength{\introcitewidth}{0pt}
 \setlength{\introcitesep}{\bibhang}
 \bbx@opt@mergedate@false
