@@ -128,6 +128,7 @@
     dimexpr,arraybackslash,newcolumntype,anchor,driver,plain,plainlang,
     anchorlang,
     thefield,
+    addbibresource,
     setlength,bibhang,addcomma,adddot,addperiod,addcolon,addspace,
     addnbspace,
     mkbibbold,mkbibemph,mkbibbrackets,mkbibparens,
@@ -136,6 +137,8 @@
     iflistundef,iffieldundef,ifnameundef,
     ExecuteBibliographyOptions,
     defbibtabular,defbibtabulartwocolumn,defbibenvironment,
+    printbibliography,printbibtabular,
+    autocite,
     DeclareFieldFormat,DeclareDelimFormat,DeclareDelimcontextAlias,
     DeclareInnerCiteDelims,UndeclareInnerCiteDelims,DeclareInnerCiteDelimsAlias,
     DeclareOuterCiteDelims,UndeclareOuterCiteDelims,DeclareOuterCiteDelimsAlias,
@@ -2468,6 +2471,13 @@ The package also defines two helpful bibliography macros.
 
 A simple example of a useful tabular bibliography setup is
 \begin{biblatexcode}
+\documentclass[british]{article}
+\usepackage{babel}
+\usepackage{csquotes}
+
+\usepackage[backend=biber, style=ext-authoryear]{biblatex}
+\usepackage{biblatex-ext-tabular}
+
 \usepackage{longtable}
 \usepackage{array}
 \newcolumntype{L}[1]{%
@@ -2485,6 +2495,15 @@ A simple example of a useful tabular bibliography setup is
   {\end{longtable}}
   {\anchorlang{\usebibmacro{tabular:sortname}} &
    \driver{\usebibmacro{tabular:omitsortname}} \\}
+
+\addbibresource{biblatex-examples.bib}
+
+\begin{document}
+Lorem \autocite{sigfridsson,nussbaum}
+ipsum \autocite{geer}.
+
+\printbibtabular
+\end{document}
 \end{biblatexcode}
 This defines a two-column bibliography where the first column shows the
 primary name associated with the work (the labelname/sortname) and the
@@ -2537,6 +2556,13 @@ is equivalent to
 
 Using \cmd{defbibtabulartwocolumn} the example from above could be written as
 \begin{biblatexcode}
+\documentclass[british]{article}
+\usepackage{babel}
+\usepackage{csquotes}
+
+\usepackage[backend=biber, style=ext-authoryear]{biblatex}
+\usepackage{biblatex-ext-tabular}
+
 \usepackage{longtable}
 \usepackage{array}
 \newcolumntype{L}[1]{%
@@ -2554,6 +2580,15 @@ Using \cmd{defbibtabulartwocolumn} the example from above could be written as
   {\end{longtable}}
   {\usebibmacro{tabular:sortname}}
   {\usebibmacro{tabular:omitsortname}}
+
+\addbibresource{biblatex-examples.bib}
+
+\begin{document}
+Lorem \autocite{sigfridsson,nussbaum}
+ipsum \autocite{geer}.
+
+\printbibtabular
+\end{document}
 \end{biblatexcode}
 \end{ltxsyntax}
 
