@@ -136,7 +136,7 @@
     mkbibbold,mkbibemph,mkbibbrackets,mkbibparens,
     usebibmacro,newbibmacro,renewbibmacro,setunit,newunit,printfield,printlist,
     bibopenparen,bibcloseparen,bibopenbracket,bibclosebracket,
-    iflistundef,iffieldundef,ifnameundef,
+    iflistundef,iffieldundef,ifnameundef,iffieldnums,
     ExecuteBibliographyOptions,
     defbibtabular,defbibtabulartwocolumn,defbibenvironment,
     printbibliography,printbibtabular,
@@ -783,7 +783,11 @@ The \blxstyle{ext-} styles only build on top of the standard files.
 \styleitem{ext-numeric}
 An extended version of the standard \blxstyle{numeric} style for citations with
 numeric labels.
-\begin{bibexample}[]
+\begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-numeric]{biblatex}
+\end{lstlisting}
+\tcblower
 [1, 2, 5, 6, 7]
 \end{bibexample}
 
@@ -791,7 +795,11 @@ numeric labels.
 An extended version of the standard \blxstyle{numeric-comp} style.
 Similar to \blxstyle{ext-numeric}, but citation labels are
 compressed to give \enquote{[1--3]} instead of \enquote{[1, 2, 3]}.
-\begin{bibexample}[]
+\begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-numeric-comp]{biblatex}
+\end{lstlisting}
+\tcblower
 [1, 2, 5--7]
 \end{bibexample}
 
@@ -799,14 +807,22 @@ compressed to give \enquote{[1--3]} instead of \enquote{[1, 2, 3]}.
 An extended version of the standard \blxstyle{numeric-verb} style.
 This style is similar to the \blxstyle{numeric} style, but each citation label
 is in its own set of brackets: \enquote{[1], [2], [3]}.
-\begin{bibexample}[]
+\begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-numeric-verb]{biblatex}
+\end{lstlisting}
+\tcblower
 [1], [3], [5], [6], [7]
 \end{bibexample}
 
 \styleitem{ext-alphabetic}
 An extended version of the standard \blxstyle{alphabetic} style for citations
 with alphabetic labels derived from author name and year.
-\begin{bibexample}[]
+\begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-alphabetic]{biblatex}
+\end{lstlisting}
+\tcblower
 [SR98, Knu86c]
 \end{bibexample}
 
@@ -815,7 +831,11 @@ An extended version of the standard \blxstyle{alphabetic-verb} style.
 This style is based on \blxstyle{ext-alphabetic}, but like
 \blxstyle{ext-numeric-verb} places each citation label in its own pair of
 brackets: \enquote{[SR98], [Knu86c]}.
-\begin{bibexample}[]
+\begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-alphabetic-verb]{biblatex}
+\end{lstlisting}
+\tcblower
 [SR98], [Knu86c]
 \end{bibexample}
 
@@ -823,6 +843,10 @@ brackets: \enquote{[SR98], [Knu86c]}.
 An extended version of the standard \blxstyle{authoryear} style for citations
 using author name and year.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authoryear]{biblatex}
+\end{lstlisting}
+\tcblower
 Sigfridsson and Ryde 1998
 \end{bibexample}
 
@@ -833,6 +857,10 @@ but several works by the same author are compressed by not displaying the
 author multiple times: \enquote{Knuth 1984, 1986} instead of
 \enquote{Knuth 1984; Knuth 1986}.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authoryear-comp]{biblatex}
+\end{lstlisting}
+\tcblower
 Knuth 1984, 1986
 \end{bibexample}
 
@@ -841,6 +869,10 @@ An extended version of the standard \blxstyle{authoryear-ibid} style.
 This style is similar to \blxstyle{ext-authoryear}, but repeated citations are
 replaced with \enquote{ibidem}.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authoryear-ibid]{biblatex}
+\end{lstlisting}
+\tcblower
 Knuth 1984\quad ibid.
 \end{bibexample}
 
@@ -849,6 +881,10 @@ An extended version of the standard \blxstyle{authoryear-icomp} style.
 This style combines the two styles \blxstyle{ext-authoryear-comp} and
 \blxstyle{ext-authoryear-ibid}.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authoryear-icomp]{biblatex}
+\end{lstlisting}
+\tcblower
 Knuth 1984, 1986 \quad Sigfridsson and Ryde 1998 \quad ibid.
 \end{bibexample}
 
@@ -856,6 +892,10 @@ Knuth 1984, 1986 \quad Sigfridsson and Ryde 1998 \quad ibid.
 An extended version of the standard \blxstyle{authortitle} style for citations
 by author and title.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authortitle]{biblatex}
+\end{lstlisting}
+\tcblower
 Maron, \emph{Animal Triste}
 \end{bibexample}
 
@@ -866,6 +906,10 @@ citations by the same author just like \blxstyle{ext-author\-year-comp}:
 \enquote{Aristotle, \emph{Physics}, \emph{Poetics}} instead of
 \enquote{Aristotle, \emph{Physics}; Aristotle, \emph{Poetics}}.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authortitle-comp]{biblatex}
+\end{lstlisting}
+\tcblower
 Aristotle, \emph{Physics}, \emph{Poetics}
 \end{bibexample}
 
@@ -874,6 +918,10 @@ An extended version of the standard \blxstyle{authortitle-ibid} style.
 This style is similar to \blxstyle{ext-authortitle}, but replaces repeated
 citations of the same work with \enquote{ibidem}.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authortitle-ibid]{biblatex}
+\end{lstlisting}
+\tcblower
 Maron, \emph{Animal Triste}\quad ibid.
 \end{bibexample}
 
@@ -882,6 +930,10 @@ An extended version of the standard \blxstyle{authortitle-icomp} style.
 This style combines \blxstyle{ext-authortitle-comp} and
 \blxstyle{ext-authortitle-ibid}.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authortitle-icomp]{biblatex}
+\end{lstlisting}
+\tcblower
 Aristotle, \emph{Physics}, \emph{Poetics}\quad Maron, \emph{Animal Triste}\quad
 ibid.
 \end{bibexample}
@@ -891,6 +943,10 @@ An extended version of the standard \blxstyle{authortitle-terse} style.
 This style is similar to \blxstyle{ext-authortitle}, but the title is omitted
 in citations if there is only one work by the relevant author.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authortitle-terse]{biblatex}
+\end{lstlisting}
+\tcblower
 Sigfridsson and Ryde \quad Aristotle, \emph{Physics}; Aristotle, \emph{Poetics}
 \end{bibexample}
 
@@ -899,6 +955,10 @@ An extended version of the standard \blxstyle{authortitle-tcomp} style.
 This style combines \blxstyle{ext-authortitle-terse} and
 \blxstyle{ext-authortitle-comp}.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authortitle-tcomp]{biblatex}
+\end{lstlisting}
+\tcblower
 Sigfridsson and Ryde \quad Aristotle, \emph{Physics}, \emph{Poetics}
 \end{bibexample}
 
@@ -907,6 +967,10 @@ An extended version of the standard \blxstyle{authortitle-ticomp} style.
 This style combines \blxstyle{ext-authortitle-terse},
 \blxstyle{ext-authortitle-comp} and \blxstyle{ext-authortitle-ibid}.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authortitle-ticomp]{biblatex}
+\end{lstlisting}
+\tcblower
 Aristotle, \emph{Physics}, \emph{Poetics} \quad Sigfridsson and Ryde \quad ibid.
 \end{bibexample}
 
@@ -955,6 +1019,10 @@ An author-year citation that is even more compact than
 \blxstyle{ext-authoryear-comp}, it compresses lists of \bibfield{extradate}
 letters from \enquote{Knuth 1986a,b,c} to \enquote{Knuth 1986a\bibrangedash c}.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authoryear-ecomp]{biblatex}
+\end{lstlisting}
+\tcblower
 Sigfridsson and Ryde 1998 \quad Knuth 1986a\bibrangedash c
 \end{bibexample}
 
@@ -963,6 +1031,10 @@ An author-year citation that is even more compact than
 \blxstyle{ext-authoryear-icomp}, it compresses lists of \bibfield{extradate}
 letters from \enquote{Knuth 1986a,b,c} to \enquote{Knuth 1986a\bibrangedash c}.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authoryear-iecomp]{biblatex}
+\end{lstlisting}
+\tcblower
 Sigfridsson and Ryde 1998 \quad ibid.\quad Knuth 1986a\bibrangedash c
 \end{bibexample}
 
@@ -972,6 +1044,10 @@ one work in the bibliography.
 This style is like \blxstyle{ext-authortitle-terse}, but it is based on
 \blxstyle{ext-authoryear} and not on \blxstyle{ext-authortitle}.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authoryear-terse]{biblatex}
+\end{lstlisting}
+\tcblower
 Sigfridsson and Ryde \quad Knuth 1984 \quad Knuth 1986
 \end{bibexample}
 
@@ -981,6 +1057,10 @@ with only one work in the bibliography.
 This style is like \blxstyle{ext-authortitle-tcomp}, but it is based on
 \blxstyle{ext-authoryear} and not on \blxstyle{ext-authortitle}.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authoryear-tcomp]{biblatex}
+\end{lstlisting}
+\tcblower
 Sigfridsson and Ryde \quad Knuth 1984, 1986
 \end{bibexample}
 
@@ -988,6 +1068,10 @@ Sigfridsson and Ryde \quad Knuth 1984, 1986
 A compact author-year citation style that combines
 \blxstyle{ext-authoryear-tcomp} and \blxstyle{ext-authoryear-ecomp}.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authoryear-tecomp]{biblatex}
+\end{lstlisting}
+\tcblower
 Sigfridsson and Ryde \quad Knuth 1984, 1986a\bibrangedash c
 \end{bibexample}
 
@@ -997,6 +1081,10 @@ suppresses years for author lists with only one work in the bibliography.
 This style is like \blxstyle{ext-authortitle-ticomp}, but it is based on
 \blxstyle{ext-authoryear} and not on \blxstyle{ext-authortitle}.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authoryear-ticomp]{biblatex}
+\end{lstlisting}
+\tcblower
 Sigfridsson and Ryde \quad ibid. \quad Knuth 1984, 1986
 \end{bibexample}
 
@@ -1004,6 +1092,10 @@ Sigfridsson and Ryde \quad ibid. \quad Knuth 1984, 1986
 A compact author-year citation style that combines
 \blxstyle{ext-authoryear-ticomp} and \blxstyle{ext-authoryear-iecomp}.
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\usepackage[style=ext-authoryear-tiecomp]{biblatex}
+\end{lstlisting}
+\tcblower
 Sigfridsson and Ryde \quad ibid. \quad Knuth 1984, 1986a\bibrangedash c
 \end{bibexample}
 
@@ -1714,7 +1806,7 @@ Field formats can be modified with \cmd{DeclareFieldFormat}.
   \bibfield{date} information for \bibtype{article}s. By default this block is
   wrapped in round brackets.
   \begin{bibexample}
-  \makeatletter\bbx@opt@mergedate@false\makeatother
+  \csuse{bbx@opt@mergedate@false}%
   \togglefalse{bbx:doi}
   \DeclareFieldFormat{issuedate}{\highlight{\bibopenparen}\highlight[2]{#1}%
     \highlight{\bibcloseparen}}
@@ -1907,7 +1999,7 @@ The default is a space.
 \begin{bibexample}
 \togglefalse{bbx:doi}
 \renewcommand*{\jourvoldelim}{\highlight{\textvisiblespace}}
-\makeatletter\bbx@opt@mergedate@false\makeatother
+\csuse{bbx@opt@mergedate@false}%
 \exampleprintbib{sigfridsson}
 \end{bibexample}
 
@@ -1925,7 +2017,7 @@ The default is a space.
 \DeclareFieldFormat[article,periodical]{number}{\bibstring{number}~#1}
 \renewcommand*{\jourvoldelim}{\addcomma\space}
 \renewcommand*{\volnumdelim}{\addcomma\space}
-\makeatletter\bbx@opt@mergedate@false\makeatother
+\csuse{bbx@opt@mergedate@false}%
 \exampleprintbib{sigfridsson}
 \end{bibexample}
 
@@ -1935,7 +2027,7 @@ for \bibtype{article}.
 The default is \cmd{newunitpunct}.
 \begin{bibexample}
 \togglefalse{bbx:doi}
-\makeatletter\bbx@opt@mergedate@false\makeatother
+\csuse{bbx@opt@mergedate@false}%
 \renewcommand*{\jourserdelim}{\highlight{\textbf{\addperiod}\textvisiblespace}%
                               \bibsentence% <- hacky ...
                               }% <- hard-coded!
@@ -1948,7 +2040,7 @@ for \bibtype{article}.
 The default is \hypercmd{jourvoldelim}.
 \begin{bibexample}
 \togglefalse{bbx:doi}
-\makeatletter\bbx@opt@mergedate@false\makeatother
+\csuse{bbx@opt@mergedate@false}%
 \renewcommand*{\servoldelim}{\highlight{\textvisiblespace}}% <- hard-coded!
 \exampleprintbib{reese,shore}
 \end{bibexample}
@@ -1959,7 +2051,7 @@ date information for \bibtype{article}.
 The default is a space.
 \begin{bibexample}
 \togglefalse{bbx:doi}
-\makeatletter\bbx@opt@mergedate@false\makeatother
+\csuse{bbx@opt@mergedate@false}%
 \renewcommand*{\volnumdatedelim}{\highlight{\textvisiblespace}}
 \exampleprintbib{sigfridsson}
 \end{bibexample}
@@ -1970,7 +2062,7 @@ The default is a space.
 \end{lstlisting}
 \tcblower
 \togglefalse{bbx:doi}
-\makeatletter\bbx@opt@mergedate@false\makeatother
+\csuse{bbx@opt@mergedate@false}%
 \DeclareFieldFormat{issuedate}{#1}
 \renewcommand*{\volnumdatedelim}{\addcomma\space}
 \exampleprintbib{sigfridsson}
@@ -2013,7 +2105,7 @@ The delimiter between \bibfield{location} and \bibfield{date}.
 The default is a comma followed by a space.
 \begin{bibexample}
 \renewcommand*{\locdatedelim}{\highlight{\textbf{\addcomma}\textvisiblespace}}
-\makeatletter\bbx@opt@mergedate@false\makeatother
+\csuse{bbx@opt@mergedate@false}%
 \exampleprintbib{jaffe}
 \end{bibexample}
 
@@ -2022,7 +2114,7 @@ The delimiter between \bibfield{location} and \bibfield{publisher}\slash%
 \bibfield{organization}\slash\bibfield{institution}.
 The default is a colon followed by a space.
 \begin{bibexample}
-\makeatletter\bbx@opt@mergedate@false\makeatother
+\csuse{bbx@opt@mergedate@false}%
 \renewcommand*{\locpubdelim}{\highlight{\textbf{\addcolon}\textvisiblespace}}
 \exampleprintbib{knuth:ct:a}
 \end{bibexample}
@@ -2062,7 +2154,7 @@ redefining the bibmacro~\bibmacro{pubinstorg+location+date} as follows.
   \setunit*{\locdatedelim}%
   \usebibmacro{date}%
   \newunit}
-\makeatletter\bbx@opt@mergedate@false\makeatother
+\csuse{bbx@opt@mergedate@false}%
 \exampleprintbib{knuth:ct:a}
 \end{bibexample}
 
@@ -2073,7 +2165,7 @@ The delimiter between \bibfield{publisher}\slash\bibfield{organization}\slash
 The default is a comma followed by a space.
 \begin{bibexample}
 \renewcommand*{\pubdatedelim}{\highlight{\textbf{\addcomma}\textvisiblespace}}
-\makeatletter\bbx@opt@mergedate@false\makeatother
+\csuse{bbx@opt@mergedate@false}%
 \exampleprintbib{knuth:ct:a}
 \end{bibexample}
 \begin{bibexample}[title={Example customisation of \cmd{pubdatedelim}}]
@@ -2081,7 +2173,7 @@ The default is a comma followed by a space.
 \renewcommand*{\pubdatedelim}{\addspace}
 \end{lstlisting}
 \renewcommand*{\pubdatedelim}{\addspace}
-\makeatletter\bbx@opt@mergedate@false\makeatother
+\csuse{bbx@opt@mergedate@false}%
 \exampleprintbib{knuth:ct:a}
 \end{bibexample}
 
@@ -2311,19 +2403,30 @@ Citation command & Outer & Inner\\
 \end{table}
 
 
-The \hyperblxstyle[ext-authoryear]{authoryear} and
-\hyperblxstyle[ext-authortitle]{authortitle} styles have \cmd{parencite},
-e.g.\ \parencite{knuth:ct:a}, \parencite{sigfridsson}, set up with
-\begin{biblatexcode}
+The default setup for \hyperblxstyle{ext-authoryear} mirroring
+the standard \blxstyle{authoryear} is as follows.
+%
+\begin{bibexample}[title={\cmd{parencite} setup of
+  \blxstyle{ext-authoryear}}]
+\begin{lstlisting}[style=extblxstylelatex]
 \DeclareOuterCiteDelims{parencite}{\bibopenparen}{\bibcloseparen}
 \DeclareInnerCiteDelims{parencite}{}{}
-\end{biblatexcode}
-and \cmd{textcite}, e.g.\ \textcite{knuth:ct:a}, \textcite{sigfridsson}, with
-\begin{biblatexcode}
+\end{lstlisting}
+\tcblower
+lorem \parencite{knuth:ct:a} ipsum \parencite{sigfridsson}
+\end{bibexample}
+%
+\begin{bibexample}[title={\cmd{textcite} setup of
+  \blxstyle{ext-authoryear}}]
+\begin{lstlisting}[style=extblxstylelatex]
 \DeclareOuterCiteDelims{textcite}{}{}
 \DeclareInnerCiteDelims{textcite}{\bibopenparen}{\bibcloseparen}
-\end{biblatexcode}
-If you wanted \cmd{parencite} of \hyperblxstyle[ext-authoryear]{authoryear}
+\end{lstlisting}
+\tcblower
+lorem \textcite{knuth:ct:a} ipsum \textcite{sigfridsson}
+\end{bibexample}
+%
+If you wanted \cmd{parencite} of \hyperblxstyle{ext-authoryear}
 to look like \enquote{[Sigfridsson and Worman (1998)]} you would use
 \citereset
 \begin{bibexample}
@@ -2366,12 +2469,64 @@ fields will be printed by \bibmacro{maintitle+title} or
       {}%
     \newunit
     \printfield{volumes}}}
+\csuse{bbx@opt@mergedate@false}%
 \exampleprintbib{knuth:ct,matuz:doody}
 \end{bibexample}
 
 \keyitem[edition]
 A bibliography macro to print the \bibfield{edition} field, this avoids a direct
 \lstinline|\printfield{edition}| in the bibliography drivers.
+This bibliography macro is particularly useful to suppress the
+\bibfield{edition} field in its standard position to print it elsewhere
+without having to use \cmd{clearfield}, \cmd{savefield} and \cmd{restorefield}.
+\begin{bibexample}[title={Example use of the \bibmacro{edition} bibmacro
+  for superscript edition before date}]
+\begin{lstlisting}[style=extblxstylelatex]
+\renewbibmacro*{edition}{}
+
+\DeclareFieldFormat{superedition}{\textsuperscript{#1}}
+\newbibmacro*{superedition}{%
+  \iffieldnums{edition}
+    {\printfield[superedition]{edition}}
+    {\printfield{edition}%
+     \setunit{\addspace}}}
+
+\renewcommand*{\pubdatedelim}{\addspace}
+\renewcommand*{\locdatedelim}{\pubdatedelim}
+\renewbibmacro*{pubinstorg+location+date}[1]{%
+  \printlist{location}%
+  \iflistundef{#1}
+    {\setunit*{\locdatedelim}}
+    {\setunit*{\locpubdelim}}%
+  \printlist{#1}%
+  \setunit*{\pubdatedelim}%
+  \usebibmacro{superedition}%
+  \usebibmacro{date}%
+  \newunit}
+\end{lstlisting}
+\tcblower
+\renewbibmacro*{edition}{}
+\DeclareFieldFormat{superedition}{\textsuperscript{#1}}
+\newbibmacro*{superedition}{%
+  \iffieldnums{edition}
+    {\printfield[superedition]{edition}}
+    {\printfield{edition}%
+     \setunit{\addspace}}}
+\renewcommand*{\pubdatedelim}{\addspace}
+\renewcommand*{\locdatedelim}{\pubdatedelim}
+\renewbibmacro*{pubinstorg+location+date}[1]{%
+  \printlist{location}%
+  \iflistundef{#1}
+    {\setunit*{\locdatedelim}}
+    {\setunit*{\locpubdelim}}%
+  \printlist{#1}%
+  \setunit*{\pubdatedelim}%
+  \usebibmacro{superedition}%
+  \usebibmacro{date}%
+  \newunit}
+\csuse{bbx@opt@mergedate@false}%
+\exampleprintbib{malinowski}
+\end{bibexample}
 
 \keyitem[version]
 Similar to the \hyperbibmacro{edition} bibliography macro, \bibmacro{version}
@@ -2786,7 +2941,7 @@ Load one of the available open access symbol support packages.
       Please keep in mind that \sty{l3draw} is still considered experimental.
     \end{remindbox}
   \item[tikz] Load \hypersty{biblatex-ext-oasymb-tikz} to provide a
-    definition for \hypercmd{oasymbol} drawn in \pgftikz.
+    definition for \hypercmd{oasymbol} that is drawn with \pgftikz.
     See \cref{sec:oa:symbol,sec:oa:symbol-tikz}.
     \begin{remindbox}
       The package \hypersty{biblatex-ext-oasymb-tikz} will load \pgftikz.
