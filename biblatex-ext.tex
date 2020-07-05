@@ -36,6 +36,8 @@
 \usepackage[listings, breakable, skins]{tcolorbox}%
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{shapes.geometric}
+\usetikzlibrary{fit}
+\usetikzlibrary{positioning}
 \usepackage[style=ext-authoryear-iecomp, backend=biber]{biblatex}
 \addbibresource{biblatex-examples.bib}
 \addbibresource{biblatex-ext-examples.bib}
@@ -127,7 +129,7 @@
   moretexcs = {
     dimexpr,arraybackslash,newcolumntype,anchor,driver,plain,plainlang,
     anchorlang,
-    thefield,
+    thefield,bibstring,
     addbibresource,
     setlength,bibhang,addcomma,adddot,addperiod,addcolon,addspace,
     addnbspace,
@@ -143,8 +145,9 @@
     DeclareInnerCiteDelims,UndeclareInnerCiteDelims,DeclareInnerCiteDelimsAlias,
     DeclareOuterCiteDelims,UndeclareOuterCiteDelims,DeclareOuterCiteDelimsAlias,
     introcitepunct,volnumdelim,maintitletitledelim,voltitledelim,sernumdelim,
+    jourvoldelim,
     volnumdatedelim,locdatedelim,locpubdelim,publocdelim,pubdatedelim,
-    extradateonlycompcitedelim,introcitesep,introcitewidth,introcitesep,
+    extradateonlycompcitedelim,introcitesep,introcitewidth,introcitebreak,
     DeclareOpenAccessFieldUrl,DeclareOpenAccessEprintUrl,
     DeclareOpenAccessEprintAlias,DeclareOpenAccessUrlFieldPriority},
 }
@@ -211,6 +214,10 @@
                      rectangle node {\dbendsymbol}
                      ([xshift=15mm,yshift=.1cm]interior.north east);},
   #1}
+
+\tikzset{
+  MWEcommentbox/.style={font=\sffamily\footnotesize, gray!60!darkgray},
+}
 
 \AtUsedriver*{%
   \let\newblock\relax
@@ -390,6 +397,8 @@
 
 \AtEndPreamble{%
   \deflength{\marglistwidth}{(\oddsidemargin+2cm)*85/100}}
+
+\newcommand{\tikzmark}[2][]{\tikz[overlay,remember picture] \node (#2) {#1};}
 
 \newcommand*{\tikztextmark}[2]{%
   \tikz[remember picture,baseline,inner sep=0pt]\node [anchor=base] (#1) {#2};}
@@ -1061,7 +1070,8 @@ If the option is set to \optval{true}, the block following the
 parent entry and thus becomes more compact.
 
 \begin{remindbox}
-Parent entries can only be cited if they appear in the bibliography.
+Parent entries will only be cited by this feature
+if they appear in the bibliography.
 
 The option itself does \emph{not} cause the parent entry to be added
 to the bibliography automatically.
@@ -1084,7 +1094,7 @@ or implicitly via the \opt{minxrefs} or \opt{mincrossrefs} option.
       {\usebibmacro{#1}}}}
 \makeatother
 \toggletrue{bbx:citexref}
-\exampleprintbib{westfahl:space}
+\exampleprintbib{westfahl:space,westfahl:frontier}
 \end{bibexample}
 
 \begin{bibexample}[title={\kvopt{citexref}{false}}]
@@ -1100,7 +1110,7 @@ or implicitly via the \opt{minxrefs} or \opt{mincrossrefs} option.
       {\usebibmacro{#1}}}}
 \makeatother
 \togglefalse{bbx:citexref}
-\exampleprintbib{westfahl:space}
+\exampleprintbib{westfahl:space,westfahl:frontier}
 \end{bibexample}
 
 \boolitem[false]{innamebeforetitle}
@@ -1671,6 +1681,7 @@ directives instead.
 Field formats can be modified with \cmd{DeclareFieldFormat}.
 
 \begin{bibfieldformatlist}
+
 \bibfieldformatitem{biblabeldate} The format for the labeldate in the
   bibliography for \hyperblxstyle[ext-authoryear]{authoryear}-like styles.
   The default is to wrap the date in round brackets.
@@ -1680,6 +1691,20 @@ Field formats can be modified with \cmd{DeclareFieldFormat}.
     \highlight{\bibcloseparen}}
   \exampleprintbib{sigfridsson}
   \end{bibexample}
+\begin{bibexample}[title={Customisation example for
+  \bibfieldformat{biblabeldate}}]
+\begin{lstlisting}[style=extblxstylelatex]
+\DeclareFieldFormat{biblabeldate}{|1#11|}
+\DeclareDelimFormat[bib]{nameyeardelim}{|2\addperiod\space2|}
+\end{lstlisting}
+\tcblower
+\togglefalse{bbx:doi}
+\DeclareFieldFormat{biblabeldate}{\highlight[1]{#1}}
+\DeclareDelimFormat[bib]{nameyeardelim}{\highlight[2]{\textbf{%
+  \addperiod}\textvisiblespace}\bibsentence}
+\exampleprintbib{sigfridsson}
+\end{bibexample}
+
 
 \bibfieldformatitem{biblistlabeldate} Like \bibfieldformat{biblabeldate},
   but for bibliography lists created by \cmd{printbiblist}.
@@ -1863,6 +1888,17 @@ The punctuation between \bibfield{title}\slash\bibfield{subtitle} and
   \textvisiblespace}\bibsentence}%<- hacky & hard-coded!
 \exampleprintbib{salam}
 \end{bibexample}
+\begin{bibexample}[title={Example customisation of \cmd{titleaddonpunct}}]
+\begin{lstlisting}[style=extblxstylelatex]
+\DeclareFieldFormat{booktitleaddon}{\mkbibbrackets{#1}}
+\renewcommand*{\titleaddonpunct}{\addspace}
+\end{lstlisting}
+\tcblower
+\DeclareFieldFormat{booktitleaddon}{\mkbibbrackets{#1}}
+\renewcommand*{\titleaddonpunct}{\addspace}
+\renewbibmacro*{event+venue+date}{}
+\exampleprintbib{salam}
+\end{bibexample}
 
 \csitem{jourvoldelim}
 The delimiter between the \bibfield{journaltitle} and \bibfield{volume} fields
@@ -1875,16 +1911,34 @@ The default is a space.
 \exampleprintbib{sigfridsson}
 \end{bibexample}
 
+\begin{bibexample}[title={Example customisation of \cmd{jourvoldelim}
+  and \cmd{volnumdelim}}]
+\begin{lstlisting}[style=extblxstylelatex]
+\DeclareFieldFormat[article,periodical]{volume}{\bibstring{jourvol}~#1}
+\DeclareFieldFormat[article,periodical]{number}{\bibstring{number}~#1}
+\renewcommand*{\jourvoldelim}{\addcomma\space}
+\renewcommand*{\volnumdelim}{\addcomma\space}
+\end{lstlisting}
+\tcblower
+\togglefalse{bbx:doi}
+\DeclareFieldFormat[article,periodical]{volume}{\bibstring{jourvol}~#1}
+\DeclareFieldFormat[article,periodical]{number}{\bibstring{number}~#1}
+\renewcommand*{\jourvoldelim}{\addcomma\space}
+\renewcommand*{\volnumdelim}{\addcomma\space}
+\makeatletter\bbx@opt@mergedate@false\makeatother
+\exampleprintbib{sigfridsson}
+\end{bibexample}
+
 \csitem{jourserdelim}
 The delimiter between the \bibfield{journaltitle} and \bibfield{series} fields
 for \bibtype{article}.
 The default is \cmd{newunitpunct}.
 \begin{bibexample}
 \togglefalse{bbx:doi}
+\makeatletter\bbx@opt@mergedate@false\makeatother
 \renewcommand*{\jourserdelim}{\highlight{\textbf{\addperiod}\textvisiblespace}%
                               \bibsentence% <- hacky ...
                               }% <- hard-coded!
-\makeatletter\bbx@opt@mergedate@false\makeatother
 \exampleprintbib{reese,shore}
 \end{bibexample}
 
@@ -1894,8 +1948,8 @@ for \bibtype{article}.
 The default is \hypercmd{jourvoldelim}.
 \begin{bibexample}
 \togglefalse{bbx:doi}
-\renewcommand*{\servoldelim}{\highlight{\textvisiblespace}}% <- hard-coded!
 \makeatletter\bbx@opt@mergedate@false\makeatother
+\renewcommand*{\servoldelim}{\highlight{\textvisiblespace}}% <- hard-coded!
 \exampleprintbib{reese,shore}
 \end{bibexample}
 
@@ -1905,8 +1959,20 @@ date information for \bibtype{article}.
 The default is a space.
 \begin{bibexample}
 \togglefalse{bbx:doi}
-\renewcommand*{\volnumdatedelim}{\highlight{\textvisiblespace}}
 \makeatletter\bbx@opt@mergedate@false\makeatother
+\renewcommand*{\volnumdatedelim}{\highlight{\textvisiblespace}}
+\exampleprintbib{sigfridsson}
+\end{bibexample}
+\begin{bibexample}[title={Example customisation of \cmd{volnumdatedelim}}]
+\begin{lstlisting}[style=extblxstylelatex]
+\DeclareFieldFormat{issuedate}{#1}
+\renewcommand*{\volnumdatedelim}{\addcomma\space}
+\end{lstlisting}
+\tcblower
+\togglefalse{bbx:doi}
+\makeatletter\bbx@opt@mergedate@false\makeatother
+\DeclareFieldFormat{issuedate}{#1}
+\renewcommand*{\volnumdatedelim}{\addcomma\space}
 \exampleprintbib{sigfridsson}
 \end{bibexample}
 
@@ -1918,6 +1984,18 @@ The default is a dot.
 \begin{bibexample}
 \togglefalse{bbx:doi}
 \renewcommand*{\volnumdelim}{\highlightbf{\adddot}}
+\exampleprintbib{sigfridsson}
+\end{bibexample}
+
+\begin{bibexample}[title={Example customisation of~\cmd{volnumdelim}}]
+\begin{lstlisting}[style=extblxstylelatex]
+\DeclareFieldFormat[article,periodical]{number}{\mkbibparens{#1}}
+\renewcommand*{\volnumdelim}{}
+\end{lstlisting}
+\tcblower
+\togglefalse{bbx:doi}
+\DeclareFieldFormat[article,periodical]{number}{\mkbibparens{#1}}
+\renewcommand*{\volnumdelim}{}
 \exampleprintbib{sigfridsson}
 \end{bibexample}
 
@@ -1962,7 +2040,9 @@ You could use \cmd{publocdelim} if you changed the order of these
 fields to \bibfield{publisher}\slash\bibfield{organization}\slash
 \bibfield{institution}, \bibfield{location} \bibfield{date} by
 redefining the bibmacro~\bibmacro{pubinstorg+location+date} as follows.
-\begin{biblatexcode}
+\begin{bibexample}[title={Example use of \cmd{publocdelim}
+  and \cmd{locdatedelim}}]
+\begin{lstlisting}[style=extblxstylelatex]
 \renewbibmacro*{pubinstorg+location+date}[1]{%
   \printlist{#1}%
   \setunit*{|1\publocdelim1|}%
@@ -1970,8 +2050,8 @@ redefining the bibmacro~\bibmacro{pubinstorg+location+date} as follows.
   \setunit*{|2\locdatedelim2|}%
   \usebibmacro{date}%
   \newunit}
-\end{biblatexcode}
-\begin{bibexample}
+\end{lstlisting}
+\tcblower
 \renewcommand*{\publocdelim}{\highlight[1]{\textbf{\addcomma}\textvisiblespace}}
 \renewcommand*{\locdatedelim}{\highlight[2]{%
   \textbf{\addcomma}\textvisiblespace}}
@@ -1993,6 +2073,14 @@ The delimiter between \bibfield{publisher}\slash\bibfield{organization}\slash
 The default is a comma followed by a space.
 \begin{bibexample}
 \renewcommand*{\pubdatedelim}{\highlight{\textbf{\addcomma}\textvisiblespace}}
+\makeatletter\bbx@opt@mergedate@false\makeatother
+\exampleprintbib{knuth:ct:a}
+\end{bibexample}
+\begin{bibexample}[title={Example customisation of \cmd{pubdatedelim}}]
+\begin{lstlisting}[style=extblxstylelatex]
+\renewcommand*{\pubdatedelim}{\addspace}
+\end{lstlisting}
+\renewcommand*{\pubdatedelim}{\addspace}
 \makeatletter\bbx@opt@mergedate@false\makeatother
 \exampleprintbib{knuth:ct:a}
 \end{bibexample}
@@ -2237,12 +2325,13 @@ and \cmd{textcite}, e.g.\ \textcite{knuth:ct:a}, \textcite{sigfridsson}, with
 \end{biblatexcode}
 If you wanted \cmd{parencite} of \hyperblxstyle[ext-authoryear]{authoryear}
 to look like \enquote{[Sigfridsson and Worman (1998)]} you would use
-\begin{biblatexcode}
-\DeclareOuterCiteDelims{parencite}{|1\bibopenbracket1|}{|1\bibclosebracket1|}
-\DeclareInnerCiteDelims{parencite}{|2\bibopenparen2|}{|2\bibcloseparen2|}
-\end{biblatexcode}
 \citereset
 \begin{bibexample}
+\begin{lstlisting}[style=extblxstylelatex]
+\DeclareOuterCiteDelims{parencite}{|1\bibopenbracket1|}{|1\bibclosebracket1|}
+\DeclareInnerCiteDelims{parencite}{|2\bibopenparen2|}{|2\bibcloseparen2|}
+\end{lstlisting}
+\tcblower
 \DeclareOuterCiteDelims{parencite}{\highlightbf[1]{\bibopenbracket}}{%
   \highlightbf[1]{\bibclosebracket}}
 \DeclareInnerCiteDelims{parencite}{\highlightbf[2]{\bibopenparen}}{%
@@ -2470,20 +2559,22 @@ The package also defines two helpful bibliography macros.
 \end{keymarglistbook}
 
 A simple example of a useful tabular bibliography setup is
-\begin{biblatexcode}
+\begin{bibexample}[breakable,
+  title={Example document with tabular bibliography}]
+\begin{lstlisting}[style=extblxstylelatex]
 \documentclass[british]{article}
 \usepackage{babel}
 \usepackage{csquotes}
 
-\usepackage[backend=biber, style=ext-authoryear]{biblatex}
-\usepackage{biblatex-ext-tabular}
+(*@\tikzmark[\strut]{lblxs}@*)\usepackage[backend=biber, style=ext-authoryear]{biblatex}(*@\tikzmark{lblxe}@*)
+(*@\tikzmark[\strut]{ltblxs}@*)\usepackage{biblatex-ext-tabular}(*@\tikzmark{ltblxe}@*)
 
-\usepackage{longtable}
+(*@\tikzmark[\strut]{tabss}@*)\usepackage{longtable}
 \usepackage{array}
 \newcolumntype{L}[1]{%
-  >{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+  >{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}(*@\tikzmark{tabse}@*)
 
-\defbibtabular{bibtabular}
+(*@\tikzmark[\strut]{dbtabs}@*)\defbibtabular{bibtabular}
   {\setlength{\LTpre}{0pt}%
    \setlength{\LTpost}{0pt}%
    \renewcommand*{\arraystretch}{2}%
@@ -2494,7 +2585,7 @@ A simple example of a useful tabular bibliography setup is
      @{}}}
   {\end{longtable}}
   {\anchorlang{\usebibmacro{tabular:sortname}} &
-   \driver{\usebibmacro{tabular:omitsortname}} \\}
+   \driver{\usebibmacro{tabular:omitsortname}} \\}(*@\tikzmark{dbtabe}@*)
 
 \addbibresource{biblatex-examples.bib}
 
@@ -2502,17 +2593,32 @@ A simple example of a useful tabular bibliography setup is
 Lorem \autocite{sigfridsson,nussbaum}
 ipsum \autocite{geer}.
 
-\printbibtabular
+(*@\tikzmark[\strut]{pbts}@*)\printbibtabular(*@\tikzmark{pbte}@*)
 \end{document}
-\end{biblatexcode}
-This defines a two-column bibliography where the first column shows the
-primary name associated with the work (the labelname/sortname) and the
-second colum shows the bibliography data with the primary name suppressed
-to avoid duplication.
-The anchor is set to the first column, so that a viewer jumps there
-if a link to the entry is followed.
+\end{lstlisting}%
+\tikz[overlay,remember picture]{%
+  \node[draw, rounded corners, highlight1, very thick,
+    fit=(lblxs.north west) (lblxe.south east)
+        (ltblxs.north west) (ltblxe.south east)] (lblxb) {};
+  \node (lblxt)[MWEcommentbox, right=0cm of lblxb, text width=3.25cm]
+    {Load \sty{biblatex} as usual,\\then load \hypersty{biblatex-ext-tabular}};
 
-\begin{bibexample}
+  \node[draw, rounded corners, highlight2, very thick,
+    fit=(tabss.north west) (tabse.south east)] (tabsb) {};
+  \node (tabst)[MWEcommentbox, right=0em of tabsb, text width=2.36cm]
+    {Set up enhanced table support as desired};
+
+  \node[draw, rounded corners, highlight1, very thick,
+    fit=(dbtabs.north west) (dbtabe.south east)] (dbtabb) {};
+  \node (dbtabt)[MWEcommentbox, right=0em of dbtabb, text width=4.5cm]
+    {Set up a tabular bibliography with~\hypercmd{defbibtabular}};
+
+  \node[draw, rounded corners, highlight1, very thick, inner sep=0.1em,
+    fit=(pbts.north west) (pbte.south east)] (pbtb) {};
+  \node (pbtt)[MWEcommentbox, right=1em of pbtb, text width=7cm]
+    {Print bibliography table with~\hypercmd{printbibtabular}};
+}
+\tcblower
   \defbibtabular{bibtabular}
     {\setlength{\LTpre}{0pt}%
      \setlength{\LTpost}{0pt}%
@@ -2528,6 +2634,12 @@ if a link to the entry is followed.
 
   \exampleprintbibtab{sigfridsson,geer,nussbaum}
 \end{bibexample}
+This defines a two-column bibliography where the first column shows the
+primary name associated with the work (the labelname/sortname) and the
+second colum shows the bibliography data with the primary name suppressed
+to avoid duplication.
+The anchor is set to the first column, so that a viewer jumps there
+if a link to the entry is followed.
 
 For the common case of two-column tabular bibliographies there is a thin
 wrapper around \hypercmd{defbibtabular} that might turn out a bit easier to use.
@@ -2665,18 +2777,16 @@ Load one of the available open access symbol support packages.
       yourself if you don't load any of the symbol packages.
     \end{warnbox}
   \item[pict2e] Load \hypersty{biblatex-ext-oasymb-pict2e} to provide a
-    definition for \hypercmd{oasymbol}.
+    definition for \hypercmd{oasymbol} drawn in \sty{pict2e}.
     See \cref{sec:oa:symbol,sec:oa:symbol-pict2e}.
   \item[l3draw] Load \hypersty{biblatex-ext-oasymb-l3draw} to provide a
-    definition for \hypercmd{oasymbol}.
+    definition for \hypercmd{oasymbol} drawn in \sty{l3draw}.
     See \cref{sec:oa:symbol,sec:oa:symbol-l3draw}.
     \begin{remindbox}
-      The package \hypersty{biblatex-ext-oasymb-l3draw} will load the entire
-      \LaTeX3 core.
-      Furthermore, \sty{l3draw} is still considered experimental.
+      Please keep in mind that \sty{l3draw} is still considered experimental.
     \end{remindbox}
   \item[tikz] Load \hypersty{biblatex-ext-oasymb-tikz} to provide a
-    definition for \hypercmd{oasymbol}.
+    definition for \hypercmd{oasymbol} drawn in \pgftikz.
     See \cref{sec:oa:symbol,sec:oa:symbol-tikz}.
     \begin{remindbox}
       The package \hypersty{biblatex-ext-oasymb-tikz} will load \pgftikz.
@@ -2694,7 +2804,10 @@ Load one of the available open access symbol support packages.
 \endgroup
 
 Set \hypercmd{oasymbol} to output the symbol identified as \prm{symbol}.
-The available options can be found in \cref{sec:oa:symbol}.
+This option is passed on to the \prm{symbolpackage} selected
+with the \hyperopt{symbolpackage} option.
+Possible values can be found in the respective subsections
+of \cref{sec:oa:symbol}.
 
 \begin{warnbox}
 Note that this option is only available if the
@@ -2717,7 +2830,6 @@ can only be used with \lualatex.
 \end{warnbox}
 \end{optionlist}
 
-\clearpage
 The following macros in \sty{biblatex-ext-oa} are also of interest.
 \begin{ltxsyntax}
 
