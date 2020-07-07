@@ -355,7 +355,7 @@
   \strut\vadjust{\extblx@oa@marginmark@do}}
 \newcommand{\extblx@oa@marginmark@do}{%
   \vbox to 0pt{%
-    \kern-3\dp\strutbox
+    \kern-\dimexpr\dp\strutbox+\ht\strutbox\relax
     \strut
     \hfill
     \rlap{\kern1em
