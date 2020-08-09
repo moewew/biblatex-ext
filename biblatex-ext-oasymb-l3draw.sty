@@ -6,7 +6,12 @@
 
 \RequirePackage{xparse}
 \RequirePackage{l3keys2e}
+\RequirePackage{l3color}
 \RequirePackage{l3draw}
+
+\cs_if_exist:NTF \color_fill:n
+  { \cs_set_eq:NN \__extblx_color_fill:n \color_fill:n }
+  { \cs_set_eq:NN \__extblx_color_fill:n \draw_color_fill:n }
 
 % PLoS Open Access symbol based on
 % https://commons.wikimedia.org/wiki/File:Open_Access_logo_PLoS_white.svg
@@ -37,7 +42,7 @@
     \draw_path_moveto:n { 41*\l__extblx_oasymb_scale_plos_dim,
                           32*\l__extblx_oasymb_scale_plos_dim }
     \draw_path_arc:nnn { 000 } { 360 } { 09*\l__extblx_oasymb_scale_plos_dim }
-    \draw_color_fill:n { oasymb_plos_orange }
+    \__extblx_color_fill:n { oasymb_plos_orange }
     \draw_path_use_clear:n { fill }
   \draw_end:
 }
@@ -92,7 +97,7 @@
     \draw_path_moveto:n { 6.7*\l__extblx_oasymb_scale_oanet_dim,
                           4  *\l__extblx_oasymb_scale_oanet_dim }
     \draw_path_arc:nnn { 360 } { 000 } { 2.7*\l__extblx_oasymb_scale_oanet_dim }
-    \draw_color_fill:n { oasymb_oanet_green }
+    \__extblx_color_fill:n { oasymb_oanet_green }
     \draw_path_use_clear:n { fill }
 
     \draw_path_rectangle_corners:nn { 13.7*\l__extblx_oasymb_scale_oanet_dim,
@@ -109,7 +114,7 @@
     \draw_path_lineto:n { (11+cosd(300)*2.7)*\l__extblx_oasymb_scale_oanet_dim,
                           (4+sind(300)*2.7)*\l__extblx_oasymb_scale_oanet_dim }
     \draw_path_arc:nnn { 300 } { 000 } { 2.7*\l__extblx_oasymb_scale_oanet_dim }
-    \draw_color_fill:n { oasymb_oanet_gold }
+    \__extblx_color_fill:n { oasymb_oanet_gold }
     \draw_path_use_clear:n { fill }
 
     \draw_path_moveto:n
@@ -122,7 +127,7 @@
         (4+sind(-035.5)*4.3)*\l__extblx_oasymb_scale_oanet_dim }
     \draw_path_arc:nnn { -035.5 } { 035.5 }
                        { 4.3*\l__extblx_oasymb_scale_oanet_dim }
-    \draw_color_fill:n { oasymb_oanet_intersect }
+    \__extblx_color_fill:n { oasymb_oanet_intersect }
     \draw_path_use_clear:n { fill }
   \draw_end:
 }
