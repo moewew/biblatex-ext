@@ -1,0 +1,58 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+(biblatex-ext-oasymb-pict2e.sty
+Package: biblatex-ext-oasymb-pict2e ....-..-.. v... open access symbols with pict2e (MW)
+\extblx@oasymb@pict@plos@box=\box...
+\extblx@oasymb@pict@oanet@box=\box...
+)
+> \box...=
+\hbox(9.9006+0.0)x6.40039
+.\hbox(9.9006+0.0)x6.40039
+..\pdfcolorstack 0 push {0 g 0 G}
+..\hbox(9.9006+0.0)x6.40039
+...\hbox(9.9006+0.0)x6.40039, glue set 6.40039fil
+....\glue 0.0
+....\hbox(0.0+0.0)x0.0
+.....\pdfcolorstack 0 push {0.96472 0.5098 0.0706 rg 0.96472 0.5098 0.0706 RG}
+.....\pdfliteral{ q  0.99626401 0 0 0.99626401 0 0 cm 4.70029 7.30045 m 4.70029 7.3004\ETC.}
+....\pdfcolorstack 0 pop
+....\glue 0.0 plus 1.0fil minus 1.0fil
+..\pdfcolorstack 0 pop
+! OK.
+l. ...\showbox0
+> \box...=
+\hbox(9.9006+0.0)x6.40039
+.\hbox(9.9006+0.0)x6.40039
+..\pdfcolorstack 0 push {0 g 0 G}
+..\hbox(9.9006+0.0)x6.40039
+...\hbox(9.9006+0.0)x6.40039, glue set 6.40039fil
+....\glue 0.0
+....\hbox(0.0+0.0)x0.0
+.....\pdfcolorstack 0 push {0.96472 0.5098 0.0706 rg 0.96472 0.5098 0.0706 RG}
+.....\pdfliteral{ q  0.99626401 0 0 0.99626401 0 0 cm 4.70029 7.30045 m 4.70029 7.3004\ETC.}
+....\pdfcolorstack 0 pop
+....\glue 0.0 plus 1.0fil minus 1.0fil
+..\pdfcolorstack 0 pop
+! OK.
+l. ...\showbox0
+> \box...=
+\hbox(8.80005+0.0)x16.50009
+.\hbox(8.80005+0.0)x16.50009
+..\pdfcolorstack 0 push {0 g 0 G}
+..\hbox(8.80005+0.0)x16.50009
+...\hbox(8.80005+0.0)x16.50009, glue set 16.50009fil
+....\glue 0.0
+....\hbox(0.0+0.0)x0.0
+.....\pdfcolorstack 0 push {0.20784 0.37646 0.19217 rg 0.20784 0.37646 0.19217 RG}
+.....\pdfliteral{ q  0.99626401 0 0 0.99626401 0 0 cm 9.13005 4.40002 m 9.13005 4.4000\ETC.}
+.....\pdfcolorstack 0 push {0.97647 0.77647 0.22745 rg 0.97647 0.77647 0.22745 RG}
+.....\pdfliteral{ q  0.99626401 0 0 0.99626401 0 0 cm 16.8301 4.40002 m 16.8301 4.4000\ETC.}
+.....\pdfcolorstack 0 push {0.53725 0.57256 0.22745 rg 0.53725 0.57256 0.22745 RG}
+.....\pdfliteral{ q  0.99626401 0 0 0.99626401 0 0 cm 9.13005 4.40002 m 8.24934 7.1466\ETC.}
+....\pdfcolorstack 0 pop
+....\pdfcolorstack 0 pop
+....\pdfcolorstack 0 pop
+....\glue 0.0 plus 1.0fil minus 1.0fil
+..\pdfcolorstack 0 pop
+! OK.
+l. ...\showbox0

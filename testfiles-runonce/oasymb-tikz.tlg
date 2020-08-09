@@ -1,0 +1,401 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+(biblatex-ext-oasymb-tikz.sty
+Package: biblatex-ext-oasymb-tikz ....-..-.. v... open access symbols with TikZ (MW)
+\extblx@oasymb@tikz@plos@box=\box...
+\extblx@oasymb@tikz@oanet@box=\box...
+)
+> \box...=
+\hbox(9.9006+0.0)x6.40039
+.\hbox(9.9006+0.0)x6.40039
+..\pdfcolorstack 0 push {0 g 0 G}
+..\hbox(9.9006+0.0)x6.40039
+...\glue 0.0
+...\hbox(0.0+0.0)x0.0
+....\pdfliteral{q }
+....\pdfliteral{0 G }
+....\pdfliteral{0 g }
+....\pdfliteral{0.3985 w }
+....\hbox(0.0+0.0)x0.0
+.....\pdfliteral{q }
+.....\glue 0.0
+.....\pdfliteral{q }
+.....\glue 0.0
+.....\pdfliteral{0.5978 7.27325 m }
+.....\pdfliteral{0.5978 7.27325 m }
+.....\pdfliteral{0.5978 9.86374 l }
+.....\pdfliteral{5.77875 9.86374 l }
+.....\pdfliteral{5.77875 7.27325 l }
+.....\pdfliteral{h }
+.....\pdfliteral{5.77875 9.86374 m }
+.....\pdfliteral{W }
+.....\pdfliteral{n }
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\pdfliteral{q }
+.....\pdfcolorstack 0 push {0.96472 0.5098 0.0706 rg 0.96472 0.5098 0.0706 RG}
+.....\pdfliteral{3.18828 7.27325 m }
+.....\pdfliteral{5.77875 7.27325 m }
+.....\pdfliteral{5.77875 8.70395 4.61896 9.86374 3.18828 9.86374 c }
+.....\pdfliteral{1.75758 9.86374 0.5978 8.70395 0.5978 7.27325 c }
+.....\pdfliteral{0.5978 5.84258 1.75758 4.68279 3.18828 4.68279 c }
+.....\pdfliteral{4.61896 4.68279 5.77875 5.84258 5.77875 7.27325 c }
+.....\pdfliteral{h }
+.....\pdfliteral{3.18828 7.27325 m }
+.....\pdfliteral{3.18828 7.27325 m }
+.....\pdfliteral{4.68279 7.27325 m }
+.....\pdfliteral{4.68279 8.09865 4.01367 8.76776 3.18828 8.76776 c }
+.....\pdfliteral{2.36288 8.76776 1.69377 8.09865 1.69377 7.27325 c }
+.....\pdfliteral{1.69377 6.44786 2.36288 5.77875 3.18828 5.77875 c }
+.....\pdfliteral{4.01367 5.77875 4.68279 6.44786 4.68279 7.27325 c }
+.....\pdfliteral{h }
+.....\pdfliteral{3.18828 7.27325 m }
+.....\pdfliteral{f* }
+.....\glue 0.0
+.....\pdfcolorstack 0 pop
+.....\pdfliteral{Q }
+.....\glue 0.0
+.....\pdfliteral{Q }
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\pdfliteral{q }
+.....\pdfcolorstack 0 push {0.96472 0.5098 0.0706 rg 0.96472 0.5098 0.0706 RG}
+.....\pdfliteral{3.18828 3.18828 m }
+.....\pdfliteral{6.37656 3.18828 m }
+.....\pdfliteral{6.37656 4.94913 4.94913 6.37656 3.18828 6.37656 c }
+.....\pdfliteral{1.42741 6.37656 0.0 4.94913 0.0 3.18828 c }
+.....\pdfliteral{0.0 1.42741 1.42741 0.0 3.18828 0.0 c }
+.....\pdfliteral{4.94913 0.0 6.37656 1.42741 6.37656 3.18828 c }
+.....\pdfliteral{h }
+.....\pdfliteral{3.18828 3.18828 m }
+.....\pdfliteral{3.18828 3.18828 m }
+.....\pdfliteral{5.28058 3.18828 m }
+.....\pdfliteral{5.28058 4.34384 4.34384 5.28058 3.18828 5.28058 c }
+.....\pdfliteral{2.03271 5.28058 1.09596 4.34384 1.09596 3.18828 c }
+.....\pdfliteral{1.09596 2.03271 2.03271 1.09596 3.18828 1.09596 c }
+.....\pdfliteral{4.34384 1.09596 5.28058 2.03271 5.28058 3.18828 c }
+.....\pdfliteral{h }
+.....\pdfliteral{3.18828 3.18828 m }
+.....\pdfliteral{3.18828 3.18828 m }
+.....\pdfliteral{4.08498 3.18828 m }
+.....\pdfliteral{4.08498 3.6835 3.6835 4.08498 3.18828 4.08498 c }
+.....\pdfliteral{2.69304 4.08498 2.29156 3.6835 2.29156 3.18828 c }
+.....\pdfliteral{2.29156 2.69304 2.69304 2.29156 3.18828 2.29156 c }
+.....\pdfliteral{3.6835 2.29156 4.08498 2.69304 4.08498 3.18828 c }
+.....\pdfliteral{h }
+.....\pdfliteral{3.18828 3.18828 m }
+.....\pdfliteral{f* }
+.....\glue 0.0
+.....\pdfcolorstack 0 pop
+.....\pdfliteral{Q }
+.....\glue 0.0
+.....\pdfliteral{q }
+.....\pdfcolorstack 0 push {0.96472 0.5098 0.0706 rg 0.96472 0.5098 0.0706 RG}
+.....\pdfliteral{4.68279 4.68279 m }
+.....\pdfliteral{4.68279 4.68279 m }
+.....\pdfliteral{4.68279 7.27325 l }
+.....\pdfliteral{5.77875 7.27325 l }
+.....\pdfliteral{5.77875 4.68279 l }
+.....\pdfliteral{h }
+.....\pdfliteral{5.77875 7.27325 m }
+.....\pdfliteral{f }
+.....\glue 0.0
+.....\pdfcolorstack 0 pop
+.....\pdfliteral{Q }
+.....\glue 0.0
+.....\pdfliteral{Q }
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\pdfliteral{n }
+....\pdfliteral{Q }
+....\glue 0.0 plus 1.0fil minus 1.0fil
+..\pdfcolorstack 0 pop
+! OK.
+l. ...\showbox0
+> \box...=
+\hbox(9.9006+0.0)x6.40039
+.\hbox(9.9006+0.0)x6.40039
+..\pdfcolorstack 0 push {0 g 0 G}
+..\hbox(9.9006+0.0)x6.40039
+...\glue 0.0
+...\hbox(0.0+0.0)x0.0
+....\pdfliteral{q }
+....\pdfliteral{0 G }
+....\pdfliteral{0 g }
+....\pdfliteral{0.3985 w }
+....\hbox(0.0+0.0)x0.0
+.....\pdfliteral{q }
+.....\glue 0.0
+.....\pdfliteral{q }
+.....\glue 0.0
+.....\pdfliteral{0.5978 7.27325 m }
+.....\pdfliteral{0.5978 7.27325 m }
+.....\pdfliteral{0.5978 9.86374 l }
+.....\pdfliteral{5.77875 9.86374 l }
+.....\pdfliteral{5.77875 7.27325 l }
+.....\pdfliteral{h }
+.....\pdfliteral{5.77875 9.86374 m }
+.....\pdfliteral{W }
+.....\pdfliteral{n }
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\pdfliteral{q }
+.....\pdfcolorstack 0 push {0.96472 0.5098 0.0706 rg 0.96472 0.5098 0.0706 RG}
+.....\pdfliteral{3.18828 7.27325 m }
+.....\pdfliteral{5.77875 7.27325 m }
+.....\pdfliteral{5.77875 8.70395 4.61896 9.86374 3.18828 9.86374 c }
+.....\pdfliteral{1.75758 9.86374 0.5978 8.70395 0.5978 7.27325 c }
+.....\pdfliteral{0.5978 5.84258 1.75758 4.68279 3.18828 4.68279 c }
+.....\pdfliteral{4.61896 4.68279 5.77875 5.84258 5.77875 7.27325 c }
+.....\pdfliteral{h }
+.....\pdfliteral{3.18828 7.27325 m }
+.....\pdfliteral{3.18828 7.27325 m }
+.....\pdfliteral{4.68279 7.27325 m }
+.....\pdfliteral{4.68279 8.09865 4.01367 8.76776 3.18828 8.76776 c }
+.....\pdfliteral{2.36288 8.76776 1.69377 8.09865 1.69377 7.27325 c }
+.....\pdfliteral{1.69377 6.44786 2.36288 5.77875 3.18828 5.77875 c }
+.....\pdfliteral{4.01367 5.77875 4.68279 6.44786 4.68279 7.27325 c }
+.....\pdfliteral{h }
+.....\pdfliteral{3.18828 7.27325 m }
+.....\pdfliteral{f* }
+.....\glue 0.0
+.....\pdfcolorstack 0 pop
+.....\pdfliteral{Q }
+.....\glue 0.0
+.....\pdfliteral{Q }
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\pdfliteral{q }
+.....\pdfcolorstack 0 push {0.96472 0.5098 0.0706 rg 0.96472 0.5098 0.0706 RG}
+.....\pdfliteral{3.18828 3.18828 m }
+.....\pdfliteral{6.37656 3.18828 m }
+.....\pdfliteral{6.37656 4.94913 4.94913 6.37656 3.18828 6.37656 c }
+.....\pdfliteral{1.42741 6.37656 0.0 4.94913 0.0 3.18828 c }
+.....\pdfliteral{0.0 1.42741 1.42741 0.0 3.18828 0.0 c }
+.....\pdfliteral{4.94913 0.0 6.37656 1.42741 6.37656 3.18828 c }
+.....\pdfliteral{h }
+.....\pdfliteral{3.18828 3.18828 m }
+.....\pdfliteral{3.18828 3.18828 m }
+.....\pdfliteral{5.28058 3.18828 m }
+.....\pdfliteral{5.28058 4.34384 4.34384 5.28058 3.18828 5.28058 c }
+.....\pdfliteral{2.03271 5.28058 1.09596 4.34384 1.09596 3.18828 c }
+.....\pdfliteral{1.09596 2.03271 2.03271 1.09596 3.18828 1.09596 c }
+.....\pdfliteral{4.34384 1.09596 5.28058 2.03271 5.28058 3.18828 c }
+.....\pdfliteral{h }
+.....\pdfliteral{3.18828 3.18828 m }
+.....\pdfliteral{3.18828 3.18828 m }
+.....\pdfliteral{4.08498 3.18828 m }
+.....\pdfliteral{4.08498 3.6835 3.6835 4.08498 3.18828 4.08498 c }
+.....\pdfliteral{2.69304 4.08498 2.29156 3.6835 2.29156 3.18828 c }
+.....\pdfliteral{2.29156 2.69304 2.69304 2.29156 3.18828 2.29156 c }
+.....\pdfliteral{3.6835 2.29156 4.08498 2.69304 4.08498 3.18828 c }
+.....\pdfliteral{h }
+.....\pdfliteral{3.18828 3.18828 m }
+.....\pdfliteral{f* }
+.....\glue 0.0
+.....\pdfcolorstack 0 pop
+.....\pdfliteral{Q }
+.....\glue 0.0
+.....\pdfliteral{q }
+.....\pdfcolorstack 0 push {0.96472 0.5098 0.0706 rg 0.96472 0.5098 0.0706 RG}
+.....\pdfliteral{4.68279 4.68279 m }
+.....\pdfliteral{4.68279 4.68279 m }
+.....\pdfliteral{4.68279 7.27325 l }
+.....\pdfliteral{5.77875 7.27325 l }
+.....\pdfliteral{5.77875 4.68279 l }
+.....\pdfliteral{h }
+.....\pdfliteral{5.77875 7.27325 m }
+.....\pdfliteral{f }
+.....\glue 0.0
+.....\pdfcolorstack 0 pop
+.....\pdfliteral{Q }
+.....\glue 0.0
+.....\pdfliteral{Q }
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\pdfliteral{n }
+....\pdfliteral{Q }
+....\glue 0.0 plus 1.0fil minus 1.0fil
+..\pdfcolorstack 0 pop
+! OK.
+l. ...\showbox0
+> \box...=
+\hbox(9.46005+0.0)x17.1601
+.\hbox(9.46005+0.0)x17.1601
+..\pdfcolorstack 0 push {0 g 0 G}
+..\hbox(9.46005+0.0)x17.1601
+...\glue 0.33
+...\hbox(0.0+0.0)x0.0, shifted -0.33
+....\pdfliteral{q }
+....\pdfliteral{0 G }
+....\pdfliteral{0 g }
+....\pdfliteral{0.3985 w }
+....\hbox(0.0+0.0)x0.0
+.....\pdfliteral{q }
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\pdfliteral{q }
+.....\pdfcolorstack 0 push {0.20784 0.37646 0.19217 rg 0.20784 0.37646 0.19217 RG}
+.....\pdfliteral{4.38364 4.38364 m }
+.....\pdfliteral{9.09605 4.38364 m }
+.....\pdfliteral{9.09605 6.98625 6.98625 9.09605 4.38364 9.09605 c }
+.....\pdfliteral{1.781 9.09605 -0.32877 6.98625 -0.32877 4.38364 c }
+.....\pdfliteral{-0.32877 1.781 1.781 -0.32877 4.38364 -0.32877 c }
+.....\pdfliteral{6.98625 -0.32877 9.09605 1.781 9.09605 4.38364 c }
+.....\pdfliteral{h }
+.....\pdfliteral{4.38364 4.38364 m }
+.....\pdfliteral{4.38364 4.38364 m }
+.....\pdfliteral{7.34258 4.38364 m }
+.....\pdfliteral{7.34258 6.01784 6.01784 7.34258 4.38364 7.34258 c }
+.....\pdfliteral{2.74944 7.34258 1.4247 6.01784 1.4247 4.38364 c }
+.....\pdfliteral{1.4247 2.74944 2.74944 1.4247 4.38364 1.4247 c }
+.....\pdfliteral{6.01784 1.4247 7.34258 2.74944 7.34258 4.38364 c }
+.....\pdfliteral{h }
+.....\pdfliteral{4.38364 4.38364 m }
+.....\pdfliteral{f* }
+.....\glue 0.0
+.....\pdfcolorstack 0 pop
+.....\pdfliteral{Q }
+.....\pdfliteral{q }
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\pdfliteral{12.05501 4.38364 m }
+.....\pdfliteral{15.01395 4.38364 m }
+.....\pdfliteral{15.01395 6.01784 13.68921 7.34258 12.05501 7.34258 c }
+.....\pdfliteral{10.4208 7.34258 9.09607 6.01784 9.09607 4.38364 c }
+.....\pdfliteral{9.09607 2.74944 10.4208 1.4247 12.05501 1.4247 c }
+.....\pdfliteral{13.68921 1.4247 15.01395 2.74944 15.01395 4.38364 c }
+.....\pdfliteral{h }
+.....\pdfliteral{12.05501 4.38364 m }
+.....\pdfliteral{7.34259 -0.32877 l }
+.....\pdfliteral{7.34259 9.09605 l }
+.....\pdfliteral{16.76743 9.09605 l }
+.....\pdfliteral{16.76743 -0.32877 l }
+.....\pdfliteral{7.34259 -0.32877 l }
+.....\pdfliteral{W }
+.....\pdfliteral{n }
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\glue 0.0
+.....\pdfliteral{q }
+.....\pdfcolorstack 0 push {0.97647 0.77647 0.22745 rg 0.97647 0.77647 0.22745 RG}
+.....\pdfliteral{12.05501 4.38364 m }
+.....\pdfliteral{16.76743 4.38364 m }
+.....\pdfliteral{16.76743 6.98625 14.65764 9.09605 12.05501 9.09605 c }
+.....\pdfliteral{9.45238 9.09605 7.34259 6.98625 7.34259 4.38364 c }
+.....\pdfliteral{7.34259 1.781 9.45238 -0.32877 12.05501 -0.32877 c }
+.....\pdfliteral{12.882 -0.32877 13.69502 -0.11087 14.41121 0.30255 c }
+.....\pdfliteral{12.05501 4.38364 l }
+.....\pdfliteral{14.41121 0.30257 m }
+.....\pdfliteral{h }
+.....\pdfliteral{12.05501 4.38364 m }
+.....\pdfliteral{15.01395 4.38364 m }
+.....\pdfliteral{15.01395 6.01784 13.68921 7.34258 12.05501 7.34258 c }
+.....\pdfliteral{10.4208 7.34258 9.09607 6.01784 9.09607 4.38364 c }
+.....\pdfliteral{9.09607 2.74944 10.4208 1.4247 12.05501 1.4247 c }
+.....\pdfliteral{12.57426 1.4247 13.0848 1.56151 13.53448 1.8211 c }
+.....\pdfliteral{12.05501 4.38364 l }
+.....\pdfliteral{13.53447 1.82109 m }
+.....\pdfliteral{h }
+.....\pdfliteral{f* }
+.....\glue 0.0
+.....\pdfcolorstack 0 pop
+.....\pdfliteral{Q }
+.....\glue 0.0
+.....\pdfliteral{Q }
+.....\glue 0.0
+.....\pdfliteral{q }
+.....\glue 0.0
+.....\glue 0.0
+.....\pdfliteral{4.38364 4.38364 m }
+.....\pdfliteral{9.09605 4.38364 m }
+.....\pdfliteral{9.09605 6.98625 6.98625 9.09605 4.38364 9.09605 c }
+.....\pdfliteral{1.781 9.09605 -0.32877 6.98625 -0.32877 4.38364 c }
+.....\pdfliteral{-0.32877 1.781 1.781 -0.32877 4.38364 -0.32877 c }
+.....\pdfliteral{6.98625 -0.32877 9.09605 1.781 9.09605 4.38364 c }
+.....\pdfliteral{h }
+.....\pdfliteral{4.38364 4.38364 m }
+.....\pdfliteral{W }
+.....\pdfliteral{n }
+.....\glue 0.0
+.....\glue 0.0
+.....\pdfliteral{q }
+.....\pdfcolorstack 0 push {0.53725 0.57256 0.22745 rg 0.53725 0.57256 0.22745 RG}
+.....\pdfliteral{12.05501 4.38364 m }
+.....\pdfliteral{16.76743 4.38364 m }
+.....\pdfliteral{16.76743 6.98625 14.65764 9.09605 12.05501 9.09605 c }
+.....\pdfliteral{9.45238 9.09605 7.34259 6.98625 7.34259 4.38364 c }
+.....\pdfliteral{7.34259 1.781 9.45238 -0.32877 12.05501 -0.32877 c }
+.....\pdfliteral{14.65764 -0.32877 16.76743 1.781 16.76743 4.38364 c }
+.....\pdfliteral{h }
+.....\pdfliteral{12.05501 4.38364 m }
+.....\pdfliteral{f }
+.....\glue 0.0
+.....\pdfcolorstack 0 pop
+.....\pdfliteral{Q }
+.....\glue 0.0
+.....\pdfliteral{Q }
+.....\glue 0.0
+.....\glue 0.0
+.....\pdfliteral{q }
+.....\pdfcolorstack 0 push {0.97647 0.77647 0.22745 rg 0.97647 0.77647 0.22745 RG}
+.....\pdfliteral{12.05501 4.38364 m }
+.....\pdfliteral{15.01395 4.49323 m }
+.....\pdfliteral{15.01395 4.49323 m }
+.....\pdfliteral{15.01395 0.0 l }
+.....\pdfliteral{16.76741 0.0 l }
+.....\pdfliteral{16.76741 4.49323 l }
+.....\pdfliteral{h }
+.....\pdfliteral{16.76741 0.0 m }
+.....\pdfliteral{f }
+.....\glue 0.0
+.....\pdfcolorstack 0 pop
+.....\pdfliteral{Q }
+.....\glue 0.0
+.....\pdfliteral{Q }
+.....\glue 0.0 plus 1.0fil minus 1.0fil
+....\pdfliteral{n }
+....\pdfliteral{Q }
+....\glue 0.0 plus 1.0fil minus 1.0fil
+..\pdfcolorstack 0 pop
+! OK.
+l. ...\showbox0
