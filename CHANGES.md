@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## Version 0.8g (2020-08-09)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.8f...HEAD>
+See <https://github.com/moewew/biblatex-ext/compare/v0.8f...v0.8g>
 
 ### Fixed
 - Synced with 2020-08-07 `l3draw`/`l3color` changes.
