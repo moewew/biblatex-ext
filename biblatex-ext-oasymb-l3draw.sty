@@ -9,9 +9,21 @@
 \RequirePackage{l3color}
 \RequirePackage{l3draw}
 
+\msg_new:nnn { biblatex-ext-oasymb-l3draw } { OutdatedL3Draw }
+  { Your~versions~of~'l3color'~and~'l3draw~do~not~support~
+    '\token_to_str:N\color_fill:n'. \\
+    Please~update~'l3color'~and~'l3draw'~to~version~2020-08-07~or~above.\\
+    Limited~support~for~older~versions~with~
+    '\token_to_str:N\draw_color_fill:n'~is~available,~
+    but~not~tested~extensively.
+  }
+
 \cs_if_exist:NTF \color_fill:n
   { \cs_set_eq:NN \__extblx_color_fill:n \color_fill:n }
-  { \cs_set_eq:NN \__extblx_color_fill:n \draw_color_fill:n }
+  {
+     \msg_warning:nn {biblatex-ext-oasymb-l3draw} {OutdatedL3Draw}
+     \cs_set_eq:NN \__extblx_color_fill:n \draw_color_fill:n
+  }
 
 % PLoS Open Access symbol based on
 % https://commons.wikimedia.org/wiki/File:Open_Access_logo_PLoS_white.svg
