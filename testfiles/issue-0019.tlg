@@ -16,6 +16,23 @@ Package biblatex Info: ... file 'blx-compat.def' found.
 (../blx-compat.def
 File: blx-compat.def ....-..-.. v... biblatex compatibility (PK/MW)
 )
+(../expl3.sty
+Package: expl3 ....-..-.. L3 programming layer (loader) 
+(../l3backend-pdfmode.def
+File: l3backend-pdfmode.def ....-..-.. L3 backend support: PDF mode
+))
+Package biblatex Info: expl3
+(biblatex)             ....-..-.. L3 programming layer (loader) 
+(biblatex)             is new enough (at least ....-..-..),
+(biblatex)             setting 'casechanger=expl3'.
+Package biblatex Info: Trying to load expl3 case changing code...
+Package biblatex Info: ... file 'blx-case-expl3.def' found.
+(../blx-case-expl3.def
+(../xparse.sty
+Package: xparse ....-..-.. L3 Experimental document command parser
+(../xparse-generic.tex))
+File: blx-case-expl3 ....-..-.. v... expl3 case changing code for biblatex
+)
 Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
 (../biblatex.def
@@ -39,6 +56,10 @@ Package biblatex Info: ... file 'standard.bbx' found.
 (../standard.bbx
 File: standard.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
 )
+Package biblatex Warning: The starred command '\DeclareDelimAlias*' is
+(biblatex)                deprecated.
+(biblatex)                Use the unstarred version '\DeclareDelimAlias'
+(biblatex)                instead.
 Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@bib@' already defined, overwriting.
 Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@biblist@' already defined, overwriting.
 )
@@ -115,9 +136,6 @@ Completed box being shipped out [1]
 ..\glue(\lineskip) 0.0
 ..\vbox(550.0+0.0)x345.0, glue set 502.79628fil
 ...\write-{}
-...\write1{\@writefile{toc}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse \ETC.}
-...\write1{\@writefile{lof}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse \ETC.}
-...\write1{\@writefile{lot}{\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse \ETC.}
 ...\write1{\babel@aux{british}{}}
 ...\glue(\topskip) 1.96309
 ...\hbox(8.03691+0.0)x345.0, glue set 297.56984fil

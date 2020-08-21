@@ -16,6 +16,23 @@ Package biblatex Info: ... file 'blx-compat.def' found.
 (../blx-compat.def
 File: blx-compat.def ....-..-.. v... biblatex compatibility (PK/MW)
 )
+(../expl3.sty
+Package: expl3 ....-..-.. L3 programming layer (loader) 
+(../l3backend-pdfmode.def
+File: l3backend-pdfmode.def ....-..-.. L3 backend support: PDF mode
+))
+Package biblatex Info: expl3
+(biblatex)             ....-..-.. L3 programming layer (loader) 
+(biblatex)             is new enough (at least ....-..-..),
+(biblatex)             setting 'casechanger=expl3'.
+Package biblatex Info: Trying to load expl3 case changing code...
+Package biblatex Info: ... file 'blx-case-expl3.def' found.
+(../blx-case-expl3.def
+(../xparse.sty
+Package: xparse ....-..-.. L3 Experimental document command parser
+(../xparse-generic.tex))
+File: blx-case-expl3 ....-..-.. v... expl3 case changing code for biblatex
+)
 Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
 (../biblatex.def
@@ -39,6 +56,10 @@ Package biblatex Info: ... file 'standard.bbx' found.
 (../standard.bbx
 File: standard.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
 )
+Package biblatex Warning: The starred command '\DeclareDelimAlias*' is
+(biblatex)                deprecated.
+(biblatex)                Use the unstarred version '\DeclareDelimAlias'
+(biblatex)                instead.
 Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@bib@' already defined, overwriting.
 Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@biblist@' already defined, overwriting.
 )
@@ -603,7 +624,7 @@ TEST 13: Parencites note
 *** worman (@book) ***
 *** geer (@thesis) ***
 > \box...=
-\hbox(7.5+2.5)x403.65103
+\hbox(7.5+2.5)x400.3177
 .\T1/lmr/m/n/10 (
 .\T1/lmr/m/n/10 g
 .\T1/lmr/m/n/10 l
@@ -690,7 +711,6 @@ TEST 13: Parencites note
 .\T1/lmr/m/n/10 e
 .\T1/lmr/m/n/10 r
 .\T1/lmr/m/n/10 ,
-.\glue 3.33333 plus 2.08331 minus 0.88889
 .\glue 3.33333 plus 2.08331 minus 0.88889
 .\T1/lmr/m/n/10 g
 .\T1/lmr/m/n/10 l
@@ -845,7 +865,7 @@ TEST 18: Textcites note
 *** worman (@book) ***
 *** geer (@thesis) ***
 > \box...=
-\hbox(7.5+2.5)x479.76253
+\hbox(7.5+2.5)x476.4292
 .\T1/lmr/m/n/10 g
 .\T1/lmr/m/n/10 l
 .\T1/lmr/m/n/10 o
@@ -949,7 +969,6 @@ TEST 18: Textcites note
 .\T1/lmr/m/n/10 5
 .\T1/lmr/m/n/10 )
 .\T1/lmr/m/n/10 ,
-.\glue 3.33333 plus 2.08331 minus 0.88889
 .\glue 3.33333 plus 2.08331 minus 0.88889
 .\T1/lmr/m/n/10 g
 .\T1/lmr/m/n/10 l
@@ -1197,7 +1216,7 @@ TEST 23: Footcites note
 ...\T1/lmr/m/n/7 9
 ..\mathoff
 .\insert253, natural size 9.50002; split(6.65,2.85002); float cost 20000
-..\hbox(6.65+2.85002)x345.0, glue set - 0.78784
+..\hbox(6.65+2.85002)x345.0, glue set - 0.57982
 ...\hbox(6.62265+0.0)x15.30002, glue set 11.13336fil
 ....\glue 0.0 plus 1.0fil minus 1.0fil
 ....\hbox(6.62265+0.0)x4.16666
@@ -1293,7 +1312,6 @@ TEST 23: Footcites note
 ...\T1/lmr/m/n/8 e
 ...\T1/lmr/m/n/8 r
 ...\T1/lmr/m/n/8 ,
-...\glue 2.83337 plus 1.77086 minus 0.75555
 ...\glue 2.83337 plus 1.77086 minus 0.75555
 ...\T1/lmr/m/n/8 g
 ...\T1/lmr/m/n/8 l
