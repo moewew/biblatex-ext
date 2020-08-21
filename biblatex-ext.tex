@@ -1124,17 +1124,18 @@ necessary to modify the bibmacro~\bibmacro{in:}.
 \begingroup
 \makeatletter
 \togglefalse{bbx:doi}
-\DeclareFieldFormat{highlighthere}{%
+\newcommand*{\highlighthere}[1]{%
   \iffieldequalstr{entrykey}{sigfridsson}
     {\textcolor{highlight1}{#1}}
     {\iffieldequalstr{entrykey}{westfahl:space}
        {\textcolor{highlight2}{#1}}
        {#1}}}
+\DeclareFieldFormat{highlighthere}{\highlighthere{#1}}
 \renewbibmacro*{in:}{%
   \blx@begunit\blx@endunit
   \printtext[highlighthere]{%
-    \printtext{%
-      \bibstring{in}\intitlepunct}}}
+    \bibstring{in}}%
+  \printunit{\highlighthere{\intitlepunct}}}
 
 \begin{bibexample}[title={\kvopt{articlein}{true}}]
 \toggletrue{bbx:articlein}
