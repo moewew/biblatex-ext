@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.8g...HEAD>
+
+### Changed
+- Updated for `biblatex` v3.15 (2020/08/19).
+  This is now the recommended `biblatex` version.
+
 ## Version 0.8g (2020-08-09)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.8f...v0.8g>
