@@ -56,10 +56,7 @@ Package biblatex Info: ... file 'standard.bbx' found.
 (../standard.bbx
 File: standard.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
 )
-Package biblatex Warning: The starred command '\DeclareDelimAlias*' is
-(biblatex)                deprecated.
-(biblatex)                Use the unstarred version '\DeclareDelimAlias'
-(biblatex)                instead.
+
 Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@bib@' already defined, overwriting.
 Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@biblist@' already defined, overwriting.
 )

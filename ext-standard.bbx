@@ -170,7 +170,12 @@
     {\usebibmacro{#1}}}
 
 \DeclareDelimAlias{innametitledelim}{nametitledelim}
-\DeclareDelimAlias*[bib,biblist]{innametitledelim}{nametitledelim}
+% \DeclareDelimAlias* is deprecated in biblatex 3.15 and above
+% we'll keep this around, but may remove it at some point in
+% the future
+\ifundef\blx@declaredelimalias@a
+  {\DeclareDelimAlias*[bib,biblist]{innametitledelim}{nametitledelim}}
+  {\DeclareDelimAlias[bib,biblist]{innametitledelim}{nametitledelim}}
 
 \newcommand*{\titleaddonpunct}{\newunitpunct}
 
