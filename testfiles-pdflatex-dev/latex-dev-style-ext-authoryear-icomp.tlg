@@ -56,7 +56,6 @@ Package biblatex Info: ... file 'standard.bbx' found.
 (../standard.bbx
 File: standard.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
 )
-
 Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@bib@' already defined, overwriting.
 Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@biblist@' already defined, overwriting.
 )
