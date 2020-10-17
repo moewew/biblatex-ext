@@ -284,6 +284,12 @@
 % \blx@kv@undef relying on keyval definitions
 \providecommand*{\blx@kv@undef}[2]{\csundef{KV@#1@#2}}
 
+% \mkrelatedstringtext biblatex 3.16
+% if \mkrelatedstringtext is not defined,
+% then we only have \mainlang, which is \selectlanguage
+% and needs two groups for correct local effects
+\providecommand*{\mkrelatedstringtext}[1]{{{\mainlang #1}}}
+
 \endinput
 %
 % This file is part of the biblatex-ext bundle.
