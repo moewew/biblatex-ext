@@ -99,7 +99,7 @@ version 2005/12/01 or later.
 This work has the LPPL maintenance status 'maintained'.
 
 The Current Maintainer of the work is Moritz Wemheuer
-  <mwemheu@gmail.com>.
+  <mwemheu@posteo.de>.
 
 The files `README.md`, `CHANGES.md`, `biblatex-ext.pdf`,
 `biblatex-ext.tex` and `biblatex-ext-examples.bib` in their entirety
