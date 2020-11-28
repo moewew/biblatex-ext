@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v2
 
     # http://man7.org/linux/man-pages/man1/date.1.html
-    - name: Get Date
+    - name: Get date
       id: get-date
       run: |
         echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
@@ -31,7 +31,7 @@ jobs:
         key: texlive-${{ steps.get-date.outputs.date }}
         restore-keys: texlive-
 
-    - name: Set up TeX Live environment
+    - name: Set up TeX Live
       run: . installsupport/install-texlive.sh
 
     - name: Run tests
@@ -45,7 +45,7 @@ jobs:
     - uses: actions/checkout@v2
 
     # http://man7.org/linux/man-pages/man1/date.1.html
-    - name: Get Date
+    - name: Get date
       id: get-date
       run: |
         echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
@@ -60,7 +60,7 @@ jobs:
         key: texlive-${{ steps.get-date.outputs.date }}
         restore-keys: texlive-
 
-    - name: Set up TeX Live environment
+    - name: Set up TeX Live
       run: . installsupport/install-texlive.sh
 
     - name: Compile documentation
