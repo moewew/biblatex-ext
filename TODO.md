@@ -6,9 +6,6 @@
 - series+number position
 - more modular bib drivers
   - would be quite a shift away from the standard styles, so offer as option?
-- compressed @set citations
-  - would need option to back out of ...
-  https://tex.stackexchange.com/a/416448/35864
 - "subunit" or "superunit" punctuation?
   - See for example https://texwelt.de/wissen/fragen/22228/a/22233
   - But: What are the exact requirements here?
@@ -28,5 +25,4 @@
 - Less intrusive versioning
 - blxextdoiapi for non-Lua engines with shell escape calling texlua?
 
-- Link style names in doc
 - Disable (or at least warn) introcite for verbose styles.

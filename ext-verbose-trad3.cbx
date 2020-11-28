@@ -5,75 +5,7 @@
   {}{}{}{}
 
 \RequireCitationStyle{verbose-trad3}
-
-\DeclareOuterCiteDelims{parencite}{\bibopenparen}{\bibcloseparen}
-
-\DeclareInnerCiteDelims{textcite}{\bibopenparen}{\bibcloseparen}
-
-\DeclareCiteCommand{\cite}[\mkoutercitedelims]
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \usebibmacro{cite}}
-  {\multicitedelim}
-  {\usebibmacro{cite:postnote}}
-
-\DeclareCiteCommand{\parencite}[\mkouterparencitedelims]
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \usebibmacro{cite}}
-  {\multicitedelim}
-  {\usebibmacro{cite:postnote}}
-
-\DeclareCiteCommand{\footcite}[\mkextblxfootcite]
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \usebibmacro{cite}}
-  {\multicitedelim}
-  {\usebibmacro{cite:postnote}}
-
-\DeclareCiteCommand{\footcitetext}[\mkextblxfootcitetext]
-  {\usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \usebibmacro{cite}}
-  {\multicitedelim}
-  {\usebibmacro{cite:postnote}}
-
-% smartcite's delimcontext needs special attention
-% (see ext-biblatex-aux.def)
-\DeclareCiteCommand{\smartcite}[\mksmartcite]
-  {\delimcontext{\extblx@thisdelimcontext}%
-   \usebibmacro{prenote}}
-  {\usebibmacro{citeindex}%
-   \usebibmacro{cite}}
-  {\multicitedelim}
-  {\usebibmacro{cite:postnote}}
-
-\DeclareCiteCommand{\cbx@textcite}[\mkoutertextcitedelims]
-  {\usebibmacro{textcite:init}}
-  {\iffieldequals{namehash}{\cbx@lasthash}
-     {}
-     {\iffirstcitekey
-        {}
-        {\textcitedelim}%
-      \stepcounter{textcitecount}%
-      \usebibmacro{textcite}%
-      \savefield{namehash}{\cbx@lasthash}}}
-  {}
-  {}
-
-\DeclareMultiCiteCommand{\cbx@textcites}[\mkoutertextcitedelims]
-  {\cbx@textcite}{}
-
-\DeclareMultiCiteCommand{\cites}[\mkoutercitedelims]
-  {\cite}{\multicitedelim}
-\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelims]
-  {\parencite}{\multicitedelim}
-\DeclareMultiCiteCommand{\footcites}[\mkextblxfootcite]
-  {\footcite}{\multicitedelim}
-\DeclareMultiCiteCommand{\footcitetexts}[\mkextblxfootcitetext]
-  {\footcitetext}{\multicitedelim}
-\DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
-  {\smartcite}{\multicitedelim}
+\RequireCitationStyle{ext-verbose-common}
 
 \endinput
 %
