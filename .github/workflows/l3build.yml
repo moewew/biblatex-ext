@@ -29,6 +29,7 @@ jobs:
           /tmp/texlive
           ~/.texlive
         key: texlive-${{ steps.get-date.outputs.date }}
+        restore-keys: texlive-
 
     - name: Set up TeX Live environment
       run: . installsupport/install-texlive.sh
@@ -57,6 +58,7 @@ jobs:
           /tmp/texlive
           ~/.texlive
         key: texlive-${{ steps.get-date.outputs.date }}
+        restore-keys: texlive-
 
     - name: Set up TeX Live environment
       run: . installsupport/install-texlive.sh
