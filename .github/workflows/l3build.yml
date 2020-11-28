@@ -24,7 +24,7 @@ jobs:
         key: texlive
 
     - name: Set up TeX Live environment
-      run: . ci/install-texlive.sh
+      run: . installsupport/install-texlive.sh
 
     - name: Run tests
       run: l3build check -q -H  --show-log-on-error
@@ -45,7 +45,7 @@ jobs:
         key: texlive
 
     - name: Set up TeX Live environment
-      run: . ci/install-texlive.sh
+      run: . installsupport/install-texlive.sh
 
     - name: Compile documentation
       run: l3build doc -q -H
