@@ -39,6 +39,7 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
+    - run: echo "PATH=/tmp/texlive/bin/x86_64-linux:$PATH" >> $GITHUB_ENV
     - name: Run tests
       run: l3build check -q -H  --show-log-on-error
 
@@ -47,5 +48,6 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
+    - run: echo "PATH=/tmp/texlive/bin/x86_64-linux:$PATH" >> $GITHUB_ENV
     - name: Compile documentation
       run: l3build doc -q -H
