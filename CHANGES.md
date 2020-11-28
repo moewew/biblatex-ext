@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.9...HEAD>
+
+### Changed
+- Separate out common code for verbose citation styles.
+- Warn about `introcite=plain` with verbose citation styles.
+
 ## Version 0.9 (2020-08-21)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.8g...v0.9>

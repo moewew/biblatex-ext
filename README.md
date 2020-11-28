@@ -60,6 +60,7 @@ files
   - `ext-numeric-comp.bbx` and `ext-numeric-comp.cbx`
   - `ext-numeric-verb.bbx` and `ext-numeric-verb.cbx`
 - The `verbose` style family
+  - `ext-verbose-common.cbx` and `ext-verbose-note-common.cbx`
   - `ext-verbose.bbx` and `ext-verbose.cbx`
   - `ext-verbose-ibid.bbx` and `ext-verbose-ibid.cbx`
   - `ext-verbose-note.bbx` and `ext-verbose-note.cbx`
