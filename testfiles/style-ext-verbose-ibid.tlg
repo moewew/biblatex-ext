@@ -76,6 +76,10 @@ Package biblatex Info: Redefining '\smartcite'.
 Package biblatex Info: Redefining '\textcite'.
 Package biblatex Info: Redefining '\textcites'.
 )
+Package biblatex Info: Trying to load citation style 'ext-verbose-common'...
+Package biblatex Info: ... file 'ext-verbose-common.cbx' found.
+(ext-verbose-common.cbx
+File: ext-verbose-common.cbx ....-..-.. v... extended biblatex verbose citation style (MW)
 Package biblatex Info: Redefining '\cite'.
 Package biblatex Info: Redefining '\parencite'.
 Package biblatex Info: Redefining '\footcite'.
@@ -88,7 +92,7 @@ Package biblatex Info: Redefining '\parencites'.
 Package biblatex Info: Redefining '\footcites'.
 Package biblatex Info: Redefining '\footcitetexts'.
 Package biblatex Info: Redefining '\smartcites'.
-)
+))
 Package biblatex Info: Trying to load configuration file...
 Package biblatex Info: ... file 'biblatex.cfg' found.
 (../biblatex.cfg
