@@ -1815,6 +1815,9 @@ Field formats can be modified with \cmd{DeclareFieldFormat}.
   \exampleprintbib{sigfridsson}
   \end{bibexample}
 
+A customisation example for \bibfield{issuedate} can be found in the
+\hypercmd{volnumdatedelim} description.
+
 \bibfieldformatitem{volumeof} The format for the \bibfield{volume} of a
   \bibfield{maintitle} used when \hyperkvopt{maintitleaftertitle}{true}.
   \begin{bibexample}
@@ -2174,6 +2177,7 @@ The default is a comma followed by a space.
 \begin{lstlisting}[style=extblxstylelatex]
 \renewcommand*{\pubdatedelim}{\addspace}
 \end{lstlisting}
+\tcblower
 \renewcommand*{\pubdatedelim}{\addspace}
 \csuse{bbx@opt@mergedate@false}%
 \exampleprintbib{knuth:ct:a}
@@ -2584,6 +2588,9 @@ By default the macro is defined and used as follows.
   \usebibmacro{pubinstorg+location+date}{|organization|}}
 \end{biblatexcode}
 
+An example use of the \bibmacro{pubinstorg+location+date} is shown
+in the descriotion of~\hypercmd{publocdelim}.
+
 \keyitem[type+number]
 A bibliography macro to print the \bibfield{type} and \bibfield{number} fields.
 \end{keymarglistbook}
@@ -2714,8 +2721,44 @@ The package also defines two helpful bibliography macros.
   \keyitem[tabular:omitsortname] Suppresses the labelname/sortname in the current
     group.
 \end{keymarglistbook}
+\begin{remindbox}
+  These two bibliography macros have a fairly basic definition that should make
+  them compatible with most styles (not only \sty{biblatex-ext}
+  or standard styles).
+  Consequently, they may not be able to support all advanced features of
+  the style you are using.
 
-A simple example of a useful tabular bibliography setup is
+  If you are missing anything, you will have to write versions of those macros
+  that are tailored to the specific style you are loading and the features you
+  want to use.
+\end{remindbox}
+
+For the common case of two-column tabular bibliographies there is a thin
+wrapper around \hypercmd{defbibtabular} that might turn out a bit easier to use.
+\begin{ltxsyntax}
+  \cmditem{defbibtabulartwocolumn}{name}{begin code}{end code}%
+  {anchor code}{driver precode}
+
+  This defines a two-column tabular bibliography environment with \prm{name},
+  \prm{begin code} and \prm{end code} as for \hypercmd{defbibtabular}.
+
+  The first column is an \hypercmd{anchorlang} column that executes
+  \prm{anchor code}, the second column executes a pre-code and
+  the bibliography driver.
+
+\begin{biblatexcode}
+\defbibtabulartwocolumn{(*@\prm{name}@*)}
+  {(*@\prm{begin code}@*)}{(*@\prm{end code}@*)}
+  {(*@\prm{anchor code}@*)}{(*@\prm{driver precode}@*)}
+\end{biblatexcode}
+is equivalent to
+\begin{biblatexcode}
+\defbibtabular{(*@\prm{name}@*)}
+  {(*@\prm{begin code}@*)}{(*@\prm{end code}@*)}
+  {\anchorlang{(*@\prm{anchor code}@*)} & \driver{(*@\prm{driver precode}@*)} \\}
+\end{biblatexcode}
+
+
 \begin{bibexample}[breakable,
   title={Example document with tabular bibliography}]
 \begin{lstlisting}[style=extblxstylelatex]
@@ -2798,30 +2841,6 @@ to avoid duplication.
 The anchor is set to the first column, so that a viewer jumps there
 if a link to the entry is followed.
 
-For the common case of two-column tabular bibliographies there is a thin
-wrapper around \hypercmd{defbibtabular} that might turn out a bit easier to use.
-\begin{ltxsyntax}
-  \cmditem{defbibtabulartwocolumn}{name}{begin code}{end code}%
-  {anchor code}{driver precode}
-
-  This defines a two-column tabular bibliography environment with \prm{name},
-  \prm{begin code} and \prm{end code} as for \hypercmd{defbibtabular}.
-
-  The first column is an \hypercmd{anchorlang} column that executes
-  \prm{anchor code}, the second column executes a pre-code and
-  the bibliography driver.
-
-\begin{biblatexcode}
-\defbibtabulartwocolumn{(*@\prm{name}@*)}
-  {(*@\prm{begin code}@*)}{(*@\prm{end code}@*)}
-  {(*@\prm{anchor code}@*)}{(*@\prm{driver precode}@*)}
-\end{biblatexcode}
-is equivalent to
-\begin{biblatexcode}
-\defbibtabular{(*@\prm{name}@*)}
-  {(*@\prm{begin code}@*)}{(*@\prm{end code}@*)}
-  {\anchorlang{(*@\prm{anchor code}@*)} & \driver{(*@\prm{driver precode}@*)} \\}
-\end{biblatexcode}
 
 Using \cmd{defbibtabulartwocolumn} the example from above could be written as
 \begin{biblatexcode}
