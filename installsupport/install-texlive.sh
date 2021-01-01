@@ -84,8 +84,8 @@ tlmgr install       \
   environ           \
   epstopdf-pkg      \
   fontaxes          \
+  geometry          \
   hyphenat          \
-  koma-script       \
   l3experimental    \
   libertinus        \
   libertinus-type1  \
@@ -98,6 +98,7 @@ tlmgr install       \
   oberdiek          \
   pgf               \
   pict2e            \
+  ragged2e          \
   tcolorbox         \
   tracklang         \
   trimspaces        \
