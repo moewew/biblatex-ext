@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## Version 0.10 (2021-01-01)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.9...HEAD>
+See <https://github.com/moewew/biblatex-ext/compare/v0.9...v0.10>
 
 ### Changed
 - Updated for `biblatex` v3.16 (2020/12/31).
