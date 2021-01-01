@@ -16,15 +16,6 @@ Package biblatex Info: ... file 'blx-compat.def' found.
 (../blx-compat.def
 File: blx-compat.def ....-..-.. v... biblatex compatibility (PK/MW)
 )
-Package biblatex Info: expl3
-(biblatex)             ....-..-.. L3 programming layer (loader) 
-(biblatex)             is new enough (at least ....-..-..),
-(biblatex)             setting 'casechanger=expl3'.
-Package biblatex Info: Trying to load expl3 case changing code...
-Package biblatex Info: ... file 'blx-case-expl3.def' found.
-(../blx-case-expl3.def
-File: blx-case-expl3 ....-..-.. v... expl3 case changing code for biblatex
-)
 Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
 (../biblatex.def
