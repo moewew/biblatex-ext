@@ -34,6 +34,7 @@
 \usepackage{booktabs}
 \usepackage{multicol}
 \usepackage[svgnames]{xcolor}
+\usepackage{sectsty}
 \usepackage{longtable}
 \usepackage{array}
 \newcolumntype{L}[1]{%
@@ -329,9 +330,7 @@
 
 \let\accentcolour\spotcolor
 
-%\addtokomafont{section}{\accentcolour}
-%\addtokomafont{subsection}{\accentcolour}
-%\addtokomafont{subsubsection}{\accentcolour}
+\allsectionsfont{\sffamily\accentcolour}
 
 \renewcommand*{\verbatimfont}{\ttfamily}
 \renewcommand*{\displayverbfont}{\ttfamily}
