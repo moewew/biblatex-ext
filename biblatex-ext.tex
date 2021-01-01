@@ -1,4 +1,4 @@
-\documentclass[DIV=9]{scrartcl}
+\documentclass[11pt,a4paper]{article}
 \usepackage{iftex}
 \iftutex
   \usepackage{fontspec}
@@ -24,7 +24,12 @@
   \usepackage[scaled=0.78]{beramono}
   \usepackage{bm}
 \fi
+\usepackage[%verbose,
+  left=3.5cm, right=3.5cm,
+  marginparwidth=2.5cm
+]{geometry}
 \usepackage{microtype}
+\usepackage{ragged2e}
 \usepackage{hyphenat}
 \usepackage{booktabs}
 \usepackage{multicol}
@@ -165,6 +170,7 @@
 
 \newtcolorbox{bibexample}[1][]{enhanced,
                                colframe=spot!75!black, colback=spot!5!white,
+                               before title=\raggedright,
                                #1}
 \newtcblisting{biblatexcode}{enhanced,
                              colframe=black!75!white, colback=black!5!white,
@@ -270,9 +276,27 @@
   \end{multicols}
   \endgroup}
 
-\BeforeStartingTOC[toc]{\begin{multicols}{2}}
-\AfterStartingTOC[toc]{\end{multicols}}
-\BeforeTOCHead[toc]{\pdfbookmark[1]{\contentsname}{contents}}
+
+\renewcommand\tableofcontents{%
+    \section*{\contentsname
+        \@mkboth{%
+           \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
+    \pdfbookmark[1]{\contentsname}{contents}%
+    \@starttoc{toc}%
+    }
+\def\@starttoc#1{%
+  \begingroup
+    \begin{multicols}{2}
+    \makeatletter
+    \RaggedRight
+    \@input{\jobname.#1}%
+    \if@filesw
+      \expandafter\newwrite\csname tf@#1\endcsname
+      \immediate\openout \csname tf@#1\endcsname \jobname.#1\relax
+    \fi
+    \end{multicols}
+    \@nobreakfalse
+  \endgroup}
 
 \newrobustcmd*{\tex}{\TeX}
 \newrobustcmd*{\etex}{\mbox{e-TeX}}
@@ -305,9 +329,9 @@
 
 \let\accentcolour\spotcolor
 
-\addtokomafont{section}{\accentcolour}
-\addtokomafont{subsection}{\accentcolour}
-\addtokomafont{subsubsection}{\accentcolour}
+%\addtokomafont{section}{\accentcolour}
+%\addtokomafont{subsection}{\accentcolour}
+%\addtokomafont{subsubsection}{\accentcolour}
 
 \renewcommand*{\verbatimfont}{\ttfamily}
 \renewcommand*{\displayverbfont}{\ttfamily}
@@ -434,7 +458,7 @@
 }
 
 % By Stefan Kottwitz, see https://tex.stackexchange.com/a/799/35864
-\newcommand*\justify{%
+\newcommand*\ttjustify{%
   \fontdimen2\font=0.4em% interword space
   \fontdimen3\font=0.2em% interword stretch
   \fontdimen4\font=0.1em% interword shrink
@@ -443,9 +467,9 @@
 }
 
 % no \mbox here, we may have to break things
-\renewrobustcmd*{\sty}[1]{{\verbatimfont\justify #1}}
-\newrobustcmd*{\blxstyle}[1]{{\verbatimfont\justify #1}}
-\newrobustcmd*{\filename}[1]{{\verbatimfont\justify #1}}
+\renewrobustcmd*{\sty}[1]{{\verbatimfont\ttjustify #1}}
+\newrobustcmd*{\blxstyle}[1]{{\verbatimfont\ttjustify #1}}
+\newrobustcmd*{\filename}[1]{{\verbatimfont\ttjustify #1}}
 \renewrobustcmd*{\bibfield}[1]{\sty{#1}}
 \renewrobustcmd*{\opt}[1]{\sty{#1}}
 \newrobustcmd*{\optval}[1]{\sty{#1}}
@@ -455,7 +479,7 @@
 \let\cs\cmd
 \newrobustcmd*{\bibfieldformat}[1]{{\bibfieldformatfont #1}}
 
-\newrobustcmd*{\gencode}[1]{{\verbatimfont\justify #1}}
+\newrobustcmd*{\gencode}[1]{{\verbatimfont\ttjustify #1}}
 
 \def\exltd@buildhypercmd@i#1{%
   \expandafter\newrobustcmd\expandafter*\expandafter
@@ -1067,7 +1091,7 @@ Sigfridsson and Ryde \quad Knuth 1984, 1986
 
 \styleitem{ext-authoryear-tecomp}
 A compact author-year citation style that combines
-\blxstyle{ext-authoryear-tcomp} and \blxstyle{ext-authoryear-ecomp}.
+\blxstyle{ext-authoryear-tcomp} and \blxstyle{ext-author\-year-ecomp}.
 \begin{bibexample}
 \begin{lstlisting}[style=extblxstylelatex]
 \usepackage[style=ext-authoryear-tecomp]{biblatex}
@@ -2300,9 +2324,9 @@ or \enquote{\prm{opening delimiter}\allowbreak text\allowbreak
 is introduced.
 It cannot be guaranteed that the opening and closing delimiters are executed
 at the same level of grouping, let alone in the same group.
-As mentioned above, this approach is not suitable to wrap the citation up in a
-wrapper command, i.e.\ to pass the entire output of the citation command as
-argument to a macro.
+As mentioned above, citation delimiters cannot be used to introduce a
+wrapper command for the citation output, i.e.\ to pass the entire output of the
+citation command as argument to a macro.
 
 Instead of hard-coded \gencode{(}, \gencode{)}, \gencode{[} and \gencode{]}
 their \sty{biblatex} counterparts \cmd{bibopenparen}, \cmd{bibcloseparen},
