@@ -5,6 +5,8 @@
 See <https://github.com/moewew/biblatex-ext/compare/v0.9...HEAD>
 
 ### Changed
+- Updated for `biblatex` v3.16 (2020/12/31).
+  This is now the recommended `biblatex` version.
 - Separate out common code for verbose citation styles.
 - Warn about `introcite=plain` with verbose citation styles.
 
