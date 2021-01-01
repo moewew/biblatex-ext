@@ -99,7 +99,6 @@ tlmgr install       \
   pgf               \
   pict2e            \
   ragged2e          \
-  sectsty           \
   tcolorbox         \
   tracklang         \
   trimspaces        \

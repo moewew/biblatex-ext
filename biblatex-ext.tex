@@ -34,7 +34,6 @@
 \usepackage{booktabs}
 \usepackage{multicol}
 \usepackage[svgnames]{xcolor}
-\usepackage{sectsty}
 \usepackage{longtable}
 \usepackage{array}
 \newcolumntype{L}[1]{%
@@ -330,7 +329,28 @@
 
 \let\accentcolour\spotcolor
 
-\allsectionsfont{\sffamily\accentcolour}
+\newcommand*{\allsectionsfont}{\sffamily\accentcolour}
+
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                     {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                     {2.3ex \@plus.2ex}%
+                                     {\normalfont\Large\bfseries\allsectionsfont}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                       {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                       {1.5ex \@plus .2ex}%
+                                       {\normalfont\large\bfseries\allsectionsfont}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                       {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                       {1.5ex \@plus .2ex}%
+                                       {\normalfont\normalsize\bfseries\allsectionsfont}}
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                                      {3.25ex \@plus1ex \@minus.2ex}%
+                                      {-1em}%
+                                      {\normalfont\normalsize\bfseries\allsectionsfont}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                         {3.25ex \@plus1ex \@minus .2ex}%
+                                         {-1em}%
+                                        {\normalfont\normalsize\bfseries\allsectionsfont}}
 
 \renewcommand*{\verbatimfont}{\ttfamily}
 \renewcommand*{\displayverbfont}{\ttfamily}
