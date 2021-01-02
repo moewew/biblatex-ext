@@ -24,10 +24,16 @@
   \usepackage[scaled=0.78]{beramono}
   \usepackage{bm}
 \fi
-\usepackage[%verbose,
+\usepackage[verbose,
+  top=33mm,
   left=3.5cm, right=3.5cm,
-  marginparwidth=2.5cm
+  marginparwidth=2.5cm,
+  height=20cm,
+  footskip=47.6pt,
+  headheight=17pt,
+  headsep=20.40001pt,
 ]{geometry}
+\setlength\parindent{1em}
 \usepackage{microtype}
 \usepackage{ragged2e}
 \usepackage{hyphenat}
@@ -278,10 +284,10 @@
 
 
 \renewcommand\tableofcontents{%
+    \pdfbookmark[1]{\contentsname}{contents}%
     \section*{\contentsname
         \@mkboth{%
            \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
-    \pdfbookmark[1]{\contentsname}{contents}%
     \@starttoc{toc}%
     }
 \def\@starttoc#1{%
@@ -350,7 +356,22 @@
 \renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
                                          {3.25ex \@plus1ex \@minus .2ex}%
                                          {-1em}%
-                                        {\normalfont\normalsize\bfseries\allsectionsfont}}
+                                         {\normalfont\normalsize\bfseries\allsectionsfont}}
+
+% from KOMA-Script
+\newcommand*{\@list@extra}{%
+  \ifdim\parskip>\z@
+    \topsep\z@
+    \parsep\parskip
+    \itemsep\z@
+  \fi
+}
+\appto\@listi{\@list@extra}
+\appto\@listii{\@list@extra}
+\appto\@listiii{\@list@extra}
+\appto\@listiv{\@list@extra}
+\appto\@listv{\@list@extra}
+\appto\@listvi{\@list@extra}
 
 \renewcommand*{\verbatimfont}{\ttfamily}
 \renewcommand*{\displayverbfont}{\ttfamily}
