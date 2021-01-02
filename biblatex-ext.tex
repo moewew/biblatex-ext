@@ -28,7 +28,7 @@
   top=33mm,
   left=3.5cm, right=3.5cm,
   marginparwidth=2.5cm,
-  height=20cm,
+  height=21cm,
   footskip=47.6pt,
   headheight=17pt,
   headsep=20.40001pt,
@@ -2797,6 +2797,7 @@ The package also defines two helpful bibliography macros.
   want to use.
 \end{remindbox}
 
+
 For the common case of two-column tabular bibliographies there is a thin
 wrapper around \hypercmd{defbibtabular} that might turn out a bit easier to use.
 \begin{ltxsyntax}
@@ -2821,8 +2822,10 @@ is equivalent to
   {(*@\prm{begin code}@*)}{(*@\prm{end code}@*)}
   {\anchorlang{(*@\prm{anchor code}@*)} & \driver{(*@\prm{driver precode}@*)} \\}
 \end{biblatexcode}
+\end{ltxsyntax}
 
-Usage examples are shown on the next page
+An annotated example document with a simple tabular bibliography can
+be found on the following pages.
 
 \clearpage
 \begin{bibexample}[breakable,
@@ -2907,7 +2910,6 @@ to avoid duplication.
 The anchor is set to the first column, so that a viewer jumps there
 if a link to the entry is followed.
 
-
 Using \cmd{defbibtabulartwocolumn} the example from above could be written as
 \begin{biblatexcode}
 \documentclass[british]{article}
@@ -2944,7 +2946,7 @@ ipsum \autocite{geer}.
 \printbibtabular
 \end{document}
 \end{biblatexcode}
-\end{ltxsyntax}
+
 
 \clearpage
 \section{Open Access Symbols}\label{sec:oa}
