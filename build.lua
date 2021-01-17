@@ -12,6 +12,7 @@ installfiles = {"*.cbx", "*.bbx", "*.def", "*.sty", "blxextdoiapi.lua"}
 sourcefiles  = installfiles
 
 typesetfiles = {"biblatex-ext.tex"}
+typesetruns  = 4
 textfiles    = {"README.md", "CHANGES.md"}
 
 checkconfigs = {"build", "config-luatex", "config-runonce", "config-pdflatex-dev"}

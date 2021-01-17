@@ -1722,7 +1722,8 @@ versatile than the outer citation delimiter feature (see the discussion in
 \cref{sec:opt:citedelims}).
 The default settings for \cmd{bbx@introcite} emulate the output of \cmd{cite}.
 
-\begin{bibexample}[title={Example customisations for \kvopt{introcite}{plain}}]
+\begin{bibexample}[breakable,
+  title={Example customisations for \kvopt{introcite}{plain}}]
 \begin{lstlisting}[style=extblxstylelatex]
 %\usepackage[..., introcite=plain]{biblatex}
 \DeclareFieldFormat{bbx@introcite}{\mkbibbrackets{#1}}
@@ -1740,7 +1741,8 @@ The default settings for \cmd{bbx@introcite} emulate the output of \cmd{cite}.
 \exampleprintbib{sigfridsson}
 \end{bibexample}
 
-\begin{bibexample}[title={Example customisations for \kvopt{introcite}{plain}}]
+\begin{bibexample}[breakable,
+  title={Example customisations for \kvopt{introcite}{plain}}]
 \begin{lstlisting}[style=extblxstylelatex]
 %\usepackage[..., introcite=plain]{biblatex}
 \DeclareFieldFormat{bbx@introcite}{\mkbibbold{#1}}
@@ -1754,7 +1756,8 @@ The default settings for \cmd{bbx@introcite} emulate the output of \cmd{cite}.
 \exampleprintbib{sigfridsson}
 \end{bibexample}
 
-\begin{bibexample}[title={Example customisations for \kvopt{introcite}{label}}]
+\begin{bibexample}[breakable,
+  title={Example customisations for \kvopt{introcite}{label}}]
 \begin{lstlisting}[style=extblxstylelatex]
 %\usepackage[..., introcite=label]{biblatex}
 \DeclareFieldFormat{bbx@introcite}{\mkbibbold{#1}}
@@ -1782,7 +1785,7 @@ If you are using an author-year citation style together with
 combining this with \kvopt{bibstyle}{ext-authortitle} instead to move the year
 back to the end of the entry.
 \makeatletter
-\begin{bibexample}[enhanced, title={\kvopt{introcite}{label} with
+\begin{bibexample}[breakable, enhanced, title={\kvopt{introcite}{label} with
   \kvopt{style}{ext-authoryear} and \kvopt{bibstyle}{ext-authortitle}}]
 \begin{lstlisting}[style=extblxstylelatex]
 %\usepackage[
@@ -1859,7 +1862,7 @@ Field formats can be modified with \cmd{DeclareFieldFormat}.
 \togglefalse{bbx:doi}
 \DeclareFieldFormat{biblabeldate}{\highlight[1]{#1}}
 \DeclareDelimFormat[bib]{nameyeardelim}{\highlight[2]{\textbf{%
-  \addperiod}\textvisiblespace}\bibsentence}
+  \addperiod}}\space\bibsentence}
 \exampleprintbib{sigfridsson}
 \end{bibexample}
 
@@ -2051,11 +2054,11 @@ The punctuation between \bibfield{title}\slash\bibfield{subtitle} and
 \end{bibexample}
 \begin{bibexample}[title={Example customisation of \cmd{titleaddonpunct}}]
 \begin{lstlisting}[style=extblxstylelatex]
-\DeclareFieldFormat{booktitleaddon}{\mkbibbrackets{#1}}
+\DeclareFieldFormat{booktitleaddon}{|1\mkbibbrackets{#1}1|}
 \renewcommand*{\titleaddonpunct}{\addspace}
 \end{lstlisting}
 \tcblower
-\DeclareFieldFormat{booktitleaddon}{\mkbibbrackets{#1}}
+\DeclareFieldFormat{booktitleaddon}{\highlight{\mkbibbrackets{#1}}}
 \renewcommand*{\titleaddonpunct}{\addspace}
 \renewbibmacro*{event+venue+date}{}
 \exampleprintbib{salam}
@@ -2075,17 +2078,17 @@ The default is a space.
 \begin{bibexample}[title={Example customisation of \cmd{jourvoldelim}
   and \cmd{volnumdelim}}]
 \begin{lstlisting}[style=extblxstylelatex]
-\DeclareFieldFormat[article,periodical]{volume}{\bibstring{jourvol}~#1}
-\DeclareFieldFormat[article,periodical]{number}{\bibstring{number}~#1}
-\renewcommand*{\jourvoldelim}{\addcomma\space}
-\renewcommand*{\volnumdelim}{\addcomma\space}
+\DeclareFieldFormat[article,periodical]{volume}{|1\bibstring{jourvol}~#11|}
+\DeclareFieldFormat[article,periodical]{number}{|2\bibstring{number}~#12|}
+\renewcommand*{\jourvoldelim}{|1\addcomma\space1|}
+\renewcommand*{\volnumdelim}{|2\addcomma\space2|}
 \end{lstlisting}
 \tcblower
 \togglefalse{bbx:doi}
-\DeclareFieldFormat[article,periodical]{volume}{\bibstring{jourvol}~#1}
-\DeclareFieldFormat[article,periodical]{number}{\bibstring{number}~#1}
-\renewcommand*{\jourvoldelim}{\addcomma\space}
-\renewcommand*{\volnumdelim}{\addcomma\space}
+\DeclareFieldFormat[article,periodical]{volume}{\highlight[1]{\bibstring{jourvol}~#1}}
+\DeclareFieldFormat[article,periodical]{number}{\highlight[2]{\bibstring{number}~#1}}
+\renewcommand*{\jourvoldelim}{\highlight[1]{\addcomma\space}}
+\renewcommand*{\volnumdelim}{\highlight[2]{\addcomma\space}}
 \csuse{bbx@opt@mergedate@false}%
 \exampleprintbib{sigfridsson}
 \end{bibexample}
@@ -2126,14 +2129,14 @@ The default is a space.
 \end{bibexample}
 \begin{bibexample}[title={Example customisation of \cmd{volnumdatedelim}}]
 \begin{lstlisting}[style=extblxstylelatex]
-\DeclareFieldFormat{issuedate}{#1}
-\renewcommand*{\volnumdatedelim}{\addcomma\space}
+\DeclareFieldFormat{issuedate}{|1#11|}
+\renewcommand*{\volnumdatedelim}{|2\addcomma\space2|}
 \end{lstlisting}
 \tcblower
 \togglefalse{bbx:doi}
 \csuse{bbx@opt@mergedate@false}%
-\DeclareFieldFormat{issuedate}{#1}
-\renewcommand*{\volnumdatedelim}{\addcomma\space}
+\DeclareFieldFormat{issuedate}{\highlight[1]{#1}}
+\renewcommand*{\volnumdatedelim}{\highlight[2]{\addcomma\space}}
 \exampleprintbib{sigfridsson}
 \end{bibexample}
 
@@ -2150,12 +2153,12 @@ The default is a dot.
 
 \begin{bibexample}[title={Example customisation of~\cmd{volnumdelim}}]
 \begin{lstlisting}[style=extblxstylelatex]
-\DeclareFieldFormat[article,periodical]{number}{\mkbibparens{#1}}
+\DeclareFieldFormat[article,periodical]{number}{|1\mkbibparens{#1}1|}
 \renewcommand*{\volnumdelim}{}
 \end{lstlisting}
 \tcblower
 \togglefalse{bbx:doi}
-\DeclareFieldFormat[article,periodical]{number}{\mkbibparens{#1}}
+\DeclareFieldFormat[article,periodical]{number}{\highlight{\mkbibparens{#1}}}
 \renewcommand*{\volnumdelim}{}
 \exampleprintbib{sigfridsson}
 \end{bibexample}
