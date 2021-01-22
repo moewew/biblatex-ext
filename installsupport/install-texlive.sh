@@ -81,6 +81,7 @@ tlmgr install       \
   cleveref          \
   datetime2         \
   datetime2-english \
+  everysel          \
   environ           \
   epstopdf-pkg      \
   fontaxes          \
