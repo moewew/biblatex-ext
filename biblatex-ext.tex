@@ -3605,10 +3605,9 @@ Aside from the main package \sty{expl3}\fnurl{https://ctan.org/pkg/expl3} it
 loads \sty{xparse}\fnurl{https://ctan.org/pkg/xparse},
 and \sty{l3keys2e}\fnurl{https://ctan.org/pkg/l3keys2e}.
 Drawing is performed with the (still experimental)
-\sty{l3draw}\fnurl{https://ctan.org/pkg/l3experimental} and
-\sty{l3color}\fnurl{https://ctan.org/pkg/l3experimental} packages.
-The code works best with version 2020-08-07 or above
-of~\sty{l3draw}/\sty{l3color}.
+\sty{l3draw}\fnurl{https://ctan.org/pkg/l3experimental} packages.
+The code works best with version 2021-02-18 or above
+of~\sty{l3draw}.
 
 If used as a stand-alone package, \sty{biblatex-ext-oasymb-l3draw} has one
 load-time option, namely \hyperopt{symbol}, and defines one command besides
@@ -3630,6 +3629,9 @@ See also \filename{CHANGES.md}.
 
 The numbers on the right indicate the relevant section of the manual.
 \begin{changelog}
+\begin{release}{<version>}{<date>}
+  \item Synced with \sty{l3draw} changes.
+\end{release}
 \begin{release}{0.10}{2021-01-01}
   \item Synced with \sty{biblatex} 3.16 changes.
 \end{release}
@@ -3728,7 +3730,7 @@ The numbers on the right indicate the relevant section of the manual.
     \see{sec:opt:style}
   \item Added \hypercmd{jourvoldelim}, \hypercmd{jourserdelim} and
     \hypercmd{servoldelim}\see{sec:opt:punct}
-  \item Improve documentation
+  \item Improved documentation
 \end{release}
 \begin{release}{0.2}{2018-03-28}
   \item Rework lengths for \hyperkvopt{introcite}{label}\see{sec:opt:style}
