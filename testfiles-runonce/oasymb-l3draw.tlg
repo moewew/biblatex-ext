@@ -21,7 +21,7 @@ Package: biblatex-ext-oasymb-l3draw ....-..-.. v... open access symbols with l3d
 ....\pdfliteral{10 M}
 ....\pdfliteral{[] 0 d}
 ....\hbox(0.0+0.0)x0.0
-.....\pdfliteral{0.0 0.47 0.93 0.04 k}
+.....\pdfcolorstack 0 push {0.0 0.47 0.93 0.04 k 0 G}
 .....\pdfliteral{4.68272 7.27318 m}
 .....\pdfliteral{4.68272 8.09856 4.01363 8.76765 3.18823 8.76765 c}
 .....\pdfliteral{2.36285 8.76765 1.69376 8.09856 1.69376 7.27318 c}
@@ -45,6 +45,7 @@ Package: biblatex-ext-oasymb-l3draw ....-..-.. v... open access symbols with l3d
 .....\pdfliteral{2.29155 2.69301 2.69301 2.29155 3.18823 2.29155 c}
 .....\pdfliteral{3.68347 2.29155 4.08493 2.69301 4.08493 3.18823 c}
 .....\pdfliteral{f}
+.....\pdfcolorstack 0 pop
 ....\pdfrestore
 ....\pdfcolorstack 0 pop
 ! OK.
@@ -63,7 +64,7 @@ l. ...\showbox0
 ....\pdfliteral{10 M}
 ....\pdfliteral{[] 0 d}
 ....\hbox(0.0+0.0)x0.0
-.....\pdfliteral{0.0 0.47 0.93 0.04 k}
+.....\pdfcolorstack 0 push {0.0 0.47 0.93 0.04 k 0 G}
 .....\pdfliteral{4.68272 7.27318 m}
 .....\pdfliteral{4.68272 8.09856 4.01363 8.76765 3.18823 8.76765 c}
 .....\pdfliteral{2.36285 8.76765 1.69376 8.09856 1.69376 7.27318 c}
@@ -87,6 +88,7 @@ l. ...\showbox0
 .....\pdfliteral{2.29155 2.69301 2.69301 2.29155 3.18823 2.29155 c}
 .....\pdfliteral{3.68347 2.29155 4.08493 2.69301 4.08493 3.18823 c}
 .....\pdfliteral{f}
+.....\pdfcolorstack 0 pop
 ....\pdfrestore
 ....\pdfcolorstack 0 pop
 ! OK.
@@ -105,7 +107,7 @@ l. ...\showbox0
 ....\pdfliteral{10 M}
 ....\pdfliteral{[] 0 d}
 ....\hbox(0.0+0.0)x0.0
-.....\pdfliteral{0.45 0.0 0.49 0.62 k}
+.....\pdfcolorstack 0 push {0.45 0.0 0.49 0.62 k 0 G}
 .....\pdfliteral{9.09595 4.38359 m}
 .....\pdfliteral{9.09595 6.98615 6.98615 9.09595 4.38359 9.09595 c}
 .....\pdfliteral{1.78102 9.09595 -0.32877 6.98615 -0.32877 4.38359 c}
@@ -117,7 +119,7 @@ l. ...\showbox0
 .....\pdfliteral{1.42467 6.01775 2.74942 7.34251 4.38359 7.34251 c}
 .....\pdfliteral{6.01775 7.34251 7.34251 6.01775 7.34251 4.38359 c}
 .....\pdfliteral{f}
-.....\pdfliteral{0.0 0.2 0.77 0.02 k}
+.....\pdfcolorstack 0 push {0.0 0.2 0.77 0.02 k 0 G}
 .....\pdfliteral{15.01378 -0.10959 1.75343 4.49318 re}
 .....\pdfliteral{15.01378 4.38359 m}
 .....\pdfliteral{16.76721 4.38359 l}
@@ -132,12 +134,15 @@ l. ...\showbox0
 .....\pdfliteral{11.99063 7.76315 13.80028 7.27826 14.61737 5.86304 c}
 .....\pdfliteral{14.87706 5.41324 15.01378 4.90297 15.01378 4.38358 c}
 .....\pdfliteral{f}
-.....\pdfliteral{0.06 0.0 0.6 0.43 k}
+.....\pdfcolorstack 0 push {0.06 0.0 0.6 0.43 k 0 G}
 .....\pdfliteral{8.21999 7.12006 m}
 .....\pdfliteral{7.05205 5.48268 7.05205 3.2845 8.21999 1.6471 c}
 .....\pdfliteral{8.21999 1.64711 m}
 .....\pdfliteral{9.38792 3.2845 9.38792 5.48268 8.21999 7.12007 c}
 .....\pdfliteral{f}
+.....\pdfcolorstack 0 pop
+.....\pdfcolorstack 0 pop
+.....\pdfcolorstack 0 pop
 ....\pdfrestore
 ....\pdfcolorstack 0 pop
 ! OK.
