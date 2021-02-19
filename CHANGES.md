@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.10...HEAD>
+
+### Changed
+- Synced with 2021-02-18 changes in `l3draw`/`l3color`.
+
 ## Version 0.10 (2021-01-01)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.9...v0.10>
