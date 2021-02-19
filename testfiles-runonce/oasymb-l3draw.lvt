@@ -9,7 +9,6 @@
 % prerequisites of biblatex-ext-oasymb-l3draw
 \usepackage{xparse}
 \usepackage{l3keys2e}
-\usepackage{l3color}
 \usepackage{l3draw}
 
 \START
