@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.11...HEAD>
+
+### Added
+- `\UndeclareCiteDelims{<cite command>}` to delete inner and outer
+  delimiters at the same time.
+
 ## Version 0.11 (2021-02-19)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.10...v0.11>
@@ -96,7 +104,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8...v0.8a>
 
 ### Fixed
 - The default value of `\servoldelim` was documented as
-  and should be `\jourvoldelim`. 
+  and should be `\jourvoldelim`.
   Previous versions had `\addspace` (the default value of
   `\jourvoldelim`) instead.
 - Reenabled visible space in documentation.

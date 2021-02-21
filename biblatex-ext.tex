@@ -49,7 +49,7 @@
 \usetikzlibrary{shapes.geometric}
 \usetikzlibrary{fit}
 \usetikzlibrary{positioning}
-\usepackage[style=ext-authoryear-iecomp, backend=biber]{biblatex}
+\usepackage[style=ext-authoryear-iecomp, backend=biber, labelnumber]{biblatex}
 \addbibresource{biblatex-examples.bib}
 \addbibresource{biblatex-ext-examples.bib}
 \usepackage{biblatex-ext-tabular}
@@ -67,24 +67,68 @@
 \undef\DefineOASymbol
 \usepackage{biblatex-ext-oasymb-pict2e}
 
+\DeclareFieldFormat{bibentrysetcount}{\mkbibparens{\mknumalph{#1}}}
+\DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}
+\DeclareFieldFormat{shorthandwidth}{\mkbibbrackets{#1}}
+
+\defbibenvironment{bibliographyNUM}
+  {\list
+     {\printtext[labelnumberwidth]{%
+        \printfield{labelprefix}%
+        \printfield{labelnumber}}}
+     {\setlength{\labelwidth}{\labelnumberwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+      \renewcommand*{\makelabel}[1]{\hss##1}}
+  {\endlist}
+  {\item}
+
+\newcounter{extblxdoc@examplebib}
+
 \makeatletter
 \defbibcheck{examplebib}{%
   \xifinlist{\thefield{entrykey}}{\extblxdoc@examplebib@list}
     {}
     {\skipentry}}
 
-\newcommand*{\exampleprintbib}[1]{%
-  \nocite{#1}%
+\newcommand*{\extblxdoc@fixexamplelinks}{%
+  \protected\def\blx@anchor{%
+    \xifinlist{\the\c@refsection @\the\c@extblxdoc@examplebib
+               @\abx@field@entrykey}{\blx@anchors}
+      {}
+      {\listxadd\blx@anchors{\the\c@refsection @\the\c@extblxdoc@examplebib
+                             @\abx@field@entrykey}%
+       \hyper@natanchorstart{\the\c@refsection @\the\c@extblxdoc@examplebib
+                             @\abx@field@entrykey}%
+       \hyper@natanchorend}}%
+  \long\def\blx@bibhyperref[##1]##2{%
+     \blx@sfsave\hyper@natlinkstart{\the\c@refsection
+       @\the\c@extblxdoc@examplebib @##1}\blx@sfrest
+     ##2%
+     \blx@sfsave\hyper@natlinkend\blx@sfrest}%
+}
+
+\newcommand*{\exampleprintbib}[2][]{%
+  \nocite{#2}%
   \let\extblxdoc@examplebib@list\empty
   \def\do##1{\listeadd\extblxdoc@examplebib@list{\detokenize{##1}}}%
-  \docsvlist{#1}%
-  \printbibliography[check=examplebib, heading=none]}
+  \docsvlist{#2}%
+  \AtNextBibliography{%
+    \stepcounter{extblxdoc@examplebib}%
+    \extblxdoc@fixexamplelinks}%
+  \printbibliography[check=examplebib, heading=none, #1]}
 
 \newcommand*{\exampleprintbibtab}[1]{%
   \nocite{#1}%
   \let\extblxdoc@examplebib@list\empty
   \def\do##1{\listeadd\extblxdoc@examplebib@list{\detokenize{##1}}}%
   \docsvlist{#1}%
+  \AtNextBibliography{%
+    \stepcounter{extblxdoc@examplebib}%
+    \extblxdoc@fixexamplelinks}%
   \printbibtabular[check=examplebib, heading=none]}
 
 
@@ -152,9 +196,11 @@
     defbibtabular,defbibtabulartwocolumn,defbibenvironment,
     printbibliography,printbibtabular,
     autocite,
-    DeclareFieldFormat,DeclareDelimFormat,DeclareDelimcontextAlias,
+    DeclareFieldFormat,DeclareDelimFormat,
+    DeclareDelimcontextAlias,UndeclareDelimcontextAlias,
     DeclareInnerCiteDelims,UndeclareInnerCiteDelims,DeclareInnerCiteDelimsAlias,
     DeclareOuterCiteDelims,UndeclareOuterCiteDelims,DeclareOuterCiteDelimsAlias,
+    UndeclareCiteDelims,
     introcitepunct,volnumdelim,maintitletitledelim,voltitledelim,sernumdelim,
     jourvoldelim,
     volnumdatedelim,locdatedelim,locpubdelim,publocdelim,pubdatedelim,
@@ -817,7 +863,7 @@ Of the many introductory texts and tutorials available on the internet%
 \fnurl{https://tex.stackexchange.com/q/13509/35864}
 the author particularly likes
 Knut Hegna and Dag Langmyhr's \emph{Local Guide to \sty{biblatex}}%
-\fnurl{http://dag.at.ifi.uio.no/public/doc/biblatex-guide.pdf}
+\fnurl{https://www.mn.uio.no/ifi/tjenester/it/hjelp/latex/biblatex-guide.pdf}
 and Paul Stanley's \emph{\sty{biblatex}~-- An Easier Read}%
 \fnurl{https://github.com/PaulStanley/biblatex-tutorial/releases}.
 French speakers may want to consider Maïeul Rouquette's
@@ -1271,10 +1317,238 @@ or implicitly via the \opt{minxrefs} or \opt{mincrossrefs} option.
 \exampleprintbib{westfahl:space,westfahl:frontier}
 \end{bibexample}
 
+The citation produced by this option is implemented via
+\cmd{bbx@xrefcite},
+which is set up to inherit most styling from \cmd{cite}.
+\cmd{bbx@xrefcite} can be modified as usual
+(and independent of \cmd{cite})
+if the delimiter context alias is removed.
+\begin{bibexample}[enhanced,
+  title={Example customisation of \cmd{bbx@xrefcite}}]
+\begin{lstlisting}[style=extblxstylelatex]
+\UndeclareDelimcontextAlias{bbx@xrefcite}
+\DeclareInnerCiteDelims{bbx@xrefcite}{\bibopenparen}{\bibcloseparen}
+\end{lstlisting}
+\tcblower
+\makeatletter
+\renewbibmacro*{crosscite}[1]{%
+  \printtext[highlight1]{%
+    \iftoggle{bbx:citexref}
+      {\iffieldundef{crossref}
+         {\iffieldundef{xref}
+            {\usebibmacro{#1}}
+            {\printtext{\bbx@xrefcite{\thefield{xref}}}}}
+         {\printtext{\bbx@xrefcite{\thefield{crossref}}}}}
+      {\usebibmacro{#1}}}}
+\makeatother
+\UndeclareDelimcontextAlias{bbx@xrefcite}
+\DeclareInnerCiteDelims{bbx@xrefcite}{\bibopenparen}{\bibcloseparen}
+\toggletrue{bbx:citexref}
+\exampleprintbib{westfahl:space,westfahl:frontier}
+\end{bibexample}
+
+The bibliography macro that prints the citation in \cmd{bbx@xrefcite}
+is called \bibmacro{bbx:inxrefcite}.
+By default this bibliography macro just expands to the bibliography
+macro \bibmacro{cite}.
+In some cases it might be easier to obtain the desired result by
+redefining this bibliography macro than by redefining the complete
+citation command \cmd{bbx@xrefcite} with \cmd{DeclareCiteCommand}.
+For general citation commands
+this strategy of only changing the bibliography macro and not
+the complete citation command will not always result in
+the expected output, but in the context of \opt{citexref},
+where we have control over how exactly the citation command is going
+to be used, we can sometimes use this shortcut.
+
+The following example shows the standard behaviour of \opt{citexref}
+with a numeric style and a customisation involving
+\bibmacro{bbx:inxrefcite} that emulates the output of \cmd{textcite}.
+
+\begin{bibexample}[enhanced,
+  title={Standard behaviour of \cmd{bbx@xrefcite}
+         with \blxstyle{ext-numeric}}]
+\begin{lstlisting}[style=extblxstylelatex]
+% \usepackage[style=ext-numeric, citexref=true]{biblatex}
+\end{lstlisting}
+\tcblower
+\makeatletter
+\renewbibmacro*{crosscite}[1]{%
+  \printtext[highlight1]{%
+    \iftoggle{bbx:citexref}
+      {\iffieldundef{crossref}
+         {\iffieldundef{xref}
+            {\usebibmacro{#1}}
+            {\printtext{\bbx@xrefcite{\thefield{xref}}}}}
+         {\printtext{\bbx@xrefcite{\thefield{crossref}}}}}
+      {\usebibmacro{#1}}}}
+\makeatother
+\UndeclareDelimcontextAlias{bbx@xrefcite}
+\DeclareOuterCiteDelims{bbx@xrefcite}{\bibopenbracket}{\bibclosebracket}
+\toggletrue{bbx:citexref}
+% emulate all the 'numeric'/default behaviour
+\DeclareNameAlias{sortname}{given-family}
+\renewbibmacro*{author}{%
+  \ifboolexpr{
+    test \ifuseauthor
+    and
+    not test {\ifnameundef{author}}
+  }
+    {\printnames{author}%
+     \iffieldundef{authortype}
+       {}
+       {\setunit{\printdelim{authortypedelim}}%
+        \usebibmacro{authorstrg}}}
+    {}}
+\renewbibmacro*{editor}{%
+  \ifboolexpr{
+    test \ifuseeditor
+    and
+    not test {\ifnameundef{editor}}
+  }
+    {\printnames{editor}%
+     \setunit{\printdelim{editortypedelim}}%
+     \usebibmacro{editorstrg}%
+     \clearname{editor}}
+    {}}
+\renewbibmacro*{editor+others}{%
+  \ifboolexpr{
+    test \ifuseeditor
+    and
+    not test {\ifnameundef{editor}}
+  }
+    {\printnames{editor}%
+     \setunit{\printdelim{editortypedelim}}%
+     \usebibmacro{editor+othersstrg}%
+     \clearname{editor}}
+    {}}
+\renewbibmacro*{date}{\printdate}%
+\renewbibmacro*{cite}{%
+  \printtext[bibhyperref]{%
+    \printfield{labelprefix}%
+    \printfield{labelnumber}}}
+\exampleprintbib[env=bibliographyNUM]{westfahl:space,westfahl:frontier}
+\end{bibexample}
+
+\begin{bibexample}[enhanced,
+  title={\cmd{textcite}-like behaviour of \cmd{bbx@xrefcite}
+         with \blxstyle{ext-numeric}}]
+\begin{lstlisting}[style=extblxstylelatex]
+% \usepackage[style=ext-numeric, citexref=true]{biblatex}
+
+\UndeclareCiteDelims{bbx@xrefcite}
+\DeclareDelimcontextAlias{bbx@xrefcite}{textcite}
+
+\renewbibmacro*{bbx:inxrefcite}{%
+  \usebibmacro{textcite:init}%
+  \usebibmacro{textcite}%
+  \usebibmacro{textcite:postnote}}
+\end{lstlisting}
+\tcblower
+\makeatletter
+\renewbibmacro*{crosscite}[1]{%
+  \printtext[highlight1]{%
+    \iftoggle{bbx:citexref}
+      {\iffieldundef{crossref}
+         {\iffieldundef{xref}
+            {\usebibmacro{#1}}
+            {\printtext{\bbx@xrefcite{\thefield{xref}}}}}
+         {\printtext{\bbx@xrefcite{\thefield{crossref}}}}}
+      {\usebibmacro{#1}}}}
+% emulate all the 'numeric'/default behaviour
+\DeclareNameAlias{sortname}{given-family}
+\renewbibmacro*{author}{%
+  \ifboolexpr{
+    test \ifuseauthor
+    and
+    not test {\ifnameundef{author}}
+  }
+    {\printnames{author}%
+     \iffieldundef{authortype}
+       {}
+       {\setunit{\printdelim{authortypedelim}}%
+        \usebibmacro{authorstrg}}}
+    {}}
+\renewbibmacro*{editor}{%
+  \ifboolexpr{
+    test \ifuseeditor
+    and
+    not test {\ifnameundef{editor}}
+  }
+    {\printnames{editor}%
+     \setunit{\printdelim{editortypedelim}}%
+     \usebibmacro{editorstrg}%
+     \clearname{editor}}
+    {}}
+\renewbibmacro*{editor+others}{%
+  \ifboolexpr{
+    test \ifuseeditor
+    and
+    not test {\ifnameundef{editor}}
+  }
+    {\printnames{editor}%
+     \setunit{\printdelim{editortypedelim}}%
+     \usebibmacro{editor+othersstrg}%
+     \clearname{editor}}
+    {}}
+\renewbibmacro*{date}{\printdate}%
+\renewbibmacro*{cite}{%
+  \printtext[bibhyperref]{%
+    \printfield{labelprefix}%
+    \printfield{labelnumber}}}
+\renewbibmacro*{textcite}{%
+  \iffieldequals{namehash}{\cbx@lasthash}
+    {\setunit{\multicitedelim}}
+    {\ifnameundef{labelname}
+       {\printfield[citetitle]{labeltitle}}
+       {\printnames{labelname}}%
+     \setunit*{\printdelim{namelabeldelim}}%
+     \printtext{\bibopenbracket}\global\booltrue{cbx:parens}%
+     \stepcounter{textcitecount}%
+     \savefield{namehash}{\cbx@lasthash}}%
+  \ifnumequal{\value{citecount}}{1}
+    {\usebibmacro{prenote}}
+    {}%
+  \usebibmacro{cite}%
+  \setunit{%
+    \ifbool{cbx:parens}
+      {\bibclosebracket\global\boolfalse{cbx:parens}}
+      {}%
+    \textcitedelim}}
+\newbibmacro*{textcite:init}{%
+  \ifnumless{\value{multicitecount}}{2}
+    {\global\boolfalse{cbx:parens}%
+     \global\undef\cbx@lasthash}
+    {\global\undef\cbx@lasthash}}
+\renewbibmacro*{textcite:postnote}{%
+  \usebibmacro{postnote}%
+  \ifthenelse{\value{multicitecount}=\value{multicitetotal}}
+    {\setunit{}%
+     \printtext{%
+       \ifbool{cbx:parens}
+         {\bibclosebracket\global\boolfalse{cbx:parens}}
+         {}}}
+    {\setunit{%
+       \ifbool{cbx:parens}
+         {\bibclosebracket\global\boolfalse{cbx:parens}}
+         {}%
+       \textcitedelim}}}
+\makeatother
+\UndeclareCiteDelims{bbx@xrefcite}
+\DeclareDelimcontextAlias{bbx@xrefcite}{textcite}
+\renewbibmacro*{bbx:inxrefcite}{%
+  \usebibmacro{textcite:init}%
+  \usebibmacro{textcite}%
+  \usebibmacro{textcite:postnote}}
+\toggletrue{bbx:citexref}
+\exampleprintbib[env=bibliographyNUM]{westfahl:space,westfahl:frontier}
+\end{bibexample}
+
+
 \boolitem[false]{innamebeforetitle}
 Whether or not the \bibfield{editor} should be moved before the
-\bibfield{booktitle} field for \bibtype{inbook}, \bibtype{incollection} and
-\bibtype{inproceedings} entries.
+\bibfield{booktitle} field for \bibtype{inbook}, \bibtype{incollection}
+and \bibtype{inproceedings} entries.
 
 \begin{bibexample}[title={\kvopt{innamebeforetitle}{true}}]
 \makeatletter
@@ -1776,9 +2050,6 @@ The default settings for \cmd{bbx@introcite} emulate the output of \cmd{cite}.
 \csletcs{extblx@introcite}{extblx@opt@introcite@label}
 \exampleprintbib{coleridge,geer}
 \end{bibexample}
-\csgundef{blx@delimcontextalias@bbx@introcite}
-% because \DeclareDelimcontextAlias is global ... at the moment, this can go
-% with biblatex >= 3.12
 
 If you are using an author-year citation style together with
 \kvopt{introcite}{label} or \kvopt{introcite}{label}, you may be interested in
@@ -2421,6 +2692,12 @@ delimiters whenever the citation command is called.
 
 Completely remove the definitions of the inner delimiters for
 \cmd{\prm{cite command}}.
+
+\cmditem{UndeclareCiteDelims}{cite command}
+
+Remove inner and outer delimiters for \cmd{\prm{cite command}}
+by calling \cmd{UndeclareOuterCiteDelims}
+and \cmd{UndeclareInnerCiteDelims}.
 
 \cmditem{RegisterCiteDelims}{modifier}{cite command}
 
@@ -3629,6 +3906,9 @@ See also \filename{CHANGES.md}.
 
 The numbers on the right indicate the relevant section of the manual.
 \begin{changelog}
+\begin{release}{<version>}{<date>}
+  \item Added \hypercmd{UndeclareCiteDelims}\see{sec:opt:citedelims}
+\end{release}
 \begin{release}{0.11}{2021-02-19}
   \item Synced with \sty{l3draw} changes.
 \end{release}

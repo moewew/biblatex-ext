@@ -38,6 +38,10 @@
 \newrobustcmd*{\UndeclareInnerCiteDelims}{%
   \extblx@undeclareciteddelims{inner}}
 
+\newrobustcmd*{\UndeclareCiteDelims}[1]{%
+  \UndeclareOuterCiteDelims{#1}%
+  \UndeclareInnerCiteDelims{#1}}
+
 %{<inner/outer>}{<cite context>}
 \def\extblx@undeclareciteddelims#1#2{%
   \csundef{extblx@citedelim@#2@#1@open}%
@@ -289,6 +293,10 @@
 % then we only have \mainlang, which is \selectlanguage
 % and needs two groups for correct local effects
 \providecommand*{\mkrelatedstringtext}[1]{{{\mainlang #1}}}
+
+% biblatex 3.17
+\providecommand*{\UndeclareDelimcontextAlias}[1]{%
+  \csundef{blx@delimcontextalias@#1}}
 
 \endinput
 %
