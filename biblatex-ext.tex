@@ -1263,8 +1263,8 @@ necessary to modify the bibmacro~\bibmacro{in:}.
 \boolitem[false]{citexref}
 This option controls if \bibtype{inbook}, \bibtype{incollection} and
 \bibtype{inproceedings} entries that are tied to a parent entry with
-\bibfield{xref} or \bibfield{crossref} should show all data of their
-parent entry inline as usual or if they should cite their parent entry
+\bibfield{xref} or \bibfield{crossref} show all data of their
+parent entry inline as usual or if they cite their parent entry
 instead \emph{if} the parent is listed in the bibliography as a
 separate entry.
 With the default setting \kvopt{citexref}{false} the parent is not
@@ -1354,12 +1354,14 @@ macro \bibmacro{cite}.
 In some cases it might be easier to obtain the desired result by
 redefining this bibliography macro than by redefining the complete
 citation command \cmd{bbx@xrefcite} with \cmd{DeclareCiteCommand}.
+\begin{remindbox}
 For general citation commands
 this strategy of only changing the bibliography macro and not
 the complete citation command will not always result in
 the expected output, but in the context of \opt{citexref},
 where we have control over how exactly the citation command is going
 to be used, we can sometimes use this shortcut.
+\end{remindbox}
 
 The following example shows the standard behaviour of \opt{citexref}
 with a numeric style and a customisation involving
@@ -1369,7 +1371,7 @@ with a numeric style and a customisation involving
   title={Standard behaviour of \cmd{bbx@xrefcite}
          with \blxstyle{ext-numeric}}]
 \begin{lstlisting}[style=extblxstylelatex]
-% \usepackage[style=ext-numeric, citexref=true]{biblatex}
+%\usepackage[style=ext-numeric, citexref=true]{biblatex}
 \end{lstlisting}
 \tcblower
 \makeatletter
@@ -1434,7 +1436,7 @@ with a numeric style and a customisation involving
   title={\cmd{textcite}-like behaviour of \cmd{bbx@xrefcite}
          with \blxstyle{ext-numeric}}]
 \begin{lstlisting}[style=extblxstylelatex]
-% \usepackage[style=ext-numeric, citexref=true]{biblatex}
+%\usepackage[style=ext-numeric, citexref=true]{biblatex}
 
 \UndeclareCiteDelims{bbx@xrefcite}
 \DeclareDelimcontextAlias{bbx@xrefcite}{textcite}
@@ -1546,9 +1548,24 @@ with a numeric style and a customisation involving
 
 
 \boolitem[false]{innamebeforetitle}
-Whether or not the \bibfield{editor} should be moved before the
-\bibfield{booktitle} field for \bibtype{inbook}, \bibtype{incollection}
+Whether or not the \bibfield{editor} is moved before the
+\bibfield{booktitle} field for \bibtype{incollection}
 and \bibtype{inproceedings} entries.
+
+\begin{remindbox}[breakable]
+  This option does \emph{not} influence the position of the
+  \bibfield{editor} field for \bibtype{inbook} entries.
+
+  The primary name connected to a \bibtype{book} entry is its
+  \bibfield{author}, which for \bibtype{inbook} entries normally
+  corresponds to the \bibfield{bookauthor}
+  (usually \bibfield{author} and \bibfield{bookauthor} will be the
+   same for \bibfield{inbook} entries) and that is the name one
+  would normally expect to see before the title.
+  In most cases where one wants the \bibfield{editor} to appear before
+  the \bibfield{booktitle}, the entry in question is
+  an~\bibtype{incollection} or~\bibtype{inproceedings}.
+\end{remindbox}
 
 \begin{bibexample}[title={\kvopt{innamebeforetitle}{true}}]
 \makeatletter
@@ -3908,6 +3925,8 @@ The numbers on the right indicate the relevant section of the manual.
 \begin{changelog}
 \begin{release}{<version>}{<date>}
   \item Added \hypercmd{UndeclareCiteDelims}\see{sec:opt:citedelims}
+  \item Clarified \hyperopt{innamebeforetitle} documentation%
+    \see{sec:opt:gen}
 \end{release}
 \begin{release}{0.11}{2021-02-19}
   \item Synced with \sty{l3draw} changes.

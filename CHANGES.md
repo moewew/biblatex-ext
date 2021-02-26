@@ -8,6 +8,11 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.11...HEAD>
 - `\UndeclareCiteDelims{<cite command>}` to delete inner and outer
   delimiters at the same time.
 
+### Fixed
+- Clarified in the documentation that `innamebeforetitle` does not apply
+  to `@inbook` entries
+  (cf. also <https://github.com/moewew/biblatex-ext/issues/20>).
+
 ## Version 0.11 (2021-02-19)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.10...v0.11>
@@ -48,7 +53,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8e...v0.8f>
 ### Fixed
 - Fixed inner cite delimiters for `\footcitetext` in `authoryear`
   and `authortitle` (not `comp`) styles
-  (https://github.com/moewew/biblatex-ext/issues/19).
+  (<https://github.com/moewew/biblatex-ext/issues/19>).
 
 
 ## Version 0.8e (2020-05-05)
@@ -58,7 +63,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8d...v0.8e>
 ### Fixed
 - Fixed `bbx:introcite` definition for `ext-numeric-comp`.
 - Fixed issue with `labelprefix` in `\printbibtabular`
-  (https://github.com/moewew/biblatex-ext/pull/18).
+  (<https://github.com/moewew/biblatex-ext/pull/18>).
 
 ### Changed
 - `biblatex-ext-tabular` now checks for the recommended `biblatex`
