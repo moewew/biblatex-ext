@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## Version 0.12 (2021-02-27)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.11...HEAD>
+See <https://github.com/moewew/biblatex-ext/compare/v0.11...v0.12>
 
 ### Added
 - `\UndeclareCiteDelims{<cite command>}` to delete inner and outer
