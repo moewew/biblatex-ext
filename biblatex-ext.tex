@@ -300,7 +300,7 @@
 \define@key{ltd@ttp}{subtitle}{\def\ltd@title@subtitle{#1}}
 \define@key{ltd@ttp}{url}{\def\ltd@title@url{#1}}
 \define@key{ltd@ttp}{author}{\def\ltd@title@author{#1}}
-\define@key{ltd@ttp}{link}{\def\ltd@title@link{#1}}
+\define@key{ltd@ttp}{email}{\def\ltd@title@email{#1}}
 \define@key{ltd@ttp}{revision}{\def\ltd@title@revision{#1}}
 \define@key{ltd@ttp}{date}{\def\ltd@title@date{#1}}
 
@@ -322,7 +322,7 @@
   \begin{multicols}{2}
   \raggedleft
     \ltd@title@author\par
-    \expandafter\email\expandafter{\ltd@title@link}\par
+    \expandafter\email\expandafter{\ltd@title@email}\par
   \raggedright
     Version \ltd@title@revision\par\ltd@title@date
   \end{multicols}
@@ -657,7 +657,7 @@
   subtitle = {Extensions for the \sty{biblatex} standard styles},
   url      = {\gitbaseurl},
   author   = {Moritz Wemheuer},
-  link     = {mwemheu@posteo.de},%
+  email    = {mwemheu@posteo.de},%
   revision = {\extblxversion},
   date     = {\DTMDate{2021-02-27}},
 }
