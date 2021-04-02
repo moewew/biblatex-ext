@@ -1,5 +1,8 @@
 name: CI
 
+env:
+  TLVERSION: 2020
+
 on:
   push:
   pull_request:
@@ -28,8 +31,8 @@ jobs:
         path: |
           /tmp/texlive
           ~/.texlive
-        key: texlive-${{ steps.get-date.outputs.date }}
-        restore-keys: texlive-
+        key: texlive${{ env.TLVERSION }}-${{ steps.get-date.outputs.date }}
+        restore-keys: texlive${{ env.TLVERSION }}-
 
     - name: Set up TeX Live
       run: . installsupport/install-texlive.sh
@@ -57,8 +60,8 @@ jobs:
         path: |
           /tmp/texlive
           ~/.texlive
-        key: texlive-${{ steps.get-date.outputs.date }}
-        restore-keys: texlive-
+        key: texlive${{ env.TLVERSION }}-${{ steps.get-date.outputs.date }}
+        restore-keys: texlive${{ env.TLVERSION }}-
 
     - name: Set up TeX Live
       run: . installsupport/install-texlive.sh
