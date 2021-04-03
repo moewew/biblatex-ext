@@ -1,7 +1,7 @@
 name: CI
 
 env:
-  TLVERSION: 2020
+  TLVERSION: 2021
 
 on:
   push:
