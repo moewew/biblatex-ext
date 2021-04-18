@@ -37,7 +37,7 @@ jobs:
     - name: Set up TeX Live
       uses: moewew/tex-actions/setup-texlive@main
       with:
-        packages:
+        packagelist:
           l3build
           latex-bin
           luahbtex
@@ -139,7 +139,7 @@ jobs:
     - name: Set up TeX Live
       uses: moewew/tex-actions/setup-texlive@main
       with:
-        packages:
+        packagelist:
           l3build
           latex-bin
           luahbtex
