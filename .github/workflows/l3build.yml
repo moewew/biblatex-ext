@@ -35,7 +35,80 @@ jobs:
         restore-keys: texlive${{ env.TLVERSION }}-
 
     - name: Set up TeX Live
-      run: . installsupport/install-texlive.sh
+      uses: moewew/tex-actions/setup-texlive@main
+      with:
+        packages:
+          l3build
+          latex-bin
+          luahbtex
+          tex
+          metafont
+          mfware
+          texlive-scripts
+          latex
+          amsmath
+          graphics
+          tools
+          latex-bin-dev
+          latex-base-dev
+          latex-graphics-dev
+          latex-tools-dev
+          latex-amsmath-dev
+          babel
+          babel-english
+          hyphen-english
+          biblatex
+          biber
+          bibtex
+          csquotes
+          ec
+          cm-super
+          etoolbox
+          iftex
+          hyperref
+          atveryend
+          infwarerr
+          hycolor
+          lm
+          lm-math
+          psnfss
+          unicode-math
+          xkeyval
+          babel-german
+          babel-french
+          hyphen-german
+          hyphen-french
+          bera
+          dvips
+          bookmark
+          booktabs
+          carlisle
+          cleveref
+          datetime2
+          datetime2-english
+          everysel
+          environ
+          epstopdf-pkg
+          fontaxes
+          geometry
+          hyphenat
+          l3experimental
+          libertinus
+          libertinus-type1
+          listings
+          ltxdockit
+          microtype
+          ms
+          mweights
+          newtx
+          oberdiek
+          pgf
+          pict2e
+          ragged2e
+          tcolorbox
+          tracklang
+          trimspaces
+          xcolor
 
     - name: Run tests
       run: l3build check -q -H  --show-log-on-error
@@ -64,7 +137,80 @@ jobs:
         restore-keys: texlive${{ env.TLVERSION }}-
 
     - name: Set up TeX Live
-      run: . installsupport/install-texlive.sh
+      uses: moewew/tex-actions/setup-texlive@main
+      with:
+        packages:
+          l3build
+          latex-bin
+          luahbtex
+          tex
+          metafont
+          mfware
+          texlive-scripts
+          latex
+          amsmath
+          graphics
+          tools
+          latex-bin-dev
+          latex-base-dev
+          latex-graphics-dev
+          latex-tools-dev
+          latex-amsmath-dev
+          babel
+          babel-english
+          hyphen-english
+          biblatex
+          biber
+          bibtex
+          csquotes
+          ec
+          cm-super
+          etoolbox
+          iftex
+          hyperref
+          atveryend
+          infwarerr
+          hycolor
+          lm
+          lm-math
+          psnfss
+          unicode-math
+          xkeyval
+          babel-german
+          babel-french
+          hyphen-german
+          hyphen-french
+          bera
+          dvips
+          bookmark
+          booktabs
+          carlisle
+          cleveref
+          datetime2
+          datetime2-english
+          everysel
+          environ
+          epstopdf-pkg
+          fontaxes
+          geometry
+          hyphenat
+          l3experimental
+          libertinus
+          libertinus-type1
+          listings
+          ltxdockit
+          microtype
+          ms
+          mweights
+          newtx
+          oberdiek
+          pgf
+          pict2e
+          ragged2e
+          tcolorbox
+          tracklang
+          trimspaces
+          xcolor
 
     - name: Compile documentation
       run: l3build doc -q -H
