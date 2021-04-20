@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.12...HEAD>
+
+### Fixed
+- Fixed `env` option for `\printbibtabular`.
+
 ## Version 0.12 (2021-02-27)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.11...v0.12>

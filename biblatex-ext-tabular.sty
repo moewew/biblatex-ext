@@ -60,13 +60,13 @@
     {\extblxtab@printbibtabular}
     {\extblxtab@printbibtabular[]}}
 
-\def\extblxtab@key@env#1{%
-  \ifcsundef{extblxtab@env@#1}
+\def\extblxtab@key@env#1#2{%
+  \ifcsundef{extblxtab@env@#2}
      {\extblxtab@error
-        {Environment '#1' not found}
-        {The environment '#1' could not be found.\MessageBreak
+        {Environment '#2' not found}
+        {The environment '#2' could not be found.\MessageBreak
          Use \string\defbibtabular\space to define it}}
-     {\def\blx@theenv{#1}}}
+     {\def#1{#2}}}
 
 \def\extblxtab@printbibtabular[#1]{%
   \toggletrue{blx@tempa}%
