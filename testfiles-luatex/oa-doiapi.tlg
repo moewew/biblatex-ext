@@ -1,8 +1,8 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
 (biblatex-ext-oa-doiapi.sty
-Package: biblatex-ext-oa-doiapi ....-..-.. v... Obtain open access informatio
-n from DOI via unpaywall.org and doi.org (MW)
+Package: biblatex-ext-oa-doiapi ....-..-.. v... Obtain open access information
+ from DOI via unpaywall.org and doi.org (MW)
 Lua module: blxextdoiapi ....-..-.. v... Obtain open access information from DOI via unpaywall.org
 Package biblatex-ext-oa-doiapi Info: No OA database file present at
 (biblatex-ext-oa-doiapi)             oa-doiapi.oai.
