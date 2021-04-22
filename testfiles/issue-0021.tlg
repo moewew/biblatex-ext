@@ -1,10 +1,10 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
-(C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.sty
+(../biblatex.sty
 Package: biblatex ....-..-.. v... programmable bibliographies (PK/MW)
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
-(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-dm.def
+(../blx-dm.def
 File: blx-dm.def ....-..-.. v... biblatex localization (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex style data model...
@@ -13,26 +13,26 @@ Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
-(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-compat.def
+(../blx-compat.def
 File: blx-compat.def ....-..-.. v... biblatex compatibility (PK/MW)
 )
 Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
-(C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.def
+(../biblatex.def
 File: biblatex.def ....-..-.. v... biblatex compatibility (PK/MW)
 )
 Package biblatex Info: Trying to load bibliography style 'numeric'...
 Package biblatex Info: ... file 'numeric.bbx' found.
-(C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\numeric.bbx
+(../numeric.bbx
 File: numeric.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
 Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
-(C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\standard.bbx
+(../standard.bbx
 File: standard.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
 ))
 Package biblatex Info: Trying to load citation style 'numeric'...
 Package biblatex Info: ... file 'numeric.cbx' found.
-(C:\Program Files\MiKTeX\tex/latex/biblatex/cbx\numeric.cbx
+(../numeric.cbx
 File: numeric.cbx ....-..-.. v... biblatex citation style (PK/MW)
 Package biblatex Info: Redefining '\cite'.
 Package biblatex Info: Redefining '\parencite'.
@@ -48,7 +48,7 @@ Package biblatex Info: Redefining '\smartcites'.
 )
 Package biblatex Info: Trying to load configuration file...
 Package biblatex Info: ... file 'biblatex.cfg' found.
-(C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.cfg
+(../biblatex.cfg
 File: biblatex.cfg 
 ))
 (biblatex-ext-tabular.sty
