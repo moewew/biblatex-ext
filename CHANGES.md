@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.12a...HEAD>
+
+### Fixed
+- Fixed default `refcontext` assignment in tabular bibliography
+  <https://github.com/moewew/biblatex-ext/issues/21>.
+
 ## Version 0.12a (2021-04-20)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.12...v0.12a>
