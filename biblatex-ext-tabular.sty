@@ -183,10 +183,7 @@
   % break out of the first cell as soon as the row format has a & in it
   % since the assignment will be counted as being in the first cell
   \def\do##1{%
-    \begingroup
-    \blx@getdata{##1}%
     \blx@setdefaultrefcontext{##1}%
-    \endgroup
     \gdef\extblxtab@tabrow@entrykey{##1}%
     \csuse{extblxtab@tabrow@format@\blx@theenv}}%
   \csuse{extblxtab@env@\blx@theenv}%
