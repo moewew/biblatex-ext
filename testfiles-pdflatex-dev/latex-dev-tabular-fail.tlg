@@ -108,13 +108,6 @@ Type  H <return>  for immediate help.
 l. ...
 Please supply a suitable definition with \defbibtabular.
 See the documentation for more details.
-*** geer (@thesis) ***
-*** knuth:ct:a (@book) ***
-*** knuth:ct:b (@book) ***
-*** knuth:ct:c (@book) ***
-*** nussbaum (@book) ***
-*** sigfridsson (@article) ***
-*** worman (@book) ***
 Overfull \hbox (4.04544pt too wide) in paragraph at lines 28--28
 \T1/lmr/bx/n/10 Error! The tab-u-lar bib-li-o-graphy en-vir-on-ment `bibt-ab-u-lar' is un-defined.
 \hbox(6.99048+1.94443)x345.0, glue set - 1.0
