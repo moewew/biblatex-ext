@@ -2968,6 +2968,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -3127,6 +3128,7 @@ TEST 15: Textcite (post)
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -3302,6 +3304,7 @@ TEST 16: Textcite (pre-post)
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -3535,6 +3538,7 @@ TEST 17: Textcite (pre)
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -3786,6 +3790,7 @@ LaTeX Warning: Reference `cbx@69' on page 1 undefined on input line ....
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -4041,6 +4046,7 @@ TEST 19: Footcite (plain)
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -4358,6 +4364,7 @@ TEST 20: Footcite (post)
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -4435,6 +4442,7 @@ LaTeX Warning: Reference `cbx@97' on page 1 undefined on input line ....
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -4495,6 +4503,7 @@ LaTeX Warning: Reference `cbx@99' on page 1 undefined on input line ....
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -4691,6 +4700,7 @@ LaTeX Warning: Reference `cbx@69' on page 1 undefined on input line ....
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -4850,6 +4860,7 @@ TEST 24: Autocite prenote
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -4935,6 +4946,7 @@ LaTeX Warning: Reference `cbx@51' on page 1 undefined on input line ....
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -5003,6 +5015,7 @@ LaTeX Warning: Reference `cbx@57' on page 1 undefined on input line ....
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -5168,6 +5181,7 @@ LaTeX Warning: Reference `cbx@113' on page 1 undefined on input line ....
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0

@@ -3101,6 +3101,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -3259,6 +3260,7 @@ TEST 15: Textcite (post)
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -3433,6 +3435,7 @@ TEST 16: Textcite (pre-post)
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -3665,6 +3668,7 @@ TEST 17: Textcite (pre)
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -4078,6 +4082,7 @@ TEST 18: Textcites note
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -4332,6 +4337,7 @@ TEST 19: Footcite (plain)
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -4648,6 +4654,7 @@ TEST 20: Footcite (post)
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -4848,6 +4855,7 @@ TEST 21: Footcite (pre-post)
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -4932,6 +4940,7 @@ TEST 22: Footcite (pre)
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -5290,6 +5299,7 @@ TEST 23: Footcites note
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -5448,6 +5458,7 @@ TEST 24: Autocite prenote
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -5628,6 +5639,7 @@ TEST 25: Autocite pre and postnote
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -5720,6 +5732,7 @@ TEST 26: Autocite postnote
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
@@ -6020,6 +6033,7 @@ TEST 27: Autocites note
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
+...\kern 0.0
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
