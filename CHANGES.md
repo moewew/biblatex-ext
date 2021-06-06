@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.12b...HEAD>
+
+### Fixed
+- Fixed title printing for related entries in `authoryear` style family
+  <https://github.com/moewew/biblatex-ext/issues/22>.
+
 ## Version 0.12b (2021-04-22)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.12a...v0.12b>
