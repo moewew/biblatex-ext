@@ -1,0 +1,527 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+(../biblatex.sty
+Package: biblatex ....-..-.. v... programmable bibliographies (PK/MW)
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+(../blx-dm.def
+File: blx-dm.def ....-..-.. v... biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file 'ext-authoryear.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+(../blx-compat.def
+File: blx-compat.def ....-..-.. v... biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+(../biblatex.def
+File: biblatex.def ....-..-.. v... biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load bibliography style 'ext-authoryear'...
+Package biblatex Info: ... file 'ext-authoryear.bbx' found.
+(ext-authoryear.bbx
+File: ext-authoryear.bbx ....-..-.. v... extended biblatex authoryear bibliography style (MW)
+Package biblatex Info: Trying to load bibliography style 'ext-standard'...
+Package biblatex Info: ... file 'ext-standard.bbx' found.
+(ext-standard.bbx
+File: ext-standard.bbx ....-..-.. v... extended biblatex standard style (MW)
+Package biblatex Info: Trying to load auxiliary code for ext-biblatex...
+Package biblatex Info: ... file 'ext-biblatex-aux.def' found.
+(ext-biblatex-aux.def
+File: ext-biblatex-aux.def ....-..-.. v... auxiliaries for extended biblatex citation style (MW)
+)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+(../standard.bbx
+File: standard.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
+)
+Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@bib@' already defined, overwriting.
+Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@biblist@' already defined, overwriting.
+Package biblatex Warning: Macro 'related:default' already defined.
+(biblatex)                Using \renewbibmacro.
+)
+Package biblatex Info: Trying to load bibliography style 'authoryear'...
+Package biblatex Info: ... file 'authoryear.bbx' found.
+(../authoryear.bbx
+File: authoryear.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
+)
+Package biblatex Info: Trying to load bibliography style 'ext-authoryear-common'...
+Package biblatex Info: ... file 'ext-authoryear-common.bbx' found.
+(ext-authoryear-common.bbx
+File: ext-authoryear-common.bbx ....-..-.. v... common files for extended biblatex authoryear bibliography styles (MW)
+Package biblatex Info: Trying to load bibliography style 'ext-dashed-common'...
+Package biblatex Info: ... file 'ext-dashed-common.bbx' found.
+(ext-dashed-common.bbx
+File: ext-dashed-common.bbx ....-..-.. v... common files for extended biblatex dashed bibliography styles (MW)
+)))
+Package biblatex Info: Trying to load citation style 'ext-authoryear'...
+Package biblatex Info: ... file 'ext-authoryear.cbx' found.
+(ext-authoryear.cbx
+File: ext-authoryear.cbx ....-..-.. v... extended biblatex authoryear citation style (MW)
+Package biblatex Info: Trying to load citation style 'authoryear'...
+Package biblatex Info: ... file 'authoryear.cbx' found.
+(../authoryear.cbx
+File: authoryear.cbx ....-..-.. v... biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\footcites'.
+Package biblatex Info: Redefining '\footcitetexts'.
+Package biblatex Info: Redefining '\smartcites'.
+Package biblatex Info: Redefining '\textcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+(../biblatex.cfg
+File: biblatex.cfg 
+))
+Completed box being shipped out [1]
+\vbox(633.0+0.0)x407.0
+.\glue 16.0
+.\vbox(617.0+0.0)x345.0, shifted 62.0
+..\vbox(12.0+0.0)x345.0, glue set 12.0fil
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x345.0
+....\hbox(0.0+0.0)x345.0
+..\glue 25.0
+..\glue(\lineskip) 0.0
+..\vbox(550.0+0.0)x345.0, glue set 438.98123fil
+...\write-{}
+...\write1{\babel@aux{british}{}}
+...\glue(\topskip) 2.5
+...\hbox(7.5+2.5)x345.0, glue set 241.05551fil
+....\hbox(0.0+0.0)x15.0
+....\T1/lmr/m/n/10 L
+....\T1/lmr/m/n/10 o
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 m
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 (
+....\write1{\abx@aux@page{1}{\the \c@page }}
+....\T1/lmr/m/n/10 P
+....\kern-0.27779
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 i
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 c
+....\T1/lmr/m/n/10 e
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 1
+....\T1/lmr/m/n/10 8
+....\T1/lmr/m/n/10 8
+....\T1/lmr/m/n/10 0
+....\T1/lmr/m/n/10 )
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\penalty -300
+...\glue 15.06923 plus 4.3055 minus 0.86108
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
+...\glue(\baselineskip) 5.65462
+...\hbox(9.84538+0.0)x345.0, glue set 269.19131fil
+....\hbox(0.0+0.0)x0.0
+.....\glue 0.0
+....\T1/lmr/bx/n/14.4 R
+....\T1/lmr/bx/n/14.4 e
+....\T1/lmr/bx/n/14.4 f
+....\T1/lmr/bx/n/14.4 e
+....\T1/lmr/bx/n/14.4 r
+....\T1/lmr/bx/n/14.4 e
+....\T1/lmr/bx/n/14.4 n
+....\T1/lmr/bx/n/14.4 c
+....\T1/lmr/bx/n/14.4 e
+....\T1/lmr/bx/n/14.4 s
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\penalty 10000
+...\glue 9.90265 plus 0.86108
+...\glue(\parskip) 0.0
+...\glue(\parskip) 0.0
+...\glue(\baselineskip) 4.5
+...\hbox(7.5+2.5)x330.0, glue set 0.24965, shifted 15.0
+....\hbox(0.0+0.0)x-15.0
+.....\glue -15.0
+.....\glue -20.00003
+.....\glue -5.0
+.....\hbox(0.0+0.0)x20.00003, glue set 20.00003fil
+......\glue 0.0 plus 1.0fil
+.....\glue 5.0
+....\penalty 0
+....\write1{\abx@aux@page{2}{\the \c@page }}
+....\T1/lmr/m/n/10 P
+....\kern-0.27779
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 i
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 c
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 ,
+....\penalty 25
+....\glue 3.33333 plus 1.67165 minus 1.10779
+....\T1/lmr/m/n/10 C
+....\T1/lmr/m/n/10 h
+....\T1/lmr/m/n/10 a
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 l
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 s
+....\penalty 50
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 S
+....\T1/lmr/m/n/10 a
+....\T1/lmr/m/n/10 n
+....\T1/lmr/m/n/10 d
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 s
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 (
+....\T1/lmr/m/n/10 1
+....\T1/lmr/m/n/10 8
+....\T1/lmr/m/n/10 8
+....\T1/lmr/m/n/10 0
+....\T1/lmr/m/n/10 )
+....\T1/lmr/m/n/10 .
+....\glue 3.33333 plus 1.67665 minus 1.10448
+....\T1/lmr/m/n/10 `
+....\penalty 10000
+....\glue -0.0002
+....\glue 0.0002
+....\T1/lmr/m/n/10 A
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 B
+....\T1/lmr/m/n/10 o
+....\kern0.27779
+....\T1/lmr/m/n/10 o
+....\discretionary
+.....\T1/lmr/m/n/10 -
+....\T1/lmr/m/n/10 l
+....\T1/lmr/m/n/10 i
+....\T1/lmr/m/n/10 a
+....\T1/lmr/m/n/10 n
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 a
+....\T1/lmr/m/n/10 l
+....\discretionary
+.....\T1/lmr/m/n/10 -
+....\T1/lmr/m/n/10 g
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 b
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 a
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 w
+....\T1/lmr/m/n/10 i
+....\T1/lmr/m/n/10 t
+....\T1/lmr/m/n/10 h
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 o
+....\T1/lmr/m/n/10 n
+....\T1/lmr/m/n/10 e
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 c
+....\T1/lmr/m/n/10 o
+....\T1/lmr/m/n/10 n
+....\discretionary
+.....\T1/lmr/m/n/10 -
+....\T1/lmr/m/n/10 s
+....\T1/lmr/m/n/10 t
+....\T1/lmr/m/n/10 a
+....\T1/lmr/m/n/10 n
+....\kern-0.27779
+....\T1/lmr/m/n/10 t
+....\T1/lmr/m/n/10 '
+....\T1/lmr/m/n/10 .
+....\glue 3.33333 plus 1.67665 minus 1.10448
+....\T1/lmr/m/n/10 M
+....\T1/lmr/m/n/10 a
+....\discretionary
+.....\T1/lmr/m/n/10 -
+....\T1/lmr/m/n/10 n
+....\kern-0.27779
+....\T1/lmr/m/n/10 u
+....\discretionary
+....\T1/lmr/m/n/10 -
+....\glue(\rightskip) 0.0
+...\penalty 15100
+...\glue(\baselineskip) 2.61125
+...\hbox(6.88875+1.94443)x330.0, glue set 0.5275, shifted 15.0
+....\T1/lmr/m/n/10 s
+....\T1/lmr/m/n/10 c
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 i
+....\T1/lmr/m/n/10 p
+....\T1/lmr/m/n/10 t
+....\T1/lmr/m/n/10 .
+....\glue 3.33333 plus 1.67665 minus 1.10448
+....\T1/lmr/m/n/10 `
+....\penalty 10000
+....\glue -0.0002
+....\glue 0.0002
+....\T1/lmr/m/n/10 A
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 B
+....\T1/lmr/m/n/10 o
+....\kern0.27779
+....\T1/lmr/m/n/10 o
+....\discretionary
+.....\T1/lmr/m/n/10 -
+....\T1/lmr/m/n/10 l
+....\T1/lmr/m/n/10 i
+....\T1/lmr/m/n/10 a
+....\T1/lmr/m/n/10 n
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 a
+....\T1/lmr/m/n/10 l
+....\discretionary
+.....\T1/lmr/m/n/10 -
+....\T1/lmr/m/n/10 g
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 b
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 a
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 w
+....\T1/lmr/m/n/10 i
+....\T1/lmr/m/n/10 t
+....\T1/lmr/m/n/10 h
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 o
+....\T1/lmr/m/n/10 n
+....\T1/lmr/m/n/10 e
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 c
+....\T1/lmr/m/n/10 o
+....\T1/lmr/m/n/10 n
+....\discretionary
+.....\T1/lmr/m/n/10 -
+....\T1/lmr/m/n/10 s
+....\T1/lmr/m/n/10 t
+....\T1/lmr/m/n/10 a
+....\T1/lmr/m/n/10 n
+....\kern-0.27779
+....\T1/lmr/m/n/10 t
+....\T1/lmr/m/n/10 '
+....\T1/lmr/m/n/10 .
+....\glue 3.33333 plus 1.67665 minus 1.10448
+....\T1/lmr/m/n/10 I
+....\T1/lmr/m/n/10 n
+....\T1/lmr/m/n/10 :
+....\glue 3.33333 plus 1.67499 minus 1.10558
+....\T1/lmr/m/n/10 C
+....\T1/lmr/m/n/10 h
+....\T1/lmr/m/n/10 a
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 l
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 s
+....\penalty 50
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 S
+....\T1/lmr/m/n/10 a
+....\T1/lmr/m/n/10 n
+....\T1/lmr/m/n/10 d
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 s
+....\penalty 25
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 P
+....\kern-0.27779
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 i
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 c
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 .
+....\glue(\rightskip) 0.0
+...\penalty 5000
+...\glue(\baselineskip) 3.16682
+...\hbox(6.88875+1.94443)x330.0, glue set 0.11433, shifted 15.0
+....\T1/lmr/m/it/10 C
+....\T1/lmr/m/it/10 o
+....\discretionary replacing 2
+.....\T1/lmr/m/it/10 l
+.....\T1/lmr/m/it/10 -
+....\T1/lmr/m/it/10 l
+....\kern0.76665
+....\T1/lmr/m/it/10 l
+....\T1/lmr/m/it/10 e
+....\kern-0.51112
+....\T1/lmr/m/it/10 c
+....\discretionary
+.....\T1/lmr/m/it/10 -
+....\T1/lmr/m/it/10 t
+....\T1/lmr/m/it/10 e
+....\kern-0.51112
+....\T1/lmr/m/it/10 d
+....\glue 3.57777 plus 1.53333 minus 1.0222
+....\T1/lmr/m/it/10 P
+....\T1/lmr/m/it/10 a
+....\discretionary
+.....\T1/lmr/m/it/10 -
+....\T1/lmr/m/it/10 p
+....\kern-0.51112
+....\T1/lmr/m/it/10 e
+....\T1/lmr/m/it/10 r
+....\T1/lmr/m/it/10 s
+....\T1/lmr/m/n/10 .
+....\glue 3.33333 plus 1.67665 minus 1.10448
+....\T1/lmr/m/n/10 E
+....\T1/lmr/m/n/10 d
+....\T1/lmr/m/n/10 .
+....\penalty 50
+....\glue 3.33333 plus 1.66998 minus 1.10889
+....\T1/lmr/m/n/10 b
+....\kern-0.27779
+....\T1/lmr/m/n/10 y
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 C
+....\T1/lmr/m/n/10 h
+....\T1/lmr/m/n/10 a
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 l
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 s
+....\penalty 25
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 H
+....\T1/lmr/m/n/10 a
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 t
+....\T1/lmr/m/n/10 s
+....\T1/lmr/m/n/10 h
+....\T1/lmr/m/n/10 o
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 n
+....\T1/lmr/m/n/10 e
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 a
+....\T1/lmr/m/n/10 n
+....\T1/lmr/m/n/10 d
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 P
+....\kern-0.27779
+....\T1/lmr/m/n/10 a
+....\T1/lmr/m/n/10 u
+....\T1/lmr/m/n/10 l
+....\penalty 25
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 W
+....\kern-0.83334
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 i
+....\T1/lmr/m/n/10 s
+....\T1/lmr/m/n/10 s
+....\T1/lmr/m/n/10 .
+....\glue 3.33333 plus 1.67665 minus 1.10448
+....\T1/lmr/m/n/10 V
+....\kern-0.83334
+....\T1/lmr/m/n/10 o
+....\T1/lmr/m/n/10 l
+....\T1/lmr/m/n/10 .
+....\penalty 10000
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 4
+....\T1/lmr/m/n/10 .
+....\glue 3.33333 plus 1.67665 minus 1.10448
+....\T1/lmr/m/n/10 C
+....\T1/lmr/m/n/10 a
+....\discretionary
+....\T1/lmr/m/n/10 m
+....\T1/lmr/m/n/10 -
+....\glue(\rightskip) 0.0
+...\penalty 15100
+...\glue(\baselineskip) 3.16682
+...\hbox(6.88875+1.94443)x330.0, glue set 129.27692fil, shifted 15.0
+....\T1/lmr/m/n/10 b
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 i
+....\T1/lmr/m/n/10 d
+....\T1/lmr/m/n/10 g
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 ,
+....\glue 3.33333 plus 1.67165 minus 1.10779
+....\T1/lmr/m/n/10 M
+....\T1/lmr/m/n/10 .
+....\T1/lmr/m/n/10 A
+....\T1/lmr/m/n/10 .
+....\T1/lmr/m/n/10 :
+....\glue 3.33333 plus 1.67499 minus 1.10558
+....\T1/lmr/m/n/10 H
+....\T1/lmr/m/n/10 a
+....\T1/lmr/m/n/10 r
+....\discretionary
+.....\T1/lmr/m/n/10 -
+....\T1/lmr/m/n/10 v
+....\kern-0.55556
+....\T1/lmr/m/n/10 a
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 d
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 U
+....\T1/lmr/m/n/10 n
+....\T1/lmr/m/n/10 i
+....\discretionary
+.....\T1/lmr/m/n/10 -
+....\T1/lmr/m/n/10 v
+....\kern-0.27779
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 r
+....\discretionary
+.....\T1/lmr/m/n/10 -
+....\T1/lmr/m/n/10 s
+....\T1/lmr/m/n/10 i
+....\T1/lmr/m/n/10 t
+....\kern-0.27779
+....\T1/lmr/m/n/10 y
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 P
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 s
+....\T1/lmr/m/n/10 s
+....\T1/lmr/m/n/10 ,
+....\glue 3.33333 plus 1.67165 minus 1.10779
+....\T1/lmr/m/n/10 1
+....\T1/lmr/m/n/10 9
+....\T1/lmr/m/n/10 3
+....\T1/lmr/m/n/10 3
+....\T1/lmr/m/n/10 .
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\penalty -51
+...\glue 10.0 plus 3.0 minus 5.0
+...\glue -1.94443
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+...\glue 0.0 plus 0.0001fil
+..\glue(\baselineskip) 23.70276
+..\hbox(6.29724+0.0)x345.0
+...\hbox(6.29724+0.0)x345.0, glue set 170.0fil
+....\glue 0.0 plus 1.0fil
+....\T1/lmr/m/n/10 1
+....\glue 0.0 plus 1.0fil
+(issue-0022.aux)
+Package logreq Info: Writing requests to 'issue-0022.run.xml'.
