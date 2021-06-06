@@ -125,6 +125,22 @@
       \usebibmacro{date}}%
     \newunit}}
 
+\DeclareFieldAlias{biblabeltitle}{title}
+\DeclareFieldAlias{titlecase:biblabeltitle}{tilecase}
+\renewbibmacro*{labeltitle}{%
+  \iffieldundef{label}
+    {\iffieldundef{shorttitle}
+       {\iffieldundef{title}
+          {\printtext[biblabeltitle]{%
+             \printfield[titlecase:biblabeltitle]{maintitle}}%
+           \clearfield{maintitle}}
+          {\printtext[biblabeltitle]{%
+             \printfield[titlecase:biblabeltitle]{title}}%
+           \clearfield{title}}}
+       {\printtext[biblabeltitle]{%
+          \printfield[titlecase:biblabeltitle]{shorttitle}}}}
+    {\printfield{label}}}
+
 \defbibenvironment{bibliography}
   {\list
      {\ifcsequal{extblx@introcite}{extblx@opt@introcite@label}

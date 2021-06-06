@@ -2182,6 +2182,15 @@ A customisation example for \bibfield{issuedate} can be found in the
   \exampleprintbib{knuth:ct:a}
   \end{bibexample}
 
+\bibfieldformatitem{biblabeltitle}
+  The format for the title when it is used in \blxstyle{authoryear}
+  styles to replace a missing author/editor.
+  By default this field format is an alias for \bibfieldformat{title}.
+  \begin{bibexample}
+  \DeclareFieldFormat{biblabeltitle}{\highlight[1]{#1}}%
+  \exampleprintbib{jcg}
+  \end{bibexample}
+
 \bibfieldformatitem{titlecase:title} The standard styles follow an
   all-or-nothing approach when it comes to title casing. The field format
   \bibfieldformat{titlecase} intended to enable sentence case with
@@ -2207,6 +2216,11 @@ A customisation example for \bibfield{issuedate} can be found in the
 \bibfieldformatitem{titlecase:issuetitle}
   Like \hyperbibfieldformat{titlecase:title}, but controls the title casing
   of the \bibfield{issuetitle} and \bibfield{issuesubtitle} fields.
+
+\bibfieldformatitem{titlecase:biblabeltitle}
+  Like \hyperbibfieldformat{titlecase:title}, but controls the title casing
+  of the title printed instead of missing author/editor name in
+  \blxstyle{authoryear} styles.
 
 The \bibfieldformat{citetitle} field format can be used to change the title
 case in author-title citations, so there is no
@@ -3924,8 +3938,8 @@ See also \filename{CHANGES.md}.
 The numbers on the right indicate the relevant section of the manual.
 \begin{changelog}
 \begin{release}{<version>}{<date>}
-  \item Fixed title formatting with related entries in \sty{authoryear}
-    style family
+  \item Fixed title formatting with related entries in
+    \blxstyle{authoryear} style family
 \end{release}
 \begin{release}{0.12b}{2021-04-22}
   \item Fixed bug with refcontext assignment in

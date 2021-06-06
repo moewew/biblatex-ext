@@ -4,6 +4,11 @@
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.12b...HEAD>
 
+### Added
+- `titlecase:biblabeltitle` and `biblabeltitle` formats to format
+  (replacement) title printed in `authoryear` styles instead of
+  missing author/editor.
+
 ### Fixed
 - Fixed title printing for related entries in `authoryear` style family
   <https://github.com/moewew/biblatex-ext/issues/22>.
