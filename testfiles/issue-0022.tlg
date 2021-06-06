@@ -41,8 +41,6 @@ File: standard.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
 )
 Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@bib@' already defined, overwriting.
 Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@biblist@' already defined, overwriting.
-Package biblatex Warning: Macro 'related:default' already defined.
-(biblatex)                Using \renewbibmacro.
 )
 Package biblatex Info: Trying to load bibliography style 'authoryear'...
 Package biblatex Info: ... file 'authoryear.bbx' found.
