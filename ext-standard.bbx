@@ -881,6 +881,69 @@
     {}%
   \usebibmacro{finentry}}
 
+% copy of the plain versions of these macros from biblatex.def
+% useful if we need to get out of dashed/authoryear modifications
+\newbibmacro*{plain:author}{%
+  \ifboolexpr{
+    test \ifuseauthor
+    and
+    not test {\ifnameundef{author}}
+  }
+    {\printnames{author}%
+     \iffieldundef{authortype}
+       {}
+       {\setunit{\printdelim{authortypedelim}}%
+        \usebibmacro{authorstrg}}}
+    {}}
+
+\newbibmacro*{plain:editor}{%
+  \ifboolexpr{
+    test \ifuseeditor
+    and
+    not test {\ifnameundef{editor}}
+  }
+    {\printnames{editor}%
+     \setunit{\printdelim{editortypedelim}}%
+     \usebibmacro{editorstrg}%
+     \clearname{editor}}
+    {}}
+
+\newbibmacro*{plain:editor+others}{%
+  \ifboolexpr{
+    test \ifuseeditor
+    and
+    not test {\ifnameundef{editor}}
+  }
+    {\printnames{editor}%
+     \setunit{\printdelim{editortypedelim}}%
+     \usebibmacro{editor+othersstrg}%
+     \clearname{editor}}
+    {}}
+
+\newbibmacro*{plain:translator}{%
+  \ifboolexpr{
+    test \ifusetranslator
+    and
+    not test {\ifnameundef{translator}}
+  }
+    {\printnames{translator}%
+     \setunit{\printdelim{translatortypedelim}}%
+     \usebibmacro{translatorstrg}%
+     \clearname{translator}}
+    {}}
+
+\newbibmacro*{plain:translator+others}{%
+  \ifboolexpr{
+    test \ifusetranslator
+    and
+    not test {\ifnameundef{translator}}
+  }
+    {\printnames{translator}%
+     \setunit{\printdelim{translatortypedelim}}%
+     \usebibmacro{translator+othersstrg}%
+     \clearname{translator}}
+    {}}
+
 
 \DeclareFieldAlias{titlecase:title}{titlecase}
 \renewbibmacro*{title}{%
@@ -1248,6 +1311,32 @@
   \iftoggle{bbx:introcite:plain:keeprelated}
     {}
     {\renewbibmacro{introcite:plain}{}}}
+
+\newbibmacro*{related:default}[1]{%
+  \entrydata*{#1}{%
+    \usedriver
+      {\DeclareNameAlias{sortname}{default}%
+       \ifnameundef{savedauthor}
+         {\ifnameundef{savededitor}
+            {}
+            {\ifnamesequal{editor}{savededitor}
+               {\clearname{editor}}
+               {}}}
+         {\ifnamesequal{author}{savedauthor}
+            {\clearname{author}}
+            {}}%
+       \letbibmacro*{author}{plain:author}%
+       \letbibmacro*{editor}{plain:editor}%
+       \letbibmacro*{editor+others}{plain:editor+others}%
+       \letbibmacro*{translator}{plain:translator}%
+       \letbibmacro*{translator+others}{plain:translator+others}%
+       \ifbibmacroundef{date+extradate}
+         {}
+         {\renewbibmacro*{date+extradate}{}%
+          \renewbibmacro*{bbx:ifmergeddate}{\@secondoftwo}}%
+       \renewbibmacro*{pageref}{}%
+       \renewbibmacro*{related:init}{}}
+      {\thefield{entrytype}}}}
 
 \renewbibmacro*{related:bytranslator}[1]{%
   \entrydata{#1}{%
