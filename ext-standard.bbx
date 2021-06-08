@@ -1249,35 +1249,6 @@
     {}
     {\renewbibmacro{introcite:plain}{}}}
 
-\renewbibmacro*{related:default}[1]{%
-  \entrydata*{#1}{%
-    \usedriver
-      {\ifnameundef{savedauthor}
-         {\ifnameundef{savededitor}
-            {}
-            {\ifnamesequal{editor}{savededitor}
-               {\clearname{editor}}
-               {}}}
-         {\ifnamesequal{author}{savedauthor}
-            {\clearname{author}}
-            {}}%
-       \DeclareNameAlias{sortname}{default}%
-       % from authortitle and authoryear
-       \ifbibmacroundef{bbx:dashcheck}
-         {}
-         {\renewbibmacro*{bbx:dashcheck}[2]{##2}}%
-       % authoryear
-       \ifbibmacroundef{labeltitle}
-         {}
-         {\renewbibmacro*{labeltitle}{}}%
-       \ifbibmacroundef{date+extradate}
-         {}
-         {\renewbibmacro*{date+extradate}{}%
-          \renewbibmacro*{bbx:ifmergeddate}{\@secondoftwo}}%
-       \renewbibmacro*{pageref}{}%
-       \renewbibmacro*{related:init}{}}
-      {\thefield{entrytype}}}}
-
 \renewbibmacro*{related:bytranslator}[1]{%
   \entrydata{#1}{%
     \renewbibmacro*{name:hook}[1]{%
@@ -1296,6 +1267,43 @@
       \printlist{publisher}%
       \setunit*{\pubdatedelim}%
       \printdate}}}
+
+% -------------------------------------------------------------------
+% Compatibility code for older biblatex
+% -------------------------------------------------------------------
+
+% fixed related:default will be in biblatex v3.17
+% it was added 2021-06-07, so that's the date we test against
+\@ifpackagelater{biblatex}{2021/06/07}
+  {}
+  {\renewbibmacro*{related:default}[1]{%
+     \entrydata*{#1}{%
+       \usedriver
+         {\ifnameundef{savedauthor}
+            {\ifnameundef{savededitor}
+               {}
+               {\ifnamesequal{editor}{savededitor}
+                  {\clearname{editor}}
+                  {}}}
+            {\ifnamesequal{author}{savedauthor}
+               {\clearname{author}}
+               {}}%
+          \DeclareNameAlias{sortname}{default}%
+          % from authortitle and authoryear
+          \ifbibmacroundef{bbx:dashcheck}
+            {}
+            {\renewbibmacro*{bbx:dashcheck}[2]{##2}}%
+          % authoryear
+          \ifbibmacroundef{labeltitle}
+            {}
+            {\renewbibmacro*{labeltitle}{}}%
+          \ifbibmacroundef{date+extradate}
+            {}
+            {\renewbibmacro*{date+extradate}{}%
+             \renewbibmacro*{bbx:ifmergeddate}{\@secondoftwo}}%
+          \renewbibmacro*{pageref}{}%
+          \renewbibmacro*{related:init}{}}
+         {\thefield{entrytype}}}}}
 
 \endinput
 
