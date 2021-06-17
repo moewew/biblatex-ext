@@ -143,11 +143,12 @@
 \def\extblx@deprecate@delimcommand@robust#1#2{%
   \protected\csedef{#1}{%
     \noexpand\extblx@warning{%
-      \expandafter\string\csname#1\endcsname\space is deprecated.
+      \expandafter\string\csname#1\endcsname\space is deprecated.%
       \MessageBreak
-      Use \expandafter\string\csname#2\endcsname\space (with s) instead.
-      \MessageBreak
-      Using \expandafter\string\csname#2\endcsname}%
+      Use \expandafter\string\csname#2\endcsname\MessageBreak
+      (with s in 'Delims') instead.\MessageBreak
+      Using\MessageBreak
+      \expandafter\string\csname#2\endcsname\MessageBreak}%
   \expandonce{\csname#2\endcsname}}}
 
 \extblx@deprecate@delimcommand@robust{DeclareOuterCiteDelim}
