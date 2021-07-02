@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.13...HEAD>
+
+### Fixed
+- Use `language` bibmacro in `@dataset` driver instead of bare
+  `\printlist{language}`.
+
 ## Version 0.13 (2021-06-08)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.12b...v0.13>
