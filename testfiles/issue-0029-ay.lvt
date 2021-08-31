@@ -1,0 +1,33 @@
+\input{regression-test.tex}
+\documentclass[british]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{babel}
+\usepackage{csquotes}
+
+
+% load biblatex dependencies and suppress counter allocation logging
+\input{testbiblatex-loaddeps.tex}
+
+\START
+\usepackage[backend=biber, style=ext-authoryear, citexref=true]{biblatex}
+\addbibresource{biblatex-examples.bib}
+\OMIT
+
+\TIMO
+\UndeclareDelimcontextAlias{bbx@xrefcite}
+\DeclareInnerCiteDelims{bbx@xrefcite}{\bibopenparen}{\bibcloseparen}
+\OMIT
+
+\begin{document}
+\TIMO
+
+\showoutput
+Lorem \autocite{sigfridsson,westfahl:frontier,westfahl:space}
+
+\printbibliography
+\clearpage
+
+\end{document}
+\END

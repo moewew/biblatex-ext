@@ -7,6 +7,8 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.13...HEAD>
 ### Fixed
 - Use `language` bibmacro in `@dataset` driver instead of bare
   `\printlist{language}`.
+- Fixed inner cite delims for `\bbx@xrefcite`
+  <https://github.com/moewew/biblatex-ext/issues/29>.
 
 ## Version 0.13 (2021-06-08)
 
