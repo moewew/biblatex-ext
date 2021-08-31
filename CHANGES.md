@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## Version 0.14 (2021-08-31)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.13...HEAD>
+See <https://github.com/moewew/biblatex-ext/compare/v0.13...v0.14>
 
 ### Fixed
 - Use `language` bibmacro in `@dataset` driver instead of bare
