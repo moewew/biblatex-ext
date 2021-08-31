@@ -23,6 +23,8 @@
 \DeclareFieldAlias
   {extblx@innerfootcitetextdelims}
   {extblx@innerfootcitedelims}
+\DeclareFieldFormat{extblx@innerbbx@xrefcitedelims}{%
+  \csuse{mkinner\blx@delimcontext delims}{#1}}
 
 \renewbibmacro*{textcite}{%
   \printnames{labelname}%

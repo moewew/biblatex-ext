@@ -10,6 +10,7 @@
 
 \DeclareInnerCiteDelims{textcite}{\bibopenparen}{\bibcloseparen}
 
+
 \DeclareFieldFormat{extblx@innercitedelims}{%
   \csuse{mkinner\blx@delimcontext delims}{#1}}
 \DeclareFieldFormat{extblx@innerparencitedelims}{%
@@ -17,11 +18,11 @@
 \DeclareFieldFormat{extblx@innertextcitedelims}{#1}
 \DeclareFieldFormat{extblx@innerfootcitedelims}{%
   \csuse{mkinner\blx@delimcontext delims}{#1}}
-\DeclareFieldFormat{extblx@innerfootcitetextdelims}{%
-  \csuse{mkinner\blx@delimcontext delims}{#1}}
 \DeclareFieldAlias
   {extblx@innerfootcitetextdelims}
   {extblx@innerfootcitedelims}
+\DeclareFieldFormat{extblx@innerbbx@xrefcitedelims}{%
+  \csuse{mkinner\blx@delimcontext delims}{#1}}
 
 \DeclareFieldFormat{citelabeldate}{#1}
 \DeclareFieldFormat{parencitelabeldate}{#1}
