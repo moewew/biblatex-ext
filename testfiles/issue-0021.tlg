@@ -267,7 +267,6 @@ Completed box being shipped out [1]
 ........\kern 0.0
 ........\penalty 10000
 ........\rule(0.0+3.60004)x0.0
-........\kern 0.0
 ........\penalty 10000
 ........\glue(\parfillskip) 0.0 plus 1.0fil
 ........\glue(\rightskip) 0.0
@@ -507,7 +506,6 @@ Completed box being shipped out [1]
 .......\T1/lmr/m/n/10 r
 .......\penalty 10000
 .......\rule(0.0+3.60004)x0.0
-.......\kern 0.0
 .......\penalty 10000
 .......\glue(\parfillskip) 0.0 plus 1.0fil
 .......\glue(\rightskip) 0.0
@@ -695,7 +693,6 @@ Completed box being shipped out [1]
 .......\T1/lmr/m/n/10 n
 .......\penalty 10000
 .......\rule(0.0+3.60004)x0.0
-.......\kern 0.0
 .......\penalty 10000
 .......\glue(\parfillskip) 0.0 plus 1.0fil
 .......\glue(\rightskip) 0.0
@@ -831,7 +828,6 @@ Completed box being shipped out [1]
 .......\T1/lmr/m/n/10 m
 .......\penalty 10000
 .......\rule(0.0+3.60004)x0.0
-.......\kern 0.0
 .......\penalty 10000
 .......\glue(\parfillskip) 0.0 plus 1.0fil
 .......\glue(\rightskip) 0.0
@@ -985,7 +981,6 @@ Completed box being shipped out [1]
 .......\T1/lmr/m/n/10 n
 .......\penalty 10000
 .......\rule(0.0+3.60004)x0.0
-.......\kern 0.0
 .......\penalty 10000
 .......\glue(\parfillskip) 0.0 plus 1.0fil
 .......\glue(\rightskip) 0.0
@@ -1077,7 +1072,6 @@ Completed box being shipped out [1]
 .....\hbox(0.0+0.0)x0.0
 .....\glue 5.0
 ....\penalty 0
-....\kern 0.0
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0
 ....\glue(\rightskip) 0.0 plus 1.0fil
