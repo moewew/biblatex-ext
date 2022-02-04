@@ -50,6 +50,15 @@ Package biblatex Info: Trying to load configuration file...
 Package biblatex Info: ... file 'biblatex.cfg' found.
 (../biblatex.cfg
 File: biblatex.cfg 
+)
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Document encoding is UTF8 ....
+Package biblatex Info: ... and expl3
+(biblatex)             ....-..-.. L3 programming layer (loader) 
+(biblatex)             is new enough (at least ....-..-..),
+(biblatex)             setting 'casechanger=expl3'.
+(../blx-case-expl3.sty
+Package: blx-case-expl3 ....-..-.. v... expl3 case changing code for biblatex
 ))
 (biblatex-ext-tabular.sty
 Package: biblatex-ext-tabular ....-..-.. v... tabular bibliographies for biblatex (MW)

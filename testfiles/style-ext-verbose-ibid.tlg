@@ -39,8 +39,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 (../standard.bbx
 File: standard.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
 )
-Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@bib@' already defined, overwriting.
-Package biblatex Info: Delimiter 'innametitledelim' in context 'blx@printdelim@biblist@' already defined, overwriting.
+Package biblatex Info: Delimiter 'innametitledelim' in context 'bib' already defined, overwriting.
+Package biblatex Info: Delimiter 'innametitledelim' in context 'biblist' already defined, overwriting.
 )
 Package biblatex Info: Trying to load bibliography style 'verbose-ibid'...
 Package biblatex Info: ... file 'verbose-ibid.bbx' found.
@@ -88,6 +88,15 @@ Package biblatex Info: Trying to load configuration file...
 Package biblatex Info: ... file 'biblatex.cfg' found.
 (../biblatex.cfg
 File: biblatex.cfg 
+)
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Document encoding is UTF8 ....
+Package biblatex Info: ... and expl3
+(biblatex)             ....-..-.. L3 programming layer (loader) 
+(biblatex)             is new enough (at least ....-..-..),
+(biblatex)             setting 'casechanger=expl3'.
+(../blx-case-expl3.sty
+Package: blx-case-expl3 ....-..-.. v... expl3 case changing code for biblatex
 ))
 ============================================================
 TEST 1: Simple cite
