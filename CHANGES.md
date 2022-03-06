@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## Version 0.15 (2022-03-06)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.14...dev>
+See <https://github.com/moewew/biblatex-ext/compare/v0.14...v0.15>
 
 ### Added
 - New `authornumber` style family.
