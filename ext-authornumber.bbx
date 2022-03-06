@@ -1,0 +1,96 @@
+\ProvidesFile{ext-authornumber.bbx}
+  [2021/08/31 v0.14 extended biblatex authoryear bibliography style (MW)]
+
+\RequireBibliographyStyle{ext-standard}
+\RequireBibliographyStyle{ext-authortitle}
+
+\ExecuteBibliographyOptions{sorting=nyt}
+
+\DeclareDelimFormat{namenumberdelim}{\addspace}
+\DeclareDelimAlias{nonamenumberdelim}{namenumberdelim}
+
+\renewbibmacro*{author}{%
+  \ifboolexpr{
+    test \ifuseauthor
+    and
+    not test {\ifnameundef{author}}
+  }
+    {\usebibmacro{bbx:dashcheck}
+       {\bibnamedash}
+       {\usebibmacro{bbx:savehash}%
+        \printnames{author}%
+        \iffieldundef{authortype}
+          {\setunit{\printdelim{namenumberdelim}}}
+          {\setunit{\printdelim{authortypedelim}}}}%
+     \iffieldundef{authortype}
+       {}
+       {\usebibmacro{authorstrg}%
+        \setunit{\printdelim{namenumberdelim}}}}%
+    {\global\undef\bbx@lasthash
+     \usebibmacro{labeltitle}%
+     \setunit*{\printdelim{nonamenumberdelim}}}%
+  \usebibmacro{extraname}}
+
+\renewbibmacro*{bbx:editor}[1]{%
+  \ifboolexpr{
+    test \ifuseeditor
+    and
+    not test {\ifnameundef{editor}}
+  }
+    {\usebibmacro{bbx:dashcheck}
+       {\bibnamedash}
+       {\printnames{editor}%
+        \setunit{\printdelim{editortypedelim}}%
+        \usebibmacro{bbx:savehash}}%
+     \usebibmacro{#1}%
+     \clearname{editor}%
+     \setunit{\printdelim{namenumberdelim}}}%
+    {\global\undef\bbx@lasthash
+     \usebibmacro{labeltitle}%
+     \setunit*{\printdelim{nonamenumberdelim}}}%
+  \usebibmacro{extraname}}
+
+\renewbibmacro*{bbx:translator}[1]{%
+  \ifboolexpr{
+    test \ifusetranslator
+    and
+    not test {\ifnameundef{translator}}
+  }
+    {\usebibmacro{bbx:dashcheck}
+       {\bibnamedash}
+       {\printnames{translator}%
+        \setunit{\printdelim{translatortypedelim}}%
+        \usebibmacro{bbx:savehash}}%
+     \usebibmacro{#1}%
+     \clearname{translator}%
+     \setunit{\printdelim{namenumberdelim}}}%
+    {\global\undef\bbx@lasthash
+     \usebibmacro{labeltitle}%
+     \setunit*{\printdelim{nonamenumberdelim}}}%
+  \usebibmacro{extraname}}
+
+
+\DeclareFieldFormat{bibextraname}{\mkbibbrackets{#1}}
+\newbibmacro{extraname}{%
+  \printtext[bibextraname]{%
+    \iffieldundef{shorthand}
+      {\iffieldundef{extraname}
+         {\printtext[extraname]{1}}
+         {\printfield{extraname}}}
+      {\printfield{shorthand}}}}
+
+
+\endinput
+%
+% This file is part of the biblatex-ext bundle.
+% biblatex-ext is released under the LaTeX Project Public License v1.3c
+% or later.
+%
+% A complete list of files included in that package can be found in
+% README.md or - failing that - in ext-standard.bbx.
+%
+% Official releases of this package are on CTAN
+%   https://www.ctan.org/pkg/biblatex-ext
+% development takes place on GitHub
+%   https://github.com/moewew/biblatex-ext
+%

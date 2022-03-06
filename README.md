@@ -32,7 +32,13 @@ files
 - The `alphabetic` style family
   - `ext-alphabetic.bbx` and `ext-alphabetic.cbx`
   - `ext-alphabetic-verb.bbx` and `ext-alphabetic-verb.cbx`
-- The `authoryear`/`authortitle` helper file `ext-dashed-common.bbx`
+- The `authornumber` style family
+  - `ext-authornumber.bbx` and `ext-authornumber.cbx`
+  - `ext-authornumber-comp.bbx` and `ext-authornumber-comp.cbx`
+  - `ext-authornumber-ecomp.bbx` and `ext-authornumber-ecomp.cbx`
+  - `ext-authornumber-terse.bbx` and `ext-authornumber-terse.cbx`
+  - `ext-authornumber-tcomp.bbx` and `ext-authornumber-tcomp.cbx`
+  - `ext-authornumber-tecomp.bbx` and `ext-authornumber-tecomp.cbx`
 - The `authortitle` style family
   - `ext-authortitle-common.bbx`
   - `ext-authortitle.bbx` and `ext-authortitle.cbx`
@@ -42,6 +48,7 @@ files
   - `ext-authortitle-terse.bbx` and `ext-authortitle-terse.cbx`
   - `ext-authortitle-tcomp.bbx` and `ext-authortitle-tcomp.cbx`
   - `ext-authortitle-ticomp.bbx` and `ext-authortitle-ticomp.cbx`
+- The `authoryear`/`authortitle` helper file `ext-dashed-common.bbx`
 - The `authoryear` style family
   - `ext-authoryear-common.bbx`
   - `ext-authoryear.bbx` and `ext-authoryear.cbx`

@@ -1,0 +1,320 @@
+\ProvidesFile{ext-authornumber-comp.cbx}
+  [2021/08/31 v0.14 extended biblatex authoryear citation style (MW)]
+
+\blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}
+  {}{}{}{}
+
+\ExecuteBibliographyOptions{uniquename,uniquelist,sortcites,autocite=plain}
+
+\DeclareOuterCiteDelims{parencite}{\bibopenparen}{\bibcloseparen}
+\DeclareInnerCiteDelims{cite}{\bibopenbracket}{\bibclosebracket}
+\DeclareInnerCiteDelims{footcite}{\bibopenbracket}{\bibclosebracket}
+\DeclareInnerCiteDelims{textcite}{\bibopenbracket}{\bibclosebracket}
+
+
+\DeclareFieldFormat{extblx@innercitedelims}{#1}
+\DeclareFieldFormat{extblx@innerparencitedelims}{#1}
+\DeclareFieldFormat{extblx@innertextcitedelims}{#1}
+\DeclareFieldFormat{extblx@innerfootcitedelims}{#1}
+\DeclareFieldAlias
+  {extblx@innerfootcitetextdelims}
+  {extblx@innerfootcitedelims}
+\DeclareFieldFormat{extblx@innerbbx@xrefcitedelims}{#1}
+
+
+\renewcommand*{\iffinalcitedelim}{%
+  \ifnumequal{\value{textcitecount}}{\value{textcitetotal}-1}}
+
+\newbool{cbx:parens}
+
+\newbibmacro*{cite:init}{%
+  \ifnumless{\value{multicitecount}}{2}
+    {\global\boolfalse{cbx:parens}%
+     \global\undef\cbx@lasthash}
+    {\iffieldundef{prenote}
+       {}
+       {\global\undef\cbx@lasthash}}}
+
+\newbibmacro*{cite:reinit}{%
+  \global\undef\cbx@lasthash}
+
+\DeclareDelimFormat{namenumberdelim}{\addspace}
+\DeclareDelimAlias{nonamenumberdelim}{namenumberdelim}
+
+\newbibmacro*{cite}{%
+  \iffieldundef{shorthand}
+    {\ifnameundef{labelname}
+       {\usebibmacro{cite:label}%
+        \setunit{%
+          \global\booltrue{cbx:parens}%
+          \printdelim{nonamenumberdelim}%
+          \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
+        \usebibmacro{cite:extraname}%
+        \usebibmacro{cite:reinit}}
+       {\iffieldequals{namehash}{\cbx@lasthash}
+          {\setunit{\compcitedelim}%
+           \usebibmacro{cite:extraname}}
+          {\printnames{labelname}%
+           \setunit{%
+             \global\booltrue{cbx:parens}%
+             \printdelim{namenumberdelim}%
+             \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
+           \usebibmacro{cite:extraname}%
+           \savefield{namehash}{\cbx@lasthash}}}}
+    {\usebibmacro{cite:shorthand}%
+     \usebibmacro{cite:reinit}}%
+  \setunit{%
+    \ifbool{cbx:parens}
+      {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
+       \global\boolfalse{cbx:parens}}
+      {}%
+    \multicitedelim}}
+
+\newbibmacro*{cite:extraname}{%
+  \printtext[extblx@inner\blx@delimcontext delims]{%
+    \printtext[bibhyperref]{%
+      \iffieldundef{extraname}
+        {\printtext[extraname]{1}}
+        {\printfield{extraname}}}}}
+
+\newbibmacro*{cite:shorthand}{%
+  \printtext[bibhyperref]{\printfield{shorthand}}}
+
+\newbibmacro*{cite:label}{%
+  \iffieldundef{label}
+    {\printtext[bibhyperref]{\printfield[citetitle]{labeltitle}}}
+    {\printtext[bibhyperref]{\printfield{label}}}}
+
+\newbibmacro*{citenum}{%
+  \iffieldundef{shorthand}
+    {\iffieldequals{namehash}{\cbx@lasthash}
+       {\setunit{\compcitedelim}}
+       {\ifundef\cbx@lasthash
+          {}
+          {\extblx@warning{%
+             Headless citation to different labelnames\MessageBreak
+             may lead to weird results}}}%
+     \usebibmacro{cite:extraname}%
+     \savefield{namehash}{\cbx@lasthash}}
+    {\usebibmacro{cite:shorthand}%
+     \usebibmacro{cite:reinit}}%
+  \setunit{\multicitedelim}}
+
+\newbibmacro*{cite:postnote}{%
+  \setunit{}%
+  \printtext{%
+    \ifbool{cbx:parens}
+      {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
+       \global\boolfalse{cbx:parens}}
+      {}}%
+  \usebibmacro{postnote}}
+
+\newbibmacro*{textcite}{%
+  \iffieldequals{namehash}{\cbx@lasthash}
+    {\setunit{\compcitedelim}%
+     \iffieldundef{shorthand}
+       {\usebibmacro{cite:extraname}}
+       {\usebibmacro{cite:shorthand}}}
+    {\ifnameundef{labelname}
+       {\iffieldundef{shorthand}
+          {\usebibmacro{cite:label}%
+           \setunit{%
+             \global\booltrue{cbx:parens}%
+             \printdelim{nonamenumberdelim}%
+             \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
+           \ifnumequal{\value{citecount}}{1}
+             {\usebibmacro{prenote}}
+             {}%
+           \usebibmacro{cite:extraname}}
+          {\usebibmacro{cite:shorthand}}}
+       {\printnames{labelname}%
+        \setunit{%
+          \global\booltrue{cbx:parens}%
+          \printdelim{namenumberdelim}%
+          \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}%
+        \ifnumequal{\value{citecount}}{1}
+          {\usebibmacro{prenote}}
+          {}%
+        \iffieldundef{shorthand}
+          {\usebibmacro{cite:extraname}}
+          {\usebibmacro{cite:shorthand}}%
+     \stepcounter{textcitecount}%
+     \savefield{namehash}{\cbx@lasthash}}}%
+  \setunit{%
+    \ifbool{cbx:parens}
+      {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
+       \global\boolfalse{cbx:parens}}
+      {}%
+    \textcitedelim}}
+
+\newbibmacro*{textcite:postnote}{%
+  \usebibmacro{postnote}%
+  \ifnumequal{\value{multicitecount}}{\value{multicitetotal}}
+    {\setunit{}%
+     \printtext{%
+       \ifbool{cbx:parens}
+         {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
+          \global\boolfalse{cbx:parens}}
+         {}}}
+    {\setunit{%
+       \ifbool{cbx:parens}
+         {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}%
+          \global\boolfalse{cbx:parens}}
+         {}%
+       \textcitedelim}}}
+
+\DeclareCiteCommand{\cite}[\mkoutercitedelims]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {}
+  {\usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand*{\cite}[\mkoutercitedelims]
+  {\delimcontext{cite}%
+   \usebibmacro{cite:init}%
+   \usebibmacro{prenote}%
+   \printtext{%
+     \global\booltrue{cbx:parens}%
+     \printdelim{nonamenumberdelim}%
+     \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{citenum}}
+  {}
+  {\usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand{\parencite}[\mkouterparencitedelims]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {}
+  {\usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand*{\parencite}[\mkouterparencitedelims]
+  {\delimcontext{parencite}%
+   \usebibmacro{cite:init}%
+   \usebibmacro{prenote}%
+   \printtext{%
+     \global\booltrue{cbx:parens}%
+     \printdelim{nonamenumberdelim}%
+     \csuse{extblx@citedelim@\blx@delimcontext @inner@open}}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{citenum}}
+  {}
+  {\usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand{\footcite}[\mkextblxfootcite]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {}
+  {\usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand{\footcitetext}[\mkextblxfootcite]
+  {\usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {}
+  {\usebibmacro{cite:postnote}}
+
+% smartcite's delimcontext needs special attention
+% (see ext-biblatex-aux.def)
+\DeclareCiteCommand{\smartcite}[\mksmartcite]
+  {\delimcontext{\extblx@thisdelimcontext}%
+   \usebibmacro{cite:init}%
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite}}
+  {}
+  {\usebibmacro{cite:postnote}}
+
+\DeclareCiteCommand{\cbx@textcite}[\mkoutertextcitedelims]
+  {\usebibmacro{cite:init}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{textcite}}
+  {}
+  {\usebibmacro{textcite:postnote}}
+
+\DeclareCiteCommand{\textcite}[\cbx@textcite@init\cbx@textcite]
+  {\gdef\cbx@savedkeys{}%
+   \citetrackerfalse%
+   \pagetrackerfalse%
+   \DeferNextCitekeyHook%
+   \usebibmacro{cite:init}}
+  {\ifthenelse{\iffirstcitekey\AND\value{multicitetotal}>0}
+     {\protected@xappto\cbx@savedcites{()(\thefield{multipostnote})}%
+      \global\clearfield{multipostnote}}
+     {}%
+   \xappto\cbx@savedkeys{\thefield{entrykey},}%
+   \iffieldequals{namehash}{\cbx@lasthash}
+     {}
+     {\stepcounter{textcitetotal}%
+      \savefield{namehash}{\cbx@lasthash}}}
+  {}
+  {\protected@xappto\cbx@savedcites{%
+     [\thefield{prenote}][\thefield{postnote}]{\cbx@savedkeys}}}
+
+% textcite has nested \DeclareCiteCommand definitions for textcite and we want to use
+% the normal textcite context
+\DeclareDelimcontextAlias{cbx@textcite}{textcite}
+
+\newrobustcmd{\cbx@textcite@init}[2]{%
+  \setcounter{textcitetotal}{0}%
+  \setcounter{textcitecount}{0}%
+  \def\cbx@savedcites{#1}#2\cbx@savedcites\empty}
+
+\DeclareMultiCiteCommand{\cbx@textcites}{\cbx@textcite}{}
+\DeclareMultiCiteCommand{\textcites}[\cbx@textcites@init\cbx@textcites]{\textcite}{}
+
+\let\cbx@textcites@init\cbx@textcite@init
+\pretocmd{\cbx@textcites@init}{\UseNextMultiCiteHook}{}{}
+
+\DeclareMultiCiteCommand{\cbx@textcites}[\mkoutertextcitedelims]
+  {\cbx@textcite}{}
+
+\DeclareMultiCiteCommand{\cites}[\mkoutercitedelims]
+  {\cite}{\setunit{\multicitedelim}}
+\DeclareMultiCiteCommand{\parencites}[\mkouterparencitedelims]
+  {\parencite}{\setunit{\multicitedelim}}
+\DeclareMultiCiteCommand{\footcites}[\mkextblxfootcite]
+  {\footcite}{\setunit{\multicitedelim}}
+\DeclareMultiCiteCommand{\footcitetexts}[\mkextblxfootcitetext]
+  {\footcitetext}{\setunit{\multicitedelim}}
+\DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
+  {\smartcite}{\setunit{\multicitedelim}}
+
+\DeclareFieldFormat{extblx@innerbbx@introcitedelims}{%
+  \csuse{mkinner\blx@delimcontext delims}{#1}}
+
+\DeclareCiteCommand{\bbx@xrefcite}[\mkouterbbx@xrefcitedelims]
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \boolfalse{backtracker}%
+   \usebibmacro{cite:init}}
+  {\usebibmacro{bbx:inxrefcite}}
+  {}
+  {\usebibmacro{cite:postnote}}
+
+\renewbibmacro*{bbx:introcite}{%
+  \usebibmacro{cite}%
+  \clearfield{postnote}%
+  \usebibmacro{cite:postnote}}
+
+\endinput
+%
+% This file is part of the biblatex-ext bundle.
+% biblatex-ext is released under the LaTeX Project Public License v1.3c
+% or later.
+%
+% A complete list of files included in that package can be found in
+% README.md or - failing that - in ext-standard.bbx.
+%
+% Official releases of this package are on CTAN
+%   https://www.ctan.org/pkg/biblatex-ext
+% development takes place on GitHub
+%   https://github.com/moewew/biblatex-ext
+%
