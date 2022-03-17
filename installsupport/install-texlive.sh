@@ -31,8 +31,6 @@ tlmgr install l3build
 # latex formats
 tlmgr install latex-bin luahbtex tex
 
-tlmgr install lua-uni-algos
-
 # metafont
 tlmgr install metafont mfware texlive-scripts
 
