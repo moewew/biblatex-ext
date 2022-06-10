@@ -1131,9 +1131,11 @@
 \renewbibmacro*{volume+number+eid}{%
   \printfield{volume}%
   \setunit*{\volnumdelim}%
-  \printfield{number}%
+  \usebibmacro{number}%
   \setunit{\bibeidpunct}%
   \printfield{eid}}
+
+\newbibmacro*{number}{\printfield{number}}
 
 \newbibmacro*{barevolume+volumes}{%
   \iffieldundef{maintitle}
@@ -1148,7 +1150,7 @@
 \renewbibmacro*{series+number}{%
   \printfield{series}%
   \setunit*{\sernumdelim}%
-  \printfield{number}%
+  \usebibmacro{number}%
   \newunit}
 
 \newcommand*{\locdatedelim}{\addcomma\space}
@@ -1229,7 +1231,7 @@
 \newbibmacro*{type+number}{%
   \printfield{type}%
   \setunit*{\addspace}%
-  \printfield{number}}
+  \usebibmacro{number}}
 
 \newbibmacro*{note}{%
   \printfield{note}}
