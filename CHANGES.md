@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## Version 0.16 (2022-06-18)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.15...HEAD>
+See <https://github.com/moewew/biblatex-ext/compare/v0.15...v0.16>
 
 ### Changed
 - Reworked the implementation of `citexref`.
