@@ -1,5 +1,5 @@
 \ProvidesFile{ext-authoryear-icomp.cbx}
-  [2022/03/06 v0.15 extended biblatex authoryear-icomp
+  [2022/06/18 v0.16 extended biblatex authoryear-icomp
    citation style (MW)]
 
 \blx@inputonce{ext-biblatex-aux.def}{auxiliary code for ext-biblatex}
@@ -236,16 +236,15 @@
 \DeclareMultiCiteCommand{\smartcites}[\mksmartcite]
   {\smartcite}{\setunit{\multicitedelim}}
 
-\DeclareCiteCommand{\bbx@xrefcite}[\mkouterbbx@xrefcitedelims]
-  {\boolfalse{citetracker}%
-   \boolfalse{pagetracker}%
-   \boolfalse{backtracker}%
-   \usebibmacro{cite:init}}
-  {\usebibmacro{bbx:inxrefcite}}
-  {}
-  {\usebibmacro{cite:postnote}}
+
+\renewbibmacro*{bbx:xrefcite}{%
+  \usebibmacro{cite:init}%
+  \usebibmacro{cite}%
+  \clearfield{postnote}%
+  \usebibmacro{cite:postnote}}
 
 \renewbibmacro*{bbx:introcite}{%
+  \usebibmacro{cite:init}%
   \usebibmacro{cite}%
   \clearfield{postnote}%
   \usebibmacro{cite:postnote}}

@@ -1,0 +1,45 @@
+\input{regression-test.tex}
+\documentclass[british]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{babel}
+\usepackage{csquotes}
+\usepackage{longtable}
+
+
+% load biblatex dependencies and suppress counter allocation logging
+\input{testbiblatex-loaddeps.tex}
+
+\START
+\usepackage[
+  backend=biber,
+  style=ext-numeric,
+  citexref=true,
+  mincrossrefs=2,
+]{biblatex}
+
+\addbibresource{biblatex-examples.bib}
+
+\UndeclareCiteDelims{bbx@xrefcite}
+\DeclareDelimcontextAlias{bbx@xrefcite}{textcite}
+
+\renewbibmacro*{bbx:xrefcite}{%
+  \usebibmacro{textcite:init}%
+  \usebibmacro{textcite}%
+  \usebibmacro{textcite:postnote}}
+
+\OMIT
+
+
+\begin{document}
+\TIMO
+
+\showoutput
+Lorem \autocite{westfahl:space,westfahl:frontier}
+
+\printbibliography
+
+\clearpage
+\end{document}
+\END

@@ -586,7 +586,7 @@
 
 \newcommand*{\ctan}{\mkbibacro{CTAN}}
 \newcommand*{\gitbaseurl}{https://github.com/moewew/biblatex-ext}
-\newcommand*{\extblxversion}{0.15}
+\newcommand*{\extblxversion}{0.16}
 \newcommand*{\biber}{Biber}
 \newcommand*{\gitissuelink}[1]{%
   \href{\gitbaseurl/issues/#1}{issue \##1 on github}}
@@ -659,7 +659,7 @@
   author   = {Moritz Wemheuer},
   email    = {mwemheu@posteo.de},%
   revision = {\extblxversion},
-  date     = {\DTMDate{2022-03-06}},
+  date     = {\DTMDate{2022-06-18}},
 }
 
 \hypersetup{%
@@ -1368,8 +1368,8 @@ or implicitly via the \opt{minxrefs} or \opt{mincrossrefs} option.
       {\iffieldundef{crossref}
          {\iffieldundef{xref}
             {\usebibmacro{#1}}
-            {\printtext{\bbx@xrefcite{\thefield{xref}}}}}
-         {\printtext{\bbx@xrefcite{\thefield{crossref}}}}}
+            {\usebibmacro{bbx@xrefcite}{\thefield{xref}}}}
+         {\usebibmacro{bbx@xrefcite}{\thefield{crossref}}}}
       {\usebibmacro{#1}}}}
 \makeatother
 \toggletrue{bbx:citexref}
@@ -1384,20 +1384,48 @@ or implicitly via the \opt{minxrefs} or \opt{mincrossrefs} option.
       {\iffieldundef{crossref}
          {\iffieldundef{xref}
             {\usebibmacro{#1}}
-            {\printtext{\bbx@xrefcite{\thefield{xref}}}}}
-         {\printtext{\bbx@xrefcite{\thefield{crossref}}}}}
+            {\usebibmacro{bbx@xrefcite}{\thefield{xref}}}}
+         {\usebibmacro{bbx@xrefcite}{\thefield{crossref}}}}
       {\usebibmacro{#1}}}}
 \makeatother
 \togglefalse{bbx:citexref}
 \exampleprintbib{westfahl:space,westfahl:frontier}
 \end{bibexample}
 
-The citation produced by this option is implemented via
+For technical reasons the citation label is not produced with a real
+cite command.
+The user-definable parts of the citation output are controlled by the
+bibmacro~\bibmacro{bbx:xrefcite}.
+\begin{keymarglistbook}
+\keyitem[bbx:xrefcite]
+This bibmacro typesets the \enquote{citation} to the parent entry.
+With many citation styles it will just call the~\bibmacro{cite}
+bibmacro,
+but in more complex styles it may also call additional initialisation
+or clean-up code.
+\end{keymarglistbook}
+In order to reproduce the citation label accurately in the bibliography,
+some initialisation and housekeeping needs to be done.
+\begin{ltxsyntax}
+\cmditem{AtXrefcite}{code}
+\cmditem*{AtXrefcite}*{code}
+
+Appends the \prm{code} to an internal hook executed when initializing
+\cmd{xrefcite}.
+The starred variant of the command clears the initialisation hook,
+so the defaults can be overwritten.
+The default settings execute the internal macro
+\cs{extblx@bibcite@init}, which makes sure that the label produced
+for introcite takes into account the citation settings and suppresses
+unwanted citation tracking and hyperlinks.
+\end{ltxsyntax}
+
+Even though the citation produced by this option is not implemented
+via a citation command,
+the output can be configured as if it were
+produced by a citation command called
 \cmd{bbx@xrefcite},
-which is set up to inherit most styling from \cmd{cite}.
-\cmd{bbx@xrefcite} can be modified as usual
-(and independent of \cmd{cite})
-if the delimiter context alias is removed.
+which by default is set up to inherit most styling from \cmd{cite}.
 \begin{bibexample}[enhanced,
   title={Example customisation of \cmd{bbx@xrefcite}}]
 \begin{lstlisting}[style=extblxstylelatex]
@@ -1412,8 +1440,8 @@ if the delimiter context alias is removed.
       {\iffieldundef{crossref}
          {\iffieldundef{xref}
             {\usebibmacro{#1}}
-            {\printtext{\bbx@xrefcite{\thefield{xref}}}}}
-         {\printtext{\bbx@xrefcite{\thefield{crossref}}}}}
+            {\usebibmacro{bbx@xrefcite}{\thefield{xref}}}}
+         {\usebibmacro{bbx@xrefcite}{\thefield{crossref}}}}
       {\usebibmacro{#1}}}}
 \makeatother
 \UndeclareDelimcontextAlias{bbx@xrefcite}
@@ -1422,25 +1450,10 @@ if the delimiter context alias is removed.
 \exampleprintbib{westfahl:space,westfahl:frontier}
 \end{bibexample}
 
-The bibliography macro that prints the citation in \cmd{bbx@xrefcite}
-is called \bibmacro{bbx:inxrefcite}.
-By default this bibliography macro just expands to the bibliography
-macro \bibmacro{cite}.
-In some cases it might be easier to obtain the desired result by
-redefining this bibliography macro than by redefining the complete
-citation command \cmd{bbx@xrefcite} with \cmd{DeclareCiteCommand}.
-\begin{remindbox}
-For general citation commands
-this strategy of only changing the bibliography macro and not
-the complete citation command will not always result in
-the expected output, but in the context of \opt{citexref},
-where we have control over how exactly the citation command is going
-to be used, we can sometimes use this shortcut.
-\end{remindbox}
 
 The following example shows the standard behaviour of \opt{citexref}
 with a numeric style and a customisation involving
-\bibmacro{bbx:inxrefcite} that emulates the output of \cmd{textcite}.
+\bibmacro{bbx:xrefcite} that emulates the output of \cmd{textcite}.
 
 \begin{bibexample}[enhanced,
   title={Standard behaviour of \cmd{bbx@xrefcite}
@@ -1456,8 +1469,8 @@ with a numeric style and a customisation involving
       {\iffieldundef{crossref}
          {\iffieldundef{xref}
             {\usebibmacro{#1}}
-            {\printtext{\bbx@xrefcite{\thefield{xref}}}}}
-         {\printtext{\bbx@xrefcite{\thefield{crossref}}}}}
+            {\usebibmacro{bbx@xrefcite}{\thefield{xref}}}}
+         {\usebibmacro{bbx@xrefcite}{\thefield{crossref}}}}
       {\usebibmacro{#1}}}}
 \makeatother
 \UndeclareDelimcontextAlias{bbx@xrefcite}
@@ -1516,7 +1529,7 @@ with a numeric style and a customisation involving
 \UndeclareCiteDelims{bbx@xrefcite}
 \DeclareDelimcontextAlias{bbx@xrefcite}{textcite}
 
-\renewbibmacro*{bbx:inxrefcite}{%
+\renewbibmacro*{bbx:xrefcite}{%
   \usebibmacro{textcite:init}%
   \usebibmacro{textcite}%
   \usebibmacro{textcite:postnote}}
@@ -1529,8 +1542,8 @@ with a numeric style and a customisation involving
       {\iffieldundef{crossref}
          {\iffieldundef{xref}
             {\usebibmacro{#1}}
-            {\printtext{\bbx@xrefcite{\thefield{xref}}}}}
-         {\printtext{\bbx@xrefcite{\thefield{crossref}}}}}
+            {\usebibmacro{bbx@xrefcite}{\thefield{xref}}}}
+         {\usebibmacro{bbx@xrefcite}{\thefield{crossref}}}}
       {\usebibmacro{#1}}}}
 % emulate all the 'numeric'/default behaviour
 \DeclareNameAlias{sortname}{given-family}
@@ -1613,7 +1626,7 @@ with a numeric style and a customisation involving
 \makeatother
 \UndeclareCiteDelims{bbx@xrefcite}
 \DeclareDelimcontextAlias{bbx@xrefcite}{textcite}
-\renewbibmacro*{bbx:inxrefcite}{%
+\renewbibmacro*{bbx:xrefcite}{%
   \usebibmacro{textcite:init}%
   \usebibmacro{textcite}%
   \usebibmacro{textcite:postnote}}
@@ -2076,7 +2089,7 @@ Appends the \prm{code} to an internal hook executed when initializing
 The starred variant of the command clears the initialisation hook,
 so the defaults can be overwritten.
 The default settings execute the internal macro
-\cs{extblx@introcite@init}, which makes sure that the label produced
+\cs{extblx@bibcite@init}, which makes sure that the label produced
 for introcite takes into account the citation settings and suppresses
 unwanted citation tracking and hyperlinks.
 \end{ltxsyntax}
@@ -2898,7 +2911,10 @@ Citation command & Outer & Inner\\
 \cmd{footcite} & \cmd{mkouterfootcitedelims} & \cmd{mkinnerfootcitedelims}\\
 \cmd{supercite}\footnote{If defined by the citation style.}
  & \cmd{mkoutersupercitedelims} & ---\\
-\cmd{bbx@xrefcite} & \cmd{mkouterbbx@xrefcitedelims} &
+\enquote{\cmd{bbx@xrefcite}}%
+  \footnote{Not implemented as a citation command, but can be
+    customised as if it were.}
+& \cmd{mkouterbbx@xrefcitedelims} &
   \cmd{mkinnerbbx@xrefcitedelims}\\
 \enquote{\cmd{bbx@introcite}} & ---%
     \footnote{Use the field format \bibfieldformat{bbx@introcite} instead,
@@ -4066,6 +4082,9 @@ See also \filename{CHANGES.md}.
 
 The numbers on the right indicate the relevant section of the manual.
 \begin{changelog}
+\begin{release}{0.16}{2022-06-18}
+  \item Reworked \hyperopt{citexref} implementation\see{sec:opt}
+\end{release}
 \begin{release}{0.15}{2022-03-06}
   \item New \hyperblxstyle[ext-authornumber]{ext-authornumber-*} style
     subfamily\see{sec:styles:new}
