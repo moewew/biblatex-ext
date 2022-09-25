@@ -97,6 +97,7 @@ tlmgr install       \
   mweights          \
   newtx             \
   oberdiek          \
+  pdfcol            \
   pgf               \
   pict2e            \
   ragged2e          \
