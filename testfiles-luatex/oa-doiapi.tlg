@@ -8,16 +8,24 @@ Package biblatex-ext-oa-doiapi Info: No OA database file present at
 (biblatex-ext-oa-doiapi)             oa-doiapi.oai.
 )
 ============================================================
-TEST 1: IsOpenaccess: Sigfridsson and Ryde: FALSE
+TEST 1: IsOpenaccess: Kastenholz und H^^fcnenberger: FALSE
+============================================================
+Module blxextdoiapi Info: Successfully queried unpaywall.org
+(blxextdoiapi)            for info on
+(blxextdoiapi)            10.1063/1.2172593 on input line ...
+FALSE
+============================================================
+============================================================
+TEST 2: IsOpenaccess: Sigfridsson and Ryde: TRUE
 ============================================================
 Module blxextdoiapi Info: Successfully queried unpaywall.org
 (blxextdoiapi)            for info on
 (blxextdoiapi)            10.1002/(SICI)1096-987X(199803)19:4<377::AID-JCC1>3.0.
 CO;2-P on input line ...
-FALSE
+TRUE
 ============================================================
 ============================================================
-TEST 2: IsOpenaccess: Randall and Sundrum: TRUE
+TEST 3: IsOpenaccess: Randall and Sundrum: TRUE
 ============================================================
 Module blxextdoiapi Info: Successfully queried unpaywall.org
 (blxextdoiapi)            for info on
@@ -25,7 +33,7 @@ Module blxextdoiapi Info: Successfully queried unpaywall.org
 TRUE
 ============================================================
 ============================================================
-TEST 3: IsOpenaccess: Valfort et al.: TRUE
+TEST 4: IsOpenaccess: Valfort et al.: TRUE
 ============================================================
 Module blxextdoiapi Info: Successfully queried unpaywall.org
 (blxextdoiapi)            for info on
@@ -33,12 +41,12 @@ Module blxextdoiapi Info: Successfully queried unpaywall.org
 TRUE
 ============================================================
 ============================================================
-TEST 4: OpenaccessURLisDOI: Randall and Sundrum: FALSE
+TEST 5: OpenaccessURLisDOI: Randall and Sundrum: FALSE
 ============================================================
 FALSE
 ============================================================
 ============================================================
-TEST 5: OpenaccessURLisDOI: Valfort et al.: TRUE
+TEST 6: OpenaccessURLisDOI: Valfort et al.: TRUE
 ============================================================
 TRUE
 ============================================================

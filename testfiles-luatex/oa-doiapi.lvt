@@ -15,7 +15,14 @@
 \begin{document}
 \TIMO
 
-\TEST{IsOpenaccess: Sigfridsson and Ryde: FALSE}
+\TEST{IsOpenaccess: Kastenholz und Hünenberger: FALSE}
+{
+  \IsOpenaccess{10.1063/1.2172593}
+    {\TRUE}
+    {\FALSE}
+}
+
+\TEST{IsOpenaccess: Sigfridsson and Ryde: TRUE}
 {
   \IsOpenaccess{10.1002/(SICI)1096-987X(199803)19:4<377::AID-JCC1>3.0.CO;2-P}
     {\TRUE}
