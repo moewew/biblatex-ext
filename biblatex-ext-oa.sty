@@ -345,29 +345,6 @@
     {\expandafter\extbl@oa@bbl@fielddef@bestoaurl
      \expandafter{\extblx@oa@url}}}
 
-
-
-% based on egreg's (https://tex.stackexchange.com/users/4427/egreg)
-% answer to https://tex.stackexchange.com/a/123451/35864
-% originally CC BY-SA 3.0, but dual-licensed under LPPL
-% see https://tex.meta.stackexchange.com/a/3333/35864
-\newcommand{\extblx@oa@marginmark}{%
-  \strut\vadjust{\extblx@oa@marginmark@do}}
-\newcommand{\extblx@oa@marginmark@do}{%
-  \vbox to 0pt{%
-    \kern-\dimexpr\dp\strutbox+\ht\strutbox\relax
-    \strut
-    \hfill
-    \rlap{\kern1em
-      \ifhyperref
-        {\href{\thefield{bestoaurl}}}
-        {\@firstofone}%
-      {\oasymbol}}
-    \vss
-  }%
-}
-
-
 \ifbool{extblx@oa@opt@enable}
   {\csletcs{extblx@oa@url@from}{extblx@oa@url@from@auto}
    \DeclareOpenAccessFieldUrl{url}{\thefield{url}}
@@ -392,13 +369,17 @@
 
    \newbibmacro*{oamark}{%
      \iffieldundef{bestoaurl}
-       {}
-       {\extblx@oa@marginmark}}
+       {}%
+       {\ifhyperref
+        {\href{\thefield{bestoaurl}}}%
+        {\@firstofone}%
+        {\oasymbol}}%
+   }
 
    % patch begentry bibmacro
    % safer than \renewbibmacro{begentry} if it contains something,
    % but uses the internal implementation of bibmacros
-   \extblx@oa@apptobibmcro{begentry}
+   \extblx@oa@apptobibmcro{rightbibmark}
      {\usebibmacro{oamark}}
      {}
      {\extblx@oa@warning@noline{%
