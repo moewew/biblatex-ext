@@ -101,6 +101,7 @@ tlmgr install       \
   pgf               \
   pict2e            \
   ragged2e          \
+  tikzfill          \
   tcolorbox         \
   tracklang         \
   trimspaces        \
