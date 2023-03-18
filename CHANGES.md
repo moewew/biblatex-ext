@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## Version 0.17 (2023-03-18)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.16...HEAD>
+See <https://github.com/moewew/biblatex-ext/compare/v0.16...v0.17>
 
 ### Changed
 - Synced `\textcite` implementation in `-comp` styles with
