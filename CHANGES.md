@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.16...HEAD>
+
+### Changed
+- Synced `\textcite` implementation in `-comp` styles with
+  `biblatex` 3.19.
+- Synced `\printbibtabular` implementation with `biblatex` 3.19.
+
 ## Version 0.16 (2022-06-18)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.15...v0.16>
