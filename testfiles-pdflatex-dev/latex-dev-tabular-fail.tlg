@@ -98,8 +98,7 @@ Package biblatex Info: ... and expl3
 (biblatex)             setting 'casechanger=expl3'.
 (../blx-case-expl3.sty
 Package: blx-case-expl3 ....-..-.. v... expl3 case changing code for biblatex
-))
-(biblatex-ext-tabular.sty
+)) (biblatex-ext-tabular.sty
 Package: biblatex-ext-tabular ....-..-.. v... tabular bibliographies for biblatex (MW)
 )
 *** geer (@thesis) ***
@@ -219,6 +218,5 @@ Overfull \hbox (4.04544pt too wide) in paragraph at lines 28--28
 .\T1/lmr/bx/n/10 .
 .\glue(\rightskip) 0.0
 [1
-]
-(latex-dev-tabular-fail.aux)
+] (latex-dev-tabular-fail.aux)
 Package logreq Info: Writing requests to 'latex-dev-tabular-fail.run.xml'.
