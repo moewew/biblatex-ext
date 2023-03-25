@@ -59,8 +59,7 @@ Package biblatex Info: ... and expl3
 (biblatex)             setting 'casechanger=expl3'.
 (../blx-case-expl3.sty
 Package: blx-case-expl3 ....-..-.. v... expl3 case changing code for biblatex
-))
-(biblatex-ext-tabular.sty
+)) (biblatex-ext-tabular.sty
 Package: biblatex-ext-tabular ....-..-.. v... tabular bibliographies for biblatex (MW)
 )
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line ....

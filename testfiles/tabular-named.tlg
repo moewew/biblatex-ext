@@ -98,8 +98,7 @@ Package biblatex Info: ... and expl3
 (biblatex)             setting 'casechanger=expl3'.
 (../blx-case-expl3.sty
 Package: blx-case-expl3 ....-..-.. v... expl3 case changing code for biblatex
-))
-(biblatex-ext-tabular.sty
+)) (biblatex-ext-tabular.sty
 Package: biblatex-ext-tabular ....-..-.. v... tabular bibliographies for biblatex (MW)
 )
 *** sigfridsson (@article) ***
@@ -536,4 +535,5 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil
 ....\T1/lmr/m/n/10 1
 ....\glue 0.0 plus 1.0fil
-(tabular-named.aux)Package logreq Info: Writing requests to 'tabular-named.run.xml'.
+(tabular-named.aux)
+Package logreq Info: Writing requests to 'tabular-named.run.xml'.

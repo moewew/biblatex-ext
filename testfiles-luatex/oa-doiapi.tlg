@@ -2,8 +2,7 @@ This is a generated file for the l3build validation system.
 Don't change this file in any respect.
 (biblatex-ext-oa-doiapi.sty
 Package: biblatex-ext-oa-doiapi ....-..-.. v... Obtain open access information from DOI via unpaywall.org and doi.org (MW)
-Lua module: blxextdoiapi ....-..-.. v... Obtain open access information from DO
-I via unpaywall.org
+Lua module: blxextdoiapi ....-..-.. v... Obtain open access information from DOI via unpaywall.org
 Package biblatex-ext-oa-doiapi Info: No OA database file present at
 (biblatex-ext-oa-doiapi)             oa-doiapi.oai.
 )
@@ -20,8 +19,7 @@ TEST 2: IsOpenaccess: Sigfridsson and Ryde: TRUE
 ============================================================
 Module blxextdoiapi Info: Successfully queried unpaywall.org
 (blxextdoiapi)            for info on
-(blxextdoiapi)            10.1002/(SICI)1096-987X(199803)19:4<377::AID-JCC1>3.0.
-CO;2-P on input line ...
+(blxextdoiapi)            10.1002/(SICI)1096-987X(199803)19:4<377::AID-JCC1>3.0.CO;2-P on input line ...
 TRUE
 ============================================================
 ============================================================
