@@ -4051,10 +4051,10 @@ stand-alone package, instead it is loaded via
 
 This package requires and loads the full force of \LaTeX3.
 Aside from the main package \sty{expl3}\fnurl{https://ctan.org/pkg/expl3} it
-loads \sty{xparse}\fnurl{https://ctan.org/pkg/xparse},
+loads \sty{xparse}\fnurl{https://ctan.org/pkg/xparse}
 and \sty{l3keys2e}\fnurl{https://ctan.org/pkg/l3keys2e}.
 Drawing is performed with the (still experimental)
-\sty{l3draw}\fnurl{https://ctan.org/pkg/l3experimental} packages.
+\sty{l3draw}\fnurl{https://ctan.org/pkg/l3experimental} package.
 The code works best with version 2021-02-18 or above
 of~\sty{l3draw}.
 
@@ -4078,6 +4078,10 @@ See also \filename{CHANGES.md}.
 
 The numbers on the right indicate the relevant section of the manual.
 \begin{changelog}
+\begin{release}{<version>}{<date>}
+  \item Changed colour model in \hypersty{biblatex-ext-oasymb-l3draw}
+    from CMYK to HTML.\see{sec:oa:symbol-l3draw}
+\end{release}
 \begin{release}{0.17}{2023-03-18}
   \item Synced \cmd{textcite} implementation in some styles
     with \sty{biblatex} 3.19 changes.
