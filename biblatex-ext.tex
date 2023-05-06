@@ -3523,6 +3523,9 @@ from Unpaywall\fnurl{https://unpaywall.org/} via the DOI of an entry.
 \begin{warnbox}
 The package \hypersty{biblatex-ext-oa-doiapi} and thus this option
 can only be used with \lualatex.
+With newer versions of the \luatex\ binary ($\geq 1.17.0$) you also need
+to enable the socket library via the command-line option
+\texttt{-\/-socket}.
 \end{warnbox}
 \end{optionlist}
 
@@ -3643,6 +3646,9 @@ available levels.
   \begin{warnbox}
   This option requires that the \hyperopt{doiapi} package option be
   set to \optval{true} and only works with \lualatex.
+  With newer versions of the \luatex\ binary ($\geq 1.17.0$) you also need
+  to enable the socket library via the command-line option
+  \texttt{-\/-socket}.
   Furthermore it needs a DOI in the \bibfield{doi} field.
   If the \bibfield{doi} field is empty, this option falls back to \optval{auto}.
   \end{warnbox}
@@ -3839,8 +3845,11 @@ best open access link to a given article via its DOI by querying the
 Unpaywall API\fnurl{https://unpaywall.org/}.
 
 \begin{warnbox}
-This package can only be used with \lualatex{} and needs online
-access.
+This package can only be used with \lualatex{}.
+With newer versions of the \luatex\ binary ($\geq 1.17.0$) you also need
+to enable the socket library via the command-line option
+\texttt{-\/-socket}.
+The features of this package need online access to the Unpaywall API\@.
 Furthermore the Unpaywall API requires an email address and asks to limit
 requests to 100,000 calls per day\fnurl{https://unpaywall.org/products/api}.
 \end{warnbox}
@@ -4081,6 +4090,10 @@ The numbers on the right indicate the relevant section of the manual.
 \begin{release}{<version>}{<date>}
   \item Changed colour model in \hypersty{biblatex-ext-oasymb-l3draw}
     from CMYK to HTML.\see{sec:oa:symbol-l3draw}
+  \item Document that \hyperopt{doiapi} (\hypersty{biblatex-ext-oa-doiapi})
+    needs \luatex's \texttt{-\/-socket} option
+    with \luatex\ v.~1.17.0 and above.
+    \see{sec:oa:doiapi}
 \end{release}
 \begin{release}{0.17}{2023-03-18}
   \item Synced \cmd{textcite} implementation in some styles
