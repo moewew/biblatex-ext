@@ -3115,7 +3115,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 ...\glue(\thickmuskip) 0.0 plus 1.41669
 ...\T1/lmtt/m/n/8 P
 ...\mathoff
-...\write1{\newlabel{cbx@51}{{1}{\thepage }}}
+...\write1{\newlabel{cbx@51}{{1}{\thepage }{}{}{}}}
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
@@ -3265,7 +3265,7 @@ TEST 15: Textcite (post)
 ...\T1/lmr/m/n/8 9
 ...\T1/lmr/m/n/8 7
 ...\T1/lmr/m/n/8 8
-...\write1{\newlabel{cbx@57}{{3}{\thepage }}}
+...\write1{\newlabel{cbx@57}{{3}{\thepage }{}{}{}}}
 ...\T1/lmr/m/n/8 ,
 ...\glue 2.83337 plus 1.77086 minus 0.75555
 ...\T1/lmr/m/n/8 p
@@ -3440,7 +3440,7 @@ TEST 16: Textcite (pre-post)
 ...\T1/lmr/m/n/8 0
 ...\T1/lmr/m/n/8 0
 ...\T1/lmr/m/n/8 2
-...\write1{\newlabel{cbx@63}{{5}{\thepage }}}
+...\write1{\newlabel{cbx@63}{{5}{\thepage }{}{}{}}}
 ...\T1/lmr/m/n/8 ,
 ...\glue 2.83337 plus 1.77086 minus 0.75555
 ...\T1/lmr/m/n/8 p
@@ -3682,7 +3682,7 @@ TEST 17: Textcite (pre)
 ...\T1/lmr/m/n/8 9
 ...\T1/lmr/m/n/8 8
 ...\T1/lmr/m/n/8 5
-...\write1{\newlabel{cbx@69}{{7}{\thepage }}}
+...\write1{\newlabel{cbx@69}{{7}{\thepage }{}{}{}}}
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
@@ -4188,7 +4188,7 @@ TEST 19: Footcite (plain)
 ...\T1/lmr/m/n/8 0
 ...\T1/lmr/m/n/8 3
 ...\T1/lmr/m/n/8 6
-...\write1{\newlabel{cbx@97}{{11}{\thepage }}}
+...\write1{\newlabel{cbx@97}{{11}{\thepage }{}{}{}}}
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
@@ -4496,7 +4496,7 @@ TEST 20: Footcite (post)
 ...\T1/lmr/m/n/8 1
 ...\T1/lmr/m/n/8 0
 ...\T1/lmr/m/n/8 9
-...\write1{\newlabel{cbx@99}{{13}{\thepage }}}
+...\write1{\newlabel{cbx@99}{{13}{\thepage }{}{}{}}}
 ...\T1/lmr/m/n/8 ,
 ...\glue 2.83337 plus 1.77086 minus 0.75555
 ...\T1/lmr/m/n/8 p
@@ -4997,7 +4997,7 @@ TEST 24: Autocite prenote
 ...\T1/lmr/m/n/8 9
 ...\T1/lmr/m/n/8 8
 ...\T1/lmr/m/n/8 4
-...\write1{\newlabel{cbx@113}{{21}{\thepage }}}
+...\write1{\newlabel{cbx@113}{{21}{\thepage }{}{}{}}}
 ...\T1/lmr/m/n/8 .
 ...\penalty 10000
 ...\rule(0.0+2.85002)x0.0
