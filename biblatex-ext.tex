@@ -1415,8 +1415,8 @@ Appends the \prm{code} to an internal hook executed when initializing
 The starred variant of the command clears the initialisation hook,
 so the defaults can be overwritten.
 The default settings execute the internal macro
-\cs{extblx@bibcite@init}, which makes sure that the label produced
-for introcite takes into account the citation settings and suppresses
+\cs{extblx@bibcite@init}, which makes sure that the output
+takes into account the citation settings but suppresses
 unwanted citation tracking and hyperlinks.
 \end{ltxsyntax}
 
@@ -1915,8 +1915,12 @@ and \hyperblxstyle[ext-authornumber]{ext-authornumber} family.
 It cannot be used with citation styles of the
 \hyperblxstyle[ext-verbose]{verbose} family, where
 it may produce undesired output or errors.
-The option is available globally and on a per-type and per-entry level, where
-only the values \optval{plain} (and the default \optval{false}) are supported.
+
+The option is available globally and on the per-type and per-entry levels.
+The value \optval{label} needs support by the bibliography environment.
+It is therefore only available globally out of the box.
+A warning will be issued if \optval{label} is used on an unsupported level.
+The values \optval{plain} and \optval{false} are supported on all levels.
 \end{warnbox}
 
 This option controls whether or not the citation label is repeated in the
@@ -2089,8 +2093,8 @@ Appends the \prm{code} to an internal hook executed when initializing
 The starred variant of the command clears the initialisation hook,
 so the defaults can be overwritten.
 The default settings execute the internal macro
-\cs{extblx@bibcite@init}, which makes sure that the label produced
-for introcite takes into account the citation settings and suppresses
+\cs{extblx@bibcite@init}, which makes sure that the output
+takes into account the citation settings but suppresses
 unwanted citation tracking and hyperlinks.
 \end{ltxsyntax}
 
