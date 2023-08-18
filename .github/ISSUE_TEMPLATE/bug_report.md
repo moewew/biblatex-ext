@@ -23,6 +23,34 @@ Please make sure that the example reproduces the undesirable behaviour and is ot
 
 See https://texfaq.org/FAQ-minxampl, https://www.dickimaw-books.com/latex/minexample/, http://www.minimalbeispiel.de/mini-en.html, https://tex.meta.stackexchange.com/q/228/35864, https://tex.meta.stackexchange.com/q/4407/35864
 
+You can use the following 'template'
+```latex
+\documentclass[british]{article}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{csquotes}
+
+\usepackage[backend=biber, style=ext-authoryear]{biblatex}
+
+\begin{filecontents}{\jobname.bib}
+@book{elk,
+  author    = {Anne Elk},
+  title     = {A Theory on Brontosauruses},
+  year      = {1972},
+  publisher = {Monthy \& Co.},
+  location  = {London},
+}
+\end{filecontents}
+\addbibresource{\jobname.bib}
+\addbibresource{biblatex-examples.bib}
+
+\begin{document}
+Lorem \autocite{sigfridsson,elk}
+
+\printbibliography
+\end{document}
+```
+
 **Expected behaviour**
 A clear and concise description of what you expected to happen.
 

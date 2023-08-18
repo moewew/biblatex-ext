@@ -10,7 +10,7 @@ Feel free to throw away that template or open a non-templated issue directly at 
 ## Bugs
 
 You can report bugs at the ['Issues' tab](https://github.com/moewew/biblatex-ext/issues).
-Please make sure that the bugs you report here are bugs of the `biblatex-ext` styles and not problems in the `biblatex` core.
+Please try to verify that the bugs you report here are bugs of the `biblatex-ext` styles and not problems in the `biblatex` core or of additional customisation code in your document.
 If you can reproduce the same issue with a standard style, it is probably better to report the issue at the [`biblatex` bugtracker](https://github.com/plk/biblatex/issues).
 If you are unsure where to report, pick whichever feel right. It is always possible to report the issue elsewhere if it turns out the culprit is not where it was initially expected.
 
@@ -29,11 +29,40 @@ There are many resources out there that can help you create a good example docum
 * https://tex.meta.stackexchange.com/q/228/35864
 * https://tex.meta.stackexchange.com/q/4407/35864
 
-The main point is that the example document should be as small as possible while still reproducing the issue.
+The main point is that the example document should be a fully compilable document that is as small as possible while still reproducing the issue.
 It should be portable and compilable on other people's machines, so it should ideally only load classes, packages and files available on [CTAN](https://ctan.org/) and should be self-contained as far as possible.
 Avoid `\include` and `\input` as far as possible and include anything that is necessary directly in the main `.tex` file and try not to spread it out over several files.
 For bibliographies it is important that the `.bib` entries used in the example are available:
 Either use the file [`biblatex-examples.bib`](https://github.com/plk/biblatex/blob/master/bibtex/bib/biblatex/biblatex-examples.bib), which comes with every `biblatex` installation and contains many examples that might be helpful, or share a few entries from your `.bib` file (the `filecontents` environment can be very useful to make a file truly self-contained, but if you don't feel comfortable using it you can just paste the example entries separately).
+
+You can use the following 'template'
+```latex
+\documentclass[british]{article}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{csquotes}
+
+\usepackage[backend=biber, style=ext-authoryear]{biblatex}
+
+\begin{filecontents}{\jobname.bib}
+@book{elk,
+  author    = {Anne Elk},
+  title     = {A Theory on Brontosauruses},
+  year      = {1972},
+  publisher = {Monthy \& Co.},
+  location  = {London},
+}
+\end{filecontents}
+\addbibresource{\jobname.bib}
+\addbibresource{biblatex-examples.bib}
+
+\begin{document}
+Lorem \autocite{sigfridsson,elk}
+
+\printbibliography
+\end{document}
+```
+
 
 ## Feature suggestions
 
