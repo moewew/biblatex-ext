@@ -1,13 +1,39 @@
 \makeatletter
 \newbox\testbox
+\newwrite\boxout
+
+
+\begingroup       % within the scope of this groups each line needs to end in % !
+\catcode`\^^M\active %
+\gdef\extblx@test@showfile#1{%
+\IfFileExists{#1}%
+  {\begingroup %
+     \catcode`\^^M\active %
+     \edef^^M{^^J}%
+     \everyeof{\noexpand}%
+     \obeyspaces %
+     \@sanitize %
+     \message{\@@input #1 }%
+   \endgroup }%
+  {\message{Not found}}%
+}%
+\endgroup
+
+\newcommand*{\extblx@test@boxfilename}{extblxbox.txt}
 
 \newcommand*{\extblxtestbox}[1]{%
+  \OMIT
+  \immediate\openout\boxout{\extblx@test@boxfilename}%
+  \showstream\boxout
+  \TIMO
   \setbox\testbox=\hbox{%
     #1}%
   \showbox\testbox
   \OMIT
+  \immediate\closeout\boxout
   #1%
   \TIMO
+  \extblx@test@showfile{\extblx@test@boxfilename}
 }
 
 \apptocmd\blx@getdata{%

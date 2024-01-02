@@ -102,6 +102,7 @@ Package: blx-case-expl3 ....-..-.. v... expl3 case changing code for biblatex
 TEST 1: Simple cite
 ============================================================
 *** sigfridsson (@article) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x106.11082
 .\write1{\abx@aux@page{1}{\the \c@page }}
@@ -130,16 +131,14 @@ TEST 1: Simple cite
 .\T1/lmr/m/n/10 [
 .\T1/lmr/m/n/10 1
 .\T1/lmr/m/n/10 ]
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 2: Ibid cite
 ============================================================
 *** nussbaum (@book) ***
 *** nussbaum (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x149.69318
 .\write1{\abx@aux@page{3}{\the \c@page }}
@@ -175,10 +174,7 @@ TEST 2: Ibid cite
 .\T1/lmr/m/n/10 [
 .\T1/lmr/m/n/10 1
 .\T1/lmr/m/n/10 ]
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 3: Comp cite
@@ -188,6 +184,7 @@ TEST 3: Comp cite
 *** knuth:ct:b (@book) ***
 *** knuth:ct:c (@book) ***
 *** knuth:ct:c (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x51.94453
 .\write1{\abx@aux@page{7}{\the \c@page }}
@@ -206,10 +203,7 @@ TEST 3: Comp cite
 .\penalty 50
 .\T1/lmr/m/n/10 3
 .\T1/lmr/m/n/10 ]
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 4: Sort cite
@@ -219,6 +213,7 @@ TEST 4: Sort cite
 *** nussbaum (@book) ***
 *** sigfridsson (@article) ***
 *** worman (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x269.40154
 .\write1{\abx@aux@page{15}{\the \c@page }}
@@ -287,15 +282,13 @@ TEST 4: Sort cite
 .\T1/lmr/m/n/10 [
 .\T1/lmr/m/n/10 1
 .\T1/lmr/m/n/10 ]
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 5: Cite prenote
 ============================================================
 *** knuth:ct:a (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x58.33311
 .\T1/lmr/m/n/10 C
@@ -313,15 +306,13 @@ TEST 5: Cite prenote
 .\T1/lmr/m/n/10 [
 .\T1/lmr/m/n/10 1
 .\T1/lmr/m/n/10 ]
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 6: Cite pre and postnote
 ============================================================
 *** sigfridsson (@article) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x155.27707
 .\T1/lmr/m/n/10 C
@@ -363,15 +354,13 @@ TEST 6: Cite pre and postnote
 .\T1/lmr/m/n/10 3
 .\T1/lmr/m/n/10 8
 .\T1/lmr/m/n/10 0
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 7: Cite postnote
 ============================================================
 *** nussbaum (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x92.05496
 .\write1{\abx@aux@page{27}{\the \c@page }}
@@ -396,10 +385,7 @@ TEST 7: Cite postnote
 .\T1/lmr/m/n/10 1
 .\T1/lmr/m/n/10 9
 .\T1/lmr/m/n/10 0
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 8: Cites note
@@ -407,6 +393,7 @@ TEST 8: Cites note
 *** nussbaum (@book) ***
 *** sigfridsson (@article) ***
 *** knuth:ct:a (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x317.88731
 .\write1{\abx@aux@page{29}{\the \c@page }}
@@ -489,15 +476,13 @@ TEST 8: Cites note
 .\T1/lmr/m/n/10 [
 .\T1/lmr/m/n/10 1
 .\T1/lmr/m/n/10 ]
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 9: Parencite (plain)
 ============================================================
 *** sigfridsson (@article) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x108.33333
 .\T1/lmr/m/n/10 (
@@ -526,15 +511,13 @@ TEST 9: Parencite (plain)
 .\glue 3.33333 plus 1.66666 minus 1.11111
 .\T1/lmr/m/n/10 1
 .\T1/lmr/m/n/10 )
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 10: Parencite (post)
 ============================================================
 *** nussbaum (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x94.27747
 .\T1/lmr/m/n/10 (
@@ -559,15 +542,13 @@ TEST 10: Parencite (post)
 .\T1/lmr/m/n/10 9
 .\T1/lmr/m/n/10 0
 .\T1/lmr/m/n/10 )
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 11: Parencite (pre-post)
 ============================================================
 *** worman (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x102.52739
 .\T1/lmr/m/n/10 (
@@ -595,15 +576,13 @@ TEST 11: Parencite (pre-post)
 .\T1/lmr/m/n/10 9
 .\T1/lmr/m/n/10 0
 .\T1/lmr/m/n/10 )
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 12: Parencite (pre)
 ============================================================
 *** geer (@thesis) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x53.1526
 .\T1/lmr/m/n/10 (
@@ -619,10 +598,7 @@ TEST 12: Parencite (pre)
 .\glue 3.33333 plus 1.66666 minus 1.11111
 .\T1/lmr/m/n/10 1
 .\T1/lmr/m/n/10 )
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 13: Parencites note
@@ -631,6 +607,7 @@ TEST 13: Parencites note
 *** nussbaum (@book) ***
 *** worman (@book) ***
 *** geer (@thesis) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x433.65102
 .\T1/lmr/m/n/10 (
@@ -739,16 +716,14 @@ TEST 13: Parencites note
 .\T1/lmr/m/n/10 s
 .\T1/lmr/m/n/10 t
 .\T1/lmr/m/n/10 )
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 14: Textcite (plain)
 ============================================================
 *** sigfridsson (@article) ***
 *** sigfridsson (@article) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x106.11082
 .\write1{\abx@aux@page{52}{\the \c@page }}
@@ -777,16 +752,14 @@ TEST 14: Textcite (plain)
 .\T1/lmr/m/n/10 [
 .\T1/lmr/m/n/10 1
 .\T1/lmr/m/n/10 ]
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 15: Textcite (post)
 ============================================================
 *** nussbaum (@book) ***
 *** nussbaum (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x92.05496
 .\write1{\abx@aux@page{56}{\the \c@page }}
@@ -811,16 +784,14 @@ TEST 15: Textcite (post)
 .\T1/lmr/m/n/10 9
 .\T1/lmr/m/n/10 0
 .\T1/lmr/m/n/10 ]
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 16: Textcite (pre-post)
 ============================================================
 *** worman (@book) ***
 *** worman (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x100.30489
 .\write1{\abx@aux@page{60}{\the \c@page }}
@@ -848,16 +819,14 @@ TEST 16: Textcite (pre-post)
 .\T1/lmr/m/n/10 9
 .\T1/lmr/m/n/10 0
 .\T1/lmr/m/n/10 ]
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 17: Textcite (pre)
 ============================================================
 *** geer (@thesis) ***
 *** geer (@thesis) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x50.9301
 .\write1{\abx@aux@page{64}{\the \c@page }}
@@ -873,10 +842,7 @@ TEST 17: Textcite (pre)
 .\glue 3.33333 plus 1.66998 minus 1.10889
 .\T1/lmr/m/n/10 1
 .\T1/lmr/m/n/10 ]
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 18: Textcites note
@@ -889,6 +855,7 @@ TEST 18: Textcites note
 *** nussbaum (@book) ***
 *** worman (@book) ***
 *** geer (@thesis) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x464.76161
 .\T1/lmr/m/n/10 g
@@ -1006,10 +973,7 @@ TEST 18: Textcites note
 .\T1/lmr/m/n/10 o
 .\T1/lmr/m/n/10 s
 .\T1/lmr/m/n/10 t
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 19: Footcite (plain)
@@ -1029,6 +993,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line ....
 *** aksin (@article) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(8.03691+0.0)x4.486
 .\penalty 10000
@@ -1072,15 +1037,13 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 20: Footcite (post)
 ============================================================
 *** pines (@incollection) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(8.03691+0.0)x4.486
 .\penalty 10000
@@ -1125,15 +1088,13 @@ TEST 20: Footcite (post)
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 21: Footcite (pre-post)
 ============================================================
 *** aksin (@article) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(8.03691+0.0)x4.486
 .\penalty 10000
@@ -1190,15 +1151,13 @@ TEST 21: Footcite (pre-post)
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 22: Footcite (pre)
 ============================================================
 *** pines (@incollection) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(8.03691+0.0)x4.486
 .\penalty 10000
@@ -1238,10 +1197,7 @@ TEST 22: Footcite (pre)
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 23: Footcites note
@@ -1250,6 +1206,7 @@ TEST 23: Footcites note
 *** nussbaum (@book) ***
 *** worman (@book) ***
 *** geer (@thesis) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(8.03691+0.0)x4.486
 .\penalty 10000
@@ -1392,15 +1349,13 @@ TEST 23: Footcites note
 ...\penalty 10000
 ...\glue(\parfillskip) 0.0 plus 1.0fil
 ...\glue(\rightskip) 0.0
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 24: Autocite prenote
 ============================================================
 *** knuth:ct:a (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x58.33311
 .\T1/lmr/m/n/10 C
@@ -1418,15 +1373,13 @@ TEST 24: Autocite prenote
 .\T1/lmr/m/n/10 [
 .\T1/lmr/m/n/10 1
 .\T1/lmr/m/n/10 ]
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 25: Autocite pre and postnote
 ============================================================
 *** sigfridsson (@article) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x155.27707
 .\T1/lmr/m/n/10 C
@@ -1468,15 +1421,13 @@ TEST 25: Autocite pre and postnote
 .\T1/lmr/m/n/10 3
 .\T1/lmr/m/n/10 8
 .\T1/lmr/m/n/10 0
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 26: Autocite postnote
 ============================================================
 *** nussbaum (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x92.05496
 .\write1{\abx@aux@page{103}{\the \c@page }}
@@ -1501,10 +1452,7 @@ TEST 26: Autocite postnote
 .\T1/lmr/m/n/10 1
 .\T1/lmr/m/n/10 9
 .\T1/lmr/m/n/10 0
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 27: Autocites note
@@ -1512,6 +1460,7 @@ TEST 27: Autocites note
 *** nussbaum (@book) ***
 *** sigfridsson (@article) ***
 *** knuth:ct:a (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x317.88731
 .\write1{\abx@aux@page{105}{\the \c@page }}
@@ -1594,10 +1543,7 @@ TEST 27: Autocites note
 .\T1/lmr/m/n/10 [
 .\T1/lmr/m/n/10 1
 .\T1/lmr/m/n/10 ]
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 28: another simple cite
@@ -1608,6 +1554,7 @@ TEST 28: another simple cite
 *** knuth:ct:c (@book) ***
 *** sigfridsson (@article) ***
 *** knuth:ct:c (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x164.16644
 .\write1{\abx@aux@page{111}{\the \c@page }}
@@ -1654,10 +1601,7 @@ TEST 28: another simple cite
 .\T1/lmr/m/n/10 [
 .\T1/lmr/m/n/10 1
 .\T1/lmr/m/n/10 ]
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 29: another simple cite
@@ -1668,6 +1612,7 @@ TEST 29: another simple cite
 *** knuth:ct:c (@book) ***
 *** sigfridsson (@article) ***
 *** knuth:ct:c (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x160.83344
 .\T1/lmr/m/n/10 (
@@ -1712,10 +1657,7 @@ TEST 29: another simple cite
 .\glue 3.33333 plus 1.66666 minus 1.11111
 .\T1/lmr/m/n/10 1
 .\T1/lmr/m/n/10 )
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 30: another simple cite
@@ -1731,6 +1673,7 @@ TEST 30: another simple cite
 *** knuth:ct:c (@book) ***
 *** sigfridsson (@article) ***
 *** knuth:ct:c (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x180.83301
 .\write1{\abx@aux@page{135}{\the \c@page }}
@@ -1780,15 +1723,13 @@ TEST 30: another simple cite
 .\T1/lmr/m/n/10 [
 .\T1/lmr/m/n/10 1
 .\T1/lmr/m/n/10 ]
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...}
+! OK
 ============================================================
 ============================================================
 TEST 31: bibliography aksin
 ============================================================
 *** aksin (@article) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(8.29999+2.5)x877.31853
 .\write1{\abx@aux@page{149}{\the \c@page }}
@@ -2006,15 +1947,13 @@ TEST 31: bibliography aksin
 .\T1/lmr/m/n/10 3
 .\T1/lmr/m/n/10 6
 .\T1/lmr/m/n/10 .
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...
+! OK
 ============================================================
 ============================================================
 TEST 32: bibliography geer
 ============================================================
 *** geer (@thesis) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x787.2356
 .\hbox(0.0+0.0)x0.0
@@ -2208,15 +2147,13 @@ TEST 32: bibliography geer
 .\T1/lmr/m/n/10 8
 .\T1/lmr/m/n/10 5
 .\T1/lmr/m/n/10 .
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...
+! OK
 ============================================================
 ============================================================
 TEST 33: bibliography knuth:ct:a
 ============================================================
 *** knuth:ct:a (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x484.19046
 .\hbox(0.0+0.0)x0.0
@@ -2340,15 +2277,13 @@ TEST 33: bibliography knuth:ct:a
 .\T1/lmr/m/n/10 8
 .\T1/lmr/m/n/10 4
 .\T1/lmr/m/n/10 .
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...
+! OK
 ============================================================
 ============================================================
 TEST 34: bibliography knuth:ct:b
 ============================================================
 *** knuth:ct:b (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x441.75711
 .\hbox(0.0+0.0)x0.0
@@ -2461,15 +2396,13 @@ TEST 34: bibliography knuth:ct:b
 .\T1/lmr/m/n/10 8
 .\T1/lmr/m/n/10 6
 .\T1/lmr/m/n/10 .
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...
+! OK
 ============================================================
 ============================================================
 TEST 35: bibliography knuth:ct:c
 ============================================================
 *** knuth:ct:c (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x456.67856
 .\hbox(0.0+0.0)x0.0
@@ -2580,15 +2513,13 @@ TEST 35: bibliography knuth:ct:c
 .\T1/lmr/m/n/10 8
 .\T1/lmr/m/n/10 6
 .\T1/lmr/m/n/10 .
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...
+! OK
 ============================================================
 ============================================================
 TEST 36: bibliography nussbaum
 ============================================================
 *** nussbaum (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x448.65639
 .\hbox(0.0+0.0)x0.0
@@ -2700,15 +2631,13 @@ TEST 36: bibliography nussbaum
 .\T1/lmr/m/n/10 7
 .\T1/lmr/m/n/10 8
 .\T1/lmr/m/n/10 .
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...
+! OK
 ============================================================
 ============================================================
 TEST 37: bibliography pines
 ============================================================
 *** pines (@incollection) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x1118.06285
 .\hbox(0.0+0.0)x0.0
@@ -2982,16 +2911,14 @@ TEST 37: bibliography pines
 .\T1/lmr/m/n/10 0
 .\T1/lmr/m/n/10 9
 .\T1/lmr/m/n/10 .
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...
+! OK
 ============================================================
 ============================================================
 TEST 38: bibliography sigfridsson
 ============================================================
 *** sigfridsson (@article) ***
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line ....
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x1237.9393
 .\hbox(0.0+0.0)x0.0
@@ -3315,15 +3242,13 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line ..
 .\T1/lmtt/m/n/10 P
 .\mathoff
 .\T1/lmr/m/n/10 .
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...
+! OK
 ============================================================
 ============================================================
 TEST 39: bibliography worman
 ============================================================
 *** worman (@book) ***
+(extblxbox.txt) 
 > \box...=
 \hbox(7.5+2.5)x485.37898
 .\hbox(0.0+0.0)x0.0
@@ -3448,8 +3373,5 @@ TEST 39: bibliography worman
 .\T1/lmr/m/n/10 0
 .\T1/lmr/m/n/10 2
 .\T1/lmr/m/n/10 .
-! OK.
-\extblxtestbox ...ox =\hbox {#1}\showbox \testbox 
-                                                  \OMIT #1\TIMO 
-l. ...
+! OK
 ============================================================
