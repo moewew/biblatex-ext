@@ -1,11 +1,5 @@
 #!/usr/bin/env sh
 
-# This script is used for testing using Travis-CI
-# It is intended to work on their VM set up: Ubuntu 16.04 LTS
-# As such, the nature of the system is hard-coded
-# A minimal current TL is installed adding only the packages that are
-# required
-
 # See if there is a cached verson of TL available
 export PATH=/tmp/texlive/bin/x86_64-linux:$PATH
 echo "PATH=/tmp/texlive/bin/x86_64-linux:$PATH" >> $GITHUB_ENV
