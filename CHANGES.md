@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## Version 0.18 (2024-03-24)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.16...HEAD>
+See <https://github.com/moewew/biblatex-ext/compare/v0.17..v0.18>
 
 ### Changed
 - Change colour model in `l3draw` colour definition from CMYK to HTML.
@@ -10,7 +10,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.16...HEAD>
 
 ## Version 0.17 (2023-03-18)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.16...v0.17>
+See <https://github.com/moewew/biblatex-ext/compare/v0.16..v0.17>
 
 ### Changed
 - Synced `\textcite` implementation in `-comp` styles with
@@ -19,7 +19,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.16...v0.17>
 
 ## Version 0.16 (2022-06-18)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.15...v0.16>
+See <https://github.com/moewew/biblatex-ext/compare/v0.15..v0.16>
 
 ### Changed
 - Reworked the implementation of `citexref`.
@@ -28,7 +28,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.15...v0.16>
 
 ## Version 0.15 (2022-03-06)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.14...v0.15>
+See <https://github.com/moewew/biblatex-ext/compare/v0.14..v0.15>
 
 ### Added
 - New `authornumber` style family.
@@ -38,7 +38,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.14...v0.15>
 
 ## Version 0.14 (2021-08-31)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.13...v0.14>
+See <https://github.com/moewew/biblatex-ext/compare/v0.13..v0.14>
 
 ### Fixed
 - Use `language` bibmacro in `@dataset` driver instead of bare
@@ -48,7 +48,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.13...v0.14>
 
 ## Version 0.13 (2021-06-08)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.12b...v0.13>
+See <https://github.com/moewew/biblatex-ext/compare/v0.12b..v0.13>
 
 ### Added
 - `titlecase:biblabeltitle` and `biblabeltitle` formats to format
@@ -61,7 +61,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.12b...v0.13>
 
 ## Version 0.12b (2021-04-22)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.12a...v0.12b>
+See <https://github.com/moewew/biblatex-ext/compare/v0.12a..v0.12b>
 
 ### Fixed
 - Fixed default `refcontext` assignment in tabular bibliography
@@ -69,14 +69,14 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.12a...v0.12b>
 
 ## Version 0.12a (2021-04-20)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.12...v0.12a>
+See <https://github.com/moewew/biblatex-ext/compare/v0.12..v0.12a>
 
 ### Fixed
 - Fixed `env` option for `\printbibtabular`.
 
 ## Version 0.12 (2021-02-27)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.11...v0.12>
+See <https://github.com/moewew/biblatex-ext/compare/v0.11..v0.12>
 
 ### Added
 - `\UndeclareCiteDelims{<cite command>}` to delete inner and outer
@@ -89,14 +89,14 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.11...v0.12>
 
 ## Version 0.11 (2021-02-19)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.10...v0.11>
+See <https://github.com/moewew/biblatex-ext/compare/v0.10..v0.11>
 
 ### Changed
 - Synced with 2021-02-18 changes in `l3draw`/`l3color`.
 
 ## Version 0.10 (2021-01-01)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.9...v0.10>
+See <https://github.com/moewew/biblatex-ext/compare/v0.9..v0.10>
 
 ### Changed
 - Updated for `biblatex` v3.16 (2020/12/31).
@@ -106,7 +106,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.9...v0.10>
 
 ## Version 0.9 (2020-08-21)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.8g...v0.9>
+See <https://github.com/moewew/biblatex-ext/compare/v0.8g..v0.9>
 
 ### Changed
 - Updated for `biblatex` v3.15 (2020/08/19).
@@ -114,7 +114,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8g...v0.9>
 
 ## Version 0.8g (2020-08-09)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.8f...v0.8g>
+See <https://github.com/moewew/biblatex-ext/compare/v0.8f..v0.8g>
 
 ### Fixed
 - Synced with 2020-08-07 `l3draw`/`l3color` changes.
@@ -122,7 +122,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8f...v0.8g>
 
 ## Version 0.8f (2020-05-09)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.8e...v0.8f>
+See <https://github.com/moewew/biblatex-ext/compare/v0.8e..v0.8f>
 
 ### Fixed
 - Fixed inner cite delimiters for `\footcitetext` in `authoryear`
@@ -132,7 +132,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8e...v0.8f>
 
 ## Version 0.8e (2020-05-05)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.8d...v0.8e>
+See <https://github.com/moewew/biblatex-ext/compare/v0.8d..v0.8e>
 
 ### Fixed
 - Fixed `bbx:introcite` definition for `ext-numeric-comp`.
@@ -146,7 +146,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8d...v0.8e>
 
 ## Version 0.8d (2020-03-15)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.8c...v0.8d>
+See <https://github.com/moewew/biblatex-ext/compare/v0.8c..v0.8d>
 
 ### Fixed
 - Avoid an error about the bibmacro `labeltitle` being undefined
@@ -158,7 +158,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8c...v0.8d>
 
 ## Version 0.8c (2019-11-30)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.8b...v0.8c>
+See <https://github.com/moewew/biblatex-ext/compare/v0.8b..v0.8c>
 
 ### Changed
 - The Unpaywall API queries don't include a sanity check for
@@ -171,7 +171,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8b...v0.8c>
 
 ## Version 0.8b (2019-11-01)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.8a...v0.8b>
+See <https://github.com/moewew/biblatex-ext/compare/v0.8a..v0.8b>
 
 ### Fixed
 - Call to removed option in `ext-verbose-trad2`.
@@ -179,7 +179,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8a...v0.8b>
 
 ## Version 0.8a (2019-10-31)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.8...v0.8a>
+See <https://github.com/moewew/biblatex-ext/compare/v0.8..v0.8a>
 
 ### Fixed
 - The default value of `\servoldelim` was documented as
@@ -191,7 +191,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.8...v0.8a>
 
 
 ## Version 0.8 (2019-08-25)
-See <https://github.com/moewew/biblatex-ext/compare/v0.7a...v0.8>
+See <https://github.com/moewew/biblatex-ext/compare/v0.7a..v0.8>
 
 ### Added
 - `\AtIntrocite` to customise initialisation code for introcite
@@ -202,7 +202,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.7a...v0.8>
 
 
 ## Version 0.7a (2019-04-04)
-See <https://github.com/moewew/biblatex-ext/compare/v0.7...v0.7a>
+See <https://github.com/moewew/biblatex-ext/compare/v0.7..v0.7a>
 
 ### Fixed
 - Bug in the `env` option to `\printbibtabular`. The old version would
@@ -217,7 +217,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.7...v0.7a>
 
 
 ## Version 0.7 (2019-02-08)
-See <https://github.com/moewew/biblatex-ext/compare/v0.6b...v0.7>
+See <https://github.com/moewew/biblatex-ext/compare/v0.6b..v0.7>
 
 ### Added
 - Outer citation delimiters for `\supercite`.
@@ -253,7 +253,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.6b...v0.7>
 
 
 ## Version 0.6b (2019-01-11)
-See <https://github.com/moewew/biblatex-ext/compare/v0.6a...v0.6b>
+See <https://github.com/moewew/biblatex-ext/compare/v0.6a..v0.6b>
 
 ### Changed
 - `blxextdoiapi.lua` now returns the module as a table.
@@ -264,7 +264,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.6a...v0.6b>
 
 
 ## Version 0.6a (2019-01-04)
-See <https://github.com/moewew/biblatex-ext/compare/v0.6...v0.6a>
+See <https://github.com/moewew/biblatex-ext/compare/v0.6..v0.6a>
 
 ### Changed
 - Only patch bibmacros in `biblatex-ext-oa`. This avoids redefinitions,
@@ -276,7 +276,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.6...v0.6a>
 
 
 ## Version 0.6 (2018-11-23)
-See <https://github.com/moewew/biblatex-ext/compare/v0.5a...v0.6>
+See <https://github.com/moewew/biblatex-ext/compare/v0.5a..v0.6>
 
 ### Added
 - `\titleaddonpunct`
@@ -302,7 +302,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.5a...v0.6>
 
 
 ## Version 0.5a (2018-10-09)
-See <https://github.com/moewew/biblatex-ext/compare/v0.5...v0.5a>
+See <https://github.com/moewew/biblatex-ext/compare/v0.5..v0.5a>
 
 ### Fixed
 - Bug with `\footcites` and `\footcitetexts` in `ext-authoryear.cbx`
@@ -310,7 +310,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.5...v0.5a>
 
 
 ## Version 0.5 (2018-10-02)
-See <https://github.com/moewew/biblatex-ext/compare/v0.4...v0.5>
+See <https://github.com/moewew/biblatex-ext/compare/v0.4..v0.5>
 
 ### Added
 - New `ecomp` style family. The styles of that family compress lists of
@@ -325,7 +325,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.4...v0.5>
 
 
 ## Version 0.4 (2018-06-10)
-See <https://github.com/moewew/biblatex-ext/compare/v0.3...v0.4>
+See <https://github.com/moewew/biblatex-ext/compare/v0.3..v0.4>
 
 ### Changed
 - Renamed `\DeclareOuterCiteDelim` and friends to
@@ -353,7 +353,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.3...v0.4>
 
 
 ## Version 0.3 (2018-06-04)
-See <https://github.com/moewew/biblatex-ext/compare/v0.2...v0.3>
+See <https://github.com/moewew/biblatex-ext/compare/v0.2..v0.3>
 
 ### Added
 - `titlecase:<titletype>` field formats for finer control over the
@@ -375,7 +375,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.2...v0.3>
 
 
 ## Version 0.2 (2018-03-28)
-See <https://github.com/moewew/biblatex-ext/compare/v0.1a...v0.2>
+See <https://github.com/moewew/biblatex-ext/compare/v0.1a..v0.2>
 
 ### Added
 - `\voltitledelim`
@@ -401,7 +401,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.1a...v0.2>
 
 
 ## Version 0.1a (2018-03-20)
-See <https://github.com/moewew/biblatex-ext/compare/v0.1...v0.1a>
+See <https://github.com/moewew/biblatex-ext/compare/v0.1..v0.1a>
 
 ### Fixed
 - Inner cite delims for `authoryear`/`authortitle` and their `-ibid`

@@ -91,7 +91,7 @@ installation instructions.
 
 ## Licence
 
-Copyright 2017-2023 Moritz Wemheuer
+Copyright 2017-2024 Moritz Wemheuer
 
 This work consists of the `.bbx`, `.cbx`, `.def`, `.sty` and `.lua`
 files mentioned above.
