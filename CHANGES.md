@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.18..HEAD>
+
+### Changed
+- Call `\@doendpe` in `\printbibtabular`
+  (cf. <https://github.com/plk/biblatex/issues/1279>).
+
 ## Version 0.18 (2024-03-24)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.17..v0.18>

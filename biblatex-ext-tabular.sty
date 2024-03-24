@@ -202,7 +202,11 @@
   \endgroup
   \blx@bibnote\blx@thepostnote
   \endgroup
-  \endgroup % this closes the group opened by \printbibtabular
+  % next line closes the group opened by \printbibtabular
+  % and does the \@doendpe stuff
+  % cf. <https://github.com/plk/biblatex/issues/1279>
+  \expandafter\endgroup\if@endpe\@doendpe\fi
+  \par
 }
 
 \def\extblxtab@tab@item@aux@lang#1{%
