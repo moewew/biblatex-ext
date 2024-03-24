@@ -5,7 +5,7 @@ Package: biblatex ....-..-.. v... programmable bibliographies (PK/MW)
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 (../blx-dm.def
-File: blx-dm.def ....-..-.. v... biblatex localization (PK/MW)
+File: blx-dm.def ....-..-.. v... biblatex datamodel (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'ext-numeric.dbx' not found.

@@ -33,8 +33,8 @@
       This is a fatal error. I'm aborting now}%
    \endinput}
 
-\def\extblxtab@requiredbiblatexversion{3.19}
-\def\extblxtab@requiredbiblatexdate{2023/03/05}
+\def\extblxtab@requiredbiblatexversion{3.20}
+\def\extblxtab@requiredbiblatexdate{2024/03/21}
 
 \@ifpackagelater{biblatex}{\extblxtab@requiredbiblatexdate}
   {}
@@ -100,6 +100,10 @@
   \ifundef\blx@refcontext@labelprefix@real
     {\let\blx@refcontext@labelprefix@real\blx@refcontext@labelprefix}
     {}%
+  \ifundef\blx@refcontext@namehashtemplatename
+    {\def\extblxtab@xml@dlist@refcontext##1##2##3##4##5##6{%
+       \blx@xml@dlist@refcontext{##1}{##2}{##3}{##4}{##5}}}
+    {\def\extblxtab@xml@dlist@refcontext{\blx@xml@dlist@refcontext}}%
   % Is there a user-specified option for resetnumbers
   % If so, this overrides the default
   % "labelprefix implies resetnumbers" behaviour
@@ -132,12 +136,13 @@
                               @entry}%
      \csxappto{blx@dlists}{%
        \blx@xml@dlist{\blx@refcontext@context}{entry}{\blx@tempe}{%
-         \blx@xml@dlist@refcontext
+         \extblxtab@xml@dlist@refcontext
            {\blx@refcontext@sortingtemplatename}
            {\blx@refcontext@sortingnamekeytemplatename}
            {\blx@refcontext@labelprefix@real}
            {\blx@refcontext@uniquenametemplatename}
-           {\blx@refcontext@labelalphanametemplatename}}{}}}%
+           {\blx@refcontext@labelalphanametemplatename}
+           {\blx@refcontext@namehashtemplatename}}{}}}%
   \ifdefvoid\blx@tempa
     {\blx@warn@bibempty\endgroup}
     {\extblxtab@bibtabular\blx@tempa}}

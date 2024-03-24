@@ -6,6 +6,7 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.16...HEAD>
 
 ### Changed
 - Change colour model in `l3draw` colour definition from CMYK to HTML.
+- Synced `\printbibtabular` implementation with `biblatex` 3.20.
 
 ## Version 0.17 (2023-03-18)
 

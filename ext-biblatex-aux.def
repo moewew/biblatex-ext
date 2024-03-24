@@ -2,8 +2,8 @@
   [2023/03/18 v0.17 auxiliaries for extended biblatex citation style
    (MW)]
 
-\def\extblx@requiredbiblatexversion{3.19}
-\def\extblx@requiredbiblatexdate{2023/03/05}
+\def\extblx@requiredbiblatexversion{3.20}
+\def\extblx@requiredbiblatexdate{2024/03/21}
 
 \protected\def\extblx@info{\PackageInfo{biblatex-ext}}
 \protected\def\extblx@warning{\PackageWarning{biblatex-ext}}
