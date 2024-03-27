@@ -106,10 +106,10 @@ function update_tag(file, content, tagname, tagdate)
                             .. " (" .. tagdate .. ")\n")
     if string.match(content,
                     "https://github.com/moewew/biblatex%-ext"
-                      .. "/compare/v" .. version_scheme .. "..HEAD") then
+                      .. "/compare/v" .. version_scheme .. "...HEAD") then
       content = string.gsub(content,
-                            "..HEAD",
-                            "..v" .. tagname_safe)
+                            "...HEAD",
+                            "...v" .. tagname_safe)
     end
     return content
   end
