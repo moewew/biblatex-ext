@@ -87,7 +87,6 @@ tlmgr install       \
   listings          \
   ltxdockit         \
   microtype         \
-  ms                \
   mweights          \
   newtx             \
   oberdiek          \
