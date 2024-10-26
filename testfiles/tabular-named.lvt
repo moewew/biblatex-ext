@@ -19,13 +19,7 @@
 \usepackage[backend=biber, style=ext-authortitle]{biblatex}
 \usepackage{biblatex-ext-tabular}
 \addbibresource{biblatex-examples.bib}
-\OMIT
 
-% set up \extblxtestbox and hack into biblatex internals to add
-% some debugging info
-\input{testbiblatex-boxsetup.tex}
-
-\TIMO
 \defbibtabular{mybibtabular}
   {\setlength{\LTpre}{0pt}%
    \setlength{\LTpost}{0pt}%

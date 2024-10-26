@@ -1,10 +1,10 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
-(../biblatex.sty
+(C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.sty
 Package: biblatex ....-..-.. v... programmable bibliographies (PK/MW)
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
-(../blx-dm.def
+(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-dm.def
 File: blx-dm.def ....-..-.. v... biblatex datamodel (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex style data model...
@@ -13,18 +13,19 @@ Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
-(../blx-compat.def
+(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-compat.def
 File: blx-compat.def ....-..-.. v... biblatex compatibility (PK/MW)
 )
 Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
-(../biblatex.def
+(C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.def
 File: biblatex.def ....-..-.. v... biblatex compatibility (PK/MW)
 )
 Package biblatex Info: Trying to load bibliography style 'ext-numeric-comp'...
 Package biblatex Info: ... file 'ext-numeric-comp.bbx' found.
 (ext-numeric-comp.bbx
-File: ext-numeric-comp.bbx ....-..-.. v... extended biblatex numeric-comp bibliography style (MW)
+File: ext-numeric-comp.bbx ....-..-.. v... extended biblatex numeric-comp bibl
+iography style (MW)
 Package biblatex Info: Trying to load bibliography style 'ext-standard'...
 Package biblatex Info: ... file 'ext-standard.bbx' found.
 (ext-standard.bbx
@@ -32,32 +33,36 @@ File: ext-standard.bbx ....-..-.. v... extended biblatex standard style (MW)
 Package biblatex Info: Trying to load auxiliary code for ext-biblatex...
 Package biblatex Info: ... file 'ext-biblatex-aux.def' found.
 (ext-biblatex-aux.def
-File: ext-biblatex-aux.def ....-..-.. v... auxiliaries for extended biblatex citation style (MW)
+File: ext-biblatex-aux.def ....-..-.. v... auxiliaries for extended biblatex c
+itation style (MW)
 )
 Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
-(../standard.bbx
+(C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\standard.bbx
 File: standard.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
 )
-Package biblatex Info: Delimiter 'innametitledelim' in context 'bib' already defined, overwriting.
-Package biblatex Info: Delimiter 'innametitledelim' in context 'biblist' already defined, overwriting.
+Package biblatex Info: Delimiter 'innametitledelim' in context 'bib' already de
+fined, overwriting.
+Package biblatex Info: Delimiter 'innametitledelim' in context 'biblist' alread
+y defined, overwriting.
 )
 Package biblatex Info: Trying to load bibliography style 'numeric-comp'...
 Package biblatex Info: ... file 'numeric-comp.bbx' found.
-(../numeric-comp.bbx
+(C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\numeric-comp.bbx
 File: numeric-comp.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
 Package biblatex Info: Trying to load bibliography style 'numeric'...
 Package biblatex Info: ... file 'numeric.bbx' found.
-(../numeric.bbx
+(C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\numeric.bbx
 File: numeric.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
 )))
 Package biblatex Info: Trying to load citation style 'ext-numeric-comp'...
 Package biblatex Info: ... file 'ext-numeric-comp.cbx' found.
 (ext-numeric-comp.cbx
-File: ext-numeric-comp.cbx ....-..-.. v... extended biblatex numeric-comp citation style (MW)
+File: ext-numeric-comp.cbx ....-..-.. v... extended biblatex numeric-comp cita
+tion style (MW)
 Package biblatex Info: Trying to load citation style 'numeric-comp'...
 Package biblatex Info: ... file 'numeric-comp.cbx' found.
-(../numeric-comp.cbx
+(C:\Program Files\MiKTeX\tex/latex/biblatex/cbx\numeric-comp.cbx
 File: numeric-comp.cbx ....-..-.. v... biblatex citation style (PK/MW)
 Package biblatex Info: Redefining '\cite'.
 Package biblatex Info: Redefining '\parencite'.
@@ -87,7 +92,7 @@ Package biblatex Info: Redefining '\smartcites'.
 )
 Package biblatex Info: Trying to load configuration file...
 Package biblatex Info: ... file 'biblatex.cfg' found.
-(../biblatex.cfg
+(C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.cfg
 File: biblatex.cfg 
 )
 Package biblatex Info: Input encoding 'utf8' detected.
@@ -96,14 +101,34 @@ Package biblatex Info: ... and expl3
 (biblatex)             ....-..-.. L3 programming layer (loader) 
 (biblatex)             is new enough (at least ....-..-..),
 (biblatex)             setting 'casechanger=expl3'.
-(../blx-case-expl3.sty
+(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-case-expl3.sty
 Package: blx-case-expl3 ....-..-.. v... expl3 case changing code for biblatex
 ))
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line ....
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line ....
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line ....
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line ....
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line ....
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line ...
+6.
+(C:\Program Files\MiKTeX\tex/latex/lm\t1lmtt.fd
+File: t1lmtt.fd ....-..-.. v... Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line ...
+6.
+(C:\Program Files\MiKTeX\tex/latex/lm\ot1lmr.fd
+File: ot1lmr.fd ....-..-.. v... Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line ...
+6.
+(C:\Program Files\MiKTeX\tex/latex/lm\omllmm.fd
+File: omllmm.fd ....-..-.. v... Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line ...
+56.
+(C:\Program Files\MiKTeX\tex/latex/lm\omslmsy.fd
+File: omslmsy.fd ....-..-.. v... Font defs for Latin Modern
+)
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line ...
+56.
+(C:\Program Files\MiKTeX\tex/latex/lm\omxlmex.fd
+File: omxlmex.fd ....-..-.. v... Font defs for Latin Modern
+)
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line ....
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -120,7 +145,7 @@ Completed box being shipped out [1]
 ....\hbox(0.0+0.0)x345.0
 ..\glue 25.0
 ..\glue(\lineskip) 0.0
-..\vbox(550.0+0.0)x345.0, glue set 442.9808fil
+..\vbox(550.0+0.0)x345.0, glue set 442.98083fil
 ...\write-{}
 ...\write1{\babel@aux{british}{}}
 ...\glue(\topskip) 2.5
@@ -399,5 +424,5 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil
 ....\T1/lmr/m/n/10 1
 ....\glue 0.0 plus 1.0fil
-(issue-0033.aux)
+{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} (issue-0033.aux)
 Package logreq Info: Writing requests to 'issue-0033.run.xml'.

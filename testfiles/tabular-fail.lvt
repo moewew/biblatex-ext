@@ -15,10 +15,6 @@
 \addbibresource{biblatex-examples.bib}
 \OMIT
 
-% set up \extblxtestbox and hack into biblatex internals to add
-% some debugging info
-\input{testbiblatex-boxsetup.tex}
-
 \begin{document}
 \TIMO
 
