@@ -101,13 +101,6 @@ Package: blx-case-expl3 ....-..-.. v... expl3 case changing code for biblatex
 )) (biblatex-ext-tabular.sty
 Package: biblatex-ext-tabular ....-..-.. v... tabular bibliographies for biblatex (MW)
 )
-*** geer (@thesis) ***
-*** knuth:ct:a (@book) ***
-*** knuth:ct:b (@book) ***
-*** knuth:ct:c (@book) ***
-*** nussbaum (@book) ***
-*** sigfridsson (@article) ***
-*** worman (@book) ***
 ! Package biblatex-ext-tabular Error: tabular bibliography environment
 (biblatex-ext-tabular)                'bibtabular' undefined.
 See the biblatex-ext-tabular package documentation for explanation.
@@ -116,7 +109,7 @@ Type  H <return>  for immediate help.
 l. ...
 Please supply a suitable definition with \defbibtabular.
 See the documentation for more details.
-Overfull \hbox (4.04544pt too wide) in paragraph at lines 28--28
+Overfull \hbox (4.04544pt too wide) in paragraph at lines 24--24
 \T1/lmr/bx/n/10 Error! The tab-u-lar bib-li-o-graphy en-vir-on-ment `bibt-ab-u-lar' is un-defined.
 \hbox(6.99048+1.94443)x345.0, glue set - 1.0
 .\T1/lmr/bx/n/10 E

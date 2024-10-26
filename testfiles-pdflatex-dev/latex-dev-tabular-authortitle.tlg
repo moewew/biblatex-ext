@@ -101,25 +101,6 @@ Package: blx-case-expl3 ....-..-.. v... expl3 case changing code for biblatex
 )) (biblatex-ext-tabular.sty
 Package: biblatex-ext-tabular ....-..-.. v... tabular bibliographies for biblatex (MW)
 )
-*** geer (@thesis) ***
-*** knuth:ct:a (@book) ***
-*** knuth:ct:b (@book) ***
-*** knuth:ct:c (@book) ***
-*** nussbaum (@book) ***
-*** sigfridsson (@article) ***
-*** worman (@book) ***
-*** geer (@thesis) ***
-*** geer (@thesis) ***
-*** knuth:ct:a (@book) ***
-*** knuth:ct:a (@book) ***
-*** knuth:ct:b (@book) ***
-*** knuth:ct:b (@book) ***
-*** knuth:ct:c (@book) ***
-*** knuth:ct:c (@book) ***
-*** nussbaum (@book) ***
-*** nussbaum (@book) ***
-*** sigfridsson (@article) ***
-*** sigfridsson (@article) ***
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line ....
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line ....
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line ....
@@ -131,8 +112,6 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line ....
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line ....
-*** worman (@book) ***
-*** worman (@book) ***
 Completed box being shipped out [1]
 \vbox(633.0+0.0)x407.0
 .\glue 16.0

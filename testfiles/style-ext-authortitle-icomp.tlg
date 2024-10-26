@@ -1,10 +1,10 @@
 This is a generated file for the l3build validation system.
 Don't change this file in any respect.
-(C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.sty
+(../biblatex.sty
 Package: biblatex ....-..-.. v... programmable bibliographies (PK/MW)
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
-(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-dm.def
+(../blx-dm.def
 File: blx-dm.def ....-..-.. v... biblatex datamodel (PK/MW)
 )
 Package biblatex Info: Trying to load biblatex style data model...
@@ -13,20 +13,18 @@ Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
-(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-compat.def
+(../blx-compat.def
 File: blx-compat.def ....-..-.. v... biblatex compatibility (PK/MW)
 )
 Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
-(C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.def
+(../biblatex.def
 File: biblatex.def ....-..-.. v... biblatex compatibility (PK/MW)
 )
-Package biblatex Info: Trying to load bibliography style 'ext-authortitle-icomp
-'...
+Package biblatex Info: Trying to load bibliography style 'ext-authortitle-icomp'...
 Package biblatex Info: ... file 'ext-authortitle-icomp.bbx' found.
 (ext-authortitle-icomp.bbx
-File: ext-authortitle-icomp.bbx ....-..-.. v... extended biblatex authortitle-
-icomp bibliography style (MW)
+File: ext-authortitle-icomp.bbx ....-..-.. v... extended biblatex authortitle-icomp bibliography style (MW)
 Package biblatex Info: Trying to load bibliography style 'ext-standard'...
 Package biblatex Info: ... file 'ext-standard.bbx' found.
 (ext-standard.bbx
@@ -34,49 +32,41 @@ File: ext-standard.bbx ....-..-.. v... extended biblatex standard style (MW)
 Package biblatex Info: Trying to load auxiliary code for ext-biblatex...
 Package biblatex Info: ... file 'ext-biblatex-aux.def' found.
 (ext-biblatex-aux.def
-File: ext-biblatex-aux.def ....-..-.. v... auxiliaries for extended biblatex c
-itation style (MW)
+File: ext-biblatex-aux.def ....-..-.. v... auxiliaries for extended biblatex citation style (MW)
 )
 Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
-(C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\standard.bbx
+(../standard.bbx
 File: standard.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
 )
-Package biblatex Info: Delimiter 'innametitledelim' in context 'bib' already de
-fined, overwriting.
-Package biblatex Info: Delimiter 'innametitledelim' in context 'biblist' alread
-y defined, overwriting.
+Package biblatex Info: Delimiter 'innametitledelim' in context 'bib' already defined, overwriting.
+Package biblatex Info: Delimiter 'innametitledelim' in context 'biblist' already defined, overwriting.
 )
 Package biblatex Info: Trying to load bibliography style 'authortitle-icomp'...
 Package biblatex Info: ... file 'authortitle-icomp.bbx' found.
-(C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\authortitle-icomp.bbx
-File: authortitle-icomp.bbx ....-..-.. v... biblatex bibliography style (PK/MW
-)
+(../authortitle-icomp.bbx
+File: authortitle-icomp.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
 Package biblatex Info: Trying to load bibliography style 'authortitle'...
 Package biblatex Info: ... file 'authortitle.bbx' found.
-(C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\authortitle.bbx
+(../authortitle.bbx
 File: authortitle.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
 ))
-Package biblatex Info: Trying to load bibliography style 'ext-authortitle-commo
-n'...
+Package biblatex Info: Trying to load bibliography style 'ext-authortitle-common'...
 Package biblatex Info: ... file 'ext-authortitle-common.bbx' found.
 (ext-authortitle-common.bbx
-File: ext-authortitle-common.bbx ....-..-.. v... common files for extended bib
-latex authortitle bibliography styles (MW)
+File: ext-authortitle-common.bbx ....-..-.. v... common files for extended biblatex authortitle bibliography styles (MW)
 Package biblatex Info: Trying to load bibliography style 'ext-dashed-common'...
 Package biblatex Info: ... file 'ext-dashed-common.bbx' found.
 (ext-dashed-common.bbx
-File: ext-dashed-common.bbx ....-..-.. v... common files for extended biblatex
- dashed bibliography styles (MW)
+File: ext-dashed-common.bbx ....-..-.. v... common files for extended biblatex dashed bibliography styles (MW)
 )))
 Package biblatex Info: Trying to load citation style 'ext-authortitle-icomp'...
 Package biblatex Info: ... file 'ext-authortitle-icomp.cbx' found.
 (ext-authortitle-icomp.cbx
-File: ext-authortitle-icomp.cbx ....-..-.. v... extended biblatex authortitle-
-icomp citation style (MW)
+File: ext-authortitle-icomp.cbx ....-..-.. v... extended biblatex authortitle-icomp citation style (MW)
 Package biblatex Info: Trying to load citation style 'authortitle-icomp'...
 Package biblatex Info: ... file 'authortitle-icomp.cbx' found.
-(C:\Program Files\MiKTeX\tex/latex/biblatex/cbx\authortitle-icomp.cbx
+(../authortitle-icomp.cbx
 File: authortitle-icomp.cbx ....-..-.. v... biblatex citation style (PK/MW)
 Package biblatex Info: Redefining '\cite'.
 Package biblatex Info: Redefining '\parencite'.
@@ -106,7 +96,7 @@ Package biblatex Info: Redefining '\smartcites'.
 )
 Package biblatex Info: Trying to load configuration file...
 Package biblatex Info: ... file 'biblatex.cfg' found.
-(C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.cfg
+(../biblatex.cfg
 File: biblatex.cfg 
 )
 Package biblatex Info: Input encoding 'utf8' detected.
@@ -115,13 +105,12 @@ Package biblatex Info: ... and expl3
 (biblatex)             ....-..-.. L3 programming layer (loader) 
 (biblatex)             is new enough (at least ....-..-..),
 (biblatex)             setting 'casechanger=expl3'.
-(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-case-expl3.sty
+(../blx-case-expl3.sty
 Package: blx-case-expl3 ....-..-.. v... expl3 case changing code for biblatex
 ))
 (testbiblatex-doccontent.tex
 Overfull \hbox (2.72282pt too wide) in paragraph at lines 11--12
-[]\T1/lmr/m/n/10 Cf.[] Sig-fridsson and Ryde, `  Com-par-ison of meth-ods for d
-e-riv-ing atomic charges
+[]\T1/lmr/m/n/10 Cf.[] Sig-fridsson and Ryde, `  Com-par-ison of meth-ods for de-riv-ing atomic charges
 \hbox(6.88875+1.94443)x345.0, glue set - 1.0
 .\hbox(0.0+0.0)x15.0
 .\T1/lmr/m/n/10 C
@@ -220,26 +209,10 @@ e-riv-ing atomic charges
 .\T1/lmr/m/n/10 e
 .\T1/lmr/m/n/10 s
 .\glue(\rightskip) 0.0
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line ...
-7.
-(C:\Program Files\MiKTeX\tex/latex/lm\ot1lmr.fd
-File: ot1lmr.fd ....-..-.. v... Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line ...
-7.
-(C:\Program Files\MiKTeX\tex/latex/lm\omllmm.fd
-File: omllmm.fd ....-..-.. v... Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line ...
-37.
-(C:\Program Files\MiKTeX\tex/latex/lm\omslmsy.fd
-File: omslmsy.fd ....-..-.. v... Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line ...
-37.
-(C:\Program Files\MiKTeX\tex/latex/lm\omxlmex.fd
-File: omxlmex.fd ....-..-.. v... Font defs for Latin Modern
-)
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line ....
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line ....
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line ....
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line ....
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line ....
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -791,7 +764,7 @@ Completed box being shipped out [1]
 ....\glue(\rightskip) 0.0
 ...\penalty 150
 ...\glue(\baselineskip) 3.16682
-...\hbox(6.88875+1.94443)x345.0, glue set 289.35565fil
+...\hbox(6.88875+1.94443)x345.0, glue set 289.35564fil
 ....\T1/lmr/m/it/10 o
 ....\T1/lmr/m/it/10 f
 ....\glue 3.57777 plus 1.53333 minus 1.0222
@@ -3507,10 +3480,8 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil
 ....\T1/lmr/m/n/10 1
 ....\glue 0.0 plus 1.0fil
-{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}
 Overfull \hbox (10.14508pt too wide) in paragraph at lines 59--59
-[][][]\T1/lmr/m/it/10 Computers & Type-set-ting\T1/lmr/m/n/10 . Vol. B: \T1/lmr
-/m/it/10 T[]X: The Pro-gram\T1/lmr/m/n/10 . Read-ing, Mass.: Addison-
+[][][]\T1/lmr/m/it/10 Computers & Type-set-ting\T1/lmr/m/n/10 . Vol. B: \T1/lmr/m/it/10 T[]X: The Pro-gram\T1/lmr/m/n/10 . Read-ing, Mass.: Addison-
 \hbox(6.88875+2.15274)x330.0, glue set - 1.0
 .\hbox(0.0+0.0)x-15.0
 ..\glue -15.0
@@ -3621,11 +3592,7 @@ Overfull \hbox (10.14508pt too wide) in paragraph at lines 59--59
 .\T1/lmr/m/n/10 -
 .\discretionary
 .\glue(\rightskip) 0.0
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line ...
-8.
-(C:\Program Files\MiKTeX\tex/latex/lm\t1lmtt.fd
-File: t1lmtt.fd ....-..-.. v... Font defs for Latin Modern
-))
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line ....
 Completed box being shipped out [2]
 \vbox(633.0+0.0)x407.0
 .\glue 16.0
@@ -5572,7 +5539,7 @@ Completed box being shipped out [2]
 ...\rule(0.4+0.0)x137.9979
 ...\kern 2.6
 ...\glue(\splittopskip) 1.13899
-...\hbox(5.511+2.85002)x345.0, glue set 308.35492fil
+...\hbox(5.511+2.85002)x345.0, glue set 308.3549fil
 ....\T1/lmr/m/n/8 g
 ....\T1/lmr/m/n/8 l
 ....\T1/lmr/m/n/8 o
