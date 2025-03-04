@@ -62,7 +62,7 @@ Package: blx-case-expl3 ....-..-.. v... expl3 case changing code for biblatex
 )) (biblatex-ext-tabular.sty
 Package: biblatex-ext-tabular ....-..-.. v... tabular bibliographies for biblatex (MW)
 )
-Underfull \hbox (badness 1635) in paragraph at lines 51--51
+Underfull \hbox (badness 1635) in paragraph at lines ...
 \T1/lmr/m/n/10 Earl-dom of the Twelfth Cen-tury. A Mu-si-co-lo-gical
 \hbox(6.88875+1.94443)x241.49895, glue set 2.5391
 .\T1/lmr/m/n/10 E

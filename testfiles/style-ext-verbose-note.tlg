@@ -118,7 +118,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line ....
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line ....
-Overfull \hbox (2.72282pt too wide) in paragraph at lines 11--12
+Overfull \hbox (2.72282pt too wide) in paragraph at lines ...
 []\T1/lmr/m/n/10 Cf.[] Sig-fridsson and Ryde, `  Com-par-ison of meth-ods for de-riv-ing atomic charges
 \hbox(6.88875+1.94443)x345.0, glue set - 1.0
 .\hbox(0.0+0.0)x15.0
@@ -3770,7 +3770,7 @@ Completed box being shipped out [1]
 ....\glue 0.0 plus 1.0fil
 ....\T1/lmr/m/n/10 1
 ....\glue 0.0 plus 1.0fil
-Overfull \hbox (10.14508pt too wide) in paragraph at lines 59--59
+Overfull \hbox (10.14508pt too wide) in paragraph at lines ...
 [][][]\T1/lmr/m/it/10 Computers & Type-set-ting\T1/lmr/m/n/10 . Vol. B: \T1/lmr/m/it/10 T[]X: The Pro-gram\T1/lmr/m/n/10 . Read-ing, Mass.: Addison-
 \hbox(6.88875+2.15274)x330.0, glue set - 1.0
 .\hbox(0.0+0.0)x-15.0

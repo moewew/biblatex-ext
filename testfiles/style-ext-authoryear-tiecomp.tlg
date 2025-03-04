@@ -113,7 +113,7 @@ Package biblatex Info: ... and expl3
 Package: blx-case-expl3 ....-..-.. v... expl3 case changing code for biblatex
 ))
 (testbiblatex-doccontent.tex
-Overfull \hbox (3.91052pt too wide) in paragraph at lines 25--26
+Overfull \hbox (3.91052pt too wide) in paragraph at lines ...
 []\T1/lmr/m/n/10 (glob-pre []Sig-fridsson and Ryde1998[]; Nuss-baum1978, p. 190; Cf.[] Wor-man2002,
 \hbox(7.5+2.5)x345.0, glue set - 1.0
 .\hbox(0.0+0.0)x15.0
@@ -218,7 +218,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line ....
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line ....
-Overfull \hbox (5.15837pt too wide) in paragraph at lines 59--59
+Overfull \hbox (5.15837pt too wide) in paragraph at lines ...
 \T1/lmr/m/n/10 Earl-dom of the Twelfth Cen-tury. A Mu-si-co-lo-gical Study'. PhD thesis. Uppsala:
 \hbox(6.88875+1.94443)x330.0, glue set - 1.0
 .\T1/lmr/m/n/10 E
