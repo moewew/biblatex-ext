@@ -1,0 +1,325 @@
+This is a generated file for the l3build validation system.
+Don't change this file in any respect.
+(C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.sty
+Package: biblatex ....-..-.. v... programmable bibliographies (PK/MW)
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-dm.def
+File: blx-dm.def ....-..-.. v... biblatex datamodel (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file 'ext-authoryear.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-compat.def
+File: blx-compat.def ....-..-.. v... biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+(C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.def
+File: biblatex.def ....-..-.. v... biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load bibliography style 'ext-authoryear'...
+Package biblatex Info: ... file 'ext-authoryear.bbx' found.
+(ext-authoryear.bbx
+File: ext-authoryear.bbx ....-..-.. v... extended biblatex authoryear bibliogr
+aphy style (MW)
+Package biblatex Info: Trying to load bibliography style 'ext-standard'...
+Package biblatex Info: ... file 'ext-standard.bbx' found.
+(ext-standard.bbx
+File: ext-standard.bbx ....-..-.. v... extended biblatex standard style (MW)
+Package biblatex Info: Trying to load auxiliary code for ext-biblatex...
+Package biblatex Info: ... file 'ext-biblatex-aux.def' found.
+(ext-biblatex-aux.def
+File: ext-biblatex-aux.def ....-..-.. v... auxiliaries for extended biblatex c
+itation style (MW)
+)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+(C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\standard.bbx
+File: standard.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
+)
+Package biblatex Info: Delimiter 'innametitledelim' in context 'bib' already de
+fined, overwriting.
+Package biblatex Info: Delimiter 'innametitledelim' in context 'biblist' alread
+y defined, overwriting.
+)
+Package biblatex Info: Trying to load bibliography style 'authoryear'...
+Package biblatex Info: ... file 'authoryear.bbx' found.
+(C:\Program Files\MiKTeX\tex/latex/biblatex/bbx\authoryear.bbx
+File: authoryear.bbx ....-..-.. v... biblatex bibliography style (PK/MW)
+)
+Package biblatex Info: Trying to load bibliography style 'ext-authoryear-common
+'...
+Package biblatex Info: ... file 'ext-authoryear-common.bbx' found.
+(ext-authoryear-common.bbx
+File: ext-authoryear-common.bbx ....-..-.. v... common files for extended bibl
+atex authoryear bibliography styles (MW)
+Package biblatex Info: Trying to load bibliography style 'ext-dashed-common'...
+Package biblatex Info: ... file 'ext-dashed-common.bbx' found.
+(ext-dashed-common.bbx
+File: ext-dashed-common.bbx ....-..-.. v... common files for extended biblatex
+ dashed bibliography styles (MW)
+)))
+Package biblatex Info: Trying to load citation style 'ext-authoryear'...
+Package biblatex Info: ... file 'ext-authoryear.cbx' found.
+(ext-authoryear.cbx
+File: ext-authoryear.cbx ....-..-.. v... extended biblatex authoryear citation
+ style (MW)
+Package biblatex Info: Trying to load citation style 'authoryear'...
+Package biblatex Info: ... file 'authoryear.cbx' found.
+(C:\Program Files\MiKTeX\tex/latex/biblatex/cbx\authoryear.cbx
+File: authoryear.cbx ....-..-.. v... biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\footcites'.
+Package biblatex Info: Redefining '\footcitetexts'.
+Package biblatex Info: Redefining '\smartcites'.
+Package biblatex Info: Redefining '\textcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+(C:\Program Files\MiKTeX\tex/latex/biblatex\biblatex.cfg
+File: biblatex.cfg 
+)
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Document encoding is UTF8 ....
+Package biblatex Info: ... and expl3
+(biblatex)             ....-..-.. L3 programming layer (loader) 
+(biblatex)             is new enough (at least ....-..-..),
+(biblatex)             setting 'casechanger=expl3'.
+(C:\Program Files\MiKTeX\tex/latex/biblatex\blx-case-expl3.sty
+Package: blx-case-expl3 ....-..-.. v... expl3 case changing code for biblatex
+))
+Completed box being shipped out [1]
+\vbox(633.0+0.0)x407.0
+.\glue 16.0
+.\vbox(617.0+0.0)x345.0, shifted 62.0
+..\vbox(12.0+0.0)x345.0, glue set 12.0fil
+...\glue 0.0 plus 1.0fil
+...\hbox(0.0+0.0)x345.0
+....\hbox(0.0+0.0)x345.0
+..\glue 25.0
+..\glue(\lineskip) 0.0
+..\vbox(550.0+0.0)x345.0, glue set 462.9787fil
+...\write-{}
+...\write1{\babel@aux{british}{}}
+...\glue(\topskip) 2.5
+...\hbox(7.5+2.5)x345.0, glue set 158.69513fil
+....\hbox(0.0+0.0)x15.0
+....\T1/lmr/m/n/10 L
+....\T1/lmr/m/n/10 o
+....\T1/lmr/m/n/10 r
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 m
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 (
+....\write1{\abx@aux@page{1}{\the \c@page }}
+....\T1/lmr/m/n/10 A
+....\kern-0.27779
+....\T1/lmr/m/n/10 u
+....\T1/lmr/m/n/10 t
+....\T1/lmr/m/n/10 h
+....\T1/lmr/m/n/10 o
+....\T1/lmr/m/n/10 r
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 2
+....\T1/lmr/m/n/10 0
+....\T1/lmr/m/n/10 2
+....\T1/lmr/m/n/10 3
+....\T1/lmr/m/n/10 ;
+....\glue 3.33333 plus 2.49998 minus 0.74074
+....\write1{\abx@aux@page{2}{\the \c@page }}
+....\T1/lmr/m/n/10 `
+....\penalty 10000
+....\glue -0.0002
+....\glue 0.0002
+....\T1/lmr/m/n/10 T
+....\T1/lmr/m/n/10 i
+....\T1/lmr/m/n/10 t
+....\T1/lmr/m/n/10 l
+....\T1/lmr/m/n/10 e
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 T
+....\kern-0.83334
+....\T1/lmr/m/n/10 w
+....\kern-0.27779
+....\T1/lmr/m/n/10 o
+....\T1/lmr/m/n/10 '
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 2
+....\T1/lmr/m/n/10 0
+....\T1/lmr/m/n/10 2
+....\T1/lmr/m/n/10 5
+....\T1/lmr/m/n/10 )
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\penalty -300
+...\glue 15.06923 plus 4.3055 minus 0.86108
+...\glue(\parskip) 0.0 plus 1.0
+...\glue(\parskip) 0.0
+...\glue(\baselineskip) 5.65462
+...\hbox(9.84538+0.0)x345.0, glue set 269.19131fil
+....\hbox(0.0+0.0)x0.0
+.....\glue 0.0
+....\T1/lmr/bx/n/14.4 R
+....\T1/lmr/bx/n/14.4 e
+....\T1/lmr/bx/n/14.4 f
+....\T1/lmr/bx/n/14.4 e
+....\T1/lmr/bx/n/14.4 r
+....\T1/lmr/bx/n/14.4 e
+....\T1/lmr/bx/n/14.4 n
+....\T1/lmr/bx/n/14.4 c
+....\T1/lmr/bx/n/14.4 e
+....\T1/lmr/bx/n/14.4 s
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\penalty 10000
+...\glue 9.90265 plus 0.86108
+...\glue(\parskip) 0.0
+...\glue(\parskip) 0.0
+...\glue(\baselineskip) 4.5
+...\hbox(7.5+2.5)x330.0, glue set 171.46169fil, shifted 15.0
+....\hbox(0.0+0.0)x-15.0
+.....\glue -15.0
+.....\glue -20.00003
+.....\glue -5.0
+.....\hbox(0.0+0.0)x20.00003, glue set 20.00003fil
+......\glue 0.0 plus 1.0fil
+.....\glue 5.0
+....\penalty 0
+....\write1{\abx@aux@page{3}{\the \c@page }}
+....\T1/lmr/m/n/10 A
+....\kern-0.27779
+....\T1/lmr/m/n/10 u
+....\T1/lmr/m/n/10 t
+....\T1/lmr/m/n/10 h
+....\T1/lmr/m/n/10 o
+....\T1/lmr/m/n/10 r
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 (
+....\T1/lmr/m/n/10 2
+....\T1/lmr/m/n/10 0
+....\T1/lmr/m/n/10 2
+....\T1/lmr/m/n/10 3
+....\T1/lmr/m/n/10 )
+....\T1/lmr/m/n/10 .
+....\glue 3.33333 plus 1.67665 minus 1.10448
+....\T1/lmr/m/n/10 `
+....\penalty 10000
+....\glue -0.0002
+....\glue 0.0002
+....\T1/lmr/m/n/10 T
+....\T1/lmr/m/n/10 i
+....\T1/lmr/m/n/10 t
+....\T1/lmr/m/n/10 l
+....\T1/lmr/m/n/10 e
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 O
+....\T1/lmr/m/n/10 n
+....\T1/lmr/m/n/10 e
+....\T1/lmr/m/n/10 '
+....\T1/lmr/m/n/10 .
+....\glue 3.33333 plus 1.67665 minus 1.10448
+....\T1/lmr/m/n/10 I
+....\T1/lmr/m/n/10 n
+....\T1/lmr/m/n/10 :
+....\glue 3.33333 plus 1.67499 minus 1.10558
+....\T1/lmr/m/it/10 J
+....\T1/lmr/m/it/10 o
+....\T1/lmr/m/it/10 u
+....\T1/lmr/m/it/10 r
+....\T1/lmr/m/it/10 n
+....\T1/lmr/m/it/10 a
+....\T1/lmr/m/it/10 l
+....\T1/lmr/m/n/10 .
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\penalty -51
+...\glue 0.0
+...\glue(\parskip) 0.0
+...\glue(\parskip) 0.0
+...\glue(\baselineskip) 2.0
+...\hbox(7.5+2.5)x330.0, glue set 208.15677fil, shifted 15.0
+....\hbox(0.0+0.0)x-15.0
+.....\glue -15.0
+.....\glue -20.00003
+.....\glue -5.0
+.....\hbox(0.0+0.0)x20.00003, glue set 20.00003fil
+......\glue 0.0 plus 1.0fil
+.....\glue 5.0
+....\penalty 0
+....\write1{\abx@aux@page{4}{\the \c@page }}
+....\T1/lmr/m/n/10 `
+....\penalty 10000
+....\glue -0.0002
+....\glue 0.0002
+....\T1/lmr/m/n/10 T
+....\T1/lmr/m/n/10 i
+....\T1/lmr/m/n/10 t
+....\T1/lmr/m/n/10 l
+....\T1/lmr/m/n/10 e
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 T
+....\kern-0.83334
+....\T1/lmr/m/n/10 w
+....\kern-0.27779
+....\T1/lmr/m/n/10 o
+....\T1/lmr/m/n/10 '
+....\glue 3.33333 plus 1.66666 minus 1.11111
+....\T1/lmr/m/n/10 (
+....\T1/lmr/m/n/10 2
+....\T1/lmr/m/n/10 0
+....\T1/lmr/m/n/10 2
+....\T1/lmr/m/n/10 5
+....\T1/lmr/m/n/10 )
+....\T1/lmr/m/n/10 .
+....\glue 3.33333 plus 1.67665 minus 1.10448
+....\T1/lmr/m/n/10 I
+....\T1/lmr/m/n/10 n
+....\T1/lmr/m/n/10 :
+....\glue 3.33333 plus 1.67499 minus 1.10558
+....\T1/lmr/m/it/10 J
+....\T1/lmr/m/it/10 o
+....\T1/lmr/m/it/10 u
+....\T1/lmr/m/it/10 r
+....\T1/lmr/m/it/10 n
+....\T1/lmr/m/it/10 a
+....\T1/lmr/m/it/10 l
+....\T1/lmr/m/n/10 .
+....\penalty 10000
+....\glue(\parfillskip) 0.0 plus 1.0fil
+....\glue(\rightskip) 0.0
+...\penalty -51
+...\glue 10.0 plus 3.0 minus 5.0
+...\glue -2.5
+...\glue 0.0 plus 1.0fil
+...\glue 0.0
+...\glue 0.0 plus 0.0001fil
+..\glue(\baselineskip) 23.70276
+..\hbox(6.29724+0.0)x345.0
+...\hbox(6.29724+0.0)x345.0, glue set 170.0fil
+....\glue 0.0 plus 1.0fil
+....\T1/lmr/m/n/10 1
+....\glue 0.0 plus 1.0fil
+{C:/Program Files/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} (issue-0046.aux)
+Package logreq Info: Writing requests to 'issue-0046.run.xml'.

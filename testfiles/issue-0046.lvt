@@ -1,0 +1,49 @@
+\input{regression-test.tex}
+\documentclass[british]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{babel}
+\usepackage{csquotes}
+\usepackage{longtable}
+
+
+% load biblatex dependencies and suppress counter allocation logging
+\input{testbiblatex-loaddeps.tex}
+
+\START
+\usepackage[
+  backend=biber,
+  style=ext-authoryear,
+]{biblatex}
+\OMIT
+
+
+
+\begin{filecontents}{\jobname.bib}
+@article{one,
+  author  = {Author},
+  title   = {Title One},
+  journal = {Journal},
+  year    = 2023,
+}
+@article{two,
+  title   = {Title Two},
+  journal = {Journal},
+  year    = 2025,
+}
+\end{filecontents}
+\addbibresource{\jobname.bib}
+
+
+\begin{document}
+\TIMO
+
+\showoutput
+Lorem \autocite{one,two}
+
+\printbibliography
+
+\clearpage
+\end{document}
+\END

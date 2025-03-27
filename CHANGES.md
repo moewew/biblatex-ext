@@ -7,6 +7,10 @@ See <https://github.com/moewew/biblatex-ext/compare/v0.18...HEAD>
 ### Changed
 - Call `\@doendpe` in `\printbibtabular`
   (cf. <https://github.com/plk/biblatex/issues/1279>).
+- Add `\leavevmode` to cell commands in `biblatex-ext-tabular`
+  (cf. <https://github.com/moewew/biblatex-ext/issues/45>).
+- Explcitly copy the `title` field format to `biblabeltitle`
+  (cf. <https://github.com/moewew/biblatex-ext/issues/46>).
 
 ## Version 0.18 (2024-03-24)
 
