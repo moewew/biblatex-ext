@@ -1,0 +1,44 @@
+\input{regression-test.tex}
+\documentclass[british]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{babel}
+\usepackage{csquotes}
+
+% load biblatex dependencies and suppress counter allocation logging
+\input{testbiblatex-loaddeps.tex}
+
+\usepackage{ragged2e}
+\usepackage{array}
+\usepackage[
+  style=alphabetic,
+  backend=biber,
+]{biblatex}
+\usepackage{biblatex-ext-tabular}
+\usepackage[colorlinks]{hyperref}
+
+\START
+\defbibtabular{publicationlist}
+  {\begin{tabular}{
+    >{\raggedleft\arraybackslash}p{4em}
+    >{\justifying\arraybackslash}p{\dimexpr\textwidth-5em\relax}}}
+  {\end{tabular}}
+  {\anchor{\usebibmacro{cite}} & \noindent \plain{\thefield{title}} \\}
+\OMIT
+
+
+\addbibresource{biblatex-examples.bib}
+
+
+\begin{document}
+\TIMO
+
+\showoutput
+\autocite{sigfridsson}
+
+\printbibtabular[env=publicationlist]
+
+\clearpage
+\end{document}
+\END
