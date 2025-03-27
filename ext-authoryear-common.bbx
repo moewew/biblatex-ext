@@ -125,8 +125,16 @@
       \usebibmacro{date}}%
     \newunit}}
 
-\DeclareFieldAlias{biblabeltitle}{title}
+\DeclareFieldFormat{biblabeltitle}{\mkbibemph{#1}}
+\DeclareFieldFormat
+  [article,inbook,incollection,inproceedings,patent,thesis,unpublished]
+  {biblabeltitle}{\mkbibquote{#1\isdot}}
+\DeclareFieldFormat
+  [suppbook,suppcollection,suppperiodical]
+  {biblabeltitle}{#1}
+
 \DeclareFieldAlias{titlecase:biblabeltitle}{tilecase}
+
 \renewbibmacro*{labeltitle}{%
   \iffieldundef{label}
     {\iffieldundef{shorttitle}
