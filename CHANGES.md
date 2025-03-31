@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## Version 0.19 (2025-03-31)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.18...HEAD>
+See <https://github.com/moewew/biblatex-ext/compare/v0.18...v0.19>
 
 ### Changed
 - Call `\@doendpe` in `\printbibtabular`
