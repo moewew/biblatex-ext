@@ -21,6 +21,10 @@ Package: biblatex-ext-oasymb-l3draw ....-..-.. v... open access symbols with l3d
 ....\pdfliteral{10 M}
 ....\pdfliteral{[] 0 d}
 ....\hbox(0.0+0.0)x0.0
+.....\hbox(0.0+0.0)x0.0
+......\pdfsavepos
+......\write1{\new@label@record{draw.1}{{xpos}{\__property_code_xpos: }{ypos}{\__property_code_ypos: }{abspage}{\__property_code_abspage: }}}
+......\pdfsavepos
 .....\pdfcolorstack 0 push {0.96471 0.5098 0.07059 rg 0 G}
 .....\pdfliteral{4.68274 7.27318 m}
 .....\pdfliteral{4.68274 8.09856 4.01363 8.76767 3.18825 8.76767 c}
@@ -64,6 +68,10 @@ l. ...\showbox0
 ....\pdfliteral{10 M}
 ....\pdfliteral{[] 0 d}
 ....\hbox(0.0+0.0)x0.0
+.....\hbox(0.0+0.0)x0.0
+......\pdfsavepos
+......\write1{\new@label@record{draw.1}{{xpos}{\__property_code_xpos: }{ypos}{\__property_code_ypos: }{abspage}{\__property_code_abspage: }}}
+......\pdfsavepos
 .....\pdfcolorstack 0 push {0.96471 0.5098 0.07059 rg 0 G}
 .....\pdfliteral{4.68274 7.27318 m}
 .....\pdfliteral{4.68274 8.09856 4.01363 8.76767 3.18825 8.76767 c}
@@ -107,6 +115,10 @@ l. ...\showbox0
 ....\pdfliteral{10 M}
 ....\pdfliteral{[] 0 d}
 ....\hbox(0.0+0.0)x0.0
+.....\hbox(0.0+0.0)x0.0
+......\pdfsavepos
+......\write1{\new@label@record{draw.2}{{xpos}{\__property_code_xpos: }{ypos}{\__property_code_ypos: }{abspage}{\__property_code_abspage: }}}
+......\pdfsavepos
 .....\pdfcolorstack 0 push {0.20784 0.37647 0.19216 rg 0 G}
 .....\pdfliteral{9.09595 4.38359 m}
 .....\pdfliteral{9.09595 6.98616 6.98616 9.09595 4.38359 9.09595 c}
