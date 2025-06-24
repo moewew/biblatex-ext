@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## Version 0.20 (2025-06-24)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.19...HEAD>
+See <https://github.com/moewew/biblatex-ext/compare/v0.19...v0.20>
 
 ### Fixed
 - Load and use `xsavebox` package in open access symbol drawing packages
