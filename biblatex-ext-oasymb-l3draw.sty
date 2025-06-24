@@ -7,6 +7,7 @@
 \RequirePackage{xparse}
 \RequirePackage{l3keys2e}
 \RequirePackage{l3draw}[2021/02/18]
+\RequirePackage{xsavebox}
 
 \msg_new:nnn { biblatex-ext-oasymb-l3draw } { OutdatedL3Draw }
   { Your~version~of~'l3draw~does~not~support~
@@ -54,14 +55,15 @@
 }
 
 
-\box_new:N \l__extblx_oasymb_plos_box
-
-\hbox_set:Nn \l__extblx_oasymb_plos_box { \__extblx_oasymb_plos_path: }
+\AtBeginDocument
+{
+  \xsbox { extblx_oasymb_l3draw_plos_box } { \__extblx_oasymb_plos_path: }
+}
 
 \NewDocumentCommand \extblx_oasymb_draw_plos { }
 {
   \mode_leave_vertical:
-  \box_use:N \l__extblx_oasymb_plos_box
+  \xusebox { extblx_oasymb_l3draw_plos_box }
 }
 
 % LaTeX2e name
@@ -139,14 +141,15 @@
 }
 
 
-\box_new:N \l__extblx_oasymb_oanet_box
-
-\hbox_set:Nn \l__extblx_oasymb_oanet_box { \__extblx_oasymb_oanet_path: }
+\AtBeginDocument
+{
+  \xsbox { extblx_oasymb_l3draw_oanet_box } { \__extblx_oasymb_oanet_path: }
+}
 
 \NewDocumentCommand \extblx_oasymb_draw_oanet { }
 {
   \mode_leave_vertical:
-  \box_use:N \l__extblx_oasymb_oanet_box
+  \xusebox { extblx_oasymb_l3draw_oanet_box }
 }
 
 % LaTeX2e name

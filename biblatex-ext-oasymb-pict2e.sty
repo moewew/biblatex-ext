@@ -3,6 +3,7 @@
 
 \RequirePackage{etoolbox}
 \RequirePackage{kvoptions}
+\RequirePackage{xsavebox}
 
 % Internals called 'extblx@oasymb@pict' instead of
 % 'extblx@oasymb@pict2e' to avoid the non-letter "2".
@@ -43,10 +44,10 @@
   \endgroup
 }
 
-\newsavebox{\extblx@oasymb@pict@plos@box}
-\sbox{\extblx@oasymb@pict@plos@box}{\extblx@oasymb@pict@plos@pict}
+\AtBeginDocument{%
+  \xsbox{extblx_oasymb_pict_plos_box}{\extblx@oasymb@pict@plos@pict}}
 \newcommand*{\extblx@oasymb@pict@plos}{%
-  \usebox{\extblx@oasymb@pict@plos@box}}
+  \leavevmode\xusebox{extblx_oasymb_pict_plos_box}}
 
 % PLoS symbols is standard
 \newcommand*{\oasymbol}{\extblx@oasymb@pict@plos}
@@ -98,10 +99,10 @@
   \endgroup
 }
 
-\newsavebox{\extblx@oasymb@pict@oanet@box}
-\sbox{\extblx@oasymb@pict@oanet@box}{\extblx@oasymb@pict@oanet@pict}
+\AtBeginDocument{%
+  \xsbox{extblx_oasymb_pict_oanet_box}{\extblx@oasymb@pict@oanet@pict}}
 \newcommand*{\extblx@oasymb@pict@oanet}{%
-  \usebox{\extblx@oasymb@pict@oanet@box}}
+  \leavevmode\xusebox{extblx_oasymb_pict_oanet_box}}
 
 \protected\def\extblx@oasymb@pict@opt@symbol@process#1{%
   \begingroup

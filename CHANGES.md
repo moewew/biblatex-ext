@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.19...HEAD>
+
+### Fixed
+- Load and use `xsavebox` package in open access symbol drawing packages
+  to avoid duplicate labels
+  (cf. <https://tex.stackexchange.com/q/745988/35864>).
+
 ## Version 0.19 (2025-03-31)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.18...v0.19>

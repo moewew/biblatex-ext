@@ -4010,9 +4010,9 @@ stand-alone package, instead it is loaded via
 
 The package requires and loads the packages
 \sty{pict2e}\fnurl{https://ctan.org/pkg/pict2e} by Hubert Gäßlein,
-Rolf Nie\-praschk and Josef Tkadlec
-as well as
-\sty{xcolor}\fnurl{https://ctan.org/pkg/xcolor} by Uwe Kern.
+Rolf Nie\-praschk and Josef Tkadlec,
+\sty{xcolor}\fnurl{https://ctan.org/pkg/xcolor} by Uwe Kern
+and \sty{xsavebox}\fnurl{https://ctan.org/pkg/xsavebox} by Alexander Grahn.
 
 If used as a stand-alone package, \sty{biblatex-ext-oasymb-pict2e} has one
 load-time option, namely \hyperopt{symbol}, and defines one command besides
@@ -4034,8 +4034,9 @@ stand-alone package, instead it is loaded via
 \hypersty[symbolpackage]{biblatex-ext-oa}.
 
 This package requires and loads the package
-\sty{tikz}\fnurl{https://ctan.org/pkg/pgf} by Till Tantau as well as all
-its dependencies.
+\sty{tikz}\fnurl{https://ctan.org/pkg/pgf} by Till Tantau,
+its dependencies
+and \sty{xsavebox}\fnurl{https://ctan.org/pkg/xsavebox} by Alexander Grahn.
 
 If used as a stand-alone package, \sty{biblatex-ext-oasymb-tikz} has one
 load-time option, namely \hyperopt{symbol}, and defines one command besides
@@ -4071,6 +4072,8 @@ Drawing is performed with the (still experimental)
 \sty{l3draw}\fnurl{https://ctan.org/pkg/l3experimental} package.
 The code works best with version 2021-02-18 or above
 of~\sty{l3draw}.
+The package also loads
+\sty{xsavebox}\fnurl{https://ctan.org/pkg/xsavebox} by Alexander Grahn.
 
 If used as a stand-alone package, \sty{biblatex-ext-oasymb-l3draw} has one
 load-time option, namely \hyperopt{symbol}, and defines one command besides
@@ -4092,6 +4095,12 @@ See also \filename{CHANGES.md}.
 
 The numbers on the right indicate the relevant section of the manual.
 \begin{changelog}
+\begin{release}{<version>}{<date>}
+  \item Use \sty{xsavebox} in order to typeset open access symbols
+  (in \hypersty{biblatex-ext-oasymb-pict2e},
+   \hypersty{biblatex-ext-oasymb-tikz},
+   and \hypersty{biblatex-ext-oasymb-l3draw}).\see{sec:oa:symbol}
+\end{release}
 \begin{release}{0.19}{2025-03-31}
   \item Synced \hypercmd{printbibtabular} implementation with
     \cmd{@doendpe} \sty{biblatex}~3.20 changes.

@@ -3,6 +3,7 @@
 
 \RequirePackage{etoolbox}
 \RequirePackage{kvoptions}
+\RequirePackage{xsavebox}
 
 \protected\def\extblx@oasymb@tikz@error#1#2{%
   \PackageError{biblatex-ext-oasymb-tikz}{#1}{#2.}}
@@ -38,10 +39,10 @@
   \end{tikzpicture}%
 }
 
-\newsavebox{\extblx@oasymb@tikz@plos@box}
-\sbox{\extblx@oasymb@tikz@plos@box}{\extblx@oasymb@tikz@plos@tikz}
+\AtBeginDocument{%
+  \xsbox{extblx_oasymb_tikz_plos_box}{\extblx@oasymb@tikz@plos@tikz}}
 \newcommand*{\extblx@oasymb@tikz@plos}{%
-  \usebox{\extblx@oasymb@tikz@plos@box}}
+  \leavevmode\xusebox{extblx_oasymb_tikz_plos_box}}
 
 % PLoS symbols is standard
 \newcommand*{\oasymbol}{\extblx@oasymb@tikz@plos}
@@ -93,10 +94,10 @@
   \end{tikzpicture}%
 }
 
-\newsavebox{\extblx@oasymb@tikz@oanet@box}
-\sbox{\extblx@oasymb@tikz@oanet@box}{\extblx@oasymb@tikz@oanet@tikz}
+\AtBeginDocument{%
+  \xsbox{extblx_oasymb_tikz_oanet_box}{\extblx@oasymb@tikz@oanet@tikz}}
 \newcommand*{\extblx@oasymb@tikz@oanet}{%
-  \usebox{\extblx@oasymb@tikz@oanet@box}}
+  \leavevmode\xusebox{extblx_oasymb_tikz_oanet_box}}
 
 \protected\def\extblx@oasymb@tikz@opt@symbol@process#1{%
   \begingroup
