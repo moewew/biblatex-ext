@@ -61,7 +61,8 @@ tlmgr install    \
   psnfss         \
   unicode-math   \
   xkeyval        \
-  xsavebox
+  xsavebox       \
+  pdfbase
 
 tlmgr install       \
   babel-german      \
