@@ -62,7 +62,7 @@ tlmgr install    \
   unicode-math   \
   xkeyval        \
   xsavebox       \
-  pdfbase
+  media9
 
 tlmgr install       \
   babel-german      \
