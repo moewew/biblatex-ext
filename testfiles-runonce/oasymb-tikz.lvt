@@ -16,18 +16,13 @@
 \OMIT
 
 \begin{document}
-\TIMO
-\setbox0=\hbox{\oasymbol}
-\showbox0
-\OMIT
-
 \makeatletter
 \TIMO
-\setbox0=\hbox{\extblx@oasymb@tikz@plos}
+\setbox0=\hbox{\extblx@oasymb@tikz@plos@tikz}
 \showbox0
 \OMIT
 \TIMO
-\setbox0=\hbox{\extblx@oasymb@tikz@oanet}
+\setbox0=\hbox{\extblx@oasymb@tikz@oanet@tikz}
 \showbox0
 \OMIT
 \makeatother
