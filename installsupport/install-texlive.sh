@@ -60,7 +60,8 @@ tlmgr install    \
   lm-math        \
   psnfss         \
   unicode-math   \
-  xkeyval
+  xkeyval        \
+  xsavebox
 
 tlmgr install       \
   babel-german      \
