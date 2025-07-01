@@ -11,7 +11,7 @@
 
 \renewbibmacro*{cite}{%
   \iffieldundef{shorthand}
-    {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+    {\ifboolexpr{test {\ifciteibid} and not test {\iffirstonpage}}
        {\usebibmacro{cite:ibid}}
        {\ifboolexpr{test {\ifnameundef{labelname}}
                     or test {\iffieldundef{labelyear}}}
@@ -77,12 +77,14 @@
            \ifnumequal{\value{citecount}}{1}
              {\usebibmacro{prenote}}
              {}%
-           \ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+           \ifboolexpr{test {\ifciteibid} and not test {\iffirstonpage}}
              {\usebibmacro{cite:ibid}}
              {\usebibmacro{cite:labeldate+extradate}}}
           {\usebibmacro{cite:shorthand}}}
-       {\ifthenelse{\ifsingletitle\AND
-                    \(\iffieldundef{prenote}\OR\value{citecount}>1\)}
+       {\ifboolexpr{test {\ifsingletitle}
+                    and
+                    (test{\iffieldundef{prenote}}
+                     or test {\ifnumgreater{\value{citecount}}{1}})}
           {\printtext[bibhyperref]{\printnames{labelname}}}
           {\printnames{labelname}%
            \setunit{%
@@ -95,7 +97,7 @@
            \iffieldundef{shorthand}
              {\iffieldundef{labelyear}
                 {\usebibmacro{cite:label}}
-                {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+                {\ifboolexpr{test {\ifciteibid} and not test {\iffirstonpage}}
                    {\usebibmacro{cite:ibid}}
                    {\usebibmacro{cite:labeldate+extradate}}}%
               \savefield{labelyear}{\cbx@lastyear}}

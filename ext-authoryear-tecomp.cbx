@@ -86,8 +86,10 @@
              {}%
            \usebibmacro{cite:labeldate+extradate}}
           {\usebibmacro{cite:shorthand}}}
-       {\ifthenelse{\ifsingletitle\AND
-                    \(\iffieldundef{prenote}\OR\value{citecount}>1\)}
+       {\ifboolexpr{test {\ifsingletitle}
+                    and
+                    (test{\iffieldundef{prenote}}
+                     or test {\ifnumgreater{\value{citecount}}{1}})}
           {\printtext[bibhyperref]{\printnames{labelname}}%
            \global\undef\cbx@lastyear
            \global\undef\cbx@lastextradate

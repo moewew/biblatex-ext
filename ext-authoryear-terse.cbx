@@ -8,7 +8,8 @@
 
 \renewbibmacro*{cite}{%
   \iffieldundef{shorthand}
-    {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+    {\ifboolexpr{test {\ifnameundef{labelname}}
+                 or test {\iffieldundef{labelyear}}}
        {\usebibmacro{cite:label}%
         \setunit{\printdelim{nonameyeardelim}}}
        {\ifsingletitle
@@ -31,8 +32,10 @@
           {}%
         \usebibmacro{cite:labeldate+extradate}}
        {\usebibmacro{cite:shorthand}}}
-    {\ifthenelse{\ifsingletitle\AND
-                 \(\iffieldundef{prenote}\OR\value{citecount}>1\)}
+    {\ifboolexpr{test {\ifsingletitle}
+                 and
+                 (test{\iffieldundef{prenote}}
+                  or test {\ifnumgreater{\value{citecount}}{1}})}
        {\printtext[bibhyperref]{\printnames{labelname}}}
        {\printnames{labelname}%
         \setunit{%

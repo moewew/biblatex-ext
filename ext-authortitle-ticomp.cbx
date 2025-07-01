@@ -11,7 +11,7 @@
 
 \renewbibmacro*{cite}{%
   \iffieldundef{shorthand}
-    {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+    {\ifboolexpr{test {\ifciteibid} and not test {\iffirstonpage}}
        {\usebibmacro{cite:ibid}}
        {\iffieldequals{namehash}{\cbx@lasthash}
           {\setunit{\compcitedelim}%
@@ -39,7 +39,7 @@
 
 \renewbibmacro*{citetitle}{%
   \iffieldundef{shorthand}
-    {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+    {\ifboolexpr{test {\ifciteibid} and not test {\iffirstonpage}}
        {\usebibmacro{cite:ibid}}
        {\iffieldequals{namehash}{\cbx@lasthash}
           {\setunit{\compcitedelim}}
@@ -53,7 +53,7 @@
   \iffieldequals{namehash}{\cbx@lasthash}
     {\setunit{\compcitedelim}%
      \iffieldundef{shorthand}
-       {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+       {\ifboolexpr{test {\ifciteibid} and not test {\iffirstonpage}}
           {\usebibmacro{cite:ibid}}
           {\usebibmacro{cite:title}}}%
        {\usebibmacro{cite:shorthand}}}
@@ -62,12 +62,14 @@
           {\usebibmacro{prenote}}
           {}%
         \iffieldundef{shorthand}
-          {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+          {\ifboolexpr{test {\ifciteibid} and not test {\iffirstonpage}}
              {\usebibmacro{cite:ibid}}
              {\usebibmacro{cite:title}}}%
           {\usebibmacro{cite:shorthand}}}
-       {\ifthenelse{\ifsingletitle\AND
-                    \(\iffieldundef{prenote}\OR\value{citecount}>1\)}
+       {\ifboolexpr{test {\ifsingletitle}
+                    and
+                    (test{\iffieldundef{prenote}}
+                     or test {\ifnumgreater{\value{citecount}}{1}})}
           {\printtext[bibhyperref]{\printnames{labelname}}}
           {\printnames{labelname}
            \setunit{%
@@ -78,7 +80,7 @@
              {\usebibmacro{prenote}}
              {}%
            \iffieldundef{shorthand}
-             {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+             {\ifboolexpr{test {\ifciteibid} and not test {\iffirstonpage}}
                 {\usebibmacro{cite:ibid}}
                 {\usebibmacro{cite:title}}}%
              {\usebibmacro{cite:shorthand}}}}%

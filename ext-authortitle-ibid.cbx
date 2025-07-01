@@ -38,7 +38,7 @@
     {\usebibmacro{prenote}}
     {}%
   \iffieldundef{shorthand}
-    {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+    {\ifboolexpr{test {\ifciteibid} and not test {\iffirstonpage}}
        {\usebibmacro{cite:ibid}}
        {\usebibmacro{cite:title}}}
     {\usebibmacro{cite:shorthand}}}
@@ -49,7 +49,7 @@
       \printfield[citetitle]{labeltitle}}}}
 
 \renewbibmacro*{textcite:postnote}{%
-  \ifthenelse{\iffieldundef{postnote}\OR\boolean{cbx:loccit}}
+  \ifboolexpr{test {\iffieldundef{postnote}} or bool {cbx:loccit}}
     {\ifbool{cbx:parens}
        {\csuse{extblx@citedelim@\blx@delimcontext @inner@close}}
        {}}

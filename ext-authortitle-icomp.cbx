@@ -16,7 +16,7 @@
 
 \renewbibmacro*{cite}{%
   \iffieldundef{shorthand}
-    {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+    {\ifboolexpr{test {\ifciteibid} and not test {\iffirstonpage}}
        {\usebibmacro{cite:ibid}}
        {\iffieldequals{namehash}{\cbx@lasthash}
           {\setunit{\compcitedelim}}
@@ -50,7 +50,7 @@
     {\usebibmacro{prenote}}
     {}%
   \iffieldundef{shorthand}
-    {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+    {\ifboolexpr{test {\ifciteibid} and not test {\iffirstonpage}}
        {\usebibmacro{cite:ibid}}
        {\usebibmacro{cite:title}}}%
     {\usebibmacro{cite:shorthand}}%

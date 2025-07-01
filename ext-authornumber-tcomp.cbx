@@ -52,8 +52,10 @@
              {}%
            \usebibmacro{cite:extraname}}
           {\usebibmacro{cite:shorthand}}}
-       {\ifthenelse{\iffieldundef{extraname}\AND
-                    \(\iffieldundef{prenote}\OR\value{citecount}>1\)}
+       {\ifboolexpr{test {\iffieldundef{extraname}}
+                    and
+                    (test {\iffieldundef{prenote}}
+                     or {\ifnumgreater{\value{citecount}}{1}})}
           {\printtext[bibhyperref]{\printnames{labelname}}}
           {\printnames{labelname}%
            \setunit{%

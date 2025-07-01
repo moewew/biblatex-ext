@@ -1612,7 +1612,7 @@ with a numeric style and a customisation involving
     {\global\undef\cbx@lasthash}}
 \renewbibmacro*{textcite:postnote}{%
   \usebibmacro{postnote}%
-  \ifthenelse{\value{multicitecount}=\value{multicitetotal}}
+  \ifnumequal{\value{multicitecount}}{\value{multicitetotal}}
     {\setunit{}%
      \printtext{%
        \ifbool{cbx:parens}

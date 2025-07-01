@@ -97,7 +97,7 @@
 
 \renewbibmacro*{cite}{%
   \iffieldundef{shorthand}
-    {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+    {\ifboolexpr{test {\ifciteibid} and not test {\iffirstonpage}}
        {\usebibmacro{cite:dump:extradate}%
         \usebibmacro{cite:ibid}}
        {\ifboolexpr{test {\ifnameundef{labelname}}
@@ -196,7 +196,7 @@
            \ifnumequal{\value{citecount}}{1}
              {\usebibmacro{prenote}}
              {}%
-           \ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+           \ifboolexpr{test {\ifciteibid} and not test {\iffirstonpage}}
              {\usebibmacro{cite:ibid}}
              {\usebibmacro{cite:labeldate+extradate}}}
           {\usebibmacro{cite:shorthand}}}
@@ -211,7 +211,7 @@
         \iffieldundef{shorthand}
           {\iffieldundef{labelyear}
              {\usebibmacro{cite:label}}
-             {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+             {\ifboolexpr{test {\ifciteibid} and not test {\iffirstonpage}}
                 {\usebibmacro{cite:ibid}}
                 {\usebibmacro{cite:labeldate+extradate}}}%
            \savefield{labelyear}{\cbx@lastyear}%
