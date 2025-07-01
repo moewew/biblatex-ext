@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.20...HEAD>
+
+### Changed
+- Remove all uses of `\ifthenelse`
+  (cf. <https://github.com/plk/biblatex/issues/1348>).
+
 ## Version 0.20 (2025-06-24)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.19...v0.20>
