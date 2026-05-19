@@ -1,8 +1,8 @@
 # Changelog
 
-## Unreleased
+## Version 0.21 (2026-05-19)
 
-See <https://github.com/moewew/biblatex-ext/compare/v0.20...HEAD>
+See <https://github.com/moewew/biblatex-ext/compare/v0.20...v0.21>
 
 ### Fixed
 - Synced with 2026-04-28 changes in `l3draw`'s argument order for
