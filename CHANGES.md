@@ -4,6 +4,12 @@
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.20...HEAD>
 
+### Fixed
+- Synced with 2026-04-28 changes in `l3draw`'s argument order for
+  `\draw_path_arc:nnn`
+  (cf. <https://github.com/latex3/latex3/issues/1843>).
+  The minimum required `expl3` kernel/`l3draw` version is now 2026-04-28.
+
 ### Changed
 - Remove all uses of `\ifthenelse`
   (cf. <https://github.com/plk/biblatex/issues/1348>).

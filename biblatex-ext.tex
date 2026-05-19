@@ -3485,6 +3485,8 @@ Load one of the available open access symbol support packages.
     See \cref{sec:oa:symbol,sec:oa:symbol-l3draw}.
     \begin{remindbox}
       Please keep in mind that \sty{l3draw} is still considered experimental.
+      
+      You need at least version \texttt{2026-04-28} of \sty{l3draw}.
     \end{remindbox}
   \item[tikz] Load \hypersty{biblatex-ext-oasymb-tikz} to provide a
     definition for \hypercmd{oasymbol} that is drawn with \pgftikz.
@@ -4070,7 +4072,7 @@ loads \sty{xparse}\fnurl{https://ctan.org/pkg/xparse}
 and \sty{l3keys2e}\fnurl{https://ctan.org/pkg/l3keys2e}.
 Drawing is performed with the (still experimental)
 \sty{l3draw}\fnurl{https://ctan.org/pkg/l3experimental} package.
-The code works best with version 2021-02-18 or above
+The code requires version 2026-04-28 or above
 of~\sty{l3draw}.
 The package also loads
 \sty{xsavebox}\fnurl{https://ctan.org/pkg/xsavebox} by Alexander Grahn.
@@ -4098,6 +4100,8 @@ The numbers on the right indicate the relevant section of the manual.
 \begin{release}{<version>}{<date>}
   \item Removed uses of \cmd{ifthenelse} in favour of \sty{etoolbox}
     commands.
+  \item Synced with \sty{l3draw} changes.
+     Version \texttt{2026-04-28} or above is now required.
 \end{release}
 \begin{release}{0.20}{2025-06-24}
   \item Use \sty{xsavebox} in order to typeset open access symbols

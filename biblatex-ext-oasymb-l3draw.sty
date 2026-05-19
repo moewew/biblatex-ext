@@ -6,16 +6,16 @@
 
 \RequirePackage{xparse}
 \RequirePackage{l3keys2e}
-\RequirePackage{l3draw}[2021/02/18]
+\RequirePackage{l3draw}[2026/04/28]
 \RequirePackage{xsavebox}
 
 \msg_new:nnn { biblatex-ext-oasymb-l3draw } { OutdatedL3Draw }
-  { Your~version~of~'l3draw~does~not~support~
-    '\token_to_str:N\color_fill:n'. \\
-    Please~update~'l3draw'~to~version~2021-02-21~or~above.
+  { Your~version~of~'l3draw'~is~outdated. \\
+    Please~update~'l3draw'~to~version~2026-04-28~or~above.
   }
 
-\cs_if_exist:NF \color_fill:n
+\IfExplAtLeastTF { 2026-04-28 }
+  {}
   {
     \msg_error:nn {biblatex-ext-oasymb-l3draw} {OutdatedL3Draw}
   }
@@ -32,23 +32,23 @@
   \draw_begin:
     \draw_path_moveto:n { 47*\l__extblx_oasymb_scale_plos_dim,
                           73*\l__extblx_oasymb_scale_plos_dim }
-    \draw_path_arc:nnn { 000 } { 180 } { 15*\l__extblx_oasymb_scale_plos_dim }
+    \draw_path_arc:nnn  { 15*\l__extblx_oasymb_scale_plos_dim } { 000 } { 180 }
     \draw_path_lineto:n {  6*\l__extblx_oasymb_scale_plos_dim,
                           73*\l__extblx_oasymb_scale_plos_dim }
-    \draw_path_arc:nnn { 180 } { 000 } { 26*\l__extblx_oasymb_scale_plos_dim }
+    \draw_path_arc:nnn  { 26*\l__extblx_oasymb_scale_plos_dim } { 180 } { 000 }
     \draw_path_rectangle_corners:nn { 47*\l__extblx_oasymb_scale_plos_dim,
                                       47*\l__extblx_oasymb_scale_plos_dim }
                                     { 58*\l__extblx_oasymb_scale_plos_dim,
                                       73*\l__extblx_oasymb_scale_plos_dim }
     \draw_path_moveto:n { 64*\l__extblx_oasymb_scale_plos_dim,
                           32*\l__extblx_oasymb_scale_plos_dim }
-    \draw_path_arc:nnn { 000 } { 360 } { 32*\l__extblx_oasymb_scale_plos_dim }
+    \draw_path_arc:nnn  { 32*\l__extblx_oasymb_scale_plos_dim } { 000 } { 360 }
     \draw_path_moveto:n { 53*\l__extblx_oasymb_scale_plos_dim,
                           32*\l__extblx_oasymb_scale_plos_dim }
-    \draw_path_arc:nnn { 360 } { 000 } { 21*\l__extblx_oasymb_scale_plos_dim }
+    \draw_path_arc:nnn  { 21*\l__extblx_oasymb_scale_plos_dim } { 360 } { 000 }
     \draw_path_moveto:n { 41*\l__extblx_oasymb_scale_plos_dim,
                           32*\l__extblx_oasymb_scale_plos_dim }
-    \draw_path_arc:nnn { 000 } { 360 } { 09*\l__extblx_oasymb_scale_plos_dim }
+    \draw_path_arc:nnn  { 09*\l__extblx_oasymb_scale_plos_dim } { 000 } { 360 }
     \color_fill:n { oasymb_plos_orange }
     \draw_path_use_clear:n { fill }
   \draw_end:
@@ -101,10 +101,10 @@
   \draw_begin:
     \draw_path_moveto:n { 8.3*\l__extblx_oasymb_scale_oanet_dim,
                           4  *\l__extblx_oasymb_scale_oanet_dim }
-    \draw_path_arc:nnn { 000 } { 360 } { 4.3*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_arc:nnn  { 4.3*\l__extblx_oasymb_scale_oanet_dim } { 000 } { 360 } 
     \draw_path_moveto:n { 6.7*\l__extblx_oasymb_scale_oanet_dim,
                           4  *\l__extblx_oasymb_scale_oanet_dim }
-    \draw_path_arc:nnn { 360 } { 000 } { 2.7*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_arc:nnn  { 2.7*\l__extblx_oasymb_scale_oanet_dim } { 360 } { 000 } 
     \color_fill:n { oasymb_oanet_green }
     \draw_path_use_clear:n { fill }
 
@@ -116,25 +116,24 @@
                              4*\l__extblx_oasymb_scale_oanet_dim }
     \draw_path_lineto:n { 15.3*\l__extblx_oasymb_scale_oanet_dim,
                            4*\l__extblx_oasymb_scale_oanet_dim }
-    \draw_path_arc:nnn { 000 } { 300 } { 4.3*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_arc:nnn  { 4.3*\l__extblx_oasymb_scale_oanet_dim } { 000 } { 300 }
     \draw_path_moveto:n { (11+cosd(300)*4.3)*\l__extblx_oasymb_scale_oanet_dim,
                           (4+sind(300)*4.3)*\l__extblx_oasymb_scale_oanet_dim }
     \draw_path_lineto:n { (11+cosd(300)*2.7)*\l__extblx_oasymb_scale_oanet_dim,
                           (4+sind(300)*2.7)*\l__extblx_oasymb_scale_oanet_dim }
-    \draw_path_arc:nnn { 300 } { 000 } { 2.7*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_arc:nnn  { 2.7*\l__extblx_oasymb_scale_oanet_dim } { 300 } { 000 }
     \color_fill:n { oasymb_oanet_gold }
     \draw_path_use_clear:n { fill }
 
     \draw_path_moveto:n
       { (4+cosd(035.5)*4.3)*\l__extblx_oasymb_scale_oanet_dim,
         (4+sind(035.5)*4.3)*\l__extblx_oasymb_scale_oanet_dim }
-    \draw_path_arc:nnn { 144.5 } { 215.5 }
-                       { 4.3*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_arc:nnn { 4.3*\l__extblx_oasymb_scale_oanet_dim } { 144.5 } { 215.5 }
     \draw_path_moveto:n
       { (4+cosd(-035.5)*4.3)*\l__extblx_oasymb_scale_oanet_dim,
         (4+sind(-035.5)*4.3)*\l__extblx_oasymb_scale_oanet_dim }
-    \draw_path_arc:nnn { -035.5 } { 035.5 }
-                       { 4.3*\l__extblx_oasymb_scale_oanet_dim }
+    \draw_path_arc:nnn { 4.3*\l__extblx_oasymb_scale_oanet_dim }
+                       { -035.5 } { 035.5 }
     \color_fill:n { oasymb_oanet_intersect }
     \draw_path_use_clear:n { fill }
   \draw_end:
