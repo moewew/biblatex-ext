@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+See <https://github.com/moewew/biblatex-ext/compare/v0.21...HEAD>
+
 ## Version 0.21 (2026-05-19)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.20...v0.21>
