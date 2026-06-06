@@ -124,7 +124,6 @@ Completed box being shipped out [1]
 ...\glue(\lineskip) 1.0
 ...\hbox(32.5+27.5)x345.0, glue set 20.0197fil
 ....\hbox(32.5+27.5)x324.9803
-.....\mathon
 .....\vbox(32.5+27.5)x324.9803
 ......\hbox(8.39996+51.60004)x324.9803
 .......\glue(\tabskip) 0.0
@@ -498,7 +497,6 @@ Completed box being shipped out [1]
 ..........\glue(\rightskip) 0.0 plus 1.0fil
 ........\glue 0.0 plus 1.0fil
 .......\glue(\tabskip) 0.0
-.....\mathoff
 ....\penalty 10000
 ....\glue(\parfillskip) 0.0 plus 1.0fil
 ....\glue(\rightskip) 0.0

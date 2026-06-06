@@ -148,6 +148,7 @@ Completed box being shipped out [1]
 ...\glue 0.0
 ...\special{}
 ...\penalty 10000
+...\penalty 10000
 ...\hbox(16.79993+55.20007)x345.0
 ....\glue(\tabskip) 0.0 plus 1.0fill
 ....\hbox(16.79993+55.20007)x103.50105
