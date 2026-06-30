@@ -351,10 +351,17 @@
 % answer to https://tex.stackexchange.com/a/123451/35864
 % originally CC BY-SA 3.0, but dual-licensed under LPPL
 % see https://tex.meta.stackexchange.com/a/3333/35864
+% with addition by David Carlisle
+% (https://tex.stackexchange.com/users/1090/david-carlisle)
+% to locally set \parskip to 0
+% https://tex.stackexchange.com/a/764274/35864
+% originally CC BY-SA 4.0, but dual-licensed under CC0
+% https://tex.meta.stackexchange.com/a/3332/35864
 \newcommand{\extblx@oa@marginmark}{%
   \strut\vadjust{\extblx@oa@marginmark@do}}
 \newcommand{\extblx@oa@marginmark@do}{%
   \vbox to 0pt{%
+    \parskip\z@skip
     \kern-\dimexpr\dp\strutbox+\ht\strutbox\relax
     \strut
     \hfill
@@ -362,7 +369,7 @@
       \ifhyperref
         {\href{\thefield{bestoaurl}}}
         {\@firstofone}%
-      {\oasymbol}}
+      {\oasymbol}}%
     \vss
   }%
 }
