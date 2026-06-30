@@ -4,6 +4,12 @@
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.21...HEAD>
 
+
+### Fixed
+- Fixed vertical alignment of open access symbol with nonzero
+  `\parskip`
+  (cf. <https://tex.stackexchange.com/q/764051/35864>).
+
 ## Version 0.21 (2026-05-19)
 
 See <https://github.com/moewew/biblatex-ext/compare/v0.20...v0.21>
