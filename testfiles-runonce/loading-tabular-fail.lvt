@@ -11,8 +11,8 @@
 
 \START
 \usepackage{biblatex-ext-tabular}
-\OMIT
+\END
 
 \begin{document}
 \end{document}
-\END
+
