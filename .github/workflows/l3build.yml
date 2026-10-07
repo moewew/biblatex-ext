@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v7
 
     # http://man7.org/linux/man-pages/man1/date.1.html
     - name: Get date
@@ -28,7 +28,7 @@ jobs:
       shell: bash
 
     - name: Cache dependencies
-      uses: actions/cache@v5
+      uses: actions/cache@v6
       with:
         path: |
           /tmp/texlive
@@ -47,7 +47,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v7
 
     # http://man7.org/linux/man-pages/man1/date.1.html
     - name: Get date
@@ -57,7 +57,7 @@ jobs:
       shell: bash
 
     - name: Cache dependencies
-      uses: actions/cache@v5
+      uses: actions/cache@v6
       with:
         path: |
           /tmp/texlive
